@@ -1,6 +1,8 @@
 // https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-usagenotes-connect-drivermanager.html
+// https://www.tutorialspoint.com/jdbc/index.htm
 
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.JDBCType;
 import java.sql.SQLException;
@@ -16,9 +18,9 @@ public class mysql_connector_java {
         MySQL:  jdbc:mysql://hostname/databaseName
         ORALCE: jdbc:oracle:thin:@hostname:portNumber:databaseName
     */
-    static final String DB_URL = "jdbc:mysql://192.168.0.2/database_test";
-    static final String DB_USER = "user_test";
-    static final String DB_PW = "%user_test1992";
+    static final String DB_URL = "jdbc:mysql://<hostname>/<database>";
+    static final String DB_USER = "<user>";
+    static final String DB_PW = "<password>";
 
     public static void main(String[] args) {
 
@@ -57,7 +59,7 @@ public class mysql_connector_java {
             stmt.executeUpdate("insert into table_test (content) values ('test1'), ('test2');"); //2
     
             // returns a resultset. Use for DQL statements
-            stmt.executeQuery("Select * from department order by id asc;"); //query result
+            stmt.executeQuery("Select * from table_test;"); //query result
 
 
             /* -------------- PreparedStatement -------------- 
@@ -199,6 +201,7 @@ public class mysql_connector_java {
             rs.close();
             stmt.close();
 
+
             /*
                 - TYPE_SCROLL_SENSITIVE: cursor can move forward and backward, result is affected by later changes of other users to the database
                 - CONCUR_UPDATABLE: changes to the resultset can also be applied to the datasource
@@ -211,6 +214,34 @@ public class mysql_connector_java {
             while(rs.next()) {
                 System.out.println("content: " + rs.getString("content") + " | number: " + rs.getString("number"));
             }*/
+
+
+            // -------------- manual Transaction --------------
+            con.setAutoCommit(false); // enable manual transaction
+            stmt = con.createStatement();
+            stmt.executeUpdate("Insert into table_test values ('transaction_s1', 5400);");
+            stmt.executeUpdate("Insert into table_test values ('transaction_s2', 800);");
+            con.commit(); // changes are writtten to the database
+
+            stmt.executeUpdate("Insert into table_test values ('transaction_s3', 2000);");
+            stmt.executeUpdate("Insert into table_test values ('transaction_s4', 1000);");
+            con.rollback(); // changes are discarded
+            stmt.close();
+
+
+            // -------------- Batch Processing --------------
+            // group related DDL and DML statements in a batch to submit them all in one call
+            // advantage: less communication overhead --> improved performance
+            boolean batch_support = con.getMetaData().supportsBatchUpdates(); // is batch processing enabled?
+            con.setAutoCommit(false);
+            stmt = con.createStatement();
+            stmt.addBatch("Insert into table_test values ('batch_s1', 1);");
+            stmt.addBatch("Insert into table_test values ('batch_s2', 2);");
+            stmt.addBatch("Insert into table_test values ('batch_s3', 3);");
+            int[] count = stmt.executeBatch(); //update count for each statement in the batch
+            con.commit();
+            stmt.close();
+
 
         } catch (Exception ex) {
             System.out.println("Exception: " + ex.getMessage());
@@ -226,5 +257,6 @@ public class mysql_connector_java {
                 System.out.println("SQLException: " + ex.getMessage());
             }
 
+        }
     }
 }

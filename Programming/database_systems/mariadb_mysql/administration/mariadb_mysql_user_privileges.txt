@@ -1,0 +1,139 @@
+Source: https://dev.mysql.com/doc/refman/8.0/en/access-control.html
+
+Types of  privileges:
+1.) Administrative privileges (global)
+2.) Database privileges (database specific of global)
+3.) Database objects (object specific, object type specific within a database, object type specific for all databases)
+
+
+Table 6.2 Permissible Static Privileges for GRANT and REVOKE
+----------------------------------------------------------------------------------------------
+Privilege 			Grant Table Column 		Context
+----------------------------------------------------------------------------------------------
+ALL [PRIVILEGES] 		Synonym for “all privileges” 	Server administration
+ALTER 				Alter_priv 			Tables
+ALTER ROUTINE 			Alter_routine_priv 		Stored routines
+CREATE 				Create_priv 			Databases, tables, or indexes
+CREATE ROLE 			Create_role_priv 		Server administration
+CREATE ROUTINE 			Create_routine_priv 		Stored routines
+CREATE TABLESPACE 		Create_tablespace_priv 		Server administration
+CREATE TEMPORARY TABLES 	Create_tmp_table_priv 		Tables
+CREATE USER 			Create_user_priv 		Server administration
+CREATE VIEW 			Create_view_priv 		Views
+DELETE 				Delete_priv 			Tables
+DROP 				Drop_priv 			Databases, tables, or views
+DROP ROLE 			Drop_role_priv 			Server administration
+EVENT 				Event_priv 			Databases
+EXECUTE 			Execute_priv 			Stored routines
+FILE 				File_priv 			File access on server host
+GRANT OPTION 			Grant_priv 			Databases, tables, or stored routines
+INDEX 				Index_priv 			Tables
+INSERT 				Insert_priv 			Tables or columns
+LOCK TABLES 			Lock_tables_priv 		Databases
+PROCESS 			Process_priv 			Server administration
+PROXY 				See proxies_priv table 		Server administration
+REFERENCES 			References_priv 		Databases or tables
+RELOAD 				Reload_priv 			Server administration
+REPLICATION CLIENT 		Repl_client_priv 		Server administration
+REPLICATION SLAVE 		Repl_slave_priv 		Server administration
+SELECT 				Select_priv		 	Tables or columns
+SHOW DATABASES 			Show_db_priv 			Server administration
+SHOW VIEW 			Show_view_priv		 	Views
+SHUTDOWN 			Shutdown_priv 			Server administration
+SUPER 				Super_priv 			Server administration
+TRIGGER 			Trigger_priv 			Tables
+UPDATE 				Update_priv 			Tables or columns
+USAGE 				Synonym for “no privileges” 	Server administration
+
+
+Table 6.3 Permissible Dynamic Privileges for GRANT and REVOKE
+--------------------------------------------------------------------
+Privilege 			Context
+-------------------------------------------------------------------
+APPLICATION_PASSWORD_ADMIN 	Dual password administration
+AUDIT_ADMIN 			Audit log administration
+BACKUP_ADMIN 			Backup administration
+BINLOG_ADMIN 			Backup and Replication administration
+BINLOG_ENCRYPTION_ADMIN 	Backup and Replication administration
+CLONE_ADMIN 			Clone administration
+CONNECTION_ADMIN 		Server administration
+ENCRYPTION_KEY_ADMIN 		Server administration
+FIREWALL_ADMIN 			Firewall administration
+FIREWALL_EXEMPT 		Firewall administration
+FIREWALL_USER 			Firewall administration
+FLUSH_OPTIMIZER_COSTS 		Server administration
+FLUSH_STATUS 			Server administration
+FLUSH_TABLES 			Server administration
+FLUSH_USER_RESOURCES 		Server administration
+GROUP_REPLICATION_ADMIN 	Replication administration
+INNODB_REDO_LOG_ARCHIVE 	Redo log archiving administration
+NDB_STORED_USER 		NDB Cluster
+PERSIST_RO_VARIABLES_ADMIN 	Server administration
+REPLICATION_APPLIER 		PRIVILEGE_CHECKS_USER for a replication channel
+REPLICATION_SLAVE_ADMIN 	Replication administration
+RESOURCE_GROUP_ADMIN 		Resource group administration
+RESOURCE_GROUP_USER 		Resource group administration
+ROLE_ADMIN 			Server administration
+SESSION_VARIABLES_ADMIN 	Server administration
+SET_USER_ID 			Server administration
+SHOW_ROUTINE 			Server administration
+SYSTEM_USER 			Server administration
+SYSTEM_VARIABLES_ADMIN 		Server administration
+TABLE_ENCRYPTION_ADMIN 		Server administration
+VERSION_TOKEN_ADMIN 		Server administration
+XA_RECOVER_ADMIN 		Server administration
+
+
+Privilege tables for Access Control Stage 2 (Request Verification):
+- mysql.user:		global privileges, should be only granted to DBAdmins
+- mysql.db:		datebase-specific privileges (wildcard %: all users/ all databases)
+- mysql.tables_priv:	table-specific privileges
+- mysql.columns_priv:	column-specific privileges
+- mysql.procs_priv:	routine-specific privileges
+
+------------------------------ COMMANDS -----------------------------------
+
+-------- Account Management ---------
+
+create user <'username'>@<'hostname'>
+identified by <password>;
+
+drop user <username'>@<'hostname'>;
+
+grant <privilege_1>, ... , <privilege_n> | all
+on <database>.<table> | <database>.* | *.*
+to <'username'>@<'hostname'>
+[with grant option];
+
+show grants for 'username'@'hostname';
+
+revoke <privilege_1>, ... , <privilege_n> | all
+on <database>.<table> | <database>.* | *.*
+from 'username'@'hostname';
+
+-------- Role Management ---------
+create role <role_1>, ... , <role_n>;
+
+grant <privilege_1>, ... , <privilege_n> | all
+on <database>.<table> | <database>.* | *.*
+to <role>;
+
+grant <role_1>, ... , <role_n>
+to <'username_1'>@<'hostname_1'>, ... , <'username_n'>@<'hostname_n'>;
+
+show grants for <role>;
+
+show grants for <username'>@<'hostname'> USING <role_1>, ... , <role_n>;
+
+set default row all
+to <'username_1'>@<'hostname_1'>, ... , <'username_n'>@<'hostname_n>; // activate all roles for the users!
+
+select current_row();
+
+revoke <role> from <'username'>@<'hostname'>;
+
+revoke <privilege_1>, ... , <privilege_n> from <role>;
+
+drop role <role_1>, ... , <role_n>;
+
+mysqladmin flush-privileges // in case changes are not effective right away

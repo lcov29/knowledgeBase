@@ -1,0 +1,13 @@
+List of all available configuration options for the mysql server: 
+terminal: mysqld --verbose --help
+
+Configuration is stored in the following files:
+/etc/my.cnf
+/etc/mysql/my.cnf
+~/.my.cnf
+
+Add Connfiguration settings to one of these files
+Mark configuration settings with [mysqld]
+Restart the server
+
+

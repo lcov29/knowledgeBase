@@ -125,14 +125,16 @@ show grants for <role>;
 
 show grants for <username'>@<'hostname'> USING <role_1>, ... , <role_n>;
 
-set default row all
-to <'username_1'>@<'hostname_1'>, ... , <'username_n'>@<'hostname_n>; // activate all roles for the users!
+set default role <role_1>, ... , <role_2> | None
+for <'username_1'>@<'hostname_1'>, ... , <'username_n'>@<'hostname_n>; // activate all roles for the users!
 
 select current_row();
 
 revoke <role> from <'username'>@<'hostname'>;
 
-revoke <privilege_1>, ... , <privilege_n> from <role>;
+revoke <privilege_1>, ... , <privilege_n>
+on <database>.<table> | <database>.* | *.*
+from <role>;
 
 drop role <role_1>, ... , <role_n>;
 

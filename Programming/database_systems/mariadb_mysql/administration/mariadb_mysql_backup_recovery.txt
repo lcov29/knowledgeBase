@@ -1,0 +1,30 @@
+Source: https://dev.mysql.com/doc/refman/8.0/en/backup-and-recovery.html
+
+physical backup: copies of database directories
+	+ backup is faster (only file copying)
+	+ output is more compact
+	+ backup can include related files (log, configuration, ...)
+	- portable obly to machines with similar hardware
+	- server must be taken offline or tables need to be locked 
+
+logical backup: statements (database structure and content) to recreate database
+	+ server can stay online
+	+ backup is independent from hardware
+	- update is slower
+	- output is larger
+	- backup does not include related files (log, configuration, ...)
+
+
+1.) Backups with mysqldump
+
+mysqldump -u <username> -p[password] --all-databases --routines > dump_file_name.sql
+mysqldump -u <username> -p[password] --databases <database_1>, ... , <database_n> --routines > dump_file_name.sql
+
+recovery:
+option 1.) mysql < dump_file_name.sql
+option 2.) source dump_file_name.sql
+
+
+2.) Making delimited-text file backups
+mysqldump --tab=/tmp --fields-terminated-by=,  --fields-enclosed-by='"' --lines-terminated-by=0x0d0a db1
+

@@ -10,7 +10,6 @@ rm -rd <directory>					removes all files in <directory>, all subdirectories and 
 cp <old_file> <new_file>				copy <old_file> to location of <new_file>
 cp -r <source_directory> <destination_directory>	copy content of <source_directory> recursivly into <destination_directory>
 mv <file_1> <file_2>					move and rename <file_1> into <file_2>
-
 ln <file>  [path/]<link_name>				create a hardlink to <file>
 ln -s <file> [path/]<link_name>				create a symbolic link to <file>
 
@@ -28,4 +27,25 @@ chmod <user_class_1> =<user_class_2> <file>		set privilegs of <file> for <user_c
 chown <new_owner>[:<group>] <file>			change ownership of <file> to <new_owner>
 							optional: change also group of <file> to <group>
 chgrp <group> <file>					change group of <file> to <group>
-				
+
+find [directory] [-test] [-action]
+	default directory: current work directory
+	tests:
+		-name <filename>
+		-perm <privilege>
+		-type <filetype>
+		-user <username>
+	options to combinate tests:
+		-a					and
+		-o					or
+		!					negation
+	actions:
+		-print 					default
+		-fprint <file>				print result to <file>
+		-exec <command> [{}] \;			{} represents the path to all found files, \; ends the command
+		-ok					-exec with interactive prompt
+
+tar -cvzf <archive_name>.tar.gz <directory | file>	create a zipped archive <archive_name>.tar.gz of all contents of <directory | file> (verbose)
+tar -xvzf <archive_name>.tar.gz				unzip and unpack <archive_name>.tar.gz relative to the current working directory
+
+

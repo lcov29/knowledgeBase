@@ -1,0 +1,105 @@
+uname -a					print system information:
+							kernel-name, 
+							network node hostname, 
+							kernel-release, 
+							kernel version, 
+							machine hardware name, 
+							processor type, 
+							hardware platform and 
+							operating system
+cat /etc/*release				print distribution information
+
+sudo <command>					execute <command> as root (if allowed)
+sudo -u <user_name | user_id> <command>		execute <command> as <user_name>
+sudo -i						start subshell with root privilege (if allowed)
+visudo						edit /etc/sudoers (describes who can execute root commands)
+							User Specification Format:	<initial_user> <host> = (tartget_user>) <commands>
+							Alias Format: 			<alias_name> = <user_names | hosts | target_users | command_list>
+							Defaults Format:		Defaults <option>
+
+
+---------------------------------- USER ACCOUNTS ---------------------------------------
+Files for defining a user
+	/etc/passwd
+	/etc/group
+	/etc/shadow
+	/etc/login.defs 				setting for password-aging, length etc
+
+useradd --defaults					print default useradd configuration
+useradd <user_name>					add new user <user_name>
+	-u <uid>
+	-g <primary group>
+	-G <secondary_group_1,...,secondary_group_n>
+	-c <comment>
+	-m <home_directory> -k <reference_directory>
+	-d <login_directory>
+	-s <shell_path>
+usermod <user_name>					modify user <user_name>
+	-m						create home directory				
+	-u <uid>
+	-g <primary_group>
+	-G <secondary_group_1,...,secondary_group_n>
+	-c <comment>
+	-d <home_directory>
+	-s <startprogram>
+	-f <lock_time>
+	-e <expiration_date>
+	-l <new_user_name>
+userdel -r <user_name>					delete user <user_name> with login directory and mail (-r)
+
+
+---------------------------------- Groups ---------------------------------------
+groupadd <group_name>
+groupmod -n <new_group_name> <old_group_name>		rename group
+groupdel <group_name>					delete group
+
+
+---------------------------------- Password -------------------------------------
+passwd <user_name>					set password for <user_name>
+	-l						lock password
+	-u						unlock password
+	-d						delete password, lock user account
+	-e						expire password, user needs to set a new password
+	-S						print password status
+
+chage -l <user_name>					list password expiry information for <user_name>
+	-m <min_days>					minimum number of days between password changes
+	-M <max_days>					maximum number of days between password changes
+	-W <warn_days>					number of days of warning before password change
+	-I <inactive_days>				number of days of inactivity after password expired
+	-E <expire_date>				date of account locking
+
+
+----------------------- Setting environment variables ---------------------------
+Files for setting environment variables:
+	/etc/profile					(global) is executed upon starting bash
+	~/.bash_profile					(user) is executed upon login with bash
+
+
+---------------------------------- Hardware -------------------------------------
+lshw 							list hardware components
+	-short						short overview of the hardware
+	-class <class_1,...,class_n>			list hardware components of <class_1,...,class_n>
+	-json						format to json
+	-html						format to html
+
+fdisk -l						list partitions
+fdisk <device_file>					edit device interactivly
+mkfs -t <file_system_type> <device_file>		create a file system of <file_system_type> on <device_file>
+lsblk							list block devices
+bklid							list block device attributes
+mount							list all mounted filesystems
+mount -t <file_system_type> <device_name> <directory>	mount a filesystem device to a directory
+umount <directory>					unmount files systems from <directory>
+df -h							list file system disk space in human-readable format
+du -h <directory>					list disk usage of <directory>
+top							display linux processes
+mkswap <block_device | file>				create a swap area
+swapon -a						activate all swap partitions in /etc/fstab
+swapon -s						print summary of swap area usage
+swapoff -a						deactivate all swap partitions in /etc/fstab
+ 					
+					
+
+
+

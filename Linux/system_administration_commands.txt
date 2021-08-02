@@ -100,6 +100,9 @@ swapon -s						print summary of swap area usage
 swapoff -a						deactivate all swap partitions in /etc/fstab
  					
 					
-
+---------------------------------- Process -------------------------------------
+netstat							print active internet connections
+netstat -lpntu						print all listening tcp and udp processes with port number
+ss -lntup						alternative to netstat
 
 

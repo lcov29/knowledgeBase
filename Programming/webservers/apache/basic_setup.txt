@@ -1,0 +1,84 @@
+----- Directories under Debian -----
+application:                /etc/apache2
+default document root:      /var/www/html
+logging:                    /var/log/apache2
+settings for logrotate:     /etc/logrotate.d/apache2
+
+
+----- Command to test configuration syntax under Debian -----
+-- Option1:
+. /etc/apache2/envvars
+apache2 -t
+-- Option2:
+apache2ctl configtest
+
+
+----- Commands for Apache2 under Debian -----
+a2enmod         enable Apache2 module
+a2dismod        disable Apache2 module
+a2ensite        enable virtual host
+a2dissite       disable virtual host
+a2enconf        enable configuration file
+a2disconf       disable configuration file
+
+
+----- Restrict access to directories to hosts ------
+add to <Directory> in /etc/apache2/apache2.conf
+    Require ip <ip address>
+    Require ip xxx.xxx.xxx      (ip range)
+    Require host <hostname>
+    Require local
+    Require valid-user          (authenticated users)
+    Require all granted
+    Require all denied
+
+- multiple restrictions are treated as an OR-Statement
+- multiple restrictions within <RequireAll> are treated as an AND-Statement
+
+
+----- Restrict access to directories via password -----
+create a new password file:
+    htpasswd -c <file_name> <user_name>
+
+add to /etc/apache2/sites-available/xxx
+<Directory [directory]>
+    AuthType        Basic
+    AuthUserFile    [password file]
+    AuthName        "[AuthName]"
+    <RequireAll>
+        Require         valid-user
+        Require         user user1 [user2]
+    </RequireAll>
+</Directory>
+
+
+----- Virtual hosts under Ubuntu -----
+add to /etc/apache2/sites-available either:
+
+name-based virtual host:
+<VirtualHost *:80>
+    DocumentRoot [directory]
+    ServerName xyz
+    ServerAlias zyx
+    ...
+</VirtualHost>
+
+or
+
+ip- and port-based virtual host (add port to /etc/apache/ports.conf!)
+<VirtualHost xxx.xxx.xxx.xxx:port>
+    DocumentRoot [directory]
+    ServerName xyz
+    ...
+</VirtualHost>
+
+activate virtualhost:
+a2ensite <filename>
+systemctl reload apache2
+
+
+----- Security -----
+deactivate server signature (display of apache version and operating system information):
+/etc/apache2/conf-available/security.conf
+ServerSignature Off
+ServerTokens Prod

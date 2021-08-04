@@ -1,0 +1,11 @@
+basic self certification via openssl
+
+# create key
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out <keyname>.key
+chmod 400 <keyname>.key
+
+# create certification
+openssl req -new -sha256 -key <keyname>.key -out <certificationname>.csr
+
+# verify certification
+openssl x509 -req -days <number> -in <certificationname>.csr -signkey <keyname>.key -sha256 -out <signature>.pem

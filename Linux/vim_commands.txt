@@ -1,0 +1,56 @@
+---------- Navigation ----------
+
+Cursor:
+
+	^
+	k
+< h	      l>
+	j
+	V
+
+0		move cursor to start of line
+$		move cursor to end of line
+<number>w	move cursor <number> of words forward
+CTRL+G		show current line number
+G		move to end of file
+gg		move to start of file
+<number>+G	move to line <number>
+%		move to matching parentheses if cursor is over (, [ or {
+
+
+---------- Basics ----------
+:q		exit vim
+:q!		exit vim without saving
+:w		save
+:wq		save and exit vim
+u 		undo last command
+U		undo all changes to current line
+:!<command>	execute external command
+
+
+---------- Editing ----------
+x		delete current character
+i		insert before the current character
+A		append at the end of line
+dw		delete current word
+d<number>w	delete next <number> words
+d$		delete to the end of line
+<number>dd	delete <number> of lines
+p		put previously deleted line after cursor
+r<character>	replace character at current cursor position with <character>
+ce 		delete content of word after cursor position, puts you in insertion mode to replace content
+
+
+---------- Searching ----------
+/<pattern>	forward search for <pattern>
+?<pattern>	backward search for <pattern>
+n		next occurrence
+N		previous occurrence
+
+
+---------- Replacing ----------
+:s/<old>/<new>			replace first occurrence of <old> with <new> in current line
+:s/<old>/<new>/g		replace all occurrences of <old> with <new> in current line
+:%s/<old>/<new>/g		replace all occurrences of <old> with <new> in whole file
+:%s/<old>/<new>/gc		replace all occurrences of <old> with <new> in whole file with prompt before every replacement
+:<start>,<end>s/<old>/<new>/g	replace all occurrences of <old> with <new> between lines <start> and <end>

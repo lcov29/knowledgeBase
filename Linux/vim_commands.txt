@@ -8,44 +8,54 @@ Cursor:
 	j
 	V
 
-0		move cursor to start of line
-$		move cursor to end of line
-<number>w	move cursor <number> of words forward
-CTRL+G		show current line number
-G		move to end of file
-gg		move to start of file
-<number>+G	move to line <number>
-%		move to matching parentheses if cursor is over (, [ or {
+
+CTRL+G				show current line number
+0				move cursor to start of line
+$				move cursor to end of line
+e				move cursor to end of word
+<number>w			move cursor <number> of words forward
+G				move to end of file
+gg				move to start of file
+<number>+G			move to line <number>
+%				move to matching parentheses if cursor is over (, [ or {
 
 
 ---------- Basics ----------
-:q		exit vim
-:q!		exit vim without saving
-:w		save
-:wq		save and exit vim
-u 		undo last command
-U		undo all changes to current line
-:!<command>	execute external command
+:q				exit vim
+:q!				exit vim without saving
+:w				save
+:w <filename>			save as filename
+:wq				save and exit vim
+:r <file/external_command>	add the content of <file/external_command> under the current cursor line
+:!<command>			execute external command
+:help				open help menu
+u 				undo last command
+U				undo all changes to current line
+v				start visual selection mode (select parts of text etc)
+y				copy highlighted text
+p				paste copied or last deleted text
 
 
 ---------- Editing ----------
-x		delete current character
-i		insert before the current character
-A		append at the end of line
-dw		delete current word
-d<number>w	delete next <number> words
-d$		delete to the end of line
-<number>dd	delete <number> of lines
-p		put previously deleted line after cursor
-r<character>	replace character at current cursor position with <character>
-ce 		delete content of word after cursor position, puts you in insertion mode to replace content
+i				insert before the current character
+A				append at the end of line
+o				insert into next new line
+O				insert into previous new line 		
+dw				delete current word
+x				delete current character
+d<number>w			delete next <number> words
+d$				delete to the end of line
+<number>dd			delete <number> of lines
+r<character>			replace character at current cursor position with <character>
+ce 				delete content of word after cursor position, puts you in insertion mode to replace content
+R				replacement mode
 
 
 ---------- Searching ----------
-/<pattern>	forward search for <pattern>
-?<pattern>	backward search for <pattern>
-n		next occurrence
-N		previous occurrence
+/<pattern>			forward search for <pattern>
+?<pattern>			backward search for <pattern>
+n				next occurrence
+N				previous occurrence
 
 
 ---------- Replacing ----------

@@ -64,3 +64,11 @@ N				previous occurrence
 :%s/<old>/<new>/g		replace all occurrences of <old> with <new> in whole file
 :%s/<old>/<new>/gc		replace all occurrences of <old> with <new> in whole file with prompt before every replacement
 :<start>,<end>s/<old>/<new>/g	replace all occurrences of <old> with <new> between lines <start> and <end>
+
+
+---------- Recording ----------
+1.) q<character>		start recording a macro for <character>
+2.) Type the content 
+3.) q				end current recording
+4.) @<character>		use recorded macro
+

@@ -29,6 +29,8 @@ gg				move to start of file
 :r <file/external_command>	add the content of <file/external_command> under the current cursor line
 :!<command>			execute external command
 :help				open help menu
+:set number			show line numbers
+:set nonumber			hide line numbers
 u 				undo last command
 U				undo all changes to current line
 v				start visual selection mode (select parts of text etc)

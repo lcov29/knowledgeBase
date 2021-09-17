@@ -94,6 +94,7 @@ umount <directory>					unmount files systems from <directory>
 df -h							list file system disk space in human-readable format
 du -h <directory>					list disk usage of <directory>
 top							display linux processes
+htop							interactive process viewer
 mkswap <block_device | file>				create a swap area
 swapon -a						activate all swap partitions in /etc/fstab
 swapon -s						print summary of swap area usage
@@ -105,4 +106,8 @@ netstat							print active internet connections
 netstat -lpntu						print all listening tcp and udp processes with port number
 ss -lntup						alternative to netstat
 
+
+---------------------------------- Network -------------------------------------
+dhclient						Dynamic Host Configuration -> release or renew ip address
+	-r						release ip address
 

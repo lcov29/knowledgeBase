@@ -12,6 +12,7 @@ cp -r <source_directory> <destination_directory>	copy content of <source_directo
 mv <file_1> <file_2>					move and rename <file_1> into <file_2>
 ln <file>  [path/]<link_name>				create a hardlink to <file>
 ln -s <file> [path/]<link_name>				create a symbolic link to <file>
+file -i <file>						print file encoding
 
 chmod <[0-7][0-7][0-7] <file>				change privileges of <file> to the privileges represented as a three-digit number
 								example:	set privileges of <file> to -rw-rw-r--

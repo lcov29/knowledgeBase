@@ -1,0 +1,298 @@
+====================================================================================
+============================= Shell Programming Basics =============================
+====================================================================================
+
+
+============================= File Basics =============================
+
+	<scriptname>.sh
+	-----------------------------------------
+	|#!<full path to shell interpreter>	|
+	|					|
+	-----------------------------------------
+	
+	Examples for shell interpreter:
+	/bin/bash
+	/bin/csh
+	/bin/ksh
+
+	Ways to run a script:
+	1.) Call interpreter with script as parameter
+		- caller needs only read permission
+		- script is executed in subshell
+		> <interpreter> <script_name>.sh
+	2.) Call executable script
+		- caller needs execution permission 
+		- full path to location of the script is needed if not in PATH variable
+		- script is executed in subshell
+		> chmod u+x script.sh
+		> ./script.sh
+	3.) Source command
+		- script is executed in current shell
+		> source <script_name>.sh 
+		
+	 
+============================= Variables, Parameters And Arrays =============================
+	
+	Basics:
+	<variable_name>=<value>			assign a value
+	$<variable_name>			access value
+	${<variable_name>}			access value
+	unset <variable_name>			delete variable
+
+
+	Special shell variables:
+	$$					process id of shell
+	$!					process id of last background process
+	$-					shell option
+	$_					last argument of previous command
+	$?					exit status
+
+
+	Parameters:
+	$0					script name
+	$#					parameter count
+	$1 ... $9				position parameters 1 - 9
+	${10}, ...				position parameters 10, ...
+	"$*"					all parameters in one string
+	"$@"					every parameter in seperate string
+	set <value_1> ... <value_n>		set position parameters $1, $2, ...
+	shift <number>				shift all position parameters to the left by <number> indices
+
+
+	Expansion:
+	${#<variable>}				length of <variable>
+	${<variable>:?<message>}		if <variable> is empty or nonexistent: send <message> on stderr and exit script
+						else: return value of <variable>
+	${<variable>:-<String>}			if <variable> is empty or nonexistent: return <String>
+						else: return value of <variable>
+	${<variable>:=<String>}			if <variable> is empty or nonexistent: <variable>=<String> and return <String>
+						else: return value of <variable>
+	${<variable>:+<String>}			if <variable> exists and is not empty: return <String>
+						else: return empty String
+	${<variable>:<position>}		value of <variable> starting from <position> (variables are zero based)
+	${<variable>:<position>:<length>}	value of <variable> starting from <position> with <length>
+	${<variable>#<pattern>}			value of <variable> without the minimal occurrence of <pattern>
+	${<variable>##<pattern>}		value of <variable> without the maximal occurrence of <pattern>
+							#	forward search 
+							%	backward search
+	${<variable>/<pattern>[/<replacement>]}   value of <variable> without the first occurrence of <pattern> (forward search, optional replacement)
+	${<variable>//<pattern>[/<replacement>]}  value of <variable> without all occurrences of <pattern>
+
+
+	Arrays:
+	declare -a <array_name>			optional declaration of <array_name>
+	<array_name>=( <value_1> <value_n> )	continuous assignment of values
+	<array_name>[<index>]=<value>		assign value to element with index
+	${<array_name>[<index>]}		access value on index
+	${#<array_name>[*]}			number of elements
+	${<array_name>[*]}			all elements as separate strings
+	"${<array_name>[*]}"			all elements as string
+	unset <array_name>			delete <array_name>
+
+
+============================= Command Basics  =============================
+
+	Exit codes:
+	0	success
+	1	general error
+	126	command file not executable
+	127	command not found
+		
+	
+	Command combinations:
+	<cmd_1> ; ... ; <cmd_n>			list of commands in a single line
+	(<cmd_1> ; ... ; <cmd_n>)		execute grouped command list in a subshell
+	{ <cmd_1> ; ... ; <cmd_n> }		execute grouped command list in current shell
+	<cmd_1> && <cmd_2>			<cmd_2> is only executed upon successfull execution of <cmd_1>
+	<cmd_1> || <cmd_2>			<cmd_2> is only executed upon error of <cmd_1>
+	<cmd_1> | <cmd_2>			stdout of <cmd_1> is piped into stdin of <cmd_2>
+	<cmd> > <file>				write stdout of <cmd> in <file>
+	<cmd> >> <file>				append stdout of <cmd> to <file>
+	<cmd> < <file>				use content of <file> as stdin of <cmd>
+	<cmd> <<[-]<stopword>			use multiline <text> as stdin of <cmd>, optional - ignores tabulator 
+		...
+		<text>
+		...
+	<stopword>
+
+	Quoting and substitution:
+	\<character>				stop interpretation of <character> (example: echo \$HOME --returns--> $HOME)
+	'<cmd,string>'				stop substitution for <cmd,string>
+	"<cmd,string>"				substitute commands, variables and arithmetic statements 
+	$(<cmd>)				substitute <cmd> with stdout of <cmd>
+	`<cmd>`					substitute <cmd> with stdout of <cmd>
+
+
+============================= If Statements =============================
+	
+	if <command_list>
+	then
+	   <command_list>
+	elif
+	   <command_list>
+	else
+	   <command_list>
+	fi
+
+
+	case <value> in
+	   <pattern>)
+	      <command_list> ;;
+	   <pattern>)
+	      <command_list> ;;
+	esac
+
+
+============================= Loops =============================
+
+	break		exit loop
+	continue	exit current loop execution
+
+
+	for <variable> [in <list>]
+	do
+	   <command_list>
+	done
+
+
+	for ((<start_variable>; <abort_condition>; <increment>))
+	do
+	   <command_list>
+	done
+
+
+	while <command_list>
+	do
+	   <command_list>
+	done
+
+
+	until <command_list>
+	do
+	   <command_list>
+	done
+
+
+============================= Operators =============================
+
+	Test:
+	test [ expression ]	returns value of expression
+	[ expression ]
+
+	Arithmetic:		use $((expression))
+	+			add
+	-			subtract
+	*			multiplicate
+	/			divide
+	**			exponent
+	%			modulo
+	++			increment by 1
+	--			decrement by 1
+
+	Number Comparison:
+	-eq			equal
+	-gt			greater than
+	-lt			lesser than
+	-ge			greater or equal
+	-le			lesser or equal
+
+	Logical:
+	!			not
+	-a			and
+	-o			or
+	\( <expression> \)	group brackets have to be escaped with backslash
+
+	String:
+	<string>		<string> is not empty
+	-n <string>		<string> does not exist or is not empty
+	-z <string>		<string> does not exist or is empty
+	<string1> = <string2>
+	<string1> != <string2>
+	<string1> > <string2>
+	<string1> < <string2>
+	
+	Files:
+	-e <file>		<file> exists
+	-s <file>		size of <file> > 0
+	-f <file>		<file> is a regular file
+	-d <file>		<file> is a directory
+	-b <file>		<file> is a block device
+	-c <file>		<file> is a character based device
+	-p <file>		<file> is a named-pipe
+	-h <file>		<file> is a symbolic link
+	-r <file>		<file> is readable for the current process
+	-w <file>		<file> is writeable for the current process
+	-x <file>		<file> is executable for the current process
+	<file1> -ef <file2>	<file1> is a hardlink to <file2>
+	<file1> -nt <file2>	<file1> is newer than <file2>
+	<file1> -ot <file2>	<file1> is older than <file2>
+
+	Bitwise:
+	<<			bitwise left shift
+	<<=			left shift equal
+	>>			bitwise right shift
+	&			And
+	&=			And equal
+	|			Or
+	|=			Or equal
+	~ 			negation
+	!			not
+
+	
+============================= Insert and Output =============================
+
+	read [options] [variables]		reads strings from stdin into [variables]
+		-r				handle backslash as a character
+		-a				read array variables
+		-s				do not show input
+		-n <number>			accept only <number> of characters as input
+		-p <prompt>			show <prompt>
+
+	Examples:
+	-----------------------------------------
+	|read -n 1 -p "Input: " var		|
+	|echo $var				|
+	|					|
+	|read -r a b c				|
+	|1 \ 3					|
+	|echo $a $b $c				|
+	|1 \ 3					|
+	-----------------------------------------
+
+
+	echo [options] <string, variable>
+		-n				no line break after end of line
+		-e				enable interpretation of special characters \<character>
+
+
+	printf <format-string> <parameter>
+
+
+============================= getopts and xargs =============================
+
+	getopts <optstring> <name> [arguments]		parses positional parameters as options into $<name>, 
+							parameterindex into $OPTIND and arguments into $OPTARG
+		<optstring>				contains the option letters
+							":" at start: enables silent-mode -> suppress error messages
+							":" after option: options requires an additional argument
+		<name>					variable into which the current option is parsed into
+		
+
+	Examples:
+	-------------------------------------------------------------------------
+	|while getopts ":abc:" option						|
+	|do									|
+	|   case $option in							|
+	|   a) echo Option $option was called. ;;				|
+	|   b) echo Option $option was called. ;;				|
+	|   c) echo Option $option was called with parameter $OPTARG. ;;	|
+	|   \?) echo $OPTARG invalid option ;;					|
+	|   :) echo $OPTARG argument missing ;;					|
+	|   esac								|
+	|done									|
+	-------------------------------------------------------------------------
+
+
+
+	<cmd_1> | xargs <cmd_2>				uses stdout of <cmd_1> as arguments for <cmd_2>

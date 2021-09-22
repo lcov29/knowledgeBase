@@ -1,0 +1,162 @@
+======================================================
+===================== PHP BASICS =====================
+======================================================
+
+
+===================== File Basics =====================
+
+        embedded.php
+	---------------------------------------------------------
+	|<!DOCTYPE html> 					|
+	|<html lang="en"> 					|
+    	|   <head> 						|
+        |      <meta charset="utf-8"> 				|
+        |      <title>embedded PHP</title> 			|
+    	|   </head> 						|
+   	|   <body> 						|
+        |      first line in HTML<br> 				|
+        |      <?php 						|
+        |         echo "second line in PHP<br>"; 		|
+        |         echo "third line " . "in PHP". "<br>";	|
+        |      ?> 						|
+   	|   </body> 						|
+	|</html> 						|
+	---------------------------------------------------------
+
+	//comment in a single line
+
+	/* multi
+	   line 
+	   comment */
+
+
+===================== Variables, Constants And References =====================
+
+	Variables:
+	$<variable_name> = <value>;		assign <value> to <variable_name> (dynamicly typed)
+	$<variable_name>			access value of <variable_name>
+	isset($<variable_name>)			check existence of <variable_name>
+	unset($<variable_name>)			delete <variable_name>
+	$<variable_name> = null;		delete <varibale_name>
+	
+	Type checks:
+	is_int(<variable | value>)
+	is_float(<variable | value>)
+	is_string(<variable | value>)	
+	is_numeric(<variable | value>)
+	is_bool(<variable | value>)
+
+	Constants:
+	const <constant_name> = <value>;	declare constant
+
+	References:
+	$<reference_name> = &$<variable_name>	reference
+	
+
+
+===================== Operators And Functions =====================
+	
+	Arithmetic:
+	+					addition
+	-					subtraction
+	*					multiplication
+	/					division
+	%					modulo
+	**					potentiation
+	
+	Logical:
+	!					not
+	||					or
+	&&					and
+
+	Comparison:
+	==					equal (numbers and strings)
+	===					equal and same data type
+	!=					unequal (numbers and strings)
+	!==					unequal and different data types
+	>					greater than (numbers)
+	<					lesser than (numbers)
+	>=					greater or equal (numbers)
+	<=					lesser or equal (numbers)
+	<=>					"spaceship" returns:
+						   1, if <value_1> > <value_2>
+						  -1, if <value_1> < <value_2>
+						   0, if <value_1> = <value_2>
+
+	Assignment:
+	=					assign
+	+=					assign increased value
+	-=					assign decreased value
+	*=					assign result of multiplication
+	/=					assign result of division
+	%=					assign result of modulo
+	<variable>++				increment <variable> by 1 after execution of current line
+	++<variable>				increment <variable> by 1 before execution of current line
+	<variable>--				decrement <variable> by 1 after execution of current line
+	--<variable>				decrement <variable> by 1 before execution of current line
+
+	Hierarchy:
+	()
+	! - (negative prefix)
+	* / %
+	+ -
+	< <= > >=
+	== != <=>
+	&&
+	||
+	=
+	
+	String:
+	<string1> . <string2>			concatenate <string1> and <string2>
+	"$<variable>"				substitute $<variable>
+	'$<variable>'				no substitution
+	mb_strlen(<string>)			return length of <string>
+
+	Casting:
+	intval(<string>)			cast <string> to integer
+	floatval(<input>)			cast <string> to float
+	strval(<number>)			cast <number> to string
+	
+	
+===================== If-Statements =====================
+	
+
+	if (<condition>) {
+		<statement_1>;
+		...
+		<statement_n>;
+	} else {
+		<statement_1>;
+		...
+		<statement_n>;
+	}
+
+
+	switch($<variable>) {
+		case <value_1>:
+			<statements>;
+			break;
+		case <value_n-2>:
+		case <value_n-1>:
+		case <value_n>:
+			<statements>;
+			break;
+		default:
+			<statements>;
+	}
+
+
+	ternary operator:
+	$<variable_name> = <condition> ? <if_value> : <else_value>;
+	
+
+===================== Formatting =====================
+
+	number_format(<number>, [number_of_decimals], [decimal_separator], [thousands_separator]);
+
+	sprintf(<format_string>, <string>);
+		some format options:
+		%f		float
+		%.3f		float rounded at third position
+		%e		exponent
+		%d		integer

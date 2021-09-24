@@ -12,6 +12,9 @@
     	|   <head> 						|
         |      <meta charset="utf-8"> 				|
         |      <title>embedded PHP</title> 			|
+	|      <?php						|
+	|      	  echo "PHP";					|
+	|      ?>						|
     	|   </head> 						|
    	|   <body> 						|
         |      first line in HTML<br> 				|
@@ -22,6 +25,42 @@
    	|   </body> 						|
 	|</html> 						|
 	---------------------------------------------------------
+	
+	Include external modules:
+
+		<name_module>.inc.php
+		---------------------------------------------------------
+		|<?php							|
+		|   function foo() {..}					|
+		|   function bar() {..}					|
+		|?>							|
+		---------------------------------------------------------
+
+
+		<file_name>.php
+		---------------------------------------------------------
+		|<!DOCTYPE html> 					|
+		|<html lang="en"> 					|
+    		|   <head> 						|
+       		|      <meta charset="utf-8"> 				|
+        	|      <title>embedded PHP</title> 			|
+    		|   </head> 						|
+   		|   <body> 						|
+        	|      first line in HTML<br> 				|
+        	|      <?php 						|
+        	|         include "<name_module>.inc.php"; 		|
+        	|         echo "third line " . "in PHP". "<br>";	|
+        	|      ?> 						|
+   		|   </body> 						|
+		|</html> 						|
+		---------------------------------------------------------
+
+		Keywords:
+		include				includes module, throws warning for nonexistent module
+		require				includes module, exits program for nonexistent module
+		include_once			like include, prevents second inclusion of same module
+		require_once			like require, prevents second inclusion of same module 
+
 
 	//comment in a single line
 
@@ -30,14 +69,16 @@
 	   comment */
 
 
-===================== Variables, Constants And References =====================
+===================== Variables, Constants, References And Arrays =====================
 
 	Variables:
-	$<variable_name> = <value>;		assign <value> to <variable_name> (dynamicly typed)
-	$<variable_name>			access value of <variable_name>
-	isset($<variable_name>)			check existence of <variable_name>
-	unset($<variable_name>)			delete <variable_name>
-	$<variable_name> = null;		delete <varibale_name>
+	$<variable_name> = <value>;							assign <value> to <variable_name> (dynamicly typed)
+	$<variable_name> = <condition> ? <if_value> : <else_value>;			ternary assign operator
+	$<variable_name> ??= <if_null_or_nonexistent_value>;				null coalescing assign operator
+	$<variable_name>								access value of <variable_name>
+	isset($<variable_name>)								check existence of <variable_name>
+	unset($<variable_name>)								delete <variable_name>
+	$<variable_name> = null;							delete <varibale_name>
 	
 	Type checks:
 	is_int(<variable | value>)
@@ -47,12 +88,27 @@
 	is_bool(<variable | value>)
 
 	Constants:
-	const <constant_name> = <value>;	declare constant
+	const <constant_name> = <value>;						declare constant
 
 	References:
-	$<reference_name> = &$<variable_name>	reference
-	
+	$<reference_name> = &$<variable_name>						reference
 
+	Arrays:
+	-> numeric:
+		$<array_variable> = array(<value_1>, ... , <value_n>);			instantiate new array (zero-based)
+		$<array_variable> = [<value_1>, ... , <value_n>];			alternative instantiation of new array
+		count(<array_variable>)							return number of elements
+		$<array_variable>[<index>]						access value of <array_variable> at <index>
+		$<array_variable>[<index>] = <value>					assign <array_variable> at <index> value <value>
+											!! array is dynamic, assigning to index count(<array_variable> extends array !!	
+	-> assosiative (hash-table, dictionary)
+		$<array_variable> = array(<key_1>=><value_1>, ... , <key_n>=><value_n>	instantiate new array of key-value-pairs
+		$<array_variable>[<key>]						access <value> of <key> in <array_variable>
+		$<array_variable>[<key>] = <value>					assign <value> to <key> in <array_variable>
+											!! array is dynamic, assigning to new <key> extends array !!
+		foreach($<array_variable> as $<key_variable>=><value_variable>) {}	iterate over all key-value-pairs in <array_variable>
+		foreach($<array_variable> as $<value_variable) {}			iterate over all values in <array_variable>
+		
 
 ===================== Operators And Functions =====================
 	
@@ -90,6 +146,8 @@
 	*=					assign result of multiplication
 	/=					assign result of division
 	%=					assign result of modulo
+	? :					ternary assign operation, see "Variables, Constants And References"
+	??=					null coalescing assign operation, see "Variables, Constants And References"
 	<variable>++				increment <variable> by 1 after execution of current line
 	++<variable>				increment <variable> by 1 before execution of current line
 	<variable>--				decrement <variable> by 1 after execution of current line
@@ -120,15 +178,10 @@
 	
 ===================== If-Statements =====================
 	
-
 	if (<condition>) {
-		<statement_1>;
-		...
-		<statement_n>;
+		<statements>;
 	} else {
-		<statement_1>;
-		...
-		<statement_n>;
+		<statements>;
 	}
 
 
@@ -149,7 +202,107 @@
 	ternary operator:
 	$<variable_name> = <condition> ? <if_value> : <else_value>;
 	
+	null coalescing operator:
+	$<variable_name> ??= <if_null_or_nonexistent_value>;
 
+
+===================== Loops =====================
+
+	for (<index_variable>=<start_value>; <condition>; <incrementation_of_index>) {
+		<statements>;
+	}
+
+	
+	while (<condition>) {
+		<statements>;
+	}
+
+
+	do {
+		<statements>;
+	} while (<condition);
+
+
+	break;				exit loop
+	continue;			exit current loop run
+
+
+===================== Functions =====================
+
+	function <function_name>($<parameter_1>, ... , $<parameter_n>) {
+		[return; | return <return_value>;]
+	}
+
+	$<parameter>			call-by-value
+	&$<parameter>			call-by-reference
+	$<parameter>=<default_value>	optional parameter; gets initialized with <default_value> if not added to the function call. (right bound)
+	<parameter_name>: <value>	match <value> to <parameter_name> in function call (only >= PHP8)
+	global <variable_name>;		keyword to access global variables from within a function
+
+	call_by_reference.php
+	---------------------------------
+	|...				|
+        |<?php 				|
+        |   function swap(&$a, &$b) { 	|
+        |       $temp = $a;		|
+	|	$a = $b;		|
+	|	$b = $temp;		|
+	|   }				|
+   	|?> 				|
+	---------------------------------
+	
+	variable number of parameters:
+	
+	version1:
+
+		Within a function:
+		func_num_args()			returns the number of parameters passed to a function
+		func_get_arg(<index>)		returns parameter with <index> from parameter list
+		func_get_args()			returns numeric array of all parameters
+
+		function_with_variable_number_of_parameters.php
+ 		-------------------------------------------------
+		|...						|
+        	|<?php 						|
+        	|   function flex() {				|
+		|		 				|
+        	|       for ($i=0; $i<func_num_args(); $i++) {	|
+		|		echo func_get_arg($i);		|
+		|	}					|
+		|						|
+		|	$params = func_get_args();		|
+		|   	for ($i=0; $i<func_num_args(); $i++) {	|
+		|		echo $params[$i];		|
+		|	}					|
+		|						|
+		|   }						|
+		|   flex("a", "b");				|
+		|   flex(1, 2, 3, 4, 5);			|
+   		|?> 						|
+		-------------------------------------------------
+
+	version2: variadic function
+
+		function <function_name>($<parameter_1>, <parameter_2>, ...$<array_variable_for_all other parameters>) {}
+
+
+===================== Exception =====================
+
+	try {
+		if (<exception_condition>) {
+			throw new Exception(<exception_message>);
+		}
+		<statements>;
+	} catch(Exception $e) {
+		<error_handling>;
+	} finally {
+		<statements>;
+	} 
+
+
+	optional finally-block will be executed regardless of whether an exception is thrown
+
+	
 ===================== Formatting =====================
 
 	number_format(<number>, [number_of_decimals], [decimal_separator], [thousands_separator]);

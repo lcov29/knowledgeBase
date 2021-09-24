@@ -43,7 +43,7 @@
 		|<html lang="en"> 					|
     		|   <head> 						|
        		|      <meta charset="utf-8"> 				|
-        	|      <title>embedded PHP</title> 			|
+        	|      ...						|
     		|   </head> 						|
    		|   <body> 						|
         	|      first line in HTML<br> 				|
@@ -110,7 +110,7 @@
 		foreach($<array_variable> as $<value_variable) {}			iterate over all values in <array_variable>
 		
 
-===================== Operators And Functions =====================
+===================== Operators =====================
 	
 	Arithmetic:
 	+					addition
@@ -233,57 +233,89 @@
 		[return; | return <return_value>;]
 	}
 
-	$<parameter>			call-by-value
-	&$<parameter>			call-by-reference
-	$<parameter>=<default_value>	optional parameter; gets initialized with <default_value> if not added to the function call. (right bound)
-	<parameter_name>: <value>	match <value> to <parameter_name> in function call (only >= PHP8)
-	global <variable_name>;		keyword to access global variables from within a function
+		$<parameter>			call-by-value
+		&$<parameter>			call-by-reference
+		$<parameter>=<default_value>	optional parameter; gets initialized with <default_value> if not added to the function call. (right bound)
+		<parameter_name>: <value>	match <value> to <parameter_name> in function call (only >= PHP8)
+		global <variable_name>;		keyword to access global variables from within a function
+		
+		call_by_reference.php
+		---------------------------------
+		|...				|
+        	|<?php 				|
+        	|   function swap(&$a, &$b) { 	|
+        	|       $temp = $a;		|
+		|	$a = $b;		|
+		|	$b = $temp;		|
+		|   }				|
+   		|?> 				|
+		---------------------------------
 
-	call_by_reference.php
-	---------------------------------
-	|...				|
-        |<?php 				|
-        |   function swap(&$a, &$b) { 	|
-        |       $temp = $a;		|
-	|	$a = $b;		|
-	|	$b = $temp;		|
-	|   }				|
-   	|?> 				|
-	---------------------------------
+
+	Optional type declarations (since PHP 7.0):
+		
+		<?php declare(strict_types=1); ?>			at start of file; needs to be encoded with utf-8 !
+									controls parameter types in file calling the function
+									controls return type in file defining the function
+									
+		function <function_name>(<type> <parameter_1>, ... , <type> <parameter_n>):[?]<type_of_result>
+
+		<type>: 						int, float, string, bool
+		?							flag for nullable result type -> check error of function with isset(<result>)
+		
+		example.php
+		---------------------------------------------------------
+		|<?php declare(strict_types=1); ?>			|
+		|<!DOCTYPE html> 					|
+		|<html lang="en"> 					|
+    		|   <head> 						|
+       		|      <meta charset="utf-8"> 				|
+        	|      ...			 			|
+    		|   </head> 						|
+   		|   <body> 						|
+        	|      <?php 						|
+        	|         function add(int $a, int $b):int { 		|
+		|		return $a + $b;				|
+        	|         };						|
+        	|      ?> 						|
+   		|   </body> 						|
+		|</html> 						|
+		---------------------------------------------------------
+
+
+	Variable number of parameters:
 	
-	variable number of parameters:
-	
-	version1:
+		version1:
 
-		Within a function:
-		func_num_args()			returns the number of parameters passed to a function
-		func_get_arg(<index>)		returns parameter with <index> from parameter list
-		func_get_args()			returns numeric array of all parameters
+			Within a function:
+			func_num_args()			returns the number of parameters passed to a function
+			func_get_arg(<index>)		returns parameter with <index> from parameter list
+			func_get_args()			returns numeric array of all parameters
+			
+			function_with_variable_number_of_parameters.php
+ 			-------------------------------------------------
+			|...						|
+        		|<?php 						|
+        		|   function flex() {				|
+			|		 				|
+        		|       for ($i=0; $i<func_num_args(); $i++) {	|
+			|		echo func_get_arg($i);		|
+			|	}					|
+			|						|
+			|	$params = func_get_args();		|
+			|   	for ($i=0; $i<func_num_args(); $i++) {	|
+			|		echo $params[$i];		|
+			|	}					|
+			|						|
+			|   }						|
+			|   flex("a", "b");				|
+			|   flex(1, 2, 3, 4, 5);			|
+   			|?> 						|
+			-------------------------------------------------
 
-		function_with_variable_number_of_parameters.php
- 		-------------------------------------------------
-		|...						|
-        	|<?php 						|
-        	|   function flex() {				|
-		|		 				|
-        	|       for ($i=0; $i<func_num_args(); $i++) {	|
-		|		echo func_get_arg($i);		|
-		|	}					|
-		|						|
-		|	$params = func_get_args();		|
-		|   	for ($i=0; $i<func_num_args(); $i++) {	|
-		|		echo $params[$i];		|
-		|	}					|
-		|						|
-		|   }						|
-		|   flex("a", "b");				|
-		|   flex(1, 2, 3, 4, 5);			|
-   		|?> 						|
-		-------------------------------------------------
+		version2: variadic function
 
-	version2: variadic function
-
-		function <function_name>($<parameter_1>, <parameter_2>, ...$<array_variable_for_all other parameters>) {}
+			function <function_name>($<parameter_1>, <parameter_2>, ...$<array_variable_for_all other parameters>) {}
 
 
 ===================== Exception =====================

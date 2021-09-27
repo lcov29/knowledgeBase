@@ -169,6 +169,7 @@
 	"$<variable>"				substitute $<variable>
 	'$<variable>'				no substitution
 	mb_strlen(<string>)			return length of <string>
+	mb_split(<regex_pattern>, <string>	splits <string> according to <regex_pattern> and returns an array (or false)
 
 	Casting:
 	intval(<string>)			cast <string> to integer
@@ -334,7 +335,23 @@
 
 	optional finally-block will be executed regardless of whether an exception is thrown
 
-	
+
+===================== Sending Data =====================
+
+	HTML-element
+		<form [...] action="[program_url]" method="post">
+			<[input_element] name="[input_name]">
+			[...]
+		</form>
+
+	POST: access input-elements by name
+		$<variable_name> = htmlentities($_POST["<input_name>"]);
+
+	GET: add key-value-pairs to url
+		<url>/<filename>.<extension>?<key_1>=<value_1>&...§<value_n>=<value_n>
+		$<variable_name> = $_GET["<key>"];
+
+
 ===================== Formatting =====================
 
 	number_format(<number>, [number_of_decimals], [decimal_separator], [thousands_separator]);

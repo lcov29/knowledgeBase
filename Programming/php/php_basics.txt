@@ -338,7 +338,7 @@
 
 ===================== Sending Data =====================
 
-	HTML-element
+	HTML element:
 		<form [...] action="[program_url]" method="post">
 			<[input_element] name="[input_name]">
 			[...]
@@ -350,6 +350,25 @@
 	GET: add key-value-pairs to url
 		<url>/<filename>.<extension>?<key_1>=<value_1>&...§<value_n>=<value_n>
 		$<variable_name> = $_GET["<key>"];
+
+
+===================== Sending Data =====================
+
+	HTML element:
+	<form enctype="multipart/form-data" action="[program_url]" method="post">
+		<input name="[input_name]" type="file">
+		<input type="submit">
+	</form>
+
+	File properties:
+	$_FILES["<input_name>"][property]
+				name		original file name
+				tmp_name	temporary name of uploaded file on server
+				size		file size
+				type		file type
+	
+	File is temporary stored after uploading it. To make it persistent use:
+	copy($_FILES["<input_name>]["tmp_name"], <persistent_file_name>);		
 
 
 ===================== Formatting =====================

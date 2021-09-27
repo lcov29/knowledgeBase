@@ -345,3 +345,5 @@
 		%.3f		float rounded at third position
 		%e		exponent
 		%d		integer
+
+	nl2br(<string>);	replaces all occurrences of "\n" with <br>

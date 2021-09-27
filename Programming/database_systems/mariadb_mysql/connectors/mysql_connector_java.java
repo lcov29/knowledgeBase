@@ -1,6 +1,10 @@
 // https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-usagenotes-connect-drivermanager.html
 // https://www.tutorialspoint.com/jdbc/index.htm
 
+// Prerequisites
+// 1.) Install jdbc connector on client and add it to the classpath
+// 2.) Add DB User: <user>@<client_hostname>
+
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -19,7 +23,7 @@ public class mysql_connector_java {
         ORALCE: jdbc:oracle:thin:@hostname:portNumber:databaseName
     */
     static final String DB_URL = "jdbc:mysql://<hostname>/<database>";
-    static final String DB_USER = "<user>";
+    static final String DB_USER = "<user>";	//is converted into <user>@<client_hostname>
     static final String DB_PW = "<password>";
 
     public static void main(String[] args) {

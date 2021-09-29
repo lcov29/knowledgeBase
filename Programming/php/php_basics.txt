@@ -352,7 +352,7 @@
 		$<variable_name> = $_GET["<key>"];
 
 
-===================== Sending Data =====================
+===================== File Upload =====================
 
 	HTML element:
 	<form enctype="multipart/form-data" action="[program_url]" method="post">

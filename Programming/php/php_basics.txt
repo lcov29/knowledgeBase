@@ -106,7 +106,7 @@
 		$<array_variable>[<key>]						access <value> of <key> in <array_variable>
 		$<array_variable>[<key>] = <value>					assign <value> to <key> in <array_variable>
 											!! array is dynamic, assigning to new <key> extends array !!
-		foreach($<array_variable> as $<key_variable>=><value_variable>) {}	iterate over all key-value-pairs in <array_variable>
+		foreach($<array_variable> as $<key_variable>=>$<value_variable>) {}	iterate over all key-value-pairs in <array_variable>
 		foreach($<array_variable> as $<value_variable) {}			iterate over all values in <array_variable>
 		
 
@@ -222,6 +222,11 @@
 	do {
 		<statements>;
 	} while (<condition);
+
+	
+	foreach($<array_variable> as [$<value_variable> | $<key_variable>=><value_variable>]) {
+		<statements>;	
+	}
 
 
 	break;				exit loop

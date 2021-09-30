@@ -21,6 +21,9 @@ gg				move to start of file
 
 
 ---------- Basics ----------
+vim <filename>			open <filename> with vim
+vimdiff <file_1> <file_2> ...	open and edit up to four files in vim and show differences 	
+
 :q				exit vim
 :q!				exit vim without saving
 :w				save
@@ -36,6 +39,9 @@ U				undo all changes to current line
 v				start visual selection mode (select parts of text etc)
 y				copy highlighted text
 p				paste copied or last deleted text
+
+CTRL+z				move vim to the background and return to command line
+fg				get vim back to the foreground from command line
 
 
 ---------- Editing ----------

@@ -1,2 +1,6 @@
+--------------- Select -----------------
+select @@autocommit;			print current setting for autocommitting
+
+
 --------------- Format Options -----------------
 <dql_statement> \G 			print each attribute in a new line

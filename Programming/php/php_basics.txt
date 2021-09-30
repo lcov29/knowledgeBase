@@ -376,6 +376,12 @@
 	copy($_FILES["<input_name>]["tmp_name"], <persistent_file_name>);		
 
 
+===================== Database Connection =====================
+
+	For MariaDB / MySQL: see KnowledgeBase/Programming/database_systems/mariadb_mysql/connectors 
+
+
+
 ===================== Formatting =====================
 
 	number_format(<number>, [number_of_decimals], [decimal_separator], [thousands_separator]);

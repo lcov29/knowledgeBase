@@ -3,6 +3,48 @@
 ======================================================
 
 
+===================== Configuration =====================
+
+	display and log errors:
+		
+		php.ini
+		-----------------------------------------
+		|...					|
+		|error_reporting = <error_type_list>	|
+		|display_errors = [On | Off]		|
+		|log_errors = [On | Off]		|
+		|error_log = <path>/<file>		|
+		|...					|
+		-----------------------------------------
+
+		error types:
+			E_ERROR			runtime error
+			E_WARNING		runtime warnings
+			E_NOTICE		runtime notice
+			E_STRICT		notice for improvement in the future
+			E_DEPRECATED		notice for deprecated elements
+			E_ALL			all runtime errors, warnings and notices
+
+		recommended settings:
+
+			Development:
+			   error_reporting = E_ALL
+			   display_errors  = On
+			   log_errors	   = On
+			   error_log       = php_errors.log
+
+			Production:
+			   error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT
+			   display_errors  = Off
+			   log_errors	   = On
+			   error_log	   = php_errors.log
+
+		php functions:
+			
+			init_get(<property>);
+			init_set(<property>, <value>);		(only affects current program)		   
+
+
 ===================== File Basics =====================
 
         embedded.php
@@ -49,7 +91,7 @@
         	|      first line in HTML<br> 				|
         	|      <?php 						|
         	|         include "<name_module>.inc.php"; 		|
-        	|         echo "third line " . "in PHP". "<br>";	|
+        	|         $result = foo();				|
         	|      ?> 						|
    		|   </body> 						|
 		|</html> 						|
@@ -108,7 +150,8 @@
 											!! array is dynamic, assigning to new <key> extends array !!
 		foreach($<array_variable> as $<key_variable>=>$<value_variable>) {}	iterate over all key-value-pairs in <array_variable>
 		foreach($<array_variable> as $<value_variable) {}			iterate over all values in <array_variable>
-		
+	-> methods:
+		implode(<separator>, <array>)						concatenate all fields of <array> to a <separator> separated string	
 
 ===================== Operators =====================
 	
@@ -119,11 +162,13 @@
 	/					division
 	%					modulo
 	**					potentiation
+
 	
 	Logical:
 	!					not
 	||					or
 	&&					and
+
 
 	Comparison:
 	==					equal (numbers and strings)
@@ -139,6 +184,7 @@
 						  -1, if <value_1> < <value_2>
 						   0, if <value_1> = <value_2>
 
+
 	Assignment:
 	=					assign
 	+=					assign increased value
@@ -153,6 +199,7 @@
 	<variable>--				decrement <variable> by 1 after execution of current line
 	--<variable>				decrement <variable> by 1 before execution of current line
 
+
 	Hierarchy:
 	()
 	! - (negative prefix)
@@ -163,18 +210,34 @@
 	&&
 	||
 	=
+
 	
 	String:
-	<string1> . <string2>			concatenate <string1> and <string2>
-	"$<variable>"				substitute $<variable>
-	'$<variable>'				no substitution
-	mb_strlen(<string>)			return length of <string>
-	mb_split(<regex_pattern>, <string>	splits <string> according to <regex_pattern> and returns an array (or false)
+	<string1> . <string2>				concatenate <string1> and <string2>
+	"$<variable>"					substitute $<variable>
+	'$<variable>'					no substitution
+	mb_strlen(<string>)				return length of <string>
+	mb_strtoupper(<string>)				convert all characters of <string> to uppercase characters
+	mb_strtolower(<string>)				convert all characters of <string> to lowercase characters
+	mb_str_split(<string>, [length])		return array with each character (or [length] characters) of <string>
+	mb_split(<regex_pattern>, <string>)		splits <string> according to <regex_pattern> and returns an array (or false)
+	mb_ord(<character>)				return Unicode code of <character>
+	mb_chr(<unicode_code>)				return character for <unicode_code>
+	mb_strpos(<string>, <search>, [offset])		return positional index of the first occurrence of <search> in <string> (case sensitive)
+	mb_strposi(<string>, <search>, [offset])	return positional index of the first occurrence of <search> in <string> (case insensitive)
+	mb_substr(<string>, <start>, [length])		return substring starting at <string>[<start>] of [length]
+		
+	mb_ereg_search_init(<search_string>, <pattern>)	prepare string search
+	mb_ereg_search()				return the boolean result of a prepard string search (iterable with while-loop)
+	mb_ereg_replace(<pattern>, <replace>, <string>)	replace all occurrences of <pattern> in <string> with <replace> (case sensitive) and return string
+	mb_eregi_replace(<pattern>, <replace>, <string>)replace all occurrences of <pattern> in <string> with <replace> (case insensitive) and return string
+
 
 	Casting:
-	intval(<string>)			cast <string> to integer
-	floatval(<input>)			cast <string> to float
-	strval(<number>)			cast <number> to string
+	intval(<string>)				cast <string> to integer
+	floatval(<input>)				cast <string> to float
+	strval(<number>)				cast <number> to string
+	htmlentities(<string>)				convert all applicable characters to HTML entities
 	
 	
 ===================== If-Statements =====================
@@ -235,10 +298,11 @@
 
 ===================== Functions =====================
 
-	function <function_name>($<parameter_1>, ... , $<parameter_n>) {
+	[@]function <function_name>($<parameter_1>, ... , $<parameter_n>) {
 		[return; | return <return_value>;]
 	}
-
+		
+		@				optional silence operator; suppresses errors and warnings from this function
 		$<parameter>			call-by-value
 		&$<parameter>			call-by-reference
 		$<parameter>=<default_value>	optional parameter; gets initialized with <default_value> if not added to the function call. (right bound)
@@ -322,6 +386,11 @@
 		version2: variadic function
 
 			function <function_name>($<parameter_1>, <parameter_2>, ...$<array_variable_for_all other parameters>) {}
+	
+	
+===================== Classes =====================
+
+	see KnowledgeBase/Programming/php/class.php
 
 
 ===================== Exception =====================
@@ -357,29 +426,58 @@
 		$<variable_name> = $_GET["<key>"];
 
 
-===================== File Upload =====================
+===================== File =====================
 
-	HTML element:
-	<form enctype="multipart/form-data" action="[program_url]" method="post">
-		<input name="[input_name]" type="file">
-		<input type="submit">
-	</form>
 
-	File properties:
-	$_FILES["<input_name>"][property]
-				name		original file name
-				tmp_name	temporary name of uploaded file on server
-				size		file size
-				type		file type
+	Uploading files to the server:
+
+		HTML element:
+		<form enctype="multipart/form-data" action="[program_url]" method="post">
+			<input name="[input_name]" type="file">
+			<input type="submit">
+		</form>
+
+		File properties:
+		$_FILES["<input_name>"][property]
+					name		original file name
+					tmp_name	temporary name of uploaded file on server
+					size		file size
+					type		file type
 	
-	File is temporary stored after uploading it. To make it persistent use:
-	copy($_FILES["<input_name>]["tmp_name"], <persistent_file_name>);		
+		File is temporary stored after uploading it. To make it persistent use:
+		copy($_FILES["<input_name>]["tmp_name"], <persistent_file_name>);		
+
+	
+	Write to a file:
+
+		file_put_contents(<file_url>, <content>, [FILE_APPEND])		creates <file_url> with <content> (Flag: FILE_APPEND -> appends <content>
+										to existing <file_url>). Return number of written bytes or false. 
+
+	Read from a file:
+		
+		file_get_contents(<file_url>)					return content of <file_url> in a single string
+		file(<file_url>, [flag])					return an array containing each line of <file_url>
+				  FILE_IGNORE_NEW_LINES				omit newline at the end of each array element 
+		         	  FILE_SKIP_EMPTY_LINE				skip empty lines
+
+	Get File metadata:
+		
+		stat(<file_url>)						return array of metadata or false
+
+		some properties of stat array:
+		dev		device number
+		ino		inode number
+		nlink		number of links
+		uid		userid of owner
+		gid		groupid of owner
+		size		size in bytes
+		atime		time of last access
+		mtime		time of last modification
 
 
 ===================== Database Connection =====================
 
 	For MariaDB / MySQL: see KnowledgeBase/Programming/database_systems/mariadb_mysql/connectors 
-
 
 
 ===================== Formatting =====================

@@ -244,6 +244,8 @@
 	
 	if (<condition>) {
 		<statements>;
+	} elseif {
+		<statements>;
 	} else {
 		<statements>;
 	}

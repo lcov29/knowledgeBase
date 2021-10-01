@@ -1,6 +1,7 @@
 whatis <command>		short description of a command
 man <command>			detailed description of a command
-apropos	<keyword>		search for a command			
+apropos	<keyword>		search for a command		
+watch <command>			periodically executes <command>lly executes <command>	
 alias				list or set alias for command
 history				list contents of .history_bash (history of all commands)
 history -c			delete bash history

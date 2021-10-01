@@ -153,6 +153,7 @@
 	-> methods:
 		implode(<separator>, <array>)						concatenate all fields of <array> to a <separator> separated string	
 
+
 ===================== Operators =====================
 	
 	Arithmetic:
@@ -428,7 +429,7 @@
 		$<variable_name> = $_GET["<key>"];
 
 
-===================== File =====================
+===================== Files and Directories =====================
 
 
 	Uploading files to the server:
@@ -475,6 +476,21 @@
 		size		size in bytes
 		atime		time of last access
 		mtime		time of last modification
+
+
+	Directories:
+
+		getcwd()				get current working directory
+		file_exists(<file_or_directory>)	check existence of <file_or_directory>
+		is_file(<file_or_directory>)		check whether <file_or_directory> is file
+		is_directory(<file_or_directory>)	check whether <file_or_directory> is directory
+		is_readable(<file>)			check whether <file> is readable
+		is_writeable(<file>)			check whether <file> is writeable
+
+		chdir(<directory_url>)			change working directory to <directory_url> and return boolean
+		opendir(<directory_url>)		return handle on <directory_url>
+		readdir(<directory_handle>)		return next name of object for <directory_handle> (iterable)
+		closedir(<directory_handle>)		close <directory_handle>			
 
 
 ===================== Database Connection =====================

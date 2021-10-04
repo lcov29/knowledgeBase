@@ -533,6 +533,72 @@
 	For MariaDB / MySQL: see KnowledgeBase/Programming/database_systems/mariadb_mysql/connectors 
 
 
+===================== Date And Time =====================
+
+	time()								return current unix timestamp (number of second since 01-01-1970 00:00:00)
+	microtime()							return current unix timestamp in milliseconds
+	setlocale(LC_TIME, <localisation>)				set localisation for current process
+	checkdate(<month>, <day>, <year>)				return true if the given date is valid 
+	mktime(<hour>, [minute], [second], [month], [day], [year])	return unix timestamp for given time
+	strtotime(<datetime_string>, [baseTimeStamp])			parse english datetime description into unix timestamp
+		  <+ | - | next | last> [number] [week | day | month | year][s]
+		  examples: +4 weeks +5 days
+			    next Monday
+			    last year      
+
+
+	Formatting:
+	date(<format_string>, [time_stamp])
+	strftime(<format_string>, [time_stamp])		
+		Format String Elements:
+			Day ---------------------------------------
+			%a 	Abbreviation of the day 					Sun through Sat
+			%A 	Full Name of the day 						Sunday through Saturday
+			%d 	Two-digit day of the month 	 				01 to 31
+			%e 	Day of the month		 				1 to 31
+			%j 	Day of the year			 				001 to 366
+			%u 	ISO-8601 numeric representation of the day of the week 		1 (for Monday) through 7 (for Sunday)
+			%w 	Numeric representation of the day of the week 			0 (for Sunday) through 6 (for Saturday)
+			Week  --------------------------------------
+			%U 	Week number of the given year, starting with the first Sunday 	13 (for the 13th full week of the year)
+			%W 	Week number of the year, starting with the first Monday 	46 (for the 46th week of the year beginning with a Monday)
+			Month --------------------------------------
+			%b 	Abbreviated month name, based on the locale 			Jan through Dec
+			%B 	Full month name, based on the locale 				January through December
+			%h 	Abbreviated month name, based on the locale (an alias of %b) 	Jan through Dec
+			%m 	Two digit representation of the month 				01 (for January) through 12 (for December)
+			Year ---------------------------------------
+			%C 	Two digit representation of the century			 	19 for the 20th Century
+			%g 	Two digit representation of the year				09 for the week of January 6, 2009
+			%G 	The full four-digit version of %g 				2008 for the week of January 3, 2009
+			%y 	Two digit representation of the year 				09 for 2009, 79 for 1979
+			%Y 	Four digit representation for the year 				2038
+			Time ---------------------------------------
+			%H 	Two digit representation of the hour in 24-hour format 		00 through 23
+			%k 	Hour in 24-hour format, with a space preceding single digits 	0 through 23
+			%I 	Two digit representation of the hour in 12-hour format 		01 through 12
+			%l  	Hour in 12-hour format, with a space preceding single digits 	1 through 12
+			%M 	Two digit representation of the minute 				00 through 59
+			%p 	UPPER-CASE 'AM' or 'PM' based on the given time 		AM for 00:31, PM for 22:23
+			%P 	lower-case 'am' or 'pm' based on the given time 		am for 00:31, pm for 22:23
+			%r 	Same as "%I:%M:%S %p" 						09:34:17 PM for 21:34:17
+			%R 	Same as "%H:%M" 						00:35 for 12:35 AM, 16:44 for 4:44 PM
+			%S 	Two digit representation of the second 				00 through 59
+			%T 	Same as "%H:%M:%S" 						21:34:17 for 09:34:17 PM
+			%X 	Preferred time representation based on locale, without date 	03:59:16 or 15:59:16
+			%Z 	The time zone abbreviation.					EST for Eastern Time
+			Time and Date Stamps ------------------------
+			%c 	Preferred date and time stamp based on locale 			Tue Feb 5 00:45:10 2009 for February 5, 2009 at 12:45:10 AM
+			%D 	Same as "%m/%d/%y" 						02/05/09 for February 5, 2009
+			%F 	Same as "%Y-%m-%d" (commonly used in database datestamps) 	2009-02-05 for February 5, 2009
+			%s 	Unix Epoch Time timestamp					305815200 for September 10, 1979 08:40:00 AM
+			%x 	Preferred date representation based on locale			02/05/09 for February 5, 2009
+			Miscellaneous -------------------------------  
+			%n 	A newline character ("\n")
+			%t 	A Tab character ("\t")
+			%% 	A literal percentage character ("%")
+
+
 ===================== Formatting =====================
 
 	number_format(<number>, [number_of_decimals], [decimal_separator], [thousands_separator]);

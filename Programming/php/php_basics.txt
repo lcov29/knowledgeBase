@@ -122,6 +122,7 @@
 	unset($<variable_name>)								delete <variable_name>
 	$<variable_name> = null;							delete <varibale_name>
 	
+
 	Type checks:
 	is_int(<variable | value>)
 	is_float(<variable | value>)
@@ -129,30 +130,64 @@
 	is_numeric(<variable | value>)
 	is_bool(<variable | value>)
 
+
 	Constants:
 	const <constant_name> = <value>;						declare constant
 
+
 	References:
 	$<reference_name> = &$<variable_name>						reference
+
 
 	Arrays:
 	-> numeric:
 		$<array_variable> = array(<value_1>, ... , <value_n>);			instantiate new array (zero-based)
 		$<array_variable> = [<value_1>, ... , <value_n>];			alternative instantiation of new array
-		count(<array_variable>)							return number of elements
 		$<array_variable>[<index>]						access value of <array_variable> at <index>
 		$<array_variable>[<index>] = <value>					assign <array_variable> at <index> value <value>
-											!! array is dynamic, assigning to index count(<array_variable> extends array !!	
-	-> assosiative (hash-table, dictionary)
+											!! array is dynamic, assigning to index > count(<array_variable>) extends array !!		     sort(<array>)							     sort <array> in ascending order
+		rsort(<array>)								sort <array> in descending order
+
+	-> associative (hash-table, dictionary)
 		$<array_variable> = array(<key_1>=><value_1>, ... , <key_n>=><value_n>	instantiate new array of key-value-pairs
 		$<array_variable>[<key>]						access <value> of <key> in <array_variable>
 		$<array_variable>[<key>] = <value>					assign <value> to <key> in <array_variable>
 											!! array is dynamic, assigning to new <key> extends array !!
 		foreach($<array_variable> as $<key_variable>=>$<value_variable>) {}	iterate over all key-value-pairs in <array_variable>
-		foreach($<array_variable> as $<value_variable) {}			iterate over all values in <array_variable>
-	-> methods:
-		implode(<separator>, <array>)						concatenate all fields of <array> to a <separator> separated string	
+		foreach($<array_variable> as $<value_variable>) {}			iterate over all values in <array_variable>
+		
+		asort(<assoc_array>)							sort <assoc_array> in ascending value order and maintain key association
+		arsort(<assoc_array>)							sort <assoc_array> in descending value order and maintain key association
+		ksort(<assoc_array>)							sort <assoc_array> in ascending key order
+		krsort(<assoc_array>)							sort <assoc_array> in descending key order
 
+	-> general:
+		$<array_variable_2> = $<array_variable_1>				DEEP COPY of <array_variable_1> and save reference on copy to <array_variable_2>
+		$<array_new> = array(<value_1>, ...$<array_old>, ... <value_n>		Spread-Operator: use values of <array_old> as values for <array_new>
+		$<array_variable> = range(<start_value>, <end_value>, <step>)		return array with range [<start_value], <end_value>) with <step>
+		
+	-> methods:
+		array_push(<array>, <values>)						add <values> to the end of <array>
+		array_pop(<array>)							return and pop last element of <array>
+		array_unshift(<array>, <values>)					add <values> to the start of <array>
+		array_shift(<array>)							return and shift first element of <array>
+
+		array_unique(<array>)							return array without duplicate entries of <array>
+		array_intersect(<array_1>, ... , <array_n>)				return array containing the intersection of <array_1>, ... , <array_n>		
+		array_diff(<array>, <array_1>, ... , <array_n>)				return array contatining the difference between <array> and <array_1>, ...
+		array_merge(<array_1>, ... , <array_n>)					return array merging <array_1>, ... , <array_n>
+
+		array_walk(<array>, <callback_function>)				apply <callback_function> to every member of <array>
+		array_filter(<array>, <callback_function>)				return array filtered by <callback_function>
+		array_map(<array>, <callback_function>)					apply <callback_function> to every member of <array> and return modified array
+		array_reduce(<array>, <callback_function>)				apply aggregate <callback_function> to <array> and return value	
+		usort(<array>, <callback_function>)					sort <array> using <callback_function> (returns for each element -1, 1 or 0)
+
+		array_rand(<array_variable>, <count>)					return single or array of <count> random values of <array_variable> or null
+		count(<array_variable>)							return number of elements
+		implode(<separator>, <array>)						concatenate all fields of <array> to a <separator> separated string
+		
+		
 
 ===================== Operators =====================
 	

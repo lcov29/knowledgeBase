@@ -321,6 +321,7 @@
 	ternary operator:
 	$<variable_name> = <condition> ? <if_value> : <else_value>;
 	
+
 	null coalescing operator:
 	$<variable_name> ??= <if_null_or_nonexistent_value>;
 
@@ -549,6 +550,16 @@
 
 	For MariaDB / MySQL: see KnowledgeBase/Programming/database_systems/mariadb_mysql/connectors 
 
+
+===================== Sessions And Cookies =====================
+
+	session_start()							starts new session; Must be written before each document of to the session
+	session_destroy()						destroy all data registered to a session
+	session_id(<id>)						get or set session id			
+	$_SESSION							superglobal array containing USER DEFINED session variables
+
+	setcookie(<name>, [value], [expires], [path], [domain])		send a cookie		
+	$_COOKIE							superglobal array containing variables of cookie
 
 ===================== Date And Time =====================
 

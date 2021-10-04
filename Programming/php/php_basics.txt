@@ -184,6 +184,7 @@
 		usort(<array>, <callback_function>)					sort <array> using <callback_function> (returns for each element -1, 1 or 0)
 
 		array_rand(<array_variable>, <count>)					return single or array of <count> random values of <array_variable> or null
+		shuffle(<array_variable>)						randomize the order of the elements of <array_variable>
 		count(<array_variable>)							return number of elements
 		implode(<separator>, <array>)						concatenate all fields of <array> to a <separator> separated string
 		
@@ -246,6 +247,22 @@
 	&&
 	||
 	=
+
+
+	Mathematical:
+	sqrt(<number>)					square root of <number>
+	pow(<base>, <exponent>)				raise <base> to the power of <exponent>
+	exp(<number>)					raise e to the power of <number>
+	log(<number>)					natural logarithm of <number>
+	log10(<number>)					base-10 logarithm of <number>
+	abs(<number>)					absolute value of <number>
+	floor(<number>)					return next lowest integer value as float
+	ceil(<number>)					return next biggest integer value as float
+	round(<number>, <precision>)			round <number> to float
+	intdiv(<dividend>, <divisor>)			integer division without remainder
+	fmod(<dividend>, <divisor>)			modulo operation for float values
+	max(<number_1>, ... , <number_n>)		return biggest <number>
+	min(<number_1>, ... , <number_n>)		return lowest <number>
 
 	
 	String:
@@ -549,8 +566,10 @@
 
 	Formatting:
 	date(<format_string>, [time_stamp])
-	strftime(<format_string>, [time_stamp])		
+	strftime(<format_string>, [time_stamp])
+		
 		Format String Elements:
+
 			Day ---------------------------------------
 			%a 	Abbreviation of the day 					Sun through Sat
 			%A 	Full Name of the day 						Sunday through Saturday
@@ -559,20 +578,24 @@
 			%j 	Day of the year			 				001 to 366
 			%u 	ISO-8601 numeric representation of the day of the week 		1 (for Monday) through 7 (for Sunday)
 			%w 	Numeric representation of the day of the week 			0 (for Sunday) through 6 (for Saturday)
+
 			Week  --------------------------------------
 			%U 	Week number of the given year, starting with the first Sunday 	13 (for the 13th full week of the year)
 			%W 	Week number of the year, starting with the first Monday 	46 (for the 46th week of the year beginning with a Monday)
+
 			Month --------------------------------------
 			%b 	Abbreviated month name, based on the locale 			Jan through Dec
 			%B 	Full month name, based on the locale 				January through December
 			%h 	Abbreviated month name, based on the locale (an alias of %b) 	Jan through Dec
 			%m 	Two digit representation of the month 				01 (for January) through 12 (for December)
+
 			Year ---------------------------------------
 			%C 	Two digit representation of the century			 	19 for the 20th Century
 			%g 	Two digit representation of the year				09 for the week of January 6, 2009
 			%G 	The full four-digit version of %g 				2008 for the week of January 3, 2009
 			%y 	Two digit representation of the year 				09 for 2009, 79 for 1979
 			%Y 	Four digit representation for the year 				2038
+
 			Time ---------------------------------------
 			%H 	Two digit representation of the hour in 24-hour format 		00 through 23
 			%k 	Hour in 24-hour format, with a space preceding single digits 	0 through 23
@@ -587,12 +610,14 @@
 			%T 	Same as "%H:%M:%S" 						21:34:17 for 09:34:17 PM
 			%X 	Preferred time representation based on locale, without date 	03:59:16 or 15:59:16
 			%Z 	The time zone abbreviation.					EST for Eastern Time
+
 			Time and Date Stamps ------------------------
 			%c 	Preferred date and time stamp based on locale 			Tue Feb 5 00:45:10 2009 for February 5, 2009 at 12:45:10 AM
 			%D 	Same as "%m/%d/%y" 						02/05/09 for February 5, 2009
 			%F 	Same as "%Y-%m-%d" (commonly used in database datestamps) 	2009-02-05 for February 5, 2009
 			%s 	Unix Epoch Time timestamp					305815200 for September 10, 1979 08:40:00 AM
 			%x 	Preferred date representation based on locale			02/05/09 for February 5, 2009
+
 			Miscellaneous -------------------------------  
 			%n 	A newline character ("\n")
 			%t 	A Tab character ("\t")

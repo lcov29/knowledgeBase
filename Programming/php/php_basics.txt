@@ -548,7 +548,8 @@
 
 ===================== Database Connection =====================
 
-	For MariaDB / MySQL: see KnowledgeBase/Programming/database_systems/mariadb_mysql/connectors 
+	For MariaDB / MySQL: 	see KnowledgeBase/Programming/database_systems/mariadb_mysql/connectors 
+	For SQLite:		see KnowledgeBase/Programming/database_systems/sqlite
 
 
 ===================== Sessions And Cookies =====================

@@ -1,0 +1,66 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+    <head> 
+        <meta charset="utf-8"> 
+        <title>Ajax Example</title> 
+        <script type="text/javascript">
+
+            function request(optional_parameter_1, optional_parameter_n) {
+                var req = new XMLHttpRequest();
+
+                /* call php program
+                        req.open("get", "<program_url.php>"", true);
+                        req.onreadystatechange = process; */
+
+                /* call php program with parameters
+                        req.open("get", "<program_url.php>?<key_1>=" + <value_1> + "&<key_n>=" + <value_n>, true);
+                        req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                        req.onreadystatechange = process;
+                */
+
+                /* Example for callable php program
+                    <?php
+                        header("Content-type: text/html; charset=utf-8");
+                        echo "Response_processable_by_caller";
+                    ?>
+                */
+
+
+                /* read text file
+                        req.open("get", "<file_url>.txt", true);
+                */
+
+                /* read xml or json file
+                        req.open("get", "<file_url>.xml", true);
+                        req.onreadystatechange = function(e) { process(e, optional_parameter_1, optional_parameter_n); }
+                */
+
+                req.send();
+            }
+
+            function process(e, optional_parameter_1, optional_parameter_n) {
+                if (e.target.readyState == 4 && e.target.status == 200) {
+
+                    /* php or text response
+                        document.getElementById("idExample").firstChild.nodeValue = e.target.responseText;
+                    */
+
+                    /* xml response
+                        var response = e.target.responseXML;
+                        var value = response.getElementsByTagName("tag_name")[element_index];
+                    */
+
+                    /* json response
+                        var response = JSON.parse(e.target.responseText);
+                        var text = response[index].<tag_element>;
+                    */
+                }
+            }
+
+        </script> 
+    </head> 
+    <body> 
+        <p><a href="javascript:request(optional_parameter_1, optional_parameter_n)">Trigger request</a></p>
+        <p id="idExample">&nbsp;</p>
+    </body> 
+</html>

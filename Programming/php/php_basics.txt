@@ -562,6 +562,35 @@
 	setcookie(<name>, [value], [expires], [path], [domain])		send a cookie		
 	$_COOKIE							superglobal array containing variables of cookie
 
+
+===================== XML Files =====================
+
+	$<object_variable> = simplexml_load_file(<filename.xml>)		parse external <filename.xml> into an object or return false
+	$<object_variable> = simplexml_load_string(<xml_string>)		parse internal <xml_string> into an object or return false
+										$<xml_string> = <<< XML <content> XML;
+
+	$<object_variable>-><element_layer_1>[->element_layer_2]		access property of parsed xml file containing only one object
+	$<objects_variable>-><objects_variable>[<index>]-><element_layer_1>	access property of object<index> in a set of objects contained in parsed xml file 
+	$<object_variable>-><element_layer_1>[<attribute_name>]			access attribute values of <object_variable>.<element_layer_1>
+
+	$<object_variable>-><element> = <new_value>;				assign new value to <element>
+	file_put_contents(<filename.xml>, $<object_variable>->asXML())		save changes of <filename.xml>
+
+
+===================== JSON Files =====================
+	
+	$<json_string> = file_get_contents(<json_filename>)			read content of <json_filename> into <json_string>
+	file_put_contents(<json_filename>, <json_string>)			write <json_string> into <json_filename>
+
+	$<json_string> = json_encode(<one_or_twodimensional_associative_array>)	return JSON representation of an associative array as string or false
+	$<associative_array> = json_decode(<json_string>)			parse <json_string> into <associative_array>
+
+
+===================== Ajax (Asynchronous JavaScript and XML) =====================
+
+	see KnowledgeBase/Programming/php/ajax_example.html
+
+
 ===================== Date And Time =====================
 
 	time()								return current unix timestamp (number of second since 01-01-1970 00:00:00)

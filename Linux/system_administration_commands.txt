@@ -93,6 +93,7 @@ mount -t <file_system_type> <device_name> <directory>	mount a filesystem device 
 umount <directory>					unmount files systems from <directory>
 df -h							list file system disk space in human-readable format
 du -h <directory>					list disk usage of <directory>
+free -m							display free and used memory in mebibytes 	
 top							display linux processes
 htop							interactive process viewer
 mkswap <block_device | file>				create a swap area

@@ -478,7 +478,7 @@
 		$<variable_name> = htmlentities($_POST["<input_name>"]);
 
 	GET: add key-value-pairs to url
-		<url>/<filename>.<extension>?<key_1>=<value_1>&...§<value_n>=<value_n>
+		<url>/<filename>.<extension>?<key_1>=<value_1>&...&<key_n>=<value_n>
 		$<variable_name> = $_GET["<key>"];
 
 

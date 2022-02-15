@@ -81,14 +81,15 @@ This sentence is in line 2.
 
 <!-- nested lists -->
 * Item 1
- * Item 1.1
- * Item 1.2
- * Item 1.3
+  * Item 1.1
+  * Item 1.2
+  * Item 1.3
 * Item 2
 
 
 <!-- list with subtext without bullet point -->
 * Item 1
+
  This is a subtext for Item 1
 * Item 2
 
@@ -123,18 +124,18 @@ function sayHello() {
 
 
 <!-- Emoticons -->
-:smile:
+:smile: 
 [Emoticon Cheat Sheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md)
 
 
 <!-- Footnotes -->
-This sentence contains a footnote [^1]
-This sentence contains another footnote [^2]
+This sentence contains a footnote [^1]  
+This sentence contains another footnote [^2]  
 
-[^1] Footnote 1
+[^1] Footnote 1  
 [^1] Footnote 
-This sentence contains a footnote [^1]
-This sentence contains another footnote [^2]
+This sentence contains a footnote [^1] 
+This sentence contains another footnote [^2] 
 
-[^1] Footnote 1
-[^1] Footnote 2
+[^1] Footnote 1  
+[^1] Footnote 2  

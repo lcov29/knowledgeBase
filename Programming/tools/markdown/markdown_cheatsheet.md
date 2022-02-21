@@ -124,7 +124,7 @@ function sayHello() {
 
 
 <!-- Emoticons -->
-:smile: 
+:smile:  
 [Emoticon Cheat Sheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md)
 
 

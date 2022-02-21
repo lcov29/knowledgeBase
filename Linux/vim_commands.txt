@@ -64,6 +64,7 @@ R				replacement mode
 ?<pattern>			backward search for <pattern>
 n				next occurrence
 N				previous occurrence
+:noh				reset highligh of all occurrences
 
 
 ---------- Replacing ----------

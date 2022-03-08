@@ -673,7 +673,9 @@ copy($_FILES["<input_name>]["tmp_name"], <persistent_file_name>);
 <br>
 
 File properties:  
-\$_FILES["<input_name>"]["property"]  
+```php
+$_FILES["<input_name>"]["property"]
+```
 
 
 |Property |Description                              |

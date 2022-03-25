@@ -355,7 +355,8 @@ array.length;                           // return number of elements
 <br>
 <br>
 
-## **Other Operators**
+## **Operators**
+<br>
 <br>
 
 ### **Comparison**
@@ -371,6 +372,434 @@ array.length;                           // return number of elements
 
 <br>
 <br>
-<br>
 
 ### **Logical Assignment Operator**
+
+<br>
+
+#### **Logical Or Assignment**
+* if first operand is falsy, assign value of second operand
+```javascript
+let operand1 = 0;
+let operand2 = 'string';
+
+operand1 ||= operand2;      // operand1 -> 'string'
+operand2 ||= operand1;      // operand2 -> 'string'
+```
+
+<br>
+<br>
+
+### **Logical And Assignment**
+* if first operand is truthy, assign value of second operand
+```javascript
+let operand1 = 1;
+let operand2 = 0;
+
+operand1 &&= operand2;      // operand1 -> 0
+operand2 &&= operand1;      // operand2 -> 0
+```
+
+<br>
+<br>
+
+### **Logical Nullish Assignment**
+* if first operand is null or undefined, assign value of second operand
+```javascript
+let operand1 = null;
+let operand2 = 'string';
+
+operand1 ??= operand2;      // operand1 -> 'string'
+operand2 ??= operand1;      // operand2 -> 'string'
+```
+
+<br>
+<br>
+
+### **Ternary Operator**
+* returns second or third operator based on the evaluation of the first operand
+* \<condition\> ? <if_value> : <else_value>
+```javascript
+result = (1 > 0) ? 'A' : 'B';       // result -> A
+result = (1 < 0) ? 'A' : 'B';       // result -> B
+```
+
+<br>
+<br>
+
+### **Type Determination**
+```javascript
+// instanceof
+let myObj = {};
+myObj instanceof Object;        // true
+myObj instanceof Number;        // false
+
+// typeof
+typeof 1;                       // number
+typeof 'foo';                   // string
+```
+
+<br>
+<br>
+<br>
+
+## **If-Statements**
+<br>
+
+```javascript
+if (condition) {
+    // code
+}
+
+
+if (condition) {
+    // code
+} else {
+    // code
+}
+
+
+if (condition1) {
+    // code
+} else if (condition2) {
+    // code
+} else if (condition3) {
+    // code
+} 
+
+
+if (condition1) {
+    // code
+} else if (condition2) {
+    // code
+} else {
+    //code
+}
+```
+
+<br>
+<br>
+<br>
+
+## **Switch-Case-Statements**
+<br>
+
+* default block is executed if no other cases were executed
+  
+```javascript
+switch(expression) {
+    case value1:
+        // code
+        break;
+    case value2:
+        // code
+        break;
+    // ...
+    case valueN:
+        // code
+        break;
+    default:
+        // code
+}
+
+
+switch(expression) {
+    case value1:
+        // code
+        break;
+    case value2:
+    case value3:
+    case value4:
+        // code
+        break;
+    default:
+        // code
+}
+```
+
+<br>
+<br>
+<br>
+
+## **Loops**
+<br>
+<br>
+
+### **For Loop**
+
+```javascript
+for (let i = 0; i < 15; i++) {
+    // code
+}
+```
+<br>
+<br>
+
+### **For In Loop**
+* iterates over all enumberable **properties** of an object that are keyed by strings
+
+```javascript
+// Iterate through object properties
+let myObject = { property1: 1,property2: 2, property3: 3 };
+
+for (let x in myObject) {
+  console.log(myObject[x]);
+}
+
+
+// Iterate through array properties (not recommended when index order is important)
+let myArray = [3, 45, 1, 7, 25];
+
+for (let x in myArray) {
+    console.log(myArray[x]);
+}
+```
+
+<br>
+<br>
+
+### **For Of Loop**
+* iterates over all **values** of an iterable object
+
+```javascript
+let myArray = ['entry1', 'entry2', 'entry3'];
+
+for (let entry of myArray) {
+  console.log(entry);
+}
+```
+
+<br>
+<br>
+
+### **Head-Controlled While Loop**
+```javascript
+while (expression) {
+    // code
+}
+```
+
+<br>
+<br>
+
+### **Foot-Controlled While Loop**
+```javascript
+do {
+    // code
+} while (expression)
+```
+
+<br>
+<br>
+
+### **Break and Continue Keyword**
+<br>
+
+|Keyword               |Description                                        |
+|:---------------------|:--------------------------------------------------|
+|continue              |continue with next iteration                       |
+|continue \<labelname\>|continue execution ofcodeblock with label labelname|
+|break                 |abort loop                                         |
+|break \<labelname\>   |break execution of codeblock with label labelname  |
+
+<br>
+
+Examples:
+
+```javascript
+// write all even number between 1 and 10 to console
+for (let i = 1; i <= 10; i++) {
+    if (i % 2 === 1) { continue; }
+    console.log(i);
+}
+
+
+// write all numbers between 1 and 10 to console until first even number appears
+for (let i = 1; i <= 10; i++) {
+    if (i % 2 === 0) { break; }
+    console.log(i);
+}
+
+
+// continue outer loop from inner loop
+myLabel:
+for (let i = 1; i <= 10; i++) {
+	for (let j = 1; j <= 10; j++) {
+		console.log(`(${i}.${j})`);
+		if (i === 2 && j === 6) {
+			break myLabel;
+		}
+	}
+}
+
+
+// break outer loop from inner loop
+myLabel:
+for (let i = 1; i <= 10; i++) {
+	for (let j = 1; j <= 10; j++) {
+		console.log(`(${i}.${j})`);
+		if (i === 2 && j === 6) {
+			break myLabel;
+		}
+	}
+}
+```
+
+<br>
+<br>
+<br>
+
+## **Function**
+
+<br>
+<br>
+
+### **Function Declaration**
+* Declaration is hoisted by the interpreter (function can be used before declaration)
+* Function is called by the name of the function
+
+```javascript
+function writeToConsole() {
+    // code
+}
+```
+
+<br>
+<br>
+
+### **Function Expression**
+* Expression is not hoisted by the interpreter (function can not be used before expression)
+* Function name is optional
+* Function is called by the name of the variable to which the function was assigned
+
+```javascript
+// anonymous function
+const foo = function() {
+    // code
+}
+
+
+// function expression with optional function name
+const foo = function bar() {
+    // code
+}
+```
+
+<br>
+<br>
+
+### **Arrow Function**
+* alternative version of function expression
+* attribute _this_ refers to the definition context, not the context in which the function is called
+
+<br>
+
+Without parameters:
+```javascript
+() => { /* code */ }
+```
+
+<br>
+
+One parameter:
+```javascript
+x => { /* code */ }
+(x) => { /* code */ }
+```
+
+<br>
+
+Multiple parameters:
+```javascript
+(x, y, z) => { /* code */ }
+```
+
+<br>
+
+Function with single return statement:
+```javascript
+(x, y) => x + y
+```
+<br>
+<br>
+
+### **Parameters**
+* Functions can be called with less arguments than parameters 
+  * missing arguments are initialized with default value
+  * missing arguments are undefined if no default value is defined
+* Functions can be called with more arguments than parameters
+
+```javascript
+function foo(param1, param2 = 'DefaultValue', param3) {
+    // code
+}
+
+
+
+// Call with matching argument numbers
+foo('argument1', 'argument2', 'argument3');
+
+
+
+// Call with less arguments than parameters
+foo('argument1');
+// param1 = 'argument1'                            
+// param2 = 'DefaultValue'
+// param3 = undefined
+
+
+
+// Call with more arguments than parameters (implicit array-like variable 'arguments')
+foo('argument1', 'argument2', 'argument3', 'argument4', 'argument5');
+// param1 = 'argument1'
+// param2 = 'argument2'
+// param3 = 'argument3'
+// 'arguments' contains 'argument4' and 'argument5'
+
+
+// Call with more arguments than parameters (explicit array restArgs)
+function bar(param1, param2, ...restArgs) {
+    if (restArgs.length > 0) {
+        for (let arg of restArgs) {
+            // code
+        }
+    }
+}
+
+bar('argument1', 'argument2', 'argument3', 'argument4', 'argument5');
+// param1 = 'argument1'
+// param2 = 'argument2'
+// restArgs= ['argument3', 'argument4', 'argument5']
+```
+
+<br>
+<br>
+
+### **Spread Operator**
+* extends elements of an iterable object (i.e. arrays or string) in places where arguments are expected.
+* can be used to create a shallow copy of an array
+
+<br>
+
+Spread operator in function call:
+```javascript
+let myArray1 = [1, 9, 7, 2];
+let myArray2 = ['Hello', 'World'];
+
+function foo(param1, param2, param3) {
+    console.log(`${param1} ${param2} ${param3}`);
+}
+
+// function call with spread operator
+foo(...myArray1);       // 1 9 7
+foo(...myArray2, '!');  // Hello World !
+foo(...'Hello');        // H e l
+```
+
+<br>
+
+Spread operator for shallow copy of an array:
+```javascript
+let array = ['a', 1, true];
+let copy = [...array];
+```

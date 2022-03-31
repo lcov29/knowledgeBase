@@ -14,6 +14,7 @@ MIME-Type (**M**ultipurpose **I**nternet **M**ail **E**xtension) for JavaScript:
 <br>
 <br>
 <br>
+<br>
 
 ## **Strict Mode**
 <br>
@@ -36,6 +37,7 @@ function foo() {}
 <br>
 <br>
 <br>
+<br>
 
 ## **Basic Input And Output**
 <br>
@@ -47,6 +49,7 @@ alert(message);                         // basic display dialog for message
 console.log(message);                   // print message to console
 ```
 
+<br>
 <br>
 <br>
 <br>
@@ -68,6 +71,7 @@ Rules for naming variables and constants:
 * start with character, underscore (_) or dollar sign ($)
 * rest can contain characters, numbers, underscores(_) and dollar signs ($)
 
+<br>
 <br>
 <br>
 <br>
@@ -339,6 +343,7 @@ console.log(sym2);      // Symbol(description)
 <br>
 <br>
 <br>
+<br>
 
 ## **Array**
 <br>
@@ -351,6 +356,7 @@ let array = ['element1', 34 , true];    // array definition as literal with diff
 array.length;                           // return number of elements
 ```
 
+<br>
 <br>
 <br>
 <br>
@@ -442,6 +448,7 @@ typeof 'foo';                   // string
 <br>
 <br>
 <br>
+<br>
 
 ## **If-Statements**
 <br>
@@ -477,6 +484,7 @@ if (condition1) {
 }
 ```
 
+<br>
 <br>
 <br>
 <br>
@@ -517,6 +525,7 @@ switch(expression) {
 }
 ```
 
+<br>
 <br>
 <br>
 <br>
@@ -645,6 +654,7 @@ for (let i = 1; i <= 10; i++) {
 }
 ```
 
+<br>
 <br>
 <br>
 <br>
@@ -802,4 +812,80 @@ Spread operator for shallow copy of an array:
 ```javascript
 let array = ['a', 1, true];
 let copy = [...array];
+```
+
+<br>
+<br>
+<br>
+<br>
+
+## **Error Handling**
+<br>
+
+* throw errors with keyword throw
+* handle runtime error with try-catch-statement
+  * only one catch statement allowed
+  * exception parameter for catch statement is optional
+  * optional finally block
+
+<br>
+<br>
+
+### **Catch Errors**
+```javascript
+try {
+    // code
+} catch (error) {
+    // code to execute if an error is thrown in try block (with error object as parameter)
+}
+
+
+
+try {
+    // code
+} catch {
+    // code to execute if an error is thrown in try block
+}
+
+
+
+try {
+    // code
+} catch {
+    // code to execute if an error is thrown in try block
+} finally {
+    // code to execute regardless of whether an error is thrown or catched
+}
+```
+
+<br>
+<br>
+
+### **Throw Errors**
+
+<br>
+
+|Error Type    |Description                                    |
+|:-------------|:----------------------------------------------|
+|Error         |Base Error Type                                |
+|RangeError    |Value out of range                             |
+|ReferenceError|Called variable does not exist                 |
+|TypeError     |Call of variable or parameter with invalid type|
+|URIError      |Error with URL                                 |
+
+<br>
+
+**Properties of error object:**
+
+* name
+* message
+
+<br>
+
+```javascript
+throw new Error('message');
+throw new RangeError('message');
+throw new RangeError('message');
+throw new TypeError('message');
+throw new URIError('message');
 ```

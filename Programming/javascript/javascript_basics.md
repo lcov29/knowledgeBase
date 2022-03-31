@@ -889,3 +889,17 @@ throw new RangeError('message');
 throw new TypeError('message');
 throw new URIError('message');
 ```
+
+<br>
+<br>
+<br>
+<br>
+
+## **Debugging**
+
+<br>
+
+Defining a breakpoint for the debugger of the browser:
+```javascript
+debugger;
+```

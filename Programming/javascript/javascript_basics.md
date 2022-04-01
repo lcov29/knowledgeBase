@@ -299,8 +299,11 @@ false ?? 'string';      // false
 
 * collection of key-value pairs
 
+<br>
+
+**Ways to create objects**
 ```javascript
-// object definition as literal with attributes and method
+// object definition as literal
 let obj = { 
     key1: 'value';
     key2: 42.12;
@@ -308,6 +311,22 @@ let obj = {
         console.log(this.key1);
     }
 }
+
+
+// object definition from two-dimensional array with key-value pais
+let array = [['key1', 'value'], ['key2', 42.12], ['foo', function() {console.log(this.key1);}]];
+let obj2 = Object.fromEntries(array);
+
+
+// object definition from constructor function
+function Obj(value1, value2) {
+    this.key1 = value1;
+    this.key2 = value2;
+    this.foo = function() { console.log(this.key1); }
+}
+
+let obj3 = new Obj('value', 42.12);
+let obj4 = new Obj(42.12, 'value');
 ```
 
 <br>

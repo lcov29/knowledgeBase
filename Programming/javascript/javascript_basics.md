@@ -1,6 +1,56 @@
 # **JavaScript**
 
 <br>
+
+## Table Of Contents
+<br>
+
+- [**JavaScript**](#javascript)
+  - [Table Of Contents](#table-of-contents)
+  - [**General**](#general)
+  - [**Strict Mode**](#strict-mode)
+  - [**Basic Input And Output**](#basic-input-and-output)
+  - [**Variables and Constants**](#variables-and-constants)
+  - [**Data Types**](#data-types)
+    - [**Number**](#number)
+    - [**String**](#string)
+    - [**Boolean**](#boolean)
+      - [**Usage of boolean operators for nonboolean operands**](#usage-of-boolean-operators-for-nonboolean-operands)
+    - [**Object**](#object)
+    - [**Symbol**](#symbol)
+    - [**Null**](#null)
+    - [**Undefined**](#undefined)
+  - [**Array**](#array)
+  - [**Operators**](#operators)
+    - [**Comparison**](#comparison)
+    - [**Logical Assignment Operators**](#logical-assignment-operators)
+      - [**Logical Or Assignment**](#logical-or-assignment)
+    - [**Logical And Assignment**](#logical-and-assignment)
+    - [**Logical Nullish Assignment**](#logical-nullish-assignment)
+    - [**Ternary Operator**](#ternary-operator)
+    - [**Type Determination**](#type-determination)
+  - [**If-Statements**](#if-statements)
+  - [**Switch-Case-Statements**](#switch-case-statements)
+  - [**Loops**](#loops)
+    - [**For Loop**](#for-loop)
+    - [**For In Loop**](#for-in-loop)
+    - [**For Of Loop**](#for-of-loop)
+    - [**Head-Controlled While Loop**](#head-controlled-while-loop)
+    - [**Foot-Controlled While Loop**](#foot-controlled-while-loop)
+    - [**Break and Continue Keyword**](#break-and-continue-keyword)
+  - [**Function**](#function)
+    - [**Function Declaration**](#function-declaration)
+    - [**Function Expression**](#function-expression)
+    - [**Arrow Function**](#arrow-function)
+    - [**Parameters**](#parameters)
+    - [**Spread Operator**](#spread-operator)
+  - [**Error Handling**](#error-handling)
+    - [**Catch Errors**](#catch-errors)
+    - [**Throw Errors**](#throw-errors)
+  - [**Debugging**](#debugging)
+
+
+<br>
 <br>
 <br>
 
@@ -167,7 +217,7 @@ let y = (0.2*10 + 0.1*10) / 10;             // => 0.3
 <br>
 <br>
 
-### **Strings**
+### **String**
 
 ```javascript
 let string1 = "String1";
@@ -398,7 +448,7 @@ array.length;                           // return number of elements
 <br>
 <br>
 
-### **Logical Assignment Operator**
+### **Logical Assignment Operators**
 
 <br>
 
@@ -511,8 +561,6 @@ if (condition1) {
 ## **Switch-Case-Statements**
 <br>
 
-* default block is executed if no other cases were executed
-  
 ```javascript
 switch(expression) {
     case value1:
@@ -526,7 +574,7 @@ switch(expression) {
         // code
         break;
     default:
-        // code
+        // code to execute if no case was executed
 }
 
 
@@ -540,7 +588,7 @@ switch(expression) {
         // code
         break;
     default:
-        // code
+        // code to execute if no case was executed
 }
 ```
 

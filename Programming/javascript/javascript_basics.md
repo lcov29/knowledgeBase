@@ -348,7 +348,7 @@ false ?? 'string';      // false
 ### **Object**
 
 * collection of key-value pairs
-* see [JavaScript Objects](/javascript_objects.md)
+* see [JavaScript Objects](./javascript_objects.md)
 
 <br>
 

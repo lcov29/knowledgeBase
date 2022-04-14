@@ -2,11 +2,11 @@
 
 <br>
 
-## Table Of Contents
+## **Table Of Contents**
 <br>
 
 - [**JavaScript**](#javascript)
-  - [Table Of Contents](#table-of-contents)
+  - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
   - [**Strict Mode**](#strict-mode)
   - [**Basic Input And Output**](#basic-input-and-output)
@@ -348,12 +348,12 @@ false ?? 'string';      // false
 ### **Object**
 
 * collection of key-value pairs
+* see [JavaScript Objects](/javascript_objects.md)
 
 <br>
 
-**Ways to create objects**
+Example:
 ```javascript
-// object definition as literal
 let obj = { 
     key1: 'value';
     key2: 42.12;
@@ -361,22 +361,6 @@ let obj = {
         console.log(this.key1);
     }
 }
-
-
-// object definition from two-dimensional array with key-value pais
-let array = [['key1', 'value'], ['key2', 42.12], ['foo', function() {console.log(this.key1);}]];
-let obj2 = Object.fromEntries(array);
-
-
-// object definition from constructor function
-function Obj(value1, value2) {
-    this.key1 = value1;
-    this.key2 = value2;
-    this.foo = function() { console.log(this.key1); }
-}
-
-let obj3 = new Obj('value', 42.12);
-let obj4 = new Obj(42.12, 'value');
 ```
 
 <br>

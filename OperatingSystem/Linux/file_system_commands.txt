@@ -51,3 +51,6 @@ tar -cvzf <archive_name>.tar.gz <directory | file>	create a zipped archive <arch
 tar -xvzf <archive_name>.tar.gz				unzip and unpack <archive_name>.tar.gz relative to the current working directory
 
 
+meld <file1> <file2>				open graphical comparison of files
+
+

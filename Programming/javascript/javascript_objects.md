@@ -402,9 +402,9 @@ console.log(obj['attribute1']);     // output: undefined
 ### **Object.preventExtensions()**
 <br>
 
-* prevents adding new attributes and methods to an object
-* allows altering values of existing attributes and methods
-* allows altering attribute properties (e.g. enumerable)
+:x: add new attributes and methods to an object
+:heavy_check_mark: alter values of existing attributes and methods
+:heavy_check_mark: alter attribute properties (e.g. enumerable)
 
 ```javascript
 let obj = {
@@ -430,9 +430,9 @@ console.log(Object.getOwnPropertyDescriptor(obj, 'attribute1').enumerable);     
 ### **Object.seal()**
 <br>
 
-* prevents adding new attributes and methods to an object
-* allows altering values of existing attributes and methods
-* prevents altering attribute properties (e.g. enumerable)
+:x: add new attributes and methods to an object
+:heavy_check_mark: alter values of existing attributes and methods
+:x: alter attribute properties (e.g. enumerable)
 
 ```javascript
 let obj = {
@@ -456,9 +456,9 @@ Object.defineProperty(obj, 'attribute1', { enumerable: false });     // Uncaught
 ### **Object.freeze()**
 <br>
 
-* :x: add new attributes and methods to an object
-* :x: alter values of existing attributes and methods
-* :x: alter attribute properties (e.g. enumerable)
+:x: add new attributes and methods to an object
+:x: alter values of existing attributes and methods
+:x: alter attribute properties (e.g. enumerable)
 
 ```javascript
 let obj = {

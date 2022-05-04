@@ -403,6 +403,8 @@ console.log(sym2);      // Symbol(description)
 
 Arrays are dynamic and loosely typed, so they can grow or shrink and can contain element of different types.
 
+See [JavaScript Arrays](./javascript_arrays.md)
+
 ```javascript
 let array = ['element1', 34 , true];    // array definition as literal with different element types
 

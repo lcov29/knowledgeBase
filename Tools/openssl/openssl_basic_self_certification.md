@@ -1,11 +1,25 @@
-basic self certification via openssl
+## **Basic Self Certification Via Openssl**
+<br>
 
-# create key
+### **Create Key**
+
+```bash
 openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out <keyname>.key
 chmod 400 <keyname>.key
+```
 
-# create certification
+<br>
+
+### **Create Certification**
+
+```bash
 openssl req -new -sha256 -key <keyname>.key -out <certificationname>.csr
+```
 
-# verify certification
+<br>
+
+### **Verify Certification**
+
+```bash
 openssl x509 -req -days <number> -in <certificationname>.csr -signkey <keyname>.key -sha256 -out <signature>.pem
+```

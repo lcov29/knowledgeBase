@@ -10,31 +10,34 @@
   - [**Ways To Create Arrays**](#ways-to-create-arrays)
     - [**Constructor Function Array()**](#constructor-function-array)
     - [**Array Literal**](#array-literal)
-  - [**Adding And Deleting Elements**](#adding-and-deleting-elements)
-    - [**push()**](#push)
-    - [**unshift()**](#unshift)
-    - [**pop()**](#pop)
-    - [**shift()**](#shift)
-    - [**splice()**](#splice)
-    - [**copyWithin()**](#copywithin)
-  - [**Sorting**](#sorting)
-    - [**sort()**](#sort)
-    - [**reverse()**](#reverse)
-  - [**Searching**](#searching)
-    - [**indexOf()**](#indexof)
-    - [**lastIndexOf()**](#lastindexof)
-    - [**find()**](#find)
-    - [**filter()**](#filter)
-    - [**includes()**](#includes)
-    - [**every()**](#every)
-    - [**some()**](#some)
-  - [**Other Methods**](#other-methods)
-    - [**forEach()**](#foreach)
-    - [**map()**](#map)
-    - [**reduce()**](#reduce)
-    - [**slice()**](#slice)
-    - [**concat()**](#concat)
-    - [**join()**](#join)
+  - [**Iterating over elements**](#iterating-over-elements)
+  - [**Destructuring**](#destructuring)
+  - [**Methods**](#methods)
+    - [**Adding And Deleting Elements**](#adding-and-deleting-elements)
+      - [**push()**](#push)
+      - [**unshift()**](#unshift)
+      - [**pop()**](#pop)
+      - [**shift()**](#shift)
+      - [**splice()**](#splice)
+      - [**copyWithin()**](#copywithin)
+    - [**Sorting**](#sorting)
+      - [**sort()**](#sort)
+      - [**reverse()**](#reverse)
+    - [**Searching**](#searching)
+      - [**indexOf()**](#indexof)
+      - [**lastIndexOf()**](#lastindexof)
+      - [**find()**](#find)
+      - [**filter()**](#filter)
+      - [**includes()**](#includes)
+      - [**every()**](#every)
+      - [**some()**](#some)
+    - [**Other Methods**](#other-methods)
+      - [**forEach()**](#foreach)
+      - [**map()**](#map)
+      - [**reduce()**](#reduce)
+      - [**slice()**](#slice)
+      - [**concat()**](#concat)
+      - [**join()**](#join)
   
 <br>
 <br>
@@ -86,10 +89,140 @@ const array2 = [1, 3.13, 'foo'];            // create an array with values
 <br>
 <br>
 
-## **Adding And Deleting Elements**
+## **Iterating over elements**
 <br>
 
-### **push()**
+```javascript
+let array = ['A', 'B', 'C'];
+
+
+// count loop over index
+for (let i = 0; i < array.length; i++) {
+  console.log(array[i]);
+}
+
+
+// iterate over index
+for (let index in array) {
+  console.log(array[index]);
+}
+
+
+// iterate over values
+for (let value of array) {
+  console.log(value);
+}
+```
+
+<br>
+<br>
+<br>
+
+## **Destructuring**
+<br>
+
+* assign element values of an array to variables
+* array is not changed
+* if more variables than array elements exist, the variables without assignment are _undefined_ or their custom default value
+
+```javascript
+[variable1, ... , variableN] = array;
+
+let [variable1, ... , variableN] = array;
+
+let [variable1 = default1, ... , variableN = defaultN] = array;
+
+let [variable1, ..., variableN, ...rest] = array;
+```
+
+```javascript
+let array = [1, 2, 3, 4, 5];
+
+
+// assign element values to new variables
+let  [a, b, c] = array;
+console.log(a);                                        // output: 1
+console.log(b);                                        // output: 2
+console.log(c);                                        // output: 3
+
+
+// assign element values to existing variables
+[b, c] = array;
+console.log(b);                                        // output: 1
+console.log(c);                                        // output: 2
+
+
+// default value
+let [a ='A', 
+     b = 'B', 
+     c = 'C', 
+     d = 'D', 
+     e = 'E', 
+     f = 'F'] = array;
+console.log(a);                                         // output: 1
+console.log(b);                                         // output: 2
+console.log(c);                                         // output: 3
+console.log(d);                                         // output: 4
+console.log(e);                                         // output: 5
+console.log(f);                                         // output: F
+
+
+// use rest
+let [a, ...rest] = array;                               
+console.log(a);                                         // output: 1
+console.log(rest);                                      // output: [2, 3, 4, 5]
+
+
+// extract specific elements
+let [a, , c] = array;
+console.log(a);                                         // output: 1
+console.log(c);                                         // output: 3
+
+
+// multidimensional array destructuring
+let multiArray = [['A', 'B'], ['C', 'D'], ['E']];
+let [
+  [a, b],
+  [c, d],
+  [e]
+] = multiArray;
+console.log(a);                                         // output: A
+console.log(b);                                         // output: B
+console.log(c);                                         // output: C
+console.log(d);                                         // output: D
+console.log(e);                                         // output: E
+
+
+// destructuring inside for of loop
+let array = [[1, 2, 3], [7, 8, 9], [5, 8, 13]];
+
+for (let [a, b, c] of array) {
+    console.log(`a: ${a}`);
+    console.log(`b: ${b}`);
+    console.log(`c: ${c}`);
+}
+
+/*
+output:
+  a: 1    b: 2    c: 3
+  a: 7    b: 8    c: 9
+  a: 5    b: 8    c: 13
+*/
+```
+
+<br>
+<br>
+<br>
+
+## **Methods**
+
+<br>
+<br>
+
+### **Adding And Deleting Elements**
+<br>
+
+#### **push()**
 
 * adds one or more elements to the **end** of an array and returns new length
 ```javascript
@@ -104,7 +237,7 @@ console.log(array);         // output: [1, 2, 3, 4, 5, 6, 7]
 <br>
 <br>
 
-### **unshift()**
+#### **unshift()**
 
 * adds one or more elements to the **start** of an array and returns new length
 ```javascript
@@ -119,7 +252,7 @@ console.log(array);         // output: [5, 6, 7, 4, 1, 2, 3]
 <br>
 <br>
 
-### **pop()**
+#### **pop()**
 
 * removes and returns **last** element
 * returns _undefined_ for empty array
@@ -132,7 +265,7 @@ console.log(array);         // output: [1, 2]
 <br>
 <br>
 
-### **shift()**
+#### **shift()**
 
 * removes and returns **first** element
 * returns _undefined_ for empty array
@@ -145,7 +278,7 @@ console.log(array);           // output: [2, 3]
 <br>
 <br>
 
-### **splice()**
+#### **splice()**
 
 * removes or replaces existing elements 
 * adds new elements
@@ -179,7 +312,7 @@ console.log(array);                     // output: [A, B, C, D, E, F, G, H, I, J
 <br>
 <br>
 
-### **copyWithin()**
+#### **copyWithin()**
 
 * shallow copies parts of an array to another location in the same array
 * elements at targetIndex get replaces --> array length does not change
@@ -215,10 +348,10 @@ console.log(array.copyWithin(0, 2, 3));        // output: ['C', 'B', 'C', 'D']
 <br>
 <br>
 
-## **Sorting**
+### **Sorting**
 <br>
 
-### **sort()**
+#### **sort()**
 
 * sorts array in ascending order
 * optional custom compare function
@@ -256,7 +389,7 @@ console.log(array3);                                    // output: [2, 3, 3, 6, 
 <br>
 <br>
 
-### **reverse()**
+#### **reverse()**
 
 * returns array with reversed order of elements
 
@@ -270,10 +403,10 @@ console.log(array);                                     // output: [7, 2, 34, 4]
 <br>
 <br>
 
-## **Searching**
+### **Searching**
 <br>
 
-### **indexOf()**
+#### **indexOf()**
 
 * returns index of _first_ occurrence of element in array
 * returns -1 if element does not exist in array
@@ -297,7 +430,7 @@ console.log(array.indexOf('ten'));                      // output: -1
 <br>
 <br>
 
-### **lastIndexOf()**
+#### **lastIndexOf()**
 
 * returns index of _last_ occurrence of element in array
 * returns -1 if element does not exist in array
@@ -321,7 +454,7 @@ console.log(array.lastIndexOf('ten'));                  // output: -1
 <br>
 <br>
 
-### **find()**
+#### **find()**
 
 * returns _first_ element that matches the custom findFunction
 * returns _undefined_ if no element matches the custom findFunction
@@ -378,7 +511,7 @@ console.log(found);                               // output: 5
 <br>
 <br>
 
-### **filter()**
+#### **filter()**
 
 * returns new array containing all elements that match the custom findFunction
 
@@ -417,7 +550,7 @@ console.log(filteredArray1);                                  // output [5, 4, 3
 <br>
 <br>
 
-### **includes()**
+#### **includes()**
 
 * returns boolean indicating whether array includes element
 
@@ -438,7 +571,7 @@ console.log(array.includes(4));         // output: false
 <br>
 <br>
 
-### **every()**
+#### **every()**
 
 * returns boolean indicating whether _all_ elements match custom findFunction
 
@@ -461,7 +594,7 @@ console.log(result);                                  // output: false
 <br>
 <br>
 
-### **some()**
+#### **some()**
 
 * returns boolean indicating whether _at least one_ element matches custom findFunction
 
@@ -485,10 +618,10 @@ console.log(result);                                  // output: false
 <br>
 <br>
 
-## **Other Methods**
+### **Other Methods**
 <br>
 
-### **forEach()**
+#### **forEach()**
 
 * executes function once for every element
 
@@ -520,7 +653,7 @@ array.forEach(element => console.log(element));
 <br>
 <br>
 
-### **map()**
+#### **map()**
 
 * returns new array containing the results of a customFunction envoked on every element of the original array
 * do not use map() when you are not using the returned array
@@ -542,7 +675,7 @@ console.log(map);                               // output: [14, 13, 11, 35, 64, 
 <br>
 <br>
 
-### **reduce()**
+#### **reduce()**
 
 * envokes customFunction to reduce all elements of an array to a single value and returns that value
 
@@ -629,7 +762,7 @@ console.log(result);
 <br>
 <br>
 
-### **slice()**
+#### **slice()**
 
 * returns array with shallow copies of elements of an array
 * copies can be restricted to a range [start, end)
@@ -671,7 +804,7 @@ console.log(array2);                              // [B, C]
 <br>
 <br>
 
-### **concat()**
+#### **concat()**
 
 * returns array containing all elements of arrays and values given as parameters
 * returns shallow copy of calling array if no parameters exist
@@ -705,7 +838,7 @@ console.log(array4);                          // output: [1, 2, 3]
 <br>
 <br>
 
-### **join()**
+#### **join()**
 
 * returns string containing all elements separated by commas or a custom separator string
 

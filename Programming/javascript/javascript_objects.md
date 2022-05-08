@@ -19,6 +19,7 @@
     - [**Getter And Setter**](#getter-and-setter)
   - [**Destructuring**](#destructuring)
   - [**Add, Overwrite And Delete Attributes Or Methods**](#add-overwrite-and-delete-attributes-or-methods)
+  - [**Copy Attributes Of An Object Into Another Object**](#copy-attributes-of-an-object-into-another-object)
   - [**Iterate Over Attributes And Methods**](#iterate-over-attributes-and-methods)
   - [**Use Of Symbols For Unique Attributes**](#use-of-symbols-for-unique-attributes)
   - [**Prevent Object Modification**](#prevent-object-modification)
@@ -303,35 +304,47 @@ let { propertyName1: variableName1, propertyName2: variableName2 } = obj;
 
 let { attributeName1, attributeName2 } = obj;
 
+let { attributeName1, attributeName2, ...properties } = obj;
+
 let { propertyName1: variableName1, 
       nestedObjectProperty: {
           nestedObjectPropertyName1: variableName2
           nestedObjectPropertyName2: variableName3 
       }
-    } = obj;
+} = obj;
 ```
 
 ```javascript
 let obj = {
     propertyName1: 'value1',
-    propertyName2: 'value2'
+    propertyName2: 'value2',
+    propertyName3: 'value3'
 };
 
 
 // custom variable names
 let {
     propertyName1: variableName1,
-    propertyName2: variableName2
+    propertyName2: variableName2,
+    propertyName3: variableName3
 } = obj;
 
 console.log(variableName1);                              // output: value1
 console.log(variableName2);                              // output: value2
+console.log(variableName3);                              // output: value3
 
 
 // same variable names
-let { propertyName1, propertyName2 } = obj;
+let { propertyName1, propertyName2, propertyName3 } = obj;
 console.log(propertyName1);                              // output: value1
 console.log(propertyName2);                              // output: value2
+console.log(propertyName3);                              // output: value3
+
+
+// rest-properties
+let { propertyName1, ...properties} = obj;
+console.log(propertyName1);                              // output: value1
+console.log(properties);                                 // output: { propertyName2: value2, propertyName3: value3 }
 
 
 // nested object
@@ -401,6 +414,34 @@ delete obj.methodName;
 // Check if attribute or method exist
 console.log('attributeName' in obj);
 console.log('methodName' in obj);
+```
+
+<br>
+<br>
+<br>
+<br>
+
+## **Copy Attributes Of An Object Into Another Object**
+<br>
+
+```javascript
+// copy attributes of obj1 into obj2
+const obj1 = {
+    attribute1: 'value1',
+    attribute2: 'value2'
+};
+
+const obj2 = {
+    ...obj1,
+    attribute3: 'value3',
+    attribute4: 'value4'
+}
+
+console.log(obj1);                              // output: { attribute1: 'value1', attribute2: 'value2' }
+console.log(obj2);                              // output: { attribute1: value1, 
+                                                //           attribute2: value2,
+                                                //           attribute3: value3,
+                                                //           attribute4: value4 }
 ```
 
 <br>

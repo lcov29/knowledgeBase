@@ -219,28 +219,16 @@ let y = (0.2*10 + 0.1*10) / 10;             // => 0.3
 
 ### **String**
 
+Strings are similar to arrays.
+
+See [Javascript Strings](./javascript_strings.md).
+
 ```javascript
 let string1 = "String1";
 let string2 = 'String2';
 
-// escaping
-let string3 = 'Example \"string\"';
-
-// template string
-let string4 = 'Hello';
-let string5 = `${string4} World`;
-
-// template string over multiple lines (linebreaks are displayed)
-let string6 = `multi
-
-line
-
-string
-`;      
-
-// concatenation of strings
-let string1 += string2;
-let string6 = string2 + string3;
+let string3 = 'Hello';
+let string4 = `${string3} World`;
 ```
 
 <br>

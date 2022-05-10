@@ -22,6 +22,7 @@
     - [**Undefined**](#undefined)
   - [**Array**](#array)
   - [**Map**](#map)
+  - [**Set**](#set)
   - [**Operators**](#operators)
     - [**Comparison**](#comparison)
     - [**Logical Assignment Operators**](#logical-assignment-operators)
@@ -438,6 +439,35 @@ map.set('key1', 'newValue');    // returns 'newValue'
 <br>
 
 See [JavaScript Maps](./javascript_map.md)
+
+<br>
+<br>
+<br>
+<br>
+
+## **Set**
+<br>
+
+* Sets are collections of unique elements of any type in order of insertion
+* Attempts to add duplicates are ignored
+
+
+<br>
+
+```javascript
+let set = new Set();
+set.add('value1');
+set.add('value2');
+
+set.size;                       // returns 2
+set.has('value1');              // returns true
+map.delete('value1');
+map.size;                       // returns 1
+```
+
+<br>
+
+See [JavaScript Sets](./javascript_sets.md)
 
 <br>
 <br>

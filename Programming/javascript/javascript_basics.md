@@ -221,7 +221,7 @@ let y = (0.2*10 + 0.1*10) / 10;             // => 0.3
 
 Strings are similar to arrays.
 
-See [Javascript Strings](./javascript_strings.md).
+<br>
 
 ```javascript
 let string1 = "String1";
@@ -230,6 +230,10 @@ let string2 = 'String2';
 let string3 = 'Hello';
 let string4 = `${string3} World`;
 ```
+
+<br>
+
+See [Javascript Strings](./javascript_strings.md)
 
 <br>
 <br>
@@ -336,7 +340,6 @@ false ?? 'string';      // false
 ### **Object**
 
 * collection of key-value pairs
-* see [JavaScript Objects](./javascript_objects.md)
 
 <br>
 
@@ -350,6 +353,10 @@ let obj = {
     }
 }
 ```
+
+<br>
+
+See [JavaScript Objects](./javascript_objects.md)
 
 <br>
 <br>
@@ -391,13 +398,17 @@ console.log(sym2);      // Symbol(description)
 
 Arrays are dynamic and loosely typed, so they can grow or shrink and can contain element of different types.
 
-See [JavaScript Arrays](./javascript_arrays.md)
+<br>
 
 ```javascript
 let array = ['element1', 34 , true];    // array definition as literal with different element types
 
 array.length;                           // return number of elements
 ```
+
+<br>
+
+See [JavaScript Arrays](./javascript_arrays.md)
 
 <br>
 <br>

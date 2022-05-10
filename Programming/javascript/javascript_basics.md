@@ -21,6 +21,7 @@
     - [**Null**](#null)
     - [**Undefined**](#undefined)
   - [**Array**](#array)
+  - [**Map**](#map)
   - [**Operators**](#operators)
     - [**Comparison**](#comparison)
     - [**Logical Assignment Operators**](#logical-assignment-operators)
@@ -409,6 +410,34 @@ array.length;                           // return number of elements
 <br>
 
 See [JavaScript Arrays](./javascript_arrays.md)
+
+<br>
+<br>
+<br>
+<br>
+
+## **Map**
+<br>
+
+Maps are collections of key-value pairs that store the pairs in the order of insertion.
+
+<br>
+
+```javascript
+let map = new Map();
+map1.set('key1', 'value1');
+map1.set(2, 'value2');
+
+map.size;                       // returns 2
+map.get('key1');                // returns 'value1'
+map.delete(2);
+map.size;                       // returns 1
+map.set('key1', 'newValue');    // returns 'newValue'
+```
+
+<br>
+
+See [JavaScript Maps](./javascript_map.md)
 
 <br>
 <br>

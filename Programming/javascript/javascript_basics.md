@@ -23,6 +23,7 @@
   - [**Array**](#array)
   - [**Map**](#map)
   - [**Set**](#set)
+  - [**Date**](#date)
   - [**Operators**](#operators)
     - [**Comparison**](#comparison)
     - [**Logical Assignment Operators**](#logical-assignment-operators)
@@ -468,6 +469,24 @@ map.size;                       // returns 1
 <br>
 
 See [JavaScript Sets](./javascript_sets.md)
+
+<br>
+<br>
+<br>
+<br>
+
+## **Date**
+<br>
+
+Represents a single point in time as milliseconds since 1 January 1970 UTC.
+
+```javascript
+let date = new Date('2022-05-11T09:39:00');
+date.getTime();                                     // returns 1652254740000
+date.toString();                                    // "Wed May 11 2022 09:39:00 GMT+0200 (Central European Summer Time)"
+```
+
+See [JavaScript Date](./javascript_date.md)
 
 <br>
 <br>

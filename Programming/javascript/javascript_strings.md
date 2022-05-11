@@ -18,6 +18,7 @@
       - [**startsWith()**](#startswith)
       - [**endsWith()**](#endswith)
       - [**search()**](#search)
+      - [**match()**](#match)
     - [**Accessing Chars**](#accessing-chars)
       - [**charAt()**](#charat)
       - [**charCodeAt()**](#charcodeat)
@@ -206,6 +207,17 @@ endsWith(searchString, [length])
 
 ```javascript
 search(regexp)
+```
+
+<br>
+<br>
+
+#### **match()**
+
+* returns an array of the matches of a [regular expression](./javascript_regex.md)
+
+```javascript
+match(regex)
 ```
 
 <br>

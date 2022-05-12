@@ -28,9 +28,9 @@
     - [**Comparison**](#comparison)
     - [**Logical Assignment Operators**](#logical-assignment-operators)
       - [**Logical Or Assignment**](#logical-or-assignment)
-    - [**Logical And Assignment**](#logical-and-assignment)
-    - [**Logical Nullish Assignment**](#logical-nullish-assignment)
-    - [**Ternary Operator**](#ternary-operator)
+      - [**Logical And Assignment**](#logical-and-assignment)
+      - [**Logical Nullish Assignment**](#logical-nullish-assignment)
+      - [**Ternary Operator**](#ternary-operator)
     - [**Type Determination**](#type-determination)
   - [**If-Statements**](#if-statements)
   - [**Switch-Case-Statements**](#switch-case-statements)
@@ -529,7 +529,7 @@ operand2 ||= operand1;      // operand2 -> 'string'
 <br>
 <br>
 
-### **Logical And Assignment**
+#### **Logical And Assignment**
 * if first operand is truthy, assign value of second operand
 ```javascript
 let operand1 = 1;
@@ -542,7 +542,7 @@ operand2 &&= operand1;      // operand2 -> 0
 <br>
 <br>
 
-### **Logical Nullish Assignment**
+#### **Logical Nullish Assignment**
 * if first operand is null or undefined, assign value of second operand
 ```javascript
 let operand1 = null;
@@ -555,7 +555,7 @@ operand2 ??= operand1;      // operand2 -> 'string'
 <br>
 <br>
 
-### **Ternary Operator**
+#### **Ternary Operator**
 * returns second or third operator based on the evaluation of the first operand
 * \<condition\> ? <if_value> : <else_value>
 ```javascript

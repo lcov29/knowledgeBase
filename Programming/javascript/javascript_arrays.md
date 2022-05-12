@@ -12,6 +12,7 @@
     - [**Array Literal**](#array-literal)
   - [**Iterating over elements**](#iterating-over-elements)
   - [**Destructuring**](#destructuring)
+  - [**Spread Operator**](#spread-operator)
   - [**Methods**](#methods)
     - [**Adding And Deleting Elements**](#adding-and-deleting-elements)
       - [**push()**](#push)
@@ -208,6 +209,43 @@ output:
   a: 7    b: 8    c: 9
   a: 5    b: 8    c: 13
 */
+```
+
+
+<br>
+<br>
+<br>
+
+## **Spread Operator**
+<br>
+
+* expands array element to the outside scope
+
+<br>
+
+```javascript
+...array
+```
+
+<br>
+
+```javascript
+let array = ['a', 1, true];
+
+
+// spread array elements to function arguments
+function print(arg1, arg2, arg3) {
+  console.log(`${arg1} ${arg2} ${arg3}`);
+}
+print(...array);
+
+
+// shallow copy of an array
+let array2 = [...array];
+
+
+// add elements to array
+array = [...array, newElement1, newElement2];
 ```
 
 <br>
@@ -852,7 +890,3 @@ let array = ['f', 'o', 'o'];
 console.log(array.join());                    // output: f,o,o
 console.log(array.join('---'));               // output: f---o---o
 ```
-
-<br>
-<br>
-

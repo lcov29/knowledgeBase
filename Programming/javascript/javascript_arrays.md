@@ -246,6 +246,10 @@ let array2 = [...array];
 
 // add elements to array
 array = [...array, newElement1, newElement2];
+
+
+// concat arrays
+let concatArray = [...array, ...array2];
 ```
 
 <br>

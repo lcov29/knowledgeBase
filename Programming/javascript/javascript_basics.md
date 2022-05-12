@@ -236,7 +236,8 @@ let string4 = `${string3} World`;
 
 <br>
 
-See [Javascript Strings](./javascript_strings.md)
+See [JavaScript Strings](./javascript_strings.md)  
+See [JavaScript Regular Expressions](./javascript_regex.md)
 
 <br>
 <br>

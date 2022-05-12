@@ -42,11 +42,6 @@
     - [**Foot-Controlled While Loop**](#foot-controlled-while-loop)
     - [**Break and Continue Keyword**](#break-and-continue-keyword)
   - [**Function**](#function)
-    - [**Function Declaration**](#function-declaration)
-    - [**Function Expression**](#function-expression)
-    - [**Arrow Function**](#arrow-function)
-    - [**Parameters**](#parameters)
-    - [**Spread Operator**](#spread-operator)
   - [**Error Handling**](#error-handling)
     - [**Catch Errors**](#catch-errors)
     - [**Throw Errors**](#throw-errors)
@@ -791,159 +786,31 @@ for (let i = 1; i <= 10; i++) {
 <br>
 
 ## **Function**
-
-<br>
 <br>
 
-### **Function Declaration**
-* Declaration is hoisted by the interpreter (function can be used before declaration)
-* Function is called by the name of the function
+* Functions can be though of as a subtype of object
+* Functions can be assigned to a variable
+* Functions can be used as arguments for other functions
+* Functions can return functions
+
+<br>
 
 ```javascript
-function writeToConsole() {
-    // code
-}
-```
-
-<br>
-<br>
-
-### **Function Expression**
-* Expression is not hoisted by the interpreter (function can not be used before expression)
-* Function name is optional
-* Function is called by the name of the variable to which the function was assigned
-
-```javascript
-// anonymous function
-const foo = function() {
-    // code
-}
+// function declaration
+function functionName(parameter) { /* implementation */ }
 
 
-// function expression with optional function name
-const foo = function bar() {
-    // code
-}
-```
+// function expression
+const callName = function optionalFunctionName(parameter) { /* implementation */ }
 
-<br>
-<br>
 
-### **Arrow Function**
-* alternative version of function expression
-* attribute _this_ refers to the definition context, not the context in which the function is called
-
-<br>
-
-Without parameters:
-```javascript
-() => { /* code */ }
-```
-
-<br>
-
-One parameter:
-```javascript
-x => { /* code */ }
-(x) => { /* code */ }
-```
-
-<br>
-
-Multiple parameters:
-```javascript
+// arrow function
 (x, y, z) => { /* code */ }
 ```
 
 <br>
 
-Function with single return statement:
-```javascript
-(x, y) => x + y
-```
-<br>
-<br>
-
-### **Parameters**
-* Functions can be called with less arguments than parameters 
-  * missing arguments are initialized with default value
-  * missing arguments are undefined if no default value is defined
-* Functions can be called with more arguments than parameters
-
-```javascript
-function foo(param1, param2 = 'DefaultValue', param3) {
-    // code
-}
-
-
-
-// Call with matching argument numbers
-foo('argument1', 'argument2', 'argument3');
-
-
-
-// Call with less arguments than parameters
-foo('argument1');
-// param1 = 'argument1'                            
-// param2 = 'DefaultValue'
-// param3 = undefined
-
-
-
-// Call with more arguments than parameters (implicit array-like variable 'arguments')
-foo('argument1', 'argument2', 'argument3', 'argument4', 'argument5');
-// param1 = 'argument1'
-// param2 = 'argument2'
-// param3 = 'argument3'
-// 'arguments' contains 'argument4' and 'argument5'
-
-
-// Call with more arguments than parameters (explicit array restArgs)
-function bar(param1, param2, ...restArgs) {
-    if (restArgs.length > 0) {
-        for (let arg of restArgs) {
-            // code
-        }
-    }
-}
-
-bar('argument1', 'argument2', 'argument3', 'argument4', 'argument5');
-// param1 = 'argument1'
-// param2 = 'argument2'
-// restArgs= ['argument3', 'argument4', 'argument5']
-```
-
-<br>
-<br>
-
-### **Spread Operator**
-* extends elements of an iterable object (i.e. arrays or string) in places where arguments are expected.
-* can be used to create a shallow copy of an array
-
-<br>
-
-Spread operator in function call:
-```javascript
-let myArray1 = [1, 9, 7, 2];
-let myArray2 = ['Hello', 'World'];
-
-function foo(param1, param2, param3) {
-    console.log(`${param1} ${param2} ${param3}`);
-}
-
-// function call with spread operator
-foo(...myArray1);       // 1 9 7
-foo(...myArray2, '!');  // Hello World !
-foo(...'Hello');        // H e l
-```
-
-<br>
-
-Spread operator for shallow copy of an array:
-```javascript
-let array = ['a', 1, true];
-let copy = [...array];
-```
+See [JavaScript Functions](./javascript_function.md)
 
 <br>
 <br>

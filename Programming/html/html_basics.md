@@ -1,4 +1,32 @@
-## HTML Basics
+# **HTML Basics**
+<br>
+
+## **Table Of Contents**
+<br>
+
+- [**HTML Basics**](#html-basics)
+  - [**Table Of Contents**](#table-of-contents)
+  - [**Basic HTML Structure**](#basic-html-structure)
+  - [**Content Area Types**](#content-area-types)
+  - [**Headlines**](#headlines)
+  - [**Paragraphs**](#paragraphs)
+  - [**Separation Elements**](#separation-elements)
+  - [**Inline Formatting**](#inline-formatting)
+  - [**Hyperlinks**](#hyperlinks)
+  - [**Images**](#images)
+  - [**Audio**](#audio)
+  - [**Video**](#video)
+  - [**Quotes**](#quotes)
+  - [**Lists**](#lists)
+    - [**Unordered List**](#unordered-list)
+    - [**Ordered List**](#ordered-list)
+    - [**Description Lists**](#description-lists)
+  - [**Tables**](#tables)
+  - [**Forms**](#forms)
+  - [**Inline And Block Level Elements**](#inline-and-block-level-elements)
+  - [**Special Characters**](#special-characters)
+
+<br>
 <br>
 <br>
 
@@ -7,7 +35,7 @@
 <br>
 <br>
 
-## Basic HTML Structure
+## **Basic HTML Structure**
 <br>
 
 ```html
@@ -33,7 +61,7 @@
 <br>
 <br>
 
-## Content Area Types
+## **Content Area Types**
 <br>
 
 ```html
@@ -88,7 +116,7 @@
 <br>
 <br>
 
-## Headlines
+## **Headlines**
 <br>
 
 ```html
@@ -103,7 +131,7 @@
 <br>
 <br>
 
-## Paragraphs
+## **Paragraphs**
 <br>
 
 ```html
@@ -113,7 +141,7 @@
 <br>
 <br>
 
-## Separation Elements
+## **Separation Elements**
 <br>
 
 ```html
@@ -124,7 +152,7 @@
 <br>
 <br>
 
-## Inline Formatting
+## **Inline Formatting**
 <br>
 
 ```html
@@ -148,7 +176,7 @@
 <br>
 <br>
 
-## Hyperlinks
+## **Hyperlinks**
 <br>
 
 ```html
@@ -174,7 +202,7 @@
 <br>
 <br>
 
-## Images
+## **Images**
 <br>
 
 ```html
@@ -190,7 +218,7 @@
 <br>
 <br>
 
-## Audio
+## **Audio**
 <br>
 
 ```html
@@ -214,7 +242,7 @@
 <br>
 <br>
 
-## Video
+## **Video**
 <br>
 
 ```html
@@ -238,7 +266,7 @@
 <br>
 <br>
 
-## Quotes
+## **Quotes**
 <br>
 
 ```html
@@ -260,10 +288,10 @@
 <br>
 <br>
 
-## Lists
+## **Lists**
 <br>
 
-### Unordered list
+### **Unordered List**
 
 ```html
 <ul>
@@ -274,7 +302,7 @@
 
 <br>
 
-### Ordered list
+### **Ordered List**
 
 ```html
 <ol [start="3" type="<type>"]>
@@ -293,7 +321,7 @@
 
 <br>
 
-### Description lists
+### **Description Lists**
 
 ```html
 <dl>
@@ -308,7 +336,7 @@
 <br>
 <br>
 
-## Tables
+## **Tables**
 <br>
 
 ```html
@@ -360,7 +388,7 @@
 <br>
 <br>
 
-## Forms
+## **Forms**
 <br>
 
 ```html
@@ -521,7 +549,7 @@
 <br>
 <br>
 
-### Inline and block levelelements
+## **Inline And Block Level Elements**
 Inline elements are as wide as their content and do not start a new line.  
 Block level elements start a new line and take all the width including a margin before and after.
 
@@ -531,10 +559,10 @@ Block level elements start a new line and take all the width including a margin 
 |:--------------|:-------------------|
 |\<a>           |\<address>          |
 |\<abbr>        |\<article>          |
-|\<acronym>     |\<aside>            |
+|\<\acronym>    |\<aside>            |
 |\<b>           |\<blockquote>       |
 |\<bdo>         |\<canvas>           |
-|\<big>         |\<dd>               |
+|\<\big>        |\<dd>               |
 |\<br>          |\<div>              |
 |\<button>      |\<dl>               |
 |\<cite>        |\<dt>               |
@@ -560,13 +588,13 @@ Block level elements start a new line and take all the width including a margin 
 |\<sup>         |\<video>            |
 |\<textarea>    |                    |
 |\<time>        |                    |
-|\<tt>          |                    |
+|\<\t\t>        |                    |
 |\<var>         |                    |
 
 <br>
 <br>
 
-## Special Characters
+## **Special Characters**
 <br>
 
 |Character      |Code    |

@@ -1,9 +1,56 @@
-## PHP Basics
+# **PHP Basics**
+<br>
+
+- [**PHP Basics**](#php-basics)
+  - [**Configuration: Display and Log Errors**](#configuration-display-and-log-errors)
+  - [**File Basics**](#file-basics)
+  - [**Include external modules**](#include-external-modules)
+  - [**Comments**](#comments)
+  - [**Variables, Constants and References**](#variables-constants-and-references)
+  - [**Type Checks**](#type-checks)
+  - [**Arrays**](#arrays)
+    - [**General**](#general)
+    - [**Numeric Arrays**](#numeric-arrays)
+    - [**Associative Arrays (Hash-Table, Dictionary)**](#associative-arrays-hash-table-dictionary)
+    - [**Array Functions**](#array-functions)
+  - [**Operators**](#operators)
+    - [**Arithmetic**](#arithmetic)
+    - [**Logical**](#logical)
+    - [**Comparison**](#comparison)
+    - [**Assignment**](#assignment)
+    - [**Operator Hierarchy**](#operator-hierarchy)
+  - [**Mathematical Functions**](#mathematical-functions)
+  - [**String Functions**](#string-functions)
+  - [**Casting**](#casting)
+  - [**Conditional Statements**](#conditional-statements)
+  - [**Loops**](#loops)
+  - [**Functions**](#functions)
+    - [**Call By Reference**](#call-by-reference)
+    - [**Optional Type Declarations (since PHP 7.0)**](#optional-type-declarations-since-php-70)
+    - [**Variable Number Of Parameters**](#variable-number-of-parameters)
+      - [**Option 1: Variadic Function**](#option-1-variadic-function)
+      - [**Option 2**](#option-2)
+  - [**Classes**](#classes)
+  - [**Exceptions**](#exceptions)
+  - [**Receiving Data**](#receiving-data)
+  - [**Files and Directories**](#files-and-directories)
+    - [**Uploading files to the server**](#uploading-files-to-the-server)
+    - [**Write To A File**](#write-to-a-file)
+    - [**Read From A File**](#read-from-a-file)
+    - [**Metafile Data**](#metafile-data)
+    - [**Directories**](#directories)
+  - [**Database Connection**](#database-connection)
+  - [**Sessions and Cookies**](#sessions-and-cookies)
+  - [**XML Files**](#xml-files)
+  - [**Date And Time**](#date-and-time)
+    - [**Format String Elements**](#format-string-elements)
+  - [**Formatting**](#formatting)
 
 <br>
 <br>
+<br>
 
-## Configuration: Display and Log Errors
+## **Configuration: Display and Log Errors**
 
 <br>
 
@@ -57,7 +104,7 @@ init_set(<property>, <value>);
 <br>
 <br>
 
-## File Basics
+## **File Basics**
 
 <br>
 
@@ -85,7 +132,7 @@ init_set(<property>, <value>);
 <br>
 <br>
 
-## Include external modules
+## **Include external modules**
 
 <br>
 
@@ -127,7 +174,7 @@ init_set(<property>, <value>);
 <br>
 <br>
 
-## Comments
+## **Comments**
 
 <br>
 
@@ -142,7 +189,7 @@ init_set(<property>, <value>);
 <br>
 <br>
 
-## Variables, Constants and References
+## **Variables, Constants and References**
 
 <br>
 
@@ -162,7 +209,7 @@ $<reference_name> = &$<variable_name>;                      // declare reference
 <br>
 <br>
 
-## Type checks
+## **Type Checks**
 
 <br>
 
@@ -177,13 +224,13 @@ is_bool(<variable | value>)
 <br>
 <br>
 
-## Arrays
+## **Arrays**
 
 Arrays are dynamic.
 <br>
 <br>
 
-### General
+### **General**
 
 ```php
 $<array_variable_2> = $<array_variable_1>                              // DEEP COPY of <array_variable_1> and save reference on copy to <array_variable_2>
@@ -193,7 +240,7 @@ $<array_variable> = range(<start_value>, <end_value>, <step>)          // return
 
 <br>
 
-### Numeric Arrays
+### **Numeric Arrays**
 
 ```php
 $<array_variable> = array(<value_1>, ... , <value_n>);    // instantiate new array (zero-based)
@@ -207,7 +254,7 @@ rsort(<array>)                                            // sort <array> in des
 
 <br>
 
-### Associative Arrays (Hash-Table, Dictionary)
+### **Associative Arrays (Hash-Table, Dictionary)**
 
 ```php
 $<array_variable> = array(<key_1>=><value_1>, ... , <key_n>=><value_n>     // instantiate new array of key-value-pairs
@@ -225,7 +272,7 @@ krsort(<assoc_array>)                                                      // so
 
 <br>
 
-### Array Functions
+### **Array Functions**
 
 ```php
 array_push(<array>, <values>)                     // add <values> to the end of <array>
@@ -253,11 +300,11 @@ implode(<separator>, <array>)                     // concatenate all fields of <
 <br>
 <br>
 
-## Operators
+## **Operators**
 
 <br>
 
-### Arithmetic
+### **Arithmetic**
 |Operator |Description    |
 |:-------:|:--------------|
 |+        |addition       |
@@ -269,7 +316,7 @@ implode(<separator>, <array>)                     // concatenate all fields of <
 
 <br>
 
-### Logical
+### **Logical**
 |Operator |Description    |
 |:-------:|:--------------|
 |!        |not            |
@@ -278,7 +325,7 @@ implode(<separator>, <array>)                     // concatenate all fields of <
 
 <br>
 
-### Comparison
+### **Comparison**
 |Operator |Description                     |
 |:-------:|:-------------------------------|
 |==       |equal (numbers and strings)     |
@@ -296,7 +343,7 @@ implode(<separator>, <array>)                     // concatenate all fields of <
 
 <br>
 
-### Assignment
+### **Assignment**
 |Operator      |Description                                                                |
 |:------------:|:--------------------------------------------------------------------------|
 |=             |assign                                                                     |
@@ -314,7 +361,7 @@ implode(<separator>, <array>)                     // concatenate all fields of <
 
 <br>
 
-### Operator Hierarchy
+### **Operator Hierarchy**
 |Operator              |
 |:--------------------:|
 |()                    |
@@ -330,7 +377,7 @@ implode(<separator>, <array>)                     // concatenate all fields of <
 <br>
 <br>
 
-## Mathematical Functions
+## **Mathematical Functions**
 
 <br>
 
@@ -353,7 +400,7 @@ min(<number_1>, ... , <number_n>)   // return lowest <number>
 <br>
 <br>
 
-## String Functions
+## **String Functions**
 
 <br>
 
@@ -383,7 +430,7 @@ mb_eregi_replace(<pattern>, <replace>, <string>)    // replace all occurrences o
 <br>
 <br>
 
-## Casting 
+## **Casting** 
 
 <br>
 
@@ -397,7 +444,7 @@ htmlentities(<string>)   // convert all applicable characters to HTML entities
 <br>
 <br>
 
-## Conditional Statements
+## **Conditional Statements**
 
 <br>
 
@@ -438,7 +485,7 @@ $<variable_name> ??= <if_null_or_nonexistent_value>;
 <br>
 <br>
 
-## Loops
+## **Loops**
 
 <br>
 
@@ -475,7 +522,7 @@ foreach($<array_variable> as [$<value_variable> | $<key_variable>=><value_variab
 <br>
 <br>
 
-## Functions
+## **Functions**
 
 <br>
 
@@ -496,7 +543,7 @@ foreach($<array_variable> as [$<value_variable> | $<key_variable>=><value_variab
 
 <br>
 
-### Call by reference
+### **Call By Reference**
 
 ```php
 <?php
@@ -510,7 +557,7 @@ foreach($<array_variable> as [$<value_variable> | $<key_variable>=><value_variab
 
 <br>
 
-### Optional type declarations (since PHP 7.0)
+### **Optional Type Declarations (since PHP 7.0)**
 
 ```php
 <?php declare(strict_types=1); ?>   // activate optional type declarations at the start of a utf-8 encoded file
@@ -546,11 +593,11 @@ Example:
 
 <br>
 
-### Variable Number Of Parameters
+### **Variable Number Of Parameters**
 
 <br>
 
-#### Option 1: Variadic Function
+#### **Option 1: Variadic Function**
 
 ```php
 function <function_name>($<parameter_1>, $<parameter_2>, ...$<array_variable_for_all other parameters>) {
@@ -560,7 +607,7 @@ function <function_name>($<parameter_1>, $<parameter_2>, ...$<array_variable_for
 
 <br>
 
-#### Option 2
+#### **Option 2**
 
 <br>
 
@@ -597,13 +644,13 @@ Example:
 <br>
 <br>
 
-## Classes
+## **Classes**
 [KnowledgeBase/Programming/php/class.php](./class.php).
 
 <br>
 <br>
 
-## Exceptions
+## **Exceptions**
 
 ```php
 	try {
@@ -623,7 +670,7 @@ Example:
 <br>
 <br>
 
-## Receiving Data
+## **Receiving Data**
 <br>
 
 HTML  
@@ -648,10 +695,10 @@ $<variable_name> = $_GET["<key>"];
 <br>
 <br>
 
-## Files and Directories
+## **Files and Directories**
 <br>
 
-### Uploading files to the server
+### **Uploading files to the server**
 
 HTML
 
@@ -687,7 +734,7 @@ $_FILES["<input_name>"]["property"]
 
 <br>
 
-### Write to a file
+### **Write To A File**
 
 ```php
 file_put_contents(<file_url>, <content>, [FILE_APPEND])		
@@ -699,7 +746,7 @@ file_put_contents(<file_url>, <content>, [FILE_APPEND])
 
 <br>
 
-### Read from a file
+### **Read From A File**
 
 ```php
 file_get_contents(<file_url>)    // return content of <file_url> in a single string
@@ -714,7 +761,7 @@ file(<file_url>, [flag])         // return an array containing each line of <fil
 
 <br>
 
-### Metafile data
+### **Metafile Data**
 
 ```php
 stat(<file_url>)     // return associative array of metadata or false
@@ -733,7 +780,7 @@ stat(<file_url>)     // return associative array of metadata or false
 
 <br>
 
-### Directories
+### **Directories**
 
 ```php
 getcwd()                            // get current working directory
@@ -752,7 +799,7 @@ closedir(<directory_handle>)        // close <directory_handle>
 <br>
 <br>
 
-## Database Connection
+## **Database Connection**
 <br>
 
 For MariaDB/MySQL:   [KnowledgeBase/Programming/database_systems/mariadb_mysql/connectors](../database_systems/mariadb_mysql/connectors/mysql_connector_php.php)  
@@ -761,7 +808,7 @@ For SQLite: [KnowledgeBase/Programming/database_systems/sqlite](../database_syst
 <br>
 <br>
 
-## Sessions and Cookies
+## **Sessions and Cookies**
 <br>
 
 ```php
@@ -777,7 +824,7 @@ $_COOKIE                                                 // superglobal array co
 <br>
 <br>
 
-## XML Files
+## **XML Files**
 <br>
 
 ```php
@@ -796,7 +843,7 @@ file_put_contents(<filename.xml>, $<object_variable>->asXML())       // save cha
 <br>
 <br>
 
-## Date and Time
+## **Date And Time**
 <br>
 
 ```php
@@ -822,7 +869,7 @@ strftime(<format_string>, [time_stamp])
 ```
 <br>
 
-### Format String Elements
+### **Format String Elements**
 
 <br>
 
@@ -908,7 +955,7 @@ Miscellaneous
 <br>
 <br>
 
-## Formatting
+## **Formatting**
 
 <br>
 

@@ -1,19 +1,33 @@
 # **Git Commands**
 <br>
 
-[Source](https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud)
+## **Table Of Contents**
+<br>
+
+- [**Git Commands**](#git-commands)
+  - [**Table Of Contents**](#table-of-contents)
+  - [**Workflow For Files**](#workflow-for-files)
+  - [**Initialize And Configuration**](#initialize-and-configuration)
+  - [**Repository Status**](#repository-status)
+  - [**Adding And Committing Files**](#adding-and-committing-files)
+  - [**Branches**](#branches)
+  - [**Stash**](#stash)
+  - [**Remote Repositories**](#remote-repositories)
+
+<br>
 <br>
 <br>
 
-## **Workflow for files**
+## **Workflow For Files**
 1. Untracked
 2. Staging Area
 3. Committed
 
 <br>
 <br>
+<br>
 
-## **Initialize and Configuration**
+## **Initialize And Configuration**
 
 ```bash
 git init                                    # initializes git version control for current working directory
@@ -21,6 +35,8 @@ git config --lis                            # show configurations, including use
 git config --global user.name 'name'        # set user name
 git config --global user.email 'email'      # set user email	
 ```
+
+<br>
 <br>
 <br>
 
@@ -30,6 +46,8 @@ git config --global user.email 'email'      # set user email
 git status      # show status of the working tree
 git log         # show commit history
 ```
+
+<br>
 <br>
 <br>
 
@@ -41,6 +59,8 @@ git add <directory>             # add all files in the directory to the staging 
 git restore --staged <file>     # remove <file> from staging area
 git commit -m 'message'         # add all files in the staging area to the project
 ```
+
+<br>
 <br>
 <br>
 
@@ -53,6 +73,8 @@ git switch <branch_name>        # switch to branch <branch_name>
 git switch -c <new_branch>      # add and switch to <new_branch>
 git merge <branch_name>         # merge <branch_name> to the current branch
 ```
+
+<br>
 <br>
 <br>
 
@@ -66,6 +88,8 @@ git stash pop stash@{<id>}      # move the changes in the stash <id> back into t
 git stash drop stash@{<id>}     # delete the changes in the stash <id>
 git stash clear                 # delete all stashes
 ```
+
+<br>
 <br>
 <br>
 

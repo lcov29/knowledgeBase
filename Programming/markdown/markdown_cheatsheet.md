@@ -1,8 +1,26 @@
-# Markdown Cheatsheet
+# **Markdown Cheatsheet**
+<br>
+
+## **Table Of Contents**
+<br>
+
+- [**Markdown Cheatsheet**](#markdown-cheatsheet)
+  - [**Table Of Contents**](#table-of-contents)
+  - [**Headers**](#headers)
+  - [**Text Formatting**](#text-formatting)
+  - [**Different Type Of Links**](#different-type-of-links)
+  - [**Line Breaks**](#line-breaks)
+  - [**Lists**](#lists)
+  - [**Code Quote (GitHub Extension)**](#code-quote-github-extension)
+  - [**Table (GitHub Extension)**](#table-github-extension)
+  - [**Symbols And Emoticons (GitHub Extension)**](#symbols-and-emoticons-github-extension)
+
+<br>
 <br>
 <br>
 
-## Headers
+## **Headers**
+<br>
 
 ```markdown
 # Header 1
@@ -15,8 +33,10 @@
 
 <br>
 <br>
+<br>
 
-## Text Formatting
+## **Text Formatting**
+<br>
 
 ```markdown
 This is _italic_.
@@ -37,8 +57,10 @@ This sentence is under a horizontal rule.
 
 <br>
 <br>
+<br>
 
-## Different Type Of Links
+## **Different Type Of Links**
+<br>
 
 ```markdown
 Inline Link:
@@ -67,8 +89,10 @@ Reference link to image defined within the document:
 
 <br>
 <br>
+<br>
 
-## Line Breaks
+## **Line Breaks**
+<br>
 
 Hard line break:
 
@@ -87,8 +111,10 @@ This sentence is in line 2.
 
 <br>
 <br>
+<br>
 
-## Lists
+## **Lists**
+<br>
 
 Unordered list
 
@@ -128,8 +154,10 @@ Task list
 
 <br>
 <br>
+<br>
 
-## Code Quote (GitHub Extension)
+## **Code Quote (GitHub Extension)**
+<br>
 
 ```markdown
 ```language(optional)
@@ -151,8 +179,10 @@ function sayHello() {
 
 <br>
 <br>
+<br>
 
-## Table (GitHub Extension)
+## **Table (GitHub Extension)**
+<br>
 
 ```markdown
 | Header 1     | Header 2       | Header 3      |
@@ -163,8 +193,10 @@ function sayHello() {
 
 <br>
 <br>
+<br>
 
-## Emoticons (GitHub Extension)
+## **Symbols And Emoticons (GitHub Extension)**
+<br>
 
 ```markdown
 :smile:  

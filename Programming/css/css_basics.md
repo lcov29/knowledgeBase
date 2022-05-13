@@ -1,9 +1,65 @@
-## CSS (**C**ascading **S**tyle **S**heets) Basics
+# **CSS (Cascading Style Sheets) Basics**
+<br>
+
+## **Table Of Contents**
+<br>
+
+- [**CSS (Cascading Style Sheets) Basics**](#css-cascading-style-sheets-basics)
+  - [**Table Of Contents**](#table-of-contents)
+  - [**Character Encoding For External CSS File**](#character-encoding-for-external-css-file)
+  - [**Basic Syntax**](#basic-syntax)
+  - [**Simple Selector Types**](#simple-selector-types)
+  - [**Selector Combinators**](#selector-combinators)
+  - [**Selector Attributes**](#selector-attributes)
+    - [**Basic Syntax**](#basic-syntax-1)
+  - [**Sources For CSS Rules**](#sources-for-css-rules)
+  - [**CSS Colors**](#css-colors)
+    - [**RGB**](#rgb)
+    - [**RGBA**](#rgba)
+    - [**HEX**](#hex)
+    - [**HSL**](#hsl)
+    - [**HSLA**](#hsla)
+  - [**Background Properties**](#background-properties)
+  - [**Border Properties**](#border-properties)
+  - [**Box Model**](#box-model)
+    - [**Default Box Model**](#default-box-model)
+    - [**Border Box**](#border-box)
+  - [**Flex Box Layout**](#flex-box-layout)
+  - [**CSS Grid Layout**](#css-grid-layout)
+  - [**Text Properties**](#text-properties)
+    - [**text-align**](#text-align)
+    - [**vertical-align**](#vertical-align)
+    - [**text-decoration-line**](#text-decoration-line)
+    - [**text-transform**](#text-transform)
+  - [**Links**](#links)
+  - [**Pseudo-classes**](#pseudo-classes)
+    - [**Basic Syntax**](#basic-syntax-2)
+    - [**Examples**](#examples)
+  - [**Pseudo-elements**](#pseudo-elements)
+    - [**Basic Syntax**](#basic-syntax-3)
+    - [**Examples**](#examples-1)
+  - [**Lists**](#lists)
+  - [**Table**](#table)
+  - [**Size**](#size)
+  - [**Units**](#units)
+    - [**Absolute Units**](#absolute-units)
+    - [**Relative Units**](#relative-units)
+  - [**Positioning**](#positioning)
+  - [**Overflow**](#overflow)
+  - [**Opacity**](#opacity)
+  - [**Variables / Custom Properties**](#variables--custom-properties)
+  - [**Counters**](#counters)
+  - [**Math Functions**](#math-functions)
+  - [**Google Fonts**](#google-fonts)
+  - [**Media Queries**](#media-queries)
+    - [**Syntax**](#syntax)
+    - [**Examples**](#examples-2)
+
 <br>
 <br>
 <br>
 
-## Character Encoding For External CSS File
+## **Character Encoding For External CSS File**
 <br>
 
 externalFile.css  
@@ -24,7 +80,7 @@ css rules
 <br>
 
 
-## Basic Syntax
+## **Basic Syntax**
 <br>
 
 ```css
@@ -40,7 +96,7 @@ css rules
 <br>
 <br>
 
-## Simple Selector Types
+## **Simple Selector Types**
 <br>
 
 ```css
@@ -78,7 +134,7 @@ p.classname { ... }
 <br>
 <br>
 
-## Selector Combinators
+## **Selector Combinators**
 <br>
 
 ```css
@@ -106,13 +162,13 @@ div ~ p { ... }
 <br>
 <br>
 
-## Selector Attributes
+## **Selector Attributes**
 <br>
 Select elements based on their attributes and attribute values  
 
 <br>
 
-### Basic Syntax
+### **Basic Syntax**
 ```css
 <element>[attribute] { ... }
 [attribute] { ... }
@@ -133,7 +189,7 @@ Select elements based on their attributes and attribute values
 <br>
 <br>
 
-## Sources For CSS Rules
+## **Sources For CSS Rules**
 <br>
 
 * Inline CSS
@@ -188,35 +244,35 @@ Priority of css rules (Cascading Order):
 <br>
 <br>
 
-## CSS Colors
+## **CSS Colors**
 <br>
 
-### RGB
+### **RGB**
 ```css
 rgb(red, green, blue)
 /* each parameter has to be in range [0, 255] */
 ```
 
-### RGBA
+### **RGBA**
 ```css
 rgba(red, green, blue, alpha)
 /* alpha parameter specifies opacity and has to be in range [0.0, 1.0] */
 ```
 
-### HEX
+### **HEX**
 ```css
 #rrggbb
 /* rr (red), gg (green) and bb (blue) have to be in hex range [00 - ff] */
 ```
 
-### HSL
+### **HSL**
 ```css
 hsl(hue, saturation, lightness)
 /* hue has to be in range [0, 360] (color wheel)
    saturation  and lightness have to be in range[0%, 100%] */
 ```
 
-### HSLA
+### **HSLA**
 ```css
 hsl(hue, saturation, lightness, alpha)
 /* alpha parameter specifies opacity and has to in range [0.0, 1.0] */
@@ -226,7 +282,7 @@ hsl(hue, saturation, lightness, alpha)
 <br>
 <br>
 
-## Background Properties
+## **Background Properties**
 <br>
 
 |Property             |Description                                      |
@@ -259,7 +315,7 @@ background-attachment:
 <br>
 <br>
 
-## Border Properties
+## **Border Properties**
 <br>
 
 |Property             |Description                                      |
@@ -289,10 +345,10 @@ border-style:
 <br>
 <br>
 
-## Box Model
+## **Box Model**
 <br>
 
-### Default Box Model 
+### **Default Box Model** 
 
 ```css
 display: block;
@@ -305,7 +361,7 @@ Actual Height = border-top + padding-top + height + padding-bottom + border-bott
 
 <br>
 
-### Border Box
+### **Border Box**
 
 ```css
 *, *::before, *::after {
@@ -319,7 +375,7 @@ Width and height include padding and border.
 <br>
 <br>
 
-## Flex Box Layout
+## **Flex Box Layout**
 <br>
 Flex container aligns its flex items in a row or column. Flex items share the same height.
 <br>
@@ -345,7 +401,7 @@ Flex container aligns its flex items in a row or column. Flex items share the sa
 <br>
 <br>
 
-## CSS Grid Layout
+## **CSS Grid Layout**
 <br>
 
 ```css
@@ -369,7 +425,7 @@ Flex container aligns its flex items in a row or column. Flex items share the sa
 <br>
 <br>
 
-## Text Properties
+## **Text Properties**
 <br>
 
 |Property                 |Description                                   |
@@ -395,7 +451,7 @@ Flex container aligns its flex items in a row or column. Flex items share the sa
 
 <br>
 
-### text-align:  
+### **text-align**  
 |Option     |Description|
 |:----------|:----------|
 |center     |    text   |
@@ -405,7 +461,7 @@ Flex container aligns its flex items in a row or column. Flex items share the sa
 
 <br>
 
-### vertical-align:  
+### **vertical-align**  
 |Option      |
 |:-----------|
 |baseline    |
@@ -416,7 +472,7 @@ Flex container aligns its flex items in a row or column. Flex items share the sa
 
 <br>
 
-### text-decoration-line:  
+### **text-decoration-line**  
 |Option      |
 |:-----------|
 |overline    |
@@ -425,7 +481,7 @@ Flex container aligns its flex items in a row or column. Flex items share the sa
 
 <br>
 
-### text-transform:
+### **text-transform**  
 |Option        |Example     |
 |:-------------|:-----------|
 |uppercase     |EXAMPLE TEXT|
@@ -436,7 +492,7 @@ Flex container aligns its flex items in a row or column. Flex items share the sa
 <br>
 <br>
 
-## Links
+## **Links**
 <br>
 
 ```css
@@ -452,14 +508,14 @@ a:active { ... } /* moment link is clicked */
 <br>
 <br>
 
-## Pseudo-classes
+## **Pseudo-classes**
 <br>
 
 Pseudo-classes style elements based on their state.
 
 <br>
 
-### Basic Syntax
+### **Basic Syntax**
 ```css
 <selector>:<pseudo-class> {
    property: value;
@@ -467,7 +523,7 @@ Pseudo-classes style elements based on their state.
 }
 ```
 
-### Examples
+### **Examples**
 ```css
 /* Link States (order is important!) */
 
@@ -524,14 +580,14 @@ a:focus { ... }
 <br>
 <br>
 
-## Pseudo-elements
+## **Pseudo-elements**
 <br>
 
 Pseudo-elements style specific parts of the element.
 
 <br>
 
-### Basic Syntax
+### **Basic Syntax**
 ```css
 <element>::<pseudo-element> {
    property: value;
@@ -539,7 +595,7 @@ Pseudo-elements style specific parts of the element.
 }
 ```
 
-### Examples
+### **Examples**
 ```css
 <element>::after { content: "content"; ... }      /* creates pseudo-element as last child of selected element */
 <element>::before { content: "content"; ... }     /* creates pseudo-element as first child of selected element */
@@ -557,7 +613,7 @@ li::marker { ... }                                /* applies styles to marker bo
 <br>
 <br>
 
-## Lists
+## **Lists**
 <br>
 
 |Property           |Description                                                        |
@@ -586,7 +642,7 @@ list-style-type:
 <br>
 <br>
 
-## Table
+## **Table**
 <br>
 
 |Property       |Description                                          |
@@ -607,7 +663,7 @@ border-collapse:
 <br>
 <br>
 
-## Size
+## **Size**
 <br>
 
 |Property     |Description
@@ -623,10 +679,10 @@ border-collapse:
 <br>
 <br>
 
-## Units
+## **Units**
 <br>
 
-### Absolute Units
+### **Absolute Units**
 |Unit|Description                        |
 |:---|:----------------------------------|
 |cm  |                                   |
@@ -637,7 +693,7 @@ border-collapse:
 
 <br>
 
-### Relative Units
+### **Relative Units**
 |Unit|Description                                                   |
 |:---|:-------------------------------------------------------------|
 |em  |relative to font size of element (3em = 3 x element font size)|
@@ -650,7 +706,7 @@ border-collapse:
 <br>
 <br>
 
-## Positioning
+## **Positioning**
 <br>
 
 ```css
@@ -672,7 +728,7 @@ float: none
 <br>
 <br>
 
-## Overflow
+## **Overflow**
 <br>
 
 ```css
@@ -686,7 +742,7 @@ overflow: auto       /* display scrollbars if necessary */
 <br>
 <br>
 
-## Opacity
+## **Opacity**
 <br>
 
 ```css
@@ -697,7 +753,7 @@ opacity: [0.0, 1.0];
 <br>
 <br>
 
-## Variables / Custom Properties
+## **Variables / Custom Properties**
 <br>
 
 Global variable
@@ -739,7 +795,7 @@ function setCSSVariable(newValue) {
 <br>
 <br>
 
-## Counters
+## **Counters**
 <br>
 CSS variables incremented or decremented by CSS rules to track the number of usages.
 
@@ -766,7 +822,7 @@ h2::before {
 <br>
 <br>
 
-## Math Functions
+## **Math Functions**
 <br>
 
 ```css
@@ -779,7 +835,7 @@ max(<value_1>, ..., <value_n>)
 <br>
 <br>
 
-## Google Fonts
+## **Google Fonts**
 <br>
 
 Convenient way of getting fonts without downloading or installing.
@@ -793,7 +849,7 @@ Convenient way of getting fonts without downloading or installing.
 <br>
 <br>
 
-## Media Queries
+## **Media Queries**
 <br>
 
 |Media types|
@@ -812,7 +868,7 @@ Convenient way of getting fonts without downloading or installing.
 
 <br>
 
-### Syntax
+### **Syntax**
 ```css
 @media <type> and (<property>: value) {
    /* css rules */
@@ -821,7 +877,7 @@ Convenient way of getting fonts without downloading or installing.
 
 <br>
 
-### Examples
+### **Examples**
 ```css
 @media screen and (min-width: 600px) {
    /* css rules */

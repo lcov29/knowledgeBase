@@ -8,11 +8,8 @@
   - [**Table Of Contents**](#table-of-contents)
   - [**Character Encoding For External CSS File**](#character-encoding-for-external-css-file)
   - [**Basic Syntax**](#basic-syntax)
-  - [**Simple Selector Types**](#simple-selector-types)
-  - [**Selector Combinators**](#selector-combinators)
-  - [**Selector Attributes**](#selector-attributes)
-    - [**Basic Syntax**](#basic-syntax-1)
   - [**Sources For CSS Rules**](#sources-for-css-rules)
+  - [**CSS Selectors**](#css-selectors)
   - [**CSS Colors**](#css-colors)
     - [**RGB**](#rgb)
     - [**RGBA**](#rgba)
@@ -32,12 +29,6 @@
     - [**text-decoration-line**](#text-decoration-line)
     - [**text-transform**](#text-transform)
   - [**Links**](#links)
-  - [**Pseudo-classes**](#pseudo-classes)
-    - [**Basic Syntax**](#basic-syntax-2)
-    - [**Examples**](#examples)
-  - [**Pseudo-elements**](#pseudo-elements)
-    - [**Basic Syntax**](#basic-syntax-3)
-    - [**Examples**](#examples-1)
   - [**Lists**](#lists)
   - [**Table**](#table)
   - [**Size**](#size)
@@ -53,7 +44,7 @@
   - [**Google Fonts**](#google-fonts)
   - [**Media Queries**](#media-queries)
     - [**Syntax**](#syntax)
-    - [**Examples**](#examples-2)
+    - [**Examples**](#examples)
 
 <br>
 <br>
@@ -96,98 +87,6 @@ css rules
 <br>
 <br>
 
-## **Simple Selector Types**
-<br>
-
-```css
-* { ... }
-/* universal selector 
-   (select all HTML elements) */
-
-
-p { ... } 
-/* element selector 
-   (select all HTML elements with the same tag, e.g. <p>) */
-
-
-h1, p, img { ... }
-/* group selector
-   (select multiple HTML elements, e.g. <h1>, <p>, <img>) */
-
-
-.classname { ... }
-/* class selector 
-   (select all HTML elements with the same class attribute) */
-
-
-p.classname { ... }
-/* element class selector
-   (select HTML elements of specific tag from all HTML elements with same class attribute) */
-
-
-#idSelector { ... }
-/* id selector
-   (select HTML element with unique id) */
-```
-
-<br>
-<br>
-<br>
-
-## **Selector Combinators**
-<br>
-
-```css
-main p { ... }
-/* descendant selector (space)
-   (select all descendants of specified elements; here all <p> descendants of <main>) */
-
-
-main > p { ... }
-/* child selector
-   (select all children of specified element; here all <p> children of <main>) */
-
-
-div + p { ... }
-/* adjacent sibling selector
-   (select element directly after specified element with the same parent element; here <p> element directly after <div>) */
-
-
-div ~ p { ... }
-/* general sibling selector
-   (select all siblings positioned after specified element; here all <p> elements after <div>) */
-```
-
-<br>
-<br>
-<br>
-
-## **Selector Attributes**
-<br>
-Select elements based on their attributes and attribute values  
-
-<br>
-
-### **Basic Syntax**
-```css
-<element>[attribute] { ... }
-[attribute] { ... }
-```
-<br>
-
-```css
-<element>[<attribute>]           /* select elements of type <element> with <attribute> */
-<element>[<attribute>=<value>]   /* select elements of type <element> where <attribute> has value <value> */
-<element>[<attribute>~=<value>]  /* select elements of type <element> where attribute has a comma separated list of values where one is equal to <value> */
-<element>[<attribute>|=<value]   /* select elements of type <element> where <attribute> has value <value> or starts with <value> followed by -*/
-<element>[<attribute>^=<value>]  /* select elements of type <element> where <attribute> is prefixed by <value> */
-<element>[<attribute>$=<value>]  /* select elements of type <element> where <attribute> is suffixed by <value> */
-<element>[<attribute>*=<value>]  /* select elements of type <element> where <value> occurs at least once in <attribute> */
-```
-
-<br>
-<br>
-<br>
 
 ## **Sources For CSS Rules**
 <br>
@@ -239,6 +138,15 @@ Priority of css rules (Cascading Order):
 2. Internal style
 3. External style
 4. Default style (defined by the browser)
+
+<br>
+<br>
+<br>
+
+## **CSS Selectors**
+<br>
+
+See [CSS Selectors](./css_selectors.md)
 
 <br>
 <br>
@@ -502,111 +410,6 @@ a:link { ... } /* unvisited */
 a:visited { ... }
 a:hover { ... }
 a:active { ... } /* moment link is clicked */
-```
-
-<br>
-<br>
-<br>
-
-## **Pseudo-classes**
-<br>
-
-Pseudo-classes style elements based on their state.
-
-<br>
-
-### **Basic Syntax**
-```css
-<selector>:<pseudo-class> {
-   property: value;
-   property: value;
-}
-```
-
-### **Examples**
-```css
-/* Link States (order is important!) */
-
-a:link { ... } /* unvisited */
-a:visited { ... }
-a:hover { ... }
-a:active { ... } /* moment link is clicked */
-a:focus { ... }
-
-
-/* User Action */
-<element>:hover { ... }    /* mouseover */
-<element>:active { ... }   /* element is activated, i.e. clicked on */
-<element>:focus { ... }
-
-
-/* Linguistic */
-<element>:dir(<rlt | ltr>) { ... } /* semantic value of directionality */
-<element>:lang(<language>) { ... } 
-
-
-/* Input */
-<input>:autofill { ... }           /* input has been autofilled */
-<input>:enabled { ... }
-<input>:disabled { ... }
-<input>:read-only { ... }
-<input>:read-write { ... }
-<input>:default { ... }
-<input>:checked { ... }
-<input>:blank { ... }
-<input>:valid { ... }
-<input>:invalid { ... }
-<input>:in-range { ... }
-<input>:out-of-range { ... }
-<input>:required { ... }
-
-
-/* Tree-structural */
-:root { ... }
-<element>:empty { ... }                            /* element with no children */
-<element>:nth-child(< x | An+B >)                  /* elements based on position in group of siblings */
-<element>:nth-last-child(< x | An+B >)             /* elements based on position in group of siblings, counting backwards */
-<element>:first-child { ... }
-<element>:last-child { ... }
-<element>:only-child { ... }                       /* element which is only child */
-<element>:nth-of-type(< x | An+B >) { ... }        /* elements based on position among siblings of the same tag names */
-<element>:nth-last-of-type(< x | An+B>) { ... }    /* elements based on position among siblings of the same tag names, counting backwards */
-<element>:first-of-type
-<element>:last-of-type
-<element>:only-of-type
-```
-
-<br>
-<br>
-<br>
-
-## **Pseudo-elements**
-<br>
-
-Pseudo-elements style specific parts of the element.
-
-<br>
-
-### **Basic Syntax**
-```css
-<element>::<pseudo-element> {
-   property: value;
-   property: value;
-}
-```
-
-### **Examples**
-```css
-<element>::after { content: "content"; ... }      /* creates pseudo-element as last child of selected element */
-<element>::before { content: "content"; ... }     /* creates pseudo-element as first child of selected element */
-
-<element>::first-letter { ... }                   /* applies to first letter of first line of block-level element when not preceded by other content */
-<element>::first-line { ... }                     /* applies to first line of block-level element */
-input[type=file]::file-selector-button { ... }    /* applies to button of input type file */
-
-<element>::selection { ... }                      /* applies styles to the part highlighted by the user */
-li::marker { ... }                                /* applies styles to marker box of a list item */
-
 ```
 
 <br>

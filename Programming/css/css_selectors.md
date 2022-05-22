@@ -20,6 +20,7 @@
     - [**Adjacent Sibling Combinator**](#adjacent-sibling-combinator)
   - [**Pseudo Classes**](#pseudo-classes)
     - [**Basic Syntax**](#basic-syntax)
+    - [**Negation**](#negation)
     - [**Tree-Structural Pseudo Classes**](#tree-structural-pseudo-classes)
       - [**An+B Notation**](#anb-notation)
     - [**Linguistic Pseudo Classes**](#linguistic-pseudo-classes)
@@ -226,6 +227,17 @@ Pseudo-classes style elements based on their state.
 
 ```css
 selector:pseudoClass { ... }
+```
+
+<br>
+<br>
+<br>
+
+### **Negation**
+<br>
+
+```css
+:not(selectorList)                              /* matches all elements that do not match the comma separated selectorList */
 ```
 
 <br>

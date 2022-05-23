@@ -80,6 +80,7 @@ Document Object Model (DOM) contains the components of a website in a hierarchic
 ## **Types Of DOM-Tree Nodes**
 <br>
 <br>
+<br>
 
 ### **Document Node**
 <br>
@@ -102,11 +103,13 @@ document.links                  // list of all links
 
 <br>
 <br>
+<br>
 
 ### **Element Node**
 
 Represents elements of DOM-tree like \<table>,  \<h1>  etc.
 
+<br>
 <br>
 <br>
 
@@ -116,11 +119,13 @@ Represents attributes of element nodes like _id_, _lang_ etc.
 
 <br>
 <br>
+<br>
 
 ### **Text Node**
 
 Represents text inside of element nodes. Can not have child nodes. Whitespaces are represented as empty text nodes.
 
+<br>
 <br>
 <br>
 
@@ -167,12 +172,12 @@ Represents text inside of element nodes. Can not have child nodes. Whitespaces a
 ## **Element And Text Nodes**
 <br>
 <br>
-
+<br>
 
 ### **Selecting Elements / Nodes**
 <br>
 <br>
-
+<br>
 
 #### **getElementById()**
 <br>
@@ -475,7 +480,6 @@ element.children()
 <br>
 <br>
 <br>
-<br>
 
 ### **Selecting Element Types**
 <br>
@@ -495,13 +499,14 @@ document.body                 /* returns <body> node of the element */
 <br>
 <br>
 <br>
-<br>
 
 ### **Create And Manipulate Nodes**
 <br>
 <br>
+<br>
 
 #### **Access Content**
+<br>
 <br>
 <br>
 
@@ -566,6 +571,7 @@ document.querySelector('#list li:nth-child(1)').innerHTML = 'New <em>Text</em>';
 #### **Create Nodes**
 <br>
 <br>
+<br>
 
 ##### **createTextNode()**
 <br>
@@ -607,6 +613,7 @@ document.createElement(tagName);
 <br>
 
 #### **Add Nodes To DOM Tree**
+<br>
 <br>
 <br>
 
@@ -654,9 +661,9 @@ parentNode.replaceChild(oldNode, newNode)
 <br>
 <br>
 <br>
-<br>
 
 ### **Delete Nodes**
+<br>
 <br>
 <br>
 
@@ -670,7 +677,6 @@ parentNode.removeChild(childNode)
 ```
 
 
-<br>
 <br>
 <br>
 <br>
@@ -872,5 +878,3 @@ element.classList.toggle('className', 'forceBoolean')
 ```javascript
 element.classList.contains('className');
 ```
-
-<!-- nodeValue -->

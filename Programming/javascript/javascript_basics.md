@@ -42,6 +42,8 @@
     - [**Foot-Controlled While Loop**](#foot-controlled-while-loop)
     - [**Break and Continue Keyword**](#break-and-continue-keyword)
   - [**Function**](#function)
+  - [**DOM Tree Manipulation**](#dom-tree-manipulation)
+  - [**DOM Event Handling**](#dom-event-handling)
   - [**Error Handling**](#error-handling)
     - [**Catch Errors**](#catch-errors)
     - [**Throw Errors**](#throw-errors)
@@ -811,6 +813,26 @@ const callName = function optionalFunctionName(parameter) { /* implementation */
 <br>
 
 See [JavaScript Functions](./javascript_function.md)
+
+<br>
+<br>
+<br>
+<br>
+
+## **DOM Tree Manipulation**
+<br>
+
+See [Document Object Model](./javascript_document_object_model.md)
+
+<br>
+<br>
+<br>
+<br>
+
+## **DOM Event Handling**
+<br>
+
+See [DOM Event Handling](./javascript_dom_events.md)
 
 <br>
 <br>

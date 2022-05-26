@@ -143,6 +143,11 @@ options = {
     passive: true,              // listener will not call preventDefault() and if so the call is ignored (default: false)
     signal: abortSignalObject
 }
+
+
+// Example:
+
+element.addEventListener('change', function(event) { console.log(event.target.value) });
 ```
 
 <br>

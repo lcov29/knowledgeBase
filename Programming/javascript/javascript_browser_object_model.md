@@ -75,7 +75,7 @@
     - [**Properties**](#properties-3)
       - [**clipboard**](#clipboard)
       - [**cookieEnabled**](#cookieenabled)
-      - [**.geolocation**](#geolocation)
+      - [**geolocation**](#geolocation)
       - [**hardwareConcurrency**](#hardwareconcurrency)
       - [**language**](#language)
       - [**languages**](#languages)
@@ -555,7 +555,7 @@ history.pushState(state, '', 'foo-bar.html');
 <br>
 <br>
 
-#### **.geolocation**
+#### **geolocation**
 * returns Geolocation object (Geolocation API)
 
 <br>

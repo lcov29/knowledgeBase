@@ -261,7 +261,7 @@ border-style:
 ```css
 display: block;
 ```
-![Image not available](./cssBoxModel.png)
+![Image not available](./pictures/cssBoxModel.png)
 
 Width and height only apply to the content area.  
 Actual Width = border-left + padding-left + width + padding-right + border-right  

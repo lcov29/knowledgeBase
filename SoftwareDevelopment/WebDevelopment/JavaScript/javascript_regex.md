@@ -75,7 +75,7 @@ RegExp.exec(searchString)
 
 ### **String.match()**
 
-* returns an array of the matches of a [regular expression](./javascript_regex.md)
+* returns an array of the matches of a regular expression
 
 ```javascript
 match(regex)

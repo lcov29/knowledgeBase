@@ -162,7 +162,7 @@ Represents text inside of element nodes. Can not have child nodes. Whitespaces a
 <br>
 <br>
 
-![Dom Tree](./domTree.png)
+![Dom Tree](./pictures/domTree.png)
 
 <br>
 <br>

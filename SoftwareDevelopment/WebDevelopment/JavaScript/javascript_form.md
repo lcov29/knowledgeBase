@@ -1,11 +1,11 @@
-# **JavaScript Forms**
+# **JavaScript Form**
 
 <br>
 
 ## **Table Of Contents**
 <br>
 
-- [**JavaScript Forms**](#javascript-forms)
+- [**JavaScript Form**](#javascript-form)
   - [**Table Of Contents**](#table-of-contents)
   - [**Form Element Types**](#form-element-types)
     - [**HTMLFormElement**](#htmlformelement)

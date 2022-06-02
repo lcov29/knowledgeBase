@@ -1,11 +1,11 @@
-# **JavaScript**
+# **JavaScript Basics**
 
 <br>
 
 ## **Table Of Contents**
 <br>
 
-- [**JavaScript**](#javascript)
+- [**JavaScript Basics**](#javascript-basics)
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
   - [**Strict Mode**](#strict-mode)

@@ -1,11 +1,11 @@
-# **JavaScript Functions**
+# **JavaScript Function**
 
 <br>
 
 ## **Table Of Contents**
 <br>
 
-- [**JavaScript Functions**](#javascript-functions)
+- [**JavaScript Function**](#javascript-function)
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
   - [**Ways To Declare Functions**](#ways-to-declare-functions)

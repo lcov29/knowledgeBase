@@ -1,11 +1,11 @@
-# **JavaScript Objects**
+# **JavaScript Object**
 
 <br>
 
 ## **Table Of Contents**
 <br>
 
-- [**JavaScript Objects**](#javascript-objects)
+- [**JavaScript Object**](#javascript-object)
   - [**Table Of Contents**](#table-of-contents)
   - [**Ways To Create Objects**](#ways-to-create-objects)
     - [**Object Literal**](#object-literal)

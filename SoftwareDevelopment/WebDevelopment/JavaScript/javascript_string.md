@@ -1,11 +1,11 @@
-# **JavaScript Strings**
+# **JavaScript String**
 
 <br>
 
 ## **Table Of Contents**
 <br>
 
-- [**JavaScript Strings**](#javascript-strings)
+- [**JavaScript String**](#javascript-string)
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
   - [**String Types**](#string-types)

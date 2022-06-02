@@ -1,10 +1,10 @@
-# **Javascript Arrays**
+# **Javascript Array**
 <br>
 
 ## **Table Of Contents**
 <br>
 
-- [**Javascript Arrays**](#javascript-arrays)
+- [**Javascript Array**](#javascript-array)
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
   - [**Ways To Create Arrays**](#ways-to-create-arrays)

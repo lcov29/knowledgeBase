@@ -233,7 +233,7 @@ let string4 = `${string3} World`;
 
 <br>
 
-See [JavaScript Strings](./javascript_strings.md)  
+See [JavaScript Strings](./javascript_string.md)  
 See [JavaScript Regular Expressions](./javascript_regex.md)
 
 <br>
@@ -357,7 +357,7 @@ let obj = {
 
 <br>
 
-See [JavaScript Objects](./javascript_objects.md)
+See [JavaScript Objects](./javascript_object.md)
 
 <br>
 <br>
@@ -409,7 +409,7 @@ array.length;                           // return number of elements
 
 <br>
 
-See [JavaScript Arrays](./javascript_arrays.md)
+See [JavaScript Arrays](./javascript_object.md)
 
 <br>
 <br>
@@ -466,7 +466,7 @@ map.size;                       // returns 1
 
 <br>
 
-See [JavaScript Sets](./javascript_sets.md)
+See [JavaScript Sets](./javascript_set.md)
 
 <br>
 <br>
@@ -822,7 +822,7 @@ See [JavaScript Functions](./javascript_function.md)
 ## **DOM Tree Manipulation**
 <br>
 
-See [Document Object Model](./javascript_document_object_model.md)
+See [Document Object Model](../WebAPI/document_object_model_api.md)
 
 <br>
 <br>
@@ -832,7 +832,7 @@ See [Document Object Model](./javascript_document_object_model.md)
 ## **DOM Event Handling**
 <br>
 
-See [DOM Event Handling](./javascript_dom_events.md)
+See [DOM Event Handling](../WebAPI/dom_event_api.md)
 
 <br>
 <br>

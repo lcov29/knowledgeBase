@@ -1,11 +1,11 @@
-# **JavaScript Document Object Model Events**
+# **Document Object Model Events API**
 
 <br>
 
 ## **Table Of Contents**
 <br>
 
-- [**JavaScript Document Object Model Events**](#javascript-document-object-model-events)
+- [**Document Object Model Events API**](#document-object-model-events-api)
   - [**Table Of Contents**](#table-of-contents)
   - [**Basic Concept**](#basic-concept)
   - [**Ways To Create Event-Handlers**](#ways-to-create-event-handlers)

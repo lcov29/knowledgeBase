@@ -1,11 +1,11 @@
-# **JavaScript Document Object Model**
+# **Document Object Model API**
 
 <br>
 
 ## **Table Of Contents**
 <br>
 
-- [**JavaScript Document Object Model**](#javascript-document-object-model)
+- [**Document Object Model API**](#document-object-model-api)
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
   - [**Types Of DOM-Tree Nodes**](#types-of-dom-tree-nodes)

@@ -1,11 +1,11 @@
-# **JavaScript Ajax**
+# **Ajax API (Asynchronous JavaScript And XML**
 
 <br>
 
 ## **Table Of Contents**
 <br>
 
-- [**JavaScript Ajax**](#javascript-ajax)
+- [**Ajax API (Asynchronous JavaScript And XML**](#ajax-api-asynchronous-javascript-and-xml)
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
   - [**Client Server Communication**](#client-server-communication)

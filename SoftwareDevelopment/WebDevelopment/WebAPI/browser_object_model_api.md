@@ -1,11 +1,11 @@
-# **JavaScript Browser Object Model**
+# **Browser Object Model API**
 
 <br>
 
 ## **Table Of Contents**
 <br>
 
-- [**JavaScript Browser Object Model**](#javascript-browser-object-model)
+- [**Browser Object Model API**](#browser-object-model-api)
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
   - [**Window Object**](#window-object)

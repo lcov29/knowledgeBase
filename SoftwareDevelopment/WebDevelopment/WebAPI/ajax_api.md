@@ -36,7 +36,7 @@
 
 <br>
 
-![Ajax](./ajax.png)
+![Ajax](./pictures/ajax.png)
 
 <br>
 <br>
@@ -51,7 +51,7 @@
 ### **Synchronous Communication**
 <br>
 
-![Synchronous Communication](./synchronousCommunication.png)
+![Synchronous Communication](./pictures/synchronousCommunication.png)
 
 <br>
 
@@ -69,7 +69,7 @@
 ### **Asynchronous Communication**
 <br>
 
-![Asynchronous Communication](./asynchronousCommunication.png)
+![Asynchronous Communication](./pictures/asynchronousCommunication.png)
 
 <br>
 

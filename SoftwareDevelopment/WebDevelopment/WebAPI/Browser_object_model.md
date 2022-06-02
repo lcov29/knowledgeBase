@@ -198,7 +198,7 @@ Browser Object Model
 <br>
 <br>
 
-![WindowProperties](./windowProperties.png)
+![WindowProperties](./pictures/windowProperties.png)
 
 
 <br>

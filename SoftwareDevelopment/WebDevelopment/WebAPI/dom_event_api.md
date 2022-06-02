@@ -40,7 +40,7 @@
 ## **Basic Concept**
 <br>
 
-![EventQueue](domEventQueue.png)
+![EventQueue](./pictures/domEventQueue.png)
 
 <br>
 
@@ -56,7 +56,7 @@ Event Flow:
 
 <br>
 
-![EventFlow](./domEventFlow.png)
+![EventFlow](./pictures/domEventFlow.png)
 
 <br>
 

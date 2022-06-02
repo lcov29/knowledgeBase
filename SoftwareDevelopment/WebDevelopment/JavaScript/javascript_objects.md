@@ -85,7 +85,7 @@ let obj2 = new Obj(42.12, 'value');
   
 <br>
 
-![Diagram](./diagramPrototype.png)
+![Diagram](./pictures/diagramPrototype.png)
 
 <br>
 <br>

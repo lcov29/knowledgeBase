@@ -409,7 +409,7 @@ array.length;                           // return number of elements
 
 <br>
 
-See [JavaScript Arrays](./javascript_object.md)
+See [JavaScript Arrays](./javascript_array.md)
 
 <br>
 <br>

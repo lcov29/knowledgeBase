@@ -14,12 +14,7 @@
   - [**Data Exchange Formats**](#data-exchange-formats)
     - [**HTML**](#html)
     - [**XML**](#xml)
-      - [**Serialising**](#serialising)
-      - [**Parsing**](#parsing)
     - [**JSON**](#json)
-      - [**Difference Between JSON And JavaScript Objects**](#difference-between-json-and-javascript-objects)
-      - [**Serialising**](#serialising-1)
-      - [**Parsing**](#parsing-1)
 
 <br>
 <br>
@@ -104,125 +99,18 @@ Data can be exchanged between client and servers in various formats. The followi
 <br>
 <br>
 
-### **HTML**
-<br>
+### [**HTML**](../Frontend/html/html_basics.md)
 
 * used for loading gui components from the server
 
 <br>
-<br>
-<br>
 
-### **XML**
-<br>
+### [**XML**](../../../FileFormats/xml/xml_basics.md)
 
-* E**x**tensible **M**arkup **L**anguage
 * used for loading structured data from the server
-* consists of user-defined elements and attributes
-* XML-Tree can be used by the [DOM API](./javascript_document_object_model.md)
 
 <br>
 
-Example.xml
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<persons>
-  <person>
-    <firstName>John</firstName>
-    <lastName>Doe</lastName>
-  </person>
-  <person>
-    <firstName>Jane</firstName>
-    <lastName>Doe</lastName>
-  </person>
-</persons>
-```
+### [**JSON**](../../../FileFormats/json/json_basics.md)
 
-<br>
-<br>
-
-#### **Serialising**
-<br>
-
-* conversion of xml object to string
-
-```javascript
-const xmlString = new XMLSerializer().serializeToString(xmlDocumentNode);
-```
-
-<br>
-<br>
-
-#### **Parsing**
-<br>
-
-* conversion of string to xml object
-
-```javascript
-const xmlDocumentObject = new DOMParser().parseFromString(xmlString, 'text/xml');
-```
-
-
-<br>
-<br>
-<br>
-
-### **JSON**
-<br>
-
-* **J**ava**S**cript **O**bject **N**otation
 * used for loading data from the server to generate content on a website
-* can directly be used within javascript code
-
-<br>
-
-Example.json
-```javascript
-{
-  "persons": [
-    {
-      "firstName": "John",
-      "lastName": "Doe"
-    },
-    {
-      "firstName": "Jane",
-      "lastName": "Doe"
-    }
-  ]
-}
-```
-
-<br>
-<br>
-
-#### **Difference Between JSON And JavaScript Objects**
-<br>
-
-|Component|JSON                                                     |JavaScript Objects
-|:--------|:--------------------------------------------------------|:-------------------------
-|keys     |double quotation                                         |no, single or double quotation
-|values   |string, number, boolean, other JSON-objects, arrays, null|like JSON + functions, regex, other objects,...
-
-<br>
-<br>
-
-#### **Serialising**
-<br>
-
-* conversion of javascript object to json string
-
-```javascript
-const jsonString = JSON.stringify(javascriptObject);
-```
-
-<br>
-<br>
-
-#### **Parsing**
-<br>
-
-* conversion of json string to javascript object
-
-```javascript
-const javascriptObject = JSON.parse(jsonString);
-```

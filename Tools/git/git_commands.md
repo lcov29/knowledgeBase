@@ -31,7 +31,7 @@
 
 ```bash
 git init                                    # initializes git version control for current working directory
-git config --lis                            # show configurations, including user and email
+git config --list                           # show configurations, including user and email
 git config --global user.name 'name'        # set user name
 git config --global user.email 'email'      # set user email	
 ```

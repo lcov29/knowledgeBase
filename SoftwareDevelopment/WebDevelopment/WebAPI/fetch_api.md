@@ -8,7 +8,7 @@
 - [**Fetch API**](#fetch-api)
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
-  - [**window.fetch()**](#windowfetch)
+  - [**window.fetch(resource, [optionObject])**](#windowfetchresource-optionobject)
   - [**Request**](#request)
     - [**Constructor**](#constructor)
     - [**Properties**](#properties)
@@ -54,6 +54,20 @@
       - [**json()**](#json-1)
       - [**redirect(url, [status])**](#redirecturl-status)
       - [**text()**](#text-1)
+  - [**Headers**](#headers-2)
+    - [**Constructor**](#constructor-2)
+    - [**Methods**](#methods-2)
+      - [**append(name, value)**](#appendname-value)
+      - [**delete(name)**](#deletename)
+      - [**entries()**](#entries)
+      - [**get(name)**](#getname)
+      - [**has(name)**](#hasname)
+      - [**keys()**](#keys)
+      - [**set(name, value)**](#setname-value)
+      - [**values()**](#values)
+  - [**Examples**](#examples)
+    - [**Fetch Data From Server**](#fetch-data-from-server)
+    - [**Send Data To Server**](#send-data-to-server)
 
 <br>
 <br>
@@ -76,10 +90,30 @@
 <br>
 <br>
 
-## **window.fetch()**
+## **window.fetch(resource, [optionObject])**
 <br>
 <br>
 
+* starts fetching a resource
+* returns Promise
+  * resolves when **any** response is received (even HTTP errors)
+  * rejects only on network errors
+
+<br>
+
+```javascript
+fetch('resource.jpg')
+
+```
+
+<br>
+
+Parameters:
+
+* resource
+  * string or request object
+* optionObject
+  * for possible values see [Request Properties](#properties)
 
 <br>
 <br>
@@ -434,3 +468,202 @@ Optional _options_ parameter is an object with the following possible properties
 <br>
 <br>
 <br>
+
+## **Headers**
+<br>
+<br>
+
+* manages a header list as key value pairs
+* retrieved by properties _request.headers_ and _response.headers_
+* can be iterated directly with for-of-loop
+
+<br>
+<br>
+<br>
+
+### **Constructor**
+<br>
+<br>
+
+```javascript
+new Headers([options]);
+
+let options = {'Content-Type': 'image/jpeg'}
+```
+
+<br>
+<br>
+<br>
+
+### **Methods**
+<br>
+<br>
+
+#### **append(name, value)**
+* append new value to existing header 
+* add header with value if header does not exist
+
+<br>
+<br>
+
+#### **delete(name)**
+* detetess specified header
+
+<br>
+<br>
+
+#### **entries()**
+* returns iterator for all key value pairs in list
+
+<br>
+<br>
+
+#### **get(name)**
+* returns string with all values of specified header
+* returns _null_ if specified header does not exist
+
+<br>
+<br>
+
+#### **has(name)**
+* returns boolean indicating whether Headers object contains specified header
+
+<br>
+<br>
+
+#### **keys()**
+* returns iterator for all keys
+
+<br>
+<br>
+
+#### **set(name, value)**
+* set new value for specified existing header
+* adds header if specified header does not exist
+
+<br>
+<br>
+
+#### **values()**
+* returns iterator for all values
+
+<br>
+<br>
+<br>
+<br>
+
+## **Examples**
+<br>
+<br>
+
+### **Fetch Data From Server**
+<br>
+<br>
+
+We have the following file in the content directory of our webserver:
+
+<br>
+
+demoData.json
+<br>
+
+```json
+{
+  "persons": [
+    {
+      "firstName": "John",
+      "lastName": "Doe"
+    },
+    {
+      "firstName": "Jane",
+      "lastName": "Doe"
+    }
+  ]
+}
+```
+
+<br>
+<br>
+
+Fetch and process data from server:
+
+```javascript
+  fetch('demoData.json')
+    .then ((response) => {
+
+      if (!response.ok) {
+        console.log(`HTTP Error: ${response.status} (${response.statusText})`);
+      } else {
+        return response.json();                       // returns promise resolving to json              
+      }
+
+    })
+    .then ((response) => {
+        console.log(response.persons[0].firstName);    // process JSON response
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+```
+
+<br>
+<br>
+
+Simplify code by using keyword _await_:
+
+```javascript
+async function fetchData() {
+
+    try {
+        const response = await fetch('demoData.json');
+        if (response.ok) {
+            const result = await response.json();
+            console.log(result.persons[0].firstName);
+        } else {
+            console.log(`HTTP Error: ${response.status} (${response.statusText})`);
+        }
+    } catch(error) {
+        console.log(error);
+    }
+    
+}
+```
+
+<br>
+<br>
+<br>
+
+### **Send Data To Server**
+<br>
+<br>
+
+ Assume there is a serverside program _processData_.
+
+ <br>
+
+ ```javascript
+async function sendData() {
+  try {
+
+    const body = {
+      firstName: 'John',
+      lastName: 'Doe'
+    };
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Accept' : 'application/json',
+        'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify(body);
+    };
+
+    const response = await fetch('processData', options)
+    console.log(response);
+
+  } catch (error) {
+    console.log(error);
+  }
+}
+ ```

@@ -47,9 +47,9 @@
 ## **General**
 <br>
 
-* Arrays are object
+* Arrays are objects
 * Arrays are dynamic, so they can grow or shrink
-* Arrays are loosely types, so they can contain elements of different types
+* Arrays are loosely typed, so they can contain elements of different types
 
 ```javascript
 array.length;       // returns number of elements

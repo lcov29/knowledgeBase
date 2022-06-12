@@ -108,7 +108,7 @@ console.log(message);                   // print message to console
 <br>
 
 ```javascript
-let myVariable1;                // declaration without assignment (default value: undefined)
+var myVariable1;                // declaration without assignment (default value: undefined)
 let myVariable2 = 'value';
 
 const MY_CONSTANT = 'value';  
@@ -120,6 +120,10 @@ Variables and Constants are case sensitive.
 Rules for naming variables and constants:
 * start with character, underscore (_) or dollar sign ($)
 * rest can contain characters, numbers, underscores(_) and dollar signs ($)
+
+<br>
+
+See [Variable Declaration](./javascript_variable_declaration.md) for differences between var, let and const.
 
 <br>
 <br>

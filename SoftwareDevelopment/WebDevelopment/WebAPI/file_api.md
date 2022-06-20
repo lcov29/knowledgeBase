@@ -426,19 +426,17 @@ dropArea.addEventListener('drop', drop, false);
 function dragenter(e) {
   e.stopPropagation();
   e.preventDefault();
-  console.log('dragenter');
 }
 
 function dragover(e) {
   e.stopPropagation();
   e.preventDefault();
-  console.log('dragover');
 }
 
 function drop(e) {
   e.stopPropagation();
   e.preventDefault();
-  handleFiles(e.dataTranser.files);
+  handleFiles(e.dataTransfer.files);
 }
 
 function handleFiles(files) {
@@ -471,13 +469,11 @@ dropbox.addEventListener('drop', drop, false);
 function dragenter(e) {
   e.stopPropagation();
   e.preventDefault();
-  console.log('dragenter');
 }
 
 function dragover(e) {
   e.stopPropagation();
   e.preventDefault();
-  console.log('dragover');
 }
 
 function drop(e) {

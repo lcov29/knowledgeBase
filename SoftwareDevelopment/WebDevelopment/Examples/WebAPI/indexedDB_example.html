@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>IndexedDB Example</title>
+    <style>
+        #flexContainer {
+            display: flex;
+            flex-direction: row;
+            flex: 1;
+            justify-content: space-evenly;
+            margin-top: 3em;
+        }
+
+        #personForm, #personListContainer {
+            border: 1px solid black;
+            padding: 0em 1em 1em 1em;
+        }
+
+        #personForm {
+            padding-top: 1em;
+        }
+
+        .invisible {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="flexContainer">
+
+        <form id="personForm">
+            <label for="firstName">First Name</label>
+            <input id="firstName" type="text" placeHolder="John" required>
+            <br>
+            <br>
+            <label for="lastName">Last Name</label>
+            <input id="lastName" type="text" placeHolder="Doe" required>
+            <br>
+            <br>
+            <label for="birthday">Birthday</label>
+            <input id="birthday" type="date" required>
+            <br>
+            <br>
+            <label for="hasGlasses">Wears Glasses</label>
+            <input id="hasGlasses" type="checkbox">
+            <br>
+            <br>
+            <button id="addPerson">Add</button>
+            <button id="updatePerson">Update</button>
+            <button id="deletePerson">Delete</button>
+            <button id="clearForm">Clear</button>
+        </form>
+
+        <div id="personListContainer">
+            <p><em>Select Person To Load Information</em></p>
+            <ul id="personList"></ul>
+            <form id="filterForm">
+                <label for="filterSelect">Filter</label>
+                <select id="filterSelect">
+                    <option selected value="noIndex"></option>
+                    <option value="firstNameIndex">firstName</option>
+                    <option value="lastNameIndex">lastName</option>
+                    <option value="glassIndex">hasGlasses</option>
+                </select>
+                <br>
+                <br>
+                <label class="invisible" for="filterFrom" name="filterParameter">From:</label>
+                <input class="invisible" id="filterFrom" name="filterParameter" type="text">
+                <label class="invisible" for="filterTo" name="filterParameter">To:</label>
+                <input class="invisible" id="filterTo" name="filterParameter" type="text">
+                <button class="invisible" id="filter" name="filterParameter">Filter</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+    
+
+
+
+<script>
+
+    let dbOpenRequest;
+    let database;
+    const dbVersion = 1;
+    const dbName = 'personDB';
+    const storeName = 'personStore';
+
+    if(!window.indexedDB) {
+        window.alert('indexedDB is not available. Make sure that your browser is not in private mode and supports indexedDB');
+    } else {
+        dbOpenRequest = indexedDB.open(dbName, dbVersion);
+    }
+
+
+
+
+    // create structure of database; is called only when database is not created yet or version property changes
+    dbOpenRequest.addEventListener('upgradeneeded', (event) => {
+        database = event.target.result;
+        if (database.objectStoreNames.contains(storeName)) {
+            database.deleteObjectStore(storeName);
+        }
+        const objectStore = database.createObjectStore(storeName, { autoIncrement: true });   // other option: { keyPath: propertyName }
+        
+        // enables searching and filtering on indexed properties
+        objectStore.createIndex('firstNameIndex', 'firstName', { unique: false });
+        objectStore.createIndex('lastNameIndex', 'lastName', { unique: false });
+        objectStore.createIndex('glassIndex', 'hasGlasses', { unique: false });
+        console.log('database initialization complete');
+    });
+
+
+
+
+    // called if connection failed
+    dbOpenRequest.addEventListener('error', (event) => {
+        console.log('failed to access database:');
+        console.log(event);
+    });
+
+
+
+
+    // called on successful connection
+    dbOpenRequest.addEventListener('success', (event) => {
+        database = event.target.result;
+        buildPersonList();
+    });
+
+
+
+
+    // add single record to database
+    document.getElementById('addPerson').addEventListener('click', (event) => {
+        event.preventDefault();
+        const transaction = createTransaction(storeName, 'readwrite');
+        const personObject = buildPersonObject();
+        const result = transaction.objectStore(storeName).add(personObject);
+
+        result.addEventListener('error', (event) => {
+            console.log('failed to add data');
+        });
+
+        result.addEventListener('success', (event) => {
+            buildPersonList();
+            resetPersonForm();
+            console.log('added person');
+        });
+    });
+
+
+
+
+    // load single record specified by primary key from database to form
+    document.getElementById('personList').addEventListener('click', (event) => {
+        event.preventDefault();
+        const key = parseInt(event.target.getAttribute('id'));
+        const transaction = createTransaction(storeName, 'readonly');
+        const request = transaction.objectStore(storeName).get(key);
+
+        request.addEventListener('success', (event) => {
+            let personObject = event.target.result;
+            document.getElementById('firstName').value = personObject.firstName;
+            document.getElementById('lastName').value = personObject.lastName;
+            document.getElementById('birthday').value = personObject.birthday;
+            document.getElementById('hasGlasses').checked = personObject.hasGlasses;
+        });
+
+        // set attribute to determine which record to update in event listener updatePerson.click
+        document.getElementById('personList').setAttribute('selectedKey', key);     
+    });
+
+
+
+
+    // update existing database record specified by primary key 
+    document.getElementById('updatePerson').addEventListener('click', (event) => {
+        event.preventDefault();
+        let key = document.getElementById('personList').getAttribute('selectedKey')
+        if (key) {
+            key = parseInt(key);
+            const personObject = buildPersonObject();
+            const transaction = createTransaction(storeName, 'readwrite');
+            
+            transaction.addEventListener('complete', (event) => {
+                buildPersonList();
+                resetPersonForm();
+            });
+
+            const result = transaction.objectStore(storeName).put(personObject, key);
+            
+            result.addEventListener('success', (event) => {
+                console.log('record successfully updated');
+            });
+        }
+    });
+
+
+
+
+    // delete existing database record specified by primary key
+    document.getElementById('deletePerson').addEventListener('click', (event) => {
+        event.preventDefault();
+        let key = document.getElementById('personList').getAttribute('selectedKey')
+        if (key) {
+            key = parseInt(key);
+            const transaction = createTransaction(storeName, 'readwrite');
+            
+            transaction.addEventListener('complete', (event) => {
+                buildPersonList();
+                resetPersonForm();
+            });
+
+            const result = transaction.objectStore(storeName).delete(key);
+            
+            result.addEventListener('success', (event) => {
+                console.log('record successfully deleted');
+            });
+        }
+    });
+
+
+
+
+    document.getElementById('filterSelect').addEventListener('change', (event) => {
+        event.preventDefault();
+        buildPersonList();
+        toggleFilterOptionVisibility();
+        resetFilterParameters();
+    });
+
+
+
+
+    document.getElementById('filter').addEventListener('click', (event) => {
+        event.preventDefault();
+        buildPersonList();
+    });
+
+
+
+
+    // ==== Helper Functions ====
+
+    function createTransaction(storeName, mode) {
+        const transaction = database.transaction(storeName, mode);
+
+        transaction.addEventListener('error', (event) => {
+            console.log('transaction error:');
+            console.log(event);
+        });
+
+        transaction.addEventListener('complete', (event) => {
+            console.log('transaction complete');
+        });
+
+        return transaction;
+    }
+
+
+    /*
+    // read all records from database via cursor
+    function buildPersonList() {
+        const list = document.getElementById('personList');
+        list.innerHTML = '';
+        const transaction = createTransaction(storeName, 'readonly');
+        const request = transaction.objectStore(storeName).openCursor();
+
+        request.addEventListener('success', (event) => {
+            const cursor = event.target.result;
+            if (cursor) {
+                const person = cursor.value;
+                const listItem = document.createElement('li');
+                listItem.setAttribute('id', cursor.primaryKey);
+                listItem.innerText = `${person.firstName} ${person.lastName}`;
+                list.appendChild(listItem);
+                cursor.continue();
+            }
+        });
+    }*/
+
+
+    // read all records from database via cursor
+    function buildPersonList() {
+        let request;
+        const list = document.getElementById('personList');
+        list.innerHTML = '';
+        const filterFrom = document.getElementById('filterFrom').value;
+        const filterTo = document.getElementById('filterTo').value;
+        let range;
+        if (filterFrom !== '' || filterTo !== '') {
+            if (filterTo === '') {
+                range = IDBKeyRange.lowerBound(filterFrom);
+            } else if (filterFrom === '') {
+                range = IDBKeyRange.upperBound(filterTo);
+            } else {
+                range = IDBKeyRange.bound(filterFrom, filterTo);
+            }
+        }
+
+        const transaction = createTransaction(storeName, 'readonly');
+        const filterName = document.getElementById('filterSelect').value;
+
+        if (filterName !== 'noIndex') {
+            const index = transaction.objectStore(storeName).index(filterName);
+            if (range) {
+                request = index.openCursor(range);
+            } else {
+                request = index.openCursor();
+            }
+            
+        } else {
+            request = transaction.objectStore(storeName).openCursor();
+        }
+
+        request.addEventListener('success', (event) => {
+            const cursor = event.target.result;
+            if (cursor) {
+                const person = cursor.value;
+                const listItem = document.createElement('li');
+                listItem.setAttribute('id', cursor.primaryKey);
+                listItem.innerText = `${person.firstName} ${person.lastName}`;
+                list.appendChild(listItem);
+                cursor.continue();
+            }
+        });
+    }
+
+
+
+    function buildPersonObject() {
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('lastName').value;
+        const birthday = document.getElementById('birthday').value;
+        const hasGlasses = document.getElementById('hasGlasses').checked;
+        return { firstName, lastName, birthday, hasGlasses };
+    }
+
+
+    function resetPersonForm() {
+        document.getElementById('personForm').reset();
+        document.getElementById('personList').removeAttribute('selectedKey');
+    }
+
+
+    function toggleFilterOptionVisibility() {
+        const selectedFilter = document.getElementById('filterSelect').value;
+        const parameterElementList = document.getElementsByName('filterParameter');
+
+        for (let element of parameterElementList) {
+            if (selectedFilter === 'noIndex') {
+                element.classList.toggle('invisible', true);
+            } else {
+                element.classList.toggle('invisible', false);
+            }
+        }
+    }
+
+    function resetFilterParameters() {
+        document.getElementById('filterFrom').value = '';
+        document.getElementById('filterTo').value = '';
+    }
+</script>
+
+
+
+</html>

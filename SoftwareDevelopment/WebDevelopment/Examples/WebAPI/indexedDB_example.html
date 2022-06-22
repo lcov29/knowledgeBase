@@ -263,28 +263,6 @@
     }
 
 
-    /*
-    // read all records from database via cursor
-    function buildPersonList() {
-        const list = document.getElementById('personList');
-        list.innerHTML = '';
-        const transaction = createTransaction(storeName, 'readonly');
-        const request = transaction.objectStore(storeName).openCursor();
-
-        request.addEventListener('success', (event) => {
-            const cursor = event.target.result;
-            if (cursor) {
-                const person = cursor.value;
-                const listItem = document.createElement('li');
-                listItem.setAttribute('id', cursor.primaryKey);
-                listItem.innerText = `${person.firstName} ${person.lastName}`;
-                list.appendChild(listItem);
-                cursor.continue();
-            }
-        });
-    }*/
-
-
     // read all records from database via cursor
     function buildPersonList() {
         let request;

@@ -63,12 +63,20 @@ This sentence is under a horizontal rule.
 <br>
 
 ```markdown
-Inline Link:
-[Some text](www.test.com "optional title")
-
-
 Inline link to header in same document:
-[Some text](#different-type-of-links)
+[Some text](#headerName)
+
+
+Inline link to other document:
+[Some Text](../folder1/folder2/fileName)
+
+
+Inline link to header in other document:
+[Some Text](../folder1/folder2/fileName#headerName)
+
+
+Inline link to website:
+[Some text](www.test.com "optional title")
 
 
 Inline image link:

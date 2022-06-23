@@ -1,16 +1,19 @@
-# **JavaScript Object Orientation**
+# **JavaScript Object Oriented Programming**
 <br>
 
 ## **Table Of Contents**
 <br>
 
-- [**JavaScript Object Orientation**](#javascript-object-orientation)
+- [**JavaScript Object Oriented Programming**](#javascript-object-oriented-programming)
   - [**Table Of Contents**](#table-of-contents)
+  - [**Core Principles Of Object Orientated Programming**](#core-principles-of-object-orientated-programming)
 
 <br>
 <br>
 <br>
 <br>
+
+## **Core Principles Of Object Orientated Programming**
 
 Step 1:
 

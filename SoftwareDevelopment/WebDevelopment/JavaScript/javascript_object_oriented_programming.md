@@ -11,9 +11,11 @@
     - [**Prototype Object Orientation**](#prototype-object-orientation)
       - [**Create New Object Based On Prototype**](#create-new-object-based-on-prototype)
       - [**Inherit Prototype Methods And Properties**](#inherit-prototype-methods-and-properties)
-      - [**Add Methods And Properties To New Object**](#add-methods-and-properties-to-new-object)
+      - [**Implicitly Call Prototype Methods**](#implicitly-call-prototype-methods)
+      - [**Add Methods And Properties**](#add-methods-and-properties)
+      - [**Create Subtypes**](#create-subtypes)
       - [**Overwrite Prototype Methods**](#overwrite-prototype-methods)
-      - [**Explicitly Call Methods Within Prototype**](#explicitly-call-methods-within-prototype)
+      - [**Explicitly Call Prototype Methods**](#explicitly-call-prototype-methods)
     - [**Pseudo Class Object Orientation**](#pseudo-class-object-orientation)
       - [**Add Methods To Prototype Of Constructor Function**](#add-methods-to-prototype-of-constructor-function)
       - [**Create New Object**](#create-new-object)
@@ -23,7 +25,23 @@
         - [**Step 3: Set Constructor Property Of Newly Created Subtype Prototype Object To Subtype Constructor**](#step-3-set-constructor-property-of-newly-created-subtype-prototype-object-to-subtype-constructor)
         - [**Step 4: Define Subtype Methods**](#step-4-define-subtype-methods)
         - [**Check Implemented Inheritance**](#check-implemented-inheritance)
-    - [**Class Syntax**](#class-syntax)
+        - [**Implicitly Call Supertype Methods**](#implicitly-call-supertype-methods)
+      - [**Call Supertype Constructor**](#call-supertype-constructor)
+      - [**Overwrite Methods**](#overwrite-methods)
+      - [**Explicitly Call Supertype Methods**](#explicitly-call-supertype-methods)
+    - [**Class Syntax Object Orientation**](#class-syntax-object-orientation)
+      - [**Ways To Define Class Syntax**](#ways-to-define-class-syntax)
+        - [**Class Declaration**](#class-declaration)
+        - [**Class Expression**](#class-expression)
+      - [**Create New Instance Object**](#create-new-instance-object)
+      - [**Getter And Setter Methods**](#getter-and-setter-methods)
+      - [**Private Properties And Methods**](#private-properties-and-methods)
+      - [**Static Properties And Methods**](#static-properties-and-methods)
+      - [**Create Subclass**](#create-subclass)
+      - [**Call Superclass Constructor**](#call-superclass-constructor)
+      - [**Overwrite Superclass Method**](#overwrite-superclass-method)
+      - [**Explicitly Call Superclass Method**](#explicitly-call-superclass-method)
+      - [**Example**](#example)
 
 <br>
 <br>
@@ -41,13 +59,13 @@
 
 2. **Data Encapsulation**
    
-   Attributes and methods are encapsulated by classes or prototypes
+   Properties and methods are encapsulated by classes or prototypes
 
 <br>
 
 3. **Inheritance**
    
-   Classes or prototypes can inherit the attributes and methods of other classes or prototypes
+   Classes or prototypes can inherit the properties and methods of other classes or prototypes
 
 <br>
 
@@ -75,7 +93,7 @@ Lets see whether the core principles of object oriented programming are fulfille
 
 1. **Abstraction**
    
-   Fulfilled by defining attributes and methods on prototype objects.
+   Fulfilled by defining properties and methods on prototype objects.
 
 <br>
 
@@ -112,10 +130,10 @@ There are three ways to implement object orientation in JavaScript:
 Assume we have the following object that we will use as a prototype:
 
 ```javascript
-const person = {
-    firstName: 'John',
-    lastName: 'Doe',
-    age: 37,
+const personPrototype = {
+    firstName: '',
+    lastName: '',
+    age: 0,
     introduce: function() {
         console.log(`Hello, my name is ${this.firstName} ${this.lastName}`);
     },
@@ -131,6 +149,8 @@ const person = {
 
 #### **Create New Object Based On Prototype**
 #### **Inherit Prototype Methods And Properties**
+#### **Implicitly Call Prototype Methods**
+
 <br>
 
 ```javascript
@@ -141,43 +161,35 @@ Object.create(prototypeObject);
 
 
 ```javascript
-const johnDoe = Object.create(person);      // create new objects based on person object
-
-const janeDoe = Object.create(person);
-janeDoe.firstName = 'Jane';                 // change property values received from prototype person
-janeDoe.age = 24;
-
-
-johnDoe.introduce();                        // 'Hello, my name is John Doe'
-johnDoe.incrementAge(2);                    
-console.log(johnDoe.age);                   // 39
+const johnDoe = Object.create(personPrototype);     // create new objects based on person object
+johnDoe.firstName = 'John';
+johnDoe.lastName = 'Doe';
+johnDoe.age = 37;
 
 
-janeDoe.introduce();                        // 'Hello, my name is Jane Doe'
-janeDoe.incrementAge(-2);
-console.log(janeDoe.age);                   // 22
+johnDoe.introduce();                                // 'Hello, my name is John Doe'
+johnDoe.incrementAge(1);                    
+console.log(johnDoe.age);                           // 38
 ```
 
 <br>
 <br>
 <br>
 
-#### **Add Methods And Properties To New Object**
+#### **Add Methods And Properties**
 <br>
 
 ```javascript
-newObject.propertyName = 'value';
-newObject.methodName = function(param) { /* implementation */ };
+object.propertyName = 'value';
+object.methodName = function(param) { /* implementation */ };
 ```
 
 <br>
 
 ```javascript
-const johnDoe = Object.create(person);
+johnDoe.isHungry = true;                            // add property
 
-johnDoe.isHungry = true;                    // add property
-
-johnDoe.eat = function(food) {              // add method
+johnDoe.eat = function(food) {                      // add method
   if (this.isHungry) {
     console.log(`eating ${food}...`);
   } else {
@@ -186,8 +198,43 @@ johnDoe.eat = function(food) {              // add method
   this.isHungry = !this.isHungry;
 }
 
-johnDoe.eat('apple');                       // 'eating apple...'
-johnDoe.eat('cake');                        // 'not hungry...'
+johnDoe.eat('apple');                               // 'eating apple...'
+johnDoe.eat('cake');                                // 'not hungry...'
+```
+
+<br>
+<br>
+<br>
+
+#### **Create Subtypes**
+<br>
+
+```javascript
+const subtypePrototype = Object.create(supertypePrototype);
+subtypePrototype.subtypePropertyName = 'value';
+subtypePrototype.subtypeMethodName = function(param) { /* implementation */ };
+```
+
+<br>
+
+```javascript
+const programmerPrototype = Object.create(personPrototype);
+programmerPrototype.language = ''
+programmerPrototype.program = function(durationInHours) {
+    console.log(`Programming ${this.language} for ${durationInHours} hours...`);
+}
+
+
+const janeDoe = Object.create(programmerPrototype);
+janeDoe.firstName = 'Jane';
+janeDoe.lastName = 'Doe';
+janeDoe.age = 24;
+janeDoe.language = 'JavaScript';
+
+janeDoe.introduce();                                // 'Hello, my name is Jane Doe'
+janeDoe.incrementAge(1);
+console.log(janeDoe.age);                           // 25
+janeDoe.program(3);                                 // 'Programming JavaScript for 3 hours...'
 ```
 
 <br>
@@ -198,28 +245,28 @@ johnDoe.eat('cake');                        // 'not hungry...'
 <br>
 
 ```javascript
-newObject.prototypeObjectMethodName = function(param) { /* implementation */ };
+object.prototypeObjectMethodName = function(param) { /* implementation */ };
 ```
 
 <br>
 
 ```javascript
-const johnDoe = Object.create(person);
+johnDoe.introduce();                                // 'Hello, my name is John Doe'
+janeDoe.introduce();                                // 'Hello, my name is Jane Doe'
 
-johnDoe.introduce();                      // 'Hello, my name is John Doe'
-
-johnDoe.introduce = function() {
-  console.log(`Hi, i am ${this.firstName} ${this.lastName}. I am currently ${this.age} years old.`);
+programmerPrototype.introduce = function() {
+    console.log(`Hi, i am ${this.firstName} ${this.lastName}. I am a ${this.age} years old ${this.language} programmer`);
 }
 
-johnDoe.introduce();                      // 'Hi, i am John Doe. I am currently 37 years old.'
+johnDoe.introduce();                                // 'Hello, my name is John Doe'
+janeDoe.introduce();                                // 'Hi, i am Jane Doe. I am a 25 years old JavaScript programmer.'
 ```
 
 <br>
 <br>
 <br>
 
-#### **Explicitly Call Methods Within Prototype**
+#### **Explicitly Call Prototype Methods**
 <br>
 
 ```javascript
@@ -229,17 +276,15 @@ Object.getPrototypeOf(this).prototypeObjectMethodName.call(this, param);
 <br>
 
 ```javascript
-const johnDoe = Object.create(person);
-
-johnDoe.celebrateBirthday = function() {
-  const incrementByYears = 1;
-  Object.getPrototypeOf(this).incrementAge.call(this, incrementByYears);        // calls prototype method incrementAge(1) 
-  console.log(`celebrating ${this.age}th birthday...`);
+programmerPrototype.celebrateBirthday = function() {
+    const incrementByYears = 1;
+    Object.getPrototypeOf(this).incrementAge.call(this, incrementByYears);      // calls prototype method incrementAge(1) 
+    console.log(`celebrating ${this.age}th birthday...`);
 }
 
-console.log(johnDoe.age);                                                       // 37
-johnDoe.celebrateBirthday();                                                    // celebrating 38th birthday...
-console.log(johnDoe.age);                                                       // 38
+console.log(janeDoe.age);                                                       // 25
+janeDoe.celebrateBirthday();                                                    // 'celebrating 26th birthday..'.
+console.log(janeDoe.age);                                                       // 26
 ```
 
 <br>
@@ -262,6 +307,7 @@ function Person(firstName, lastName, age) {
     this.age = age;
 }
 ```
+
 <br>
 <br>
 <br>
@@ -287,6 +333,58 @@ Person.prototype.incrementAge = function(years) {
 
 <br>
 <br>
+
+**Note:**  
+You can also define methods inside of the constructor function. In this case, the method definition is added to every object created by the constructor function rather than just to the prototype.
+
+<br>
+
+```javascript
+function Person(firstName, lastName, age) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+    this.incrementAge = function(years) {
+        this.age += years;
+    }
+    this.introduce = function() {
+        console.log(`Hello, my name is ${this.firstName} ${this.lastName}`);
+    }
+}
+
+
+const johnSmith = new Person('John', 'Smith', 15);
+const janeSmith = new Person('Jane', 'Smith', 67);
+
+console.log(johnSmith);
+console.log(janeSmith);
+
+/*
+
+Console output:
+
+Person {firstName: 'John', lastName: 'Smith', age: 15, incrementAge: ƒ, introduce: ƒ}
+age: 15
+firstName: "John"
+incrementAge: ƒ (years)
+introduce: ƒ ()
+lastName: "Smith"
+[[Prototype]]: Object
+
+
+Person {firstName: 'Jane', lastName: 'Smith', age: 67, incrementAge: ƒ, introduce: ƒ}
+age: 67
+firstName: "Jane"
+incrementAge: ƒ (years)
+introduce: ƒ ()
+lastName: "Smith"
+[[Prototype]]: Object
+
+*/
+```
+
+<br>
+<br>
 <br>
 
 #### **Create New Object**
@@ -302,9 +400,9 @@ const newObject = new ConstructorFunctionName(param);
 const johnDoe = new Person('John', 'Doe', 37);
 
 johnDoe.introduce();                              // 'Hello, my name is John Doe'
-johnDoe.incrementAge(2);
+johnDoe.incrementAge(1);
 
-console.log(johnDoe.age);                         // 39
+console.log(johnDoe.age);                         // 38
 ```
 
 <br>
@@ -315,9 +413,7 @@ console.log(johnDoe.age);                         // 39
 <br>
 <br>
 
-We have already declared our constructor function and added methods to its prototype. 
-
-We start with the following situation for the constructor function object Person:
+We have already declared our constructor function and added methods to its prototype: 
 
 <br>
 
@@ -333,7 +429,7 @@ We start with the following situation for the constructor function object Person
 ```javascript
 function Programmer(firstName, lastName, age, language) {
     Person.call(this, firstName, lastName, age);                // call constructor of supertype
-    this.language = language;                                   // define suptype specific properties
+    this.language = language;                                   // define subtype specific properties
 }
 ```
 
@@ -399,283 +495,505 @@ Programmer.prototype.program = function(durationInHours) {
 <br>
 
 ##### **Check Implemented Inheritance**
+##### **Implicitly Call Supertype Methods**
 <br>
 
 ```javascript
 const janeDoe = new Programmer('Jane', 'Doe', 24, 'JavaScript');
-janeDoe.introduce();                                                  // Hello, my name is Jane Doe
+janeDoe.introduce();                                                  // 'Hello, my name is Jane Doe'
 janeDoe.incrementAge(1);
 console.log(janeDoe.age);                                             // 25
-janeDoe.program(3);                                                   // Programming JavaScript for 3 hours...
+janeDoe.program(3);                                                   // 'Programming JavaScript for 3 hours...'
 
 
 const johnDoe = new Person('John', 'Doe', 37);
-johnDoe.introduce();                                                  // Hello, my name is John Doe
+johnDoe.introduce();                                                  // 'Hello, my name is John Doe'
 johnDoe.incrementAge(1);
 console.log(johnDoe.age);                                             // 38
-johnDoe.program(3);                                                   // Error: johnDoe.program is not a function
+johnDoe.program(3);                                                   // 'Error: johnDoe.program is not a function'
 ```
 
+<br>
+<br>
+<br>
 
+#### **Call Supertype Constructor**
+<br>
+
+```javascript
+function subtypeConstructorFunctionName(supertypeParam, subtypeParam) {
+    supertypeConstructorFunctioName.call(this, supertypeParam);
+    this.subtypePropertyName = subtypeParam;
+}
+```
+
+<br>
+
+See [Inheritance Step 1](#step-1-create-constructor-function-for-subtype)
+
+<br>
+<br>
+<br>
+
+#### **Overwrite Methods**
+<br>
+
+```javascript
+constructorFunctionName.prototype.methodName = function(param) { /* implementation */ }
+
+// only when methods were defined directly within constructor function:
+constructorFunctionName.methodName = function(param) { /* implementation */ }
+```
+
+<br>
+
+```javascript
+const johnSmith = new Programmer('John', 'Smith', 34, 'TypeScript');
+
+
+janeDoe.introduce();                                    // 'Hello, my name is Jane Doe'
+johnSmith.introduce();                                  // 'Hello, my name is John Smith'
+
+
+
+// overwrite inherited method Person.introduce()
+Programmer.prototype.introduce = function() {
+    console.log(`Hi, i am ${this.firstName} ${this.lastName}. I am a ${this.age} years old ${this.language} programmer`);
+}
+
+janeDoe.introduce();                                    // 'Hi, i am Jane Doe. I am a 25 years old JavaScript programmer'
+johnSmith.introduce();                                  // 'Hi, i am John Smith. I am a 34 years old TypeScript programmer'
+
+
+
+// overwrite method Programmer.introduce() defined above for specified instance
+janeDoe.introduce = function() {
+    console.log(`Greetings, i am ${this.firstName} ${this.lastName} (${this.age}). I write applications in ${this.language}.`);
+}
+
+janeDoe.introduce();                                    // 'Greetings, i am Jane Doe (25). I write applications in JavaScript.'
+johnSmith.introduce();                                  // 'Hi, i am John Smith. I am a 34 years old TypeScript programmer'
+```
+
+<br>
+<br>
+<br>
+
+#### **Explicitly Call Supertype Methods**
+<br>
+
+```javascript
+supertypeName.prototype.methodName.call(this, param);
+```
+
+<br>
+
+```javascript
+janeDoe.introduce();                                    // 'Greetings, i am Jane Doe (25). I write applications in JavaScript.'
+
+Person.prototype.introduce.call(janeDoe);               // 'Hello, my name is Jane Doe'
+```
 
 <br>
 <br>
 <br>
 <br>
 
-### **Class Syntax**
+### **Class Syntax Object Orientation**
 <br>
 <br>
 
+* reduces the complexity of pseudo class object orientation
+* realizes no class-based programming, object orientation stays prototype-based!
+
 <br>
 <br>
 <br>
 
+#### **Ways To Define Class Syntax**
+<br>
+<br>
+
+##### **Class Declaration**
+<br>
+
+* Class declaration is not hoisted by the interpreter
+
+<br>
+
+```javascript
+class ClassName {
+
+  constructor(param1, param2, param3) {
+      this.property1 = param1;
+      this.property2 = param2;
+      this.property3 = param3;
+  }
+
+  method1() { /* implementation */ }
+
+}
+```
+
+<br>
+<br>
+
+##### **Class Expression**
+<br>
+
+* Class expression is not hoisted by the interpreter
+
+<br>
+
+```javascript
+const ClassName = class {
+
+    constructor(param1, param2, param3) {
+        this.property1 = param1;
+        this.property2 = param2;
+        this.property3 = param3;
+    }
+
+    method1() { /* implementation */ }
+
+};
+```
+
+<br>
+<br>
+<br>
+
+#### **Create New Instance Object**
+<br>
+
+```javascript
+const newInstance = new ClassName('value1', 'value2', 'value3');
+```
+
+<br>
+<br>
+<br>
+
+#### **Getter And Setter Methods**
+<br>
+
+* define methods that are called upon reading or value assignment
+* use keywords _get_ or _set_ in front of method same name as property
+* add underscore (or #) in front of property name to avoid an infinity loop
+
+<br>
+
+```javascript
+class ClassName {
+
+    constructor(param1, param2, param3) {
+        this._property1 = param1;
+        this._property2 = param2;
+        this._property3 = param3;
+    }
+
+    get property1() {
+        console.log('call: get property1()');
+        return this._property1;
+    }
+
+    set property1(param) {
+        console.log('call: set propterty1()');
+        this._property1 = param;
+    }
+
+    get property2() {
+        console.log('call: get property2()');
+        return this._property2;
+    }
+
+    set property3(param) {
+        console.log('call: set propterty3()');
+        this._property2 = param;
+    }
+
+    method1() { /* implementation */ }
+
+}  
+```
+
+<br>
+
+```javascript
+const newInstance = new ClassName('value1', 'value2', 'value3');
 
 
-<!--
-===== pseudoclass object-orientation =====
 
+const property1 = newInstance.property1;                    // 'call: get property1()'
+console.log(property1);                                     // 'value1'
 
-- call constructor of super prototype
-  - function Teacher(name, age, subject) {
-        Person.call(this, name, age);
-        this.subject = subject;
-    };
-
-- overwrite methods
-  - ObjectA.prototype.methodName = function(param){ ... }
-
-
-- call methods of super object
-  - superObjectB.prototype.methodName.call(this, argument);
-
-
-Object-orientation Principles:
-
-1. Abstraction: check, abstracted into prototypes
-2. Data encapsulation: No, only with specific design patterns
-3. Inheritance: check, but a bit complex
-4. polymorphism: check, javascript is dynamically typed
+newInstance.property1 = 'changed value';                    // 'call: set propterty1()'
 
 
 
------------------------------------------------------------------------------
+const property2 = newInstance.property2;                    // 'call: get property2()'
+console.log(property2);                                     // 'value2'
+
+newInstance.property2 = 'changed value';                    // 'call: get property2()'
+console.log(newInstance.property2);                         // 'value2' (because there is no setter method for property2)
 
 
 
-===== object-orientation with class syntax =====
+const property3 = newInstance.property3;
+console.log(property3);                                     // 'undefined' (because there is no getter method for property3)
 
-- class syntax reduces complexity of pseudoclass object-orientation
-- realizes no class-based programming! JavaScript stays object-based
+newInstance.property3 = 'changed value';                    // 'call: set propterty3()'
+console.log(newInstance.property3);                         // 'undefined' (because there is no getter method for property3)
+```
+
+<br>
+<br>
+
+**Note:**  
+Using getters and setters does not prevent external access to the property!  
+See [private properties and methods]().
+
+<br>
+
+```javascript
+const newInstance = new ClassName('value1', 'value2', 'value3');
+
+console.log(newInstance._property1);                        // value1
+
+newInstance._property1 = 'externally changed value';
+
+console.log(newInstance._property1);                        // 'externally changed value'
+```
+
+<br>
+<br>
+<br>
+
+#### **Private Properties And Methods**
+<br>
+
+* prevents external access to properties and methods marked # in front of name
+* since ES2022
+
+<br>
+
+```javascript
+class ClassName {
+
+    #privateProperty;
+    publicProperty;
+
+    constructor(param1, param2) {
+        this.#privateProperty = param1;
+        this.publicProperty = param2;
+    }
+
+    #privateMethod() { /* implementation */ }
+
+    publicMethod() { /* implementation */ }
+}
+```
+
+<br>
+<br>
+
+```javascript
+class ClassName {
+
+    #privateProperty = 'default value';
+
+    constructor(param1, param2) {
+        this.#privateProperty =  param1 ? param1 : this.#privateProperty;
+        this.publicProperty = param2;
+    }
+
+    get privateProperty() {
+        console.log('call get privateProperty()');
+        return this.#privateProperty;
+    }
+
+    set privateProperty(param) {
+        console.log('call set privateProperty()');
+        this.#privateProperty = param;
+    }
+
+    publicMethod() {
+        console.log('call publicMethod()');
+        this.#privateMethod();
+    }
+
+    #privateMethod() { 
+        console.log('call privateMethod()');
+    }
+
+}  
+```
+
+<br>
+
+```javascript
+const newInstance = new ClassName('value1', 'value2');
+
+console.log(newInstance.publicProperty);                            // 'value2'  
+console.log(newInstance.privateProperty);                           // 'call get privateProperty()', 'value1' 
+console.log(newInstance.#privateProperty);                          // 'Error: private field must be declared in an enclosing class'
+
+newInstance.privateProperty;                                        // 'call get privateProperty()'
+newInstance.privateProperty = 'changed value';                      // 'call set privateProperty()'
+
+newInstance.publicMethod();                                         // 'call publicMethod()', 'call privateMethod()'
+newInstance.privateMethod();                                        // 'Error: newInstance.privateMethod is not a function'
+newInstance.#privateMethod();                                       // 'Error: private field must be deflared in an enclosing class'
+```
+
+<br>
+<br>
+<br>
+
+#### **Static Properties And Methods**
+<br>
+
+* static elements can be used without instance of a class
+
+<br>
+
+```javascript
+class ClassName {
+
+    static staticProperty = 'value';
+
+    static staticMethod(param) {
+        return param;
+    }
+}
 
 
---- class declaration ---
+ClassName.staticProperty;               // 'value'
+ClassName.staticMethod('foo');          // 'foo'
+```
 
-    class ClassName {
+<br>
+<br>
+<br>
 
-        property1 = 'value1';       // instance properties (ES2022)
-        property2 = 'value2'
+#### **Create Subclass**
+#### **Call Superclass Constructor**
+#### **Overwrite Superclass Method**
+#### **Explicitly Call Superclass Method**
 
-        constructor(param1, param2, param3) {
-            this.property1 = param1 ? param2 : this.property1;
-            this.property2 = param2 ? param2 : this.property2;
-            this.property3 = param3;
-        }
+<br>
 
-        method1() { /* implementation */ }
+```javascript
+class SuperClass { 
+
+    constructor(param1) {
+        this.property1 = param1;
+    }
+
+    method1() { /* implementation */ }
+
+    method2(param) { /* implementation*/ }
+
+}
+
+
+class SubClass extends SuperClass {
+
+    constructor(param1, param2) {
+        super(param1);                            // call of superclass constructor (must be called before use of keyword this)
+        this.property2 = param2;
+    }
+
+    method2(param) {                              // overwrite superclass method
+        super.method2(param);                     // explicit call of superclass method
+        /* additional implementation */
+    }
+
+    method3() { /* implementation */ }
+
+}
+```
+
+<br>
+<br>
+<br>
+
+#### **Example**
+<br>
+
+```javascript
+class Person {
+
+    #firstName = '';
+    #lastName = '';
+    #age = 0;
+
+
+    constructor(firstName, lastName, age) {
+        this.#firstName = firstName;
+        this.#lastName = lastName;
+        this.#age = age;
     }
 
 
---- class expression ---
+    get firstName() {
+        return this.#firstName;
+    }
 
-    const ClassName = class {
+    get lastName() {
+        return this.#lastName;
+    }
 
-        property1 = 'value1';       // instance properties (ES2022)
-        property2 = 'value2'
-
-        constructor(param1, param2, param3) {
-            this.property1 = param1 ? param2 : this.property1;
-            this.property2 = param2 ? param2 : this.property2;
-            this.property3 = param3;
-        }
-
-        method1() { /* implementation */ }
-    };
-
-
-
-- instantiate new object
-  - const newInstance = new ClassName('value1', 'value2', 'value3');
-
-
-- define Getter and Setter
-  - write keywords get or set in front of method
-  - CAUTION: name of getter- / setter-method must not equal a property name (-> infinity loop)
-    -> typically: add underscore in front of property name
-
-
-    class ClassName {
-
-        constructor(param1, param2, param3) {
-            this._property1 = param1 ? param2 : this.property1;
-            this._property2 = param2 ? param2 : this.property2;
-            this._property3 = param3;
-        }
-
-        get property1() {
-            return this._property1;
-        }
-
-        set property1(param) {
-            this._property1 = param;
-        }
-
-        get property2() {
-            return this._property2;
-        }
-
-        set property2(param) {
-            this._property2 = param;
-        }
-
-        method1() { /* implementation */ }
-
-    }  
-
-
-
-- define private properties and methods (since ES2022)
-  - underscore is only a convention and does not prevent external access
-  - add # in front of private properties 
-
-    class ClassName {
-
-        constructor(param1, param2, param3) {
-            this.#property1 = param1;
-            this.#property2 = param2;
-            this.#property3 = param3;
-        }
-
-        get property1() {
-            return this.#property1;
-        }
-
-        set property1(param) {
-            this.#property1 = param;
-        }
-
-        get property2() {
-            return this.#property2;
-        }
-
-        set property2(param) {
-            this.#property2 = param;
-        }
-
-        #method1() { /* implementation */ }
-
-    }  
-
-
-
-- inheritance of classes
-    - keyword extends
-    - call of superclass constructor with keyword super
-
-    class SuperClass {
-        
-        constructor(param1, param2) {
-            this.property1 = param1;
-            this.property2 = param2;
-        }
-
-        method1(param) { /* implementation */ }
+    get age() {
+        return this.#age;
     }
 
 
-    class SubClass extends SuperClass {
+    introduce() {
+        console.log(`Hello, my name is ${this.#firstName} ${this.#lastName}`);
+    }
 
-        constructor(param1, param2, param3) {
-            super(param1, param2);                  // superclass constructor must to be called BEFORE any use of keyword _this_
-            this.property3 = param3;
-        }
+    incrementAge(years) {
+        this.#age += years;
+    }
+
+}
+
+
+
+class Programmer extends Person {
+
+    #language = '';
+
+
+    constructor(firstName, lastName, age, language) {
+        super(firstName, lastName, age);
+        this.#language = language;
     }
 
 
-
-- overwrite methods of superclasses
-  - add method with same name to subclass
-
-  class SuperClass {
-        
-        constructor(param1, param2) {
-            this.property1 = param1;
-            this.property2 = param2;
-        }
-
-        method1(param) { /* implementation */ }
+    program(durationInHours) {
+        console.log(`Programming ${this.#language} for ${durationInHours} hours...`);
     }
 
-
-    class SubClass extends SuperClass {
-
-        constructor(param1, param2, param3) {
-            super(param1, param2);                  // superclass constructor must to be called BEFORE any use of keyword _this_
-            this.property3 = param3;
-        }
-
-        method1(param) { /* implementation */ }     // overwrites SuperClass.method1()
+    introduce() {
+        console.log(`Hi, i am ${super.firstName} ${super.lastName}. I am a ${super.age} years old ${this.#language} programmer`);
     }
 
+}
 
 
 
-- call methods of superclass
-  - super.methodName(param)
+const johnDoe = new Person('John', 'Doe', 37);
+
+johnDoe.introduce();                                                    // 'Hello, my name is John Doe'
+johnDoe.incrementAge(1);
+console.log(johnDoe.age);                                               // 38
 
 
-
-- static methods
-  - static methodName(param) { /* implementation */ }
-
-
-
-- static properties
-  - static propertyName = 'value';
--->
-
-
-
-
-
-<!-- 
-
----- -------------------Prototype -----------------------------
-
-- every object is based on a prototype (except _Object_ object)
-- every object can be used as a prototype for other objects
-- object inherits all properties and methods from prototype
-  
-- access prototype of objectA with: 
-  - objectA.__proto__  (do not use)
-  - objectA.getPrototypeOf()
-
-- check if objectB is prototype of objectA
-  - objectB.isPrototypeOf(objectA)
-
-- create objectB with prototype objectA
-  - objectB = Object.create(objectA)
-
-
-- prototype chaining:
-  1. search called method on caller object
-  2. if method does not exist, search on prottype
-  3. if method does not exist and object <> root _Object_: go to 2
-
-
-! No prototype possible for object literals !
--->
-
-
-[Resource To Check Feature Availability](https://kangax.github.io/compat-table/es2016plus/)
+const janeDoe = new Programmer('Jane', 'Doe', 24, 'JavaScript');
+janeDoe.introduce();                                                    // 'Hi, i am Jane Doe. I am a 24 years old JavaScript programmer'
+janeDoe.incrementAge(1);
+console.log(janeDoe.age);                                               // 25
+janeDoe.program(3);                                                     // 'Programming JavaScript for 3 hours...'
+```

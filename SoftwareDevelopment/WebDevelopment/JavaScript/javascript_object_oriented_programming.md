@@ -118,6 +118,10 @@ Lets see whether the core principles of object oriented programming are fulfille
 
 There are three ways to implement object orientation in JavaScript:
 
+1. [Prototype Object Orientation](#prototype-object-orientation)
+2. [Pseudo Class Object Orientation](#pseudo-class-object-orientation)
+3. [Class Syntax Object Orientation](#class-syntax-object-orientation)
+
 <br>
 <br>
 <br>

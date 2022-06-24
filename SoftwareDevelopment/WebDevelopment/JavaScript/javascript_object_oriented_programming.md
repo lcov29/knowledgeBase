@@ -751,7 +751,7 @@ console.log(newInstance.property3);                         // 'undefined' (beca
 
 **Note:**  
 Using getters and setters does not prevent external access to the property!  
-See [private properties and methods]().
+See [private properties and methods](#private-properties-and-methods).
 
 <br>
 

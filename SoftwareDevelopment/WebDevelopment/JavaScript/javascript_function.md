@@ -45,7 +45,7 @@
 ## **General**
 <br>
 
-* Functions can be though of as a subtype of object
+* Functions are objects
 * Functions can be assigned to a variable
 * Functions can be used as arguments for other functions
 * Functions can return functions

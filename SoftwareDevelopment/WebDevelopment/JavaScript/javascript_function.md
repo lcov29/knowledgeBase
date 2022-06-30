@@ -14,6 +14,8 @@
     - [**Arrow Function**](#arrow-function)
   - [**Parameters**](#parameters)
   - [**Spread Operator**](#spread-operator)
+  - [**Special Functions**](#special-functions)
+    - [**Closure**](#closure)
   - [**Keyword _this_**](#keyword-this)
     - [**General Use**](#general-use)
     - [**What _this_ References**](#what-this-references)
@@ -234,6 +236,78 @@ foo(...myArray1);       // 1 9 7
 foo(...myArray2, '!');  // Hello World !
 foo(...'Hello');        // H e l
 ```
+
+<br>
+<br>
+<br>
+<br>
+
+## **Special Functions**
+<br>
+<br>
+<br>
+
+### **Closure**
+<br>
+
+A closure is a function that   
+* is defined within another function
+* can access scope of enclosing function no matter where closure is executed ([lexical scope](./javascript_scopes.md#lexical-scope-static-scope))
+
+<br>
+<br>
+
+**Example:**
+
+<br>
+
+```javascript
+function outerFunction() {
+
+	let outerVariable = 'outerVariable';
+
+	function innerFunction() {				// closure
+		console.log(outerVariable);
+	}
+
+	return innerFunction;
+}
+
+const innerFunc = outerFunction();			// reference to instance of innerFunction created on runtime of outerFunction
+innerFunc();								// 'outerVariable'					
+```
+
+<br>
+
+* closure with nested lexical scopes
+  * nested lexical scopes can be accessed by closure 
+
+<br>
+
+```javascript
+function topLevel() {
+
+let topLevelProperty = 'topLevelProperty';
+
+	function midLevel() {
+		let midLevelProperty = 'midLevelProperty';
+
+		function lowLevel() {
+		let lowLevelProperty = 'lowLevelProperty';
+			console.log(lowLevelProperty, midLevelProperty, topLevelProperty);
+		}
+
+		return lowLevel;
+	}
+
+	return midLevel();
+
+}
+
+
+let closureLowLevel = topLevel();
+closureLowLevel();									// 'lowLevelProperty midLevelProperty topLevelProperty'
+``` 
 
 <br>
 <br>

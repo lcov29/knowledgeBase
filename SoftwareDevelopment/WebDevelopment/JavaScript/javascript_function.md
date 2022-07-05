@@ -16,6 +16,7 @@
   - [**Spread Operator**](#spread-operator)
   - [**Special Functions**](#special-functions)
     - [**Closure**](#closure)
+    - [**Generator Function**](#generator-function)
   - [**Keyword _this_**](#keyword-this)
     - [**General Use**](#general-use)
     - [**What _this_ References**](#what-this-references)
@@ -308,6 +309,40 @@ let topLevelProperty = 'topLevelProperty';
 let closureLowLevel = topLevel();
 closureLowLevel();									// 'lowLevelProperty midLevelProperty topLevelProperty'
 ``` 
+
+<br>
+<br>
+<br>
+
+### **Generator Function**
+<br>
+
+* generators can be paused at specified breakpoints and resumed later
+* see [Generators](./javascript_generator.md)
+
+<br>
+
+```javascript
+function* generatorFunctionName() {
+    // some code 
+    yield 'returnValue';
+    // some code
+    yield 3;
+    // some code
+}
+```
+
+<br>
+
+```javascript
+const generator = generatorFunctionName();
+
+generator.next();   // returns {value: 'returnValue', done: false}
+
+generator.next();   // returns {value: 3, done: false}
+
+generator.next();   // returns {value: undefined, done: true}
+```
 
 <br>
 <br>

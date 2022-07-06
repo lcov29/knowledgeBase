@@ -8,12 +8,14 @@
   - [**Table Of Contents**](#table-of-contents)
   - [**Workflow For Files**](#workflow-for-files)
   - [**Initialize And Configuration**](#initialize-and-configuration)
+  - [**Clone Existing Repository**](#clone-existing-repository)
+  - [**Remote Repositories**](#remote-repositories)
   - [**Repository Status**](#repository-status)
-  - [**Adding And Committing Files**](#adding-and-committing-files)
+  - [**Add And Commit File To Local Repository**](#add-and-commit-file-to-local-repository)
   - [**Branches**](#branches)
   - [**Stash**](#stash)
-  - [**Remote Repositories**](#remote-repositories)
 
+<br>
 <br>
 <br>
 <br>
@@ -23,6 +25,12 @@
 2. Staging Area
 3. Committed
 
+<br>
+<br>
+
+![Areas Of Git](pictures/git_areas.png)
+
+<br>
 <br>
 <br>
 <br>
@@ -39,6 +47,34 @@ git config --global user.email 'email'      # set user email
 <br>
 <br>
 <br>
+<br>
+
+## **Clone Existing Repository**
+
+```bash
+git clone <repository | repository_url>     # clone
+```
+
+<br>
+<br>
+<br>
+<br>
+
+## **Remote Repositories**
+
+```bash
+git remote -v                               # list connections to remote repositories with url
+git remote add <name> <url>                 # add connection to remote repository
+git remote rm <name>                        # remove connection to remote repository 
+git remote rename <old_name> <new_name>     # rename connection to remote repository
+git push <remote> <branch>                  # push <branch> to <remote>
+git pull <remote>                           # fetch copy of current branch from <remote> to the local repository
+```
+
+<br>
+<br>
+<br>
+<br>
 
 ## **Repository Status**
 
@@ -50,8 +86,9 @@ git log         # show commit history
 <br>
 <br>
 <br>
+<br>
 
-## **Adding And Committing Files**
+## **Add And Commit File To Local Repository**
 
 ```bash
 git add <file>                  # add <file> to the staging area
@@ -60,6 +97,7 @@ git restore --staged <file>     # remove <file> from staging area
 git commit -m 'message'         # add all files in the staging area to the project
 ```
 
+<br>
 <br>
 <br>
 <br>
@@ -77,6 +115,7 @@ git merge <branch_name>         # merge <branch_name> to the current branch
 <br>
 <br>
 <br>
+<br>
 
 ## **Stash**
 
@@ -87,19 +126,4 @@ git stash pop                   # move the changes in the last stash back into t
 git stash pop stash@{<id>}      # move the changes in the stash <id> back into the staging area
 git stash drop stash@{<id>}     # delete the changes in the stash <id>
 git stash clear                 # delete all stashes
-```
-
-<br>
-<br>
-<br>
-
-## **Remote Repositories**
-
-```bash
-git remote -v                               # list connections to remote repositories with url
-git remote add <name> <url>                 # add connection to remote repository
-git remote rm <name>                        # remove connection to remote repository 
-git remote rename <old_name> <new_name>     # rename connection to remote repository
-git push <remote> <branch>                  # push <branch> to <remote>
-git pull <remote>                           # fetch copy of current branch from <remote> to the local repository
 ```

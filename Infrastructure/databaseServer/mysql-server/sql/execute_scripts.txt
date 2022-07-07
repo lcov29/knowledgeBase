@@ -1,7 +1,0 @@
-1.) Before login:
-	mysql -u <username> -p database < <Path to SQL File>
-
-2.) After login:
-	source <Path to SQL File>
-
-

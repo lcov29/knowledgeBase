@@ -42,6 +42,12 @@
     - [**Delete Index**](#delete-index)
   - [**Select Statements**](#select-statements)
     - [**Basic Statement**](#basic-statement)
+    - [**Aggregate Functions**](#aggregate-functions)
+    - [**Joins**](#joins)
+      - [**Inner Join**](#inner-join)
+      - [**Left Outer Join**](#left-outer-join)
+      - [**Right Outer Join**](#right-outer-join)
+    - [**Union**](#union)
   - [**Data Manipulation**](#data-manipulation)
     - [**Insert Data**](#insert-data)
     - [**Update Data**](#update-data)
@@ -498,6 +504,93 @@ from <tableName>
 [having <condition>]
 [order by <attribute1> <asc | desc>, ... , <attributeN> <asc | desc>]
 [limit <number>];
+```
+
+<br>
+<br>
+<br>
+
+### **Aggregate Functions**
+<br>
+
+|Function                         |Description
+|:--------------------------------|:------------
+|count(\<attributeName>)          |number of values in column \<attributeName>
+|count(distinct \<attributeName>) |number of unique values in column \<attributeName>
+|avg(\<attributeName>)            |average of values in column \<attributeName>
+|min(\<attributeName>)            |minimum value in column \<attributeName>
+|max(\<attributeName>)            |maximum value in column \<attributeName>
+|sum(\<attributeName>)            |sum of values in column \<attributeName>
+
+<br>
+<br>
+<br>
+
+### **Joins**
+<br>
+<br>
+
+#### **Inner Join**
+<br>
+
+* join all records that have identical values for the specified attributes
+
+```sql
+<tableName1> [as <newTableName1>] inner join <tableName2> [as <newTableName2>]
+on <tableName1>.<attributeName1> = <tableName2>.<attributeName2> [ and ...];
+```
+
+<br>
+<br>
+
+#### **Left Outer Join**
+<br>
+
+* use all records of the left table and join with values with the right table if possible
+
+```sql
+<tableName1> [as <newTableName1>] left join <tableName2> [as <newTableName2>]
+on <tableName1>.<attributeName1> = <tableName2>.<attributeName2> [ and ...];
+```
+
+<br>
+<br>
+
+#### **Right Outer Join**
+<br>
+
+* use all records of the right table and join with values with the left table if possible
+
+```sql
+<tableName1> [as <newTableName1>] right join <tableName2> [as <newTableName2>]
+on <tableName1>.<attributeName1> = <tableName2>.<attributeName2> [ and ...];
+```
+
+<br>
+<br>
+<br>
+
+### **Union**
+<br>
+
+```sql
+-- mathematical union
+select <attribute1>, ... , <attributeN>
+from <tableName1>
+union
+select <attribute1>, ... , <attributeN>
+from <tableName2>;
+```
+
+<br>
+
+```sql
+-- union with duplicates
+select <attribute1>, ... , <attributeN>
+from <tableName1>
+union all
+select <attribute1>, ... , <attributeN>
+from <tableName2>;
 ```
 
 <br>

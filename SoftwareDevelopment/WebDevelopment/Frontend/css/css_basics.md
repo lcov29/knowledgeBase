@@ -582,15 +582,13 @@ Local variable
 Access global CSS variables with JavaScript
 ```javascript
 function getCSSVariable() {
-   let rootElement = document.querySelection(':root');
-   let style = window.getComputedStyle(rootElement);
-   return style.getPropertyValue('--variableName');
+   const rootElement = document.querySelector(':root');
+   return rootElement.style.getPropertyValue('--variableName');
 }
 
 function setCSSVariable(newValue) {
-   let rootElement = document.querySelection(':root');
-   let style = window.getComputedStyle(rootElement);
-   style.setProperty('--variableName', newValue);
+   const rootElement = document.querySelector(':root');
+   rootElement.style.setProperty('--variableName', newValue);
 }
 ```
 

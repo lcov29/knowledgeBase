@@ -15,6 +15,7 @@
     - [**Comments**](#comments)
     - [**Flowchart**](#flowchart)
     - [**Sequence Diagram**](#sequence-diagram)
+    - [**Class Diagram**](#class-diagram)
 
 <br>
 <br>
@@ -153,3 +154,32 @@ sequenceDiagram
 <br>
 
 See [Sequence Diagram](./mermaidDiagramSyntax/mermaidSequenceDiagram.md)
+
+<br>
+<br>
+
+### [**Class Diagram**](./mermaidDiagramSyntax/mermaidClassDiagram.md)
+<br>
+
+A class diagram describes the structure of classes and their relationships to other classes.
+
+<br>
+
+```mermaid
+classDiagram
+    class Person {
+        -String firstName
+        -String firstName
+        -int age
+        +introduce()
+    }
+    class Programmer {
+        -Array favoriteLanguages
+        +code()
+    }
+    Person <|-- Programmer
+```
+
+<br>
+
+See [Class Diagram](./mermaidDiagramSyntax/mermaidClassDiagram.md)

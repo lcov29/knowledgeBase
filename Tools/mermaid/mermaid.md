@@ -168,13 +168,13 @@ A class diagram describes the structure of classes and their relationships to ot
 ```mermaid
 classDiagram
     class Person {
-        -String firstName
-        -String firstName
+        -string firstName
+        -string firstName
         -int age
-        +introduce()
+        +introduce() string
     }
     class Programmer {
-        -Array favoriteLanguages
+        -array favoriteLanguages
         +code()
     }
     Person <|-- Programmer

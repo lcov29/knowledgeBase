@@ -18,7 +18,7 @@
     - [**Alternative Messages**](#alternative-messages)
     - [**Optional Messages**](#optional-messages)
     - [**Parallel Messages**](#parallel-messages)
-    - [**Critical Reqion**](#critical-reqion)
+    - [**Critical Region**](#critical-region)
     - [**Break**](#break)
     - [**Activate Numbering**](#activate-numbering)
   - [**Hightlight Background**](#hightlight-background)
@@ -58,7 +58,7 @@ sequenceDiagram
 ```
 sequenceDiagram
     participant A as Participant 1
-    actor B as Participant 2 (Actor)
+    actor B as Participant 2
     A ->> B: Message
 ```
 
@@ -67,7 +67,7 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     participant A as Participant 1
-    actor B as Participant 2 (Actor)
+    actor B as Participant 2
     A ->> B: Message
 ```
 
@@ -148,7 +148,7 @@ sequenceDiagram
 Basic syntax:
 
 ```
-Note <direction> <participant>: <Text>
+Note <direction> <participant>: <text>
 ```
 
 <br>
@@ -241,7 +241,7 @@ sequenceDiagram
 Basic syntax:
 
 ```
-<Participant> <Arrow> <Participant>:<message>
+<participant> <arrow> <participant>:<message>
 ```
 
 <br>
@@ -311,9 +311,9 @@ sequenceDiagram
 Basic syntax:
 
 ```
-alt <conditionText>
+alt <condition text>
     <message statements>
-else <conditionText>
+else <condition text>
     <message statements>
 end
 ```
@@ -355,7 +355,7 @@ sequenceDiagram
 Basic syntax:
 
 ```
-alt <Text>
+alt <text>
     <message statements>
 end
 ```
@@ -391,11 +391,11 @@ sequenceDiagram
 Basic syntax:
 
 ```
-par <Text>
+par <text>
     <message statements>
-and <Text>
+and <text>
     <message statements>
-and <Text>
+and <text>
     <message statements>
 end
 ```
@@ -435,13 +435,13 @@ sequenceDiagram
 <br>
 <br>
 
-### **Critical Reqion**
+### **Critical Region**
 <br>
 
 Basic syntax:
 
 ```
-critical <Text>
+critical <text>
     <message statements>
 end
 ```
@@ -449,11 +449,11 @@ end
 <br>
 
 ```
-critical <Text>
+critical <text>
     <message statements>
-    option <Text>
+    option <text>
         <message statements>
-    option <Text>
+    option <text>
         <message statements>
 end 
 ```
@@ -584,7 +584,7 @@ Basic syntax:
 
 ```
 rect rgb(61, 216, 154)
- <content>
+    <content>
 end
 ```
 
@@ -594,7 +594,7 @@ end
 sequenceDiagram
     participant A as Participant 1
     participant B as Participant 2
-    rect reg(61, 216, 154)
+    rect rgb(61, 216, 154)
         A ->> B: Message 1
     end
     B ->> A: Message 2
@@ -606,7 +606,7 @@ sequenceDiagram
 sequenceDiagram
     participant A as Participant 1
     participant B as Participant 2
-    rect reg(61, 216, 154)
+    rect rgb(61, 216, 154)
         A ->> B: Message 1
     end
     B ->> A: Message 2

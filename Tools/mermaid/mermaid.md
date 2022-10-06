@@ -175,7 +175,7 @@ classDiagram
     }
     class Programmer {
         -array favoriteLanguages
-        +code()
+        +code(duration)
     }
     Person <|-- Programmer
 ```

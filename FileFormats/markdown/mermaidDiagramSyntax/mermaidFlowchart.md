@@ -158,7 +158,7 @@ flowchart LR
     var callback = function() {
         /* implementation */
     }
-<script>
+</script>
 ```
 
 <br>

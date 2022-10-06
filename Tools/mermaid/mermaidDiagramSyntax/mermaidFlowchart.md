@@ -59,14 +59,12 @@ flowchart LR
 
 <br>
 
-
 ```mermaid
 flowchart RL
     A -- RL --> B
 ```
 
 <br>
-
 
 ```mermaid
 flowchart TB
@@ -75,16 +73,10 @@ flowchart TB
 
 <br>
 
-
 ```mermaid
 flowchart BT
     A -- BT --> B
 ```
-
-
-
-
-
 
 <br>
 <br>

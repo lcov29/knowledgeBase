@@ -12,6 +12,7 @@
     - [**Add Mermaid Diagram To Markdown File In Github And GitLab**](#add-mermaid-diagram-to-markdown-file-in-github-and-gitlab)
     - [**Add Mermaid Diagram To Web Page**](#add-mermaid-diagram-to-web-page)
   - [**Syntax**](#syntax)
+    - [**Comments**](#comments)
     - [**Flowchart**](#flowchart)
 
 <br>
@@ -98,6 +99,19 @@ diagramType
 
 ## **Syntax**
 <br>
+<br>
+<br>
+
+### **Comments**
+<br>
+
+```
+flowchart LR
+    %% This is a comment
+    node1 --> node2
+
+```
+
 <br>
 <br>
 

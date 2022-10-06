@@ -7,7 +7,6 @@
 - [**Mermaid Flowchart**](#mermaid-flowchart)
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
-  - [**Comments**](#comments)
   - [**Nodes**](#nodes)
     - [**General**](#general-1)
     - [**Shapes**](#shapes)
@@ -36,19 +35,6 @@ A flowchart consists of of _nodes_ and _edges_ between the nodes.
 ```mermaid
 flowchart LR
     node1-- edge1 ---node2-- edge2 ---node3
-```
-
-<br>
-<br>
-<br>
-
-## **Comments**
-<br>
-
-```
-flowchart LR
-    %% This is a comment
-    node1 --> node2
 ```
 
 <br>

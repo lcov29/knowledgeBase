@@ -1,10 +1,10 @@
-# **Markdown Mermaid**
+# **Mermaid**
 <br>
 
 ## **Table Of Contents**
 <br>
 
-- [**Markdown Mermaid**](#markdown-mermaid)
+- [**Mermaid**](#mermaid)
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
   - [**Links**](#links)

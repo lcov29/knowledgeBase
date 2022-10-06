@@ -14,6 +14,7 @@
   - [**Code Quote (GitHub Extension)**](#code-quote-github-extension)
   - [**Table (GitHub Extension)**](#table-github-extension)
   - [**Symbols And Emoticons (GitHub Extension)**](#symbols-and-emoticons-github-extension)
+  - [**Charts And Diagrams With Mermaid (GitHub/GitLab Extension)**](#charts-and-diagrams-with-mermaid-githubgitlab-extension)
 
 <br>
 <br>
@@ -212,3 +213,30 @@ function sayHello() {
 <br>
 
 [Emoticon Cheat Sheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md)
+
+<br>
+<br>
+<br>
+
+## [**Charts And Diagrams With Mermaid (GitHub/GitLab Extension)**](../../Tools/mermaid/mermaid.md)
+<br>
+
+Both GitHub and GitLab support mermaid to embedd charts and diagrams directly into markdown.
+
+See [mermaid](../../Tools/mermaid/mermaid.md)
+
+<br>
+
+```
+```mermaid
+flowchart LR
+    node1-- edge1 ---node2-- edge2 ---node3
+`` `
+```
+
+<br>
+
+```mermaid
+flowchart LR
+    node1-- edge1 ---node2-- edge2 ---node3
+```

@@ -14,6 +14,7 @@
   - [**Syntax**](#syntax)
     - [**Comments**](#comments)
     - [**Flowchart**](#flowchart)
+    - [**Sequence Diagram**](#sequence-diagram)
 
 <br>
 <br>
@@ -130,3 +131,25 @@ flowchart LR
 <br>
 
 See [Flowchart](./mermaidDiagramSyntax/mermaidFlowchart.md)
+
+<br>
+<br>
+
+### [**Sequence Diagram**](./mermaidDiagramSyntax/mermaidSequenceDiagram.md)
+<br>
+
+A sequence diagram models the order of interactions between two or more participants.
+
+<br>
+
+```mermaid
+sequenceDiagram
+    participant A as Participant 1
+    participant B as Participant 2 
+    A ->> B: Message1
+    B ->> A: Message2
+```
+
+<br>
+
+See [Sequence Diagram](./mermaidDiagramSyntax/mermaidSequenceDiagram.md)

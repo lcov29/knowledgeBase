@@ -16,6 +16,7 @@
     - [**Flowchart**](#flowchart)
     - [**Sequence Diagram**](#sequence-diagram)
     - [**Class Diagram**](#class-diagram)
+    - [**State Diagram**](#state-diagram)
 
 <br>
 <br>
@@ -183,3 +184,27 @@ classDiagram
 <br>
 
 See [Class Diagram](./mermaidDiagramSyntax/mermaidClassDiagram.md)
+
+<br>
+<br>
+
+### [**State Diagram**](./mermaidDiagramSyntax/mermaidStateDiagram.md)
+<br>
+
+A state diagram describes the finite states of a system.
+
+<br>
+
+```mermaid
+stateDiagram-v2
+    direction LR
+    [*] --> State1
+    State1 --> State2
+    State2 --> State3
+    State3 --> State1
+    State3 --> [*]
+```
+
+<br>
+
+See [State Diagram](./mermaidDiagramSyntax/mermaidStateDiagram.md)

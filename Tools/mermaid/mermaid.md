@@ -17,6 +17,7 @@
     - [**Sequence Diagram**](#sequence-diagram)
     - [**Class Diagram**](#class-diagram)
     - [**State Diagram**](#state-diagram)
+    - [**Entity Relationship Diagram**](#entity-relationship-diagram)
 
 <br>
 <br>
@@ -208,3 +209,33 @@ stateDiagram-v2
 <br>
 
 See [State Diagram](./mermaidDiagramSyntax/mermaidStateDiagram.md)
+
+<br>
+<br>
+
+### [**Entity Relationship Diagram**](./mermaidDiagramSyntax/mermaidEntityRelationshipDiagram.md)
+<br>
+
+An Entity Relationship Diagram models entity types and their relationship towards each other.
+
+<br>
+
+```mermaid
+erDiagram
+    Person {
+        id personId PK
+        string firstName
+        string lastName
+        int age
+        int nationalityId FK
+    }
+    Nation {
+        int id PK
+        string nation
+    }
+    Person }o--|| Nation : hasNationality
+```
+
+<br>
+
+See [Entity Relationship Diagram](./mermaidDiagramSyntax/mermaidEntityRelationshipDiagram.md)

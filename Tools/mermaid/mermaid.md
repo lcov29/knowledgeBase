@@ -18,6 +18,7 @@
     - [**Class Diagram**](#class-diagram)
     - [**State Diagram**](#state-diagram)
     - [**Entity Relationship Diagram**](#entity-relationship-diagram)
+    - [**User Journey Diagram**](#user-journey-diagram)
 
 <br>
 <br>
@@ -239,3 +240,27 @@ erDiagram
 <br>
 
 See [Entity Relationship Diagram](./mermaidDiagramSyntax/mermaidEntityRelationshipDiagram.md)
+
+<br>
+<br>
+
+### [**User Journey Diagram**](./mermaidDiagramSyntax/mermaidUserJourneyDiagram.md)
+<br>
+
+A user journey diagram descripes and rates the steps a user takes to complete a task within an application.
+
+<br>
+
+```mermaid
+journey
+    title Login and Logout
+    section Login
+        open appplication: 1: user
+        insert user name: 2: user
+        insert password: 3: user
+        click login: 4: user
+```
+
+<br>
+
+See [User Journey Diagram](./mermaidDiagramSyntax/mermaidUserJourneyDiagram.md)

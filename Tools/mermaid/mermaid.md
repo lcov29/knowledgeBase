@@ -22,6 +22,7 @@
     - [**Gantt Diagram**](#gantt-diagram)
     - [**Pie Chart**](#pie-chart)
     - [**GitGraph Diagram**](#gitgraph-diagram)
+    - [**Requirement Diagram**](#requirement-diagram)
 
 <br>
 <br>
@@ -345,3 +346,30 @@ gitGraph
 <br>
 
 See [GitGraph Diagram](./mermaidDiagramSyntax/mermaidGitgraphDiagram.md)
+
+<br>
+<br>
+
+### [**Requirement Diagram**](./mermaidDiagramSyntax/mermaidRequirementDiagram.md)
+<br>
+
+```mermaid
+requirementDiagram
+
+    requirement "application requirement" {
+        id: 1
+        text: Must be fully documented
+        risk: high
+        verifymethod: test
+    }
+
+    element application{
+        type: application
+    }
+
+    application - satisfies -> application requirement
+```
+
+<br>
+
+See [Requirement Diagram](./mermaidDiagramSyntax/mermaidRequirementDiagram.md)

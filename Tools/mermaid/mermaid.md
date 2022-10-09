@@ -20,6 +20,7 @@
     - [**Entity Relationship Diagram**](#entity-relationship-diagram)
     - [**User Journey Diagram**](#user-journey-diagram)
     - [**Gantt Diagram**](#gantt-diagram)
+    - [**Pie Chart**](#pie-chart)
 
 <br>
 <br>
@@ -291,3 +292,27 @@ gantt
 <br>
 
 See [Gantt Diagram](./mermaidDiagramSyntax/mermaidGanttDiagram.md)
+
+<br>
+<br>
+
+### [**Pie Chart**](./mermaidDiagramSyntax/mermaidPieChart.md)
+<br>
+
+A pie chart describes how a total is divided between different areas.
+
+<br>
+
+```mermaid
+pie
+    title Work Activity
+
+    "Research" : 20
+    "Debugging": 30
+    "Programming": 70
+    "Meetings": 40
+```
+
+<br>
+
+See [Pie Chart](./mermaidDiagramSyntax/mermaidPieChart.md)

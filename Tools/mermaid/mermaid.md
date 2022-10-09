@@ -21,6 +21,7 @@
     - [**User Journey Diagram**](#user-journey-diagram)
     - [**Gantt Diagram**](#gantt-diagram)
     - [**Pie Chart**](#pie-chart)
+    - [**GitGraph Diagram**](#gitgraph-diagram)
 
 <br>
 <br>
@@ -316,3 +317,31 @@ pie
 <br>
 
 See [Pie Chart](./mermaidDiagramSyntax/mermaidPieChart.md)
+
+<br>
+<br>
+
+### [**GitGraph Diagram**](./mermaidDiagramSyntax/mermaidGitgraphDiagram.md)
+<br>
+
+A gitgraph diagram describes the git commits on different branches.
+
+<br>
+
+```mermaid
+gitGraph
+    commit
+    commit
+    branch feature
+    checkout feature
+    commit
+    commit
+    commit
+    checkout main
+    merge feature
+    commit
+```
+
+<br>
+
+See [GitGraph Diagram](./mermaidDiagramSyntax/mermaidGitgraphDiagram.md)

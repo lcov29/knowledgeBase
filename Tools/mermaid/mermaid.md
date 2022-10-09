@@ -19,6 +19,7 @@
     - [**State Diagram**](#state-diagram)
     - [**Entity Relationship Diagram**](#entity-relationship-diagram)
     - [**User Journey Diagram**](#user-journey-diagram)
+    - [**Gantt Diagram**](#gantt-diagram)
 
 <br>
 <br>
@@ -264,3 +265,29 @@ journey
 <br>
 
 See [User Journey Diagram](./mermaidDiagramSyntax/mermaidUserJourneyDiagram.md)
+
+<br>
+<br>
+
+### [**Gantt Diagram**](./mermaidDiagramSyntax/mermaidGanttDiagram.md)
+<br>
+
+A Gantt diagram describes a project schedule including order and duration of tasks.
+
+<br>
+
+```mermaid
+gantt
+    title Programming Project
+    dateFormat YYYY-MM-DD
+    excludes Saturday, Sunday
+    section programming
+    
+    Implement Database Connection : a, 2022-10-02, 3d
+    Implement Core Features : b, after a, 7d
+    Implement User Authentification : c, after b, 2d 
+```
+
+<br>
+
+See [Gantt Diagram](./mermaidDiagramSyntax/mermaidGanttDiagram.md)

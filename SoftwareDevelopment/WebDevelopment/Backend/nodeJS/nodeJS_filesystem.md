@@ -12,27 +12,72 @@
     - [**CommonJS Module**](#commonjs-module)
   - [**Files**](#files)
     - [**Create Files**](#create-files)
+      - [**writeFile()**](#writefile)
+      - [**appendFile()**](#appendfile)
     - [**Read Files**](#read-files)
       - [**readFile()**](#readfile)
     - [**Update Files**](#update-files)
-      - [**appendFile()**](#appendfile)
+      - [**writeFile()**](#writefile-1)
+      - [**appendFile()**](#appendfile-1)
       - [**copyFile()**](#copyfile)
+      - [**truncate()**](#truncate)
     - [**Delete Files**](#delete-files)
+      - [**rm()**](#rm)
+      - [**unlink()**](#unlink)
     - [**Rename Files**](#rename-files)
+      - [**rename()**](#rename)
     - [**File Handles**](#file-handles)
       - [**open()**](#open)
-    - [**Permissions**](#permissions)
-      - [**access()**](#access)
+      - [**appendFile()**](#appendfile-2)
       - [**chmod()**](#chmod)
       - [**chown()**](#chown)
+      - [**close()**](#close)
+      - [**createReadStream()**](#createreadstream)
+    - [**Watch()**](#watch)
+    - [**Permissions**](#permissions)
+      - [**access()**](#access)
+      - [**chmod()**](#chmod-1)
+      - [**chown()**](#chown-1)
     - [**Other**](#other)
+      - [**realpath()**](#realpath)
       - [**link()**](#link)
+      - [**unlink()**](#unlink-1)
+      - [**symlink()**](#symlink)
+      - [**readlink()**](#readlink)
   - [**Directories**](#directories)
     - [**Create Directories**](#create-directories)
       - [**mkdir()**](#mkdir)
       - [**mkdtemp()**](#mkdtemp)
     - [**Copy Directories**](#copy-directories)
       - [**cp() (EXPERIMENTAL)**](#cp-experimental)
+    - [**Delete Directories**](#delete-directories)
+      - [**rm()**](#rm-1)
+      - [**rmdir()**](#rmdir)
+    - [**Scan Directories**](#scan-directories)
+      - [**opendir()**](#opendir)
+      - [**readdir()**](#readdir)
+      - [**Dir**](#dir)
+        - [**close()**](#close-1)
+        - [**path**](#path)
+        - [**read()**](#read)
+        - [**dir**](#dir-1)
+      - [**Dirent**](#dirent)
+        - [**Dirent.name**](#direntname)
+        - [**isDirectory()**](#isdirectory)
+        - [**isFIFO()**](#isfifo)
+        - [**isFile()**](#isfile)
+        - [**isSocket()**](#issocket)
+        - [**isSymbolicLink()**](#issymboliclink)
+  - [**Stats**](#stats)
+    - [**stat()**](#stat)
+    - [**Stats Object**](#stats-object)
+      - [**isBlockDevice()**](#isblockdevice)
+      - [**isCharacterDevice()**](#ischaracterdevice)
+      - [**isDirectory()**](#isdirectory-1)
+      - [**isFIFO()**](#isfifo-1)
+      - [**isFile()**](#isfile-1)
+      - [**isSocket()**](#issocket-1)
+      - [**isSymbolicLink()**](#issymboliclink-1)
 
 <br>
 <br>
@@ -113,7 +158,9 @@ const fs = require('fs').promises;
 There are several methods to create new files:
 <br>
 
-* [**appendFile()**](#appendfile)
+#### [**writeFile()**](#writefile-1)
+
+#### [**appendFile()**](#appendfile)
 
 <br>
 <br>
@@ -129,9 +176,9 @@ There are several methods to create new files:
 fsPromises.readFile(path, [option]) : Promise
 
 option = {
-  encoding : <string>,
-  flag : <string>,
-  signal : <AbortSignal>
+  encoding : string (Defaul: Null),
+  flag : string,
+  signal : AbortSignal
 }
 ```
 
@@ -148,6 +195,33 @@ const contentString = await readFileSync('/file/path', { encoding: 'utf-8'});
 
 
 ### **Update Files**
+<br>
+<br>
+
+#### **writeFile()**
+<br>
+
+```
+writeFile(fileName, data, [options])
+
+options = {
+  encoding : string (Default: utf8),
+  mode : int
+  flag : string
+  signal : AbortSignal
+}
+```
+* Promise fulfills with _undefined_
+* creates file or replaces existing file
+
+<br>
+
+```javascript
+import { writeFile } from 'node:fs/promises';
+
+await writeFile('path/file/name', 'Content');
+```
+
 <br>
 <br>
 
@@ -213,11 +287,97 @@ try {
 <br>
 <br>
 
+#### **truncate()**
+<br>
+
+```
+truncate(path, [length]) : Promise
+```
+* truncates or shortens length of content
+* Promise fulfills with _undefined_
+
+<br>
+
+```javascript
+import { truncate } from 'node:fs/promises';
+
+await truncate('path/file', 20);    // shorten content length
+await truncate('path/file');        // truncate content completely
+```
+
+<br>
+<br>
+
 ### **Delete Files**
 <br>
 <br>
 
+#### **rm()**
+<br>
+
+```
+rm(path, [option]) : Promise
+
+options = {
+  force : boolean (Default: false),
+  maxRetries : int (Default: 0),
+  recursive : boolean (Default: false),
+  retryDelay : int (Default: 100)
+}
+```
+* removes files and directories
+* Promise fulfills with _undefined_
+
+<br>
+
+```javascript
+import { rm } from 'node:fs/promises';
+
+await rm('path/file');
+```
+
+<br>
+<br>
+
+#### **unlink()**
+<br>
+
+```
+unlink(path) : Promise
+```
+* if path is _symbolic link_: delete link
+* if path is not _symbolik link_: delete file
+
+<br>
+
+```javascript
+import { unlink } from 'node:fs/promises';
+
+await unlink('path');
+```
+
+<br>
+<br>
+
 ### **Rename Files**
+<br>
+
+#### **rename()**
+<br>
+
+```
+rename(oldPath, newPath) : Promise
+```
+* Promise fulfills with _undefined_
+
+<br>
+
+```javascript
+import { rename } from 'node:fs/promises';
+
+await rename('old/path/name', 'new/path/name');
+```
+
 <br>
 <br>
 
@@ -253,9 +413,129 @@ open(path, flags, mode) : Promise(FileHandle)
 <br>
 
 ```javascript
-import { open } from 'node:open/promises';
+import { open } from 'node:fs/promises';
 
 const fileHandle = await open('/path/file', 'wx+');
+```
+
+<br>
+<br>
+
+#### **appendFile()**
+<br>
+
+```
+appendFile(data, [option]) : Promise
+
+option = {
+  encoding : string (Default: utf8)
+}
+```
+* add content to file
+* create nonexistent file
+
+<br>
+<br>
+
+#### **chmod()**
+<br>
+
+```
+chmod(mode) : Promise
+
+mode : int (file mode bit mask)
+```
+
+<br>
+<br>
+
+#### **chown()**
+<br>
+
+```
+chown(uid, gid) : Promise
+```
+
+<br>
+<br>
+
+#### **close()**
+<br>
+
+```
+close() : Promise
+```
+* close file handle
+
+<br>
+<br>
+
+#### **createReadStream()**
+<br>
+
+```
+createReadStream([option]) : ReadStream
+
+option = {
+  encoding : string (Default: null),
+  autoClose : boolean (Default: true),
+  emitClose : boolean (Default: true),
+  start : int,
+  end : int (Default: Infinity),
+  highWaterMark : int (Default: 65 * 1024)
+}
+```
+* options _start_ and _end_ (inclusive) can define a byte range to read from the file
+* stream emits _close_ event after destruction
+
+<br>
+
+
+
+<br>
+<br>
+
+### **Watch()**
+<br>
+
+```
+watch(filename, [option]) : AsyncIterator
+
+option = {
+  persistent : boolean (default: true),
+  recursive : boolean (default: false),
+  encoding: string (default: utf8),
+  signal : AbortSigbat
+}
+```
+* watch for changes of file or directory 
+* AsyncIterator contains
+  * eventType : string (type of change)
+  * filename : string 
+
+<br>
+
+```javascript
+import { watch } from 'node:fs/promises';
+
+const controller = new AbortController();
+const {signal} = controller;
+
+setTimeout(() => {
+  controller.abort();
+  console.log('aborted');
+}, 20000);
+
+(async () => {
+  try {
+    const watcher = watch('file/name', {signal});
+    for await(const event of watcher) {
+      console.log(event);
+    }
+  } catch(error) {
+    console.log(error)
+  }
+})();
 ```
 
 <br>
@@ -367,6 +647,29 @@ await chown('/path/file', 1234, 4321);
 <br>
 <br>
 
+#### **realpath()**
+<br>
+
+```
+realpath(path, [option]) : Promise
+
+option =  {
+  encoding : string (Default: utf8)
+}
+```
+* Promise fulfills with actual location of path
+
+<br>
+
+```javascript
+import { realpath } from 'node:fs/promises';
+
+const filePath = realpath('/path');
+```
+
+<br>
+<br>
+
 #### **link()**
 <br>
 
@@ -384,6 +687,59 @@ link(existingPath, newPath) : Promise
 import { link } from 'node:fs/promises';
 
 await link('path/existingFile', 'path/newLinkFileName');
+```
+
+<br>
+<br>
+
+#### [**unlink()**](#unlink)
+<br>
+
+* Delete symbolic link
+* See [unlink](#unlink)
+
+<br>
+<br>
+
+
+#### **symlink()**
+<br>
+
+```
+symlink(target, path, [type]) : Promise
+```
+* creates symbolic link
+* type = ['dir', 'file', 'junction'] (Windows only)
+
+<br>
+
+```javascript
+import { symlink } from 'node:fs/promises';
+
+await symlink('path/target', 'path/link');
+```
+
+<br>
+<br>
+
+#### **readlink()**
+<br>
+
+```
+readlink(path, option) : Promise
+
+option = {
+  encoding : string (Default: utf8)
+}
+```
+* Promise fulfills with content of symbolic link
+
+<br>
+
+```javascript
+import { readlink } from 'node:fs/promises';
+
+const content = readlink('path/link');
 ```
 
 <br>
@@ -451,9 +807,6 @@ const directoryPath = await mkdtemp('prefix');
 
 ### **Copy Directories**
 <br>
-
-
-<br>
 <br>
 
 #### **cp() (EXPERIMENTAL)**
@@ -474,4 +827,309 @@ options = {
 }
 ```
 
-* copies entire directory including subdirectories 
+<br>
+
+* copies entire directory including subdirectories
+
+<br>
+<br>
+
+### **Delete Directories**
+<br>
+<br>
+
+#### **rm()**
+<br>
+
+```
+rm(path, [option]) : Promise
+
+options = {
+  force : boolean (Default: false),
+  maxRetries : int (Default: 0),
+  recursive : boolean (Default: false),
+  retryDelay : int (Default: 100)
+}
+```
+* removes files and directories
+* Promise fulfills with _undefined_
+
+<br>
+
+```javascript
+import { rm } from 'node:fs/promises';
+
+await rm('path/directory', { recursive: true });
+```
+
+<br>
+<br>
+
+#### **rmdir()**
+<br>
+
+```
+rmdir(path, [options]) : Promise
+
+options = {
+  maxRetries : int (Default: 0),
+  retryDelay : int (Default: 100)
+}
+```
+* removes empty directories
+* Promise fulfills with _undefined_
+  
+<br>
+
+```javascript
+import { rmdir } from 'node:fs/promises';
+
+await rmdir('path/directory');
+```
+
+<br>
+<br>
+
+### **Scan Directories**
+<br>
+<br>
+
+#### **opendir()**
+<br>
+
+* opens a [fs.Dir](#dir) object for a directory
+
+<br>
+
+```
+opendir(path, option) : Promise
+
+option = {
+  encoding : string(utf8')
+  bufferSize : int(32)
+}
+```
+
+<br>
+
+* Promise fulfills with [fs.Dir](#dir)
+* bufferSize describes numbers of buffered directories
+
+<br>
+
+```javascript
+import { opendir } from 'node:fs/promises';
+
+const fsDir = await opendir('/path/directory');
+```
+
+<br>
+<br>
+
+#### **readdir()**
+<br>
+
+```
+readdir(path, option) : Promise
+
+option = {
+  encoding : string (Default: utf8)
+  withFileTypes : boolean (Default: false)
+}
+```
+* read content of directory
+* Promise fulfills with array of entry names in directory
+
+<br>
+
+```javascript
+import { readdir } from 'node:fs/promises';
+
+const entryNameList = await readdir('/path/directory');
+
+for (const entryName of entryNameList) {
+  console.log(entryName);
+}
+```
+
+<br>
+<br>
+
+#### **Dir**
+<br>
+
+* object representing a directory stream
+
+<br>
+<br>
+
+##### **close()**
+<br>
+
+```
+dir.close() : Promise
+```
+* asynchronous close directory handle
+
+<br>
+<br>
+
+```
+dir.close(callbackFunction(error))
+```
+* asynchronous close directory handle and execute callback afterwards
+
+<br>
+<br>
+
+##### **path**
+<br>
+
+```
+dir.path() : string
+```
+* returns path of directory provided to [fs.opendir()](#opendir)
+
+<br>
+<br>
+
+##### **read()**
+<br>
+
+```
+dir.read() : Promise
+```
+* asynchronously read next directory entry
+* Promise fulfills with [fs.Dirent](#dirent) or _null_ if no more directories to read
+
+<br>
+<br>
+
+```
+dir.read(callback(error, dirent))
+```
+* asynchronously reads next directory entry and execute callback
+
+<br>
+<br>
+
+##### **dir**
+<br>
+
+```
+dir[Symbol.asyncIterator]() : <asyncIterator | fs.Dirent>
+```
+* asynchronously iterates over all directory entries
+
+
+<br>
+<br>
+
+#### **Dirent**
+<br>
+
+* represents a directory entry (file or subdirectory)
+
+<br>
+<br>
+
+##### **Dirent.name**
+<br>
+
+##### **isDirectory()**
+<br>
+
+##### **isFIFO()**
+
+* returns boolean indication whether _fs.Dirent_ is a first-in-first-out-pipeline
+
+<br>
+
+##### **isFile()**
+<br>
+
+##### **isSocket()**
+<br>
+
+##### **isSymbolicLink()**
+
+<br>
+<br>
+<br>
+
+## **Stats**
+<br>
+<br>
+
+### **stat()**
+<br>
+
+```
+stat(path, [option]) : Promise
+
+option = {
+  bigint : boolean (Default: false)
+}
+```
+* Promise fulfills to [fs.Stats](#stats-object)
+
+<br>
+
+```javascript
+import { stat } from 'node:fs/promises';
+
+const statsObject = await stat('path');
+```
+
+<br>
+<br>
+
+### **Stats Object**
+<br>
+
+```
+stats {
+  dev:          <device identifier>
+  mode:         <file type and mode>
+  nlink:        <number of hard links>
+  uid:          <user id of owner>
+  gid:          <user id of owner group>
+  rdev:         <numberic device indentifier>
+  blksize:      <block size for i/o operations>
+  ino:          <inode number>
+  size:         <size in bytes>
+  blocks:       <number of allocated blocks>
+  atimeMs:      <last access in millliseconds since POSIX epoch>
+  mtimeMs:      <last modification in milliseconds since POSIX epoch>
+  ctimeMs:      <last status change in milliseconds since POSIX epoch>
+  birthtimeMs:  <creation time in milliseconds since POSIX epoch>
+  atime:        <last access timestamp>
+  mtime:        <last modification timestamp>
+  ctime:        <last status change timestamp>
+  birthtime:    <creation timestamp>
+}
+```
+
+<br>
+
+#### **isBlockDevice()**
+<br>
+
+#### **isCharacterDevice()**
+<br>
+
+#### **isDirectory()**
+<br>
+
+#### **isFIFO()**
+* returns boolean indication whether object is first-in-first-out pipe
+<br>
+
+#### **isFile()**
+<br>
+
+#### **isSocket()**
+<br>
+
+#### **isSymbolicLink()**
+<br>

@@ -159,7 +159,7 @@ The _fs.Stats_ object contains meta information about a file and is returned by 
 
 ### **isFIFO()**
 * returns boolean indication whether object is first-in-first-out pipe
-* 
+
 <br>
 
 ### **isFile()**

@@ -11,6 +11,8 @@
     - [**ES Module**](#es-module)
     - [**CommonJS Module**](#commonjs-module)
   - [**Files**](#files)
+    - [**Open FileHandle**](#open-filehandle)
+      - [**open()**](#open)
     - [**Create Files**](#create-files)
       - [**writeFile()**](#writefile)
       - [**appendFile()**](#appendfile)
@@ -26,18 +28,11 @@
       - [**unlink()**](#unlink)
     - [**Rename Files**](#rename-files)
       - [**rename()**](#rename)
-    - [**File Handles**](#file-handles)
-      - [**open()**](#open)
-      - [**appendFile()**](#appendfile-2)
-      - [**chmod()**](#chmod)
-      - [**chown()**](#chown)
-      - [**close()**](#close)
-      - [**createReadStream()**](#createreadstream)
     - [**Watch()**](#watch)
     - [**Permissions**](#permissions)
       - [**access()**](#access)
-      - [**chmod()**](#chmod-1)
-      - [**chown()**](#chown-1)
+      - [**chmod()**](#chmod)
+      - [**chown()**](#chown)
     - [**Other**](#other)
       - [**realpath()**](#realpath)
       - [**link()**](#link)
@@ -56,28 +51,8 @@
     - [**Scan Directories**](#scan-directories)
       - [**opendir()**](#opendir)
       - [**readdir()**](#readdir)
-      - [**Dir**](#dir)
-        - [**close()**](#close-1)
-        - [**path**](#path)
-        - [**read()**](#read)
-        - [**dir**](#dir-1)
-      - [**Dirent**](#dirent)
-        - [**Dirent.name**](#direntname)
-        - [**isDirectory()**](#isdirectory)
-        - [**isFIFO()**](#isfifo)
-        - [**isFile()**](#isfile)
-        - [**isSocket()**](#issocket)
-        - [**isSymbolicLink()**](#issymboliclink)
   - [**Stats**](#stats)
     - [**stat()**](#stat)
-    - [**Stats Object**](#stats-object)
-      - [**isBlockDevice()**](#isblockdevice)
-      - [**isCharacterDevice()**](#ischaracterdevice)
-      - [**isDirectory()**](#isdirectory-1)
-      - [**isFIFO()**](#isfifo-1)
-      - [**isFile()**](#isfile-1)
-      - [**isSocket()**](#issocket-1)
-      - [**isSymbolicLink()**](#issymboliclink-1)
 
 <br>
 <br>
@@ -151,6 +126,48 @@ const fs = require('fs').promises;
 <br>
 <br>
 
+### **Open FileHandle**
+<br>
+
+#### **open()**
+<br>
+
+```
+open(path, [flags], [mode]) : Promise
+
+flags : <string | number> (Default: 'r')
+mode : <string | integer> (Default: 0o666 (readable and writable))
+```
+* Promise fulfills with [FileHandle](./nodeJS_fs_filehandle.md)
+
+<br>
+
+|Flags |Open file for
+|:-----|:--------------------------------------------------
+|a     |appending, nonexistent file is created
+|ax    |appending, fails for nonexistent file
+|a+    |reading and appending, nonexistent file is created
+|ax+   |reading and appending, fails for nonexistent file
+|as    |synchronous appending, nonexistent file is created
+|as+   |synchronous appending and reading, nonexistent file is created
+|r     |reading, fails for nonexistent file (DEFAULT)
+|r+    |reading and writing, fails for nonexistent file
+|rs+   |synchronous reading and writing \(!bypasses local file system cache, check documentation)
+|w     |writing, nonexistent file is created, existing file is truncated
+|wx    |writing, fails for nonexistent file
+|w+    |reading and writing, nonexistent file is created, existing file is truncated
+|wx+   |reading and writing, fails for nonexistent file
+
+<br>
+
+```javascript
+import { open } from 'node:fs/promises';
+
+const fileHandle = await open('/path/file', 'wx+');
+```
+
+<br>
+<br>
 
 ### **Create Files**
 <br>
@@ -381,6 +398,7 @@ await rename('old/path/name', 'new/path/name');
 <br>
 <br>
 
+<!--
 ### **File Handles**
 <br>
 <br>
@@ -489,8 +507,110 @@ option = {
 * stream emits _close_ event after destruction
 
 <br>
+<br>
+
+#### **createWriteStream()**
+<br>
+
+```
+createWriteStream([option]) : WriteStream
+
+option = {
+  encoding : string (Default: utf8),
+  autoClose : boolean (Default: true),
+  emitClose : boolean (Default: true),
+  start : int [0,Number.MAX_SAFE_INTEGER]
+}
+```
+* option _start_: write data at position after beginning of file
 
 
+<br>
+<br>
+
+#### **read()**
+<br>
+
+```
+read(buffer, offset, length, position) : Promise
+```
+* reads data from file and stores it in _buffer_
+* parameters can be stored within an _option_ object
+* _Promise_ fulfills with {bytesRead, buffer}
+
+<br>
+<br>
+
+#### **readFile()**
+<br>
+
+```
+readFile(option) : Promise 
+
+option = {
+  encoding : string (Default: null),
+  signal : 
+}
+```
+* _Promise_ fulfills with file content
+
+<br>
+<br>
+
+#### **stat()**
+<br>
+
+```
+stat() : Promise
+```
+* Promise fulfills with _fs.Stats_
+
+<br>
+<br>
+
+#### **truncate()**
+<br>
+
+```
+truncate([length]) : Promise
+```
+* _length_ specifies how many bytes from the beginning of the file should be retained
+* _Promise_ fulfills with _undefined_
+
+<br>
+<br>
+
+#### **write()**
+<br>
+
+```
+write(buffer, [option]) : Promise
+
+option = {
+  offset : int (Default: 0),
+  length : int (Default: buffer.byteLength - offset),
+  position : int (Default: null)
+}
+```
+* write _buffer_ to file
+* _Promise_ fulfills with {bytesWritten, buffer}
+
+<br>
+<br>
+
+#### **writeFile()**
+<br>
+
+```
+writeFile(data, [option]) : Promise
+
+option = {
+  encoding : string (Default: utf8)
+}
+```
+* write _data_ to file, create file if it not already exists
+
+-->
 
 <br>
 <br>
@@ -955,107 +1075,6 @@ for (const entryName of entryNameList) {
 <br>
 <br>
 
-#### **Dir**
-<br>
-
-* object representing a directory stream
-
-<br>
-<br>
-
-##### **close()**
-<br>
-
-```
-dir.close() : Promise
-```
-* asynchronous close directory handle
-
-<br>
-<br>
-
-```
-dir.close(callbackFunction(error))
-```
-* asynchronous close directory handle and execute callback afterwards
-
-<br>
-<br>
-
-##### **path**
-<br>
-
-```
-dir.path() : string
-```
-* returns path of directory provided to [fs.opendir()](#opendir)
-
-<br>
-<br>
-
-##### **read()**
-<br>
-
-```
-dir.read() : Promise
-```
-* asynchronously read next directory entry
-* Promise fulfills with [fs.Dirent](#dirent) or _null_ if no more directories to read
-
-<br>
-<br>
-
-```
-dir.read(callback(error, dirent))
-```
-* asynchronously reads next directory entry and execute callback
-
-<br>
-<br>
-
-##### **dir**
-<br>
-
-```
-dir[Symbol.asyncIterator]() : <asyncIterator | fs.Dirent>
-```
-* asynchronously iterates over all directory entries
-
-
-<br>
-<br>
-
-#### **Dirent**
-<br>
-
-* represents a directory entry (file or subdirectory)
-
-<br>
-<br>
-
-##### **Dirent.name**
-<br>
-
-##### **isDirectory()**
-<br>
-
-##### **isFIFO()**
-
-* returns boolean indication whether _fs.Dirent_ is a first-in-first-out-pipeline
-
-<br>
-
-##### **isFile()**
-<br>
-
-##### **isSocket()**
-<br>
-
-##### **isSymbolicLink()**
-
-<br>
-<br>
-<br>
 
 ## **Stats**
 <br>
@@ -1071,7 +1090,7 @@ option = {
   bigint : boolean (Default: false)
 }
 ```
-* Promise fulfills to [fs.Stats](#stats-object)
+* Promise fulfills to [fs.Stats](./filesystem/objects/nodeJS_fs_stats.md)
 
 <br>
 
@@ -1080,56 +1099,3 @@ import { stat } from 'node:fs/promises';
 
 const statsObject = await stat('path');
 ```
-
-<br>
-<br>
-
-### **Stats Object**
-<br>
-
-```
-stats {
-  dev:          <device identifier>
-  mode:         <file type and mode>
-  nlink:        <number of hard links>
-  uid:          <user id of owner>
-  gid:          <user id of owner group>
-  rdev:         <numberic device indentifier>
-  blksize:      <block size for i/o operations>
-  ino:          <inode number>
-  size:         <size in bytes>
-  blocks:       <number of allocated blocks>
-  atimeMs:      <last access in millliseconds since POSIX epoch>
-  mtimeMs:      <last modification in milliseconds since POSIX epoch>
-  ctimeMs:      <last status change in milliseconds since POSIX epoch>
-  birthtimeMs:  <creation time in milliseconds since POSIX epoch>
-  atime:        <last access timestamp>
-  mtime:        <last modification timestamp>
-  ctime:        <last status change timestamp>
-  birthtime:    <creation timestamp>
-}
-```
-
-<br>
-
-#### **isBlockDevice()**
-<br>
-
-#### **isCharacterDevice()**
-<br>
-
-#### **isDirectory()**
-<br>
-
-#### **isFIFO()**
-* returns boolean indication whether object is first-in-first-out pipe
-<br>
-
-#### **isFile()**
-<br>
-
-#### **isSocket()**
-<br>
-
-#### **isSymbolicLink()**
-<br>

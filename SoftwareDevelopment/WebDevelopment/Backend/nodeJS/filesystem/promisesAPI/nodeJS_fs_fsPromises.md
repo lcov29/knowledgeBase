@@ -7,6 +7,7 @@
 - [**NodeJS File System**](#nodejs-file-system)
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
+  - [**Example**](#example)
   - [**Import Module**](#import-module)
     - [**ES Module**](#es-module)
     - [**CommonJS Module**](#commonjs-module)
@@ -33,10 +34,11 @@
       - [**access()**](#access)
       - [**chmod()**](#chmod)
       - [**chown()**](#chown)
-    - [**Other**](#other)
-      - [**realpath()**](#realpath)
+  - [**Links**](#links)
+    - [**Hard Links**](#hard-links)
       - [**link()**](#link)
       - [**unlink()**](#unlink-1)
+    - [**Symbolic Links**](#symbolic-links)
       - [**symlink()**](#symlink)
       - [**readlink()**](#readlink)
   - [**Directories**](#directories)
@@ -80,6 +82,15 @@ Most functions have three versions:
 <br>
 
 We only cover the asynchronous functions. The synchronous and callback-based functions can be found in the [documentation](https://nodejs.org/en/docs/).
+
+<br>
+<br>
+<br>
+
+## **Example**
+<br>
+
+See [Examples](./nodeJS_fs_examples.md#promise-api).
 
 <br>
 <br>
@@ -213,6 +224,14 @@ const contentString = await readFileSync('/file/path', { encoding: 'utf-8'});
 
 ### **Update Files**
 <br>
+
+Note: Write operations to files are atomic! If NodeJs crashes while writing to a file, the data not already written to a file is lost!
+
+<br>
+
+Solution: Write to temporary file and rename it after completion of the write operation. You can use _os.tmdir_ to get your operating system´s default temporary directory.
+
+<br>
 <br>
 
 #### **writeFile()**
@@ -229,7 +248,8 @@ options = {
 }
 ```
 * Promise fulfills with _undefined_
-* creates file or replaces existing file
+* REPLACE existing file
+* create file if it not already exists
 
 <br>
 
@@ -545,33 +565,14 @@ await chown('/path/file', 1234, 4321);
 <br>
 <br>
 
-### **Other**
-
+## **Links**
 <br>
 <br>
 
-#### **realpath()**
-<br>
-
-```
-realpath(path, [option]) : Promise
-
-option =  {
-  encoding : string (Default: utf8)
-}
-```
-* Promise fulfills with actual location of path
-
-<br>
-
-```javascript
-import { realpath } from 'node:fs/promises';
-
-const filePath = realpath('/path');
-```
-
+### **Hard Links**
 <br>
 <br>
+
 
 #### **link()**
 <br>
@@ -579,10 +580,8 @@ const filePath = realpath('/path');
 ```
 link(existingPath, newPath) : Promise
 ```
-
-<br>
-
-* create link _newPath_ to _existingPath_
+* _Promise_ fulfills with _undefined_
+* create hard link _newPath_ to _existingPath_
 
 <br>
 
@@ -595,15 +594,29 @@ await link('path/existingFile', 'path/newLinkFileName');
 <br>
 <br>
 
-#### [**unlink()**](#unlink)
+#### **unlink()**
 <br>
 
+```
+unlink(path) : Promise
+```
 * Delete symbolic link
-* See [unlink](#unlink)
+* _Promise_ fulfills with _undefined_
+
+<br>
+
+```javascript
+import { unlink } from 'node:fs/promises';
+
+await unlink('path');
+```
 
 <br>
 <br>
 
+### **Symbolic Links**
+<br>
+<br>
 
 #### **symlink()**
 <br>
@@ -613,6 +626,7 @@ symlink(target, path, [type]) : Promise
 ```
 * creates symbolic link
 * type = ['dir', 'file', 'junction'] (Windows only)
+* _Promise_ fulfills with _undefined_
 
 <br>
 
@@ -668,6 +682,7 @@ option = {
   mode : string|int
 }
 ```
+* _Promise_ fulfills with _undefined_ or with first created directory path if _recursive_ is true
 
 <br>
 
@@ -693,9 +708,9 @@ option = {
 
 <br>
 
+* _Promise_ fulfills with file system path of temporary directory
 * creates unique temporary directory
 * directory name: prefix + 6 random characters
-* promise fulfills with file system path of temporary directory
 
 <br>
 

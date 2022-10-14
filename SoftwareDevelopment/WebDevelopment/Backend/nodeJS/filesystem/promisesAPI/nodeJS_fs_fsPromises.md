@@ -815,7 +815,7 @@ await rmdir('path/directory');
 #### **opendir()**
 <br>
 
-* opens a [fs.Dir](#dir) object for a directory
+* opens a [fs.Dir](../objects/nodeJS_fs_dir.md) object for a directory
 
 <br>
 
@@ -830,7 +830,7 @@ option = {
 
 <br>
 
-* Promise fulfills with [fs.Dir](#dir)
+* Promise fulfills with [fs.Dir](../objects/nodeJS_fs_dir.md)
 * bufferSize describes numbers of buffered directories
 
 <br>

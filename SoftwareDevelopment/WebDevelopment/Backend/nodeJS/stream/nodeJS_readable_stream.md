@@ -1,13 +1,19 @@
-# **NodeJS Filesystem Streams**
+# **NodeJS Readable Stream**
 <br>
 
 ## **Table Of Contents**
 <br>
 
-- [**NodeJS Filesystem Streams**](#nodejs-filesystem-streams)
+- [**NodeJS Readable Stream**](#nodejs-readable-stream)
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
   - [**fs.ReadStream**](#fsreadstream)
+    - [**Events**](#events)
+      - [**close**](#close)
+      - [**data**](#data)
+      - [**end**](#end)
+      - [**error**](#error)
+      - [**pause**](#pause)
     - [**Properties**](#properties)
       - [**bytesRead**](#bytesread)
       - [**path**](#path)
@@ -20,7 +26,7 @@
     - [**Methods**](#methods)
       - [**destroy([error])**](#destroyerror)
       - [**isPaused()**](#ispaused)
-      - [**pause()**](#pause)
+      - [**pause()**](#pause-1)
       - [**pipe()**](#pipe)
       - [**unpipe()**](#unpipe)
       - [**read()**](#read)
@@ -36,11 +42,38 @@
 ## **General**
 <br>
 
+Readable streams can be either _flowing_ or _paused_ (initial state). They are automatically started (state _flowing_) when a callback for event _data_ is attached.
+
 <br>
 <br>
 <br>
 
 ## **fs.ReadStream**
+<br>
+<br>
+
+### **Events**
+<br>
+<br>
+
+#### **close**
+<br>
+
+#### **data**
+* emitted whenever consumer gets new data chunk
+* delivers a chunk of data (Buffer, string or any)
+<br>
+
+#### **end**
+* emitted when there is no more data to consume
+<br>
+
+#### **error**
+<br>
+
+#### **pause**
+* stream._pause()_ is called
+
 <br>
 <br>
 
@@ -180,4 +213,3 @@ import { open } from 'node:fs/promises';
 const fileHandle = await open('/path/file', 'wx+');
 const readStream = fileHandle.createReadStream();
 ```
-

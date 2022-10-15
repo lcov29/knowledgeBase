@@ -9,11 +9,12 @@
   - [**General**](#general)
   - [**Installation**](#installation)
   - [**Command Line**](#command-line)
-  - [**Open Node Terminal**](#open-node-terminal)
-  - [**Execute JavaScript Files**](#execute-javascript-files)
+    - [**Open Node Terminal**](#open-node-terminal)
+    - [**Execute JavaScript Files**](#execute-javascript-files)
   - [**Modules**](#modules)
-    - [**Import**](#import)
-    - [**Export**](#export)
+    - [**CommonJS**](#commonjs)
+      - [**Import**](#import)
+      - [**Export**](#export)
 
 <br>
 <br>
@@ -45,7 +46,7 @@ Add section
 <br>
 <br>
 
-## **Open Node Terminal**
+### **Open Node Terminal**
 <br>
 
 ```bash
@@ -55,7 +56,7 @@ node
 <br>
 <br>
 
-## **Execute JavaScript Files**
+### **Execute JavaScript Files**
 <br>
 
 ```bash
@@ -74,7 +75,11 @@ NodeJS uses [CommonJS modules](../JavaScript/../../JavaScript/javascript_modules
 <br>
 <br>
 
-### **Import**
+### **CommonJS**
+<br>
+<br>
+
+#### **Import**
 <br>
 
 ```javascript
@@ -84,11 +89,11 @@ const foo = require('moduleName')
 <br>
 <br>
 
-### **Export**
+#### **Export**
 <br>
 
 ```javascript
-modules.export = { function1, function2, value3 };
+module.exports = { function1, function2, value3 };
 
 // Alternative
 exports.functionName = function(param) {/* Implementation */};

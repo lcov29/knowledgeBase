@@ -179,7 +179,7 @@ readFile(option) : Promise
 
 option = {
   encoding : string (Default: null),
-  signal : 
+  signal : AbortSignal
 }
 ```
 * _Promise_ fulfills with file content

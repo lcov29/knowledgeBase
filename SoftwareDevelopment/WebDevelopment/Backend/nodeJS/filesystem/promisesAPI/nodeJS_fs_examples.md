@@ -7,6 +7,7 @@
 - [**NodeJS File System Examples**](#nodejs-file-system-examples)
   - [**Table Of Contents**](#table-of-contents)
   - [**Promise API**](#promise-api)
+  - [**FileHandle**](#filehandle)
 
 <br>
 <br>
@@ -77,5 +78,49 @@ try {
 
 } catch(error) {
     console.log(error);
+}
+```
+
+<br>
+<br>
+<br>
+
+## **FileHandle**
+<br>
+<br>
+
+```javascript
+import fs from 'node:fs/promises';
+import { join } from 'node:path';
+
+
+let fileHandle = null;
+
+try {
+
+    const dirname = new URL('.', import.meta.url).pathname;
+    const filePath = join(dirname, 'testFileHandle.txt');
+
+    // create file handle (a+: read and append, create file if it not already exists)
+    fileHandle = await fs.open(filePath, 'w+');
+    
+    // append content
+    await fileHandle.writeFile('Content Line 1\nContent Line 2', 'utf8');
+    await fileHandle.truncate(10);
+
+    // read File
+    const fileContent = await fs.readFile(filePath, 'utf8');
+    console.log(fileContent);
+
+} catch(error) {
+
+    console.log(error); 
+
+} finally {
+
+    // explicitly close file handle to prevent memory leak
+    await fileHandle?.close();
+    console.log('file handle closed');
+
 }
 ```

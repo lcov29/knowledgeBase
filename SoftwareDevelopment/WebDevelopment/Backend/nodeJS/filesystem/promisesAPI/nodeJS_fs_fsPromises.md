@@ -149,7 +149,7 @@ open(path, [flags], [mode]) : Promise
 flags : <string | number> (Default: 'r')
 mode : <string | integer> (Default: 0o666 (readable and writable))
 ```
-* Promise fulfills with [FileHandle](./nodeJS_fs_filehandle.md)
+* _Promise_ fulfills with [FileHandle](./nodeJS_fs_filehandle.md)
 
 <br>
 
@@ -209,13 +209,14 @@ option = {
   signal : AbortSignal
 }
 ```
+* _Promise_ fulfills with file content
 
 <br>
 
 ```javascript
 import { readFile } from 'node:fs/promises';
 
-const contentString = await readFileSync('/file/path', { encoding: 'utf-8'}); 
+const contentString = await readFile('/file/path', { encoding: 'utf-8'}); 
 ```
 
 <br>
@@ -247,7 +248,7 @@ options = {
   signal : AbortSignal
 }
 ```
-* Promise fulfills with _undefined_
+* _Promise_ fulfills with _undefined_
 * REPLACE existing file
 * create file if it not already exists
 
@@ -276,7 +277,7 @@ options = {
 ```
 
 <br>
-
+* _Promise_ fulfills with _undefined_
 * append _data_ to file
 * creates file if not already existing
 
@@ -297,7 +298,7 @@ await appendFile('/path/file', 'new content');
 ```
 copyFile(source, destination, [mode]) : Promise
 ```
-
+* _Promise_ fulfills with _undefined_
 * copies file to _destination_
 * overwrites file with same name at destination by default
 
@@ -330,8 +331,8 @@ try {
 ```
 truncate(path, [length]) : Promise
 ```
-* truncates or shortens length of content
 * Promise fulfills with _undefined_
+* truncates or shortens length of content
 
 <br>
 
@@ -362,8 +363,8 @@ options = {
   retryDelay : int (Default: 100)
 }
 ```
+* _Promise_ fulfills with _undefined_
 * removes files and directories
-* Promise fulfills with _undefined_
 
 <br>
 
@@ -382,6 +383,7 @@ await rm('path/file');
 ```
 unlink(path) : Promise
 ```
+* _Promise_ fulfills with _undefined_
 * if path is _symbolic link_: delete link
 * if path is not _symbolik link_: delete file
 
@@ -405,7 +407,7 @@ await unlink('path');
 ```
 rename(oldPath, newPath) : Promise
 ```
-* Promise fulfills with _undefined_
+* _Promise_ fulfills with _undefined_
 
 <br>
 
@@ -474,9 +476,8 @@ setTimeout(() => {
 ```
 access(path, [mode]) : Promise
 ```
-
+* _Promise_ fulfills with _undefined_ when file is accessible
 * modes can be chained with or operator: |
-* Promise fulfills with _undefined_ when file is accessible
 
 <br>
 
@@ -512,9 +513,7 @@ try {
 ```
 chmod(path, mode) : Promise
 ```
-
-<br>
-
+* _Promise_ fulfills with _undefined_
 * change permission of specified file
 
 <br>
@@ -551,7 +550,7 @@ await chmod('/path/file', 4);
 ```
 chown(path, uid, gid) : Promise
 ```
-
+* _Promise_ fulfills with _undefined_
 * changes ownership of specified file
 
 <br>
@@ -600,8 +599,8 @@ await link('path/existingFile', 'path/newLinkFileName');
 ```
 unlink(path) : Promise
 ```
-* Delete symbolic link
 * _Promise_ fulfills with _undefined_
+* Delete symbolic link
 
 <br>
 
@@ -624,9 +623,9 @@ await unlink('path');
 ```
 symlink(target, path, [type]) : Promise
 ```
+* _Promise_ fulfills with _undefined_
 * creates symbolic link
 * type = ['dir', 'file', 'junction'] (Windows only)
-* _Promise_ fulfills with _undefined_
 
 <br>
 
@@ -744,9 +743,7 @@ options = {
 }
 }
 ```
-
-<br>
-
+* _Promise_ fulfills with _undefined_
 * copies entire directory including subdirectories
 
 <br>
@@ -769,8 +766,8 @@ options = {
   retryDelay : int (Default: 100)
 }
 ```
+* _Promise_ fulfills with _undefined_
 * removes files and directories
-* Promise fulfills with _undefined_
 
 <br>
 
@@ -794,8 +791,8 @@ options = {
   retryDelay : int (Default: 100)
 }
 ```
+* _Promise_ fulfills with _undefined_
 * removes empty directories
-* Promise fulfills with _undefined_
   
 <br>
 
@@ -827,10 +824,7 @@ option = {
   bufferSize : int(32)
 }
 ```
-
-<br>
-
-* Promise fulfills with [fs.Dir](../objects/nodeJS_fs_dir.md)
+* _Promise_ fulfills with [fs.Dir](../objects/nodeJS_fs_dir.md)
 * bufferSize describes numbers of buffered directories
 
 <br>
@@ -855,8 +849,8 @@ option = {
   withFileTypes : boolean (Default: false)
 }
 ```
+* _Promise_ fulfills with array of entry names in directory
 * read content of directory
-* Promise fulfills with array of entry names in directory
 
 <br>
 
@@ -888,7 +882,7 @@ option = {
   bigint : boolean (Default: false)
 }
 ```
-* Promise fulfills to [fs.Stats](./filesystem/objects/nodeJS_fs_stats.md)
+* _Promise_ fulfills to [fs.Stats](./filesystem/objects/nodeJS_fs_stats.md)
 
 <br>
 

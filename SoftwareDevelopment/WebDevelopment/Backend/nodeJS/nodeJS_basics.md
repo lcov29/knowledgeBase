@@ -18,6 +18,7 @@
     - [**ES6 Modules**](#es6-modules)
       - [**Import**](#import-1)
       - [**Export**](#export-1)
+  - [**Callbacks**](#callbacks)
 
 <br>
 <br>
@@ -153,4 +154,55 @@ export const variableName = '';
 export function foo() { /* implementation */ };
 
 export { function1, function2 };
+```
+
+<br>
+<br>
+<br>
+
+## **Callbacks**
+<br>
+
+```javascript
+callback(error, data) {
+  if (error) {
+    /* error handling*/
+    return;
+  }
+
+  /* data handling */
+}
+```
+* Always use _Early Return_ in case of an error
+* Best Practice: when calling a callback and there is no error, set first _error_ parameter to _null_
+
+<br>
+
+If a function can be synchronous or asynchronous depending on their control flow, make sure it is always asynchronous by using _setTimeout_, _setImmediate_ or _process.nextTick_
+
+<br>
+
+```javascript
+function synchronousOrAsynchronous() {
+  if (someCondition) {
+    // some synchronous code
+    return
+  } 
+
+  // some asynchronous code
+}
+```
+
+<br>
+
+```javascript
+function synchronousOrAsynchronous() {
+  if (someCondition) {
+    return process.nextTick(() => {
+      /* some synchronous code */
+    });
+  }
+
+  // some asynchronous code
+}
 ```

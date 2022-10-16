@@ -25,9 +25,7 @@ A Stream is a flow of data chunks, comparable to an array laid out in time. We c
 ## **Stream Types**
 <br>
 
-1.) Writable Stream
-2.) Readable Stream
-3.) Duplex Stream (readable and writable)
-4.) Transform (duplex with data modification)
-
-
+1. Writable Stream
+2. Readable Stream
+3. Duplex Stream (readable and writable)
+4. Transform (duplex with data modification)

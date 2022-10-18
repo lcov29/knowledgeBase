@@ -198,7 +198,7 @@ options = {
 ```
 * convenience method for get requests
 * very similar to [_http.request()_](#request)
-* callback has to concume the response data
+* callback has to consume the response data
 
 <br>
 <br>

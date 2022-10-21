@@ -11,6 +11,7 @@
   - [**HTTP Messages**](#http-messages)
     - [**Request**](#request)
     - [**Response**](#response)
+  - [**HTTP Versions**](#http-versions)
   - [**HTTP Methods**](#http-methods)
   - [**Headers**](#headers)
     - [**General Header**](#general-header)
@@ -123,6 +124,19 @@ server: AmazonS3
 body
 ```
 
+<br>
+<br>
+<br>
+
+## **HTTP Versions**
+<br>
+
+|                   |HTTP1.1                                          |HTTP2
+|:------------------|:------------------------------------------------|:-----------
+|Format             |Text                                             |Binary
+|Header Compression |No                                               |Yes
+|Multiplex          |No (every request requires a new TCP-connection) |Yes (Multiple requests can be sent over the same TCP-connection)
+|Server Push        |No                                               |Yes
 <br>
 <br>
 <br>

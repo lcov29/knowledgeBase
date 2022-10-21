@@ -16,6 +16,7 @@
   - [**HTTP2**](#http2)
     - [**HTTP2 Client: GET Request](#http2-client-get-request)
     - [**HTTP2 Server: Basic**](#http2-server-basic)
+    - [**HTTP2 Server: Basic Cookie Generation**](#http2-server-basic-cookie-generation)
 
 <br>
 <br>
@@ -377,6 +378,49 @@ const options = {cert: certificate, key: privateKey};
 const server = createSecureServer(options, (request, response) => {
     response.writeHead(200, {'content-type': 'text/html'});
     response.write(`<h1>Hello HTTP2 Server</h1>`);
+    response.end();
+});
+
+server.listen(port);
+```
+
+<br>
+<br>
+
+### **HTTP2 Server: Basic Cookie Generation**
+<br>
+
+```javascript
+import { createSecureServer } from 'node:http2';
+import { readFile } from 'node:fs/promises';
+import { URL } from 'node:url';
+
+
+const port = 3000;
+const encoding = 'utf8';
+
+const certificateFileUrl = new URL('./certificate/certificate.pem', import.meta.url);
+const privateKeyUrl = new URL('./certificate/privateKey.pem', import.meta.url);
+const certificate = await readFile(certificateFileUrl, encoding);
+const privateKey = await readFile(privateKeyUrl, encoding);
+const serverOptions = {cert: certificate, key: privateKey};
+
+let availableCookieIndex = 1;
+
+const server = createSecureServer(serverOptions, (request, response) => {
+    const responseHeader = {};
+    responseHeader['content-type'] = 'text/html';
+
+    const cookieHeader =  request.headers.cookie;
+    if (cookieHeader) {
+        console.log(cookieHeader);
+    } else {
+        responseHeader['set-cookie'] = `testCookie${availableCookieIndex}=payload_${availableCookieIndex};HttpOnly`;
+        availableCookieIndex++;
+    }
+
+    response.writeHead(200, responseHeader);
+    response.write('<h1>Hello HTTP2 Server</h1>');
     response.end();
 });
 

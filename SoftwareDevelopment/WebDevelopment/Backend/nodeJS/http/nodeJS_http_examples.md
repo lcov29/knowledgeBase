@@ -14,6 +14,7 @@
     - [**HTTPS Server: Basic**](#https-server-basic)
     - [**HTTPS Server: GET And POST**](#https-server-get-and-post)
   - [**HTTP2**](#http2)
+    - [**HTTP2 Client: GET Request](#http2-client-get-request)
     - [**HTTP2 Server: Basic**](#http2-server-basic)
 
 <br>
@@ -302,6 +303,50 @@ server.listen(port);
 <br>
 
 ## **HTTP2**
+<br>
+<br>
+
+### **HTTP2 Client: GET Request
+<br>
+
+```javascript
+import { connect } from 'node:http2';
+import { writeFile } from 'node:fs/promises';
+import { URL } from 'node:url';
+
+
+function errorListener(error) {
+    console.log(error);
+}
+
+
+function responseDataListener(chunk) {
+    console.log('received response chunk');
+    fetchedData += chunk;
+}
+
+
+async function responseEndListener() {
+    console.log('All response chunks received');
+    const outputFileURL = new URL('./fetchedWebsite.html', import.meta.url);
+    await writeFile(outputFileURL, fetchedData, {encoding: 'utf8'});
+    console.log(`Fetched data saved to '${outputFileURL.toString()}'`);
+    client.close();
+}
+
+
+let fetchedData = '';
+
+const client = connect('https://www.google.com');
+client.addListener('error', errorListener);
+
+const request = client.request({ ':path': '/', 'method': 'GET'});
+request.setEncoding('utf8');
+request.addListener('data', responseDataListener);
+request.addListener('end', responseEndListener);
+request.end();
+```
+
 <br>
 <br>
 

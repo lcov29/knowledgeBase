@@ -22,6 +22,8 @@
     - [**3\*\* Redirect**](#3-redirect)
     - [**4\*\* Client Error**](#4-client-error)
     - [**5\*\* Server Error**](#5-server-error)
+  - [**HTTP Cookies**](#http-cookies)
+    - [**Create Cookie**](#create-cookie)
 
 <br>
 <br>
@@ -128,17 +130,17 @@ body
 ## **HTTP Methods**
 <br>
 
-|Method |Description                                           |
-|:------|:-----------------------------------------------------|
-|GET    |Retrieve resource from server                         |
-|POST   |Submit data to the server                             |
-|PUT    |Update existing resource on the server                |
-|DELETE |Delete resource on the server                         |
-|PATCH  |Apply partial modification to resourece               |
-|HEAD   |Like GET, but without response body                   |
-|CONNECT|Establish tunnel to server                            |
-|OPTIONS|Describe communication options for resource           |
-|TRACE  |Perform message loop back test along path to resource |
+| Method  | Description                                           |
+| :------ | :---------------------------------------------------- |
+| GET     | Retrieve resource from server                         |
+| POST    | Submit data to the server                             |
+| PUT     | Update existing resource on the server                |
+| DELETE  | Delete resource on the server                         |
+| PATCH   | Apply partial modification to resourece               |
+| HEAD    | Like GET, but without response body                   |
+| CONNECT | Establish tunnel to server                            |
+| OPTIONS | Describe communication options for resource           |
+| TRACE   | Perform message loop back test along path to resource |
 
 <br>
 <br>
@@ -154,13 +156,13 @@ body
 Common:
 <br>
 
-|Header          |Description
-|:---------------|:----------
-|URL             |
-|Method          |
-|Status Code     |
-|Remote Address  |
-|Referrer Policy |
+| Header          | Description |
+| :-------------- | :---------- |
+| URL             |
+| Method          |
+| Status Code     |
+| Remote Address  |
+| Referrer Policy |
 
 <br>
 <br>
@@ -171,15 +173,15 @@ Common:
 Common headers:
 <br>
 
-|Header         |Description
-|:--------------|:-----------
-|Cookies        |
-|Accept-xxx     |
-|Content-Type   |
-|Content-Length |
-|Authorization  |
-|User-Agent     |
-|Referrer       |
+| Header         | Description |
+| :------------- | :---------- |
+| Cookies        |
+| Accept-xxx     |
+| Content-Type   |
+| Content-Length |
+| Authorization  |
+| User-Agent     |
+| Referrer       |
 
 <br>
 <br>
@@ -190,13 +192,13 @@ Common headers:
 Common:
 <br>
 
-|Header         |Description
-|:--------------|:-----------
-|Server         |
-|Set-Cookie     |
-|Content-Type   |
-|Content-Length |
-|Date           |
+| Header         | Description |
+| :------------- | :---------- |
+| Server         |
+| Set-Cookie     |
+| Content-Type   |
+| Content-Length |
+| Date           |
 
 <br>
 <br>
@@ -209,12 +211,12 @@ Common:
 ### **1\*\* Informational**
 <br>
 
-|Code |Message             |
-|:---:|:-------------------|
-|100  |Continue            |
-|101  |Switching Protocols |
-|102  |Processing          |
-|103  |Early Hints         |
+| Code  | Message             |
+| :---: | :------------------ |
+|  100  | Continue            |
+|  101  | Switching Protocols |
+|  102  | Processing          |
+|  103  | Early Hints         |
 
 <br>
 <br>
@@ -222,18 +224,18 @@ Common:
 ### **2\*\* Success**
 <br>
 
-|Code |Message                       |
-|:---:|:-----------------------------|
-|200  |OK                            |
-|201  |Created                       |
-|202  |Accepted                      |
-|203  |Non-Authoritative Information |
-|204  |No Content                    |
-|205  |Reset Content                 |
-|206  |Partial Content               |
-|207  |Multi-Status                  |
-|208  |Already Reported              |
-|226  |IM Used                       |
+| Code  | Message                       |
+| :---: | :---------------------------- |
+|  200  | OK                            |
+|  201  | Created                       |
+|  202  | Accepted                      |
+|  203  | Non-Authoritative Information |
+|  204  | No Content                    |
+|  205  | Reset Content                 |
+|  206  | Partial Content               |
+|  207  | Multi-Status                  |
+|  208  | Already Reported              |
+|  226  | IM Used                       |
 
 <br>
 <br>
@@ -241,16 +243,16 @@ Common:
 ### **3\*\* Redirect**
 <br>
 
-|Code |Message            |
-|:---:|:------------------|
-|300  |Multiple Choices   |
-|301  |Moved Permanently  |
-|302  |Found              |
-|303  |See Other          |
-|304  |Not Modified       |
-|305  |Use Proxy          |
-|307  |Temporary Redirect |
-|308  |Permanent Redirect |
+| Code  | Message            |
+| :---: | :----------------- |
+|  300  | Multiple Choices   |
+|  301  | Moved Permanently  |
+|  302  | Found              |
+|  303  | See Other          |
+|  304  | Not Modified       |
+|  305  | Use Proxy          |
+|  307  | Temporary Redirect |
+|  308  | Permanent Redirect |
 
 <br>
 <br>
@@ -258,37 +260,37 @@ Common:
 ### **4\*\* Client Error**
 <br>
 
-|Code |Message                         |
-|:---:|:-------------------------------|
-|400  |Bad Request                     |
-|401  |Unauthorized                    |
-|402  |Payment Required                |
-|403  |Forbidden                       |
-|404  |Not Found                       |
-|405  |Method Not Allowed              |
-|406  |Not Acceptable                  |
-|407  |Proxy Authentication Required   |
-|408  |Request Timeout                 |
-|409  |Conflict                        |
-|410  |Gone                            |
-|411  |Length Required                 |
-|412  |Precondition Failed             |
-|413  |Payload Too Large               |
-|414  |URI Too Long                    |
-|415  |Unsupported Media Type          |
-|416  |Range Not Satisfiable           |
-|417  |Expectation Failed              |
-|418  |I'm a Teapot                    |
-|421  |Misdirected Request             |
-|422  |Unprocessable Entity            |
-|423  |Locked                          |
-|424  |Failed Dependency               |
-|425  |Too Early                       |
-|426  |Upgrade Required                |
-|428  |Precondition Required           |
-|429  |Too Many Requests               |
-|431  |Request Header Fields Too Large |
-|451  |Unavailable For Legal Reasons   |
+| Code  | Message                         |
+| :---: | :------------------------------ |
+|  400  | Bad Request                     |
+|  401  | Unauthorized                    |
+|  402  | Payment Required                |
+|  403  | Forbidden                       |
+|  404  | Not Found                       |
+|  405  | Method Not Allowed              |
+|  406  | Not Acceptable                  |
+|  407  | Proxy Authentication Required   |
+|  408  | Request Timeout                 |
+|  409  | Conflict                        |
+|  410  | Gone                            |
+|  411  | Length Required                 |
+|  412  | Precondition Failed             |
+|  413  | Payload Too Large               |
+|  414  | URI Too Long                    |
+|  415  | Unsupported Media Type          |
+|  416  | Range Not Satisfiable           |
+|  417  | Expectation Failed              |
+|  418  | I'm a Teapot                    |
+|  421  | Misdirected Request             |
+|  422  | Unprocessable Entity            |
+|  423  | Locked                          |
+|  424  | Failed Dependency               |
+|  425  | Too Early                       |
+|  426  | Upgrade Required                |
+|  428  | Precondition Required           |
+|  429  | Too Many Requests               |
+|  431  | Request Header Fields Too Large |
+|  451  | Unavailable For Legal Reasons   |
 
 <br>
 <br>
@@ -296,17 +298,106 @@ Common:
 ### **5\*\* Server Error**
 <br>
 
-|Code |Message                         |
-|:---:|:-------------------------------|
-|500  |Internal Server Error           |
-|501  |Not Implemented                 |
-|502  |Bad Gateway                     |
-|503  |Service Unavailable             |
-|504  |Gateway Timeout                 |
-|505  |HTTP Version Not Supported      |
-|506  |Variant Also Negotiates         |
-|507  |Insufficient Storage            |
-|508  |Loop Detected                   |
-|509  |Bandwidth Limit Exceeded        |
-|510  |Not Extended                    |
-|511  |Network Authentication Required |
+| Code  | Message                         |
+| :---: | :------------------------------ |
+|  500  | Internal Server Error           |
+|  501  | Not Implemented                 |
+|  502  | Bad Gateway                     |
+|  503  | Service Unavailable             |
+|  504  | Gateway Timeout                 |
+|  505  | HTTP Version Not Supported      |
+|  506  | Variant Also Negotiates         |
+|  507  | Insufficient Storage            |
+|  508  | Loop Detected                   |
+|  509  | Bandwidth Limit Exceeded        |
+|  510  | Not Extended                    |
+|  511  | Network Authentication Required |
+
+<br>
+<br>
+<br>
+
+## **HTTP Cookies**
+<br>
+
+* small chunk of data
+* is sent by the server to the client
+* client can store the cookie and send it with later requests to same server
+* can be utilized to remember information despite HTTP being stateless
+
+<br>
+
+Initial response header:
+
+```
+HTTP/2 200 OK
+Content-Type: text/html
+Set-Cookie: cookie1Name=payload
+Set-Cookie: cookie2Name=payload
+
+... Content ...
+```
+
+<br>
+
+Subsequent request headers to same server:
+
+```
+GET /fileName.html HTTP/2
+Host: www.domain.com
+Cookie: cookie1Name=payload; cookie2Name=payload
+```
+
+<br>
+
+Main Purposes:
+
+1. Session Management
+2. Personalization
+3. Tracking
+
+<br>
+
+Lifetime:
+
+1. Session cookie: deleted when browser defined session ends (no attributes _Expires_ or _Max-Age_)
+2. Permanent cookie: deleted after cookie defined date (_Expires_) or period of time (_Max-Age_)
+
+<br>
+<br>
+
+### **Create Cookie**
+<br>
+
+Cookie header:
+
+```
+Set-Cookie: <name>=<value>
+```
+
+<br>
+
+Optional cookie headers:
+
+| Attribute | Example                                    | Description                                                                                                 |
+| :-------- | :----------------------------------------- | :---------------------------------------------------------------------------------------------------------- |
+| Expires   | Expires=Fri Oct 21 2022 15:51:58 GMT+0200; | delete date for cookie                                                                                      |
+| Max-Age   | Max-Age=60;                                | number of seconds before deletion                                                                           |
+| Secure    | Secure;                                    | cookie is only sent via encrypted requests                                                                  |
+| HttpOnly  | HttpOnly;                                  | cookie is inaccessible to JavaScript                                                                        |
+| Domain    | Domain=google.com;                         | specify which host can receive cookie (including subdomains). Defaults to same host _excluding_ subdomains! |
+| Path      | Path=/docs;                                | specify path required in requested URL to send cookie                                                       |
+| SameSite  | SameSite=Strict;                           | specify cookie sending behavior for cross-site requests. See Arguments below                                |
+|           |
+
+<br>
+<br>
+
+Arguments for Attribute _SameSite_:
+<br>
+
+| Argument | Description                                                                              |
+| :------- | :--------------------------------------------------------------------------------------- |
+| Strict   | cookie is only sent to originating site                                                  |
+| Lax      | cookie is only sent when user navigates to originating site                              |
+| None     | cookie is sent to originating site and cross-site-requests, but if _Secure_ is activated |

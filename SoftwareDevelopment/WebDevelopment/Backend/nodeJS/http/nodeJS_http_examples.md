@@ -14,7 +14,7 @@
     - [**HTTPS Server: Basic**](#https-server-basic)
     - [**HTTPS Server: GET And POST**](#https-server-get-and-post)
   - [**HTTP2**](#http2)
-    - [**HTTP2 Client: GET Request](#http2-client-get-request)
+    - [**HTTP2 Client: GET Request**](#http2-client-get-request)
     - [**HTTP2 Server: Basic**](#http2-server-basic)
     - [**HTTP2 Server: Basic Cookie Generation**](#http2-server-basic-cookie-generation)
 
@@ -307,7 +307,7 @@ server.listen(port);
 <br>
 <br>
 
-### **HTTP2 Client: GET Request
+### **HTTP2 Client: GET Request**
 <br>
 
 ```javascript

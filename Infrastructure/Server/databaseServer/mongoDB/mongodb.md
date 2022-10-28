@@ -7,6 +7,7 @@
 - [**MongoDB**](#mongodb)
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
+  - [**Command Line**](#command-line)
   - [**Create**](#create)
     - [**Create database**](#create-database)
     - [**Create Collection**](#create-collection)
@@ -52,6 +53,26 @@
 |record             |document               |
 
 <br>
+<br>
+<br>
+
+## **Command Line**
+<br>
+
+If mongoDB server is not started:
+
+```bash
+sudo systemctl start mongod
+```
+
+<br>
+
+Open mongo terminal on same host machine:
+
+```bash
+mongosh
+```
+
 <br>
 <br>
 <br>

@@ -7,7 +7,13 @@
 - [**MongoDB**](#mongodb)
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
-  - [**Command Line**](#command-line)
+  - [**Shell Basics**](#shell-basics)
+    - [**Open Shell**](#open-shell)
+    - [**Clear Shell**](#clear-shell)
+    - [**Show Available Databases**](#show-available-databases)
+    - [**Change To Database**](#change-to-database)
+    - [**Show Available Collections Of A Database**](#show-available-collections-of-a-database)
+    - [**Exit Shell**](#exit-shell)
   - [**Create**](#create)
     - [**Create database**](#create-database)
     - [**Create Collection**](#create-collection)
@@ -56,21 +62,71 @@
 <br>
 <br>
 
-## **Command Line**
+## **Shell Basics**
 <br>
 
-If mongoDB server is not started:
-
-```bash
-sudo systemctl start mongod
-```
+* The mongo shell can interpret JavaScript
 
 <br>
 
-Open mongo terminal on same host machine:
+### **Open Shell**
+<br>
 
 ```bash
 mongosh
+```
+* shell is only accessible from host machine
+
+<br>
+<br>
+
+### **Clear Shell**
+<br>
+
+```javascript
+console.clear();
+```
+
+<br>
+<br>
+
+### **Show Available Databases**
+<br>
+
+```bash
+show databases;
+```
+
+<br>
+<br>
+
+### **Change To Database**
+<br>
+
+```bash
+use <databaseName>;
+```
+* sets variable _db_ to selected database
+
+<br>
+<br>
+
+### **Show Available Collections Of A Database**
+<br>
+
+```bash
+show collections;
+```
+* assuming that we navigated to a specific database using [_use_](#change-to-database)
+
+<br>
+<br>
+
+### **Exit Shell**
+<br>
+
+```bash
+exit
 ```
 
 <br>

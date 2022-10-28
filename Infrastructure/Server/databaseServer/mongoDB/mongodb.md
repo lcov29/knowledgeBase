@@ -281,6 +281,18 @@ db.Person.find(
 * apply aggregation functions on documents within a collection
 
 <br>
+
+Basic aggregation syntax:
+
+```javascript
+db.<collectionName>.aggregate(
+  [{$match: ...},
+   {$group: ...},
+   {$sort: ...}]
+);
+```
+
+<br>
 <br>
 
 #### **Pipeline Operators**

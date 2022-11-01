@@ -22,6 +22,12 @@
 ## **General**
 <br>
 
+**Iterable**: object with property _Symbol.iterator_ that references a function that returns an iterator
+
+**Iterator**: object that returns a function _next()_ that returns an object with properties _value_ and _done_
+
+<br>
+
 * iterator enables iterating over a data structure
   * can be retrieved from methods _values()_, _keys()_ and _entries()_ for datatypes Array, Set and Maps 
   * can be a custom iterator

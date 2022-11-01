@@ -25,12 +25,7 @@
         - [**Optional Elements**](#optional-elements)
         - [**Readonly Tupel**](#readonly-tupel)
       - [**Enums**](#enums)
-    - [**Function**](#function)
-      - [**Optional Parameters**](#optional-parameters)
-      - [**Default Parameter Value**](#default-parameter-value)
-      - [**Rest Parameters**](#rest-parameters)
-      - [**Generator Function**](#generator-function)
-      - [**Call Signatures**](#call-signatures)
+  - [**Function**](#function)
 
 <br>
 <br>
@@ -52,7 +47,7 @@ Prerequisite: Node.js is installed
 2. Install TypeScript compiler as developer dependency via npm
 
 ```bash
-npm install typescript --save-dev
+npm install -g typescript
 ```
 
 3. Generate and configure file _tsconfig.json_
@@ -553,7 +548,7 @@ Rivers.Nile;            // 2
 <br>
 <br>
 
-### **Function**
+## **Function**
 <br>
 
 * always explicitly annotate the parameters
@@ -572,109 +567,8 @@ function foo(param1: string, param2: number) {
 ```
 
 <br>
-<br>
 
-#### **Optional Parameters**
-<br>
-
-* if not specified, optional parameter is _undefined_
-
-```
-function <functionName>(<optionalParameterName>?: <optionalParameterType)
-```
-
-```typescript
-function foo(param1: string, optionalParam?: string) {
-	// implementation
-}
-```
-
-<br>
-<br>
-
-#### **Default Parameter Value**
-<br>
-
-```
-function <functionName>(<parameterName> = <defaultValue>)
-```
-
-```typescript
-function foo(param1 = 'bar') {
-	// implementation
-}
-```
-
-<br>
-<br>
-
-#### **Rest Parameters**
-<br>
-
-```
-function <functionName>(...<restParameterName>: <elementType>[])
-```
-
-```typescript
-function foo(param1: string, ...restParamList: number[]) {
-	// implementation
-}
-```
-
-<br>
-<br>
-
-#### **Generator Function**
-<br>
-
-```
-function* <functionName>(): IterableIterator<<type>> {
-	// implementation
-}
-```
-
-```typescript
-function* createCounter(): IterableIterator<number> {
-  let counter = 0;
-  while(true) {
-    yield counter++;
-  }
-}
-
-const counter = createCounter();
-console.log(counter.next());            // { value: 0, done: false }
-console.log(counter.next());            // { value: 1, done: false }
-console.log(counter.next());            // { value: 2, done: false }
-```
-
-<br>
-<br>
-
-#### **Call Signatures**
-<br>
-
-* allows to describe the type of a function signature
-
-```typescript
-function execute(fn: (a: string, b: string) => string) {
-  const result = fn('John', 'Doe');
-  console.log(result);
-}
-
-function greet(firstName: string, lastName: string) {
-  return `Hello ${firstName} ${lastName}`;
-}
-
-function sum(value1: number, value2: number) {
-  return value1 + value2;
-}
-
-execute(greet);
-//Hello John Doe
-execute(sum);
-//error TS2345: Argument of type '(value1: number, value2: number) => number' is not assignable to parameter of type '(a: string, b: string) => string'.
-```
-
+See [TypeScript Functions](./typescript_functions.md).
 
 
 

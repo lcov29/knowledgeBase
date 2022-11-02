@@ -18,6 +18,12 @@
   - [**Overload Signatures**](#overload-signatures)
     - [**Overload Function Expressions**](#overload-function-expressions)
     - [**Overload Function Declarations**](#overload-function-declarations)
+  - [**Generic Functions**](#generic-functions)
+    - [**Generic Function Type Expression**](#generic-function-type-expression)
+    - [**Generic Call Signature**](#generic-call-signature)
+    - [**Function Declaration**](#function-declaration)
+    - [**Generic Constraints**](#generic-constraints)
+    - [**Generic Default Type**](#generic-default-type)
   - [**Generator Function**](#generator-function)
 
 <br>
@@ -258,7 +264,7 @@ function foo(a: number, b: number): string                  // external signatur
 function foo(a: string | number, b?: number) : string {     // internal combination signature
   if (typeof a === 'number' && b !== undefined) {
     return `${a + b}`;
-  } 
+  }  
 
   return `foo() was called with string argument ${a}`;
 }
@@ -271,6 +277,172 @@ foo('Hello', 12);
 // The call would have succeeded against this implementation, but implementation signatures of overloads are not externally visible.
 
 ```
+
+<br>
+<br>
+<br>
+
+## **Generic Functions**
+<br>
+
+* allows annotating a general type that can be used as type of parameters or return type
+* general type is bound to specific type
+
+<br>
+
+### **Generic Function Type Expression**
+<br>
+
+```
+type <typeName>[<T, ...>] = [<T, ...>](<parameterName1>: <parameterType>, ...) => <returnType>
+```
+
+<br>
+
+Example For Implicit Binding At Function Call:
+
+```typescript
+type foo = <T>(bar: T) => T[];
+
+const fooFunc: foo = bar => {
+  // implementation
+}
+
+fooFunc(123);
+```
+
+<br>
+
+Example For Explicit Binding:
+
+```typescript
+type foo<T> = (bar: T) => T[];
+
+const fooFunc: foo<number> = bar => {
+  // implementation
+}
+
+fooFunc(123);
+```
+
+<br>
+<br>
+
+### **Generic Call Signature**
+<br>
+
+```
+type <typeName>[<T, ...>] = {
+  [<T, ...>](<parameterName1>: <parameterType>, ...): <returnType>
+}
+```
+
+<br>
+
+Example For Implicit Binding At Function Call:
+
+```typescript
+type foo = {
+  <T>(bar: T): T[];
+};
+
+const fooFunc: foo = bar => {
+  // implementation
+}
+
+fooFunc(123);
+```
+
+<br>
+
+Example For Explicit Binding:
+
+```typescript
+type foo<T> = {
+  (bar: T): T[];
+}
+
+const fooFunc: foo<number> = bar => {
+  // implementation
+}
+
+fooFunc(123);
+```
+
+<br>
+<br>
+
+### **Function Declaration**
+<br>
+
+```
+function <functionName><T, ...>(<parameterName1>: <parameterType>, ...): <returnType>
+```
+
+<br>
+
+```typescript
+function filter<T>(valueList: T[], filterFunc: (element: T) => boolean): T[] {
+  const result = [];
+  for (const value of valueList) {
+    if (filterFunc(value)) {
+      result.push(value);
+    }
+  }
+  return result;
+}
+
+filter(['a', 'b', 'c', 'd', 'e'], 
+       element => !['a', 'e', 'i', 'o', 'u'].includes(element)
+);
+
+filter([1, 2, 3, 4, 5, 6, 7], 
+       element => element % 2 === 0
+);
+```
+
+<br>
+<br>
+
+### **Generic Constraints**
+<br>
+
+We can constrain a generic type _T_ to subtypes _U_ of a specified value:
+
+```
+<T extends U>
+```
+
+<br>
+
+```typescript
+type SuperType = {property1: string};
+type SubTypeLevel1 = SuperType & {property2: string};
+type SubTypeLevel2 = SubTypeLevel1 & {property3: string}
+
+function getProperty1<T extends SuperType>(obj: T): string {
+  return obj.property1;
+}
+
+const superObj: SuperType = {property1: 'super'};
+const subObjLevel1: SubTypeLevel1 = {property1: 'sub1', property2: 'foo'};
+const subObjLevel2: SubTypeLevel2 = {property1: 'sub2', property2: 'foo', property3: 'bar'};
+
+getProperty1(superObj);             // 'super'
+getProperty1(subObjLevel1);         // 'sub1'
+getProperty1(subObjLevel2);         // 'sub2'
+```
+
+<br>
+<br>
+
+### **Generic Default Type**
+<br>
+
+```
+<T = <<DefaultType>>
+```
+
 
 <br>
 <br>

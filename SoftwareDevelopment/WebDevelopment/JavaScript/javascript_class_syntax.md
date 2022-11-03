@@ -6,8 +6,18 @@
 <br>
 
 - [**JavaScript Class Syntax**](#javascript-class-syntax)
-  - [**Table Of Contents**](#table-of_contents)
+  - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
+  - [**Basic Class Syntax**](#basic-class-syntax)
+    - [**Class Declaration**](#class-declaration)
+    - [**Class Expression**](#class-expression)
+  - [**Private Properties And Methods**](#private-properties-and-methods)
+  - [**Getter And Setter Methods**](#getter-and-setter-methods)
+  - [**Static Properties And Methods**](#static-properties-and-methods)
+  - [**Create Subclass**](#create-subclass)
+  - [**Call Superclass Method**](#call-superclass-method)
+  - [**Overwrite Superclass Method**](#overwrite-superclass-method)
+  - [**Explicitly Call Superclass Method**](#explicitly-call-superclass-method)
 
   
 <br>

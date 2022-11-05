@@ -18,6 +18,9 @@
     - [**protected**](#protected)
     - [**public**](#public)
     - [**readonly**](#readonly)
+  - [**Structural Typing**](#structural-typing)
+  - [**Generics**](#generics)
+  - [**Mixins**](#mixins)
 
 <br>
 <br>
@@ -310,4 +313,207 @@ public <methodName>(<parameterName>: <parameterType>, ...): <resultType>
 
 ```
 readonly <PropertyName>
+```
+
+<br>
+<br>
+<br>
+
+## **Structural Typing**
+<br>
+
+Classes are structural typed, so TypeScript accepts all objects with the same structure of a class as instances of said class even if they were not instantiated via the constructor.
+
+<br>
+
+Example:
+
+```typescript
+class Person {
+
+  name;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  introduce() {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+
+}
+
+
+function demonstrateStructuralTyping(person: Person) {
+  person.introduce();
+}
+
+
+demonstrateStructuralTyping(new Person('John Doe'));     
+// 'Hello, my name is John Doe'
+
+
+demonstrateStructuralTyping(
+  {
+    name: 'Jane Doe',
+    introduce: function() { console.log(`Hi, i am ${this.name}`);}
+  }
+);
+// 'Hi, i am Jane Doe'
+```
+
+<br>
+<br>
+
+This does not work if the class uses the visibility modifiers `protected` or `private`:
+
+<br>
+
+```typescript
+class Person {
+
+  private name;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  introduce() {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+
+}
+
+
+function demonstrateStructuralTyping(person: Person) {
+  person.introduce();
+}
+
+
+demonstrateStructuralTyping(new Person('John Doe'));     
+// 'Hello, my name is John Doe'
+
+
+demonstrateStructuralTyping(
+  {
+    name: 'Jane Doe',
+    introduce: function() { console.log(`Hi, i am ${this.name}`);}
+  }
+);
+// - error TS2345: Argument of type '{ name: string; introduce: () => void; }' is not assignable to parameter of type 'Person'.
+//                 Property 'name' is private in type 'Person' but not in type '{ name: string; introduce: () => void; }'.
+
+```
+
+<br>
+<br>
+<br>
+
+## **Generics**
+<br>
+
+* **Classes** can define generic types that are specified by parameter types of constructor
+
+```typescript
+class Foo<T, U> {
+  property1;
+  property2;
+
+  constructor(param1: T, param2: U) {
+    this.property1 = param1;
+    this.property2 = param2;
+  }
+  
+}
+
+const foo1 = new Foo('bar', 2);
+// specifies generics: T as string, U as number
+```
+
+<br>
+
+* **Instance methods** can 
+  * use generic types of class
+  * define own generic types
+
+```typescript
+class Foo<T, U> {
+  property1;
+  property2;
+
+  constructor(param1: T, param2: U) {
+    this.property1 = param1;
+    this.property2 = param2;
+  }
+
+  bar<V>(): T | V {
+    return this.property1;
+  }
+  
+}
+```
+
+<br>
+
+* **Static methods** can
+  * not use generic types of class
+  * define own generic types
+
+```typescript
+class Foo<T, U> {
+  property1;
+  property2;
+
+  constructor(param1: T, param2: U) {
+    this.property1 = param1;
+    this.property2 = param2;
+  }
+
+  static baz<V>(param: V): V {
+    return param;
+  }
+  
+}
+```
+
+<br>
+<br>
+<br>
+
+## **Mixins**
+<br>
+
+* pattern that mixes properties and methods of different classes into a new class
+* used to simulate multiple inheritance
+
+<br>
+
+```typescript
+type Constructor = new (...args: any[]) => {};
+
+function mixinName<TBase extends Constructor>(Base: TBase) {
+  return class extends Class {
+
+    constructor(...args: any[]) {
+      super(...args);
+    }
+
+    mixinMethod() {
+      // implementation
+    }
+
+  }
+}
+```
+
+<br>
+
+```typescript
+class Person {
+  // implementation
+}
+
+const PersonMixin = mixinName(Person);
+let johnDoe = new PersonMixin();
+johnDoe.mixinMethod();
 ```

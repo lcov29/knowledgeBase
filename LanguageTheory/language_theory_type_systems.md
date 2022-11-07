@@ -11,6 +11,11 @@
   - [**Static VS. Dynamic Type Systems**](#static-vs-dynamic-type-systems)
     - [**Structural VS Nominal Static Type System**](#structural-vs-nominal-static-type-system)
   - [**Explicit VS. Implicit Type System**](#explicit-vs-implicit-type-system)
+  - [**Variance**](#variance)
+    - [**Invariance**](#invariance)
+    - [**Covariance**](#covariance)
+    - [**Contravariance**](#contravariance)
+    - [**Bivariance**](#bivariance)
 
 <br>
 <br>
@@ -74,3 +79,41 @@ The Type System is a part of a programming language that defines
 <br>
 
 Not mutually exclusive!
+
+<br>
+<br>
+<br>
+
+## **Variance**
+<br>
+
+* Describes what other types can be used in place of a certain type T
+* Assume that we have a specified type T
+
+<br>
+
+### **Invariance**
+
+* only exact type T
+
+<br>
+
+### **Covariance**
+
+* subtype of T or 
+* exact type T
+
+<br>
+
+### **Contravariance**
+
+* supertype of T or 
+* exact type T
+
+<br>
+
+### **Bivariance**
+
+* subtype of T or
+* supertype of T or
+* exact type T

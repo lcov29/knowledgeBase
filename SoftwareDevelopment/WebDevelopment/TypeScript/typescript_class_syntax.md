@@ -1,10 +1,10 @@
-# **TypeScript Classes**
+# **TypeScript Class Syntax**
 <br>
 
 ## **Table Of Contents**
 <br>
 
-- [**TypeScript Classes**](#typescript-classes)
+- [**TypeScript Class Syntax**](#typescript-class-syntax)
   - [**Table Of Contents**](#table-of-contents)
   - [**Classes**](#classes)
     - [**General**](#general)

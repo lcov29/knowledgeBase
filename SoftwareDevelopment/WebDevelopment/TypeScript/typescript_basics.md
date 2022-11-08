@@ -9,11 +9,6 @@
   - [**General**](#general)
   - [**Installation and Initialization**](#installation-and-initialization)
   - [**Compilation**](#compilation)
-  - [**Type System**](#type-system)
-    - [**Type Declaration**](#type-declaration)
-    - [**Literal Types**](#literal-types)
-    - [**Type Aliases**](#type-aliases)
-    - [**Union Type**](#union-type)
     - [**Types**](#types)
       - [**Object**](#object)
         - [**Basic Object Form Declaration**](#basic-object-form-declaration)
@@ -86,6 +81,7 @@ flowchart LR
 <br>
 <br>
 
+<!--
 ## **Type System**
 <br>
 <br>
@@ -179,6 +175,9 @@ let johnDoe: Person = {
 <br>
 <br>
 
+-->
+
+<!--
 ### **Union Type**
 <br>
 
@@ -252,6 +251,86 @@ const baxter: unionType = {
   name: 'Baxter'
 }
 ```
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+For object type unions:
+
+* Values of object type unions
+  * must contain all properties of at least type of the union
+  * can contain additional properties from all other types of the union
+
+```typescript
+type Animal = {species: string, age: number};
+type Pet = {name: string, owner: string}
+type unionType = Animal | Pet;
+
+const someAnimal: unionType = {
+  species: 'mosquito',
+  age: 1
+};
+
+const somePet: unionType = {
+  name: 'Bello',
+  owner: 'John Doe'
+};
+
+// both animal and pet properties
+const bello: unionType = {
+  species: 'dog',
+  age: 3,
+  name: 'Bello',
+  owner: 'John Doe'
+}
+
+// Error because object must have all properties of at least one type of the union
+const baxter: unionType = {
+  species: 'dog',
+  name: 'Baxter'
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <br>
 <br>

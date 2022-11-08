@@ -7,14 +7,16 @@
 - [**TypeScript Functions**](#typescript-functions)
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
+  - [**Function Typing**](#function-typing)
+    - [**Function Type Definition**](#function-type-definition)
+      - [**Function Type Expression**](#function-type-expression)
+      - [**Call Signature**](#call-signature)
+    - [**Function Subtyping**](#function-subtyping)
   - [**Parameters**](#parameters)
     - [**Optional Parameters**](#optional-parameters)
     - [**Default Parameter Value**](#default-parameter-value)
     - [**Rest Parameters**](#rest-parameters)
     - [**_this_ Parameter**](#this-parameter)
-  - [**Function Typing**](#function-typing)
-    - [**Function Type Expressions**](#function-type-expressions)
-    - [**Call Signatures**](#call-signatures)
   - [**Overload Signatures**](#overload-signatures)
     - [**Overload Function Expressions**](#overload-function-expressions)
     - [**Overload Function Declarations**](#overload-function-declarations)
@@ -25,6 +27,7 @@
     - [**Generic Constraints**](#generic-constraints)
     - [**Generic Default Type**](#generic-default-type)
   - [**Generator Function**](#generator-function)
+  - [**Type Guards**](#type-guards)
 
 <br>
 <br>
@@ -47,6 +50,151 @@ function foo(param1: string, param2: number) {
 	// implementation
 }
 ```
+
+<br>
+<br>
+<br>
+
+## **Function Typing**
+<br>
+<br>
+
+### **Function Type Definition**
+<br>
+<br>
+
+#### **Function Type Expression**
+<br>
+
+* allows to describe the type of a function signature
+
+```
+(<parameterName1>: <parameterType>, ...) => <returnType>
+```
+
+<br>
+
+```typescript
+function execute(fn: (a: string, b: string) => string) {
+  const result = fn('John', 'Doe');
+  console.log(result);
+}
+
+function greet(firstName: string, lastName: string) {
+  return `Hello ${firstName} ${lastName}`;
+}
+
+function sum(value1: number, value2: number) {
+  return value1 + value2;
+}
+
+execute(greet);
+//Hello John Doe
+execute(sum);
+//error TS2345: Argument of type '(value1: number, value2: number) => number' is not assignable to parameter of type '(a: string, b: string) => string'.
+```
+
+<br>
+<br>
+
+#### **Call Signature**
+<br>
+
+* allows to describe the type of a function signature
+* allows to describe additional properties of a function
+
+```
+type <signatureName> = {
+  <propertyName>: <propertyType>;
+  ...
+  (<parameterName1>: <parameterType>, ...): <returnType>;
+}
+```
+
+<br>
+
+```typescript
+type greetingFunction = {
+  description: string;
+  (firstName: string, lastName: string): string;
+}
+
+const greet : greetingFunction = function(firstName, lastName) {
+  return `Hello ${firstName} ${lastName}`;
+}
+greet.description = 'A simple function to casually greet people';
+
+
+const welcome: greetingFunction = function(firstName, lastName) {
+  return `Welcome ${firstName} ${lastName}`;
+}
+welcome.description = 'A simple function to welcome people';
+
+
+function greetJohnDoe(fn: greetingFunction) {
+  console.log(`
+    ${fn('John', 'Doe')}
+    (${fn.description})
+  `);
+}
+
+
+greetJohnDoe(greet);
+greetJohnDoe(welcome);
+```
+
+<br>
+<br>
+
+### **Function Subtyping**
+<br>
+
+|Element         |Subtyping Rule |Description
+|:---------------|:--------------|:--------------
+|Parameter Types |contravariant  |T or Supertypes of original Type T
+|Return Type     |covariant      |T or Subtypes of original Types T
+
+<br>
+
+Function _A_ is a subtype of function _B_ when:
+* _A_ has less or equal amount of parameters than _B_
+* _A.this_ is not specified or is subtype of _B.this_
+* parameter types are contravariant:
+  * All parameter types of _A_ are supertypes or equal to parameter types of _B_
+* return type is covariant:
+  * return type of _A_ is subtype or equal to return type of _B_
+
+<br>
+
+Examples:
+
+```typescript
+type foo = (a: string, b: number) => boolean;
+
+
+function test(fn: foo): void {} 
+
+
+test(function(c: any): true {return true;});
+// OK, because argument is subfunction of foo
+
+
+test(function(d: string, e: any): false {return false;});
+// OK, because argument is subfunction of foo
+
+
+test(function(d: string, e: number, f: boolean): false {return false;});
+// Error, because number of parameters exceed parameters of type foo
+
+
+test(function(g: 'bar'): boolean { return true;});
+// Error, because parameter type 'bar' is not a supertype of parameter types string or number of foo
+
+
+test(function(h: string, i: number): string { return '';});
+// Error, because return type string is not a subtype of return type boolean
+```
+
 
 <br>
 <br>
@@ -123,94 +271,6 @@ function foo(this: <type>, <parameterName1>: <parameterValue>, ...)
 function foo(this: Date, bar: string) {
     // implementation using parameter this
 }
-```
-
-<br>
-<br>
-<br>
-
-## **Function Typing**
-<br>
-<br>
-
-### **Function Type Expressions**
-<br>
-
-* allows to describe the type of a function signature
-
-```
-(<parameterName1>: <parameterType>, ...) => <returnType>
-```
-
-<br>
-
-```typescript
-function execute(fn: (a: string, b: string) => string) {
-  const result = fn('John', 'Doe');
-  console.log(result);
-}
-
-function greet(firstName: string, lastName: string) {
-  return `Hello ${firstName} ${lastName}`;
-}
-
-function sum(value1: number, value2: number) {
-  return value1 + value2;
-}
-
-execute(greet);
-//Hello John Doe
-execute(sum);
-//error TS2345: Argument of type '(value1: number, value2: number) => number' is not assignable to parameter of type '(a: string, b: string) => string'.
-```
-
-<br>
-<br>
-
-### **Call Signatures**
-<br>
-
-* allows to describe the type of a function signature
-* allows to describe additional properties of a function
-
-```
-type <signatureName> = {
-  <propertyName>: <propertyType>;
-  ...
-  (<parameterName1>: <parameterType>, ...): <returnType>;
-}
-```
-
-<br>
-
-```typescript
-type greetingFunction = {
-  description: string;
-  (firstName: string, lastName: string): string;
-}
-
-const greet : greetingFunction = function(firstName, lastName) {
-  return `Hello ${firstName} ${lastName}`;
-}
-greet.description = 'A simple function to casually greet people';
-
-
-const welcome: greetingFunction = function(firstName, lastName) {
-  return `Welcome ${firstName} ${lastName}`;
-}
-welcome.description = 'A simple function to welcome people';
-
-
-function greetJohnDoe(fn: greetingFunction) {
-  console.log(`
-    ${fn('John', 'Doe')}
-    (${fn.description})
-  `);
-}
-
-
-greetJohnDoe(greet);
-greetJohnDoe(welcome);
 ```
 
 <br>
@@ -443,7 +503,6 @@ getProperty1(subObjLevel2);         // 'sub2'
 <T = <<DefaultType>>
 ```
 
-
 <br>
 <br>
 <br>
@@ -469,4 +528,47 @@ const counter = createCounter();
 console.log(counter.next());            // { value: 0, done: false }
 console.log(counter.next());            // { value: 1, done: false }
 console.log(counter.next());            // { value: 2, done: false }
+```
+
+<br>
+<br>
+<br>
+
+## **Type Guards**
+<br>
+
+* allows to extend visibility of type refinements from a function to its call scope
+
+```
+function <functionName>(<parameterName>: <parameterType>): <parameterName> is <type>
+```
+
+<br>
+
+Example:
+
+```typescript
+function isNumber(a: unknown): boolean {
+  return typeof a === 'number';
+}
+
+
+function foo(a: string | number) {
+  if (isNumber(a)) {
+    return a % 5;       // Error, because type refinement to number is not visible outside of isNumber()
+  }
+}
+```
+
+```typescript
+function isNumber(a: unknown): a is number {
+  return typeof a === 'number';
+}
+
+
+function foo(a: string | number) {
+  if (isNumber(a)) {
+    return a % 5;       // OK, because type refinement to number is visible outside of isNumber()
+  }
+}
 ```

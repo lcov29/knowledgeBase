@@ -27,6 +27,13 @@
       - [**NonNullable**](#nonnullable)
       - [**Return Type**](#return-type)
       - [**InstanceType**](#instancetype)
+  - [**Mapped Type**](#mapped-type)
+    - [**Build-In Mapped Types**](#build-in-mapped-types)
+      - [**Record**](#record)
+      - [**Partial**](#partial)
+      - [**Required**](#required)
+      - [**Readonly**](#readonly)
+      - [**Pick**](#pick)
   - [**Assertions**](#assertions)
     - [**Type Assertion**](#type-assertion)
     - [**Not Null Assertion**](#not-null-assertion)
@@ -446,6 +453,95 @@ type test = ReturnType<foo>;   // number | string
 type test = InstanceType<C>
 ```
 * return instance type of class constructor
+
+<br>
+<br>
+<br>
+
+## **Mapped Type**
+<br>
+
+* maps types of keys to types af values
+
+```
+type <mapTypeName> = {
+  [<keyName> in <keyType>]: <valueType>
+}
+```
+
+<br>
+
+```typescript
+type foo = {
+    property1: string,
+    property2: number,
+    property3: boolean
+};
+
+
+// mark all properties of type foo as optional
+type optionalFoo = {
+    [Key in keyof foo]?: foo[Key];
+}
+```
+
+<br>
+<br>
+
+### **Build-In Mapped Types**
+<br>
+<br>
+
+#### **Record**
+<br>
+
+```typescript
+type test = Record<KeyType, ValueType>;
+```
+
+<br>
+<br>
+
+#### **Partial**
+<br>
+
+```typescript
+type test = Partial<T>;
+```
+* mark all properties in T as optional
+
+<br>
+<br>
+
+#### **Required**
+<br>
+
+```typescript
+type test = Required<T>;
+```
+* mark all properties in T as required
+
+<br>
+<br>
+
+#### **Readonly**
+<br>
+
+```typescript
+type test = Readonly<T>;
+```
+* mark all properties in T as readonly
+
+<br>
+<br>
+
+#### **Pick**
+<br>
+
+```typescript
+type test = Pick<objectType, propertyName>;
+```
+* extract subtype of property _propertyName_ in _objectType_
 
 <br>
 <br>

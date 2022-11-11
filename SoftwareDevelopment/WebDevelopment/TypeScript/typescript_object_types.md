@@ -12,6 +12,7 @@
 		- [**Optional Properties**](#optional-properties)
 		- [**Readonly Properties**](#readonly-properties)
 	- [**Union Of Object Types**](#union-of-object-types)
+	- [**Object Subtyping**](#object-subtyping)
 	- [**Special Object Types**](#special-object-types)
 		- [**Array**](#array)
 			- [**Readonly Array**](#readonly-array)
@@ -178,6 +179,113 @@ const baxter: unionType = {
   species: 'dog',
   name: 'Baxter'
 }
+```
+
+<br>
+<br>
+<br>
+
+## **Object Subtyping**
+<br>
+
+* Object _A_ is a subtype of object _B_ when
+  * _A_ contains the same properties as _B_ (order is irrelevant)
+  * Each property of _A_ is a subtype or equal to the corresponding property of _B_ (covariant)
+
+<br>
+
+Example:
+
+<br>
+
+Assume we have the following code:
+<br>
+
+```typescript
+type superType = {
+    a: string,
+    b: number,
+    c: boolean
+};
+
+function test(obj: superType) : void {}
+```
+
+<br>
+
+```typescript
+type validSubType = {
+    a: 'foo' | 'bar',
+    b: 4,
+    c: false
+};
+
+let foo: validSubType = {
+    a: 'bar',
+    b: 4,
+    c: false
+};
+
+test(foo);			// OK, because all properties of validSubType are covariant to superType
+```
+
+<br>
+
+```typescript
+type validSubType = {
+    c: false,
+    b: 4,
+    a: 'foo' | 'bar'
+};
+
+let foo: validSubType = {
+    c: false,
+    b: 4,
+    a: 'bar'
+};
+
+test(foo);			// OK, properties are covariant and order of properties is irrelevant
+```
+
+<br>
+
+```typescript
+type validSubType = {
+    a: 'foo' | 'bar',
+    b: 4,
+    c: false,
+    d: string[]
+};
+
+let foo: validSubType = {
+    a: 'bar',
+    b: 4,
+    c: false,
+    d: ['foo', 'bar']
+};
+
+test(foo);			// OK, validSubType can contain additional properties
+```
+
+<br>
+
+```typescript
+type invalidSubType = {
+    a: unknown,
+    b: 4,
+    c: false
+};
+
+let foo: invalidSubType = {
+    a: 'bar',
+    b: 4,
+    c: false
+};
+
+test(foo);
+// error TS2345: Argument of type 'invalidSubType' is not assignable to parameter of type 'superType'.
+//	Types of property 'a' are incompatible.
+//		Type 'unknown' is not assignable to type 'string'.
 ```
 
 <br>

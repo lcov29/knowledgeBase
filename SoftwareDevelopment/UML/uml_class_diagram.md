@@ -28,6 +28,7 @@
       - [**Aggregation**](#aggregation)
       - [**Composition**](#composition)
       - [**Dependency**](#dependency)
+  - [**Interfaces**](#interfaces)
 
 <br>
 <br>
@@ -411,4 +412,31 @@ classDiagram
     class A { }
     class B { }
     A ..> B
+```
+
+<br>
+<br>
+<br>
+
+## **Interfaces**
+<br>
+
+* lists only method signatures
+* can not be instantiated
+
+```mermaid
+classDiagram
+    direction LR
+    class Sortable {
+        <<interface>>
+        isGreaterThan()* boolean
+        isLesserThan()* boolean
+    }
+    class Number {
+        - value: int
+        
+        isGreaterThan(): boolean
+        isLesserThan(): boolean
+    }
+    Number --|> Sortable: realize
 ```

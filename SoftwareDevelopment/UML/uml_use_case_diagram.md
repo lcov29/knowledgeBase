@@ -90,7 +90,7 @@ flowchart RL
 flowchart RL
     A([Base Use Case])
     B([Optional Sub Use Case])
-    B -. extend .-> A
+    B -. "extend [condition]" .-> A
 ```
 
 <br>

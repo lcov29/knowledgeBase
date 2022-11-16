@@ -6,19 +6,13 @@
 
 - [**TypeScript Basics**](#typescript-basics)
   - [**Table Of Contents**](#table-of-contents)
-  - [**General**](#general)
   - [**Installation and Initialization**](#installation-and-initialization)
   - [**Compilation**](#compilation)
+  - [**Downgrading**](#downgrading)
+  - [**Strict**](#strict)
   - [**Type System**](#type-system)
     - [**Types**](#types)
   - [**Function**](#function)
-
-<br>
-<br>
-<br>
-
-## **General**
-<br>
 
 <br>
 <br>
@@ -72,6 +66,42 @@ flowchart LR
 <br>
 <br>
 
+## **Downgrading**
+<br>
+
+The TypeScript compiler translates the code to JavaScript code of a specific version. This way we can use the latest JavaScript version and downgrade it to older versions.
+
+We can specify the target version in _tsconfig.json_:
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES2015"
+  }
+}
+```
+
+<br>
+<br>
+<br>
+
+## **Strict**
+<br>
+
+We can toggle various flags for strict type checking options in _tsconfig.json_. We can enable all these options with the _strict_ flag.
+
+```json
+{
+  "compilerOptions": {
+    "strict": true
+  }
+}
+```
+
+<br>
+<br>
+<br>
+
 ## **Type System**
 <br>
 <br>
@@ -114,7 +144,7 @@ Additional TypeScript Types:
 |:-------|:--------------------------------------------------------------------
 |any     |represents _all_ types and prevents type checking (avoid if possible)
 |unknown |like _any_ but more restrictive (avoid if possible)
-|array   |
+|array   |\<type\>[]
 |tupel   |subtype of array with fixed length and type per position
 |void    |return type for function that does not explicitly returns a value
 |never   |return type for function that never returns a value (e.g. infinity loop or always throws error)
@@ -128,6 +158,7 @@ Additional TypeScript Types:
 
 * always explicitly annotate the parameters
 * avoid explicitly annotating the return value
+* anonymous functions can be typed in their context without explicit parameters
 
 ```
 function <functionName>(<parameterName>: <parameterType, ...)[: <returnType>]

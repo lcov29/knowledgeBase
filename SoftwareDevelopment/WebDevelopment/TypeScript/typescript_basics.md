@@ -43,7 +43,10 @@ npx tsc --init
 ## **Compilation**
 <br>
 
-TypeScript allows quick recompilation after every change (incremental compilation).
+* TypeScript allows quick recompilation after every change (incremental compilation)
+* Types are only checked at compilation, not at runtime
+* Types are not included into or affect compilated JavaScript code at any time
+
 <br>
 
 ```mermaid
@@ -175,26 +178,3 @@ function foo(param1: string, param2: number) {
 <br>
 
 See [TypeScript Functions](./typescript_functions.md).
-
-
-
-<!--
-
-Type Safety
-- Use of types to prevent execution of invalid actions in a program
-
-- JavaScript does try to prevent the throwing of exception even for clearly wrong inputs
-
-
-Compilation:
-    TypeScript Types are only checked at compilation, not at runtime of compilated JavaScript code!
-    TypeScript Types are not included into of affect compilated JavaScript code at any time!
-
-
-Type System
-- is static (variables can not change types according to their assigned values)
-
-
-Variadic Function = Function that accepts a variable amount of parameters
-
--->

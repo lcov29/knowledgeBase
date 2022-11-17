@@ -5,21 +5,22 @@
 <br>
 
 - [**TypeScript Object Types**](#typescript-object-types)
-	- [**Table Of Contents**](#table-of-contents)
-	- [**General**](#general)
-	- [**Type Declaration**](#type-declaration)
-	- [**Properties**](#properties)
-		- [**Optional Properties**](#optional-properties)
-		- [**Readonly Properties**](#readonly-properties)
-	- [**Union Of Object Types**](#union-of-object-types)
-	- [**Object Subtyping**](#object-subtyping)
-	- [**Special Object Types**](#special-object-types)
-		- [**Array**](#array)
-			- [**Readonly Array**](#readonly-array)
-		- [**Tupel**](#tupel)
-			- [**Optional Elements**](#optional-elements)
-			- [**Readonly Tupel**](#readonly-tupel)
-		- [**Enums**](#enums)
+  - [**Table Of Contents**](#table-of-contents)
+  - [**General**](#general)
+  - [**Type Declaration**](#type-declaration)
+  - [**Properties**](#properties)
+    - [**Optional Properties**](#optional-properties)
+    - [**Index Signatures**](#index-signatures)
+    - [**Readonly Properties**](#readonly-properties)
+  - [**Union Of Object Types**](#union-of-object-types)
+  - [**Object Subtyping**](#object-subtyping)
+  - [**Special Object Types**](#special-object-types)
+    - [**Array**](#array)
+      - [**Readonly Array**](#readonly-array)
+    - [**Tupel**](#tupel)
+      - [**Optional Elements**](#optional-elements)
+      - [**Readonly Tupel**](#readonly-tupel)
+    - [**Enums**](#enums)
 
 <br>
 <br>
@@ -104,8 +105,12 @@ let foo: {
 * object might have an optional property `baz` with value _string_ or _undefined_
 
 <br>
+<br>
 
-Multiple optional properties of same type via _Index Signatures_:
+### **Index Signatures**
+<br>
+
+* specify multiple possible paremeters of same type
 
 ```typescript
 [<keyName>: <keyType>]: <valueType>

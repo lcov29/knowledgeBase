@@ -359,7 +359,7 @@ type <typeName>[<T, ...>] = [<T, ...>](<parameterName1>: <parameterType>, ...) =
 
 <br>
 
-Example For Implicit Binding At Function Call:
+Implicit binding at function call:
 
 ```typescript
 type foo = <T>(bar: T) => T[];
@@ -373,7 +373,7 @@ fooFunc(123);
 
 <br>
 
-Example For Explicit Binding:
+Explicit binding:
 
 ```typescript
 type foo<T> = (bar: T) => T[];
@@ -399,7 +399,7 @@ type <typeName>[<T, ...>] = {
 
 <br>
 
-Example For Implicit Binding At Function Call:
+Implicit binding at function call:
 
 ```typescript
 type foo = {
@@ -415,7 +415,7 @@ fooFunc(123);
 
 <br>
 
-Example For Explicit Binding:
+Explicit binding:
 
 ```typescript
 type foo<T> = {

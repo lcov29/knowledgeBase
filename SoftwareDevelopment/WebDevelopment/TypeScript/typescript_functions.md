@@ -345,8 +345,9 @@ foo('Hello', 12);
 ## **Generic Functions**
 <br>
 
-* allows annotating a general type that can be used as type of parameters or return type
+* allows annotating a general type that can be used as type of parameters, local values or return type
 * general type is bound to specific type
+* used to relate types of multiple values
 
 <br>
 

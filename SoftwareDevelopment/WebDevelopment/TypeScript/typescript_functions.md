@@ -321,7 +321,7 @@ foo('Hello', 12);       // error TS2345: Argument of type 'string' is not assign
 ```typescript
 function foo(a: string): string                             // external signature
 function foo(a: number, b: number): string                  // external signature
-function foo(a: string | number, b?: number) : string {     // internal combination signature
+function foo(a: string | number, b?: number) : string {     // internal implementation signature
   if (typeof a === 'number' && b !== undefined) {
     return `${a + b}`;
   }  

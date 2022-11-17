@@ -283,6 +283,8 @@ function foo(this: Date, bar: string) {
 * allows adding different signatures to a function
 * implementation has to work with the combined types of all signatures
 * check types and optional parameters in implementation
+  
+**Prefer using union types parameters instead of overloaded functions!**
 
 <br>
 <br>
@@ -321,7 +323,7 @@ foo('Hello', 12);       // error TS2345: Argument of type 'string' is not assign
 ```typescript
 function foo(a: string): string                             // external signature
 function foo(a: number, b: number): string                  // external signature
-function foo(a: string | number, b?: number) : string {     // internal implementation signature
+function foo(a: string | number, b?: number) : string {     // internal implementation signature; not callable
   if (typeof a === 'number' && b !== undefined) {
     return `${a + b}`;
   }  

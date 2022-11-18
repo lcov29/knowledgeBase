@@ -129,6 +129,18 @@ let foo: {
 ```
 
 <br>
+
+Use of _string_ index prevents definition of additional string properties with other return types:
+
+```typescript
+type foo = {
+    [bar: string]: number,
+    baz: string 
+    // error TS2411: Property 'baz' of type 'string' is not assignable to 'string' index type 'number'.
+}
+```
+
+<br>
 <br>
 
 ### **Readonly Properties**

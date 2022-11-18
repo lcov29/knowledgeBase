@@ -14,7 +14,9 @@
     - [**Optional Properties**](#optional-properties)
     - [**Index Signatures**](#index-signatures)
     - [**Readonly Properties**](#readonly-properties)
-  - [**Union Of Object Types**](#union-of-object-types)
+  - [**Combination Of Object Types**](#combination-of-object-types)
+    - [**Union**](#union)
+    - [**Intersection**](#intersection)
   - [**Object Subtyping**](#object-subtyping)
   - [**Special Object Types**](#special-object-types)
     - [**Array**](#array)
@@ -185,7 +187,11 @@ foo.bar = 'test';
 <br>
 <br>
 
-## **Union Of Object Types**
+## **Combination Of Object Types**
+<br>
+<br>
+
+### **Union**
 <br>
 
 * Values of object type unions
@@ -222,6 +228,35 @@ const baxter: unionType = {
   species: 'dog',
   name: 'Baxter'
 }
+```
+
+<br>
+<br>
+
+### **Intersection**
+<br>
+
+```typescript
+type foo = {
+    bar: string,
+    baz: boolean
+}
+
+type intersect = foo & { bat: number};
+
+
+const test1: intersect = {
+    bar: 'test',
+    baz: false,
+    bat: 23
+};
+
+const test2: intersect = {
+    bar: 'test',
+    baz: false,
+};
+//error TS2322: Type '{ bar: string; baz: false; }' is not assignable to type 'intersect'.
+//              Property 'bat' is missing in type '{ bar: string; baz: false; }' but required in type '{ bat: number; }'.
 ```
 
 <br>

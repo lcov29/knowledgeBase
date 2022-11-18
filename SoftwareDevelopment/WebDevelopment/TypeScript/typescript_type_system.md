@@ -273,9 +273,9 @@ type foo = {
   }
 }
 
-type typeA = foo['a'];
-type typeB = foo['a']['b'];
-type typeC = foo['a']['c'];
+type typeA = foo['a'];            // {b: {payload: string}, c: {payload: number}}
+type typeB = foo['a']['b'];       // {payload: string}
+type typeC = foo['a']['c'];       // {payload: number}
 ```
 
 <br>

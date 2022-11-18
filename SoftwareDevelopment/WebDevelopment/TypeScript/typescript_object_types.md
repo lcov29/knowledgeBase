@@ -18,6 +18,9 @@
     - [**Union**](#union)
     - [**Intersection**](#intersection)
   - [**Object Subtyping**](#object-subtyping)
+  - [**Generics**](#generics)
+    - [**Type Declaration**](#type-declaration-1)
+    - [**Interface**](#interface-1)
   - [**Special Object Types**](#special-object-types)
     - [**Array**](#array)
       - [**Readonly Array**](#readonly-array)
@@ -250,6 +253,7 @@ const test1: intersect = {
     baz: false,
     bat: 23
 };
+// OK
 
 const test2: intersect = {
     bar: 'test',
@@ -364,6 +368,65 @@ test(foo);
 // error TS2345: Argument of type 'invalidSubType' is not assignable to parameter of type 'superType'.
 //	Types of property 'a' are incompatible.
 //		Type 'unknown' is not assignable to type 'string'.
+```
+
+<br>
+<br>
+<br>
+
+## **Generics**
+<br>
+
+* type argument must be explicitly provided
+
+<br>
+<br>
+
+### **Type Declaration**
+<br>
+
+```typescript
+type foo<T> = {
+    bar: T,
+    baz: string
+};
+
+const test1: foo<number> = {
+    bar: 1,
+    baz: 'Test'
+};
+// OK
+
+const test2: foo = {
+    bar: 1,
+    baz: 'Test'
+};
+// error TS2314: Generic type 'foo' requires 1 type argument(s).
+```
+
+<br>
+<br>
+
+### **Interface**
+<br>
+
+```typescript
+interface foo<T> {
+    bar: T,
+    baz: string
+};
+
+const myFoo: foo<number> = {
+    bar: 1,
+    baz: 'Test'
+};
+// OK
+
+const test2: foo = {
+    bar: 1,
+    baz: 'Test'
+};
+// error TS2314: Generic type 'foo' requires 1 type argument(s).
 ```
 
 <br>

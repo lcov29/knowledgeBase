@@ -7,7 +7,9 @@
 - [**TypeScript Object Types**](#typescript-object-types)
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
-  - [**Type Declaration**](#type-declaration)
+  - [**Object Types**](#object-types)
+    - [**Type Declaration**](#type-declaration)
+    - [**Interface**](#interface)
   - [**Properties**](#properties)
     - [**Optional Properties**](#optional-properties)
     - [**Index Signatures**](#index-signatures)
@@ -38,7 +40,11 @@
 <br>
 <br>
 
-## **Type Declaration**
+## **Object Types**
+<br>
+<br>
+
+### **Type Declaration**
 <br>
 
 Explicitly define form:
@@ -78,6 +84,26 @@ const foo = {
 // type: {bar: string, baz: string}
 // NOT {bar: 'Hello', baz: 'World'} like literal types for primitive data types
 ```
+
+<br>
+<br>
+
+### **Interface**
+<br>
+
+```typescript
+interface foo {
+  bar: string,
+  baz: boolean
+}
+  
+const myFoo: foo = {
+  bar: 'test',
+  baz: false
+};
+```
+
+See [TypeScript Interfaces](./typescript_interfaces.md).
 
 <br>
 <br>

@@ -18,6 +18,7 @@
     - [**Intersection**](#intersection)
     - [**Keybased Access To Nested Types**](#keybased-access-to-nested-types)
     - [**keyof**](#keyof)
+    - [**typeof**](#typeof)
   - [**Conditional Types**](#conditional-types)
     - [**Distributive**](#distributive)
     - [**Keyword Infer**](#keyword-infer)
@@ -295,6 +296,23 @@ type foo = {
 }
 
 type bar = keyof foo;   // 'a' | 'b' | 'c'
+```
+
+<br>
+<br>
+
+### **typeof**
+<br>
+
+* returns type of a variable or property
+* usable in _type context_
+
+<br>
+
+```typescript
+let foo = 'foo';
+
+let bar: typeof foo;    // type 'string'
 ```
 
 <br>

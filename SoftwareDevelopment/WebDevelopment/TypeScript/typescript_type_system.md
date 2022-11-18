@@ -283,7 +283,7 @@ type typeC = foo['a']['c'];
 ### **keyof**
 <br>
 
-* returns union type of all keys of first level of given type
+* returns union string of all keys of first level of given type
 
 <br>
 

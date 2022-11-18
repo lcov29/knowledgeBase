@@ -23,6 +23,7 @@
     - [**Interface**](#interface-1)
   - [**Special Object Types**](#special-object-types)
     - [**Array**](#array)
+      - [**Type Declaration**](#type-declaration-2)
       - [**Readonly Array**](#readonly-array)
     - [**Tupel**](#tupel)
       - [**Optional Elements**](#optional-elements)
@@ -439,6 +440,10 @@ const test2: foo = {
 
 ### **Array**
 <br>
+<br>
+
+#### **Type Declaration**
+<br>
 
 Explicitly define type:
 
@@ -479,9 +484,9 @@ function buildArray() {
     return a;
   }
   
-  let a = buildArray();
-  a.push(true);     
-  // error TS2345: Argument of type 'boolean' is not assignable to parameter of type 'string | number'.
+let a = buildArray();
+a.push(true);     
+// error TS2345: Argument of type 'boolean' is not assignable to parameter of type 'string | number'.
 ```
 
 <br>

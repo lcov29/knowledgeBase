@@ -16,7 +16,7 @@
   - [**Type Operations**](#type-operations)
     - [**Union**](#union)
     - [**Intersection**](#intersection)
-    - [**Keybased Access To Nested Types**](#keybased-access-to-nested-types)
+    - [**Keybased Access Types**](#keybased-access-types)
     - [**keyof**](#keyof)
     - [**typeof**](#typeof)
   - [**Conditional Types**](#conditional-types)
@@ -256,7 +256,7 @@ let test: foo & {b: number} = {a: 'test', b: 4};
 <br>
 <br>
 
-### **Keybased Access To Nested Types**
+### **Keybased Access Types**
 <br>
 
 ```

@@ -10,6 +10,8 @@
     - [**General**](#general)
     - [**Basic Class**](#basic-class)
     - [**Subclass**](#subclass)
+      - [**Extends Clause**](#extends-clause)
+      - [**Implements Clause**](#implements-clause)
     - [**Abstract Class**](#abstract-class)
   - [**Constructor Overload**](#constructor-overload)
   - [**Visibility And Access Modificators**](#visibility-and-access-modificators)
@@ -99,6 +101,10 @@ class Person {
 
 ### **Subclass**
 <br>
+<br>
+
+#### **Extends Clause**
+<br>
 
 ```
 class <className> extends <SuperclassName> {
@@ -134,6 +140,55 @@ class Programmer extends Person {
     return `${super.introduce()} My favorite language is ${this.language}`
   };
 
+}
+```
+
+<br>
+<br>
+
+#### **Implements Clause**
+<br>
+
+```
+class <className> implements <InterfaceOrTypeName> {
+
+    <private | # | public | protected> [readonly] <propertyName>: <propertyType> [= <DefaultValue>]
+
+    constructor(<parameterName>: <parameterValue>, ...) {
+        // Initialize properties...
+    }
+
+    <private | # | public | protected> <methodName>(<parameterName>: <parameterValue>, ...) {
+        // Implementation
+    }
+}
+```
+
+<br>
+
+```typescript
+type Sortable<T> = {
+  isGreaterThan(value: T): boolean;
+  isLesserThan(value: T): boolean;
+}
+```
+
+```typescript
+class Integer implements Sortable<number> {
+
+  private value: number;
+
+  constructor(value: number) {
+    this.value = value;
+  }
+
+  isGreaterThan(value: number): boolean {
+      return this.value > value;
+  }
+
+  isLesserThan(value: number): boolean {
+      return this.value < value;
+  }
 }
 ```
 

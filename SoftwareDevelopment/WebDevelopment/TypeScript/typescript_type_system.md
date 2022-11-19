@@ -492,11 +492,13 @@ type test = InstanceType<C>
 
 ```
 type <mapTypeName> = {
-  [<keyName> in <keyType>]: <valueType>
+  [<keyName> in keyof <keyType>]: <valueType>
 }
 ```
 
 <br>
+
+Example:
 
 ```typescript
 type foo = {

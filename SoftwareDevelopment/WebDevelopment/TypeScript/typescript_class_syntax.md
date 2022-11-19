@@ -11,6 +11,7 @@
     - [**Basic Class**](#basic-class)
     - [**Subclass**](#subclass)
     - [**Abstract Class**](#abstract-class)
+  - [**Constructor Overload**](#constructor-overload)
   - [**Visibility And Access Modificators**](#visibility-and-access-modificators)
     - [**private**](#private)
       - [**Soft Private**](#soft-private)
@@ -34,16 +35,16 @@
 <br>
 
 ```
-[abstract] class <className>[ extends <SuperClassName>] {
+[abstract] class <className> [extends <SuperClassName>] {
 
     <private | # | public | protected> [readonly] <propertyName>: <propertyType> [= <DefaultValue>]
 
     constructor(<parameterName>: <parameterValue>, ...) {
-        // Initialize properties...
+        // property initialization...
     }
 
     <private | # | public | protected> <methodName>(<parameterName>: <parameterValue>, ...) {
-        // Implementation
+        // implementation
     }
 }
 ```
@@ -187,6 +188,7 @@ classDiagram
 ```
 
 <br>
+<br>
 
 ```typescript
 abstract class Introducable {
@@ -241,6 +243,37 @@ const introducableList: Introducable[] = [
 ];
 
 introducableList.forEach(element => console.log(element.introduce()));
+```
+
+<br>
+<br>
+<br>
+
+## **Constructor Overload**
+<br>
+<br>
+
+Constructors can be overloaded:
+
+```typescript
+class Person {
+
+  private firstName: string;
+  private lastName: string;
+  private age: number;
+
+  constructor(firstName: string, lastName: string);
+  constructor(firstName: string, lastName: string, age: number);
+  constructor(firstName: string, lastName: string, age?: number | undefined) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = (age) ? age : 18;
+  }
+
+}
+
+const johnDoe = new Person('John', 'Doe');
+const janeDoe = new Person('Jane', 'Doe', 23);
 ```
 
 <br>

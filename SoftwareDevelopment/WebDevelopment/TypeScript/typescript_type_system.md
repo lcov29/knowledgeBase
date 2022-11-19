@@ -20,6 +20,7 @@
     - [**keyof**](#keyof)
     - [**typeof**](#typeof)
   - [**Conditional Types**](#conditional-types)
+    - [**General**](#general)
     - [**Distributive**](#distributive)
     - [**Keyword Infer**](#keyword-infer)
     - [**Build-In Conditional Types**](#build-in-conditional-types)
@@ -321,9 +322,15 @@ let bar: typeof foo;    // type 'string'
 
 ## **Conditional Types**
 <br>
+<br>
+
+### **General**
+<br>
 
 ```
-type <conditionalTypeName><T> = T extends <ComparisonType> ? <IfType> : <ThenType>
+type <conditionalTypeName> = <CurrentType> extends <ComparisonType> ? <IfType> : <ElseType>
+
+type <conditionalTypeName><T> = T extends <ComparisonType> ? <IfType> : <ElseType>
 ```
 
 * ternary operator at type level
@@ -336,6 +343,8 @@ type <conditionalTypeName><T> = T extends <ComparisonType> ? <IfType> : <ThenTyp
   * generics
 
 <br>
+
+Example:
 
 ```typescript
 type conditionalType<T> = T extends string ? number : boolean;

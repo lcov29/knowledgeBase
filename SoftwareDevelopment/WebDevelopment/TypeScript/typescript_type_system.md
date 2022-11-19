@@ -29,7 +29,8 @@
       - [**NonNullable**](#nonnullable)
       - [**Return Type**](#return-type)
       - [**InstanceType**](#instancetype)
-  - [**Mapped Type**](#mapped-type)
+  - [**Template Literal Types**](#template-literal-types)
+  - [**Mapped Types**](#mapped-types)
     - [**Build-In Mapped Types**](#build-in-mapped-types)
       - [**Record**](#record)
       - [**Partial**](#partial)
@@ -485,10 +486,38 @@ type test = InstanceType<C>
 <br>
 <br>
 
-## **Mapped Type**
+## **Template Literal Types**
+<br>
 <br>
 
-* maps types of keys to types af values
+Used to define literal types based on already existing literal types:
+
+```typescript
+type literalType = 'foo';
+
+type templateLiteralType = `${literalType} bar`;      // type: 'foo bar'
+```
+
+<br>
+
+Unions of literal types are cross multiplied:
+
+```typescript
+type union1 = 'foo' | 'bar';
+type union2 = 'bat' | 'tar';
+
+type templateLiteralType = `${union1}_${union2}`;    
+// type: 'foo_bat' | 'foo_tar' | 'bar_bat' | 'bar_tar'
+```
+
+<br>
+<br>
+<br>
+
+## **Mapped Types**
+<br>
+
+* maps types of keys to types of values
 
 ```
 type <mapTypeName> = {

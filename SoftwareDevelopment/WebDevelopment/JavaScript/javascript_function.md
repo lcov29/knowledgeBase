@@ -113,7 +113,10 @@ foo();
 <br>
 
 * alternative version of function expression
+* do not have their own binding to _this_, _arguments_ or _super_
+* should not be used as methods
 * attribute _this_ refers to the definition context, not the context in which the function is called!
+  * arrow functions are especially useful with _setTimeout_ and _addEventListener_ callbacks
 
 <br>
 
@@ -142,6 +145,45 @@ Multiple parameters:
 Function with single return statement:
 ```javascript
 (x, y) => x + y
+```
+
+<br>
+
+Function with a single object return statement:
+```javascript
+() => {foo: 'bar'}      // returns undefined
+
+() => ({foo: 'bar'})    // returns {foo: 'bar'}
+```
+
+<br>
+
+Using an arrow function as an object method does not work:
+
+```javascript
+const foo = {
+  bar: 'value',
+  test: () => console.log(this.bar)
+}
+
+foo.test();     // returns undefined
+```
+
+<br>
+
+Arrow functions are especially useful with _addEventListener_ callbacks:
+```javascript
+function addClickEventListener() {
+  const button = document.getElementById('demo-button');
+  button.addEventListener('click', () => { this.handleClick() });
+  // arrow function does not have its own this-binding, so the context of the enclosing function is used
+}
+
+function handleClick() {
+  window.alert('Button has been clicked');
+}
+
+addClickEventListener();
 ```
 
 <br>

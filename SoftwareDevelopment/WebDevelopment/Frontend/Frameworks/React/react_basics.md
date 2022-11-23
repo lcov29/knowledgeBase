@@ -60,6 +60,7 @@ See [React Installation](./react_installation.md)
 * JSX = **J**ava**S**cript + **X**ML
 * allows creation of custom tags that can incorporate JavaScript expressions
 * internally translates to a call of `React.createElement()`, so usage is optional
+* all embedded values in JSX are escaped by the React DOM
 
 <br>
 
@@ -178,6 +179,8 @@ root.render(<App />);
 * we can pass data to components by using the `props` parameter
 * `props` is an object containing all attributes attached to the react element
 
+**Components must not modify any data passed via `props`!**
+
 <br>
 <br>
 
@@ -245,7 +248,7 @@ export default PersonTable;
 FunctionComponent.js
 ```javascript
 function functionComponent(props) {
-  const attribute = this.props.attribute;
+  const attribute = props.attribute;
   return(/* JSX using attribute */)
 }
 ```

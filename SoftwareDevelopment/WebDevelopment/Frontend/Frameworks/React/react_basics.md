@@ -13,19 +13,8 @@
     - [**Example**](#example)
     - [**Key Differences To HTML**](#key-differences-to-html)
   - [**Components**](#components)
-    - [**General**](#general-2)
-    - [**Component Types**](#component-types)
-      - [**Class Component**](#class-component)
-      - [**Function Component**](#function-component)
-    - [**Rendering Components**](#rendering-components)
-    - [**Pass Data To Components**](#pass-data-to-components)
-      - [**Pass Data To Class Component**](#pass-data-to-class-component)
-        - [**Example**](#example-1)
-      - [**Pass Data To Function Component**](#pass-data-to-function-component)
-        - [**Example**](#example-2)
-      - [**Call Component With Data**](#call-component-with-data)
-        - [**Example**](#example-3)
-    - [**Component State**](#component-state)
+  - [**Rendering**](#rendering)
+    - [**Conditional Rendering**](#conditional-rendering)
 
 <br>
 <br>
@@ -111,53 +100,19 @@ React.createElement(
 
 ## **Components**
 <br>
-<br>
-
-### **General**
-<br>
 
 * components = custom reusable HTML elements with state, logic and styling
 * react applications usually consist of multiple different components that are bundled into an App component
 
 <br>
-<br>
 
-### **Component Types**
-<br>
-<br>
-
-#### **Class Component**
-<br>
-
-Minimal Class Component:
-```javascript
-import { Component } from 'react';
-
-
-class ComponentName extends Component {
-    render() {
-        return (/* JSX */);
-    }
-}
-
-export default ComponentName;
-```
-<br>
-<br>
-
-#### **Function Component**
-<br>
-
-```javascript
-function ComponentName() {
-  return (/* JSX */);
-}
-```
+See [Components](./react_components.md).
 
 <br>
 <br>
+<br>
 
-### **Rendering Components**
+## **Rendering**
 <br>
 
 ```javascript
@@ -173,173 +128,6 @@ root.render(<App />);
 <br>
 <br>
 
-### **Pass Data To Components**
+### **Conditional Rendering**
 <br>
-
-* we can pass data to components by using the `props` parameter
-* `props` is an object containing all attributes attached to the react element
-
-**Components must not modify any data passed via `props`!**
-
-<br>
-<br>
-
-#### **Pass Data To Class Component**
-<br>
-
-ClassComponent.js
-```javascript
-import { Component } from 'react';
-
-class ClassComponent extends Component {
-  render() {
-    const attribute = this.props.attribute;
-    // JSX using attribute
-  }  
-}
-```
-
-<br>
-<br>
-
-##### **Example**
-<br>
-
-PersonTable.js
-```javascript
-import { Component } from "react";
-
-
-class PersonTable extends Component {
-
-    render() {
-        const {firstName, lastName, age} = this.props;
-        return (
-            <table>
-                <thead>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Age</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>{firstName}</th>
-                        <th>{lastName}</th>
-                        <th>{age}</th>
-                    </tr>
-                </tbody>
-            </table>
-        );
-    }
-}
-
-
-export default PersonTable;
-```
-
-<br>
-<br>
-
-#### **Pass Data To Function Component**
-<br>
-
-FunctionComponent.js
-```javascript
-function functionComponent(props) {
-  const attribute = props.attribute;
-  return(/* JSX using attribute */)
-}
-```
-
-<br>
-<br>
-
-##### **Example**
-<br>
-
-PersonTable.js
-```javascript
-function PersonTable(props) {
-    const {firstName, lastName, age} = props;
-    return (
-        <table>
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Age</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>{firstName}</th>
-                    <th>{lastName}</th>
-                    <th>{age}</th>
-                </tr>
-            </tbody>
-        </table>
-    );
-}
-```
-
-
-<br>
-<br>
-
-#### **Call Component With Data**
-<br>
-
-App.js
-```javascript
-import { createRoot } from 'react-dom/client';
-import ComponentName from 'componentName.js'
-
-const container = document.getElementById('root');
-const root = createRoot(container);
-root.render(<ComponentName attribute1='foo' attribute2='bar' />);
-```
-
-<br>
-<br>
-
-##### **Example**
-<br>
-
-```javascript
-import { createRoot } from 'react-dom/client';
-import PersonTable from 'PersonTable.js'
-
-const container = document.getElementById('root');
-const root = createRoot(container);
-root.render(<ComponentName firstName='John' lastName='Doe' age='43' />);
-```
-
-<br>
-<br>
-
-### **Component State**
-<br>
-
-```javascript
-import { Component } from 'react';
-
-class ClassComponent extends Component {
-  state = {
-    payload: 'foo'
-  };
-
-  render() {
-    this.setState({payload: 'bar'});  // modify state
-
-    return (
-      // access state
-      <div>
-        <p>{`payload: ${this.state.payload}`}</p>
-      </div>
-    );
-  }
-}
-```
 

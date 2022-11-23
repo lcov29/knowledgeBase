@@ -131,3 +131,41 @@ root.render(<App />);
 ### **Conditional Rendering**
 <br>
 
+```javascript
+function ConditionalElement(props) {
+    if (props.condition) {
+      return <ComponentA />;
+    }
+    return <ComponentB />;
+}
+```
+
+```javascript
+<ConditionalElement condition={true}/>
+```
+
+<br>
+<br>
+
+Use of element variables and ternary operator:
+
+```javascript
+function ConditionalElement(props) {
+  let element = (props.condition) ? <ComponentA /> : <ComponentB />;
+  return element;
+}
+```
+
+<br>
+<br>
+
+Prevent element from rendering:
+
+```javascript
+function ConditionalElement(props) {
+    if (props.condition) {
+      return <ComponentA />;
+    }
+    return null;
+}
+```

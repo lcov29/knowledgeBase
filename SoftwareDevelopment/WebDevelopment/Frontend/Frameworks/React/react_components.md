@@ -12,6 +12,8 @@
     - [**Function Component**](#function-component)
   - [**Component Data**](#component-data)
     - [**Props**](#props)
+      - [**Pass Data To Class Component**](#pass-data-to-class-component)
+      - [**Pass Data To Function Component**](#pass-data-to-function-component)
     - [**State**](#state)
   - [**Lifecycle Methods**](#lifecycle-methods)
   - [**Event Handling**](#event-handling)
@@ -83,6 +85,9 @@ function ComponentName() {
 <br>
 <br>
 
+#### **Pass Data To Class Component**
+<br>
+
 ClassComponent.js
 ```javascript
 import { Component } from 'react';
@@ -130,6 +135,48 @@ class PersonTable extends Component {
 
 
 export default PersonTable;
+```
+
+<br>
+<br>
+
+#### **Pass Data To Function Component**
+<br>
+
+FunctionComponent.js
+```javascript
+function functionComponent(props) {
+  const attribute = props.attribute;
+  return(/* JSX using attribute */)
+}
+```
+
+<br>
+<br>
+
+PersonTable.js
+```javascript
+function PersonTable(props) {
+    const {firstName, lastName, age} = props;
+    return (
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>{firstName}</th>
+                    <th>{lastName}</th>
+                    <th>{age}</th>
+                </tr>
+            </tbody>
+        </table>
+    );
+}
 ```
 
 <br>

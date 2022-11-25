@@ -15,6 +15,7 @@
   - [**Components**](#components)
   - [**Rendering**](#rendering)
     - [**Conditional Rendering**](#conditional-rendering)
+  - [**Lists**](#lists)
 
 <br>
 <br>
@@ -168,4 +169,32 @@ function ConditionalElement(props) {
     }
     return null;
 }
+```
+
+<br>
+<br>
+<br>
+
+## **Lists**
+<br>
+
+* we can render list entries by using a collection of JSX elements
+* list elements should be provided with a react-internal `key` attribute
+* list element keys must be unique only within their enclosing list
+
+<br>
+
+```javascript
+function List(props) {
+    const elementList = props.listData;
+    return (
+        <ul>
+            {elementList.map(element => <li key={element.id}>{element}</li>)}
+        </ul>
+    );
+}
+```
+
+```javascript
+<List listData={['element1', 'element2', 'element3']}/>
 ```

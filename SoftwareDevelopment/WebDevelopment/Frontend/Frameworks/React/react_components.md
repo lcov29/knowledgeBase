@@ -29,6 +29,7 @@
 
 * components = custom reusable HTML elements with state, logic and styling
 * react applications usually consist of multiple different components that are bundled into an App component
+* use composition instead of inheritance
 
 <br>
 <br>

@@ -354,9 +354,11 @@ If a state should be accessible for more than one component, we lift that state 
 
 <br>
 
-Example:
+**Example:**
+<br>
 
 We want to implement two contact forms that share their state:
+<br>
 <br>
 
 ContactForm.js

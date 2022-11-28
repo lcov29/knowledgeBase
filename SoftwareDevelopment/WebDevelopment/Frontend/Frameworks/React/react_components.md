@@ -18,6 +18,7 @@
   - [**Lifecycle Methods**](#lifecycle-methods)
   - [**Event Handling**](#event-handling)
     - [**Pass Additional Parameters To Event Handler**](#pass-additional-parameters-to-event-handler)
+  - [**Shared State Between Components**](#shared-state-between-components)
 
 <br>
 <br>
@@ -340,4 +341,116 @@ or
 
 ```javascript
 <button onClick={(e) => eventHandler(id, e)}>Click Me</button>
+```
+
+<br>
+<br>
+<br>
+
+## **Shared State Between Components**
+<br>
+
+If a state should be accessible for more than one component, we lift that state up to the closest ancestor component.
+
+<br>
+
+Example:
+
+We want to implement two contact forms that share their state:
+<br>
+
+ContactForm.js
+```javascript
+import { Component } from 'react';
+
+class ContactForm extends Component {
+
+    render() {
+        return(
+            <form onSubmit={this.props.handleSubmit}>
+                <label>First Name</label>
+                <input 
+                    name='firstName'
+                    type='text'
+                    value={this.props.firstName}
+                    onChange={this.props.handleChange} 
+                />
+                <label>Last Name</label>
+                <input
+                    name='lastName'
+                    type='text'
+                    value={this.props.lastName}
+                    onChange={this.props.handleChange} 
+                />
+                <label>Age</label>
+                <input 
+                    name='age'
+                    type='number' 
+                    value={this.props.age}
+                    onChange={this.props.handleChange} 
+                />
+                <input type='submit' value='Submit' />
+            </form>
+        );
+    }
+}
+
+export default ContactForm;
+```
+
+<br>
+
+Contact.js
+```javascript
+import { Component } from 'react';
+import ContactForm from './ContactForm';
+
+
+class Contact extends Component {
+
+    state = {
+        firstName: '',
+        lastName: '',
+        age: 0
+    }
+
+
+    handleChange(event) {
+        this.setState({[event.target.name]: event.target.value });
+    }
+
+
+    handleSubmit() {
+        window.alert(JSON.stringify(this.state));
+    }
+
+
+    render() {
+        return (
+            <div>
+                <h1>Contact Form #1</h1>
+                <ContactForm 
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    age={this.state.age}
+                    handleChange={this.handleChange.bind(this)}
+                    handleSubmit={this.handleSubmit.bind(this)}
+                />
+                <br />
+                <br />
+                <h1>Contact Form #2</h1>
+                <ContactForm 
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    age={this.state.age}
+                    handleChange={this.handleChange.bind(this)}
+                    handleSubmit={this.handleSubmit.bind(this)}
+                />
+            </div>
+        );
+    }
+
+}
+
+export default ContactTop;
 ```

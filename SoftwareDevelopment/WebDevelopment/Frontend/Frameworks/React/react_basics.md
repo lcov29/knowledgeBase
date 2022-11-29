@@ -16,6 +16,7 @@
   - [**Rendering**](#rendering)
     - [**Conditional Rendering**](#conditional-rendering)
   - [**Lists**](#lists)
+  - [**Enable TypeScript Support**](#enable-typescript-support)
 
 <br>
 <br>
@@ -197,4 +198,25 @@ function List(props) {
 
 ```javascript
 <List listData={['element1', 'element2', 'element3']}/>
+```
+
+<br>
+<br>
+<br>
+
+## **Enable TypeScript Support**
+<br>
+
+1. Install TypeScript
+
+```bash
+npm install --save-dev typescript
+```
+
+<br>
+
+2. Install React Type Package
+
+```bash
+npm install --save-dev @types/react
 ```

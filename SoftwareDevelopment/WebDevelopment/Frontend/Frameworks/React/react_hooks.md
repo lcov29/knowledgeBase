@@ -11,6 +11,7 @@
     - [**State Hook**](#state-hook)
       - [**Differences to `this.state`**](#differences-to-thisstate)
     - [**Effect Hook**](#effect-hook)
+    - [**Context Hook**](#context-hook)
 
 <br>
 <br>
@@ -122,9 +123,69 @@ setDemo(() => ({payload2: 'bar'}));
 <br>
 
 ```javascript
-import { useState } from 'react';
+import { useEffect } from 'react';
 
 function SomeComponent() {
+  
+  // trigger argument function on every render
+  useEffect(() => { /* implementation */ });
 
+
+  // trigger argument function only on initial render
+  useEffect(() => { /* implementation */ }, []);
+
+
+  // trigger argument function on update of some value
+  useEffect(() => { /* implementation */ }, [someValue]);
+
+
+  // clean up previous render and after component unmounts
+  useEffect(
+    () => { 
+
+      // implementation
+
+      return function cleanup() {
+        // implementation
+      }
+    }
+    
+  );
+
+}
+```
+
+<br>
+<br>
+<br>
+
+### **Context Hook**
+<br>
+
+* add ability to use [Context](./react_context.md) in functional components
+
+<br>
+
+```javascript
+import { createContext, useContext } from 'react';
+
+const SomeContext = createContext('defaultValue');
+
+
+function App() {
+  return (
+    <SomeContext.Provider value={'someValue'}>
+      <SomeComponent />
+    </SomeContext.Provider>
+  );
+}
+
+
+function SomeComponent(props) {
+  const currentContextValue = useContext(SomeContext);
+
+  return (
+    <p>{currentContextValue}</p>
+  );
 }
 ```

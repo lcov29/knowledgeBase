@@ -169,6 +169,7 @@ function SomeComponent() {
 ```javascript
 import { createContext, useContext } from 'react';
 
+
 const SomeContext = createContext('defaultValue');
 
 

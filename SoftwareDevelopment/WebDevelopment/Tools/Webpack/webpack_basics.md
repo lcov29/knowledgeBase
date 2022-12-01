@@ -132,7 +132,7 @@ Add to `package.json`:
 ...
 
 "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack serve",
     "compile": "webpack"
 },
 

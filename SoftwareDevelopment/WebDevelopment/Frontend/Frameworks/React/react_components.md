@@ -62,6 +62,8 @@ export default ComponentName;
 <br>
 
 ```javascript
+import React from 'react';
+
 function ComponentName() {
   return (/* JSX */);
 }

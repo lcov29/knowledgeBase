@@ -21,6 +21,7 @@
       - [**7.4 Install React Packages**](#74-install-react-packages)
       - [**7.5 Add Extensions To webpack.config.js**](#75-add-extensions-to-webpackconfigjs)
       - [**7.6 Change File Extension To .jsx For All JavaScript Files Using JSX**](#76-change-file-extension-to-jsx-for-all-javascript-files-using-jsx)
+    - [**8. Add Support For TypeScript (Optional)**](#8-add-support-for-typescript-optional)
 
 <br>
 <br>
@@ -290,4 +291,10 @@ Add to `webpack.config.js`:
 <br>
 
 #### **7.6 Change File Extension To .jsx For All JavaScript Files Using JSX**
+
+<br>
+<br>
+<br>
+
+### **8. Add Support For TypeScript (Optional)**
 <br>

@@ -22,6 +22,10 @@
       - [**7.5 Add Extensions To webpack.config.js**](#75-add-extensions-to-webpackconfigjs)
       - [**7.6 Change File Extension To .jsx For All JavaScript Files Using JSX**](#76-change-file-extension-to-jsx-for-all-javascript-files-using-jsx)
     - [**8. Add Support For TypeScript (Optional)**](#8-add-support-for-typescript-optional)
+      - [**8.1 Install TypeScript, Loader and React Type Packages**](#81-install-typescript-loader-and-react-type-packages)
+      - [**8.2 Add TypeScript Configuration**](#82-add-typescript-configuration)
+      - [**8.3 Update Webpack Configuration To Use TS-Loader**](#83-update-webpack-configuration-to-use-ts-loader)
+      - [**8.4 Change .jsx File Extensions to .tsx**](#84-change-jsx-file-extensions-to-tsx)
 
 <br>
 <br>
@@ -298,3 +302,59 @@ Add to `webpack.config.js`:
 
 ### **8. Add Support For TypeScript (Optional)**
 <br>
+<br>
+
+#### **8.1 Install TypeScript, Loader and React Type Packages**
+<br>
+
+```bash
+npm install typescript tsloader @types/react @types/react-dom --save-dev
+```
+
+<br>
+<br>
+
+#### **8.2 Add TypeScript Configuration**
+<br>
+
+`tsconfig.json`
+```json
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "module": "CommonJS",
+    "target": "ES2021",
+    "jsx": "react-jsxdev",
+    "strict": true,
+    "esModuleInterop": true
+  }
+}
+```
+
+<br>
+<br>
+
+#### **8.3 Update Webpack Configuration To Use TS-Loader**
+<br>
+
+```javascript
+// ...
+    rules: [
+        {
+            test: /\.(ts|tsx)$/,
+            exclude: /node_modules/,
+            use: {
+                loader: 'ts-loader'
+            }
+        },
+    resolve: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx']
+    }
+// ...
+```
+
+<br>
+<br>
+
+#### **8.4 Change .jsx File Extensions to .tsx**

@@ -19,6 +19,7 @@
   - [**Event Handling**](#event-handling)
     - [**Pass Additional Parameters To Event Handler**](#pass-additional-parameters-to-event-handler)
   - [**Shared State Between Components**](#shared-state-between-components)
+  - [**Wrapper**](#wrapper)
 
 <br>
 <br>
@@ -458,4 +459,38 @@ class Contact extends Component {
 }
 
 export default ContactTop;
+```
+
+<br>
+<br>
+<br>
+
+## **Wrapper**
+<br>
+
+* wrappers can access their child components including their props and state
+
+```javascript
+class WrapperName extends React.Component {
+    render() {
+        // access child props
+        const childrenProps = this.props.children.map(child => <p>{child.props.propertyName}</p>);
+
+        // access children
+        return (
+            <div>
+                {this.props.children}
+                {childrenProps}
+            </div>);
+    }
+}
+```
+
+<br>
+
+```javascript
+<WrapperName>
+    <SomeComponent />
+    <SomeOtherComponent />
+</WrapperName>
 ```

@@ -7,7 +7,7 @@
 - [**React Components**](#react-components)
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
-  - [**Class Component**](#class-component)
+  - [**Basic**](#basic)
   - [**Component Data**](#component-data)
     - [**Props**](#props)
       - [**Pass Data To Class Component**](#pass-data-to-class-component)
@@ -33,7 +33,7 @@
 <br>
 <br>
 
-## **Class Component**
+## **Basic**
 <br>
 
 Minimal Class Component:
@@ -121,50 +121,6 @@ class PersonTable extends Component {
 
 export default PersonTable;
 ```
-
-<br>
-<br>
-
-<!--
-#### **Pass Data To Function Component**
-<br>
-
-FunctionComponent.js
-```javascript
-function functionComponent(props) {
-  const attribute = props.attribute;
-  return(/* JSX using attribute */)
-}
-```
-
-<br>
-<br>
-
-PersonTable.js
-```javascript
-function PersonTable(props) {
-    const {firstName, lastName, age} = props;
-    return (
-        <table>
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Age</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>{firstName}</th>
-                    <th>{lastName}</th>
-                    <th>{age}</th>
-                </tr>
-            </tbody>
-        </table>
-    );
-}
-```
--->
 
 <br>
 <br>

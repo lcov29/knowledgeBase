@@ -7,13 +7,10 @@
 - [**React Components**](#react-components)
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
-  - [**Component Types**](#component-types)
-    - [**Class Component**](#class-component)
-    - [**Function Component**](#function-component)
+  - [**Class Component**](#class-component)
   - [**Component Data**](#component-data)
     - [**Props**](#props)
       - [**Pass Data To Class Component**](#pass-data-to-class-component)
-      - [**Pass Data To Function Component**](#pass-data-to-function-component)
     - [**State**](#state)
   - [**Lifecycle Methods**](#lifecycle-methods)
   - [**Event Handling**](#event-handling)
@@ -36,11 +33,7 @@
 <br>
 <br>
 
-## **Component Types**
-<br>
-<br>
-
-### **Class Component**
+## **Class Component**
 <br>
 
 Minimal Class Component:
@@ -55,19 +48,6 @@ class ComponentName extends Component {
 }
 
 export default ComponentName;
-```
-<br>
-<br>
-
-### **Function Component**
-<br>
-
-```javascript
-import React from 'react';
-
-function ComponentName(props) {
-  return (/* JSX */);
-}
 ```
 
 <br>
@@ -145,6 +125,7 @@ export default PersonTable;
 <br>
 <br>
 
+<!--
 #### **Pass Data To Function Component**
 <br>
 
@@ -183,6 +164,7 @@ function PersonTable(props) {
     );
 }
 ```
+-->
 
 <br>
 <br>

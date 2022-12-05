@@ -17,7 +17,6 @@
     - [**Conditional Rendering**](#conditional-rendering)
   - [**Lists**](#lists)
   - [**Debugging**](#debugging)
-  - [**Enable TypeScript Support**](#enable-typescript-support)
 
 <br>
 <br>
@@ -210,28 +209,3 @@ function List(props) {
 
 1. Enable Source Maps 
 2. Install browser extension react developer tools
-
-<br>
-<br>
-<br>
-
-## **Enable TypeScript Support**
-<br>
-
-1. Install TypeScript
-
-```bash
-npm install --save-dev typescript
-```
-
-<br>
-
-2. Install React Type Package
-
-```bash
-npm install --save-dev @types/react
-```
-
-<br>
-
-3. Change all `.jsx` files to `.tsx`

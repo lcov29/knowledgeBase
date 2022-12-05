@@ -16,6 +16,7 @@
   - [**Rendering**](#rendering)
     - [**Conditional Rendering**](#conditional-rendering)
   - [**Lists**](#lists)
+  - [**Debugging**](#debugging)
   - [**Enable TypeScript Support**](#enable-typescript-support)
 
 <br>
@@ -199,6 +200,16 @@ function List(props) {
 ```javascript
 <List listData={['element1', 'element2', 'element3']}/>
 ```
+
+<br>
+<br>
+<br>
+
+## **Debugging**
+<br>
+
+1. Enable Source Maps 
+2. Install browser extension react developer tools
 
 <br>
 <br>

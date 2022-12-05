@@ -231,3 +231,7 @@ npm install --save-dev typescript
 ```bash
 npm install --save-dev @types/react
 ```
+
+<br>
+
+3. Change all `.jsx` files to `.tsx`

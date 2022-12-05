@@ -132,7 +132,7 @@ function PersonTable(props) {
 
 * state is accessible and modifiable only by its containing components
 * component can pass down state information down to its children via `props`
-* state is provided via the `useState` [hook](./react_hooks.md)
+* state is provided via the `useState` hook
 * components can have multiple state hooks
 
 <br>
@@ -212,7 +212,7 @@ changeState() {
 ## **Lifecycle Methods**
 <br>
 
-* lifecycle methods are provided via the `useEffect` [hook](./react_hooks.md)
+* lifecycle methods are provided via the `useEffect` hook
 * add ability to perform side effects 
 * comparable to class lifecycle methods like `componentDidMount` etc.
 * default: run effect function after every render
@@ -260,7 +260,7 @@ function SomeComponent() {
 ## **Context**
 <br>
 
-* add ability to use [Context](./react_context.md) in functional components via `useContext` [hook](./react_hooks.md)
+* add ability to use [Context](./react_context.md) in functional components via `useContext` hook
 * used to share data with many different components without explicitly passing it via `props`
 
 <br>
@@ -299,5 +299,3 @@ function App() {
   );
 }
 ```
-
-

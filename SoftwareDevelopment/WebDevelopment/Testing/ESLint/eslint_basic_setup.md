@@ -13,6 +13,7 @@
     - [**3. Install ESLint**](#3-install-eslint)
     - [**4. Install TypeScript Support For ESLint**](#4-install-typescript-support-for-eslint)
     - [**5. Install Airbnb Configuration For ESLint**](#5-install-airbnb-configuration-for-eslint)
+    - [**6. Add file .eslintignore**](#6-add-file-eslintignore)
 
 <br>
 <br>
@@ -105,6 +106,7 @@ Add to _eslintrc.json_:
 ],
     
 "parserOptions": {
+      "sourceType": "module",
       "project": "./tsconfig.json"
 }
 ```
@@ -138,3 +140,9 @@ Add to _eslintrc.json_:
   "airbnb-typescript"
 ],
 ```
+
+<br>
+<br>
+
+### **6. Add file .eslintignore**
+<br>

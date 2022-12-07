@@ -11,6 +11,7 @@
     - [**2. Install TypeScript Support**](#2-install-typescript-support)
     - [**3. Add Test Script To Package.json**](#3-add-test-script-to-packagejson)
   - [**General**](#general)
+  - [**Matchers (Assertions)**](#matchers-assertions)
 
 <br>
 <br>
@@ -89,3 +90,14 @@ test('test description', () => {
 <br>
 <br>
 
+
+## **Matchers (Assertions)**
+<br>
+
+* used to compare the actual result of an `expect()` call with the expected result
+
+```typescript
+expect(someValue).<Matcher>()
+```
+
+See [jest matchers](./jest_matchers.md)

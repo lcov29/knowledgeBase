@@ -45,8 +45,6 @@
 expect(someValue).<Matcher>()
 ```
 
-See [jest matchers](./jest_matchers.md)
-
 <br>
 <br>
 <br>

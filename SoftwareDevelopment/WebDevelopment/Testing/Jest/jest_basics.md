@@ -12,6 +12,8 @@
     - [**3. Add Test Script To Package.json**](#3-add-test-script-to-packagejson)
   - [**General**](#general)
   - [**Matchers (Assertions)**](#matchers-assertions)
+  - [**Setup And Teardown**](#setup-and-teardown)
+  - [**Limit Execution To Single Test For Debugging Purposes**](#limit-execution-to-single-test-for-debugging-purposes)
 
 <br>
 <br>
@@ -64,7 +66,8 @@ npx ts-jest config:init
 <br>
 
 * we group our tests in separate files `fileName.test.ts` called test suites 
-* each test suite contains at least one test. 
+* each test suite contains at least one test.
+* tests can be grouped to test groups
 * each test consists of three steps:
 
 <br>
@@ -80,9 +83,18 @@ npx ts-jest config:init
 ```typescript
 import { functionToBeTested } from './fileName.ts';
 
-test('test description', () => {
-    const arrangedData = { /* some Data */ };
-    expect(functionToBeTested(arrangedData)).toBe('expectedResult');
+description('test block description', () => {
+
+  test('test #1 description', () => {
+      const arrangedData = { /* some Data */ };
+      expect(functionToBeTested(arrangedData)).toBe('expectedResult');
+  });
+
+  test('test #2 description', () => {
+      const arrangedData = { /* some Data */ };
+      expect(functionToBeTested(arrangedData)).toBe('expectedResult');
+  });
+
 });
 ```
 
@@ -101,3 +113,52 @@ expect(someValue).<Matcher>()
 ```
 
 See [jest matchers](./jest_matchers.md)
+
+<br>
+<br>
+<br>
+
+## **Setup And Teardown**
+<br>
+
+```typescript
+beforeEach(() => {
+  // code to execute before each test
+});
+
+
+beforeAll(() => {
+  // code to execute once at file opening
+});
+
+
+afterEach(() => {
+  // code to execute after each test
+});
+
+
+afterAll(() => {
+  // code to execute once at file closing
+})
+```
+
+<br>
+
+* `beforeEach` and `afterEach` can have two scopes:
+  * top level
+  * within `describe` blocks
+
+<br>
+<br>
+<br>
+
+## **Limit Execution To Single Test For Debugging Purposes**
+<br>
+
+* add `.only` for test that should be executed as only test in suite
+
+```typescript
+test.only('oly test that gets executed', () => { /* implementation */ });
+
+test('test that gets skipped', () => { /* implementation */ });
+```

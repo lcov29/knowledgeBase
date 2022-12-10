@@ -19,6 +19,7 @@
     - [**Resolve**](#resolve)
     - [**Reject**](#reject)
   - [**Mock Modules**](#mock-modules)
+    - [**Mock Only Parts Of Module**](#mock-only-parts-of-module)
 
 <br>
 <br>
@@ -228,6 +229,47 @@ jest.mock('modulePath');
 test('test description', () => {
    internalMethod.mockReturnValue('value');
    expect(moduleFunc('parameter')).toEqual('resultValue');
+});
+```
+
+<br>
+<br>
+
+### **Mock Only Parts Of Module**
+<br>
+
+module.ts:
+```typescript
+const foo = (): string => 'foo';
+const bar = (): string => 'bar';
+const baz = (): string => 'baz';
+
+export { foo, bar, baz };
+```
+
+<br>
+
+```typescript
+import { foo, bar, baz } from './module';
+
+
+// mock only parts bar and baz of module
+jest.mock('./module', ():void => {
+   const original = jest.requireActual('./module');
+
+   return {
+      __esModule: true,
+      ...original,
+      bar: jest.fn((): string => 'mocked bar'),
+      baz: jest.fn((): string => 'mocked baz'),
+   };
+});
+
+
+test('test description', () => {
+   expect(foo()).toBe('foo');
+   expect(bar()).toBe('mocked bar');
+   expect(baz()).toBe('mocked baz');
 });
 ```
 

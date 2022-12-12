@@ -8,7 +8,7 @@
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
   - [**Installation**](#installation)
-  - [\*\*\*\*](#)
+  - [**Tests**](#tests)
 
 <br>
 <br>
@@ -41,5 +41,7 @@ npx cypress open
 <br>
 <br>
 
-## ****
+## **Tests**
 <br>
+
+* file extension `.cs.js`

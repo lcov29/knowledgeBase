@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Page Application</title>
+</head>
+
+<style>
+
+</style>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#" data-target="Home" class="navigationElement">Home</a></li>
+            <li><a href="#" data-target="AboutUs" class="navigationElement">About Us</a></li>
+            <li><a href="#" data-target="Contact" class="navigationElement">Contact</a></li>
+        </ul>
+    </nav>
+    <main></main>
+</body>
+
+<script>
+
+    function createPage(text) {
+        const page = document.createElement('h1');
+        page.innerText = text;
+        return page;
+    }
+
+
+    function getPageRouting(target) {
+        switch (target) {
+            case 'Home':
+                return createPage('Home');
+            case 'AboutUs':
+                return createPage('About Us');
+            case 'Contact':
+                return createPage('Contact');
+            default:
+                return createPage('404: Requested page not found');
+        }
+    }
+
+
+    function loadPage(pageId) {
+        const page = getPageRouting(pageId);
+        const main = document.getElementsByTagName('main')[0];
+        main.removeChild(main.firstChild);
+        main.appendChild(page);
+    }
+
+
+    function handleNavigationClick(event) {
+        event.preventDefault();
+        const pageId = event.target.getAttribute('data-target');
+        loadPage(pageId);
+        history.pushState({}, pageId, `#${pageId}`);
+    }
+
+
+    function handlePopState() {
+        const pageId = location.hash.replace('#', '');
+        loadPage(pageId);
+    }
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        window.addEventListener('popstate', handlePopState);
+        document.getElementsByTagName('main')[0].appendChild(createPage('Home'));
+        history.replaceState({}, 'Home', '#Home');
+    });
+
+
+    for (const element of document.getElementsByTagName('a')) {
+        element.addEventListener('click', handleNavigationClick);
+    }
+
+</script>
+
+</html>

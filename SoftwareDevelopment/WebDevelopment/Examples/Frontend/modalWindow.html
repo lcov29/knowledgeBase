@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Window Example</title>
+    <style>
+
+        button {
+            cursor: pointer
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 2;
+            background-color: black;
+            opacity: 90%;
+        }
+
+        #modalWindow {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            background-color: white;
+            z-index: 3;
+            padding: 0rem 1rem 1rem 1rem;
+            transition: transform 900ms ease-in-out;
+        }
+
+        .hideOverlay {
+            display: none;
+        }
+
+        .showModalWindow {
+            transform: translate(-50%, -50%);
+        }
+
+        .hideModalWindow {
+            transform: translate(-50%, -500%);
+        }
+        
+    </style>
+</head>
+
+
+<body>
+
+    <main>
+        <h1>Header</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti, nobis accusamus, incidunt, vero rem odit perferendis cumque hic earum laudantium natus! Vel eius voluptate repellat mollitia nam dolorum culpa!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti, nobis accusamus, incidunt, vero rem odit perferendis cumque hic earum laudantium natus! Vel eius voluptate repellat mollitia nam dolorum culpa!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti, nobis accusamus, incidunt, vero rem odit perferendis cumque hic earum laudantium natus! Vel eius voluptate repellat mollitia nam dolorum culpa!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti, nobis accusamus, incidunt, vero rem odit perferendis cumque hic earum laudantium natus! Vel eius voluptate repellat mollitia nam dolorum culpa!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti, nobis accusamus, incidunt, vero rem odit perferendis cumque hic earum laudantium natus! Vel eius voluptate repellat mollitia nam dolorum culpa!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti, nobis accusamus, incidunt, vero rem odit perferendis cumque hic earum laudantium natus! Vel eius voluptate repellat mollitia nam dolorum culpa!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti, nobis accusamus, incidunt, vero rem odit perferendis cumque hic earum laudantium natus! Vel eius voluptate repellat mollitia nam dolorum culpa!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti, nobis accusamus, incidunt, vero rem odit perferendis cumque hic earum laudantium natus! Vel eius voluptate repellat mollitia nam dolorum culpa!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti, nobis accusamus, incidunt, vero rem odit perferendis cumque hic earum laudantium natus! Vel eius voluptate repellat mollitia nam dolorum culpa!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti, nobis accusamus, incidunt, vero rem odit perferendis cumque hic earum laudantium natus! Vel eius voluptate repellat mollitia nam dolorum culpa!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti, nobis accusamus, incidunt, vero rem odit perferendis cumque hic earum laudantium natus! Vel eius voluptate repellat mollitia nam dolorum culpa!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti, nobis accusamus, incidunt, vero rem odit perferendis cumque hic earum laudantium natus! Vel eius voluptate repellat mollitia nam dolorum culpa!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti, nobis accusamus, incidunt, vero rem odit perferendis cumque hic earum laudantium natus! Vel eius voluptate repellat mollitia nam dolorum culpa!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti, nobis accusamus, incidunt, vero rem odit perferendis cumque hic earum laudantium natus! Vel eius voluptate repellat mollitia nam dolorum culpa!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti, nobis accusamus, incidunt, vero rem odit perferendis cumque hic earum laudantium natus! Vel eius voluptate repellat mollitia nam dolorum culpa!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim deleniti, nobis accusamus, incidunt, vero rem odit perferendis cumque hic earum laudantium natus! Vel eius voluptate repellat mollitia nam dolorum culpa!</p>
+        <button id="showModalWindowButton">Show Modal</button>
+    </main>
+
+    <div id="overlay" class="hideOverlay">&nbsp;</div>
+
+    <div id="modalWindow" class="hideModalWindow">
+        <h2>Modal Header</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima possimus in magni pariatur consequatur illum vero tempore delectus veritatis, minus debitis nemo repudiandae, quaerat dolor vel quae a exercitationem amet.</p>
+        <button id="hideModalWindowButton">OK</button>
+    </div>
+</body>
+
+
+<script>
+
+    const overlay = document.getElementById('overlay');
+    const modal = document.getElementById('modalWindow');
+
+    function showModalWindow() {
+        modal.classList.remove('hideModalWindow');
+        modal.classList.add('showModalWindow');
+    }
+
+    function hideModalWindow() {
+        modal.classList.remove('showModalWindow');
+        modal.classList.add('hideModalWindow');
+    }
+
+    function showOverlay() {
+        overlay.classList.remove('hideOverlay');
+    }
+
+    function hideOverlay() {
+        overlay.classList.add('hideOverlay');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const showModalWindowButton = document.getElementById('showModalWindowButton');
+        const hideModalWindowButton = document.getElementById('hideModalWindowButton');
+
+        showModalWindowButton.addEventListener('click', () => {
+            showOverlay();
+            showModalWindow();
+        });
+
+        hideModalWindowButton.addEventListener('click', () => {
+            hideOverlay();
+            hideModalWindow();
+        });
+    });
+   
+</script>
+
+</html>

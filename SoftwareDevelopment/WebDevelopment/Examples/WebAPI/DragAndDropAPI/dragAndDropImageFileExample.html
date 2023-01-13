@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Drag And Drop Image File Example</title>
+
+    <style>
+        #dropbox {
+            display: flex;
+            width: 15rem;
+            height: 15rem;
+            border-width: .25rem;
+            border-style: dotted;
+            background-color: gray;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #imageDisplayArea {
+            margin-top: 2rem;
+            border: 0.1rem solid black;
+            padding: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dropbox">Drop Image Files Here</div>
+    <fieldset id="imageDisplayArea">
+        <legend>Uploaded Images</legend>
+    </fieldset>
+</body>
+
+<script>
+
+    function handleDragEvent(event, eventName) {
+        event.stopPropagation();
+        event.preventDefault();
+        console.log(eventName);
+    }
+
+
+    function processFileList(fileList) {
+        for (const file of fileList) {
+            const isImage = file.type.startsWith('image/');
+
+            if (isImage) {
+                const img = document.createElement('img');
+
+                const reader = new FileReader();
+                reader.addEventListener('load', () => img.src = reader.result);
+                reader.readAsDataURL(file);
+
+                document.getElementById('imageDisplayArea').appendChild(img);
+            } 
+        }
+    }
+
+
+    function handleDrop(event) {
+        handleDragEvent(event, 'drop');
+        processFileList(event.dataTransfer.files);
+    }
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const dropbox = document.getElementById('dropbox');
+        dropbox.addEventListener('dragenter', (event) => { handleDragEvent(event, 'dragenter') });
+        dropbox.addEventListener('dragover', (event) => { handleDragEvent(event, 'dragover') });
+        dropbox.addEventListener('dragleave',(event) => { handleDragEvent(event, 'dragleave') });
+        dropbox.addEventListener('drop', handleDrop);
+    });
+
+</script>
+
+</html>

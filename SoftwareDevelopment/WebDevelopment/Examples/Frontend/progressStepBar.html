@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Step Bar</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            row-gap: 2rem;
+        }
+
+        #control-container, #input-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            column-gap: 2rem;
+        }
+
+        .progress-step-bar {
+            display: flex;
+            height: 5vh;
+            padding: 0rem 1rem;
+            background-color: lightgray;
+            justify-content: center;
+            align-items: center;
+            column-gap: 2rem;
+            overflow-x: auto;
+        }
+
+        .progress-element {
+            min-width: 6%;
+            height: 60%;
+            background-color: white;
+            border: 0.1rem solid black;
+            border-radius: .4rem;
+        }
+
+        .progress-element-completed {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="progress-step-bar"></div>
+        <div id="input-container">
+            <label for="numberOfSteps">Number Of Steps:</label>
+            <input id="numberOfSteps" type="number" name="numberOfSteps" value="5" min="0" />
+        </div>
+        <div id="control-container">
+            <button id="previous-button">&lt;</button>
+            <button id="next-button">&gt;</button>
+        </div>
+    </div>
+</body>
+
+<script>
+
+    function truncateProgressStepBar() {
+        const progressStepBar = document.querySelector('.progress-step-bar');
+        while( progressStepBar.firstChild) {
+            progressStepBar.removeChild(progressStepBar.firstChild);
+        }
+    }
+
+
+    function addProgressBarElement() {
+        const div = document.createElement('div');
+        div.setAttribute('class', 'progress-element');
+
+        const progressStepBar = document.querySelector('.progress-step-bar');
+        progressStepBar.appendChild(div);
+    }
+
+
+    function getNumberInput() {
+        return parseInt(document.getElementById('numberOfSteps').value);
+    }
+
+
+    function fillProgressBar() {
+        for (let i = 0; i < getNumberInput(); i++) {
+            addProgressBarElement();
+        }
+    }
+    
+
+    function initializeProgressStepBar() {
+        truncateProgressStepBar();
+        fillProgressBar();
+        currentStep = 0;
+    }
+
+
+    function incrementStep() {
+        if (currentStep < getNumberInput()) {
+            currentStep++;
+            completeStep(currentStep)
+        }
+    }
+
+
+    function decrementStep() {
+        if (currentStep > 0) {
+            undoStep(currentStep);
+            currentStep--;
+        } 
+    }
+
+
+    function completeStep(step) {
+        const element = document.querySelector(`.progress-step-bar :nth-child(${step})`);
+        element.classList.add('progress-element-completed');
+    }
+
+
+    function undoStep(step) {
+        const element = document.querySelector(`.progress-step-bar :nth-child(${step})`);
+        element.classList.remove('progress-element-completed');
+    }
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        let currentStep = 0;
+
+        initializeProgressStepBar();
+        document.getElementById('numberOfSteps').addEventListener('change', initializeProgressStepBar);
+        document.getElementById('previous-button').addEventListener('click', decrementStep);
+        document.getElementById('next-button').addEventListener('click', incrementStep);
+    });
+
+</script>
+
+</html>

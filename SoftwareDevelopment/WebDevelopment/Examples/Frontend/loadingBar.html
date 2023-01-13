@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Bar Example</title>
+
+    <style>
+    
+        :root {
+            --loadingBarWidth: 0%;
+            --borderRadius: 0.5rem;
+        }
+
+        h2 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            margin-left: 1rem;
+        }
+
+        main {
+            display: flex;
+            column-gap: 2rem;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .outer-loading-bar {
+            height: 3vh;
+            width: 40vw;
+            background-color: lightgray;
+            border-radius: var(--borderRadius);
+            margin-bottom: 1rem;
+        }
+
+        .inner-loading-bar {
+            width: var(--loadingBarWidth);
+            height: 100%;
+            background-color: green;
+            border-radius: var(--borderRadius);
+        }
+
+    </style>
+</head>
+
+<body>
+    <main>
+        <h2>Click on loading bar to simulate loading</h2>
+        <div id="loading-bar" class="loading-bar-container">
+            <div class="outer-loading-bar">
+                <div class="inner-loading-bar"></div>
+            </div>
+            <div id="loading-bar-status" class="status-display"></div>
+        </div>
+
+        <!--<button id="simulation-button">Simulate Loading</button>-->
+    </main>
+</body>
+
+<script>
+
+    // =============== Loading Bar ===============
+
+    function render(currentAmount, totalAmount) {
+        if (!validateInput) {
+            throw new RangeError('function expects positive integer arguments');
+        }
+        const percentageString = calculatePercentageString(currentAmount, totalAmount);
+        renderLoadingBar(percentageString);
+        renderStatusDisplay(percentageString, currentAmount, totalAmount);
+    }
+
+
+    function validateInput(currentAmount, totalAmount) {
+        const isInputNumeric = !(Number.isNaN(currentAmount) || Number.isNaN(totalAmount));
+        const isInputInRange = currentAmount >= 0 && totalAmount > 0;
+        return isInputNumeric && isInputInRange;
+    }
+
+
+    function calculatePercentageString(currentAmount, totalAmount) {
+        let percentage = Math.round((currentAmount / totalAmount) * 100);
+        percentage = (percentage > 100) ? 100 : percentage;
+        return `${percentage}%`;
+    }
+
+
+    function renderLoadingBar(percentageString) {
+        const root = document.querySelector(':root');
+        root.style.setProperty('--loadingBarWidth', percentageString);
+    }
+
+
+    function renderStatusDisplay(percentageString, currentAmount, totalAmount) {
+        const statusDisplay = document.getElementById('loading-bar-status');
+        statusDisplay.innerText = `${percentageString} (${currentAmount} / ${totalAmount} )`;
+    }
+
+
+
+    // =============== Simulation Button ===============
+
+    function getRandomIntegerBetween(minIncrement, maxIncrement) {
+        return Math.floor(minIncrement + (maxIncrement - minIncrement + 1) * Math.random());
+    }
+
+
+    function simulateLoading(totalAmount, intervalLengthInMilliseconds) {
+        if (isLoading) return;
+
+        isLoading = true;
+        let currentAmount = 0;
+        render(currentAmount, totalAmount);
+        
+        const intervalId = setInterval(() => {
+            try {
+                currentAmount += getRandomIntegerBetween(0, 10);
+                if (currentAmount > totalAmount) {
+                    render(totalAmount, totalAmount);
+                    clearInterval(intervalId);
+                    isLoading = false;
+                } else {
+                    render(currentAmount, totalAmount);
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }, intervalLengthInMilliseconds);
+    }
+
+    let isLoading = false;;
+
+    document.getElementsByClassName('outer-loading-bar')[0].addEventListener('click', () => {
+        simulateLoading(200, 500);
+    })
+
+
+</script>
+
+</html>

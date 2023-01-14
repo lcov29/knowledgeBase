@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Dropdown Menu</title>
+</head>
+<style>
+    *, *::after, *::before {
+        box-sizing: border-box;
+        margin: 0;
+    }
+
+    body {
+        background-color: beige;
+    }
+
+    nav {
+        position: relative;
+        display: flex;
+        column-gap: 3rem;
+        background-color: lightgray;
+        padding: 1rem;
+    }
+
+    .menu-option:focus {
+        color: red;
+    }
+
+    .menu-option-dropdown {
+        position: absolute;
+        left: 0;
+        top: calc(100% - .3rem);
+        background-color: white;
+        padding: .75rem;
+        border-radius: .25rem;
+        box-shadow: 0 .2rem .4rem 0 rgba(0, 0, 0, .5);
+        opacity: 0;
+        transform: translateY(-1rem);
+        transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+        pointer-events: none;
+    }
+
+    nav > .menu-option:focus + .menu-option-dropdown {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+</style>
+
+<body>
+    <header>
+        <nav>
+            <button class="menu-option">Option 1</button>
+            <div class="menu-option-dropdown">
+                <a href="">Option 1.1</a>
+                <a href="">Option 1.2</a>
+            </div>
+
+            <button class="menu-option">Option 2</button>
+            <div class="menu-option-dropdown">
+                <p>Option 2.1</p>
+                <p>Option 2.2</p>
+                <p>Option 2.3</p>
+            </div>
+
+        </nav>
+    </header>
+</body>
+
+<script>
+
+</script>
+</html>

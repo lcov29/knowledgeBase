@@ -16,36 +16,77 @@
         background-color: beige;
     }
 
-    nav {
-        position: relative;
-        display: flex;
-        column-gap: 3rem;
-        background-color: lightgray;
+    main {
         padding: 1rem;
     }
 
-    .menu-option:focus {
-        color: red;
+    header {
+        position: sticky;
+        top: 0;
     }
 
-    .menu-option-dropdown {
+    nav {
+        display: flex;
+        column-gap: 3rem;
+        padding: 1rem;
+        background-color: lightgray;
+    }
+
+    .menu-entry {
+        position: relative;
+    }
+
+    .menu-entry-dropdown {
+        display: none;
         position: absolute;
         left: 0;
-        top: calc(100% - .3rem);
+        top: calc(100% + .5rem);
         background-color: white;
-        padding: .75rem;
+        padding: 1rem;
         border-radius: .25rem;
         box-shadow: 0 .2rem .4rem 0 rgba(0, 0, 0, .5);
-        opacity: 0;
-        transform: translateY(-1rem);
-        transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
-        pointer-events: none;
+        overflow: auto;
     }
 
-    nav > .menu-option:focus + .menu-option-dropdown {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
+    .visible {
+        display: block;
+    }
+
+    .active {
+        font-weight: bold;
+    }
+
+    .link-list {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1rem;
+    }
+
+    .horizontal-button-list {
+        display: flex;
+        column-gap: 2rem;
+    }
+
+    .vertical-button-list {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0;
+    }
+
+    .grid-list {
+        display: grid;
+        column-gap: 3rem;
+        row-gap: 2rem;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #site-content {
+        display: flex;
+        background-color: lightcoral;
+        height: 200vh;
+        font-size: large;
+        font-weight: bold;
+        padding: 2rem;
     }
 
 </style>
@@ -53,24 +94,136 @@
 <body>
     <header>
         <nav>
-            <button class="menu-option">Option 1</button>
-            <div class="menu-option-dropdown">
-                <a href="">Option 1.1</a>
-                <a href="">Option 1.2</a>
+            <div class="menu-entry">
+                <button class="menu-entry-button">Links</button>
+                <div class="menu-entry-dropdown">
+                    <div class="link-list">
+                        <a href="https://stackoverflow.com">Stackoverflow</a>
+                        <a href="https://github.com/">GitHub</a>    
+                    </div>
+                </div>
             </div>
-
-            <button class="menu-option">Option 2</button>
-            <div class="menu-option-dropdown">
-                <p>Option 2.1</p>
-                <p>Option 2.2</p>
-                <p>Option 2.3</p>
+            <div class="menu-entry">
+                <button class="menu-entry-button">Horizontal Button List</button>
+                <div class="menu-entry-dropdown">
+                    <div class="horizontal-button-list">
+                        <button onClick="window.alert('Button 1 clicked')">Button 1</button>
+                        <button onClick="window.alert('Button 2 clicked')">Button 2</button>
+                        <button onClick="window.alert('Button 3 clicked')">Button 3</button>
+                        <button onClick="window.alert('Button 4 clicked')">Button 4</button>
+                        <button onClick="window.alert('Button 5 clicked')">Button 5</button>
+                        <button onClick="window.alert('Button 6 clicked')">Button 6</button>
+                    </div>
+                </div>
             </div>
-
+            <div class="menu-entry">
+                <button class="menu-entry-button">Vertical Button List</button>
+                <div class="menu-entry-dropdown">
+                    <div class="vertical-button-list">
+                        <button onClick="window.alert('Button 1 clicked')">Button 1</button>
+                        <button onClick="window.alert('Button 2 clicked')">Button 2</button>
+                        <button onClick="window.alert('Button 3 clicked')">Button 3</button>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-entry">
+                <button class="menu-entry-button">Grid</button>
+                <div class="menu-entry-dropdown">
+                    <div class="grid-list">
+                        <div>
+                            <h3>Option&nbsp;1</h3>
+                            <p>Option&nbsp;1.1</p>
+                            <p>Option&nbsp;1.2</p>
+                        </div>
+                        <div>
+                            <h3>Option&nbsp;2</h3>
+                            <p>Option&nbsp;2.1</p>
+                            <p>Option&nbsp;2.2</p>
+                            <p>Option&nbsp;2.3</p>
+                        </div>
+                        <div>
+                            <h3>Option&nbsp;3</h3>
+                            <p>Option&nbsp;3.1</p>
+                            <p>Option&nbsp;3.2</p>
+                            <p>Option&nbsp;3.3</p>
+                            <p>Option&nbsp;3.4</p>
+                        </div>
+                        <div>
+                            <h3>Option&nbsp;4</h3>
+                            <p>Option&nbsp;4.1</p>
+                            <p>Option&nbsp;4.2</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </nav>
     </header>
+    <main>
+        <div id="site-content">Site Content</div>
+    </main>
 </body>
 
 <script>
+
+    function showDropdown(dropdown) {
+        dropdown.classList.add('visible');
+    }
+
+
+    function hideDropdown(dropdown) {
+        dropdown.classList.remove('visible');
+    }
+
+
+    function hideAllDropdowns() {
+       const dropdownList = document.querySelectorAll('.menu-entry-dropdown');
+       dropdownList.forEach(dropdown =>  hideDropdown(dropdown));
+    }
+
+
+    function addMenuButtonHightlight(menuButton) {
+        menuButton.classList.add('active');
+    }
+
+
+    function removeMenuButtonHightlight(menuButton) {
+        menuButton.classList.remove('active');
+    }
+
+
+    function removeAllMenuButtonHighlights() {
+        const menuButtonList = document.querySelectorAll('.menu-entry-button');
+        menuButtonList.forEach(menuButton => removeMenuButtonHightlight(menuButton));
+    }
+
+
+    function handleMenuButtonMouseOver(event) {
+        event.stopPropagation();
+        removeAllMenuButtonHighlights();
+        addMenuButtonHightlight(event.target);
+        hideAllDropdowns();
+        showDropdown(event.target.nextElementSibling);
+    }
+
+    function handleMenuDropdownMouseLeave() {
+        removeAllMenuButtonHighlights();
+        hideAllDropdowns();
+    }
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // Add EventListeners for menu buttons
+        const menuButtonList = document.querySelectorAll('.menu-entry-button');
+        menuButtonList.forEach(menuButton => menuButton.addEventListener('mouseover', event => handleMenuButtonMouseOver(event)));
+
+        // Add EventListeners for menu dropdowns
+        const menuDropdownList = document.querySelectorAll('.menu-entry-dropdown');
+        menuDropdownList.forEach(menuDropdown => menuDropdown.addEventListener('mouseleave', event => hideDropdown(event.target)));
+
+        // Add EventListener for navigation bar
+        document.getElementsByTagName('nav')[0].addEventListener('mouseleave', handleMenuDropdownMouseLeave); 
+    });
 
 </script>
 </html>

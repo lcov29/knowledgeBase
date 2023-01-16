@@ -7,6 +7,7 @@
     <title>Responsive Dropdown Menu</title>
 </head>
 <style>
+
     *, *::after, *::before {
         box-sizing: border-box;
         margin: 0;
@@ -32,24 +33,17 @@
         background-color: lightgray;
     }
 
+    #site-content {
+        display: flex;
+        background-color: lightcoral;
+        height: 200vh;
+        font-size: large;
+        font-weight: bold;
+        padding: 2rem;
+    }
+
     .menu-entry {
         position: relative;
-    }
-
-    .menu-entry-dropdown {
-        display: none;
-        position: absolute;
-        left: 0;
-        top: calc(100% + .5rem);
-        background-color: white;
-        padding: 1rem;
-        border-radius: .25rem;
-        box-shadow: 0 .2rem .4rem 0 rgba(0, 0, 0, .5);
-        overflow: auto;
-    }
-
-    .visible {
-        display: block;
     }
 
     .active {
@@ -80,13 +74,105 @@
         grid-template-columns: repeat(2, 1fr);
     }
 
-    #site-content {
-        display: flex;
-        background-color: lightcoral;
-        height: 200vh;
-        font-size: large;
-        font-weight: bold;
-        padding: 2rem;
+
+    @media screen and (min-width: 701px) {
+
+        .menu-bar {
+            display: flex;
+            column-gap: 3rem;
+            padding: 1rem 0rem;
+        }
+
+        .menu-entry-dropdown {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: calc(100% + .5rem);
+            background-color: white;
+            padding: 1rem;
+            border-radius: .25rem;
+            box-shadow: 0 .2rem .4rem 0 rgba(0, 0, 0, .5);
+            overflow: auto;
+        }
+
+        .visible {
+            display: block;
+        }
+
+        #toggle-button {
+            display: none;
+        }
+
+        .menu-visible {
+            display: block;
+        }
+
+    }
+
+
+    @media screen and (max-width: 700px) {
+
+        nav {
+            display: block;
+            padding: 1rem;
+            background-color: lightgray;
+        }
+
+        #toggle-button {
+            display: flex;
+            flex-direction: column;
+            row-gap: 0.3rem;
+            border: none;
+            background: transparent;
+        }
+
+        .bar {
+            display: block;
+            background-color: white;
+            height: 0.2rem;
+            width: 2rem;
+            border-radius: 0.3rem;
+        }
+
+        .menu-container {
+            display: none;
+        }
+
+        .menu-bar {
+            display: flex;
+            flex-direction: column;
+            column-gap: 3rem;
+            padding-top: 1rem;
+        }
+
+        .menu-entry {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-entry-button {
+            width: 100%;
+            text-align: left;
+            padding: 0.5rem;
+        }
+
+        .menu-entry-dropdown {
+            display: none;
+            background-color: white;
+            padding: 1rem;
+            border-radius: .25rem;
+            margin: .5rem 0rem;
+            box-shadow: 0 .2rem .4rem 0 rgba(0, 0, 0, .5);
+            overflow: auto;
+        }
+
+        .visible {
+            display: block;
+        }
+
+        .menu-visible {
+            display: block;
+        }
     }
 
 </style>
@@ -94,64 +180,73 @@
 <body>
     <header>
         <nav>
-            <div class="menu-entry">
-                <button class="menu-entry-button">Links</button>
-                <div class="menu-entry-dropdown">
-                    <div class="link-list">
-                        <a href="https://stackoverflow.com">Stackoverflow</a>
-                        <a href="https://github.com/">GitHub</a>    
-                    </div>
-                </div>
-            </div>
-            <div class="menu-entry">
-                <button class="menu-entry-button">Horizontal Button List</button>
-                <div class="menu-entry-dropdown">
-                    <div class="horizontal-button-list">
-                        <button onClick="window.alert('Button 1 clicked')">Button 1</button>
-                        <button onClick="window.alert('Button 2 clicked')">Button 2</button>
-                        <button onClick="window.alert('Button 3 clicked')">Button 3</button>
-                        <button onClick="window.alert('Button 4 clicked')">Button 4</button>
-                        <button onClick="window.alert('Button 5 clicked')">Button 5</button>
-                        <button onClick="window.alert('Button 6 clicked')">Button 6</button>
-                    </div>
-                </div>
-            </div>
-            <div class="menu-entry">
-                <button class="menu-entry-button">Vertical Button List</button>
-                <div class="menu-entry-dropdown">
-                    <div class="vertical-button-list">
-                        <button onClick="window.alert('Button 1 clicked')">Button 1</button>
-                        <button onClick="window.alert('Button 2 clicked')">Button 2</button>
-                        <button onClick="window.alert('Button 3 clicked')">Button 3</button>
-                    </div>
-                </div>
-            </div>
-            <div class="menu-entry">
-                <button class="menu-entry-button">Grid</button>
-                <div class="menu-entry-dropdown">
-                    <div class="grid-list">
-                        <div>
-                            <h3>Option&nbsp;1</h3>
-                            <p>Option&nbsp;1.1</p>
-                            <p>Option&nbsp;1.2</p>
+            <button id="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <div class="menu-container">
+                <div class="menu-bar">
+                    <div class="menu-entry">
+                        <button class="menu-entry-button">Links</button>
+                        <div class="menu-entry-dropdown">
+                            <div class="link-list">
+                                <a href="https://stackoverflow.com">Stackoverflow</a>
+                                <a href="https://github.com/">GitHub</a>    
+                            </div>
                         </div>
-                        <div>
-                            <h3>Option&nbsp;2</h3>
-                            <p>Option&nbsp;2.1</p>
-                            <p>Option&nbsp;2.2</p>
-                            <p>Option&nbsp;2.3</p>
+                    </div>
+                    <div class="menu-entry">
+                        <button class="menu-entry-button">Horizontal Button List</button>
+                        <div class="menu-entry-dropdown">
+                            <div class="horizontal-button-list">
+                                <button onClick="window.alert('Button 1 clicked')">Button 1</button>
+                                <button onClick="window.alert('Button 2 clicked')">Button 2</button>
+                                <button onClick="window.alert('Button 3 clicked')">Button 3</button>
+                                <button onClick="window.alert('Button 4 clicked')">Button 4</button>
+                                <button onClick="window.alert('Button 5 clicked')">Button 5</button>
+                                <button onClick="window.alert('Button 6 clicked')">Button 6</button>
+                            </div>
                         </div>
-                        <div>
-                            <h3>Option&nbsp;3</h3>
-                            <p>Option&nbsp;3.1</p>
-                            <p>Option&nbsp;3.2</p>
-                            <p>Option&nbsp;3.3</p>
-                            <p>Option&nbsp;3.4</p>
+                    </div>
+                    <div class="menu-entry">
+                        <button class="menu-entry-button">Vertical Button List</button>
+                        <div class="menu-entry-dropdown">
+                            <div class="vertical-button-list">
+                                <button onClick="window.alert('Button 1 clicked')">Button 1</button>
+                                <button onClick="window.alert('Button 2 clicked')">Button 2</button>
+                                <button onClick="window.alert('Button 3 clicked')">Button 3</button>
+                            </div>
                         </div>
-                        <div>
-                            <h3>Option&nbsp;4</h3>
-                            <p>Option&nbsp;4.1</p>
-                            <p>Option&nbsp;4.2</p>
+                    </div>
+                    <div class="menu-entry">
+                        <button class="menu-entry-button">Grid</button>
+                        <div class="menu-entry-dropdown">
+                            <div class="grid-list">
+                                <div>
+                                    <h3>Option&nbsp;1</h3>
+                                    <p>Option&nbsp;1.1</p>
+                                    <p>Option&nbsp;1.2</p>
+                                </div>
+                                <div>
+                                    <h3>Option&nbsp;2</h3>
+                                    <p>Option&nbsp;2.1</p>
+                                    <p>Option&nbsp;2.2</p>
+                                    <p>Option&nbsp;2.3</p>
+                                </div>
+                                <div>
+                                    <h3>Option&nbsp;3</h3>
+                                    <p>Option&nbsp;3.1</p>
+                                    <p>Option&nbsp;3.2</p>
+                                    <p>Option&nbsp;3.3</p>
+                                    <p>Option&nbsp;3.4</p>
+                                </div>
+                                <div>
+                                    <h3>Option&nbsp;4</h3>
+                                    <p>Option&nbsp;4.1</p>
+                                    <p>Option&nbsp;4.2</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -206,9 +301,15 @@
     }
 
     
-    function handleMenuDropdownMouseLeave() {
+    function handleNavigationBarMouseLeave() {
         removeAllMenuButtonHighlights();
         hideAllDropdowns();
+        toggleMenuVisibility();
+    }
+
+
+    function toggleMenuVisibility() {
+        document.getElementsByClassName('menu-container')[0].classList.toggle('menu-visible');
     }
 
 
@@ -223,7 +324,10 @@
         menuDropdownList.forEach(menuDropdown => menuDropdown.addEventListener('mouseleave', event => hideDropdown(event.target)));
 
         // Add EventListener for navigation bar
-        document.getElementsByTagName('nav')[0].addEventListener('mouseleave', handleMenuDropdownMouseLeave); 
+        document.getElementsByTagName('nav')[0].addEventListener('mouseleave', handleNavigationBarMouseLeave);
+
+        // Add EventListener for toggle button
+        document.getElementById('toggle-button').addEventListener('click', toggleMenuVisibility);
     });
 
 </script>

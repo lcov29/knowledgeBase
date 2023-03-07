@@ -17,7 +17,7 @@
 <br>
 
 * used on osi layer 2 (Data Link Layer)
-* used for IPv4 networks
+* used for IPv4 networks (see [NDP](./NDP.md) for IPv6)
 * tasks:
   * determines the MAC address for a given IP address
   * allows manual assignment of a MAC address to an IP address

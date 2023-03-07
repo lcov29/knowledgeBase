@@ -20,6 +20,8 @@
     - [**Connection-Oriented Protocols**](#connection-oriented-protocols)
     - [**Connectionless Protocols**](#connectionless-protocols)
   - [**OSI Model**](#osi-model)
+  - [**Addresses**](#addresses)
+    - [**Physical Address (MAC Address)**](#physical-address-mac-address)
 
 <br>
 <br>
@@ -160,3 +162,37 @@ Mnemonic:
 **N**eed  
 **D**ata  
 **P**rocessing
+
+<br>
+<br>
+<br>
+
+## **Addresses**
+<br>
+<br>
+
+### **Physical Address (MAC Address)**
+<br>
+
+* MAC = Media Access Control
+* worldwide unique device identification
+* only used by protocols in same network segment
+* hexadecimal
+* length: 6 Byte
+
+<br>
+
+```
+AA:AA:AA:BB:BB.BB
+-------- --------
+   |            |
+manufacturer  device identification
+```
+
+<br>
+
+Broadcast MAC address:
+
+```
+ff:ff:ff:ff:ff:ff
+```

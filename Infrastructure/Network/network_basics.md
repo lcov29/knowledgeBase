@@ -22,6 +22,8 @@
   - [**OSI Model**](#osi-model)
   - [**Addresses**](#addresses)
     - [**Physical Address (MAC Address)**](#physical-address-mac-address)
+    - [**IP Address**](#ip-address)
+      - [**IPv4 Address**](#ipv4-address)
 
 <br>
 <br>
@@ -196,3 +198,42 @@ Broadcast MAC address:
 ```
 ff:ff:ff:ff:ff:ff
 ```
+
+<br>
+<br>
+
+### **IP Address**
+<br>
+
+* logical address used for network identification and location addressing
+* must be unique within a network
+* enables connection between different network segments
+* currently used versions: IPv4 and IPv6
+
+<br>
+<br>
+
+#### **IPv4 Address**
+<br>
+
+* length: 32 Bit (4 x 8 Bit)
+* ip addresses are represented with the decimal value of each octet
+* each octet is in the range of decimal values 0 to 255
+
+<br>
+
+```
+XXX.XXX.XXX.XXX
+```
+
+<br>
+
+Example:
+
+```
+192.168.0.23
+```
+
+<br>
+
+See [IPv4](./Protocols/3_NetworkLayer/IP/IPv4/IPv4_basics.md).

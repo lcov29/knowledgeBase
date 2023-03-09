@@ -16,6 +16,10 @@
       - [**Example 1**](#example-1-1)
       - [**Example 2**](#example-2-1)
       - [**Example 3**](#example-3-1)
+  - [**Calculate Subnetmask from given IP adress range**](#calculate-subnetmask-from-given-ip-adress-range)
+    - [**Examples**](#examples-2)
+      - [**Example 1**](#example-1-2)
+      - [**Example 2**](#example-2-2)
 
 <br>
 <br>
@@ -610,3 +614,180 @@ We calculate the first and last host address by incrementing/decrementing by 1.
 |Given IP        |Network ID      |First Host IP   |Last Host IP    |Broadcast IP    |
 |:---------------|:---------------|:---------------|:---------------|:---------------|
 |28.242.196.31   |28.224.0.0      |28.224.0.1      |28.255.255.254  |28.255.255.255  |
+
+<br>
+<br>
+<br>
+<br>
+
+## **Calculate Subnetmask from given IP adress range**
+<br>
+
+**Required Information**
+* first ip of range
+* last ip of range
+
+<br>
+<br>
+
+**Step 1: Identify the first different octet between the first and last ip**
+
+<br>
+
+**Step 2: Determine the id of the next network `a` after the last ip**
+
+<br>
+
+**Step 3: Calculate the difference `b` between first ip and next network id in first different octet**
+
+Calculate `b = octet(a) - octet(first ip)`
+
+<br>
+
+**Step 4: Calculate the minimal number of bits `c` required to display difference `b`**
+
+Calculate `minimal c with 2^c >= b`
+
+<br>
+
+
+**Step 5: Calculate subnetmask**
+
+Calculate `(number of octets before first different octet) x 8 + c`
+
+<br>
+<br>
+<br>
+
+### **Examples**
+<br>
+<br>
+<br>
+
+#### **Example 1**
+<br>
+
+We have the ip address range `111.224.0.1 - 111.239.255.254` and want to calculate the subnetmask.
+
+<br>
+<br>
+
+**Step 1**
+
+The first different octet is the second octet.
+
+```
+111.224.0.1
+111.239.255.254
+    ---
+    first different octet
+```
+
+<br>
+<br>
+
+**Step 2**
+
+We determine the next network id
+
+Next network id: `111.240.0.0`
+
+<br>
+<br>
+
+**Step 3**
+
+We calculate the difference between the next network id and the first ip in the second octet.
+
+```
+next network id:    111.240.0.0
+first ip of range:  111.224.0.1
+                        ---
+                        240 - 224 = 16
+```
+
+The difference is `16`.
+
+
+<br>
+<br>
+
+**Step 4 + 5**
+
+We need 4 bits to represent the difference, because `2^4 = 16 >= 16`.
+
+Now we can calculate the subnetmask:
+
+```
+network id:   111.224.0.0
+              --- ---
+               8 + 4 = 12
+```
+
+So the subnetmask is `/12`.
+
+<br>
+<br>
+<br>
+
+#### **Example 2**
+<br>
+
+We have the ip address range `192.168.0.17 - 192.168.0.30` and want to calculate the subnetmask.
+
+<br>
+<br>
+
+**Step 1**
+
+The first different octet is the fourth octet.
+
+```
+192.168.0.17
+192.168.0.30
+          --
+          first different octet
+```
+
+<br>
+<br>
+
+**Step 2**
+
+We determine the next network id
+
+Next network id: `192.168.0.31`
+
+<br>
+<br>
+
+**Step 3**
+
+We calculate the difference between the next network id and the first ip in the second octet.
+
+```
+next network id:    192.168.0.31
+first ip of range:  192.168.0.17
+                              --
+                              31 - 17 = 14
+```
+
+The difference is `14`.
+
+
+<br>
+<br>
+
+**Step 4 + 5**
+
+We need 4 bits to represent the difference, because `2^4 = 16 >= 14`.
+
+Now we can calculate the subnetmask:
+
+```
+network id:   192.168.0.17
+              --- --- - --
+               8 + 8 +8+ 4
+```
+
+So the subnetmask is `/28`.

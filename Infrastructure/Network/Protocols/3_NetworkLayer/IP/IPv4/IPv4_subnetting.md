@@ -11,6 +11,11 @@
       - [**Example 1**](#example-1)
       - [**Example 2**](#example-2)
       - [**Example 3**](#example-3)
+  - [**Calculate Subnetwork Id, Host IPs and Broadcast IP from a given IP address**](#calculate-subnetwork-id-host-ips-and-broadcast-ip-from-a-given-ip-address)
+    - [**Examples**](#examples-1)
+      - [**Example 1**](#example-1-1)
+      - [**Example 2**](#example-2-1)
+      - [**Example 3**](#example-3-1)
 
 <br>
 <br>
@@ -341,3 +346,267 @@ Finally we calculate the last host ip address by decrementing the broadcast ip a
 |     ...   |     ...      |      ...      |     ...       | ...   |
 |10.222.0.0 |10.222.0.1    |10.223.255.254 |10.223.255.255 |/15    |
 |10.224.0.0 |10.224.0.1    |10.225.255.254 |10.225.255.255 |/15    |
+
+<br>
+<br>
+<br>
+<br>
+
+## **Calculate Subnetwork Id, Host IPs and Broadcast IP from a given IP address**
+<br>
+
+**Required Information**
+* IP address
+* Subnetmask
+
+<br>
+<br>
+
+In the following we will refer to the octet where the network part of the subnetmask ends as `breaking octet`.
+
+<br>
+
+**Step 1: Determine the number of remaining bits `x` of the host part within the breaking octet**
+
+<br>
+
+**Step 2: Calculate the number of addresses `n`**
+
+Calculate `n = 2^x`
+
+<br>
+
+**Step 3: Determine the next smaller or equal integer `i` that is divisible by the number of addresses `n` for the ip value in the breaking octet**
+
+<br>
+
+**Step 4: Determine the network id by replacing the breaking octet with `i` and set all octets to the right to 0**
+
+<br>
+
+**Step 5: Determine the broadcast id by replacing the breaking octet with `i + n - 1` and set all octets to the right to 255**
+
+<br>
+
+**Step 6: Determine first host ip by incrementing the network id by 1**
+
+<br>
+
+**Step 7: Determine last host ip by decrementing the broadcast id by 1**
+
+<br>
+<br>
+<br>
+
+### **Examples**
+<br>
+<br>
+<br>
+
+#### **Example 1**
+<br>
+
+We have the ip address `110.86.48.29/25` and want to calculate the network id, first and last host ip address and broadcast address.
+
+<br>
+<br>
+
+**Step 1 + 2**
+
+```
+Subnetmask:    11111111.11111111.11111111.10000000
+                                          --------
+                                          breaking octet
+```
+
+The host part of the breaking octet has 7 bits. Therefore the subnet has `2^7 = 128` addresses.
+
+<br>
+<br>
+
+**Step 3**
+
+The ip value of the breaking octet is `29` which is not equal to the number of addresses `128`. 
+
+The next smaller integer that is divisible by `128` is `0` which we will use as the new ip value for the breaking octet.
+
+<br>
+<br>
+
+**Step 4**
+
+We caluculate the network address.
+
+breaking octet value: `0`  
+following octets value: -
+
+|Given IP        |Network ID      |First Host IP   |Last Host IP    |Broadcast IP    |
+|:---------------|:---------------|:---------------|:---------------|:---------------|
+|110.86.48.29    |110.86.48.0     |                |                |                |
+
+
+<br>
+<br>
+
+**Step 5**
+
+We calculate the broadcast address.
+
+breaking octet value: `0 + 128 - 1 = 127`
+
+|Given IP        |Network ID      |First Host IP   |Last Host IP    |Broadcast IP    |
+|:---------------|:---------------|:---------------|:---------------|:---------------|
+|110.86.48.29    |110.86.48.0     |                |                |110.86.48.127   |
+
+<br>
+<br>
+
+**Step 6 + 7**
+
+We calculate the first and last host address by incrementing/decrementing by 1.
+
+|Given IP        |Network ID      |First Host IP   |Last Host IP    |Broadcast IP    |
+|:---------------|:---------------|:---------------|:---------------|:---------------|
+|110.86.48.29    |110.86.48.0     |110.86.48.1     |110.86.48.126   |110.86.48.127   |
+
+<br>
+<br>
+<br>
+
+#### **Example 2**
+<br>
+
+We have the ip address `10.0.0.0/20` and want to calculate the network id, first and last host ip address and broadcast address.
+
+<br>
+<br>
+
+**Step 1 + 2**
+
+```
+Subnetmask:    11111111.11111111.11110000.00000000
+                                 --------
+                                 breaking octet
+```
+
+The host part of the breaking octet has 4 bits. Therefore the subnet has `2^4 = 16` addresses.
+
+<br>
+<br>
+
+**Step 3**
+
+The ip value of the breaking octet is `0` which is not equal to the number of addresses `16`. 
+
+The next smaller integer that is divisible by `16` is `0` which we will use as the new ip value for the breaking octet.
+
+<br>
+<br>
+
+**Step 4**
+
+We caluculate the network address.
+
+breaking octet value: `0`  
+following octets value: `0`
+
+|Given IP        |Network ID      |First Host IP   |Last Host IP    |Broadcast IP    |
+|:---------------|:---------------|:---------------|:---------------|:---------------|
+|10.0.0.0        |10.0.0.0        |                |                |                |
+
+
+<br>
+<br>
+
+**Step 5**
+
+We calculate the broadcast address.
+
+breaking octet value: `0 + 16 - 1 = 15`  
+following octets value: `255` 
+
+|Given IP        |Network ID      |First Host IP   |Last Host IP    |Broadcast IP    |
+|:---------------|:---------------|:---------------|:---------------|:---------------|
+|10.0.0.0        |10.0.0.0        |                |                |10.0.15.255     |
+
+<br>
+<br>
+
+**Step 6 + 7**
+
+We calculate the first and last host address by incrementing/decrementing by 1.
+
+|Given IP        |Network ID      |First Host IP   |Last Host IP    |Broadcast IP    |
+|:---------------|:---------------|:---------------|:---------------|:---------------|
+|10.0.0.0        |10.0.0.0        |10.0.0.1        |10.0.15.254     |10.0.15.255     |
+
+<br>
+<br>
+<br>
+
+#### **Example 3**
+<br>
+
+We have the ip address `28.242.196.31/11` and want to calculate the network id, first and last host ip address and broadcast address.
+
+<br>
+<br>
+
+**Step 1 + 2**
+
+```
+Subnetmask:    11111111.11100000.00000000.00000000
+                        --------
+                        breaking octet
+```
+
+The host part of the breaking octet has 5 bits. Therefore the subnet has `2^5 = 32` addresses.
+
+<br>
+<br>
+
+**Step 3**
+
+The ip value of the breaking octet is `242` which is not equal to the number of addresses `32`. 
+
+The next smaller integer that is divisible by `32` is `224` which we will use as the new ip value for the breaking octet.
+
+<br>
+<br>
+
+**Step 4**
+
+We caluculate the network address.
+
+breaking octet value: `224`  
+following octets value: `0`
+
+|Given IP        |Network ID      |First Host IP   |Last Host IP    |Broadcast IP    |
+|:---------------|:---------------|:---------------|:---------------|:---------------|
+|28.242.196.31   |28.224.0.0      |                |                |                |
+
+
+<br>
+<br>
+
+**Step 5**
+
+We calculate the broadcast address.
+
+breaking octet value: `224 + 32 - 1 = 255`
+following octets value: `255` 
+
+|Given IP        |Network ID      |First Host IP   |Last Host IP    |Broadcast IP    |
+|:---------------|:---------------|:---------------|:---------------|:---------------|
+|28.242.196.31   |28.224.0.0      |                |                |28.255.255.255  |
+
+<br>
+<br>
+
+**Step 6 + 7**
+
+We calculate the first and last host address by incrementing/decrementing by 1.
+
+|Given IP        |Network ID      |First Host IP   |Last Host IP    |Broadcast IP    |
+|:---------------|:---------------|:---------------|:---------------|:---------------|
+|28.242.196.31   |28.224.0.0      |28.224.0.1      |28.255.255.254  |28.255.255.255  |

@@ -12,6 +12,7 @@
     - [**Classless Inter Domain Routing (CIDR)**](#classless-inter-domain-routing-cidr)
     - [**Subnet mask**](#subnet-mask)
     - [**Private IPv4 Adress Ranges**](#private-ipv4-adress-ranges)
+    - [**Loopback Address Range**](#loopback-address-range)
     - [**Authorities For Assigning IP Addresses**](#authorities-for-assigning-ip-addresses)
 
 <br>
@@ -140,7 +141,19 @@ Example
 |172.16.0.0  - 172.31.255.255  |/16     |16                 |65,536                      |
 |192.168.0.0 - 192.168.255.255 |/24     |256                |256                         | 
 
+<br>
+<br>
 
+### **Loopback Address Range**
+<br>
+
+```
+127.0.0.0 - 127.255.255.255
+```
+
+* localnet / localhost
+* addresses in this range are pointing back to the host
+  * enables host to send data to itself
 
 <br>
 <br>

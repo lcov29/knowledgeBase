@@ -7,12 +7,13 @@
 - [**IPv4**](#ipv4)
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
-  - [**IP Addresses**](#ip-addresses)
-    - [**Decimal Representation**](#decimal-representation)
+  - [**IP Address**](#ip-address)
+    - [**Network Classes**](#network-classes)
+    - [**Classless Inter Domain Routing (CIDR)**](#classless-inter-domain-routing-cidr)
     - [**Subnet mask**](#subnet-mask)
+    - [**Private IPv4 Adress Ranges**](#private-ipv4-adress-ranges)
     - [**Authorities For Assigning IP Addresses**](#authorities-for-assigning-ip-addresses)
 
-<br>
 <br>
 <br>
 <br>
@@ -20,32 +21,31 @@
 ## **General**
 <br>
 
-IPv4 is used for:
+The Internet Protocol (IP) is a layer 3 (network layer) protocol.
+
+It is used is used for:
 * network identification
 * logical location addressing
 * enabling connections between different network segments
 
 <br>
+
+There are two versions:
+
+* IPv4 (discussed here)
+* [IPv6](../IPv6/IPv6_basics.md)
+
 <br>
 <br>
 <br>
 
-## **IP Addresses**
+## **IP Address**
 <br>
 
 * length: 32 Bit (4 x 8 Bit)
 * must be unique within a network
-* can be split into a **network part** and a **host part**
-
-<br>
-<br>
-<br>
-
-### **Decimal Representation**
-<br>
-
-* ip addresses are represented with the decimal value of each octet
 * each octet is in the range of decimal values 0 to 255
+* can be split into a **network part** and a **host part** 
 
 <br>
 
@@ -55,6 +55,34 @@ Example
 ```
 
 <br>
+<br>
+
+### **Network Classes**
+<br>
+
+* historical method of splitting ip address ranges
+* replaced by Classless Inter-Domain Routing (CIDR), but still has influence in certain topics
+* first four bits of leading octet were used for class address
+
+<br>
+
+|Class |Ip Range                       |first octet |Netmask         |Host addresses |
+|:----:|:------------------------------|:-----------|:---------------|--------------:|
+|A     |0.0.0.0   - 127.255.255.255    |00000000    |255.0.0.0       |16,777,214     |
+|B     |128.0.0.0 - 191.255.255.255    |10000000    |255.255.0.0     |65,534         |
+|C     |192.0.0.0 - 223.255.255.255    |11000000    |255.255.255.0   |254            |
+
+<br>
+<br>
+
+### **Classless Inter Domain Routing (CIDR)**
+<br>
+
+* replacement for network classes
+* introduced splitting ip addresses in network part and host part
+* based on variable-length subnet masking (VLSM)
+* introduced CIDR notation: /x for x amount of bits in network part of subnet mask
+
 <br>
 <br>
 
@@ -74,7 +102,7 @@ Example
 |11111111.00000000.00000000.00000000 |255.0.0.0       |/8            |16.777.214      |
 |11111111.10000000.00000000.00000000 |255.128.0.0     |/9            |8.388.608       |
 |11111111.11000000.00000000.00000000 |255.192.0.0     |/10           |4.194.304       |
-|11111111.11100000.00000000.00000000 |255.224.0.0     |/11           |2.097.152       |
+|11111111.11100000.00000000.00000000 |255. 224.0.0     |/11           |2.097.152       |
 |11111111.11110000.00000000.00000000 |255.240.0.0     |/12           |1.048.576       |
 |11111111.11111000.00000000.00000000 |255.248.0.0     |/13           |524.288         |
 |11111111.11111100.00000000.00000000 |255.252.0.0     |/14           |262.144         |
@@ -99,6 +127,22 @@ Example
 
 <br>
 <br>
+
+### **Private IPv4 Adress Ranges**
+<br>
+
+* used for private (= not connected to the public internet) networks
+* addresses in these ranges are not redirected to the public internet
+
+|IPv4 Address Range            |Netmask |Number of networks |Number of addresses per net |
+|:-----------------------------|:------:|:------------------|:---------------------------|
+|10.0.0.0    - 10.255.255.255  |/8      |1                  |16,777,216                  |
+|172.16.0.0  - 172.31.255.255  |/16     |16                 |65,536                      |
+|192.168.0.0 - 192.168.255.255 |/24     |256                |256                         | 
+
+
+
+<br>
 <br>
 
 ### **Authorities For Assigning IP Addresses**
@@ -112,5 +156,4 @@ flowchart TD
     A --> B
     B --> C
 ```
-
 

@@ -1,10 +1,10 @@
-# **IPv4**
+# **IPv4 Basics**
 <br>
 
 ## **Table Of Contents**
 <br>
 
-- [**IPv4**](#ipv4)
+- [**IPv4 Basics**](#ipv4-basics)
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
   - [**IP Address**](#ip-address)

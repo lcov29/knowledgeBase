@@ -15,6 +15,8 @@
     - [**Anycast Addresses**](#anycast-addresses)
     - [**Multicast Addresses**](#multicast-addresses)
   - [**Loopback Address**](#loopback-address)
+  - [**All-Zero Address**](#all-zero-address)
+  - [**Local Addresses**](#local-addresses)
 
 <br>
 <br>
@@ -158,3 +160,37 @@ https://[fe80::223:54ff:fe5b:869d]:8080
 
 Shorthand: ::1/128
 ```
+
+<br>
+<br>
+<br>
+
+## **All-Zero Address**
+<br>
+
+```
+0:0:0:0:0:0:0:0
+
+Shorthand: ::
+```
+
+* host that sends this address indicates that it has no valid ip address yet
+* do not use as a destination address
+
+<br>
+<br>
+<br>
+
+## **Local Addresses**
+<br>
+
+* Unique-local unicast address
+* not routed via internet
+* prefix: FD00::/8
+
+|Length |Description  |
+|:------|:------------|
+|8 bit  |Prefix FD00  |
+|40 bit |global id    |
+|16 bit |subnet id    |
+|64 bit |interface id |

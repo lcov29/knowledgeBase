@@ -24,7 +24,7 @@
 
 The Internet Protocol (IP) is a layer 3 (network layer) protocol.
 
-It is used is used for:
+It is used for:
 * network identification
 * logical location addressing
 * enabling connections between different network segments

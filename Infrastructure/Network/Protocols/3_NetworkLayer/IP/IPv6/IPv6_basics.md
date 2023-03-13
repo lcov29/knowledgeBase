@@ -8,15 +8,16 @@
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
   - [**IP Addresses**](#ip-addresses)
-  - [**Address Types**](#address-types)
-    - [**Unicast Addresses**](#unicast-addresses)
-      - [**Link Local Unicast Addresses**](#link-local-unicast-addresses)
-      - [**Global Unicast Addresses**](#global-unicast-addresses)
-    - [**Anycast Addresses**](#anycast-addresses)
-    - [**Multicast Addresses**](#multicast-addresses)
-  - [**Loopback Address**](#loopback-address)
-  - [**All-Zero Address**](#all-zero-address)
-  - [**Local Addresses**](#local-addresses)
+    - [**Address Types**](#address-types)
+      - [**Unicast Addresses**](#unicast-addresses)
+        - [**Link Local Unicast Addresses**](#link-local-unicast-addresses)
+        - [**Global Unicast Addresses**](#global-unicast-addresses)
+      - [**Anycast Addresses**](#anycast-addresses)
+      - [**Multicast Addresses**](#multicast-addresses)
+    - [**Loopback Address**](#loopback-address)
+    - [**All-Zero Address**](#all-zero-address)
+    - [**Local Addresses**](#local-addresses)
+  - [**IP Header**](#ip-header)
 
 <br>
 <br>
@@ -39,6 +40,7 @@ There are two versions:
 * [IPv4](../IPv4/IPv4_basics.md)
 * IPv6 (discussed here)
 
+<br>
 <br>
 <br>
 
@@ -96,7 +98,7 @@ https://[fe80::223:54ff:fe5b:869d]:8080
 <br>
 <br>
 
-## **Address Types**
+### **Address Types**
 <br>
 
 * every interface needs at least one unicast address
@@ -106,13 +108,13 @@ https://[fe80::223:54ff:fe5b:869d]:8080
 <br>
 <br>
 
-### **Unicast Addresses**
+#### **Unicast Addresses**
 
 * used for unique identification of hosts
 
 <br>
 
-#### **Link Local Unicast Addresses**
+##### **Link Local Unicast Addresses**
 
 * used for local network
 * not routed via internet
@@ -121,7 +123,7 @@ https://[fe80::223:54ff:fe5b:869d]:8080
 
 <br>
 
-#### **Global Unicast Addresses**
+##### **Global Unicast Addresses**
 
 * worldwide unique
 * routed via internet
@@ -130,7 +132,7 @@ https://[fe80::223:54ff:fe5b:869d]:8080
 <br>
 <br>
 
-### **Anycast Addresses**
+#### **Anycast Addresses**
 
 * unicast addresses that are assigned to multiple interfaces
 * used for load balancing and redundancy
@@ -141,7 +143,7 @@ https://[fe80::223:54ff:fe5b:869d]:8080
 <br>
 <br>
 
-### **Multicast Addresses**
+#### **Multicast Addresses**
 
 * used to address multiple interfaces
 * packages are sent to all inferfaces assigned to a multicast address
@@ -152,7 +154,7 @@ https://[fe80::223:54ff:fe5b:869d]:8080
 <br>
 <br>
 
-## **Loopback Address**
+### **Loopback Address**
 <br>
 
 ```
@@ -165,7 +167,7 @@ Shorthand: ::1/128
 <br>
 <br>
 
-## **All-Zero Address**
+### **All-Zero Address**
 <br>
 
 ```
@@ -181,7 +183,7 @@ Shorthand: ::
 <br>
 <br>
 
-## **Local Addresses**
+### **Local Addresses**
 <br>
 
 * Unique-local unicast address
@@ -194,3 +196,21 @@ Shorthand: ::
 |40 bit |global id    |
 |16 bit |subnet id    |
 |64 bit |interface id |
+
+<br>
+<br>
+<br>
+
+## **IP Header**
+<br>
+
+![IPv6 Header](../../../../images/ipv6_header.svg)
+
+<br>
+
+|Field         |Description
+|:-------------|:------------------------------
+|Traffic Class |Priority and Quality of Service
+|Flow Label    |Marks packages of identical use (Quality of Service)
+|Next Header   |protocol of next immediate header (TCP: 6, UDP: 17)
+|Hop Limit     |maximum number of allowed hops

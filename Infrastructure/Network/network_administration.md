@@ -14,6 +14,8 @@
     - [**Change ARP-Cache**](#change-arp-cache)
       - [**Add new entry**](#add-new-entry)
       - [**Delete entry**](#delete-entry)
+  - [**IP Address**](#ip-address)
+    - [**Resolve url to ip address via local *hosts* file**](#resolve-url-to-ip-address-via-local-hosts-file)
 
 <br>
 <br>
@@ -117,3 +119,34 @@ arp -s <ip_address> <mac_address>
 ```bash
 arp -d <ip_address>
 ```
+
+<br>
+<br>
+<br>
+<br>
+
+## **IP Address**
+<br>
+<br>
+<br>
+
+### **Resolve url to ip address via local *hosts* file**
+<br>
+
+**Linux**
+
+* computer resolves url to ip address via local *hosts* file **before** using DNS
+* can be used to block urls by resolving them to loopback address
+
+<br>
+
+/etc/hosts
+
+```
+192.168.0.2 example.com www.example.com
+
+
+# block url with loopback address
+127.0.0.1 www.google.com
+```
+

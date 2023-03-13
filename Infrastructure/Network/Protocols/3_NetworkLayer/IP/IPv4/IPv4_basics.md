@@ -14,6 +14,7 @@
     - [**Private IPv4 Adress Ranges**](#private-ipv4-adress-ranges)
     - [**Loopback Address Range**](#loopback-address-range)
     - [**Authorities For Assigning IP Addresses**](#authorities-for-assigning-ip-addresses)
+  - [**IP Header**](#ip-header)
 
 <br>
 <br>
@@ -36,6 +37,7 @@ There are two versions:
 * IPv4 (discussed here)
 * [IPv6](../IPv6/IPv6_basics.md)
 
+<br>
 <br>
 <br>
 
@@ -169,3 +171,20 @@ flowchart TD
     B --> C
 ```
 
+<br>
+<br>
+<br>
+
+## **IP Header**
+<br>
+
+![IPv4 Header](../../../../images/ipv4_header.svg)
+
+<br>
+
+|Field                                  |Description
+|:--------------------------------------|:----------
+|Differentiated Services Code Point     |settings for quality of service 
+|Explicit Congestion Notification (ECN) |setting for notification of network congestion without package dropping
+|Flags                                  |setting for allowing fragmentation by routers 
+|Time To Live                           |number of hops to routers before packet is deleted to prevent routing loops

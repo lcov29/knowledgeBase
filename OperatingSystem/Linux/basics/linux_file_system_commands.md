@@ -16,8 +16,13 @@
     - [**Copy**](#copy)
     - [**Move**](#move)
     - [**Links**](#links)
-    - [**Ownership And Permissions**](#ownership-and-permissions)
     - [**Other**](#other)
+  - [**Change Ownership**](#change-ownership)
+  - [**Permission**](#permission)
+      - [**Change all permissions**](#change-all-permissions)
+      - [**Change specific permission**](#change-specific-permission)
+      - [**Add specific permission**](#add-specific-permission)
+      - [**Remove specific permission**](#remove-specific-permission)
   - [**Searching**](#searching)
   - [**Archive**](#archive)
   - [**Comparing Files**](#comparing-files)
@@ -54,6 +59,7 @@ cd <path>
 
 <br>
 <br>
+<br>
 
 ### **Remove**
 <br>
@@ -72,6 +78,7 @@ cd <path>
 <br>
 <br>
 
+
 ### **Create**
 <br>
 
@@ -81,6 +88,7 @@ cd <path>
 |> \<fileName>            |create file with redirection operator
 |echo "Text" > \<fileName>|create file with text
 
+<br>
 <br>
 <br>
 
@@ -95,6 +103,7 @@ cd <path>
 
 <br>
 <br>
+<br>
 
 ### **Copy**
 <br>
@@ -105,6 +114,7 @@ cd <path>
 |cp -r \<source_directory> \<destination_directory>|copy content of \<source_directory> recursivly into \<destination_directory>
 |cp \<source_directory>/* \<destination_directory> |copy content of \<source_directory> into \<destination_directory>
 
+<br>
 <br>
 <br>
 
@@ -118,6 +128,7 @@ cd <path>
 
 <br>
 <br>
+<br>
 
 ### **Links**
 <br>
@@ -128,40 +139,6 @@ cd <path>
 |ln -s \<file> [path/]\<link_name>  |create a symbolic link to <file>
 
 <br>
-<br>
-
-### **Ownership And Permissions**
-<br>
-
-```bash
-chown <new_owner>[:<group>] <file>                    # change ownership of <file> to <new_owner>
-                                                      # optional: change also group of <file> to <group>
-
-
-
-chgrp <group> <file>                                  # change group of <file> to <group>
-
-
-
-chmod <[0-7][0-7][0-7]> <file>                        # change privileges of <file> to the privileges represented as a three-digit number
-                                                      # example:  set privileges of <file> to -rw-rw-r--
-                                                      #           (user u) rw-	(group g) rw-	(other o) r--
-                                                      #           (user u) 110	(group g) 110	(other o) 100
-                                                      #           (user u) 4+2=6	(group g) 4+2=6	(other o) 4
-                                                      #           --> chmod 664 <file>
-
-
-
-chmod <user_class>[+ | - | =]<privilege> <file>       # add, revoke or set privilege of <file> for specific <user_class>
-                                                      # examples: chmod g+w test 		add write-privilege for test to group
-                                                      #           chmod o-x test		revoke execute-privilege for test from other
-                                                      #           chmod g=rw test		set privilege of test to read and write for group
-
-
-
-chmod <user_class_1> =<user_class_2> <file>           # set privileges of <file> for <user_class_1> to privileges of <user_class_2>
-```
-
 <br>
 <br>
 
@@ -174,6 +151,144 @@ file -i <file>      # print file encoding
 
 dirname             # extract dirname of a file path
 ```
+
+<br>
+<br>
+<br>
+<br>
+
+## **Change Ownership**
+<br>
+
+```bash
+chown <new_owner> <file> 
+```
+
+<br>
+
+```bash
+chown <new_owner>[:<group>] <file> 
+```
+* change ownership and group of file
+
+<br>
+<br>
+<br>
+<br>
+
+## **Permission**
+<br>
+
+Permissions:  
+
+|Symbol |Name    |File Permission       |Directory Permission               |
+|:-----:|:-------|:---------------------|:----------------------------------|
+|r      |read    |content can be viewed |content can be viewed              |
+|w      |write   |file can be modified  |content can be modified            |
+|x      |execute |file can be executed  |directory can be navigated by `cd` |
+
+<br>
+
+User Groups:  
+
+|Symbol |Name  |Description
+|:-----:|:-----|:----------
+|u      |user  |user that owns this file or directory
+|g      |group |specific group of users
+|o      |other |everybody
+
+<br>
+
+Example:
+
+```
+rwxrw-r--
+-- -- ---
+ u  g  o
+```
+
+<br>
+<br>
+
+#### **Change all permissions**
+<br>
+
+```bash
+chmod <[0-7][0-7][0-7]> <file>  
+```
+
+* the permissions for every entity are treated as a sequence of three bits
+* the bit sequence is then displayed as decimal
+
+<br>
+
+**Example:**
+
+We want to change the permission to `rwxrw-r--`.
+
+We display this permission as `111 (user) - 110 (group) - 100 (other)`.
+
+By converting each sequence to decimal we get `7 (user) - 6 (group) - 4 (other)`.
+
+Therefore we get the command `chmod 764 <file>`
+
+<br>
+<br>
+
+#### **Change specific permission**
+<br>
+
+```bash
+chmod <user_class>=<privilege_sequence><file>
+```
+
+<br>
+
+Example:
+
+```bash
+chmod g=rwx .fileName
+```
+* set permission for `group` to read, write and execute
+
+<br>
+<br>
+
+#### **Add specific permission**
+<br>
+
+```bash
+chmod <user_class>+<privilege> <file>
+```
+
+<br>
+
+Example:
+
+```bash
+chmod g+w .fileName
+```
+* add `write` permission to `group`
+
+<br>
+<br>
+
+#### **Remove specific permission**
+<br>
+
+```bash
+chmod <user_class>-<privilege> <file>
+```
+
+<br>
+
+Example:
+
+```bash
+chmod g-w .fileName
+```
+* remove `write` permission from `group`
+
 
 <br>
 <br>

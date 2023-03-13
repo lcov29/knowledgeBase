@@ -24,6 +24,7 @@
     - [**Physical Address (MAC Address)**](#physical-address-mac-address)
     - [**IP Address**](#ip-address)
       - [**IPv4 Address**](#ipv4-address)
+      - [**IPv6 Adress**](#ipv6-adress)
 
 <br>
 <br>
@@ -237,3 +238,24 @@ Example:
 <br>
 
 See [IPv4](./Protocols/3_NetworkLayer/IP/IPv4/IPv4_basics.md).
+
+<br>
+<br>
+
+#### **IPv6 Adress**
+<br>
+
+* length: 128 Bit (8 x 16 Bit)
+* ip addresses are represented with the hexadecimal system
+
+<br>
+
+Example
+
+```
+fe80:0000:0000:0000:0223:54ff:fe5b:869d
+```
+
+<br>
+
+See [IPv6](./Protocols/3_NetworkLayer/IP/IPv6/IPv6_basics.md)

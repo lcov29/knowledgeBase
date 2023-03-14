@@ -16,6 +16,11 @@
       - [**Delete entry**](#delete-entry)
   - [**IP Address**](#ip-address)
     - [**Resolve url to ip address via local *hosts* file**](#resolve-url-to-ip-address-via-local-hosts-file)
+    - [**Check network connection to host**](#check-network-connection-to-host)
+    - [\*\*Check name server resolve \*\*](#check-name-server-resolve-)
+      - [**nslookup**](#nslookup)
+      - [**host**](#host)
+      - [**dig**](#dig)
 
 <br>
 <br>
@@ -150,3 +155,57 @@ arp -d <ip_address>
 127.0.0.1 www.google.com
 ```
 
+<br>
+<br>
+<br>
+
+### **Check network connection to host**
+<br>
+
+```bash
+ping <option> <ip address or host name>
+```
+
+<br>
+
+|Option         |Description                                       |
+|:--------------|:-------------------------------------------------|
+|-c \<number\>  |limit execution of ping to \<number\> repetitions |
+|-v             |verbose                                           |
+|-a             |play sound for each repetitions                   |
+|-i \<seconds\> |time between repetitions                          |
+
+<br>
+<br>
+<br>
+
+### **Check name server resolve **
+<br>
+<br>
+
+#### **nslookup**
+<br>
+
+```bash
+nslookup <url>
+```
+
+<br>
+<br>
+
+#### **host**
+<br>
+
+```bash
+host <option> <url>
+```
+
+<br>
+<br>
+
+#### **dig**
+<br>
+
+```bash
+dig [@<nameserver>] <Hostname.domain>
+```

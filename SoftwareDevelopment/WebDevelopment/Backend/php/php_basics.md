@@ -802,8 +802,8 @@ closedir(<directory_handle>)        // close <directory_handle>
 ## **Database Connection**
 <br>
 
-For MariaDB/MySQL:   [KnowledgeBase/Programming/database_systems/mariadb_mysql/connectors](../database_systems/mariadb_mysql/connectors/mysql_connector_php.php)  
-For SQLite: [KnowledgeBase/Programming/database_systems/sqlite](../database_systems/sqlite/connectors/sqlite_php.php)
+For MariaDB/MySQL:   [Connector PHP](../../../../Infrastructure/Server/databaseServer/mysql-server/connectors/mysql_connector_php.php)  
+For SQLite: [Connector PHP](../../../../Infrastructure/Server/databaseServer/sqlite/connectors/sqlite_php.php)
 
 <br>
 <br>

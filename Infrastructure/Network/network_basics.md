@@ -10,6 +10,8 @@
   - [**Definitions**](#definitions)
     - [**Network**](#network)
     - [**Network Protocol**](#network-protocol)
+  - [**Network Components**](#network-components)
+    - [**Bridge**](#bridge)
   - [**Basic Network Types**](#basic-network-types)
     - [**PAN (Personal Area Network)**](#pan-personal-area-network)
     - [**LAN (Local Area Network)**](#lan-local-area-network)
@@ -51,6 +53,23 @@
 >* flow control
 >* error detection
 >* error handling
+
+<br>
+<br>
+<br>
+
+## **Network Components**
+<br>
+<br>
+
+### **Bridge**
+<br>
+
+* connects different network segments
+* reduces traffic by not forwarding communication between two hosts in the same segment to other segments
+* checks via ARP which MAC addresses are available in the connected network segments
+  * stores information in address table for approximately 5 minutes
+
 
 <br>
 <br>

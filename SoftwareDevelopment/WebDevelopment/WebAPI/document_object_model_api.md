@@ -259,7 +259,7 @@ document.getElementsByName('name')
 document.querySelector('cssSelector')
 ```
 
-See [CSS Selectors](../Frontend/css/css_selectors.md).
+See [CSS Selectors](../Frontend/CSS/css_selectors.md).
 
 <br>
 <br>
@@ -278,7 +278,7 @@ See [CSS Selectors](../Frontend/css/css_selectors.md).
 document.querySelector('cssSelector')
 ```
 
-See [CSS Selectors](../Frontend/css/css_selectors.md).
+See [CSS Selectors](../Frontend/CSS/css_selectors.md).
 
 <br>
 <br>

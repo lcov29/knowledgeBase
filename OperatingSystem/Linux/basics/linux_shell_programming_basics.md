@@ -12,6 +12,8 @@
     - [**Call Interpreter with script as parameter**](#call-interpreter-with-script-as-parameter)
     - [**Call Executable Script**](#call-executable-script)
     - [**Source Command**](#source-command)
+  - [**Variables**](#variables)
+    - [**Basics**](#basics)
 
 <br>
 <br>
@@ -72,3 +74,22 @@ Examples for shell interpreter:
 source <script_name>.sh
 ```
 * script is executed in current shell
+
+<br>
+<br>
+<br>
+
+## **Variables**
+<br>
+<br>
+
+### **Basics**
+<br>
+
+```bash
+<variable_name>=<value>			# assign a value
+$<variable_name>			    # access value
+${<variable_name>}			    # access value
+unset <variable_name>			# delete variable
+```
+

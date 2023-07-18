@@ -29,7 +29,7 @@
 ## **Request**
 <br>
 
-* **Step 1**: aks all available hosts via broadcast if given IP address is assigned to them
+* **Step 1**: ask all available hosts via broadcast if given IP address is assigned to them
 * **Step 2**: host answers with its MAC address
 
 <br>

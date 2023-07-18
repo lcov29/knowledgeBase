@@ -17,7 +17,7 @@
   - [**IP Address**](#ip-address)
     - [**Resolve url to ip address via local *hosts* file**](#resolve-url-to-ip-address-via-local-hosts-file)
     - [**Check network connection to host**](#check-network-connection-to-host)
-    - [\*\*Check name server resolve \*\*](#check-name-server-resolve-)
+    - [**Check name server resolve**](#check-name-server-resolve)
       - [**nslookup**](#nslookup)
       - [**host**](#host)
       - [**dig**](#dig)
@@ -179,7 +179,7 @@ ping <option> <ip address or host name>
 <br>
 <br>
 
-### **Check name server resolve **
+### **Check name server resolve**
 <br>
 <br>
 

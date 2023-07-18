@@ -150,7 +150,7 @@ body
 | POST    | Submit data to the server                             |
 | PUT     | Update existing resource on the server                |
 | DELETE  | Delete resource on the server                         |
-| PATCH   | Apply partial modification to resourece               |
+| PATCH   | Apply partial modification to resource                |
 | HEAD    | Like GET, but without response body                   |
 | CONNECT | Establish tunnel to server                            |
 | OPTIONS | Describe communication options for resource           |

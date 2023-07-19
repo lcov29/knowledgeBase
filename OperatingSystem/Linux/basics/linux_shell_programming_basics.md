@@ -18,7 +18,7 @@
     - [**Expansion**](#expansion)
   - [**Parameters**](#parameters)
   - [**Arrays**](#arrays)
-  - [**Command Basics**](#command-basics)
+  - [**Command Combination**](#command-combination)
 
 <br>
 <br>
@@ -246,5 +246,50 @@ unset <array_name>                      # delete <array_name>
 <br>
 <br>
 
-## **Command Basics**
+## **Command Combination**
 <br>
+
+```bash
+<cmd_1> ; ... ; <cmd_n>
+# multiple commands in single line
+
+
+{<cmd_1> ; ... ; <cmd_n>}
+# execute grouped command list in current shell
+
+
+(<cmd_1> ; ... ; <cmd_n>)
+# execute grouped command list in a subshell
+
+
+<cmd_1> && <cmd_2>
+# <cmd_2> is only executed upon successfull execution of <cmd_1>
+
+
+<cmd_1> || <cmd_2>
+# <cmd_2> is only executed upon error of <cmd_1>
+
+
+<cmd_1> | <cmd_2>
+# stdout of <cmd_1> is piped into stdin of <cmd_2>
+
+
+<cmd> > <file>
+# write stdout of <cmd> in <file>
+
+
+<cmd> >> <file>
+# append stdout of <cmd> to <file>
+
+
+<cmd> < <file>
+# use content of <file> as stdin of <cmd>
+
+
+<cmd> <<[-]<stopword>			
+  ...
+  <text>
+  ...
+<stopword>
+# use multiline <text> as stdin of <cmd>, optional - ignores tabulator 
+```

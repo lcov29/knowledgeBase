@@ -21,6 +21,14 @@
   - [**Command Exit Codes**](#command-exit-codes)
   - [**Command Combination**](#command-combination)
   - [**Quoting and substitution**](#quoting-and-substitution)
+  - [**Conditional Command Execution**](#conditional-command-execution)
+    - [**If-Statement**](#if-statement)
+    - [**Switch-Case-Statement**](#switch-case-statement)
+  - [**Loops**](#loops)
+    - [**For-Loop**](#for-loop)
+    - [**For-Each-Loop**](#for-each-loop)
+    - [**While-Loop**](#while-loop)
+    - [**Until-Loop**](#until-loop)
 
 <br>
 <br>
@@ -337,3 +345,120 @@ $(<cmd>)
 `<cmd>`
 # substitute <cmd> with stdout of <cmd>
 ```
+
+<br>
+<br>
+<br>
+
+## **Conditional Command Execution**
+<br>
+<br>
+
+### **If-Statement**
+<br>
+
+```bash
+if <command_list>
+then
+    <command_list>
+fi
+
+
+if <command_list>
+then
+    <command_list>
+else
+    <command_list>
+fi
+
+
+if <command_list>
+then
+    <command_list>
+elif
+    <command_list>
+else
+    <command_list>
+fi
+```
+
+<br>
+<br>
+
+### **Switch-Case-Statement**
+<br>
+
+```bash
+case <value> in
+    <pattern>)
+      <command_list>;;
+    <pattern>)
+      <command_list>;;
+esac
+```
+
+<br>
+<br>
+<br>
+
+## **Loops**
+<br>
+
+|Keyword  |Description                 |
+|:--------|:---------------------------|
+|break    |exit loop                   |
+|continue |exit current loop execution |
+
+<br>
+<br>
+
+### **For-Loop**
+<br>
+
+```bash
+for ((<start_variable>; <abort_condition>; <increment>))
+do
+    <command_list>
+done
+```
+
+<br>
+<br>
+
+### **For-Each-Loop**
+<br>
+
+```bash
+for <variable> [in <list>]
+do
+    <command_list>
+done
+```
+
+<br>
+<br>
+
+### **While-Loop**
+<br>
+
+```bash
+while <command_list>
+do
+    <command_list>
+done
+```
+
+<br>
+<br>
+
+### **Until-Loop**
+<br>
+
+```bash
+until <command_list>
+do
+  <command_list>
+done
+```
+
+

@@ -18,7 +18,9 @@
     - [**Expansion**](#expansion)
   - [**Parameters**](#parameters)
   - [**Arrays**](#arrays)
+  - [**Command Exit Codes**](#command-exit-codes)
   - [**Command Combination**](#command-combination)
+  - [**Quoting and substitution**](#quoting-and-substitution)
 
 <br>
 <br>
@@ -246,6 +248,20 @@ unset <array_name>                      # delete <array_name>
 <br>
 <br>
 
+## **Command Exit Codes**
+<br>
+
+|Code |Description                 |
+|:---:|:---------------------------|
+|0    |Success                     |
+|1    |General error               |
+|126  |Command file not executable |
+|127	|Command not found           |
+
+<br>
+<br>
+<br>
+
 ## **Command Combination**
 <br>
 
@@ -292,4 +308,32 @@ unset <array_name>                      # delete <array_name>
   ...
 <stopword>
 # use multiline <text> as stdin of <cmd>, optional - ignores tabulator 
+```
+
+<br>
+<br>
+<br>
+
+## **Quoting and substitution**
+<br>
+
+```bash
+\<character> 
+# stop interpretation of <character> (example: echo \$HOME --returns--> $HOME)
+
+
+'<cmd,string>'
+# stop substitution for <cmd,string>
+
+
+"<cmd,string>"
+# substitute commands, variables and arithmetic statements 
+
+
+$(<cmd>)
+# substitute <cmd> with stdout of <cmd>
+
+
+`<cmd>`
+# substitute <cmd> with stdout of <cmd>
 ```

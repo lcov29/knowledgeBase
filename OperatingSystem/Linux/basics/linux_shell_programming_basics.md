@@ -92,10 +92,20 @@ source <script_name>.sh
 <br>
 
 ```bash
-<variable_name>=<value>			# assign a value
-$<variable_name>			    # access value
-${<variable_name>}			    # access value
-unset <variable_name>			# delete variable
+<variable_name>=<value>
+# assign a value
+
+
+$<variable_name>
+# access value
+
+
+${<variable_name>}
+# access value
+
+
+unset <variable_name>
+# delete variable
 ```
 
 <br>

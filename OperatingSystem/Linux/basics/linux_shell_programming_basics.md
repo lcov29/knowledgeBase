@@ -200,14 +200,21 @@ ${<variable>//<pattern>[/<replacement>]}
 <br>
 
 ```bash
-$0                              # script name
-$#                              # parameter count
-$1 ... $9                       # position parameters 1 - 9
-${10}, ...                      # position parameters 10, ...
-"$*"                            # all parameters in one string
-"$@"                            # every parameter in separate string
-set <value_1> ... <value_n>     # set position parameters $1, $2, ...
-shift <number>                  # shift all position parameters to the left by <number> indices
+$0                                      # script name
+
+$#                                      # parameter count
+
+$1 ... $9                               # position parameters 1 - 9
+
+${10}, ...                              # position parameters 10, ...
+
+"$*"                                    # all parameters in one string
+
+"$@"                                    # every parameter in separate string
+
+set <value_1> ... <value_n>             # set position parameters $1, $2, ...
+
+shift <number>                          # shift all position parameters to the left by <number> indices
 ```
 
 <br>
@@ -219,12 +226,19 @@ shift <number>                  # shift all position parameters to the left by <
 
 ```bash
 declare -a <array_name>                 # optional declaration of <array_name>
+
 <array_name>=( <value_1> <value_n> )    # continuous assignment of values
+
 <array_name>[<index>]=<value>           # assign value to element with index
+
 ${<array_name>[<index>]}                # access value on index
+
 ${#<array_name>[*]}                     # number of elements
+
 ${<array_name>[*]}                      # all elements as separate strings
+
 "${<array_name>[*]}"                    # all elements as string
+
 unset <array_name>                      # delete <array_name>
 ```
 

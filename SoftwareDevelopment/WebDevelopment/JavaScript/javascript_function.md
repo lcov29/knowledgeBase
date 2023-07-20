@@ -11,6 +11,7 @@
   - [**Ways To Declare Functions**](#ways-to-declare-functions)
     - [**Function Declaration**](#function-declaration)
     - [**Function Expression**](#function-expression)
+    - [**Object Methods**](#object-methods)
     - [**Arrow Function**](#arrow-function)
   - [**Parameters**](#parameters)
   - [**Spread Operator**](#spread-operator)
@@ -103,6 +104,25 @@ const foo = function bar() {
 
 
 foo();
+```
+
+<br>
+<br>
+<br>
+
+### **Object Methods**
+<br>
+
+* functions defined within an object
+* do not need the `function` keyword
+
+<br>
+
+```javascript
+const obj =  {
+  foo(param1, param2) { /* implementation */ },
+  bar(param1) { /* implementation */ }
+}
 ```
 
 <br>

@@ -1,41 +1,5 @@
 
 ============================= Operators =============================
-
-	Test:
-	test [ expression ]	returns value of expression
-	[ expression ]
-
-	Arithmetic:		use $((expression))
-	+			add
-	-			subtract
-	*			multiplicate
-	/			divide
-	**			exponent
-	%			modulo
-	++			increment by 1
-	--			decrement by 1
-
-	Number Comparison:
-	-eq			equal
-	-gt			greater than
-	-lt			lesser than
-	-ge			greater or equal
-	-le			lesser or equal
-
-	Logical:
-	!			not
-	-a			and
-	-o			or
-	\( <expression> \)	group brackets have to be escaped with backslash
-
-	String:
-	<string>		<string> is not empty
-	-n <string>		<string> does not exist or is not empty
-	-z <string>		<string> does not exist or is empty
-	<string1> = <string2>
-	<string1> != <string2>
-	<string1> > <string2>
-	<string1> < <string2>
 	
 	Files:
 	-e <file>		<file> exists

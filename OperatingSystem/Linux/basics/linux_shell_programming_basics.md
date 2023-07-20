@@ -36,6 +36,8 @@
     - [**String**](#string)
     - [**Files**](#files)
     - [**Bitwise**](#bitwise)
+  - [**Insert And Output**](#insert-and-output)
+  - [**getopts and xargs**](#getopts-and-xargs)
 
 <br>
 <br>
@@ -572,3 +574,91 @@ done
 |\|=      |Or equal            |
 |~        |negation            |
 |!        |not                 |
+
+<br>
+<br>
+<br>
+
+## **Insert And Output**
+<br>
+
+```bash
+read [options] [variables]          # reads strings from stdin into [variables]
+  -r                                # handle backslash as a character
+  -a                                # read array variables
+  -s                                # do not show input
+  -n <number>                       # accept only <number> of characters as input
+  -p <prompt>                       # show <prompt>
+```
+
+<br>
+<br>
+
+```bash
+echo [options] <string, variable>
+  -n                                # no line break after end of line
+  -e                                # enable interpretation of special characters \<character>
+```
+
+<br>
+<br>
+
+```bash
+printf <format-string> <parameter>
+```
+
+<br>
+<br>
+
+Examples
+
+```bash
+read -n 1 -p "Input: " var
+
+echo $var
+
+read -r a b c
+
+1 \ 3
+
+echo $a $b $c
+
+1 \ 3
+```
+
+<br>
+<br>
+<br>
+
+## **getopts and xargs**
+<br>
+
+```bash
+getopts <optstring> <name> [arguments]
+# parses positional parameters as options into $<name>,	parameterindex into $OPTIND and arguments into $OPTARG
+		
+    <optstring>				
+    # contains the option letters
+       # ":" at start: enables silent-mode -> suppress error messages
+       # ":" after option: options requires an additional argument
+
+    <name>
+    # variable into which the current option is parsed into
+```
+
+<br>
+
+Examples:
+
+```bash
+while getopts ":abc:" option
+do
+  case $option in
+    a) echo Option $option was called. ;;
+    b) echo Option $option was called. ;;
+    c) echo Option $option was called with parameter $OPTARG. ;;
+    \?) echo $OPTARG invalid option ;;
+    :) echo $OPTARG argument missing ;;
+  esac
+done
+```

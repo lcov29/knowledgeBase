@@ -58,11 +58,11 @@ Therefore it is not a pure functional language. Lets see which core principles a
 <br>
 <br>
 
-1. **Functions are first class objects** :heavy_check_mark_:
+1. **Functions are first class objects** :heavy_check_mark:
 
 <br>
 
-2. **Functions have no side effects** :x:
+1. **Functions have no side effects** :x:
 
     * functions can alter their call context
     * functions can return different results for the same arguments based on outside dependencies

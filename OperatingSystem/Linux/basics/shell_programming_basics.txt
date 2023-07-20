@@ -1,21 +1,5 @@
 
 ============================= Operators =============================
-	
-	Files:
-	-e <file>		<file> exists
-	-s <file>		size of <file> > 0
-	-f <file>		<file> is a regular file
-	-d <file>		<file> is a directory
-	-b <file>		<file> is a block device
-	-c <file>		<file> is a character based device
-	-p <file>		<file> is a named-pipe
-	-h <file>		<file> is a symbolic link
-	-r <file>		<file> is readable for the current process
-	-w <file>		<file> is writeable for the current process
-	-x <file>		<file> is executable for the current process
-	<file1> -ef <file2>	<file1> is a hardlink to <file2>
-	<file1> -nt <file2>	<file1> is newer than <file2>
-	<file1> -ot <file2>	<file1> is older than <file2>
 
 	Bitwise:
 	<<			bitwise left shift

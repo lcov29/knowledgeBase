@@ -35,6 +35,7 @@
     - [**Logical**](#logical)
     - [**String**](#string)
     - [**Files**](#files)
+    - [**Bitwise**](#bitwise)
 
 <br>
 <br>
@@ -553,3 +554,21 @@ done
 |\<file1> -ef \<file2> |\<file1> is a hardlink to \<file2>            |
 |\<file1> -nt \<file2> |\<file1> is newer than \<file2>               |
 |\<file1> -ot \<file2> |\<file1> is older than \<file2>               |
+
+<br>
+<br>
+
+### **Bitwise**
+<br>
+
+|Operator |Description         |
+|:-------:|:-------------------|
+|<<       |bitwise left shift  |
+|<<=      |left shift equal    |
+|>>       |bitwise right shift |
+|&        |And                 |
+|&=       |And equal           |
+|\|       |Or                  |
+|\|=      |Or equal            |
+|~        |negation            |
+|!        |not                 |

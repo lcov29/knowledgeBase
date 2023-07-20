@@ -33,6 +33,8 @@
     - [**Arithmetic**](#arithmetic)
     - [**Number Comparison**](#number-comparison)
     - [**Logical**](#logical)
+    - [**String**](#string)
+    - [**Files**](#files)
 
 <br>
 <br>
@@ -513,3 +515,41 @@ done
 |-a                 |and                                              |
 |-o                 |or                                               |
 |\( \<expression> \) |group brackets have to be escaped with backslash|
+
+<br>
+<br>
+
+### **String**
+<br>
+
+|Operator                  |Description                              |
+|:-------------------------|:----------------------------------------|
+|-n \<string>		           |\<string> does not exist or is not empty |
+|-z \<string>		           |\<string> does not exist or is empty     |
+|\<string1> = \<string2>   |                                         |
+|\<string1> != \<string2>  |                                         |
+|\<string1> > \<string2>   |                                         |
+|\<string1> < \<string2>   |                                         |
+
+<br>
+<br>
+
+### **Files**
+<br>
+
+|Operator              |Description                                   |
+|:---------------------|:---------------------------------------------|
+|-e \<file>            |\<file> exists                                |
+|-s \<file>            |size of \<file> > 0                           |
+|-f \<file>            |\<file> is a regular file                     |
+|-d \<file>            |\<file> is a directory                        |
+|-b \<file>            |\<file> is a block device                     |
+|-c \<file>            |\<file> is a character based device           |
+|-p \<file>            |\<file> is a named-pipe                       |
+|-h \<file>            |\<file> is a symbolic link                    |
+|-r \<file>            |\<file> is readable for the current process   |
+|-w \<file>            |\<file> is writeable for the current process  |
+|-x \<file>            |\<file> is executable for the current process |
+|\<file1> -ef \<file2> |\<file1> is a hardlink to \<file2>            |
+|\<file1> -nt \<file2> |\<file1> is newer than \<file2>               |
+|\<file1> -ot \<file2> |\<file1> is older than \<file2>               |

@@ -1,18 +1,3 @@
-
-============================= Operators =============================
-
-	Bitwise:
-	<<			bitwise left shift
-	<<=			left shift equal
-	>>			bitwise right shift
-	&			And
-	&=			And equal
-	|			Or
-	|=			Or equal
-	~ 			negation
-	!			not
-
-	
 ============================= Insert and Output =============================
 
 	read [options] [variables]		reads strings from stdin into [variables]

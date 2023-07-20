@@ -29,6 +29,10 @@
     - [**For-Each-Loop**](#for-each-loop)
     - [**While-Loop**](#while-loop)
     - [**Until-Loop**](#until-loop)
+  - [**Operators**](#operators)
+    - [**Arithmetic**](#arithmetic)
+    - [**Number Comparison**](#number-comparison)
+    - [**Logical**](#logical)
 
 <br>
 <br>
@@ -461,4 +465,51 @@ do
 done
 ```
 
+<br>
+<br>
+<br>
 
+## **Operators**
+<br>
+<br>
+
+### **Arithmetic**
+<br>
+
+|Operator |Description    |
+|:-------:|:--------------|
+|+        |add            |
+|-        |subtract       |
+|*        |multiplicate   |
+|/        |divide         |
+|**       |exponent       |
+|%        |modulo         |
+|++       |increment by 1 |
+|--       |decrement by 1 |
+
+<br>
+<br>
+
+### **Number Comparison**
+<br>
+
+|Operator |Description      |
+|:-------:|:----------------|
+|-eq      |equal            |
+|-gt      |greater than     |
+|-lt      |lesser than      |
+|-ge      |greater or equal |
+|-le      |lesser or equal  |
+
+<br>
+<br>
+
+### **Logical**
+<br>
+
+|Operator           |Description                                      |
+|:-----------------:|:------------------------------------------------|
+|!                  |not                                              |
+|-a                 |and                                              |
+|-o                 |or                                               |
+|\( \<expression> \) |group brackets have to be escaped with backslash|

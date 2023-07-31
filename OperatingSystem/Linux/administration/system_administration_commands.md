@@ -17,7 +17,7 @@
   - [**User Management**](#user-management)
     - [**Create User**](#create-user)
     - [**Modify Existing User**](#modify-existing-user)
-    - [**Delte User**](#delte-user)
+    - [**Delete User**](#delete-user)
 
 <br>
 <br>
@@ -219,7 +219,7 @@ usermod <user_name>           # modify user <user_name>
 <br>
 <br>
 
-### **Delte User**
+### **Delete User**
 <br>
 
 ```bash

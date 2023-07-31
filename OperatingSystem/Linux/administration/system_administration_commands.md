@@ -14,6 +14,10 @@
   - [**Hardware**](#hardware)
   - [**Process**](#process)
   - [**Network**](#network)
+  - [**User Management**](#user-management)
+    - [**Create User**](#create-user)
+    - [**Modify Existing User**](#modify-existing-user)
+    - [**Delte User**](#delte-user)
 
 <br>
 <br>
@@ -154,4 +158,70 @@ ss -lntup                               # alternative to netstat
 ```bash
 dhclient        # Dynamic Host Configuration -> release or renew ip address
 dhclient -r     # release ip address
+```
+
+<br>
+<br>
+<br>
+
+## **User Management**
+<br>
+
+Files for defining users:
+
+|File            |Description                            |
+|:---------------|:--------------------------------------|
+|/etc/passwd     |                                       |
+|/etc/group      |                                       |
+|/etc/shadow     |                                       |
+|/etc/login.defs |setting for password-aging, length etc |
+
+<br>
+<br>
+
+### **Create User**
+<br>
+
+```bash
+useradd --defaults            # print default useradd configuration
+
+
+useradd <user_name>	          # add new user <user_name>
+	-u <uid>
+	-g <primary group>
+	-G <secondary_group_1,...,secondary_group_n>
+	-c <comment>
+	-m <home_directory> -k <reference_directory>
+	-d <login_directory>
+	-s <shell_path>
+```
+
+<br>
+<br>
+
+### **Modify Existing User**
+<br>
+
+```bash
+usermod <user_name>           # modify user <user_name>
+	-m                          # create home directory				
+	-u <uid>
+	-g <primary_group>
+	-G <secondary_group_1,...,secondary_group_n>
+	-c <comment>
+	-d <home_directory>
+	-s <startprogram>
+	-f <lock_time>
+	-e <expiration_date>
+	-l <new_user_name>
+```
+
+<br>
+<br>
+
+### **Delte User**
+<br>
+
+```bash
+userdel -r <user_name>          # delete user <user_name> with login directory and mail (-r)
 ```

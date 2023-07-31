@@ -7,10 +7,73 @@
 
 - [**System Administration Commands**](#system-administration-commands)
   - [**Table Of Contents**](#table-of-contents)
+  - [**Print System Information**](#print-system-information)
+  - [**Print Distribution Information**](#print-distribution-information)
+  - [**Root Privilege**](#root-privilege)
   - [**Environment Variables**](#environment-variables)
   - [**Hardware**](#hardware)
   - [**Process**](#process)
   - [**Network**](#network)
+
+<br>
+<br>
+<br>
+
+## **Print System Information**
+<br>
+
+```bash
+uname -a
+```
+
+* prints system information
+  * kernel-name
+  * network node hostname
+  * kernel-release
+  * kernel version
+  * machine hardware name
+  * processor type
+  * hardware platform
+  * operating system
+
+<br>
+<br>
+<br>
+
+## **Print Distribution Information**
+<br>
+
+```bash
+cat /etc/*release
+```
+
+<br>
+<br>
+<br>
+
+## **Root Privilege**
+<br>
+
+```bash
+sudo <command>
+# execute <command> as root (if allowed)
+
+
+sudo -u <user_name | user_id> <command>
+# execute <command> as <user_name>
+
+
+sudo -i
+# start subshell with root privilege (if allowed)
+
+
+
+visudo
+# edit /etc/sudoers (describes who can execute root commands)
+    # User Specification Format:	  <initial_user> <host> = (tartget_user>) <commands>
+    # Alias Format: 			          <alias_name> = <user_names | hosts | target_users | command_list>
+    # Defaults Format:		          Defaults <option>
+```
 
 <br>
 <br>

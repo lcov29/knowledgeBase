@@ -18,6 +18,9 @@
     - [**Create User**](#create-user)
     - [**Modify Existing User**](#modify-existing-user)
     - [**Delete User**](#delete-user)
+  - [**Password Management**](#password-management)
+    - [**General**](#general)
+    - [**Password Expiration**](#password-expiration)
   - [**User Groups**](#user-groups)
     - [**Create Group**](#create-group)
     - [**Modify Existing Group**](#modify-existing-group)
@@ -137,6 +140,7 @@ htop                                    # interactive process viewer
 mkswap <block_device | file>            # create a swap area
 swapon -a                               # activate all swap partitions in /etc/fstab
 swapon -s                               # print summary of swap area usage
+swapoff -a                              # deactivate all swap partitions in /etc/fstab
 ```
 
 <br>
@@ -228,6 +232,41 @@ usermod <user_name>           # modify user <user_name>
 
 ```bash
 userdel -r <user_name>          # delete user <user_name> with login directory and mail (-r)
+```
+
+<br>
+<br>
+<br>
+
+## **Password Management**
+<br>
+<br>
+
+### **General**
+<br>
+
+```bash
+passwd <user_name>            # set password for <user_name>
+	-l                          # lock password
+	-u                          # unlock password
+	-d                          # delete password, lock user account
+	-e                          # expire password, user needs to set a new password
+	-S                          # print password status
+```
+
+<br>
+<br>
+
+### **Password Expiration**
+<br>
+
+```bash
+chage -l <user_name>          # list password expiry information for <user_name>
+	-m <min_days>               # minimum number of days between password changes
+	-M <max_days>               # maximum number of days between password changes
+	-W <warn_days>              # number of days of warning before password change
+	-I <inactive_days>          # number of days of inactivity after password expired
+	-E <expire_date>            # date of account locking
 ```
 
 <br>

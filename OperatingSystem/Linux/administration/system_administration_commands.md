@@ -18,6 +18,10 @@
     - [**Create User**](#create-user)
     - [**Modify Existing User**](#modify-existing-user)
     - [**Delete User**](#delete-user)
+  - [**User Groups**](#user-groups)
+    - [**Create Group**](#create-group)
+    - [**Modify Existing Group**](#modify-existing-group)
+    - [**Delete Group**](#delete-group)
 
 <br>
 <br>
@@ -224,4 +228,39 @@ usermod <user_name>           # modify user <user_name>
 
 ```bash
 userdel -r <user_name>          # delete user <user_name> with login directory and mail (-r)
+```
+
+<br>
+<br>
+<br>
+
+## **User Groups**
+<br>
+<br>
+
+### **Create Group**
+<br>
+
+```bash
+groupadd <group_name>
+```
+
+<br>
+<br>
+
+### **Modify Existing Group**
+<br>
+
+```bash
+groupmod -n <new_group_name> <old_group_name>		# rename group
+```
+
+<br>
+<br>
+
+### **Delete Group**
+<br>
+
+```bash
+groupdel <group_name>
 ```

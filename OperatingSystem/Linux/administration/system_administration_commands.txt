@@ -1,21 +1,3 @@
-uname -a					print system information:
-							kernel-name, 
-							network node hostname, 
-							kernel-release, 
-							kernel version, 
-							machine hardware name, 
-							processor type, 
-							hardware platform and 
-							operating system
-cat /etc/*release				print distribution information
-
-sudo <command>					execute <command> as root (if allowed)
-sudo -u <user_name | user_id> <command>		execute <command> as <user_name>
-sudo -i						start subshell with root privilege (if allowed)
-visudo						edit /etc/sudoers (describes who can execute root commands)
-							User Specification Format:	<initial_user> <host> = (tartget_user>) <commands>
-							Alias Format: 			<alias_name> = <user_names | hosts | target_users | command_list>
-							Defaults Format:		Defaults <option>
 
 
 ---------------------------------- USER ACCOUNTS ---------------------------------------

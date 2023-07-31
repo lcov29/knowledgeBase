@@ -1,9 +1,3 @@
----------------------------------- Groups ---------------------------------------
-groupadd <group_name>
-groupmod -n <new_group_name> <old_group_name>		rename group
-groupdel <group_name>					delete group
-
-
 ---------------------------------- Password -------------------------------------
 passwd <user_name>					set password for <user_name>
 	-l						lock password

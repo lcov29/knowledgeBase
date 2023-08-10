@@ -50,7 +50,7 @@ Example.json
 ## **Difference Between JSON And JavaScript Objects**
 <br>
 
-|Component|JSON                                                     |[JavaScript Objects](../../SoftwareDevelopment/WebDevelopment/JavaScript/javascript_object.md)
+|Component|JSON                                                     |[JavaScript Objects](../../WebDevelopment/JavaScript/javascript_object.md)
 |:--------|:--------------------------------------------------------|:-------------------------
 |keys     |double quotation                                         |no, single or double quotation
 |values   |string, number, boolean, other JSON-objects, arrays, null|like JSON + functions, regex, other objects,...

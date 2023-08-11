@@ -21,6 +21,8 @@
   - [**Box Model**](#box-model)
     - [**Default Box Model**](#default-box-model)
     - [**Border Box**](#border-box)
+  - [**Positioning**](#positioning)
+  - [**Floating**](#floating)
   - [**Flex Box Layout**](#flex-box-layout)
   - [**CSS Grid Layout**](#css-grid-layout)
   - [**Text Properties**](#text-properties)
@@ -35,7 +37,6 @@
   - [**Units**](#units)
     - [**Absolute Units**](#absolute-units)
     - [**Relative Units**](#relative-units)
-  - [**Positioning**](#positioning)
   - [**Overflow**](#overflow)
   - [**Opacity**](#opacity)
   - [**Variables / Custom Properties**](#variables--custom-properties)
@@ -283,6 +284,49 @@ Width and height include padding and border.
 <br>
 <br>
 
+## [**Positioning**](./css_position.md)
+<br>
+
+* removes element from the normal document flow
+* element is positioned relative to the top-left corner of the screen
+
+```css
+position: static;        /* default, positioned according to the flow */
+
+position: relative;      /* positioned according to the flow plus offset to itself */
+
+position: absolute;      /* element is removed from the flow and positioned relative to the closest ancestor */
+
+position: fixed;         /* element is removed from the flow and positioned relative to the current top of the viewport */
+
+position: sticky;        /* acts like relative until offset position is reached, then positioned based on the scroll position */
+```
+
+<br>
+
+See [CSS Positioning](./css_position.md).
+
+<br>
+<br>
+<br>
+
+## **Floating**
+<br>
+
+Float element relative to its container
+
+```css
+float: left;
+
+float: right;
+
+float: none;
+```
+
+<br>
+<br>
+<br>
+
 ## **Flex Box Layout**
 <br>
 Flex container aligns its flex items in a row or column. Flex items share the same height.
@@ -509,36 +553,17 @@ border-collapse:
 <br>
 <br>
 
-## **Positioning**
-<br>
-
-```css
-position: static        /* default, positioned according to the flow */
-position: relative      /* positioned according to the flow plus offset to itself */
-position: absolute      /* element is removed from the flow and positioned relative to the closest ancestor */
-
-position: -webkit-sticky
-position: sticky        /* acts like relative until offset position is reached, then positioned based on the scroll position */
-
-
-/* element float relative to its container */
-float: left
-float: right            
-float: none
-```
-
-<br>
-<br>
-<br>
-
 ## **Overflow**
 <br>
 
 ```css
-overflow: visible    /* content may be rendered outside of the padding box */
-overflow: hidden     /* no scrollbars */
-overflow: scroll     /* always display scrollbars */
-overflow: auto       /* display scrollbars if necessary */
+overflow: visible;    /* content may be rendered outside of the padding box */
+
+overflow: hidden;     /* no scrollbars */
+
+overflow: scroll;     /* always display scrollbars */
+
+overflow: auto;       /* display scrollbars if necessary */
 ```
 
 <br>

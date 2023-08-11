@@ -20,8 +20,10 @@
 ## **Overview**
 <br>
 
-|static |relative |absolute |fixed |sticky |
-|:------|:--------|:--------|:-----|:------|
+|                 |static             |relative                    |absolute                              |fixed |sticky                  |
+|:---------------:|:-----------------:|:--------------------------:|:------------------------------------:|:----:|:----------------------:|
+|in document flow |:heavy_check_mark: |:heavy_check_mark:          |:x:                                   |:x:   |only while not scrolled |
+|offset origin    |:x:                |original flow position      |next nonstatic parent element or page |page  | |
 
 <br>
 <br>
@@ -38,13 +40,12 @@
 
 Example:
 
-<div style="background-color: white; padding: 1rem; text-align: center; font-weight: bold;">
-    <div style="background-color: black">1</div>
-    <div style="background-color: gray">2</div>
-    <div style="background-color: black">3</div>
-</div>
+<br>
 
-* elements 1, 2 and 3 all are positioned static
+![Screenshot](./pictures/screenshot_position_static.png)
+
+* elements 1 and 2 are positioned static
+* as block elements they are positioned beneath each other
 
 <br>
 <br>
@@ -53,10 +54,9 @@ Example:
 ## **relative**
 <br>
 
-* behaves like *static*, but can also be positioned relative to its original position in the normal document flow
+* behaves like *static*, but can also be positioned relative to its original position in the document flow
 * offset is ignored by other elements in the document flow
   * therefore it does not affect the position of other elements
-  * therefore this attribute should not be used
 
 <br>
 
@@ -76,43 +76,40 @@ Example:
 
 ```css
 #element-1 {
+    background-color: red;
+    left: 30px;
     position: relative;
-    left: 2rem;
+    top: 55px;
 }
 ```
 
 <br>
 
-<div style="background-color: white; padding: 1rem; text-align: center; font-weight: bold">
-    <div style="background-color: black; position: relative; left: 2rem">1</div>
-    <div style="background-color: gray">2</div>
-    <div style="background-color: black">3</div>
-</div>
+![Screenshot](./pictures/screenshot_position_relative_1.png)
 
-* first element has an offset to the left relative to its normal position
-* first element overflows its parent element
+* first element is positioned relative to the top left corner of its original position in the flow
+* first element stays in the normal flow, so the position of the second element is not changed
+    * therefore the first element overflows the second element
 
 <br>
 <br>
 
 ```css
 #element-1 {
+    background-color: red;
+    bottom: 30px;
+    left: 50px;
     position: relative;
-    top: .6rem;
 }
 ```
 
 <br>
 
-<div style="background-color: white; padding: 1rem; text-align: center; font-weight: bold">
-    <div style="background-color: black; position: relative; top: .6rem">1</div>
-    <div style="background-color: gray">2</div>
-    <div style="background-color: black">3</div>
-</div>
+![Screenshot](./pictures/screenshot_position_relative_2.png)
 
-* first element has an offset to the left relative to its normal position
-* second element ignores the offset of the first element
-  * first element overflows into the second element
+* first element is positioned relative to the bottom left corner of its original position in the flow
+* first element stays in the normal flow, so the position of the second element is not changed
+* first element overflows its container
 
 <br>
 <br>
@@ -144,39 +141,38 @@ Example:
 
 ```css
 #element-1 {
+    background-color: red;
     position: absolute;
 }
 ```
 
 <br>
 
-<div style="background-color: white; padding: 1rem; text-align: center; font-weight: bold">
-    <div style="background-color: black; position: absolute;">1</div>
-    <div style="background-color: gray">2</div>
-    <div style="background-color: black">3</div>
-</div>
+![Screenshot](./pictures/screenshot_position_absolute_1.png)
 
 * element 1 is removed from the document flow
 * element 2 renders as if element 1 does not exist
+  * therefore element 1 overflows element 2
 
 <br>
 <br>
 
 ```css
 #element-1 {
+    background-color: red;
+    left: 10px;
     position: absolute;
-    top: 5px;
-    left: 5px;
+    top: 10px;
 }
 ```
 
 <br>
 
-![Screenshot](pictures/screenshot_position_absolute_1.png)
+![Screenshot](pictures/screenshot_position_absolute_2.png)
 
 * element 1 is removed from the document flow
 * element 2 renders as if element 1 does not exist
-* since the container is static by default, the offset of the absolute positioned element 1 is calculated from the top left corner of the **page**
+* since the container is **static** by default, the offset of the absolute positioned element 1 is calculated from the top left corner of the **page**
 
 <br>
 <br>
@@ -187,19 +183,20 @@ Example:
 }
 
 #element-1 {
+    background-color: red;
+    left: 40px;
     position: absolute;
-    top: 5px;
-    left: 5px;
+    top: 40px;
 }
 ```
 
 <br>
 
-![Screenshot](./pictures/screenshot_position_absolute_2.png)
+![Screenshot](./pictures/screenshot_position_absolute_3.png)
 
 * element 1 is removed from the document flow
 * element 2 renders as if element 1 does not exist
-* since the container is relative, the offset of the absolute positioned element 1 is calculated from the top left corner of the **container**
+* since the container is **relative**, the offset of the absolute positioned element 1 is calculated from the top left corner of the **container**
 
 <br>
 <br>
@@ -221,13 +218,13 @@ Examples:
 #element-1 {
     position: fixed;
     top: 5px;
-    left: 5px;
+    left: 15px;
 }
 ```
 
 <br>
 
-![Screenshot](pictures/screenshot_position_fixed.png)
+![Screencapture](./pictures/screencapture_position_fixed.gif)
 
 * element 1 is removed from the document flow
 * element 1 is positioned from the top left corner of the **page**
@@ -241,33 +238,50 @@ Examples:
 ## **sticky**
 <br>
 
-* element is offset relative to nearest scrolling ancestor
-* offset is ignored by other elements in the document flow
-* sticks to nearest scrolling ancestor upon scrolling
+|Initial Behavior                         |Scrolling Behavior                                                         |
+|:----------------------------------------|:--------------------------------------------------------------------------|
+|static position within the document flow |removed from the document flow                                             |
+|                                         |offset relative to current scroll position within nearest scrolling parent |
+|                                         |element will not overflow its nearst scrolling parent                      |
+
+<br>
+<br>
+
+Examples:
+
+```css
+#element-1 {
+    background-color: red;
+    position: sticky;
+    top: 20px;
+}
+```
 
 <br>
 
-> *Relative* by default, *Fixed* when scrolled
+![Screenshot](./pictures/screencapture_position_sticky_1.gif)
+
+element 1 is
+* positioned static before scrolling
+* positioned 20px from top of the viewport while scrolling since the page is the nearest scrolling parent
+* is not positioned outside of its parent element
 
 <br>
 <br>
 
 ```css
 #element-1 {
+    background-color: red;
     position: sticky;
-    top: 5px;
+    bottom: 20px;
 }
 ```
 
 <br>
 
-![Screenshot](./pictures/screenshot_position_sticky_1.png)
+![Screenshot](./pictures/screencapture_position_sticky_2.gif)
 
-* before scrolling
-
-<br>
-
-![Screenshot](./pictures/screenshot_position_sticky_2.png)
-
-* after scrolling
+* element 1 is
+  * positioned 20px from bottom of the viewport while scrolling until its static position within the document flow is reached
+  * positioned static after reaching its original position within the document flow
 

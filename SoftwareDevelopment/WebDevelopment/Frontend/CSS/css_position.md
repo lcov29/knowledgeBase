@@ -87,9 +87,9 @@ Example:
 
 ![Screenshot](./pictures/screenshot_position_relative_1.png)
 
-* first element is positioned relative to the top left corner of its original position in the flow
-* first element stays in the normal flow, so the position of the second element is not changed
-    * therefore the first element overflows the second element
+* element 1 is positioned relative to the top left corner of its original position in the flow
+* element 1 stays in the normal flow, so the position of element 2 is not changed
+    * therefore element 1 overflows element 2
 
 <br>
 <br>
@@ -107,9 +107,9 @@ Example:
 
 ![Screenshot](./pictures/screenshot_position_relative_2.png)
 
-* first element is positioned relative to the bottom left corner of its original position in the flow
-* first element stays in the normal flow, so the position of the second element is not changed
-* first element overflows its container
+* element 1 is positioned relative to the bottom left corner of its original position in the flow
+* element 1 stays in the normal flow, so the position of element 2 is not changed
+* element 1 overflows its container
 
 <br>
 <br>
@@ -228,7 +228,7 @@ Examples:
 
 * element 1 is removed from the document flow
 * element 1 is positioned from the top left corner of the **page**
-* element keeps its fixed position from the top left corner regardless of scrolling
+* element 1 keeps its fixed position from the top left corner regardless of scrolling
 * element 2 renders as if element 1 does not exist
 
 <br>

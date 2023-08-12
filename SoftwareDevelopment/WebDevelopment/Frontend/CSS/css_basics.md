@@ -290,9 +290,9 @@ Width and height include padding and border.
 ```css
 position: static;        /* default, positioned according to the flow */
 
-position: relative;      /* positioned according to the flow plus offset to itself */
+position: relative;      /* positioned according to the flow plus offset to its original position */
 
-position: absolute;      /* element is removed from the flow and positioned relative to the closest ancestor */
+position: absolute;      /* element is removed from the flow and positioned relative to the closest relative ancestor */
 
 position: fixed;         /* element is removed from the flow and positioned relative to the current top of the viewport */
 

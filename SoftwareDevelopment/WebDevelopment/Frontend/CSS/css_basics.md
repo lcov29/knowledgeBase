@@ -307,10 +307,10 @@ See [CSS Positioning](./css_position.md).
 <br>
 <br>
 
-## **Floating**
+## [**Floating**](./css_float.md)
 <br>
 
-Float element relative to its container
+Allows inline or text siblings of an element to flow around it.
 
 ```css
 float: left;
@@ -319,6 +319,10 @@ float: right;
 
 float: none;
 ```
+
+<br>
+
+See [CSS Floating](./css_float.md)
 
 <br>
 <br>

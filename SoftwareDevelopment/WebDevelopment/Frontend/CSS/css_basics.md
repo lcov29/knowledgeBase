@@ -287,9 +287,6 @@ Width and height include padding and border.
 ## [**Positioning**](./css_position.md)
 <br>
 
-* removes element from the normal document flow
-* element is positioned relative to the top-left corner of the screen
-
 ```css
 position: static;        /* default, positioned according to the flow */
 

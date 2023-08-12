@@ -33,6 +33,7 @@
   - [**Links**](#links)
   - [**Lists**](#lists)
   - [**Table**](#table)
+  - [**Columns**](#columns)
   - [**Size**](#size)
   - [**Units**](#units)
     - [**Absolute Units**](#absolute-units)
@@ -506,6 +507,19 @@ border-collapse:
 |:--------|:--------------------------|
 |collapse |cells have shared borders  |
 |separate |cells have distinct borders|
+
+<br>
+<br>
+<br>
+
+## [**Columns**](./css_columns.md)
+<br>
+
+* used to split elements into columns
+
+<br>
+
+See [Columns](./css_columns.md)
 
 <br>
 <br>

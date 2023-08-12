@@ -517,6 +517,8 @@ border-collapse:
 
 * used to split elements into columns
 
+![Screenshot](./pictures/column/screenshot_columns_1.png)
+
 <br>
 
 See [Columns](./css_columns.md)

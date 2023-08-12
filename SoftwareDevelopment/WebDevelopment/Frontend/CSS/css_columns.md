@@ -74,8 +74,6 @@ Render:
 
 * small viewport
 
-
-
 <br>
 <br>
 <br>

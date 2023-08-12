@@ -42,7 +42,7 @@ Example:
 
 <br>
 
-![Screenshot](./pictures/screenshot_position_static.png)
+![Screenshot](./pictures/position/screenshot_position_static.png)
 
 * elements 1 and 2 are positioned static
 * as block elements they are positioned beneath each other
@@ -85,7 +85,7 @@ Example:
 
 <br>
 
-![Screenshot](./pictures/screenshot_position_relative_1.png)
+![Screenshot](./pictures/position/screenshot_position_relative_1.png)
 
 * element 1 is positioned relative to the top left corner of its original position in the flow
 * element 1 stays in the normal flow, so the position of element 2 is not changed
@@ -105,7 +105,7 @@ Example:
 
 <br>
 
-![Screenshot](./pictures/screenshot_position_relative_2.png)
+![Screenshot](./pictures/position/screenshot_position_relative_2.png)
 
 * element 1 is positioned relative to the bottom left corner of its original position in the flow
 * element 1 stays in the normal flow, so the position of element 2 is not changed
@@ -148,7 +148,7 @@ Example:
 
 <br>
 
-![Screenshot](./pictures/screenshot_position_absolute_1.png)
+![Screenshot](./pictures/position/screenshot_position_absolute_1.png)
 
 * element 1 is removed from the document flow
 * element 2 renders as if element 1 does not exist
@@ -168,7 +168,7 @@ Example:
 
 <br>
 
-![Screenshot](pictures/screenshot_position_absolute_2.png)
+![Screenshot](./pictures/position/screenshot_position_absolute_2.png)
 
 * element 1 is removed from the document flow
 * element 2 renders as if element 1 does not exist
@@ -192,7 +192,7 @@ Example:
 
 <br>
 
-![Screenshot](./pictures/screenshot_position_absolute_3.png)
+![Screenshot](./pictures/position/screenshot_position_absolute_3.png)
 
 * element 1 is removed from the document flow
 * element 2 renders as if element 1 does not exist
@@ -224,7 +224,7 @@ Examples:
 
 <br>
 
-![Screencapture](./pictures/screencapture_position_fixed.gif)
+![Screencapture](./pictures/position/screencapture_position_fixed.gif)
 
 * element 1 is removed from the document flow
 * element 1 is positioned from the top left corner of the **page**
@@ -259,7 +259,7 @@ Examples:
 
 <br>
 
-![Screenshot](./pictures/screencapture_position_sticky_1.gif)
+![Screenshot](./pictures/position/screencapture_position_sticky_1.gif)
 
 element 1 is
 * positioned static before scrolling
@@ -279,7 +279,7 @@ element 1 is
 
 <br>
 
-![Screenshot](./pictures/screencapture_position_sticky_2.gif)
+![Screenshot](./pictures/position/screencapture_position_sticky_2.gif)
 
 * element 1 is
   * positioned 20px from bottom of the viewport while scrolling until its static position within the document flow is reached

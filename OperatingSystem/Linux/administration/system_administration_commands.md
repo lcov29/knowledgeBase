@@ -49,6 +49,15 @@ uname -a
 
 <br>
 <br>
+
+```bash
+dmidecode
+```
+
+* dumps various system information from the DMI in human readable form
+
+<br>
+<br>
 <br>
 
 ## **Print Distribution Information**

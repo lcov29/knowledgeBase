@@ -14,6 +14,12 @@
       - [**column**](#column)
       - [**column-reverse**](#column-reverse)
     - [**Cross Axis**](#cross-axis)
+  - [**Wrapping**](#wrapping)
+    - [**nowrap (default setting)**](#nowrap-default-setting)
+    - [**wrap**](#wrap)
+    - [**wrap-reverse**](#wrap-reverse)
+  - [**Flex Items Sizing**](#flex-items-sizing)
+    - [**flex-grow**](#flex-grow)
 
 <br>
 <br>
@@ -57,6 +63,7 @@ Flexbox...
 
 ```css
 .flex-container {
+    display: flex;
     flex-direction: row;
 }
 ```
@@ -71,6 +78,7 @@ Flexbox...
 
 ```css
 .flex-container {
+    display: flex;
     flex-direction: row-reverse;
 }
 ```
@@ -85,6 +93,7 @@ Flexbox...
 
 ```css
 .flex-container {
+    display: flex;
     flex-direction: column;
 }
 ```
@@ -99,6 +108,7 @@ Flexbox...
 
 ```css
 .flex-container {
+    display: flex;
     flex-direction: column-reverse;
 }
 ```
@@ -112,4 +122,117 @@ Flexbox...
 ### **Cross Axis**
 <br>
 
+<br>
+<br>
+<br>
+<br>
 
+## **Wrapping**
+<br>
+
+* allows flex items to wrap onto multiple lines
+
+<br>
+<br>
+<br>
+
+### **nowrap (default setting)**
+<br>
+
+```css
+.flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_nowrap.png)
+* flex items are not allowed to wrap onto the next line and therefore overflow their container
+
+<br>
+<br>
+<br>
+
+### **wrap**
+<br>
+
+```css
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_wrap.png)
+* flex items are allowed to wrap onto the **next** line
+
+<br>
+<br>
+<br>
+
+### **wrap-reverse**
+<br>
+
+```css
+.flex-container {
+    display: flex;
+    flex-wrap: wrap-reverse;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_wrap_reverse.png)
+* flex items are allowed to wrap onto the **previous** line
+
+<br>
+<br>
+<br>
+<br>
+
+## **Flex Items Sizing**
+<br>
+<br>
+<br>
+
+### **flex-grow**
+<br>
+
+* factor that determines how much a **flex item** is allowed to grow if the container has undistributed size
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_flex_grow_none.png)
+* default behavior: flex items do not grow
+
+<br>
+<br>
+
+```css
+.flex-item {
+    flex-grow: 1;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_flex_grow_one.png)
+* remaining size of the flex container is evenly distributed to all flex items
+
+<br>
+<br>
+
+```css
+#flex-item-2 {
+    flex-grow: 1;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_flex_grow_two.png)
+* all remaining size of the flex container is distributed to the second flex item

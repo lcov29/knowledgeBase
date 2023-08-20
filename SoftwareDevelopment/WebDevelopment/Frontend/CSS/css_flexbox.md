@@ -18,18 +18,28 @@
       - [**Main Axis**](#main-axis)
         - [**start**](#start)
         - [**end**](#end)
+        - [**center**](#center)
         - [**space-between**](#space-between)
         - [**space-around**](#space-around)
         - [**space-evenly**](#space-evenly)
       - [**Cross Axis**](#cross-axis)
         - [**start**](#start-1)
         - [**end**](#end-1)
-        - [**center**](#center)
+        - [**center**](#center-1)
         - [**stretch**](#stretch)
+      - [**Cross Axis (Multi-Line Flex Container)**](#cross-axis-multi-line-flex-container)
+        - [**start**](#start-2)
+        - [**end**](#end-2)
+        - [**center**](#center-2)
+        - [**space-between**](#space-between-1)
+        - [**space-around**](#space-around-1)
+        - [**space-evenly**](#space-evenly-1)
+        - [**stretch**](#stretch-1)
     - [**Wrapping**](#wrapping)
       - [**nowrap (default setting)**](#nowrap-default-setting)
       - [**wrap**](#wrap)
       - [**wrap-reverse**](#wrap-reverse)
+    - [**Gap**](#gap)
   - [**Flex Items**](#flex-items)
     - [**Flex Items Sizing**](#flex-items-sizing)
       - [**flex-basis**](#flex-basis)
@@ -181,6 +191,23 @@ Flexbox...
 <br>
 <br>
 
+##### **center**
+<br>
+
+```css
+.flex-row {
+    display: flex;
+    justify-content: center;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_justify_content_center.png)
+
+<br>
+<br>
+
 ##### **space-between**
 <br>
 
@@ -310,6 +337,145 @@ Flexbox...
 <br>
 <br>
 
+#### **Cross Axis (Multi-Line Flex Container)**
+<br>
+<br>
+
+##### **start**
+<br>
+
+```css
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: start;
+}           
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_align_content_start.png)
+
+<br>
+<br>
+
+##### **end**
+<br>
+
+```css
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: end;
+}           
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_align_content_end.png)
+
+<br>
+<br>
+
+##### **center**
+<br>
+
+```css
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: center;
+}           
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_align_content_center.png)
+
+<br>
+<br>
+
+##### **space-between**
+<br>
+
+```css
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-between;
+}           
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_align_content_space_between.png)
+
+<br>
+<br>
+
+##### **space-around**
+<br>
+
+```css
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-around;
+}           
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_align_content_space_around.png)
+
+<br>
+<br>
+
+##### **space-evenly**
+<br>
+
+```css
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+}           
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_align_content_space_evenly.png)
+
+<br>
+<br>
+
+##### **stretch**
+<br>
+
+```css
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: stretch;
+}           
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_align_content_stretch.png)
+
+
+<br>
+<br>
+<br>
+
 ### **Wrapping**
 <br>
 
@@ -371,6 +537,29 @@ Flexbox...
 
 ![Screenshot](./pictures/flexbox/screenshot_flexbox_wrap_reverse.png)
 * flex items are allowed to wrap onto the **previous** line
+
+<br>
+<br>
+<br>
+
+### **Gap**
+<br>
+
+* explicitly sets space between flex items
+
+<br>
+
+```css
+.flex-row {
+    display: flex;
+    gap: 1rem;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_gap.png)
+
 
 <br>
 <br>

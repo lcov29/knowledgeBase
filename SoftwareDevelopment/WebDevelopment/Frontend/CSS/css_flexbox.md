@@ -21,6 +21,11 @@
         - [**space-between**](#space-between)
         - [**space-around**](#space-around)
         - [**space-evenly**](#space-evenly)
+      - [**Cross Axis**](#cross-axis)
+        - [**start**](#start-1)
+        - [**end**](#end-1)
+        - [**center**](#center)
+        - [**stretch**](#stretch)
     - [**Wrapping**](#wrapping)
       - [**nowrap (default setting)**](#nowrap-default-setting)
       - [**wrap**](#wrap)
@@ -136,6 +141,7 @@ Flexbox...
 ### **Item Alignment**
 <br>
 <br>
+<br>
 
 #### **Main Axis**
 <br>
@@ -223,6 +229,82 @@ Flexbox...
 
 ![Screenshot](./pictures/flexbox/screenshot_flexbox_justify_content_space_evenly.png)
 
+<br>
+<br>
+<br>
+
+#### **Cross Axis**
+<br>
+<br>
+
+##### **start**
+<br>
+
+```css
+.flex-row {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: start;
+}           
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_align_items_start.png)
+
+<br>
+<br>
+
+##### **end**
+<br>
+
+```css
+.flex-row {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: end;
+}           
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_align_items_end.png)
+
+<br>
+<br>
+
+##### **center**
+<br>
+
+```css
+.flex-row {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}           
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_align_items_center.png)
+
+<br>
+<br>
+
+##### **stretch**
+<br>
+
+```css
+.flex-row {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: stretch;
+}           
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_align_items_stretch.png)
 
 <br>
 <br>

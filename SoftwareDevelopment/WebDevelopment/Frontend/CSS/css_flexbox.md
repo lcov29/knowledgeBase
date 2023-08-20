@@ -7,19 +7,28 @@
 - [**CSS Flexbox**](#css-flexbox)
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
-  - [**Axis**](#axis)
-    - [**Main Axis**](#main-axis)
+  - [**Flexbox Container**](#flexbox-container)
+    - [**Axis**](#axis)
+    - [**Main Axis Directions**](#main-axis-directions)
       - [**row**](#row)
       - [**row-reverse**](#row-reverse)
       - [**column**](#column)
       - [**column-reverse**](#column-reverse)
-    - [**Cross Axis**](#cross-axis)
-  - [**Wrapping**](#wrapping)
-    - [**nowrap (default setting)**](#nowrap-default-setting)
-    - [**wrap**](#wrap)
-    - [**wrap-reverse**](#wrap-reverse)
-  - [**Flex Items Sizing**](#flex-items-sizing)
-    - [**flex-grow**](#flex-grow)
+    - [**Item Alignment**](#item-alignment)
+      - [**Main Axis**](#main-axis)
+        - [**start**](#start)
+        - [**end**](#end)
+        - [**space-between**](#space-between)
+        - [**space-around**](#space-around)
+        - [**space-evenly**](#space-evenly)
+    - [**Wrapping**](#wrapping)
+      - [**nowrap (default setting)**](#nowrap-default-setting)
+      - [**wrap**](#wrap)
+      - [**wrap-reverse**](#wrap-reverse)
+  - [**Flex Items**](#flex-items)
+    - [**Flex Items Sizing**](#flex-items-sizing)
+      - [**flex-basis**](#flex-basis)
+      - [**flex-grow**](#flex-grow)
 
 <br>
 <br>
@@ -38,7 +47,12 @@ Flexbox...
 <br>
 <br>
 
-## **Axis**
+## **Flexbox Container**
+<br>
+<br>
+<br>
+
+### **Axis**
 <br>
 
 ![Screenshot](./pictures/flexbox/screenshot_flexbox_row_axis_overview.png)
@@ -54,7 +68,7 @@ Flexbox...
 <br>
 <br>
 
-### **Main Axis**
+### **Main Axis Directions**
 <br>
 <br>
 
@@ -119,15 +133,102 @@ Flexbox...
 <br>
 <br>
 
-### **Cross Axis**
+### **Item Alignment**
 <br>
+<br>
+
+#### **Main Axis**
+<br>
+<br>
+
+##### **start**
+<br>
+
+```css
+.flex-row {
+    display: flex;
+    justify-content: start;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_justify_content_start.png)
+
+<br>
+<br>
+
+##### **end**
+<br>
+
+```css
+.flex-row {
+    display: flex;
+    justify-content: end;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_justify_content_end.png)
+
+<br>
+<br>
+
+##### **space-between**
+<br>
+
+```css
+.flex-row {
+    display: flex;
+    justify-content: space-between;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_justify_content_space_between.png)
+
+<br>
+<br>
+
+##### **space-around**
+<br>
+
+```css
+.flex-row {
+    display: flex;
+    justify-content: space-around;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_justify_content_space_around.png)
+
+<br>
+<br>
+
+##### **space-evenly**
+<br>
+
+```css
+.flex-row {
+    display: flex;
+    justify-content: space-evenly;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_justify_content_space_evenly.png)
+
 
 <br>
 <br>
 <br>
-<br>
 
-## **Wrapping**
+### **Wrapping**
 <br>
 
 * allows flex items to wrap onto multiple lines
@@ -136,7 +237,7 @@ Flexbox...
 <br>
 <br>
 
-### **nowrap (default setting)**
+#### **nowrap (default setting)**
 <br>
 
 ```css
@@ -155,7 +256,7 @@ Flexbox...
 <br>
 <br>
 
-### **wrap**
+#### **wrap**
 <br>
 
 ```css
@@ -174,7 +275,7 @@ Flexbox...
 <br>
 <br>
 
-### **wrap-reverse**
+#### **wrap-reverse**
 <br>
 
 ```css
@@ -194,12 +295,44 @@ Flexbox...
 <br>
 <br>
 
-## **Flex Items Sizing**
+## **Flex Items**
 <br>
 <br>
 <br>
 
-### **flex-grow**
+### **Flex Items Sizing**
+<br>
+<br>
+
+#### **flex-basis**
+<br>
+
+* used to define the initial size of a **flex item**
+* basis for [flex-grow](#flex-grow) and [flex-shrink](#flex-shrink)
+
+<br>
+
+|Value                |
+|:--------------------|
+|\<absolute value \>  |
+|\<percentage value\> |
+|auto                 |
+|max-content          |
+|min-content          |
+|fit-content          |
+
+<br>
+<br>
+
+![Screenshot]()
+
+<br>
+
+<br>
+<br>
+<br>
+
+#### **flex-grow**
 <br>
 
 * factor that determines how much a **flex item** is allowed to grow if the container has undistributed size

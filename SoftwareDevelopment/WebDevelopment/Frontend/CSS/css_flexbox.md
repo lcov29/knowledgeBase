@@ -594,13 +594,6 @@ Flexbox...
 
 <br>
 <br>
-
-![Screenshot]()
-
-<br>
-
-<br>
-<br>
 <br>
 
 #### **flex-grow**

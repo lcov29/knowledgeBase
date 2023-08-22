@@ -9,25 +9,25 @@
   - [**General**](#general)
   - [**Flexbox Container**](#flexbox-container)
     - [**Axis**](#axis)
-    - [**Main Axis Directions**](#main-axis-directions)
+    - [**Main Axis Directions (flex-direction)**](#main-axis-directions-flex-direction)
       - [**row**](#row)
       - [**row-reverse**](#row-reverse)
       - [**column**](#column)
       - [**column-reverse**](#column-reverse)
     - [**Item Alignment**](#item-alignment)
-      - [**Main Axis**](#main-axis)
+      - [**Main Axis (justify-content)**](#main-axis-justify-content)
         - [**start**](#start)
         - [**end**](#end)
         - [**center**](#center)
         - [**space-between**](#space-between)
         - [**space-around**](#space-around)
         - [**space-evenly**](#space-evenly)
-      - [**Cross Axis**](#cross-axis)
+      - [**Cross Axis (align-items)**](#cross-axis-align-items)
         - [**start**](#start-1)
         - [**end**](#end-1)
         - [**center**](#center-1)
         - [**stretch**](#stretch)
-      - [**Cross Axis (Multi-Line Flex Container)**](#cross-axis-multi-line-flex-container)
+      - [**Cross Axis For Multi-Line Flex Container (align-content)**](#cross-axis-for-multi-line-flex-container-align-content)
         - [**start**](#start-2)
         - [**end**](#end-2)
         - [**center**](#center-2)
@@ -36,7 +36,7 @@
         - [**space-evenly**](#space-evenly-1)
         - [**stretch**](#stretch-1)
     - [**Gap**](#gap)
-    - [**Wrapping**](#wrapping)
+    - [**Wrapping (flex-wrap)**](#wrapping-flex-wrap)
       - [**nowrap (default setting)**](#nowrap-default-setting)
       - [**wrap**](#wrap)
       - [**wrap-reverse**](#wrap-reverse)
@@ -83,7 +83,7 @@ Flexbox...
 <br>
 <br>
 
-### **Main Axis Directions**
+### **Main Axis Directions (flex-direction)**
 <br>
 <br>
 
@@ -153,7 +153,7 @@ Flexbox...
 <br>
 <br>
 
-#### **Main Axis**
+#### **Main Axis (justify-content)**
 <br>
 <br>
 
@@ -260,7 +260,7 @@ Flexbox...
 <br>
 <br>
 
-#### **Cross Axis**
+#### **Cross Axis (align-items)**
 <br>
 <br>
 
@@ -337,7 +337,7 @@ Flexbox...
 <br>
 <br>
 
-#### **Cross Axis (Multi-Line Flex Container)**
+#### **Cross Axis For Multi-Line Flex Container (align-content)**
 <br>
 <br>
 
@@ -497,7 +497,7 @@ Flexbox...
 <br>
 <br>
 
-### **Wrapping**
+### **Wrapping (flex-wrap)**
 <br>
 
 * allows flex items to wrap onto multiple lines
@@ -630,4 +630,26 @@ Flexbox...
 <br>
 
 ![Screenshot](./pictures/flexbox/screenshot_flexbox_flex_grow_two.png)
-* all remaining size of the flex container is distributed to the second flex item
+* remaining size of the flex container is distributed to the second flex item
+
+<br>
+<br>
+
+```css
+.flex-item {
+    flex-grow: 1;
+}
+```
+
+<br>
+
+```css
+#flex-item-2 {
+    flex-grow: 4;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_flex_grow_three.png)
+* remaining size of the flex container is distributed to all items but the second flex item gets four times more size

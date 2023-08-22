@@ -41,11 +41,16 @@
       - [**wrap**](#wrap)
       - [**wrap-reverse**](#wrap-reverse)
   - [**Flex Items**](#flex-items)
-    - [**Flex Items Sizing**](#flex-items-sizing)
+    - [**Sizing**](#sizing)
       - [**flex-grow**](#flex-grow)
       - [**flex-shrink**](#flex-shrink)
       - [**flex-basis**](#flex-basis)
       - [**Shorthand: flex**](#shorthand-flex)
+      - [**Alignment (align-self)**](#alignment-align-self)
+        - [**start**](#start-3)
+        - [**end**](#end-3)
+        - [**center**](#center-3)
+        - [**stretch**](#stretch-2)
 
 <br>
 <br>
@@ -571,7 +576,7 @@ Flexbox...
 <br>
 <br>
 
-### **Flex Items Sizing**
+### **Sizing**
 
 <br>
 <br>
@@ -839,3 +844,112 @@ equals
     flex-basis: 20%;
 }
 ```
+
+<br>
+<br>
+<br>
+
+#### **Alignment (align-self)**
+<br>
+
+* allows item to overwrite the cross-axis-alignment set by the container via [align-items](#cross-axis-align-items)
+
+<br>
+<br>
+
+##### **start**
+<br>
+
+```css
+.flex-container {
+   display: flex;
+   align-items: center; 
+}
+```
+
+<br>
+
+```css
+#flex-item-2 {
+    align-self: start;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_align_self_one.png)
+
+<br>
+<br>
+
+##### **end**
+<br>
+
+```css
+.flex-container {
+   display: flex;
+   align-items: center; 
+}
+```
+
+<br>
+
+```css
+#flex-item-2 {
+    align-self: end;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_align_self_two.png)
+
+<br>
+<br>
+
+##### **center**
+<br>
+
+```css
+.flex-container {
+   display: flex;
+   align-items: start; 
+}
+```
+
+<br>
+
+```css
+#flex-item-2 {
+    align-self: center;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_align_self_three.png)
+
+<br>
+<br>
+
+##### **stretch**
+<br>
+
+```css
+.flex-container {
+   display: flex;
+   align-items: center; 
+}
+```
+
+<br>
+
+```css
+#flex-item-2 {
+    align-self: stretch;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_align_self_four.png)

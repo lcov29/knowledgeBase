@@ -35,11 +35,11 @@
         - [**space-around**](#space-around-1)
         - [**space-evenly**](#space-evenly-1)
         - [**stretch**](#stretch-1)
+    - [**Gap**](#gap)
     - [**Wrapping**](#wrapping)
       - [**nowrap (default setting)**](#nowrap-default-setting)
       - [**wrap**](#wrap)
       - [**wrap-reverse**](#wrap-reverse)
-    - [**Gap**](#gap)
   - [**Flex Items**](#flex-items)
     - [**Flex Items Sizing**](#flex-items-sizing)
       - [**flex-basis**](#flex-basis)
@@ -471,6 +471,27 @@ Flexbox...
 
 ![Screenshot](./pictures/flexbox/screenshot_flexbox_align_content_stretch.png)
 
+<br>
+<br>
+<br>
+
+### **Gap**
+<br>
+
+* explicitly sets space between flex items
+
+<br>
+
+```css
+.flex-row {
+    display: flex;
+    gap: 1rem;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_gap.png)
 
 <br>
 <br>
@@ -537,29 +558,6 @@ Flexbox...
 
 ![Screenshot](./pictures/flexbox/screenshot_flexbox_wrap_reverse.png)
 * flex items are allowed to wrap onto the **previous** line
-
-<br>
-<br>
-<br>
-
-### **Gap**
-<br>
-
-* explicitly sets space between flex items
-
-<br>
-
-```css
-.flex-row {
-    display: flex;
-    gap: 1rem;
-}
-```
-
-<br>
-
-![Screenshot](./pictures/flexbox/screenshot_flexbox_gap.png)
-
 
 <br>
 <br>

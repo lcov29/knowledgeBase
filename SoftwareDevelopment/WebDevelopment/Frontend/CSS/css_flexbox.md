@@ -42,8 +42,8 @@
       - [**wrap-reverse**](#wrap-reverse)
   - [**Flex Items**](#flex-items)
     - [**Flex Items Sizing**](#flex-items-sizing)
-      - [**flex-basis**](#flex-basis)
       - [**flex-grow**](#flex-grow)
+      - [**flex-basis**](#flex-basis)
 
 <br>
 <br>
@@ -570,25 +570,6 @@ Flexbox...
 <br>
 
 ### **Flex Items Sizing**
-<br>
-<br>
-
-#### **flex-basis**
-<br>
-
-* used to define the initial size of a **flex item**
-* basis for [flex-grow](#flex-grow) and [flex-shrink](#flex-shrink)
-
-<br>
-
-|Value                |
-|:--------------------|
-|\<absolute value \>  |
-|\<percentage value\> |
-|auto                 |
-|max-content          |
-|min-content          |
-|fit-content          |
 
 <br>
 <br>
@@ -653,3 +634,94 @@ Flexbox...
 
 ![Screenshot](./pictures/flexbox/screenshot_flexbox_flex_grow_three.png)
 * remaining size of the flex container is distributed to all items but the second flex item gets four times more size
+
+<br>
+<br>
+<br>
+
+#### **flex-basis**
+<br>
+
+* used to define the initial size of a **flex item**
+* basis for [flex-grow](#flex-grow) and [flex-shrink](#flex-shrink)
+
+<br>
+
+|Value                |
+|:--------------------|
+|\<absolute value \>  |
+|\<percentage value\> |
+|auto                 |
+|max-content          |
+|min-content          |
+|fit-content          |
+
+<br>
+<br>
+
+```css
+.flex-item {
+    flex-grow: 1;
+    flex-basis: 0;
+
+}
+```
+
+<br>
+
+```css
+#flex-item-2 {
+    flex-grow: 4;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_flex_basis_one.png)
+* since all flex items have the basis of **0** the size of the entire flex container is distributed to the items on the basis of the flex-grow factor
+
+<br>
+<br>
+
+```css
+.flex-item {
+    flex-grow: 1;
+    flex-basis: 200px;
+}
+```
+
+<br>
+
+```css
+#flex-item-2 {
+    flex-grow: 4;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_flex_basis_two.png)
+* since all flex items have the basis of **200px** their combined width exceed the width of the flex container
+* since all flex items have the default **flex-shrink** of 1 they all end up with the same width
+
+<br>
+<br>
+
+```css
+.flex-item {
+    flex-grow: 1;
+    flex-basis: 50px;
+}
+```
+
+<br>
+
+```css
+#flex-item-2 {
+    flex-basis: 100px;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_flex_basis_three.png)

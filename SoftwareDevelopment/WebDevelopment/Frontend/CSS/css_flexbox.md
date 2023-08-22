@@ -43,7 +43,9 @@
   - [**Flex Items**](#flex-items)
     - [**Flex Items Sizing**](#flex-items-sizing)
       - [**flex-grow**](#flex-grow)
+      - [**flex-shrink**](#flex-shrink)
       - [**flex-basis**](#flex-basis)
+      - [**Shorthand: flex**](#shorthand-flex)
 
 <br>
 <br>
@@ -579,6 +581,7 @@ Flexbox...
 <br>
 
 * factor that determines how much a **flex item** is allowed to grow if the container has undistributed size
+* default: `flex-grow: 0;`
 
 <br>
 
@@ -639,6 +642,66 @@ Flexbox...
 <br>
 <br>
 
+#### **flex-shrink**
+<br>
+
+* factor that determines how much a **flex item** is allowed to shrink if the combined width of the flex items exceeds the container width
+* default: `flex-shrink: 1;`
+
+<br>
+<br>
+
+```css
+.flex-item {
+    flex-shrink: 0;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_flex_shrink_one.png)
+* flex items are not allowed to shrink and therefore overflow their container
+
+<br>
+<br>
+
+```css
+.flex-item {
+    flex-shrink: 1;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_flex_shrink_two.png)
+* flex items are to shrink
+
+<br>
+<br>
+
+```css
+.flex-item {
+    flex-shrink: 1;
+}
+```
+
+<br>
+
+```css
+#flex-item-2 {
+    flex-shrink: 4;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/flexbox/screenshot_flexbox_flex_shrink_three.png)
+* all flex items shrink to fit into the container, but the second item is forced to give up four times as much space as its siblings
+
+<br>
+<br>
+<br>
+
 #### **flex-basis**
 <br>
 
@@ -663,7 +726,6 @@ Flexbox...
 .flex-item {
     flex-grow: 1;
     flex-basis: 0;
-
 }
 ```
 
@@ -725,3 +787,55 @@ Flexbox...
 <br>
 
 ![Screenshot](./pictures/flexbox/screenshot_flexbox_flex_basis_three.png)
+
+<br>
+<br>
+<br>
+
+#### **Shorthand: flex**
+<br>
+
+* shorthand for `flex-grow`, `flex-shrink` and `flex-basis`
+* second and third parameter is optional
+* default: `flex: 0 1 auto`
+
+<br>
+<br>
+
+Examples:
+<br>
+
+```css
+.flex-item {
+    flex: 2;    
+}
+```
+
+equals 
+
+```css
+.flex-item {
+    flex-grow: 2;
+    flex-shrink: 1;
+    flex-basis: 0;
+}
+```
+
+<br>
+<br>
+
+```css
+.flex-item {
+    flex: 2 2 20%;    
+}
+```
+
+equals 
+
+```css
+.flex-item {
+    flex-grow: 2;
+    flex-shrink: 2;
+    flex-basis: 20%;
+}
+```

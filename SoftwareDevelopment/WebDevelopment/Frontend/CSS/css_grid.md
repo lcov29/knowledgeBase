@@ -28,12 +28,14 @@ Grid...
 
 <br>
 <br>
+<br>
 
 ### **Terminology**
 <br>
 
 ![Screenshot](./pictures/grid/screenshot_grid_terminology.png)
 
+<br>
 <br>
 <br>
 
@@ -111,7 +113,15 @@ CSS:
 <br>
 
 * defines columns of the grid via space separated list of track sizes
+* allows assigning optional linenames that can be used instead of the line enumeration
 
+<br>
+
+```
+grid-template-columns: [linename alternateLinename] 20% ...
+```
+
+<br>
 <br>
 
 ```css
@@ -131,12 +141,20 @@ CSS:
 <br>
 
 * defines tows of the grid via space separated list of track sizes
+* allows assigning optional linenames that can be used instead of the line enumeration
 
+<br>
+
+```
+grid-template-rows: [linename alternateLinename] 20% ...
+```
+
+<br>
 <br>
 
 ```css
 .grid-container {
-    grid-template-columns: 50px 150px;
+    grid-template-rows: 50px 150px;
 }
 ```
 

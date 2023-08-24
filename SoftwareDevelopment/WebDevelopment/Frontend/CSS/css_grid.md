@@ -7,6 +7,8 @@
 - [**CSS Grid**](#css-grid)
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
+    - [**Terminology**](#terminology)
+    - [**Grid Line Enumeration**](#grid-line-enumeration)
   - [**Example**](#example)
   - [**Grid Container**](#grid-container)
     - [**Define Dimensions**](#define-dimensions)
@@ -25,8 +27,20 @@ Grid...
 * is used to align items into a two-dimensional grid layout
 
 <br>
+<br>
+
+### **Terminology**
+<br>
 
 ![Screenshot](./pictures/grid/screenshot_grid_terminology.png)
+
+<br>
+<br>
+
+### **Grid Line Enumeration**
+<br>
+
+![Screenshot](./pictures/grid/screenshot_grid_grid_line_enumeration.png) 
 
 <br>
 <br>

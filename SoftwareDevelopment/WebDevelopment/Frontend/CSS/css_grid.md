@@ -9,7 +9,11 @@
   - [**General**](#general)
   - [**Example**](#example)
   - [**Grid Container**](#grid-container)
+    - [**Define Dimensions**](#define-dimensions)
+      - [**grid-template-columns**](#grid-template-columns)
+      - [**grid-template-rows**](#grid-template-rows)
 
+<br>
 <br>
 <br>
 <br>
@@ -24,6 +28,7 @@ Grid...
 
 ![Screenshot](./pictures/grid/screenshot_grid_terminology.png)
 
+<br>
 <br>
 <br>
 <br>
@@ -69,8 +74,58 @@ CSS:
 <br>
 <br>
 <br>
+<br>
 
 ## **Grid Container**
 <br>
 <br>
+<br>
 
+### **Define Dimensions**
+<br>
+
+|Unit |Description                 |
+|:----|:---------------------------|
+|px   |pixel length                |
+|x%   |percentage of parent        |
+|fr   |fraction of available space |
+
+<br>
+<br>
+
+#### **grid-template-columns**
+<br>
+
+* defines columns of the grid via space separated list of track sizes
+
+<br>
+
+```css
+.grid-container {
+    grid-template-columns: 200px 500px;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/grid/screenshot_grid_template_columns.png)
+
+<br>
+<br>
+
+#### **grid-template-rows**
+<br>
+
+* defines tows of the grid via space separated list of track sizes
+
+<br>
+
+```css
+.grid-container {
+    grid-template-columns: 50px 150px;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/grid/screenshot_grid_template_rows.png)

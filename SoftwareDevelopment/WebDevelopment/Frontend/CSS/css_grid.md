@@ -14,6 +14,7 @@
     - [**Define Dimensions**](#define-dimensions)
       - [**grid-template-columns**](#grid-template-columns)
       - [**grid-template-rows**](#grid-template-rows)
+      - [**grid-template-areas**](#grid-template-areas)
 
 <br>
 <br>
@@ -100,11 +101,11 @@ CSS:
 ### **Define Dimensions**
 <br>
 
-|Unit |Description                 |
-|:----|:---------------------------|
-|px   |pixel length                |
-|x%   |percentage of parent        |
-|fr   |fraction of available space |
+|Unit |Description                           |
+|:----|:-------------------------------------|
+|px   |pixel length                          |
+|x%   |percentage of parent                  |
+|fr   |fraction of available space of parent |
 
 <br>
 <br>
@@ -161,3 +162,53 @@ grid-template-rows: [linename alternateLinename] 20% ...
 <br>
 
 ![Screenshot](./pictures/grid/screenshot_grid_template_rows.png)
+
+<br>
+<br>
+
+#### **grid-template-areas**
+<br>
+
+* allows to describe layout using grid area names
+* allows spanning areas by repeated use of same name
+
+<br>
+
+|Value         |Description             |
+|:-------------|:-----------------------|
+|.             |empty cell              |
+|\<area-name\> |cell of named grid area |
+
+<br>
+
+HTML
+
+```html
+<div class="grid-container">
+    <div id="grid-item-1">Header</div>
+    <div id="grid-item-2">Content</div>
+    <div id="grid-item-3">Sidebar</div>
+    <div id="grid-item-4">Footer</div>
+</div>
+```
+
+<br>
+
+CSS
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-areas: 
+        "header header header"
+        "content . sidebar"
+        "content footer footer";
+}
+```
+
+<br>
+
+![Screenshot](./pictures/grid/screenshot_grid_template_areas.png)
+
+
+

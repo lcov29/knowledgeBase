@@ -15,6 +15,10 @@
       - [**grid-template-columns**](#grid-template-columns)
       - [**grid-template-rows**](#grid-template-rows)
       - [**grid-template-areas**](#grid-template-areas)
+    - [**Gaps**](#gaps)
+      - [**column-gap**](#column-gap)
+      - [**row-gap**](#row-gap)
+      - [**gap (shorthand)**](#gap-shorthand)
 
 <br>
 <br>
@@ -210,5 +214,69 @@ CSS
 
 ![Screenshot](./pictures/grid/screenshot_grid_template_areas.png)
 
+<br>
+<br>
+<br>
 
+### **Gaps**
+<br>
+<br>
+
+#### **column-gap**
+<br>
+
+```css
+.grid-container {
+    column-gap: 20px;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+}
+```
+
+<br>
+
+![Screenshot](./pictures/grid/screenshot_grid_column_gap.png)
+
+<br>
+<br>
+
+#### **row-gap**
+<br>
+
+```css
+.grid-container {
+    row-gap: 20px;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+}
+```
+
+<br>
+
+![Screenshot](./pictures/grid/screenshot_grid_row_gap.png)
+
+<br>
+<br>
+
+#### **gap (shorthand)**
+<br>
+
+* shorthand for [column-gap](#column-gap) and [row-gap](#row-gap)
+
+<br>
+
+```css
+.grid-container {
+    gap: 20px;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+}
+```
+
+<br>
+
+![Screenshot](./pictures/grid/screenshot_grid_gap.png)
 

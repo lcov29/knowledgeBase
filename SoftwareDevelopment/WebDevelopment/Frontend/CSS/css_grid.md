@@ -19,7 +19,7 @@
       - [**column-gap**](#column-gap)
       - [**row-gap**](#row-gap)
       - [**gap (shorthand)**](#gap-shorthand)
-    - [**Alignment**](#alignment)
+    - [**Item Alignment**](#item-alignment)
       - [**Row Axis (justify-items)**](#row-axis-justify-items)
         - [**start**](#start)
         - [**end**](#end)
@@ -30,6 +30,7 @@
         - [**end**](#end-1)
         - [**center**](#center-1)
         - [**stretch**](#stretch-1)
+      - [**Shorthand (place-items)**](#shorthand-place-items)
 
 <br>
 <br>
@@ -295,7 +296,7 @@ CSS
 <br>
 <br>
 
-### **Alignment**
+### **Item Alignment**
 <br>
 <br>
 
@@ -465,3 +466,67 @@ CSS
 <br>
 
 ![Screenshot](./pictures/grid/screenshot_grid_align_items_stretch.png)
+
+<br>
+<br>
+
+#### **Shorthand (place-items)**
+<br>
+
+* shorthand for [align-items](#column-axis-align-items) and [justify-items](#row-axis-justify-items)
+
+<br>
+<br>
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    place-items: start end;
+}
+```
+
+equals 
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+    justify-items: end;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/grid/screenshot_grid_place_items_example_1.png)
+
+<br>
+<br>
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+}
+```
+
+equals 
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-items: center;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/grid/screenshot_grid_place_items_example_2.png)

@@ -19,6 +19,8 @@
       - [**column-gap**](#column-gap)
       - [**row-gap**](#row-gap)
       - [**gap (shorthand)**](#gap-shorthand)
+    - [**Alignment**](#alignment)
+      - [**justify-items**](#justify-items)
 
 <br>
 <br>
@@ -279,4 +281,15 @@ CSS
 <br>
 
 ![Screenshot](./pictures/grid/screenshot_grid_gap.png)
+
+<br>
+<br>
+<br>
+
+### **Alignment**
+<br>
+<br>
+
+#### **justify-items**
+<br>
 

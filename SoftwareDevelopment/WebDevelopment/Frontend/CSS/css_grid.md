@@ -20,7 +20,16 @@
       - [**row-gap**](#row-gap)
       - [**gap (shorthand)**](#gap-shorthand)
     - [**Alignment**](#alignment)
-      - [**justify-items**](#justify-items)
+      - [**Row Axis (justify-items)**](#row-axis-justify-items)
+        - [**start**](#start)
+        - [**end**](#end)
+        - [**center**](#center)
+        - [**stretch**](#stretch)
+      - [**Column Axis (align-items)**](#column-axis-align-items)
+        - [**start**](#start-1)
+        - [**end**](#end-1)
+        - [**center**](#center-1)
+        - [**stretch**](#stretch-1)
 
 <br>
 <br>
@@ -290,6 +299,169 @@ CSS
 <br>
 <br>
 
-#### **justify-items**
+#### **Row Axis (justify-items)**
 <br>
 
+* aligns items along row axis
+* default: stretch
+
+<br>
+<br>
+
+##### **start**
+<br>
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: start;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/grid/screenshot_grid_justify_items_start.png)
+
+<br>
+<br>
+
+##### **end**
+<br>
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: end;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/grid/screenshot_grid_justify_items_end.png)
+
+<br>
+<br>
+
+##### **center**
+<br>
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/grid/screenshot_grid_justify_items_center.png)
+
+<br>
+<br>
+
+##### **stretch**
+<br>
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: stretch;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/grid/screenshot_grid_justify_items_stretch.png)
+
+<br>
+<br>
+
+#### **Column Axis (align-items)**
+<br>
+
+* aligns items along column axis
+* default: stretch
+
+<br>
+<br>
+
+##### **start**
+<br>
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/grid/screenshot_grid_align_items_start.png)
+
+<br>
+<br>
+
+##### **end**
+<br>
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    align-items: end;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/grid/screenshot_grid_align_items_end.png)
+
+<br>
+<br>
+
+##### **center**
+<br>
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/grid/screenshot_grid_align_items_center.png)
+
+<br>
+<br>
+
+##### **stretch**
+<br>
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    align-items: stretch;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/grid/screenshot_grid_align_items_stretch.png)

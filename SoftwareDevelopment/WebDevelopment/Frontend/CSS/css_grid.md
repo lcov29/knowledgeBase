@@ -34,6 +34,7 @@
         - [**space-around**](#space-around-1)
         - [**space-between**](#space-between-1)
         - [**space-evenly**](#space-evenly-1)
+      - [**Shorthand (place-content)**](#shorthand-place-content)
     - [**Item Alignment**](#item-alignment)
       - [**Row Axis (justify-items)**](#row-axis-justify-items)
         - [**start**](#start-2)
@@ -557,7 +558,41 @@ CSS
 ![Screenshot](pictures/grid/screenshot_grid_align_content_space_evenly.png)
 
 
+<br>
+<br>
 
+#### **Shorthand (place-content)**
+<br>
+
+* shorthand for [align-content](#column-axis-align-content) and [justify-content](#row-axis-justify-content)
+
+<br>
+<br>
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(2, 50px);
+    grid-template-columns: repeat(2, 150px);
+    place-content: start center;
+}
+```
+
+equals
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(2, 50px);
+    grid-template-columns: repeat(2, 150px);
+    align-content: start;
+    justify-content: center;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/grid/screenshot_grid_place_content.png)
 
 
 

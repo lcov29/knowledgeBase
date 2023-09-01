@@ -594,23 +594,6 @@ equals
 
 ![Screenshot](./pictures/grid/screenshot_grid_place_content.png)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <br>
 <br>
 <br>

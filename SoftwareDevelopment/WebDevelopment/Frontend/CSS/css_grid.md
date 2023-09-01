@@ -47,6 +47,10 @@
         - [**center**](#center-3)
         - [**stretch**](#stretch-1)
       - [**Shorthand (place-items)**](#shorthand-place-items)
+  - [**Grid Items**](#grid-items)
+    - [**Positioning**](#positioning)
+      - [**Column Position**](#column-position)
+      - [**Row Position**](#row-position)
 
 <br>
 <br>
@@ -832,3 +836,102 @@ equals
 <br>
 
 ![Screenshot](./pictures/grid/screenshot_grid_place_items_example_2.png)
+
+<br>
+<br>
+<br>
+<br>
+
+## **Grid Items**
+<br>
+<br>
+<br>
+
+### **Positioning**
+<br>
+<br>
+
+#### **Column Position**
+<br>
+
+|Property          |Description                                         |
+|:-----------------|:---------------------------------------------------|
+|grid-column-start |specify item start position (inclusive)             |
+|grid-column-end   |specify item end position (inclusive)               |
+|grid-column       |shorthand for grid-column-start and grid-column-end |
+
+<br>
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+}
+```
+
+<br>
+
+```css
+#grid-item-1 {
+    grid-column: 1 / 3;
+}
+```
+
+equals
+
+```css
+#grid-item-1 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/grid/screenshot_grid_grid_column.png)
+
+<br>
+<br>
+
+#### **Row Position**
+<br>
+
+|Property          |Description                                         |
+|:-----------------|:---------------------------------------------------|
+|grid-row-start    |specify item start position (inclusive)             |
+|grid-row-end      |specify item end position (inclusive)               |
+|grid-row          |shorthand for grid-row-start and grid-row-end       |
+
+<br>
+
+<br>
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+}
+```
+
+<br>
+
+```css
+#grid-item-1 {
+    grid-row: 1 / 4;
+}
+```
+
+equals
+
+```css
+#grid-item-1 {
+    grid-row-start: 1;
+    grid-row-end: 4;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/grid/screenshot_grid_grid_row.png)

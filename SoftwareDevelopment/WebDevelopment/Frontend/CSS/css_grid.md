@@ -52,6 +52,18 @@
       - [**Column Position**](#column-position)
       - [**Row Position**](#row-position)
       - [**Grid Area**](#grid-area)
+    - [**Alignment**](#alignment)
+      - [**Row-Axis (justify-self)**](#row-axis-justify-self)
+        - [**start**](#start-4)
+        - [**end**](#end-4)
+        - [**center**](#center-4)
+        - [**stretch**](#stretch-2)
+      - [**Column-Axis (align-self)**](#column-axis-align-self)
+        - [**start**](#start-5)
+        - [**end**](#end-5)
+        - [**center**](#center-5)
+        - [**stretch**](#stretch-3)
+      - [**Shorthand (place-self)**](#shorthand-place-self)
 
 <br>
 <br>
@@ -967,3 +979,240 @@ equals
 <br>
 
 ![Screenshot](./pictures/grid/screenshot_grid_grid_area.png)
+
+<br>
+<br>
+<br>
+
+### **Alignment**
+<br>
+<br>
+
+#### **Row-Axis (justify-self)**
+<br>
+
+* horizontally aligns item within assigned item space
+
+<br>
+<br>
+
+##### **start**
+<br>
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#grid-item-1 {
+    justify-self: start;
+}
+```
+
+<br>
+
+![Screenshot](pictures/grid/screenshot_grid_justify_self_start.png)
+
+<br>
+<br>
+
+##### **end**
+<br>
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#grid-item-1 {
+    justify-self: end;
+}
+```
+
+<br>
+
+![Screenshot](pictures/grid/screenshot_grid_justify_self_end.png)
+
+<br>
+<br>
+
+##### **center**
+<br>
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#grid-item-1 {
+    justify-self: center;
+}
+```
+
+<br>
+
+![Screenshot](pictures/grid/screenshot_grid_justify_self_center.png)
+
+<br>
+<br>
+
+##### **stretch**
+<br>
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#grid-item-1 {
+    justify-self: stretch;
+}
+```
+
+<br>
+
+![Screenshot](pictures/grid/screenshot_grid_justify_self_stretch.png)
+
+<br>
+<br>
+
+#### **Column-Axis (align-self)**
+<br>
+
+* vertically aligns item within assigned item space
+
+<br>
+<br>
+
+##### **start**
+<br>
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#grid-item-1 {
+    align-self: start;
+}
+```
+
+<br>
+
+![Screenshot](pictures/grid/screenshot_grid_align_self_start.png)
+
+<br>
+<br>
+
+##### **end**
+<br>
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#grid-item-1 {
+    align-self: end;
+}
+```
+
+<br>
+
+![Screenshot](pictures/grid/screenshot_grid_align_self_end.png)
+
+<br>
+<br>
+
+##### **center**
+<br>
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#grid-item-1 {
+    align-self: center;
+}
+```
+
+<br>
+
+![Screenshot](pictures/grid/screenshot_grid_align_self_center.png)
+
+<br>
+<br>
+
+##### **stretch**
+<br>
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#grid-item-1 {
+    align-self: stretch;
+}
+```
+
+<br>
+
+![Screenshot](pictures/grid/screenshot_grid_align_self_stretch.png)
+
+<br>
+<br>
+
+#### **Shorthand (place-self)**
+<br>
+
+* shorthand for [align-self](#column-axis-align-self) and [justify-self](#row-axis-justify-self)
+
+<br>
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+}
+
+```
+
+<br>
+
+```css
+#grid-item-1 {
+    place-self: start center;
+}
+```
+
+equals
+
+```css
+#grid-item-1 {
+    align-self: start;
+    justify-self: center;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/grid/screenshot_grid_place_self.png)

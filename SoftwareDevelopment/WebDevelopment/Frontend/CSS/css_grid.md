@@ -51,6 +51,7 @@
     - [**Positioning**](#positioning)
       - [**Column Position**](#column-position)
       - [**Row Position**](#row-position)
+      - [**Grid Area**](#grid-area)
 
 <br>
 <br>
@@ -905,8 +906,6 @@ equals
 
 <br>
 
-<br>
-
 ```css
 .grid-container {
     display: grid;
@@ -935,3 +934,36 @@ equals
 <br>
 
 ![Screenshot](./pictures/grid/screenshot_grid_grid_row.png)
+
+<br>
+<br>
+
+#### **Grid Area**
+<br>
+
+* allows naming items and position it accordingly to [grid-template-areas](#grid-template-areas)
+
+<br>
+
+```css
+.grid-container {
+    border: 2px solid black;
+    display: grid;
+    grid-template-areas: 
+        "header header header"
+        "content . sidebar"
+        "content footer footer";
+}
+```
+
+<br>
+
+```css
+#grid-item-2 {
+    grid-area: header;
+}
+```
+
+<br>
+
+![Screenshot](./pictures/grid/screenshot_grid_grid_area.png)

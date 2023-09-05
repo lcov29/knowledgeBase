@@ -176,7 +176,7 @@ Error: 28 < 50   OR   result: 87
 <br>
 <br>
 
-**1. Result of asynchronous called functions should always be passed to the callback functions. Do not use return statements.****
+**1. Result of asynchronous called functions should always be passed to the callback functions. Do not use return statements.**
 
 <br>
 
@@ -197,6 +197,8 @@ function asyncFunction(callback) {
 
 <br>
 
+_asyncFunction()_ does not wait for setTimeout() to terminate and therefore the changed value of result is not returned:
+
 ```javascript
 asyncFunction();
 
@@ -215,7 +217,7 @@ Example:
 
 ```javascript
 function asyncFunction(callback) {
-
+  
   console.log('enter asyncFunction()');
 
   setTimeout(
@@ -229,7 +231,6 @@ function asyncFunction(callback) {
 
 <br>
 
-asyncFunction() does not wait for setTimeout() to terminated and therefore the changed 
 ```javascript
 try {
   asyncFunction();
@@ -285,7 +286,7 @@ Promise States:
 
 |State    |Description
 |:--------|:---------------------------------
-|pending  |neither fulfilled not rejected
+|pending  |neither fulfilled nor rejected
 |fulfilled|resolve method called
 |rejected |failed or reject method called 
 |settled  |fulfilled or rejected (= not pending)
@@ -517,7 +518,7 @@ console.log('normal statement');
 <br>
 
 * returns pending Promise that
-  * will resolve when any of the input promise resolves
+  * will resolve when any of the input promises resolved
   * will reject when all input promises have been rejected
 
 <br>

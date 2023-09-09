@@ -7,6 +7,7 @@
 - [**Service Worker API**](#service-worker-api)
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
+  - [**Scope**](#scope)
   - [**Events**](#events)
     - [**Install**](#install)
     - [**Activate**](#activate)
@@ -42,6 +43,18 @@ A service worker can not
 - access DOM
 - use synchronous APIs
 - dynamically import JavaScript modules
+
+<br>
+<br>
+<br>
+
+## **Scope**
+<br>
+
+- combination of _origin_ and _path_
+- scope includes all resources under _path_
+- multiple service workers can run for different paths of the same origin
+  - but only one of them is active at all times
 
 <br>
 <br>

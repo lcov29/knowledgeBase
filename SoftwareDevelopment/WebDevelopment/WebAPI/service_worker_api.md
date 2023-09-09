@@ -18,16 +18,30 @@
 <br>
 <br>
 <br>
-<br>
 
 ## **General**
+<br>
+
+A service worker is a JavaScript file that
+- runs in your browser in a different thread than the main code of the app
+- runs over HTTPs
+- runs in a worker context for a specific website
+- acts as proxy server between web application, browser and network
+  - intercept and modify network request
+  - cache resources
+  - allow access to push notifications
+  - allow background sync APIs 
+
 <br>
 
 ![Service Worker Diagram](./pictures/service_worker_overview.png)
 
 <br>
 
-
+A service worker can not
+- access DOM
+- use synchronous APIs
+- dynamically import JavaScript modules
 
 <br>
 <br>
@@ -44,7 +58,6 @@ flowchart LR
     b --> push
     b --> sync
 ```
-
 
 <br>
 <br>
@@ -84,25 +97,6 @@ flowchart LR
 <br>
 
 <!--
-
-- javascript file that
-  - runs in your browser in a different thread than the main code of your app
-  - runs over HTTPs
-  - runs in a worker context for a specific website
-  - acts as proxy server between web application, browser and network
-    - intercept and modify network request
-    - cache resources
-    - allow access to push notifications
-    - allow background sync APIs 
-
-
-
-What a Service Worker can NOT do?
-- access DOM
-- use synchronous APIs
-- dynamically import JavaScript modules
-
-
 
 Initialization
 - registered via method

@@ -8,6 +8,7 @@
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
   - [**Scope**](#scope)
+  - [**Registration**](#registration)
   - [**Events**](#events)
     - [**Install**](#install)
     - [**Activate**](#activate)
@@ -55,6 +56,41 @@ A service worker can not
 - scope includes all resources under _path_
 - multiple service workers can run for different paths of the same origin
   - but only one of them is active at all times
+
+<br>
+<br>
+<br>
+
+## **Registration**
+<br>
+
+```
+navigator.serviceWorker.register(scriptURL, [optionsObject])
+```
+
+<br>
+
+```javascript
+optionsObject = {
+  scope,                                          // relative to base URL (default: scriptURL)
+  type = 'classic' | 'module',                    // default: classic
+  updateViaCache = 'all' | 'imports' | 'none'     // controls whether service worker script are cached
+}
+```
+
+<br>
+
+Example:
+```javascript
+if ('serviceWorker' in navigator) {
+  try {
+    const registration = await navigator.serviceWorker.register('./sw.js');
+    console.log(registration);
+  } catch (error) {
+    console.log(error);
+  }
+}
+```
 
 <br>
 <br>

@@ -14,7 +14,10 @@
     - [**Key Differences To HTML**](#key-differences-to-html)
   - [**Components**](#components)
   - [**Rendering**](#rendering)
-    - [**Conditional Rendering**](#conditional-rendering)
+    - [**Application Rendering**](#application-rendering)
+    - [**Component Rendering**](#component-rendering)
+      - [**Render Process**](#render-process)
+      - [**Conditional Rendering**](#conditional-rendering)
   - [**Lists**](#lists)
   - [**Debugging**](#debugging)
 
@@ -116,6 +119,10 @@ See [Components](./react_components.md).
 
 ## **Rendering**
 <br>
+<br>
+
+### **Application Rendering**
+<br>
 
 ```javascript
 import { createRoot } from 'react-dom/client';
@@ -130,7 +137,27 @@ root.render(<App />);
 <br>
 <br>
 
-### **Conditional Rendering**
+### **Component Rendering**
+<br>
+
+#### **Render Process**
+<br>
+
+```mermaid
+flowchart LR
+  A(Trigger Render) --> B(Execute Render)
+  B --> C(Commit To DOM)
+```
+
+<br>
+
+The rendering is triggered by two events:
+- initial render ([see application rendering](#application-rendering))
+- state change of (ancestor) component
+
+<br>
+
+#### **Conditional Rendering**
 <br>
 
 ```javascript
@@ -161,7 +188,7 @@ function ConditionalElement(props) {
 <br>
 <br>
 
-Prevent element from rendering:
+Prevent element from rendering by returning `null`:
 
 ```javascript
 function ConditionalElement(props) {

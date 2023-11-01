@@ -7,6 +7,7 @@
 - [**React Hook setState**](#react-hook-setstate)
   - [**Table Of Contents**](#table-of-contents)
   - [**Basics**](#basics)
+  - [**Syntax**](#syntax)
   - [**State Update Queue Inside Event Handler**](#state-update-queue-inside-event-handler)
   - [**Using State Within Asynchronous Event Handler**](#using-state-within-asynchronous-event-handler)
   - [**Update Mutable Data State**](#update-mutable-data-state)
@@ -20,9 +21,45 @@
 ## **Basics**
 <br>
 
+- adds a state variable to a functional react component
+- must be declared at the top level of a component
 - state change triggers rerender
 - updated state value is only available **after** rerender
 - state value never changes within a render
+
+<br>
+<br>
+<br>
+
+## **Syntax**
+<br>
+
+```
+function Component() {
+   const [stateValue, updateFunction] = useState([initialValue / initializerFunction]);
+}
+```
+
+<br>
+
+|Element             |Description                                                          |Naming Convention |
+|:-------------------|:--------------------------------------------------------------------|:-----------------|
+|stateValue          |Current value of state. Do not try to modify.                        |\<StateName\>
+|updateFunction      |Allows modification of state. Triggers rerender.                     |set\<StateName\>
+|initialValue        |Initial state value after first render                               |-
+|initializerFunction |Pure function without parameters that returns an initial state value |-
+
+<br>
+
+Example:
+
+```javascript
+import { useState } from 'react';
+
+function Counter() {
+   const [counter, setCounter] = useState(0);
+}
+```
 
 <br>
 <br>
@@ -140,6 +177,8 @@ function NameInput() {
 |Remove Element   |[array.filter()](../../../../../JavaScript/javascript_array.md#filter)          |
 |Replace Elements |[array.map()](../../../../../JavaScript/javascript_array.md#map)                |
 |Sorting Elements |copy array + [array.sort()](../../../../../JavaScript/javascript_array.md#sort) |
+
+<br>
 
 Example:
 

@@ -17,6 +17,9 @@
     - [**Application Rendering**](#application-rendering)
     - [**Component Rendering**](#component-rendering)
       - [**Render Process**](#render-process)
+        - [**Trigger Render**](#trigger-render)
+        - [**Execute Render**](#execute-render)
+        - [**Commit To DOM**](#commit-to-dom)
       - [**Conditional Rendering**](#conditional-rendering)
   - [**Lists**](#lists)
   - [**Debugging**](#debugging)
@@ -150,10 +153,38 @@ flowchart LR
 ```
 
 <br>
+<br>
+
+##### **Trigger Render**
+<br>
 
 The rendering is triggered by two events:
 - initial render ([see application rendering](#application-rendering))
 - state change of (ancestor) component
+
+<br>
+<br>
+
+##### **Execute Render**
+<br>
+
+1. React calls component function
+2. Function returns JSX snapshot with current state values (updated content, props and event handlers)
+3. Iterate recursive for all nested components
+
+<br>
+<br>
+
+##### **Commit To DOM**
+<br>
+
+Initial Render:
+- add nodes of root component and its descendants to DOM via `appendChild()`
+
+<br>
+
+Rerender:
+- update DOM with minimum amount of operations
 
 <br>
 

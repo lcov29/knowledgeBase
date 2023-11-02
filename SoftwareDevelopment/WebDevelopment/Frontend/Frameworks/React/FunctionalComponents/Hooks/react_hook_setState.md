@@ -58,6 +58,32 @@ import { useState } from 'react';
 
 function Counter() {
    const [counter, setCounter] = useState(0);
+
+   // implementation
+}
+```
+
+<br>
+<br>
+
+```
+setState(nextStateValue / updateFunction)
+```
+* **nextStateValue** defines the value that the state will have after the next render
+* **updateFunction** modifies the value that the state will have after the next render based on the current value
+
+<br>
+
+Example: 
+
+```javascript
+function Counter() {
+   const [counter, setCounter] = useState(0);
+
+   const handleReset = () => setCounter(0);
+   const handleIncrement = () => setCounter((n) => n + 1);
+
+   // implementation
 }
 ```
 

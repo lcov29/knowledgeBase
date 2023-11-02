@@ -8,7 +8,7 @@
   - [**Table Of Contents**](#table-of-contents)
   - [**Basics**](#basics)
   - [**Syntax**](#syntax)
-  - [**State Update Queue Inside Event Handler**](#state-update-queue-inside-event-handler)
+  - [**Batching Of State Updates Inside Event Handler**](#batching-of-state-updates-inside-event-handler)
   - [**Using State Within Asynchronous Event Handler**](#using-state-within-asynchronous-event-handler)
   - [**Update Mutable Data State**](#update-mutable-data-state)
     - [**Update Object State**](#update-object-state)
@@ -91,7 +91,7 @@ function Counter() {
 <br>
 <br>
 
-## **State Update Queue Inside Event Handler**
+## **Batching Of State Updates Inside Event Handler**
 <br>
 
 - allows multiple state updates without triggering rerendering after each change 

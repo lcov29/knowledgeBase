@@ -13,6 +13,8 @@
   - [**Update Mutable Data State**](#update-mutable-data-state)
     - [**Update Object State**](#update-object-state)
     - [**Update Array State**](#update-array-state)
+  - [**Reset State Via Key Property**](#reset-state-via-key-property)
+  - [**Track State Of Previous Renders**](#track-state-of-previous-renders)
 
 <br>
 <br>
@@ -230,3 +232,58 @@ function StateArrayTest(): ReactElement {
 
 - pushing a new entry to array state via `correctClickHandler` is rendered, because it pushes new entry to a clone of the array
 - pushing a new entry to array state via `incorrectClickHandler` is not rendered, because the state is not updated with a new array reference
+
+<br>
+<br>
+<br>
+
+## **Reset State Via Key Property**
+<br>
+
+<!-- TODO: Add Section -->
+
+<br>
+<br>
+<br>
+
+## **Track State Of Previous Renders**
+<br>
+
+**Avoid this pattern if possible!**
+
+<br>
+
+**Core idea:**
+
+- store previous state in separate state
+- check before each render if current state is different than previous state
+  - if yes, set previous state to current state and handle change with code
+
+<br>
+
+Example:
+
+```javascript
+function Counter() {
+   const [counter, setCounter] = useState(0);
+   const [previousCounter, setPreviousCounter] = useState(0);
+   const [changeText, setChangeText] = useState('');
+
+   const hasCounterChanged = counter !== previousCounter;
+
+   if (hasCounterChanged) {
+      const hasCounterIncreased = counter > previousCounter;
+      const text = (hasCounterIncreased) ? 'Counter increased' : 'Counter decreased';
+      setChangeText(text);
+      setPreviousCounter(counter);
+   }
+
+   return (
+      <>
+         <button type="button" onClick={() => setCounter(counter - 1)}>-</button>
+         <span>{`${counter} - ${changeText}`}</span>
+         <button type="button" onClick={() => setCounter(counter + 1)}>+</button>
+      </>
+   );
+}
+```

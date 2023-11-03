@@ -8,7 +8,7 @@
   - [**Table Of Contents**](#table-of-contents)
   - [**Basics**](#basics)
   - [**Syntax**](#syntax)
-  - [**Batching Of State Updates Inside Event Handler**](#batching-of-state-updates-inside-event-handler)
+  - [**Batching Of State Updates (Event Handlers And Component Code)**](#batching-of-state-updates-event-handlers-and-component-code)
   - [**Using State Within Asynchronous Event Handler**](#using-state-within-asynchronous-event-handler)
   - [**Update Mutable Data State**](#update-mutable-data-state)
     - [**Update Object State**](#update-object-state)
@@ -93,16 +93,17 @@ function Counter() {
 <br>
 <br>
 
-## **Batching Of State Updates Inside Event Handler**
+## **Batching Of State Updates (Event Handlers And Component Code)**
 <br>
 
 - allows multiple state updates without triggering rerendering after each change 
-  - all state updates **inside an event handler** are added to the queue
+  - all state updates **inside an event handler or from component code** are added to the queue
   - queue is processed as a batch at the end of the event handler
 
 <br>
+<br>
 
-Example:
+Example Event Handler:
 
 ```javascript
 function Counter() {
@@ -133,6 +134,30 @@ function Counter() {
 |5    |set count to 4 (**queue content from step 2**)                                    |
 |6    |execute function and increment count to 4 + 3 = 7 (**queue content from step 3**) |
 |7    |trigger rerender                                                                  |
+
+<br>
+<br>
+
+Example Component Code:
+
+```javascript
+function MultipleStateUpdate() {
+   const [counter, setCounter] = useState(0);
+   const [update, setUpdate] = useState(true);
+
+   if (update) {
+      setCounter((n) => n + 1);
+      setCounter((n) => n + 1);
+      setCounter((n) => n + 1);
+      setUpdate(false);
+   }
+
+   return <p>{`Counter: ${counter}`}</p>;
+}
+```
+
+- component immediately renders after initial render
+- all state updates are batched, therefore the counter value on the second render is 3
 
 <br>
 <br>

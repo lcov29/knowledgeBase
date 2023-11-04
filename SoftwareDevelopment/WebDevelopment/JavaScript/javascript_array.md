@@ -42,6 +42,7 @@
       - [**slice()**](#slice)
       - [**concat()**](#concat)
       - [**join()**](#join)
+      - [**fill()**](#fill)
   
 <br>
 <br>
@@ -935,4 +936,37 @@ join([separator])
 let array = ['f', 'o', 'o'];
 console.log(array.join());                    // output: f,o,o
 console.log(array.join('---'));               // output: f---o---o
+```
+
+<br>
+<br>
+
+#### **fill()**
+<br>
+
+* set all elements in a specified range to a static value
+* modifies array
+
+<br>
+
+Parameters:
+* value
+* start
+    * optional zero-based start index of range to copy
+    * if undefined, range starts at index 0
+* end
+    * optional end index of range (first element to not include in copy)
+    * if undefined, range ends at array.length
+
+<br>
+
+```javascript
+let array = [1, 2, 3, 4];
+array.fill(2);                        // array = [2, 2, 2, 2]
+
+array = [1, 2, 3, 4];
+array.fill(8, 1);                     // array = [1, 8, 8, 8]
+
+array = [1, 2, 3, 4];
+array.fill(8, 1, 3);                  // array = [1, 8, 8, 4]
 ```

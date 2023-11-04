@@ -14,6 +14,9 @@
   - [**Destructuring**](#destructuring)
   - [**Spread Operator**](#spread-operator)
   - [**Methods**](#methods)
+    - [**Accessing Elements**](#accessing-elements)
+      - [**Array\[\]**](#array)
+      - [**at()**](#at)
     - [**Adding And Deleting Elements**](#adding-and-deleting-elements)
       - [**push()**](#push)
       - [**unshift()**](#unshift)
@@ -211,7 +214,6 @@ output:
 */
 ```
 
-
 <br>
 <br>
 <br>
@@ -258,6 +260,46 @@ let concatArray = [...array, ...array2];
 
 ## **Methods**
 
+<br>
+<br>
+
+### **Accessing Elements**
+<br>
+<br>
+
+#### **Array[]**
+<br>
+
+* returns element at specified index
+* index is zero-based
+
+```javascript
+const array = [1, 2, 3, 4, 5];
+
+array.[0];                  // returns 1
+array.[2];                  // returns 3
+```
+
+<br>
+<br>
+
+#### **at()**
+<br>
+
+* returns element at specified index
+* positive index is zero-based
+* allows selection from end of array via negative index
+
+```javascript
+const array = [1, 2, 3, 4, 5];
+
+array.at(0);                // returns 1
+array.at(2);                // returns 3
+array.at(-1);               // returns 5
+array.at(-3);               // returns 3
+```
+
+<br>
 <br>
 <br>
 

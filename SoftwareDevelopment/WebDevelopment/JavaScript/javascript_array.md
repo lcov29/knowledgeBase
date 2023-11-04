@@ -31,6 +31,7 @@
       - [**indexOf()**](#indexof)
       - [**lastIndexOf()**](#lastindexof)
       - [**find()**](#find)
+      - [**findIndex()**](#findindex)
       - [**filter()**](#filter)
       - [**includes()**](#includes)
       - [**every()**](#every)
@@ -596,6 +597,62 @@ console.log(found);                               // output: 5
 <br>
 <br>
 
+#### **findIndex()**
+
+* returns index of _first_ element that matches the custom findFunction
+* returns -1 if no element matches the custom findFunction
+
+<br>
+
+Parameters:
+* _findFunction_
+  * _element_
+  * _index_
+  * _array_
+* _thisArg_: optional reference to use as _this_ within the findFunction
+
+<br>
+
+```javascript
+// general
+findIndex(findFunction, [thisArg])
+
+
+// arrow findFunction
+findIndex((element) => { /* implementation */})
+findIndex((element, index) => { /* implementation */})
+findIndex((element, index, array) => { /* implementation */})
+
+
+// callback findFunction
+findIndex(findFunction)
+findIndex(findFunction, thisArg)
+
+
+// inline callback findFunction
+findIndex(function(element) { /* implementation */ })
+findIndex(function(element, index) { /* implementation */ })
+findIndex(function(element, index, array) { /* implementation */ })
+findIndex(function(element, index, array) { /* implementation */ }, thisArg)
+```
+
+<br>
+
+```javascript
+let array = [10, 5, 4, 17, 3, 8];
+
+array.findIndex(element => element < 5);               // returns index 2
+
+function isOddNumber(element, index, array) {
+  return element % 2 !== 0;
+}
+
+array.findIndex(isOddNumber);                          // returns index 1
+```
+
+<br>
+<br>
+
 #### **filter()**
 
 * returns new array containing all elements that match the custom findFunction
@@ -942,7 +999,6 @@ console.log(array.join('---'));               // output: f---o---o
 <br>
 
 #### **fill()**
-<br>
 
 * set all elements in a specified range to a static value
 * modifies array

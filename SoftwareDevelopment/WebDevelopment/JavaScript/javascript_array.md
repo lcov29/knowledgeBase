@@ -34,14 +34,15 @@
       - [**findLast()**](#findlast)
       - [**findIndex()**](#findindex)
       - [**findLastIndex()**](#findlastindex)
-      - [**filter()**](#filter)
       - [**includes()**](#includes)
       - [**every()**](#every)
       - [**some()**](#some)
-    - [**Other Methods**](#other-methods)
-      - [**forEach()**](#foreach)
+    - [**Get Modified Array Copy**](#get-modified-array-copy)
+      - [**filter()**](#filter)
       - [**map()**](#map)
       - [**reduce()**](#reduce)
+    - [**Other Methods**](#other-methods)
+      - [**forEach()**](#foreach)
       - [**slice()**](#slice)
       - [**concat()**](#concat)
       - [**join()**](#join)
@@ -767,45 +768,6 @@ array.findLastIndex(isOddNumber);                       // returns index 4
 <br>
 <br>
 
-#### **filter()**
-
-* returns new array containing all elements that match the custom findFunction
-
-```javascript
-// general
-filter(findFunction, [thisArg])
-
-
-// arrow findFunction
-filter((element) => { /* implementation */})
-filter((element, index) => { /* implementation */})
-filter((element, index, array) => { /* implementation */})
-
-
-// callback findFunction
-filter(findFunction)
-filter(findFunction, thisArg)
-
-
-// inline callback findFunction
-filter(function(element) { /* implementation */ })
-filter(function(element, index) { /* implementation */ })
-filter(function(element, index, array) { /* implementation */ })
-filter(function(element, index, array) { /* implementation */ }, thisArg)
-```
-
-<br>
-
-```javascript
-let array = [10, 5, 4, 17, 3, 8];
-
-let filteredArray1 = array.filter(element => element < 8);
-console.log(array);                                           // output [10, 5, 4, 17, 3, 8]
-console.log(filteredArray1);                                  // output [5, 4, 3]
-```
-<br>
-<br>
-
 #### **includes()**
 
 * returns boolean indicating whether array includes element
@@ -874,36 +836,44 @@ console.log(result);                                  // output: false
 <br>
 <br>
 
-### **Other Methods**
+### **Get Modified Array Copy**
 <br>
 
-#### **forEach()**
+#### **filter()**
 
-* executes function once for every element
-
-<br>
-
-Parameters:
-* _customFunction_
-  * _element_
-  * _index_
-  * _array_
-* _thisArg_: optional reference to use as _this_ within the function
-
-<br>
+* returns new array containing all elements that match the custom findFunction
 
 ```javascript
-forEach(customFunction, [thisArg])
+// general
+filter(findFunction, [thisArg])
+
+
+// arrow findFunction
+filter((element) => { /* implementation */})
+filter((element, index) => { /* implementation */})
+filter((element, index, array) => { /* implementation */})
+
+
+// callback findFunction
+filter(findFunction)
+filter(findFunction, thisArg)
+
+
+// inline callback findFunction
+filter(function(element) { /* implementation */ })
+filter(function(element, index) { /* implementation */ })
+filter(function(element, index, array) { /* implementation */ })
+filter(function(element, index, array) { /* implementation */ }, thisArg)
 ```
 
 <br>
 
 ```javascript
-let array = [1, 2, 3];
+let array = [10, 5, 4, 17, 3, 8];
 
-array.forEach(element => console.log(element));
-
-// Output: 1 2 3
+let filteredArray1 = array.filter(element => element < 8);
+console.log(array);                                           // output [10, 5, 4, 17, 3, 8]
+console.log(filteredArray1);                                  // output [5, 4, 3]
 ```
 
 <br>
@@ -1013,6 +983,42 @@ console.log(result);
  7: 1
 }
 */
+```
+
+<br>
+<br>
+<br>
+
+### **Other Methods**
+<br>
+
+#### **forEach()**
+
+* executes function once for every element
+
+<br>
+
+Parameters:
+* _customFunction_
+  * _element_
+  * _index_
+  * _array_
+* _thisArg_: optional reference to use as _this_ within the function
+
+<br>
+
+```javascript
+forEach(customFunction, [thisArg])
+```
+
+<br>
+
+```javascript
+let array = [1, 2, 3];
+
+array.forEach(element => console.log(element));
+
+// Output: 1 2 3
 ```
 
 <br>

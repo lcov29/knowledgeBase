@@ -16,19 +16,20 @@
     - [**Accessing Elements**](#accessing-elements)
       - [**Array\[\]**](#array)
       - [**at()**](#at)
-    - [**Adding And Deleting Elements**](#adding-and-deleting-elements)
+    - [**Adding Elements**](#adding-elements)
       - [**push()**](#push)
       - [**unshift()**](#unshift)
+    - [**Removing Elements**](#removing-elements)
       - [**pop()**](#pop)
       - [**shift()**](#shift)
-      - [**splice()**](#splice)
-      - [**copyWithin()**](#copywithin)
     - [**Iterating over elements**](#iterating-over-elements)
       - [**For Loops**](#for-loops)
       - [**forEach()**](#foreach)
     - [**Sorting**](#sorting)
       - [**sort()**](#sort)
+      - [**toSorted()**](#tosorted)
       - [**reverse()**](#reverse)
+      - [**toReversed()**](#toreversed)
     - [**Searching**](#searching)
       - [**indexOf()**](#indexof)
       - [**lastIndexOf()**](#lastindexof)
@@ -44,8 +45,11 @@
       - [**filter()**](#filter)
       - [**map()**](#map)
       - [**reduce()**](#reduce)
-    - [**Other Methods**](#other-methods)
+    - [**Multifunctional Manipulation Methods**](#multifunctional-manipulation-methods)
+      - [**splice()**](#splice)
+      - [**copyWithin()**](#copywithin)
       - [**slice()**](#slice)
+    - [**Other Methods**](#other-methods)
       - [**concat()**](#concat)
       - [**join()**](#join)
       - [**fill()**](#fill)
@@ -282,12 +286,13 @@ array.at(-3);               // returns 3
 <br>
 <br>
 
-### **Adding And Deleting Elements**
+### **Adding Elements**
 <br>
 
 #### **push()**
 
-* adds one or more elements to the **end** of an array and returns new length
+* adds one or more elements to the **end** of an array
+* returns new length
 ```javascript
 let array = [1, 2, 3];
 array.push(4);
@@ -302,7 +307,8 @@ console.log(array);         // output: [1, 2, 3, 4, 5, 6, 7]
 
 #### **unshift()**
 
-* adds one or more elements to the **start** of an array and returns new length
+* adds one or more elements to the **start** of an array
+* returns new length
 ```javascript
 let array = [1, 2, 3];
 array.unshift(4);
@@ -313,6 +319,10 @@ console.log(array);         // output: [5, 6, 7, 4, 1, 2, 3]
 ```
 
 <br>
+<br>
+<br>
+
+### **Removing Elements**
 <br>
 
 #### **pop()**
@@ -336,75 +346,6 @@ console.log(array);         // output: [1, 2]
 let array = [1, 2, 3];
 console.log(array.shift());   // output: 1
 console.log(array);           // output: [2, 3]
-```
-
-<br>
-<br>
-
-#### **splice()**
-
-* removes or replaces existing elements 
-* adds new elements
-* returns array of deleted elements
-
-```javascript
-array.splice(startIndexToInsertElements, numberOfElementsToRemoveFromStart, elementsToAdd)
-```
-
-<br>
-
-```javascript
-let array = ['A', 'C', 'D', 'X'];
-
-array.splice(1, 0, 'B');
-console.log(array);                     // output: [A, B, C, D, X]
-
-console.log(array.splice(4, 1, 'E'));   // output: [X]
-console.log(array);                     // output: [A, B, C, D, E]
-
-array.splice(5, 1, 'I');
-console.log(array);                     // output: [A, B, C, D, E, I]
-
-array.splice(200, 1, 'J');
-console.log(array);                     // output: [A, B, C, D, E, I, J]
-
-array.splice(5, 0, 'F', 'G', 'H');
-console.log(array);                     // output: [A, B, C, D, E, F, G, H, I, J]
-```
-
-<br>
-<br>
-
-#### **copyWithin()**
-
-* shallow copies parts of an array to another location in the same array
-* elements at targetIndex get replaces --> array length does not change
-
-<br>
-
-Parameters:
-* _targetIndex_
-* _startIndex_
-    * optional (0 if undefined)
-* _endIndex_
-    * optional (array.length if undefined)
-    * endIndex is not included in range
-
-<br>
-
-```javascript
-copyWithin(target, [start], [end])
-```
-
-```javascript
-let array = ['A', 'B', 'C', 'D'];
-console.log(array.copyWithin(-1));          // output: ['A', 'B', 'C', 'A']
-
-array = ['A', 'B', 'C', 'D']
-console.log(array.copyWithin(0, 2));        // output: ['C', 'D', 'C', 'D']
-
-array = ['A', 'B', 'C', 'D']
-console.log(array.copyWithin(0, 2, 3));        // output: ['C', 'B', 'C', 'D']
 ```
 
 <br>
@@ -476,7 +417,7 @@ array.forEach(element => console.log(element));
 
 #### **sort()**
 
-* sorts array in ascending order
+* sorts array elements in ascending order
 * optional custom compare function
 
 ```javascript
@@ -497,16 +438,48 @@ sort(function compareFunctionName(a, b) { /* implementation */ })
 
 ```javascript
 let array = [3, 6, 3, 2, 10, 37];
-array.sort();
-console.log(array);                                     // output: [10, 2, 3, 3, 37, 6]
+array.sort();                                     // array = [10, 2, 3, 3, 37, 6]
 
 let array2 = ['x', 'hello', 'a', 't'];
-array2.sort();
-console.log(array2);                                    // output: [a, hello, t, x]
+array2.sort();                                    // array2 = [a, hello, t, x]
 
 let array3 = [3, 6, 3, 2, 10, 37];
-array3.sort((a,b) => {return Number(a) - Number(b)});
-console.log(array3);                                    // output: [2, 3, 3, 6, 10, 37]
+array3.sort((a,b) => a - b);                      // array3 = [2, 3, 3, 6, 10, 37]
+```
+
+<br>
+<br>
+
+#### **toSorted()**
+
+* returns **copy** of array sorted in ascending order
+* optional custom compare function
+
+```javascript
+toSorted();
+
+toSorted(compareFunctionName);
+
+toSorted((a,b) => { /* implementation of compare function (a: first element, b: last element) */ });
+
+toSorted(function compareFunctionName(a, b) { /* implementation */ })
+
+// compareFunction(a, b) > 0      ==>   sort b before a
+// compareFunction(a, b) < 0      ==>   sort a before b
+// compareFunction(a, b) === 0    ==>   keep original order of a and b
+```
+
+<br>
+
+```javascript
+const array = [3, 6, 3, 2, 10, 37];
+array.toSorted();                               // returns [10, 2, 3, 3, 37, 6]
+
+const array2 = ['x', 'hello', 'a', 't'];
+array2.toSorted();                              // returns [a, hello, t, x]
+
+const array3 = [3, 6, 3, 2, 10, 37];
+array3.toSorted((a,b) => a - b);                // returns [2, 3, 3, 6, 10, 37]
 ```
 
 <br>
@@ -514,12 +487,24 @@ console.log(array3);                                    // output: [2, 3, 3, 6, 
 
 #### **reverse()**
 
-* returns array with reversed order of elements
+* reverses order of array elements
 
 ```javascript
-let array = [4, 34, 2, 7];
-array.reverse();
-console.log(array);                                     // output: [7, 2, 34, 4]
+const array = [4, 34, 2, 7];
+array.reverse();                            // array: [7, 2, 34, 4]
+```
+
+<br>
+<br>
+
+#### **toReversed()**
+<br>
+
+* returns **copy** of array with reversed order or elements
+
+```javascript
+const array = [4, 34, 2, 7];
+array.toReversed();                         // returns [7, 2, 34, 4]
 ```
 
 <br>
@@ -1027,7 +1012,76 @@ console.log(result);
 <br>
 <br>
 
-### **Other Methods**
+### **Multifunctional Manipulation Methods**
+<br>
+
+#### **splice()**
+
+* removes or replaces existing elements 
+* adds new elements
+* returns array of deleted elements
+
+```javascript
+array.splice(startIndexToInsertElements, numberOfElementsToRemoveFromStart, elementsToAdd)
+```
+
+<br>
+
+```javascript
+let array = ['A', 'C', 'D', 'X'];
+
+array.splice(1, 0, 'B');
+console.log(array);                     // output: [A, B, C, D, X]
+
+console.log(array.splice(4, 1, 'E'));   // output: [X]
+console.log(array);                     // output: [A, B, C, D, E]
+
+array.splice(5, 1, 'I');
+console.log(array);                     // output: [A, B, C, D, E, I]
+
+array.splice(200, 1, 'J');
+console.log(array);                     // output: [A, B, C, D, E, I, J]
+
+array.splice(5, 0, 'F', 'G', 'H');
+console.log(array);                     // output: [A, B, C, D, E, F, G, H, I, J]
+```
+
+<br>
+<br>
+
+#### **copyWithin()**
+
+* shallow copies parts of an array to another location in the same array
+* elements at targetIndex get replaces --> array length does not change
+
+<br>
+
+Parameters:
+* _targetIndex_
+* _startIndex_
+    * optional (0 if undefined)
+* _endIndex_
+    * optional (array.length if undefined)
+    * endIndex is not included in range
+
+<br>
+
+```javascript
+copyWithin(target, [start], [end])
+```
+
+```javascript
+let array = ['A', 'B', 'C', 'D'];
+console.log(array.copyWithin(-1));          // output: ['A', 'B', 'C', 'A']
+
+array = ['A', 'B', 'C', 'D']
+console.log(array.copyWithin(0, 2));        // output: ['C', 'D', 'C', 'D']
+
+array = ['A', 'B', 'C', 'D']
+console.log(array.copyWithin(0, 2, 3));        // output: ['C', 'B', 'C', 'D']
+```
+
+<br>
 <br>
 
 #### **slice()**
@@ -1070,6 +1124,10 @@ console.log(array2);                              // [B, C]
 ```
 
 <br>
+<br>
+<br>
+
+### **Other Methods**
 <br>
 
 #### **concat()**

@@ -16,6 +16,9 @@
     - [**Accessing Elements**](#accessing-elements)
       - [**Array\[\]**](#array)
       - [**at()**](#at)
+    - [**Update Elements**](#update-elements)
+      - [**Array\[\]**](#array-1)
+      - [**with()**](#with)
     - [**Adding Elements**](#adding-elements)
       - [**push()**](#push)
       - [**unshift()**](#unshift)
@@ -280,6 +283,38 @@ array.at(0);                // returns 1
 array.at(2);                // returns 3
 array.at(-1);               // returns 5
 array.at(-3);               // returns 3
+```
+
+<br>
+<br>
+<br>
+
+### **Update Elements**
+<br>
+
+#### **Array[]**
+
+* updates element at specified index
+
+```javascript
+const array = [1, 2, 3, 4];
+array[1] = 8;
+
+// array = [1, 8, 3, 4]
+```
+
+<br>
+<br>
+
+#### **with()**
+<br>
+
+* returns a new array with updated element at specified index
+
+```javascript
+const array = [1, 2, 3, 4];
+array.with(2, 8);                 // returns new array [1, 2, 8, 4] 
+array.with(-1, 6);                // returns new array [1, 2, 3, 6]
 ```
 
 <br>

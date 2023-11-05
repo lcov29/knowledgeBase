@@ -49,6 +49,7 @@
       - [**concat()**](#concat)
       - [**join()**](#join)
       - [**fill()**](#fill)
+      - [**flat()**](#flat)
   
 <br>
 <br>
@@ -1150,4 +1151,28 @@ array.fill(8, 1);                     // array = [1, 8, 8, 8]
 
 array = [1, 2, 3, 4];
 array.fill(8, 1, 3);                  // array = [1, 8, 8, 4]
+```
+
+<br>
+<br>
+
+#### **flat()**
+
+* returns new array with elements of sub arrays concatenated up to specified depth
+
+<br>
+
+Parameters:
+* depth
+
+<br>
+
+```javascript
+const array1 = [1, 2, [3, 4], 5];
+array1.flat();                                      // return [1, 2, 3, 4, 5]
+
+const array2 = [1, [2, 3, [4, 5, [6, 7]]]];
+array2.flat(1);                                     // return [1, 2, 3, Array(3)]
+array2.flat(2);                                     // return [1, 2, 3, 4, 5, Array(2)]
+array2.flat(Infinity);                              // return [1, 2, 3, 4, 5, 6, 7]
 ```

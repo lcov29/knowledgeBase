@@ -10,7 +10,6 @@
   - [**Ways To Create Arrays**](#ways-to-create-arrays)
     - [**Constructor Function Array()**](#constructor-function-array)
     - [**Array Literal**](#array-literal)
-  - [**Iterating over elements**](#iterating-over-elements)
   - [**Destructuring**](#destructuring)
   - [**Spread Operator**](#spread-operator)
   - [**Methods**](#methods)
@@ -24,6 +23,9 @@
       - [**shift()**](#shift)
       - [**splice()**](#splice)
       - [**copyWithin()**](#copywithin)
+    - [**Iterating over elements**](#iterating-over-elements)
+      - [**For Loops**](#for-loops)
+      - [**forEach()**](#foreach)
     - [**Sorting**](#sorting)
       - [**sort()**](#sort)
       - [**reverse()**](#reverse)
@@ -43,7 +45,6 @@
       - [**map()**](#map)
       - [**reduce()**](#reduce)
     - [**Other Methods**](#other-methods)
-      - [**forEach()**](#foreach)
       - [**slice()**](#slice)
       - [**concat()**](#concat)
       - [**join()**](#join)
@@ -93,35 +94,6 @@ const array3 = new Array(1, 3.14, 'foo');   // optional: create an array with va
 const array1 = [];                          // empty array
 
 const array2 = [1, 3.13, 'foo'];            // create an array with values
-```
-
-<br>
-<br>
-<br>
-
-## **Iterating over elements**
-<br>
-
-```javascript
-let array = ['A', 'B', 'C'];
-
-
-// count loop over index
-for (let i = 0; i < array.length; i++) {
-  console.log(array[i]);
-}
-
-
-// iterate over index
-for (let index in array) {
-  console.log(array[index]);
-}
-
-
-// iterate over values
-for (let value of array) {
-  console.log(value);
-}
 ```
 
 <br>
@@ -432,6 +404,66 @@ console.log(array.copyWithin(0, 2));        // output: ['C', 'D', 'C', 'D']
 
 array = ['A', 'B', 'C', 'D']
 console.log(array.copyWithin(0, 2, 3));        // output: ['C', 'B', 'C', 'D']
+```
+
+<br>
+<br>
+<br>
+
+### **Iterating over elements**
+<br>
+
+#### **For Loops**
+
+```javascript
+const array = ['A', 'B', 'C'];
+
+// count loop over index
+for (let i = 0; i < array.length; i++) {
+  console.log(array[i]);
+}
+
+// iterate over index
+for (let index in array) {
+  console.log(array[index]);
+}
+
+// iterate over values
+for (let value of array) {
+  console.log(value);
+}
+```
+
+<br>
+<br>
+
+#### **forEach()**
+
+* executes function once for every element
+
+<br>
+
+Parameters:
+* _customFunction_
+  * _element_
+  * _index_
+  * _array_
+* _thisArg_: optional reference to use as _this_ within the function
+
+<br>
+
+```javascript
+forEach(customFunction, [thisArg])
+```
+
+<br>
+
+```javascript
+let array = [1, 2, 3];
+
+array.forEach(element => console.log(element));
+
+// Output: 1 2 3
 ```
 
 <br>
@@ -995,38 +1027,6 @@ console.log(result);
 <br>
 
 ### **Other Methods**
-<br>
-
-#### **forEach()**
-
-* executes function once for every element
-
-<br>
-
-Parameters:
-* _customFunction_
-  * _element_
-  * _index_
-  * _array_
-* _thisArg_: optional reference to use as _this_ within the function
-
-<br>
-
-```javascript
-forEach(customFunction, [thisArg])
-```
-
-<br>
-
-```javascript
-let array = [1, 2, 3];
-
-array.forEach(element => console.log(element));
-
-// Output: 1 2 3
-```
-
-<br>
 <br>
 
 #### **slice()**

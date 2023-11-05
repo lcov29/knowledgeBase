@@ -34,6 +34,7 @@
       - [**findLast()**](#findlast)
       - [**findIndex()**](#findindex)
       - [**findLastIndex()**](#findlastindex)
+    - [**Checking Elements**](#checking-elements)
       - [**includes()**](#includes)
       - [**every()**](#every)
       - [**some()**](#some)
@@ -766,6 +767,10 @@ array.findLastIndex(isOddNumber);                       // returns index 4
 ```
 
 <br>
+<br>
+<br>
+
+### **Checking Elements**
 <br>
 
 #### **includes()**

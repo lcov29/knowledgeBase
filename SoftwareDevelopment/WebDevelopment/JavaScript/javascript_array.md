@@ -642,13 +642,13 @@ findLast(function(element, index, array) { /* implementation */ }, thisArg)
 ```javascript
 let array = [10, 5, 4, 17, 3, 8];
 
-array.findLast(element => element > 9);           // output: 17
+array.findLast(element => element > 9);               // output: 17
 
 function isOddNumber(element, index, array) {
   return element % 2 !== 0;
 }
 
-array.find(isOddNumber);                          // output: 3
+array.findLast(isOddNumber);                          // output: 3
 ```
 
 <br>

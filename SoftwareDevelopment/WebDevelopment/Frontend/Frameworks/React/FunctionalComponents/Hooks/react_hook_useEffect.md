@@ -98,4 +98,32 @@ function Component() {
 ### **Connecting To External System**
 <br>
 
-Lets assume we want to connect to the [DOM](../../../../../WebAPI/document_object_model_api.md) to register an event listener
+Lets assume we want to connect to the [DOM](../../../../../WebAPI/document_object_model_api.md) to register an event listener to the global window object.
+
+<br>
+
+
+```javascript
+function UseEffectDomManipulation() {
+
+   const [rerenderTrigger, setRerenderTrigger] = useState(true);
+
+   useEffect(() => {
+      const handlePointerDown = () => console.log('pointer down');
+      
+      window.addEventListener('pointerdown', handlePointerDown);
+
+      const cleanUp = () => {
+         window.removeEventListener('pointerdown', handlePointerDown);
+      };
+
+      return cleanUp;
+   }, [rerenderTrigger]);
+
+   return (
+      <button type="button" onClick={() => setRerenderTrigger(!rerenderTrigger)}>
+         Rerender Component
+      </button>
+   );
+}
+```

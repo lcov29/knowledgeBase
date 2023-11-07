@@ -104,13 +104,10 @@ Lets assume we want to connect to the [DOM](../../../../../WebAPI/document_objec
 
 
 ```javascript
-function UseEffectDomManipulation() {
-
-   const [rerenderTrigger, setRerenderTrigger] = useState(true);
+function ComponentName() {
 
    useEffect(() => {
       const handlePointerDown = () => console.log('pointer down');
-      
       window.addEventListener('pointerdown', handlePointerDown);
 
       const cleanUp = () => {
@@ -118,12 +115,8 @@ function UseEffectDomManipulation() {
       };
 
       return cleanUp;
-   }, [rerenderTrigger]);
+   }, []);
 
-   return (
-      <button type="button" onClick={() => setRerenderTrigger(!rerenderTrigger)}>
-         Rerender Component
-      </button>
-   );
+   return <p>Component Implementation</p>;
 }
 ```

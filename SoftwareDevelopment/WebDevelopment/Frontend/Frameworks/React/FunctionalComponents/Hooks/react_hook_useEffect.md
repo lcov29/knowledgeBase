@@ -73,6 +73,10 @@ function Component() {
   useEffect(() => { /* implementation */ }, [reactValue]);
 
 
+  // trigger on update of any of the provided reactValues
+  useEffect(() => { /* implementation */ }, [reactValue1, reactValue2, reactValue3]);
+
+
   // clean up
   useEffect(
     () => { 

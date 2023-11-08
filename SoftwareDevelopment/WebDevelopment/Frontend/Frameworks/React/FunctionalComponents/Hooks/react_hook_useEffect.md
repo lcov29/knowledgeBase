@@ -61,11 +61,11 @@ function Component() {
 ```javascript
 function Component() {
   
-  // trigger every render
+  // trigger after every render
   useEffect(() => { /* implementation */ });
 
 
-  // trigger only on initial render
+  // trigger only after initial render
   useEffect(() => { /* implementation */ }, []);
 
 

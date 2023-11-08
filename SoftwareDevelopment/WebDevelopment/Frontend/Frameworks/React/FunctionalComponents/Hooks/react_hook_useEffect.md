@@ -11,6 +11,7 @@
   - [**Lifecycle Options**](#lifecycle-options)
   - [**Use Cases**](#use-cases)
     - [**Connecting To External System**](#connecting-to-external-system)
+    - [**Fetching Data From External System**](#fetching-data-from-external-system)
 
 <br>
 <br>
@@ -68,8 +69,8 @@ function Component() {
   useEffect(() => { /* implementation */ }, []);
 
 
-  // trigger on update of someValue
-  useEffect(() => { /* implementation */ }, [someValue]);
+  // trigger on update of reactValue
+  useEffect(() => { /* implementation */ }, [reactValue]);
 
 
   // clean up
@@ -102,7 +103,6 @@ Lets assume we want to connect to the [DOM](../../../../../WebAPI/document_objec
 
 <br>
 
-
 ```javascript
 function ComponentName() {
 
@@ -118,5 +118,32 @@ function ComponentName() {
    }, []);
 
    return <p>Component Implementation</p>;
+}
+```
+
+<br>
+<br>
+<br>
+
+### **Fetching Data From External System**
+<br>
+
+```javascript
+function PersonInformation() {
+  const [personId, setPersonId] = useState(0);
+  const [personInfo, setPersonInfo] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      const result = await fetch('/some/api/route');
+      if (response.ok) {
+        const data = await response.json();
+        setPersonInfo(data);
+      }
+    }
+    const
+  }, [personId]);
+
+  // implementation...
 }
 ```

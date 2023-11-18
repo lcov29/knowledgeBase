@@ -146,7 +146,7 @@
 
 |Pro               |Con
 |:-----------------|:--------
-|higher throughput |not flowcontrol or error handling (has to be implemented in higher layers)
+|higher throughput |no flowcontrol or error handling (has to be implemented in higher layers)
 |less network load |
 
 <br>
@@ -160,10 +160,10 @@
 |Layer |Name               |Summary                                                                                              |**P**rotocol **D**ata **U**nit
 |:----:|:------------------|:--------------------------------------------------------------------------------------------------- |:---------------------------
 |7     |Application Layer  |Applications using the network                                                                       |Data
-|6     |Presentation Layer |Encoding/decoding, compression/decompression, encyryption/decryption and conversion of Data          |Data
+|6     |Presentation Layer |Encoding/decoding, compression/decompression, encryption/decryption and conversion of Data          |Data
 |5     |Session Layer      |Starts, manages and ends communication between hosts (session)                                       |Data
 |4     |Transport Layer    |Transfer data from a source process on a source host to a destination process on a destination host  |Segment, Datagram
-|3     |Network Layer      |Logical addressing and Routing from source host to destination host                                  |Packet
+|3     |Network Layer      |Logical addressing and routing from source host to destination host                                  |Packet
 |2     |Data Link Layer    |Data transfer between two directly connected nodes including flow control and error handling         |Frame
 |1     |Physical Layer     |Physical transfer of raw unstructured data between devices via electrical, radio, or optical signals |Bit
 

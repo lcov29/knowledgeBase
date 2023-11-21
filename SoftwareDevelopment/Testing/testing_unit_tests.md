@@ -14,6 +14,7 @@
       - [**Test Externally Observable Behaviour - Not Implementation Details**](#test-externally-observable-behaviour---not-implementation-details)
       - [**Test General And Edge Cases**](#test-general-and-edge-cases)
       - [**Avoid Logic Like If-Statements Or Loops Inside Of Tests**](#avoid-logic-like-if-statements-or-loops-inside-of-tests)
+      - [**Write A Test That Reproduces A Bug Before Fixing It**](#write-a-test-that-reproduces-a-bug-before-fixing-it)
     - [**Test Structure**](#test-structure)
       - [**Use Arrange-Act-Assert-Pattern**](#use-arrange-act-assert-pattern)
       - [**Nest Test Suites Logically**](#nest-test-suites-logically)
@@ -25,6 +26,7 @@
       - [**Pattern: Unit-Expected-Scenario**](#pattern-unit-expected-scenario)
       - [**Pattern: Unit-Scenario-Expected**](#pattern-unit-scenario-expected)
   - [**Managing External Dependencies (Services or Components)**](#managing-external-dependencies-services-or-components)
+    - [**Deciding How To Manage External Dependencies**](#deciding-how-to-manage-external-dependencies)
     - [**Concepts**](#concepts)
       - [**Dummy**](#dummy)
       - [**Stub**](#stub)
@@ -95,6 +97,11 @@ TODO: Add Bad And Good Example
 <br>
 
 #### **Avoid Logic Like If-Statements Or Loops Inside Of Tests**
+
+<br>
+<br>
+
+#### **Write A Test That Reproduces A Bug Before Fixing It**
 
 <br>
 <br>
@@ -208,6 +215,20 @@ describe('<unit>', () => {
 <br>
 <br>
 
+### **Deciding How To Manage External Dependencies**
+<br>
+
+|Is external dependency...                |Concept To Manage External Dependency |
+|:----------------------------------------|:-------------------------------------|
+|not existing?                            |None
+|only needed to satisfy api and not used? |[Dummy](#dummy)
+|expected to return a known value?        |[Stub](#stub)
+|expected to return dynamic values?       |[Fake](#fake)
+|expected to execute a specific action?   |[Mock](#mock)
+
+<br>
+<br>
+
 ### **Concepts**
 <br>
 <br>
@@ -269,58 +290,3 @@ TODO: add example
   - with which parameters was a function called?
   - in which order were functions called
 - not concerned with returning values
-
-<!--
-
-Mocking
-   - mock only when original
-     - creates shared state between tests
-     - initiates HTTP requests
-     - initiates page reloads
-     - has a negative impact on execution speed of test
-     - allows easier setup
-
-For each bug, write a test before fixing it
-
-
-
-============= Managing external dependencies ================
-
-=== Fixture ===
-
-Exp1: collection of pre-canned test data objects
-
-
-=== Decision Tree ====
-
-
-Test independent of external services / components? ------ Yes -----|> Done!
-       |
-       |
-       No
-       |
-       V
-Is dependency...
-       |
-       |
-       V
-never used in the test and only needed to satisfy the API? ---- Yes --|> Dummy
-       |
-       |
-       No
-       |
-       V
-external infrastructure with dynamic values? ---- Yes --|> Fake
-       |
-       |
-       No
-       |
-       V
-expected to return a known value? ---- Yes --|> Stub
-       |
-       |
-       V
-expected to execute a specific action? ---- Yes ---|> Mock
-
-
--->

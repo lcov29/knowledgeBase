@@ -18,4 +18,5 @@
 |Terminology |Definition
 |:-----------|:-----------------------------------------------------------------------------
 |Error       |Deviation of the actual function of a piece of software from the target state
+|Fixture     |collection of predefined test data objects
 

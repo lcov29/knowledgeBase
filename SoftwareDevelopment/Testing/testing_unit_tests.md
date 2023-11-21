@@ -10,8 +10,26 @@
   - [**What Are Unit Tests?**](#what-are-unit-tests)
   - [**Traits Of Maintainable Unit Tests**](#traits-of-maintainable-unit-tests)
   - [**Best Practices**](#best-practices)
+    - [**General**](#general)
+      - [**Test Externally Observable Behaviour - Not Implementation Details**](#test-externally-observable-behaviour---not-implementation-details)
+      - [**Test General And Edge Cases**](#test-general-and-edge-cases)
+      - [**Avoid Logic Like If-Statements Or Loops Inside Of Tests**](#avoid-logic-like-if-statements-or-loops-inside-of-tests)
     - [**Test Structure**](#test-structure)
-      - [**Arrange-Act-Assert-Pattern**](#arrange-act-assert-pattern)
+      - [**Use Arrange-Act-Assert-Pattern**](#use-arrange-act-assert-pattern)
+      - [**Nest Test Suites Logically**](#nest-test-suites-logically)
+      - [**Write A Separate Test For Each Possible Type Of Result**](#write-a-separate-test-for-each-possible-type-of-result)
+      - [**Extract Extensive Setup Code Into Factory**](#extract-extensive-setup-code-into-factory)
+    - [**Naming And Description**](#naming-and-description)
+      - [**Describe What Is Being Tested**](#describe-what-is-being-tested)
+      - [**Avoid Useless Filler Words**](#avoid-useless-filler-words)
+      - [**Pattern: Unit-Expected-Scenario**](#pattern-unit-expected-scenario)
+      - [**Pattern: Unit-Scenario-Expected**](#pattern-unit-scenario-expected)
+  - [**Managing External Dependencies (Services or Components)**](#managing-external-dependencies-services-or-components)
+    - [**Concepts**](#concepts)
+      - [**Dummy**](#dummy)
+      - [**Stub**](#stub)
+      - [**Fake**](#fake)
+      - [**Mock**](#mock)
 
 <br>
 <br>
@@ -44,12 +62,9 @@
 
 - readable
 - easy to understand
-- independent execution without side effects
 - fast execution
-- refactoring the implementation of the unit does not lead to changes of the test 
-
-
-They should be **fast**, **repeatable** and **easy to read and write**.
+- independent execution without side effects
+- refactoring the implementation of the unit does not lead to changes of the test
 
 <br>
 <br>
@@ -60,64 +75,202 @@ They should be **fast**, **repeatable** and **easy to read and write**.
 <br>
 <br>
 
+### **General**
+<br>
+<br>
+
+#### **Test Externally Observable Behaviour - Not Implementation Details**
+<br>
+
+- this will make your tests resistant against refactorings of the unit
+
+TODO: Add Bad And Good Example
+
+<br>
+<br>
+
+#### **Test General And Edge Cases**
+
+<br>
+<br>
+
+#### **Avoid Logic Like If-Statements Or Loops Inside Of Tests**
+
+<br>
+<br>
+<br>
+
 ### **Test Structure**
 <br>
 <br>
 
-#### **Arrange-Act-Assert-Pattern**
+#### **Use Arrange-Act-Assert-Pattern**
 <br>
 
+1. **Arrange:** set up required resources
+2. **Act:** execute code under test
+3. **Assert**: check if executed code returned the expected result
+
+<br>
+<br>
+
+#### **Nest Test Suites Logically**
+<br>
+
+TODO: Add Description + example
+
+<br>
+<br>
+
+#### **Write A Separate Test For Each Possible Type Of Result**
+<br>
+
+- every test should check exactly **one** result type
+
+<br>
+
+> **Tip**: Watch out for the words 'and' or 'or' in your test description!
+
+<br>
+<br>
+
+#### **Extract Extensive Setup Code Into Factory**
+<br>
+
+- This is a tradeoff with readability
+
+TODO: add example
+
+<br>
+<br>
+<br>
+
+### **Naming And Description**
+<br>
+<br>
+
+#### **Describe What Is Being Tested**
+<br>
+
+TODO: Add good + bad example
+
+<br>
+<br>
+
+#### **Avoid Useless Filler Words**
+<br>
+
+- filler words: 'should', 'correctly', 'always', ...
+
+TODO: add example
+
+<br>
+<br>
+
+#### **Pattern: Unit-Expected-Scenario**
+<br>
+
+```javascript
+describe('<unit>', () => {
+
+   it('<expected behaviour> when <scenario>', () => { /* implementation */ });
+
+   it('<expected behaviour> when <scenario>', () => { /* implementation */ });
+
+});
+```
+
+<br>
+<br>
+
+#### **Pattern: Unit-Scenario-Expected**
+<br>
+
+```javascript
+describe('<unit>', () => {
+
+   describe('when <scenario>', () => {
+
+      it('<expected behaviour>', () => { /* implementation */ });
+
+      it('<expected behaviour>', () => { /* implementation */ });
+
+   });
+
+});
+```
+
+<br>
+<br>
+<br>
+
+## **Managing External Dependencies (Services or Components)**
+<br>
+<br>
+
+### **Concepts**
+<br>
+<br>
+
+#### **Dummy**
+<br>
+
+- object that returns a simple value or noting at all
+- does not implement any logic
+- used to fulfill parameters of functions under test
+
+<br>
+
+```javascript
+const dummyFn = () => 'foo';
+```
+
+<br>
+<br>
+
+#### **Stub**
+<br>
+
+- object that returns a predefined outputs for specific inputs
+- can implement simple logic
+- used to check behaviour of code for return value
+
+<br>
+
+```javascript
+service.method = jest.fn().mockReturnValue('someValue');
+```
+
+<br>
+<br>
+
+#### **Fake**
+<br>
+
+- fake implementation of the public api of a service or component
+- used to test against a simplified object
+
+<br>
+
+TODO: add example
+
+<br>
+<br>
+
+#### **Mock**
+<br>
+
+- acts as an external service
+- used to verify the interaction of the unit test with the external service
+- can answer questions like
+  - was the mock called?
+  - how ofter was the mock called?
+  - which mock functions were called?
+  - with which parameters was a function called?
+  - in which order were functions called
+- not concerned with returning values
 
 <!--
-
-
-Test Structure
-  - nest suits logically
-  - pattern: Arrange - Act - Assert
-    - Arrange: set up test
-    - Act: execute code under test
-    - Assert: compare result of executed code to expectation
-  - avoid logic like if-statements or loops
-  - test externally observable behaviour, NOT the internal implementation details
-  - extract extensive setup code into factory function (tradeoff with readability)
-  - test every possible end result of a unit with a separate test (look out for words 'and'/'or in the test descriptions!)
-  - test general AND edge cases
-
-
-Naming of tests:
-   - describe what is being tested
-   - do not contain useless filler words ('should', 'correctly', 'always', ..)
-   - description should not contain the word `should`
-   - pattern: <Unit> - <Scenario> - <Expected Behaviour>
-
-   ```javascript
-   describe('<unit>', () => {
-
-      it('<expected behaviour> when <scenario>', () => {
-         // test implementation
-      });
-
-   });
-   ```
-
-   or 
-
-   ```javascript
-   describe('<unit>', () => {
-
-      describe('when <scenario>', () => {
-
-         it('<expected behaviour>', () => {
-            // test implementation
-         })
-
-         it('<expected behaviour>', () => {
-            // test implementation
-         })
-      });
-
-   });
-   ```
 
 Mocking
    - mock only when original
@@ -132,66 +285,6 @@ For each bug, write a test before fixing it
 
 
 ============= Managing external dependencies ================
-
-=== Dummy ===
-
-Exp1:
-- object that returns a value without implementing any functionality
-- used to fulfill parameters of functions under test
-
-```javascript
-const dummyFn = () => 'foo';
-```
-
-
-=== Stub ===
-
-Exp1: fake implementation of only a single behaviour of a service or component
-Exp2: 
-- working implementation of an api
-- returns pre-canned value
-Exp3:
-- configured to respond to specific inputs with specific outputs
-Exp4:
-- generates predefined output
-- used to check behaviour of code for return value
-
-```javascript
-service.method = jest.fn().mockReturnValue('someValue');
-```
-
-
-=== Fake ===
-
-Exp1:
-- fake implementation of multiple behaviours of a service or component
-Exp2:
-- pre-written implementation of object
-- used to simplify the implementation
-Exp3:
-- almost working implementation
-
-
-=== Mock ===
-
-Exp1:
-- concerned with
-  - was mock called?
-  - which functions were called?
-  - with which parameters was a function called?
-  - in which order were functions called?
-- not concerned with return values or state
-Exp2: 
-- configured to respond to specific inputs with specific outputs
-- add verification about interaction
-Exp3:
-- replaces external interface
-- NOT used for checking function behaviour or return values
-- Used for
-  - was mock function called?
-  - how many times was mock called?
-  - what parameters were passed?
-
 
 === Fixture ===
 

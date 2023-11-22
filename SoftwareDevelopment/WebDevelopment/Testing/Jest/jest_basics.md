@@ -65,18 +65,7 @@ npx ts-jest config:init
 ## **General**
 <br>
 
-* we group our tests in separate files `fileName.test.ts` called test suites 
-* each test suite contains at least one test.
-* tests can be grouped to test groups
-* each test consists of three steps:
-
-<br>
-
-|Step    |Description                                |
-|:-------|:------------------------------------------|
-|Arrange |set up test resources                      |
-|Act     |execute test and get result                |
-|Assert  |compare actual result with expected result |
+* test suite name: `fileName.test.ts`
 
 <br>
 
@@ -122,24 +111,24 @@ See [jest matchers](./jest_matchers.md)
 <br>
 
 ```typescript
-beforeEach(() => {
-  // code to execute before each test
-});
-
-
 beforeAll(() => {
   // code to execute once at file opening
-});
-
-
-afterEach(() => {
-  // code to execute after each test
 });
 
 
 afterAll(() => {
   // code to execute once at file closing
 })
+
+
+beforeEach(() => {
+  // code to execute before each test
+});
+
+
+afterEach(() => {
+  // code to execute after each test
+});
 ```
 
 <br>

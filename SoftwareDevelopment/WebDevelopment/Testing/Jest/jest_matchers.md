@@ -636,7 +636,6 @@ Fail:
 ```typescript
 test('toBeCalled()', () => {
   const foo = jest.fn();
-  foo();
   expect(foo).toHaveBeenCalled();
 });
 ```
@@ -647,7 +646,7 @@ test('toBeCalled()', () => {
 #### **toHaveBeenCalledTimes()**
 <br>
 
-* check whether mock function has been called specified times
+* check whether mock function has been called a specified number of times
 
 <br>
 
@@ -779,7 +778,7 @@ test('toHaveReturnedWith()', () => {
 Assume we have the following function:
 
 ```typescript
-const foo = (): void => { throw new RangeError('Some error message'); };
+const foo = () => { throw new RangeError('Some error message'); };
 ```
 
 <br>

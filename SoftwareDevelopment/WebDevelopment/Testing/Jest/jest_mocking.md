@@ -128,7 +128,7 @@ expect(mockFn.mock.results[<callIndex>].value).toBe(resultValue)
 
 Code under test:
 ```typescript
-function forEach(itemList: any[], callback: any) {
+function forEach(itemList, callback) {
    for (let i = 0; i < itemList.length; i++) {
       callback(itemList[i]);
    }

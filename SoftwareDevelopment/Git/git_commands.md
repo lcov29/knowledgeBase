@@ -127,3 +127,39 @@ git stash pop stash@{<id>}      # move the changes in the stash <id> back into t
 git stash drop stash@{<id>}     # delete the changes in the stash <id>
 git stash clear                 # delete all stashes
 ```
+
+<!-- 
+
+  === Configuration ===
+  - git config --global core.editor:    specify the editor git uses
+
+
+  === Ignoring Files ===
+  - .gitignore file
+    - #: comment
+    - glob pattern [abc]: match any character inside brackets
+    - negate pattern: !
+    - *: matches any number of characters including zero
+    - ?: matches single character
+
+
+  === git diff ===
+  - git diff:             see only unstaged changes
+  - git diff --staged:    see only staged changes
+
+
+  === git commit ===
+  - git commit:           launch editor to add commit message
+  - git commit -m <message>
+  - git commit -a         add all tracked files to the staging area and commits
+
+
+  === Remove File ===
+  - git rm path/to/file             removes file from staging area
+
+  
+
+
+
+
+-->

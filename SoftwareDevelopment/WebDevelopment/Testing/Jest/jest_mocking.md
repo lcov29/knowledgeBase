@@ -39,6 +39,8 @@
     - [**Mock Parts Of Module**](#mock-parts-of-module)
       - [**Example 1**](#example-1)
       - [**Example 2**](#example-2)
+  - [**Mock Class**](#mock-class)
+    - [**Mock Without Fake Implementation Of Methods**](#mock-without-fake-implementation-of-methods)
 
 <br>
 <br>
@@ -589,6 +591,65 @@ describe('test suite description', () => {
    it('test description', async () => {   
       expect(externalModule.foo(2)).toBe('mockedFoo');
       expect(externalModule.bar(2)).toBe(20);
+   }); 
+
+});
+```
+
+<br>
+<br>
+<br>
+<br>
+
+## **Mock Class**
+<br>
+<br>
+
+### **Mock Without Fake Implementation Of Methods**
+<br>
+
+- use automatic mock with `jest.mock('path/to/class')`
+- spy information for method can be accessed via `classMock.mock.instances[index].methodName.mock`
+
+<br>
+
+Person.js
+
+```javascript
+export class Person {
+   firstName;
+   lastName;
+
+   constructor(firstName, lastName) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+   }
+
+   introduce() {
+      return `Hello, my name is ${this.firstName} ${this.lastName}.`;
+   }
+}
+```
+
+<br>
+
+example.test.js
+
+```javascript
+jest.mock('./Person');
+
+describe('test suite description', () => {
+
+   it('test description', async () => {  
+      expect(Person).not.toHaveBeenCalled();          // pass
+
+      const johnDoe = new Person('John', 'Doe'); 
+      
+      expect(Person).toHaveBeenCalledTimes(1);        // pass
+
+      expect(johnDoe.introduce()).toBeUndefined();    // pass
+
+      expect(Person.mock.instances[0].introduce.mock.calls).toHaveLength(1);    // pass
    }); 
 
 });

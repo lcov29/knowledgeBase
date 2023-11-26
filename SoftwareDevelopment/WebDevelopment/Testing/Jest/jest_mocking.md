@@ -30,12 +30,15 @@
       - [**mockFn.mock.results**](#mockfnmockresults)
       - [**mockFn.mock.instances**](#mockfnmockinstances)
       - [**mockFn.mock.contexts**](#mockfnmockcontexts)
-  - [**Mock Manipulation**](#mock-manipulation)
-    - [**mockFn.mockClear()**](#mockfnmockclear)
-    - [**mockFn.mockReset()**](#mockfnmockreset)
-    - [**mockFn.mockRestore()**](#mockfnmockrestore)
+    - [**Resetting Mock Function**](#resetting-mock-function)
+      - [**mockFn.mockClear()**](#mockfnmockclear)
+      - [**mockFn.mockReset()**](#mockfnmockreset)
+      - [**mockFn.mockRestore()**](#mockfnmockrestore)
   - [**Mock Modules**](#mock-modules)
-    - [**Mock Only Parts Of Module**](#mock-only-parts-of-module)
+    - [**Mock Complete Module**](#mock-complete-module)
+    - [**Mock Parts Of Module**](#mock-parts-of-module)
+      - [**Example 1**](#example-1)
+      - [**Example 2**](#example-2)
 
 <br>
 <br>
@@ -379,14 +382,12 @@ console.log(mockFn.mock.contexts);     // [ { a: 'context1' }, { a: 'context2' }
 
 <br>
 <br>
+
+### **Resetting Mock Function**
 <br>
 <br>
 
-## **Mock Manipulation**
-<br>
-<br>
-
-### **mockFn.mockClear()**
+#### **mockFn.mockClear()**
 <br>
 
 - clears all spy information like
@@ -415,7 +416,7 @@ mockFn(2);                 // 4
 <br>
 <br>
 
-### **mockFn.mockReset()**
+#### **mockFn.mockReset()**
 <br>
 
 - clears all mock implementations
@@ -445,7 +446,7 @@ mockFn(2);                 // undefined
 <br>
 <br>
 
-### **mockFn.mockRestore()**
+#### **mockFn.mockRestore()**
 <br>
 
 - clears all mock implementations
@@ -466,79 +467,129 @@ mockFn(2);                 // undefined
 <br>
 
 ```
-jest.mock('moduleLocation', [() => {customImplementation}], [optionObject])
+jest.mock(moduleName, ?factory, ?options)
+```
+
+<br>
+<br>
+
+### **Mock Complete Module**
+<br>
+
+externalModule.js
+
+```javascript
+const externalModule = { 
+  foo: (x) => x * 2,
+  bar: (x) => x * 10
+};
+
+export { externalModule };
 ```
 
 <br>
 
-```typescript
-import { moduleFunc } from 'modulePath';
+example.test.js
 
-jest.mock('modulePath');
+```javascript
+// mock all module functions with empty implementation
+jest.mock('./externalModule.js');
 
-test('test description', () => {
-   internalMethod.mockReturnValue('value');
-   expect(moduleFunc('parameter')).toEqual('resultValue');
+describe('test suite description', () => {
+
+   it('test description', async () => {
+      externalModule.foo.mockReturnValue('mockedFoo');
+   
+      expect(externalModule.foo(2)).toBe('mockedFoo');
+      expect(externalModule.bar(2)).toBe(undefined);
+   }); 
+
 });
 ```
 
 <br>
 <br>
 
-### **Mock Only Parts Of Module**
+### **Mock Parts Of Module**
+<br>
 <br>
 
-module.ts:
-```typescript
-const foo = () => 'foo';
-const bar = () => 'bar';
-const baz = () => 'baz';
+#### **Example 1**
+<br>
 
-export { foo, bar, baz };
+externalModule.js:
+```javascript
+const foo = (x) => x * 2;
+const bar = (x) => x * 10;
+
+export { foo, bar };
 ```
 
 <br>
 
-```typescript
-jest.mock('./module', () => {
+example1.test.js
+
+```javascript
+// mock only function 'bar' from externalModule and keep implementation of other function
+jest.mock('./externalModule.js', () => {
    return {
       __esModule: true,
-      ...jest.requireActual('./module'),
-      bar: jest.fn(() => 'mocked bar'),
-      baz: jest.fn(() => 'mocked baz'),
+      ...jest.requireActual('./externalModule.js'),
+      bar: jest.fn((x) => 'mockedBar')
    };
+});
+
+describe('test suite description', () => {
+
+   it('test description', async () => {
+      expect(foo(2)).toBe(4);               // pass
+      expect(bar(2)).toBe('mockedBar');     // pass
+   }); 
+
 });
 ```
 
+<br>
+<br>
 
+#### **Example 2**
+<br>
 
+externalModule.js
 
+```javascript
+const externalModule = { 
+   foo: (x) => x * 2,
+   bar: (x) => x * 10
+};
 
+export { externalModule };
+```
 
+<br>
 
+example2.test.js
 
+```javascript
+// mock only method 'bar' from externalModule and keep implementation of other methods
+jest.mock('./externalModule.js', () => {
+   const original = jest.requireActual('./externalModule.js');
 
+   return {
+      __esModule: true,
+      externalModule: {
+         ...original.externalModule,
+         foo: jest.fn((x) => 'mockedFoo')
+      }
+   };
+});
 
+describe('test suite description', () => {
 
+   it('test description', async () => {   
+      expect(externalModule.foo(2)).toBe('mockedFoo');
+      expect(externalModule.bar(2)).toBe(20);
+   }); 
 
-<!-- 
-
-unit test = test units in isolation (= not relying on any dependencies)
-
-====== mocks ====== 
-- replacement for external interface
-- does NOT chech function behavior or return value
-- checks:
-  - was mock function called
-  - how many times have the mock function been called
-  - what parameters are passed
-
-====== stubs ======
-- generate predefined output (success, failure or execption)
-- checks function behavior based on generated stub output  
-
-====== fakes ======
-- replace actual implementation with local limited implementation
-- checks function behavior based on actually received data
-
--->
+});
+```

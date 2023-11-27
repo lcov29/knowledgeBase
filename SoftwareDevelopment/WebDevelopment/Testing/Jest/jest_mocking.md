@@ -41,6 +41,9 @@
       - [**Example 2**](#example-2)
   - [**Mock Class**](#mock-class)
     - [**Mock Without Fake Implementation Of Methods**](#mock-without-fake-implementation-of-methods)
+    - [**Mock With Fake Implementation Of Methods**](#mock-with-fake-implementation-of-methods)
+      - [**Manual Mock In Folder \_\_mocks\_\_**](#manual-mock-in-folder-__mocks__)
+      - [**Mock Only Specific Methods**](#mock-only-specific-methods)
 
 <br>
 <br>
@@ -604,6 +607,7 @@ describe('test suite description', () => {
 ## **Mock Class**
 <br>
 <br>
+<br>
 
 ### **Mock Without Fake Implementation Of Methods**
 <br>
@@ -650,6 +654,82 @@ describe('test suite description', () => {
       expect(johnDoe.introduce()).toBeUndefined();    // pass
 
       expect(Person.mock.instances[0].introduce.mock.calls).toHaveLength(1);    // pass
+   }); 
+
+});
+```
+
+<br>
+<br>
+<br>
+
+### **Mock With Fake Implementation Of Methods**
+<br>
+<br>
+
+#### **Manual Mock In Folder \_\_mocks\_\_**
+<br>
+
+- save manually mocked class into folder `__mocks__`
+
+<br>
+
+./test/\_\_mocks\_\_/Person.js
+
+```javascript
+const introduce = jest.fn();
+
+const mock = jest.fn().mockImplementation(
+   () => {
+      return { introduce };
+   }
+);
+
+export { mock };
+```
+
+<br>
+
+./test/person.test.js
+
+```javascript
+import { Person } from "../src/Person";
+
+jest.mock('../src/Person');
+
+describe('test suite description', () => {
+
+   it('test description', async () => {
+      expect(Person).not.toHaveBeenCalled();                                     // pass
+      const johnDoe = new Person('John', 'Doe'); 
+      expect(Person).toHaveBeenCalledTimes(1);                                   // pass
+
+      expect(johnDoe.introduce()).toBeUndefined();                               // pass
+
+      expect(Person.mock.instances[0].introduce.mock.calls).toHaveLength(1);     // pass
+   }); 
+
+});
+```
+
+<br>
+<br>
+
+#### **Mock Only Specific Methods**
+<br>
+
+```javascript
+const mockPerson = jest
+   .spyOn(Person.prototype, 'introduce')
+   .mockImplementation(() => 'mockedIntroduce');
+
+describe('test suite description', () => {
+
+   it('test description', async () => {
+      const johnDoe = new Person('John', 'Doe'); 
+      
+      expect(johnDoe.introduce()).toBe('mockedIntroduce');
+      expect(mockPerson).toHaveBeenCalled();
    }); 
 
 });

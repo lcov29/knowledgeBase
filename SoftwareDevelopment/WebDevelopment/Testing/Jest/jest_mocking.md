@@ -43,7 +43,12 @@
     - [**Mock Without Fake Implementation Of Methods**](#mock-without-fake-implementation-of-methods)
     - [**Mock With Fake Implementation Of Methods**](#mock-with-fake-implementation-of-methods)
       - [**Manual Mock In Folder \_\_mocks\_\_**](#manual-mock-in-folder-__mocks__)
+      - [**Mock With Module Factory**](#mock-with-module-factory)
+        - [**Class Is Default Export**](#class-is-default-export)
+        - [**Class Is Not Default Export**](#class-is-not-default-export)
       - [**Mock Only Specific Methods**](#mock-only-specific-methods)
+    - [**Mock Static Methods**](#mock-static-methods)
+    - [**Mock Getter Methods**](#mock-getter-methods)
 
 <br>
 <br>
@@ -715,7 +720,70 @@ describe('test suite description', () => {
 <br>
 <br>
 
+#### **Mock With Module Factory**
+<br>
+<br>
+
+##### **Class Is Default Export**
+
+```javascript
+import Person from './Person';                                    // Class Person is the default export
+
+const mockIntroduce = jest.fn(() => 'mockedIntroduce');
+
+jest.mock('./Person', () => {
+   return jest.fn().mockImplementation(() => {
+      return { introduce: mockIntroduce };
+   });
+});
+
+describe('test suite description', () => {
+
+   it('test description', () => {
+      expect(Person).not.toHaveBeenCalled();                      // pass
+      const johnDoe = new Person('John', 'Doe');
+      expect(Person).toHaveBeenCalled();                          // pass
+      expect(johnDoe.introduce()).toEqual('mockedIntroduce');     // pass
+   });
+
+});
+```
+
+<br>
+<br>
+
+##### **Class Is Not Default Export**
+
+```javascript
+import { Person } from '../src/Person';
+
+const mockIntroduce = jest.fn(() => 'mockedIntroduce');
+
+jest.mock('../src/Person', () => {
+   return {
+      Person: jest.fn().mockImplementation(() => {
+         return { introduce: mockIntroduce };
+      })
+   };
+});
+
+describe('test suite description', () => {
+
+   it('test description', () => {
+      expect(Person).not.toHaveBeenCalled();
+      const johnDoe = new Person('John', 'Doe');
+      expect(Person).toHaveBeenCalled();
+      expect(johnDoe.introduce()).toEqual('mockedIntroduce');
+   });
+
+});
+```
+
+<br>
+<br>
+
 #### **Mock Only Specific Methods**
+<br>
 <br>
 
 ```javascript
@@ -733,4 +801,30 @@ describe('test suite description', () => {
    }); 
 
 });
+```
+
+<br>
+<br>
+<br>
+
+### **Mock Static Methods**
+<br>
+
+```javascript
+const mockStaticMethod = jest
+   .spyOn(ClassName, 'methodName')
+   .mockImplementation(() => { /* implementation */ });
+```
+
+<br>
+<br>
+<br>
+
+### **Mock Getter Methods**
+<br>
+
+```javascript
+const mockGetterMethod = jest
+   .spyOn(ClassName.prototype, 'methodName', 'get')
+   .mockImplementation(() => { /* implementation */ })
 ```

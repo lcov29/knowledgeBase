@@ -31,14 +31,9 @@
       - [**mockFn.mock.instances**](#mockfnmockinstances)
       - [**mockFn.mock.contexts**](#mockfnmockcontexts)
     - [**Resetting Mock Function**](#resetting-mock-function)
-      - [**mockFn.mockClear()**](#mockfnmockclear)
-      - [**mockFn.mockReset()**](#mockfnmockreset)
-      - [**mockFn.mockRestore()**](#mockfnmockrestore)
-  - [**Mock Modules**](#mock-modules)
-    - [**Mock Complete Module**](#mock-complete-module)
-    - [**Mock Parts Of Module**](#mock-parts-of-module)
-      - [**Example 1**](#example-1)
-      - [**Example 2**](#example-2)
+      - [**mockFn.mockClear() / jest.clearAllMocks()**](#mockfnmockclear--jestclearallmocks)
+      - [**mockFn.mockReset() / jest.resetAllMocks()**](#mockfnmockreset--jestresetallmocks)
+      - [**mockFn.mockRestore() / jest.restoreAllMocks()**](#mockfnmockrestore--jestrestoreallmocks)
   - [**Mock Class**](#mock-class)
     - [**Mock Without Fake Implementation Of Methods**](#mock-without-fake-implementation-of-methods)
     - [**Mock With Fake Implementation Of Methods**](#mock-with-fake-implementation-of-methods)
@@ -49,6 +44,11 @@
       - [**Mock Only Specific Methods**](#mock-only-specific-methods)
     - [**Mock Static Methods**](#mock-static-methods)
     - [**Mock Getter Methods**](#mock-getter-methods)
+  - [**Mock Modules**](#mock-modules)
+    - [**Mock Complete Module**](#mock-complete-module)
+    - [**Mock Parts Of Module**](#mock-parts-of-module)
+      - [**Example 1**](#example-1)
+      - [**Example 2**](#example-2)
 
 <br>
 <br>
@@ -397,7 +397,7 @@ console.log(mockFn.mock.contexts);     // [ { a: 'context1' }, { a: 'context2' }
 <br>
 <br>
 
-#### **mockFn.mockClear()**
+#### **mockFn.mockClear() / jest.clearAllMocks()**
 <br>
 
 - clears all spy information like
@@ -426,7 +426,7 @@ mockFn(2);                 // 4
 <br>
 <br>
 
-#### **mockFn.mockReset()**
+#### **mockFn.mockReset() / jest.resetAllMocks()**
 <br>
 
 - clears all mock implementations
@@ -456,7 +456,11 @@ mockFn(2);                 // undefined
 <br>
 <br>
 
-#### **mockFn.mockRestore()**
+#### **mockFn.mockRestore() / jest.restoreAllMocks()**
+<br>
+
+> Only works for mocks created with `jest.spy()`!
+
 <br>
 
 - clears all mock implementations
@@ -467,142 +471,6 @@ mockFn(2);                 // undefined
   - [mockFn.mock.results](#mockfnmockresults)
   - [mockFn.mock.instances](#mockfnmockinstances)
   - [mockFn.mock.contexts](#mockfnmockcontexts)
-
-<br>
-<br>
-<br>
-<br>
-
-## **Mock Modules**
-<br>
-
-```
-jest.mock(moduleName, ?factory, ?options)
-```
-
-<br>
-<br>
-
-### **Mock Complete Module**
-<br>
-
-externalModule.js
-
-```javascript
-const externalModule = { 
-  foo: (x) => x * 2,
-  bar: (x) => x * 10
-};
-
-export { externalModule };
-```
-
-<br>
-
-example.test.js
-
-```javascript
-// mock all module functions with empty implementation
-jest.mock('./externalModule.js');
-
-describe('test suite description', () => {
-
-   it('test description', async () => {
-      externalModule.foo.mockReturnValue('mockedFoo');
-   
-      expect(externalModule.foo(2)).toBe('mockedFoo');
-      expect(externalModule.bar(2)).toBe(undefined);
-   }); 
-
-});
-```
-
-<br>
-<br>
-
-### **Mock Parts Of Module**
-<br>
-<br>
-
-#### **Example 1**
-<br>
-
-externalModule.js:
-```javascript
-const foo = (x) => x * 2;
-const bar = (x) => x * 10;
-
-export { foo, bar };
-```
-
-<br>
-
-example1.test.js
-
-```javascript
-// mock only function 'bar' from externalModule and keep implementation of other function
-jest.mock('./externalModule.js', () => {
-   return {
-      __esModule: true,
-      ...jest.requireActual('./externalModule.js'),
-      bar: jest.fn((x) => 'mockedBar')
-   };
-});
-
-describe('test suite description', () => {
-
-   it('test description', async () => {
-      expect(foo(2)).toBe(4);               // pass
-      expect(bar(2)).toBe('mockedBar');     // pass
-   }); 
-
-});
-```
-
-<br>
-<br>
-
-#### **Example 2**
-<br>
-
-externalModule.js
-
-```javascript
-const externalModule = { 
-   foo: (x) => x * 2,
-   bar: (x) => x * 10
-};
-
-export { externalModule };
-```
-
-<br>
-
-example2.test.js
-
-```javascript
-// mock only method 'bar' from externalModule and keep implementation of other methods
-jest.mock('./externalModule.js', () => {
-   const original = jest.requireActual('./externalModule.js');
-
-   return {
-      __esModule: true,
-      externalModule: {
-         ...original.externalModule,
-         foo: jest.fn((x) => 'mockedFoo')
-      }
-   };
-});
-
-describe('test suite description', () => {
-
-   it('test description', async () => {   
-      expect(externalModule.foo(2)).toBe('mockedFoo');
-      expect(externalModule.bar(2)).toBe(20);
-   }); 
-
-});
-```
 
 <br>
 <br>
@@ -827,4 +695,140 @@ const mockStaticMethod = jest
 const mockGetterMethod = jest
    .spyOn(ClassName.prototype, 'methodName', 'get')
    .mockImplementation(() => { /* implementation */ })
+```
+
+<br>
+<br>
+<br>
+<br>
+
+## **Mock Modules**
+<br>
+
+```
+jest.mock(moduleName, ?factory, ?options)
+```
+
+<br>
+<br>
+
+### **Mock Complete Module**
+<br>
+
+externalModule.js
+
+```javascript
+const externalModule = { 
+  foo: (x) => x * 2,
+  bar: (x) => x * 10
+};
+
+export { externalModule };
+```
+
+<br>
+
+example.test.js
+
+```javascript
+// mock all module functions with empty implementation
+jest.mock('./externalModule.js');
+
+describe('test suite description', () => {
+
+   it('test description', async () => {
+      externalModule.foo.mockReturnValue('mockedFoo');
+   
+      expect(externalModule.foo(2)).toBe('mockedFoo');
+      expect(externalModule.bar(2)).toBe(undefined);
+   }); 
+
+});
+```
+
+<br>
+<br>
+
+### **Mock Parts Of Module**
+<br>
+<br>
+
+#### **Example 1**
+<br>
+
+externalModule.js:
+```javascript
+const foo = (x) => x * 2;
+const bar = (x) => x * 10;
+
+export { foo, bar };
+```
+
+<br>
+
+example1.test.js
+
+```javascript
+// mock only function 'bar' from externalModule and keep implementation of other function
+jest.mock('./externalModule.js', () => {
+   return {
+      __esModule: true,
+      ...jest.requireActual('./externalModule.js'),
+      bar: jest.fn((x) => 'mockedBar')
+   };
+});
+
+describe('test suite description', () => {
+
+   it('test description', async () => {
+      expect(foo(2)).toBe(4);               // pass
+      expect(bar(2)).toBe('mockedBar');     // pass
+   }); 
+
+});
+```
+
+<br>
+<br>
+
+#### **Example 2**
+<br>
+
+externalModule.js
+
+```javascript
+const externalModule = { 
+   foo: (x) => x * 2,
+   bar: (x) => x * 10
+};
+
+export { externalModule };
+```
+
+<br>
+
+example2.test.js
+
+```javascript
+// mock only method 'bar' from externalModule and keep implementation of other methods
+jest.mock('./externalModule.js', () => {
+   const original = jest.requireActual('./externalModule.js');
+
+   return {
+      __esModule: true,
+      externalModule: {
+         ...original.externalModule,
+         foo: jest.fn((x) => 'mockedFoo')
+      }
+   };
+});
+
+describe('test suite description', () => {
+
+   it('test description', async () => {   
+      expect(externalModule.foo(2)).toBe('mockedFoo');
+      expect(externalModule.bar(2)).toBe(20);
+   }); 
+
+});
 ```

@@ -21,7 +21,7 @@
       - [**Write A Separate Test For Each Possible Type Of Result**](#write-a-separate-test-for-each-possible-type-of-result)
       - [**Extract Extensive Setup Code Into Factory**](#extract-extensive-setup-code-into-factory)
     - [**Naming And Description**](#naming-and-description)
-      - [**Describe What Is Being Tested**](#describe-what-is-being-tested)
+      - [**Describe Expected Behaviour Properly**](#describe-expected-behaviour-properly)
       - [**Avoid Useless Filler Words**](#avoid-useless-filler-words)
       - [**Pattern: Unit-Expected-Scenario**](#pattern-unit-expected-scenario)
       - [**Pattern: Unit-Scenario-Expected**](#pattern-unit-scenario-expected)
@@ -84,9 +84,31 @@
 #### **Test Externally Observable Behaviour - Not Implementation Details**
 <br>
 
-- this will make your tests resistant against refactorings of the unit
+- this will make tests resistant against refactorings of the unit
 
-TODO: Add Bad And Good Example
+<br>
+
+:x:
+
+```javascript
+it('removes item from storage', () => {
+  const storage = new Storage(['item1', 'item2']);
+  storage.removeItem('item1');
+  expect(storage._items).not.toContain('item1');
+});
+```
+
+<br>
+
+:heavy_check_mark:
+
+```javascript
+it('removes item from storage', () => {
+  const storage = new Storage(['item1', 'item2']);
+  storage.removeItem('item1');
+  expect(storage.hasItem('item1')).toEqual(false);
+});
+```
 
 <br>
 <br>
@@ -124,7 +146,43 @@ TODO: Add Bad And Good Example
 #### **Nest Test Suites Logically**
 <br>
 
-TODO: Add Description + example
+:x:
+
+```javascript
+describe('Class A', () => {
+
+  it('Method b does x', () => {});
+
+  it('Method x does y' () => {});
+
+  it('Method b does z when i', () => {});
+
+  it('Method c does a', () => {});
+});
+```
+
+<br>
+
+:heavy_check_mark:
+
+```javascript
+describe('Class A', () => {
+
+  describe('.b', () => () => {
+    it('does x', () => {});
+    it('does z when i', () => {});
+  });
+
+  describe('.c', () => {
+    it('does a', () => {});
+  });
+
+  describe('.x', () => {
+    it('does y', () => {});
+  });
+
+});
+```
 
 <br>
 <br>
@@ -146,7 +204,63 @@ TODO: Add Description + example
 
 - This is a tradeoff with readability
 
-TODO: add example
+<br>
+
+:x:
+
+```javascript
+describe('Class Person', () => {
+
+  it('does a', () => {
+    const config = { firstName: 'John', lastName: 'Doe', age: 34 };
+    const person = new Person(config);
+    // implementation...
+  });
+
+  it('does b', () => {
+    const config = { firstName: 'John', lastName: 'Doe', age: 34 };
+    const person = new Person(config);
+    // implementation...
+  });
+
+  it('does c', () => {
+    const config = { firstName: 'John', lastName: 'Doe', age: 34 };
+    const person = new Person(config);
+    // implementation...
+  });
+
+});
+```
+
+<br>
+
+:heavy_check_mark:
+
+```javascript
+function createPerson() {
+  const config = { firstName: 'John', lastName: 'Doe', age: 34 };
+  return new Person(config);
+}
+
+describe('Class Person', () => {
+
+  it('does a', () => {
+    const person = createPerson();
+    // implementation...
+  });
+
+  it('does b', () => {
+    const person = createPerson();
+    // implementation...
+  });
+
+  it('does c', () => {
+    const person = createPerson();
+    // implementation...
+  });
+
+});
+```
 
 <br>
 <br>
@@ -156,10 +270,34 @@ TODO: add example
 <br>
 <br>
 
-#### **Describe What Is Being Tested**
+#### **Describe Expected Behaviour Properly**
 <br>
 
-TODO: Add good + bad example
+:x:
+
+```javascript
+describe("Person", () => {
+  it("init initialize all properties when called (first name, last name, age)", () => {});
+});
+```
+
+<br>
+
+:heavy_check_mark:
+
+```javascript
+describe("Person", () => {
+
+  describe('when initialized', () => {
+    it('sets property firstName', () => {});
+
+    it('sets property lastName', () => {});
+
+    it('sets property age', () => {});
+  });
+
+});
+```
 
 <br>
 <br>
@@ -169,7 +307,33 @@ TODO: Add good + bad example
 
 - filler words: 'should', 'correctly', 'always', ...
 
-TODO: add example
+<br>
+
+:x:
+
+```javascript
+describe("Person", () => {
+
+  it('should always instantiates correctly', () => {}):
+
+  it('method introduce() should return an introduction string', () => {}):
+
+});
+```
+
+<br>
+
+:heavy_check_mark:
+
+```javascript
+describe("Person", () => {
+
+  it('instantiates', () => {}):
+
+  it('introduce() returns an introduction string', () => {}):
+
+});
+```
 
 <br>
 <br>
@@ -273,7 +437,19 @@ service.method = jest.fn().mockReturnValue('someValue');
 
 <br>
 
-TODO: add example
+```javascript
+const fakeDatabase = () => {
+  const rows = [{ id: 1, data: 'foo' }, { id: 2, data: 'bar' }];
+
+  const load = (id) => { return rows.filter((row) => row.id === id); };
+  const insert = (data) => {
+    const id = rows.at(-1).id + 1;
+    rows.push({ id, data });
+  };
+
+  return { load, insert };
+}
+```
 
 <br>
 <br>

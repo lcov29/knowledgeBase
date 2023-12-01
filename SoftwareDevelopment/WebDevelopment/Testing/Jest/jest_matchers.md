@@ -6,6 +6,10 @@
 
 - [**Jest Matchers**](#jest-matchers)
   - [**Table Of Contents**](#table-of-contents)
+  - [**Modifiers**](#modifiers)
+    - [**.not**](#not)
+    - [**.resolves**](#resolves)
+    - [**.rejects**](#rejects)
   - [**Matchers (Assertions)**](#matchers-assertions)
     - [**General Matchers**](#general-matchers)
       - [**toBe()**](#tobe)
@@ -13,7 +17,7 @@
       - [**toBeNull()**](#tobenull)
       - [**toBeUndefined()**](#tobeundefined)
       - [**toBeDefined()**](#tobedefined)
-      - [**not**](#not)
+      - [**not**](#not-1)
       - [**expect.anything()**](#expectanything)
       - [**any()**](#any)
     - [**Truthy**](#truthy)
@@ -51,6 +55,52 @@
       - [**toHaveReturnedWith()**](#tohavereturnedwith)
     - [**Exceptions**](#exceptions)
       - [**toThrow()**](#tothrow)
+
+<br>
+<br>
+<br>
+
+## **Modifiers**
+<br>
+<br>
+
+### **.not**
+<br>
+
+- inverts matcher
+
+
+```javascript
+expect(3).not.toBe(8);
+```
+
+<br>
+<br>
+
+### **.resolves**
+<br>
+
+- unwraps the value of a resolved promise
+
+```javascript
+const mockFn = jest.fn();
+mockFn.mockResolvedValue('foo');
+await expect(mockFn()).resolves.toEqual('foo');   // pass
+```
+
+<br>
+<br>
+
+### **.rejects**
+<br>
+
+- unwrapps the value of a rejected promise
+
+```javascript
+const mockFn = jest.fn();
+mockFn.mockRejectedValue('foo');
+await expect(mockFn()).rejects.toEqual('foo');
+```
 
 <br>
 <br>

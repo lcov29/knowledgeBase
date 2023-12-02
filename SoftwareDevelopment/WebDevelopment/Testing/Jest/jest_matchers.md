@@ -17,9 +17,9 @@
       - [**toBeNull()**](#tobenull)
       - [**toBeUndefined()**](#tobeundefined)
       - [**toBeDefined()**](#tobedefined)
-      - [**not**](#not-1)
+      - [**toBeNaN()**](#tobenan)
       - [**expect.anything()**](#expectanything)
-      - [**any()**](#any)
+      - [**expect.any()**](#expectany)
     - [**Truthy**](#truthy)
       - [**toBeTruthy()**](#tobetruthy)
       - [**toBeFalsy()**](#tobefalsy)
@@ -45,14 +45,20 @@
       - [**expect.closeTo**](#expectcloseto)
     - [**Array And Iterable Matchers**](#array-and-iterable-matchers)
       - [**toContain()**](#tocontain)
+      - [**toContainEqual()**](#tocontainequal)
       - [**toHaveLength()**](#tohavelength-2)
       - [**expect.arrayContaining(array)**](#expectarraycontainingarray)
-    - [**Function**](#function)
+    - [**Mock Function**](#mock-function)
       - [**toHaveBeenCalled()**](#tohavebeencalled)
       - [**toHaveBeenCalledTimes()**](#tohavebeencalledtimes)
       - [**toHaveBeenCalledWith()**](#tohavebeencalledwith)
+      - [**toHaveBeenLastCalledWith()**](#tohavebeenlastcalledwith)
+      - [**toHaveBeenNthCalledWith()**](#tohavebeennthcalledwith)
       - [**toHaveReturned()**](#tohavereturned)
+      - [**toHaveReturnedTimes()**](#tohavereturnedtimes)
       - [**toHaveReturnedWith()**](#tohavereturnedwith)
+      - [**toHaveLastReturnedWith()**](#tohavelastreturnedwith)
+      - [**toHaveNthReturnedWith()**](#tohaventhreturnedwith)
     - [**Exceptions**](#exceptions)
       - [**toThrow()**](#tothrow)
 
@@ -126,7 +132,14 @@ expect(someValue).<Matcher>()
 #### **toBe()**
 <br>
 
-* checks for strict equality of a value
+- checks primitive value for equality
+- checks objects for **referential** equality
+
+<br>
+
+> To check floating-point numbers use [`toBeCloseTo`](#tobecloseto)!
+
+<br>
 
 ```typescript
 expect(5 + 3).toBe(8);  // pass
@@ -147,7 +160,7 @@ expect(obj).toBe({ foo: 'bar' });   // fail
 #### **toStrictEqual()**
 <br>
 
-* check objects for same type and structure
+- checks objects for same type and structure
 
 ```typescript
 expect(5 + 3).toStrictEqual(8);             // pass
@@ -168,7 +181,7 @@ expect(obj).toStrictEqual({ foo: 'bar' });   // pass
 #### **toBeNull()**
 <br>
 
-* matches only `null`
+- checks if value is `null`
 
 ```typescript
 expect(null).toBeNull();        // pass
@@ -181,7 +194,7 @@ expect(undefined).toBeNull();   // fail
 #### **toBeUndefined()**
 <br>
 
-* matches only `undefined`
+- checks if value is `undefined`
 
 ```typescript
 expect(undefined).toBeUndefined();      // pass
@@ -195,20 +208,19 @@ expect('foo').toBeUndefined();          // fail
 #### **toBeDefined()**
 <br>
 
-* matches everything except `undefined`
+- checks if value is anything else than `undefined`
 
 <br>
 <br>
 
-#### **not**
+#### **toBeNaN()**
 <br>
 
-* negates a matcher
-
-<br>
+- checks if value is `NaN`
 
 ```typescript
-expect(5).not.toBe(7);          // pass
+expect(2).toBeNaN();      // fail
+expect(NaN).toBeNaN();    // pass
 ```
 
 <br>
@@ -217,8 +229,8 @@ expect(5).not.toBe(7);          // pass
 #### **expect.anything()**
 <br>
 
-* matches everything but `undefined` and `null`
-* used within `toEqual()` or `toBeCalledWith()`
+- matches everything but `undefined` and `null`
+- used within `toEqual()` or `toBeCalledWith()`
 
 <br>
 
@@ -230,17 +242,17 @@ expect('foo').toEqual(expect.anything());       // pass
 <br>
 <br>
 
-#### **any()**
+#### **expect.any()**
 <br>
 
-* matches anything created with passed constructor
-* matches anything with the passed type
-* used within `toEqual()` or `toBeCalledWith()`
+- matches anything created with passed constructor
+- matches anything with the passed type
+- used within `toEqual()` or `toBeCalledWith()`
 
 <br>
 
 ```
-any(constructor | type)
+expect.any(constructor | type)
 ```
 
 <br>
@@ -268,7 +280,7 @@ expect(mock).toHaveBeenCalledWith(expect.any(Cat));
 #### **toBeTruthy()**
 <br>
 
-* matches truthy values
+- checks if value is truthy
 
 ```typescript
 expect(null).toBeTruthy();          // fail
@@ -281,7 +293,7 @@ expect('foo').toBeTruthy();         // pass
 #### **toBeFalsy()**
 <br>
 
-* matches falsy values
+- checks if value is falsy
 
 ```typescript
 expect(null).toBeFalsy();          // pass
@@ -309,7 +321,7 @@ expect(5).toBe(5);                  // pass
 #### **ToBeCloseTo()**
 <br>
 
-* use for floating point equality
+- checks equality of floating-point numbers
 
 ```typescript
 expect(0.2 + 0.7).toBeCloseTo(0.9);     // pass
@@ -385,7 +397,7 @@ expect('foo').toBe('bar');                  // fail
 #### **toMatch()**
 <br>
 
-* check string against regular expression
+- checks string against regular expression
 
 ```typescript
 expect('foo').toMatch(/oo/);                // pass
@@ -398,7 +410,7 @@ expect('foo').toMatch(/abc/);               // fail
 #### **toHaveLength()**
 <br>
 
-* checks if string is of specified length
+- checks if string is of specified length
 
 <br>
 
@@ -413,7 +425,7 @@ expect('foo').toHaveLength(2);              // fail
 #### **expect.stringContaining()**
 <br>
 
-* check if parameter is substring of string
+- checks if parameter is substring of string
 
 <br>
 
@@ -434,7 +446,7 @@ expect('Hello World').toEqual(expect.stringContaining('foo'));      // fail
 #### **expect.stringMatching()**
 <br>
 
-* match string against regular expression
+- matches string against regular expression
 
 ```
 expect.stringMatching(regexp)
@@ -458,7 +470,7 @@ expect('Hello World').toEqual(expect.stringMatching(/lo..Wo/));   // fail
 #### **toStrictEqual()**
 <br>
 
-* check objects for same type and structure
+- checks objects for same type and structure
 
 <br>
 
@@ -476,7 +488,7 @@ expect(obj).toStrictEqual({ foo: 'baz' });   // fail
 #### **toHaveLength()**
 <br>
 
-* checks if object has property length with specified value
+- checks if object has property length with specified value
 
 <br>
 
@@ -491,7 +503,8 @@ expect({ length: 4 }).toHaveLength(2);      // fail
 #### **toHaveProperty()**
 <br>
 
-* check if object has specified property and optional specified property value
+- checks if object has specified property and optional specified property value
+- access deeply nested properties via dot notation
 
 <br>
 
@@ -514,7 +527,7 @@ expect({ foo: 'bar' }).toHaveProperty('foo', 'baz');        // fail
 #### **toBeInstanceOf()**
 <br>
 
-* check if object is instance of class
+- checks if object is instance of class
 
 <br>
 
@@ -530,7 +543,7 @@ expect(new A()).toBeInstanceOf(A);        // pass
 #### **toMatchObject()**
 <br>
 
-* check whether object matches subset of properties of other object
+- checks whether object matches subset of properties of other object
 
 <br>
 
@@ -587,7 +600,7 @@ test('toMatchObject()', () => {
 #### **expect.closeTo**
 <br>
 
-* used to check floating number properties
+- used to check floating number properties
 
 ```
 expect.closeTo(number, numDigits?)
@@ -611,7 +624,8 @@ expect({ num: 0.5 + 0.4 }).toEqual({ num: expect.closeTo(4.3) });     // fail
 #### **toContain()**
 <br>
 
-* check if element is included in array
+- checks if element is included in array
+- checks for strict equality
 
 ```typescript
 expect([1, 2, 3]).toContain(2);             // pass
@@ -621,10 +635,30 @@ expect([1, 2, 3]).toContain(7);             // fail
 <br>
 <br>
 
+#### **toContainEqual()**
+<br>
+
+- checks if **object** is included in array
+- does not check for strict equality
+
+```typescript
+const persons = [
+  { firstName: 'John', lastName: 'Doe' },
+  { firstName: 'Jane', lastName: 'Smith' }
+];
+
+expect(persons).toContainEqual({ firstName: 'John', lastName: 'Doe' });     // pass
+expect(persons).toContainEqual({ firstName: 'Jane', lastName: 'Doe' });     // fail
+```
+
+
+<br>
+<br>
+
 #### **toHaveLength()**
 <br>
 
-* checks if array is of specified length
+- checks if object has a property `length` with specified value
 
 <br>
 
@@ -639,18 +673,14 @@ expect([1, 2, 3]).toHaveLength(2);              // fail
 #### **expect.arrayContaining(array)**
 <br>
 
-* match every subset of expected array (arrays that contain at least all expected elements)
-* used within `toEqual()` or `toBeCalledWith()`
+- matches every subset of expected array (arrays that contain at least all expected elements)
+- used within `toEqual()` or `toBeCalledWith()`
 
 <br>
 
-Assume we expect the following array elements:
-
 ```typescript
 const expectedArrayElementList = [1, 2, 3];
-```
 
-```typescript
 expect([4, 3, 2, 1]).toEqual(expect.arrayContaining(expectedArrayElementList));     // pass
 
 expect([1, 2, 4]).toEqual(expect.arrayContaining(expectedArrayElementList));        // fail
@@ -660,14 +690,14 @@ expect([1, 2, 4]).toEqual(expect.arrayContaining(expectedArrayElementList));    
 <br>
 <br>
 
-### **Function**
+### **Mock Function**
 <br>
 <br>
 
 #### **toHaveBeenCalled()**
 <br>
 
-* check whether mock function has been called
+- checks whether mock function has been called
 
 <br>
 
@@ -696,7 +726,7 @@ test('toBeCalled()', () => {
 #### **toHaveBeenCalledTimes()**
 <br>
 
-* check whether mock function has been called a specified number of times
+- checks whether mock function has been called a specified number of times
 
 <br>
 
@@ -728,7 +758,7 @@ test('toHaveBeenCalledTimes()', () => {
 #### **toHaveBeenCalledWith()**
 <br>
 
-* check if mock function is called with specified argument
+- checks if mock function was called with specified arguments at some time in the past
 
 <br>
 
@@ -736,8 +766,10 @@ Pass
 ```typescript
 test('toHaveBeenCalledWith()', () => {
   const foo = jest.fn();
-  foo('bar');
-  expect(foo).toHaveBeenCalledWith('bar');
+  foo('bar', 1);
+  foo('baz');
+  expect(foo).toHaveBeenCalledWith('baz');
+  expect(foo).toHaveBeenCalledWith('bar', 1);
 });
 ```
 
@@ -755,10 +787,76 @@ test('toHaveBeenCalledWith()', () => {
 <br>
 <br>
 
+#### **toHaveBeenLastCalledWith()**
+<br>
+
+- checks if mock function was last called with specified arguments
+
+<br>
+
+Pass
+```typescript
+test('toHaveBeenLastCalledWith()', () => {
+  const foo = jest.fn();
+  foo('baz');
+  foo('bar', 1);
+  expect(foo).toHaveBeenLastCalledWith('bar', 1);
+});
+```
+
+<br>
+
+Fail:
+```typescript
+test('toHaveBeenLastCalledWith()', () => {
+  const foo = jest.fn();
+  foo('baz');
+  foo('bar', 1);
+  expect(foo).toHaveBeenLastCalledWith('baz');
+});
+```
+
+<br>
+<br>
+
+#### **toHaveBeenNthCalledWith()**
+<br>
+
+- checks if the specified call of mock function was called with specified arguments
+
+<br>
+
+Pass
+```typescript
+test('toHaveBeenNthCalledWith()', () => {
+  const foo = jest.fn();
+  foo('baz');
+  foo('bar', 1);
+  expect(foo).toHaveBeenNthCalledWith(1, 'baz');
+  expect(foo).toHaveBeenNthCalledWith(2, 'bar', 1);
+});
+```
+
+<br>
+
+Fail:
+```typescript
+test('toHaveBeenNthCalledWith()', () => {
+  const foo = jest.fn();
+  foo('baz');
+  foo('bar', 1);
+  expect(foo).toHaveBeenNthCalledWith(1, 'bar', 1);
+  expect(foo).toHaveBeenNthCalledWith(2, 'baz');
+});
+```
+
+<br>
+<br>
+
 #### **toHaveReturned()**
 <br>
 
-* check if mock function has returned at least one time
+- checks if mock function has returned (= did not throw an error) at least one time
 
 <br>
 
@@ -785,10 +883,44 @@ test('toHaveReturned()', () => {
 <br>
 <br>
 
+#### **toHaveReturnedTimes()**
+<br>
+
+- checks if mock function has returned (= did not throw an error) exactly a specified amount of times
+
+<br>
+
+Pass:
+```typescript
+test('toHaveReturnedTimes()', () => {
+  const foo = jest.fn();
+  foo();
+  foo();
+  foo();
+  expect(foo).toHaveReturnedTimes(3);
+});
+```
+
+<br>
+
+Fail:
+```typescript
+test('toHaveReturnedTimes()', () => {
+  const foo = jest.fn();
+  const foo = jest.fn();
+  foo();
+  foo();
+  foo();
+  expect(foo).toHaveReturnedTimes(2);});
+```
+
+<br>
+<br>
+
 #### **toHaveReturnedWith()**
 <br>
 
-* check whether mock function returned specified value
+- checks whether mock function returned specified value
 
 <br>
 
@@ -814,6 +946,72 @@ test('toHaveReturnedWith()', () => {
 
 <br>
 <br>
+
+#### **toHaveLastReturnedWith()**
+<br>
+
+- checks whether mock function returned specified value at last call
+
+<br>
+
+Pass:
+```typescript
+test('toHaveLastReturnedWith()', () => {
+  const foo = jest.fn((i) => `call_${i}`);
+  foo(1);
+  foo(2);
+  expect(foo).toHaveLastReturnedWith('call_2');
+});
+```
+
+<br>
+
+Fail:
+```typescript
+test('toHaveLastReturnedWith()', () => {
+  const foo = jest.fn((i) => `call_${i}`);
+  foo(1);
+  foo(2);
+  expect(foo).toHaveLastReturnedWith('call_1');
+});
+```
+
+<br>
+<br>
+
+#### **toHaveNthReturnedWith()**
+<br>
+
+- checks whether mock function returned specified value at specified call
+
+<br>
+
+Pass:
+```typescript
+test('toHaveNthReturnedWith()', () => {
+  const foo = jest.fn((i) => `call_${i}`);
+  foo(1);
+  foo(2);
+  foo(3);
+  expect(foo).toHaveNthReturnedWith(2,'call_2');
+});
+```
+
+<br>
+
+Fail:
+```typescript
+test('toHaveNthReturnedWith()', () => {
+  const foo = jest.fn((i) => `call_${i}`);
+  foo(1);
+  foo(2);
+  foo(3);
+  expect(foo).toHaveNthReturnedWith(2, 'call_3');
+});
+```
+
+<br>
+<br>
 <br>
 
 ### **Exceptions**
@@ -823,9 +1021,9 @@ test('toHaveReturnedWith()', () => {
 #### **toThrow()**
 <br>
 
-* checks whether function throws error
+- checks whether function throws error
 
-Assume we have the following function:
+<br>
 
 ```typescript
 const foo = () => { throw new RangeError('Some error message'); };

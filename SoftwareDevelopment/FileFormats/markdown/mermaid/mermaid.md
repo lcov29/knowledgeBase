@@ -23,6 +23,7 @@
     - [**Pie Chart**](#pie-chart)
     - [**GitGraph Diagram**](#gitgraph-diagram)
     - [**Requirement Diagram**](#requirement-diagram)
+    - [**Mindmap**](#mindmap)
 
 <br>
 <br>
@@ -373,3 +374,30 @@ requirementDiagram
 <br>
 
 See [Requirement Diagram](./mermaidDiagramSyntax/mermaidRequirementDiagram.md)
+
+<br>
+<br>
+
+### [**Mindmap**](./mermaidDiagramSyntax/mermaidMindmap.md)
+<br>
+
+A mindmap visualizes and connects information
+
+<br>
+
+```mermaid
+mindmap
+    root(Programming Languages)
+        (Java)
+        (JavaScript)
+        (Python)
+        (C)
+        (C#)
+        (C++)
+        (Rust)
+        (Go)
+```
+
+<br>
+
+See [Mindmap](./mermaidDiagramSyntax/mermaidMindmap.md)

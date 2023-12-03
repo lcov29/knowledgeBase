@@ -6,7 +6,7 @@
 
 - [**Git Commands**](#git-commands)
   - [**Table Of Contents**](#table-of-contents)
-  - [**Workflow For Files**](#workflow-for-files)
+  - [**Basic Git Workflow**](#basic-git-workflow)
   - [**Initialize And Configuration**](#initialize-and-configuration)
   - [**Clone Existing Repository**](#clone-existing-repository)
   - [**Remote Repositories**](#remote-repositories)
@@ -20,15 +20,41 @@
 <br>
 <br>
 
-## **Workflow For Files**
-1. Untracked
-2. Staging Area
-3. Committed
+## **Basic Git Workflow**
+<br>
+
+All changes to a repository have one of the following states:
+
+|State     |Location     |
+|:---------|:------------|
+|Untracked |Work Area    |
+|Staged    |Staging Area |
+|Committed |Repository   |
 
 <br>
 <br>
 
-![Areas Of Git](pictures/git_areas.png)
+```mermaid
+flowchart LR
+  remoteRepo(Repository)
+  localRepo(Repository)
+  stage(Staging Area)
+  work(Working Area)
+
+  remoteRepo -- git fetch --> localRepo
+  remoteRepo -- git pull --> work
+  localRepo -- git push --> remoteRepo
+
+  subgraph Local
+    stage -- git commit --> localRepo
+    stage -- "git restore --staged" --> work
+    work -- git add --> stage
+  end
+
+  subgraph Remote 
+    remoteRepo
+  end
+```
 
 <br>
 <br>

@@ -6,7 +6,6 @@
 
 - [**Git Commands**](#git-commands)
   - [**Table Of Contents**](#table-of-contents)
-  - [**Basic Git Workflow**](#basic-git-workflow)
   - [**Git Setup**](#git-setup)
     - [**Configuration (_git config_)**](#configuration-git-config)
     - [**Create New Git Repository (_git init_)**](#create-new-git-repository-git-init)
@@ -40,46 +39,6 @@
         - [**Remove Connection (_git remote rm \<name\>_)**](#remove-connection-git-remote-rm-name)
       - [**Push To Remote Repository (_git push \<?connectionName\> \<?remoteBranch\>_)**](#push-to-remote-repository-git-push-connectionname-remotebranch)
       - [**Pull From Remote Repository (_git pull \<?remote\> \<?branchName\>_)**](#pull-from-remote-repository-git-pull-remote-branchname)
-
-<br>
-<br>
-<br>
-
-## **Basic Git Workflow**
-<br>
-
-All changes to a repository have one of the following states:
-
-|State     |Location     |
-|:---------|:------------|
-|Untracked |Work Area    |
-|Staged    |Staging Area |
-|Committed |Repository   |
-
-<br>
-<br>
-
-```mermaid
-flowchart LR
-  remoteRepo(Repository)
-  localRepo(Repository)
-  stage(Staging Area)
-  work(Working Area)
-
-  remoteRepo -- git fetch --> localRepo
-  remoteRepo -- git pull --> work
-  localRepo -- git push --> remoteRepo
-
-  subgraph Local
-    stage -- git commit --> localRepo
-    stage -- "git restore --staged" --> work
-    work -- git add --> stage
-  end
-
-  subgraph Remote 
-    remoteRepo
-  end
-```
 
 <br>
 <br>

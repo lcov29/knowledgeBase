@@ -27,17 +27,19 @@
       - [**Load Changes From Stash (_git stash pop \<?stashId\>_)**](#load-changes-from-stash-git-stash-pop-stashid)
       - [**Delete Specific Stash (_git stash drop \<?stashId\>_)**](#delete-specific-stash-git-stash-drop-stashid)
       - [**Delete All Stashes (_git stash clear_)**](#delete-all-stashes-git-stash-clear)
-    - [**Commit Changes**](#commit-changes)
+    - [**Staging Area**](#staging-area)
       - [**Add Changes (_git add \<fileOrDirectory\>_)**](#add-changes-git-add-fileordirectory)
       - [**Remove Changes (_git restore \<file\>_)**](#remove-changes-git-restore-file)
+    - [**Commits**](#commits)
       - [**Commit Changes (_git commit_)**](#commit-changes-git-commit)
+      - [**Move Back To Past Commit (_git checkout \<commitHash\>_)**](#move-back-to-past-commit-git-checkout-commithash)
     - [**Remote Repositories**](#remote-repositories)
       - [**Configurate Connections**](#configurate-connections)
         - [**Show Connections (_git remote -v_)**](#show-connections-git-remote--v)
         - [**Add Connection (_git remote add \<name\> \<url\>_)**](#add-connection-git-remote-add-name-url)
         - [**Rename Connection (_git remote rename \<oldName\> \<newName\>_)**](#rename-connection-git-remote-rename-oldname-newname)
         - [**Remove Connection (_git remote rm \<name\>_)**](#remove-connection-git-remote-rm-name)
-      - [**Push To Remote Repository (_git push \<?connectionName\> \<?remoteBranch\>_)**](#push-to-remote-repository-git-push-connectionname-remotebranch)
+      - [**Push To Remote Repository (_git push \<?connectionName\> \<?localBranch\>:\<?remoteBranch\>_)**](#push-to-remote-repository-git-push-connectionname-localbranchremotebranch)
       - [**Pull From Remote Repository (_git pull \<?remote\> \<?branchName\>_)**](#pull-from-remote-repository-git-pull-remote-branchname)
 
 <br>
@@ -202,6 +204,41 @@ Date:   Sun Dec 3 12:40:03 2023 +0100
 
 <br>
 <br>
+
+```bash
+git log --all --graph --decorate
+```
+
+prints
+
+```
+*   commit 4a347631a73f9c8f36453a4cc38f2f297468f4b4 (HEAD -> master)
+|\  Merge: 0924bdc ae78318
+| | Author: John Doe <john.doe@example.com>
+| | Date:   Sun Dec 3 20:15:16 2023 +0100
+| | 
+| |     WIP on master: 0924bdc delete file
+| | 
+| * commit ae78318bd0a3e9ffef84cd3272be61802993ac41
+|/  Author: John Doe <john.doe@example.com>
+|   Date:   Sun Dec 3 20:15:16 2023 +0100
+|   
+|       index on master: 0924bdc delete file
+| 
+* commit 0924bdc338bafa247eb94c7205973420a44871c4
+| Author: John Doe <john.doe@example.com>
+| Date:   Sun Dec 3 12:41:44 2023 +0100
+| 
+|     delete file
+| 
+* commit 0bdb6a04886c72ca59c297502522e8b355eba7f8
+  Author: John Doe <john.doe@example.com>
+  Date:   Sun Dec 3 12:40:03 2023 +0100
+
+```
+
+<br>
+<br>
 <br>
 
 ### **Branches**
@@ -350,7 +387,7 @@ git stash clear
 <br>
 <br>
 
-### **Commit Changes**
+### **Staging Area**
 <br>
 <br>
 
@@ -387,7 +424,11 @@ git restore --staged ./path/file
 ```
 - remove changes of specified file from staging area
 
+<br>
+<br>
+<br>
 
+### **Commits**
 <br>
 <br>
 
@@ -405,6 +446,16 @@ git commit
 git commit -m 'message'
 ```
 - commit changes with defined message
+
+<br>
+<br>
+
+#### **Move Back To Past Commit (_git checkout \<commitHash\>_)**
+<br>
+
+```bash
+git checkout 09117c167cdcddd5acf90420382a3c3f820d35bb
+```
 
 <br>
 <br>
@@ -461,7 +512,7 @@ git remote rm origin
 <br>
 <br>
 
-#### **Push To Remote Repository (_git push \<?connectionName\> \<?remoteBranch\>_)**
+#### **Push To Remote Repository (_git push \<?connectionName\> \<?localBranch\>:\<?remoteBranch\>_)**
 <br>
 
 ```bash
@@ -474,7 +525,7 @@ git push
 ```bash
 git push origin master
 ```
-- push changes branch `master` of remote repository `origin`
+- push changes of local branch `master` of remote repository `origin`
 
 <br>
 

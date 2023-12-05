@@ -12,8 +12,16 @@
     - [**3. Add Test Script To Package.json**](#3-add-test-script-to-packagejson)
   - [**General**](#general)
   - [**Matchers (Assertions)**](#matchers-assertions)
-  - [**Setup And Teardown**](#setup-and-teardown)
-  - [**Limit Execution To Single Test For Debugging Purposes**](#limit-execution-to-single-test-for-debugging-purposes)
+  - [**Structuring Tests**](#structuring-tests)
+    - [**Setup And Teardown**](#setup-and-teardown)
+      - [**beforeAll(fn, ?timeout)**](#beforeallfn-timeout)
+      - [**beforeEach(fn, ?timeout)**](#beforeeachfn-timeout)
+      - [**afterAll(fn, ?timeout)**](#afterallfn-timeout)
+      - [**afterEach(fn, ?timeout)**](#aftereachfn-timeout)
+    - [**Duplicate Test Suites With Different Data**](#duplicate-test-suites-with-different-data)
+  - [**Manipulate Test / Block Execution For Debugging Purposes**](#manipulate-test--block-execution-for-debugging-purposes)
+    - [**.only**](#only)
+    - [**.skip**](#skip)
 
 <br>
 <br>
@@ -107,47 +115,170 @@ See [jest matchers](./jest_matchers.md)
 <br>
 <br>
 
-## **Setup And Teardown**
+## **Structuring Tests**
 <br>
 
-```typescript
-beforeAll(() => {
-  // code to execute once at file opening
+```javascript
+describe('test block description', () => {
+
+  it('test1 description', () => { /* test description */ });
+
+  it('test2 description', () => { /* test description */ });
+
 });
+```
 
+<br>
+<br>
 
-afterAll(() => {
-  // code to execute once at file closing
+### **Setup And Teardown**
+<br>
+<br>
+
+#### **beforeAll(fn, ?timeout)**
+<br>
+
+```javascript
+beforeAll(() => { /* implementation */ });
+```
+- executes before **any** test within its scope
+- scope: top level or describe block
+
+<br>
+<br>
+
+#### **beforeEach(fn, ?timeout)**
+<br>
+
+```javascript
+beforeEach(() => { /* implementation */ });
+```
+- executes before each test in within its scope
+- scope: top level or describe block
+
+<br>
+<br>
+
+#### **afterAll(fn, ?timeout)**
+<br>
+
+```javascript
+afterAll(() => { /* implementation */ })
+```
+- executes after **all** tests within its scope
+- scope: top level or describe block
+
+<br>
+<br>
+
+#### **afterEach(fn, ?timeout)**
+<br>
+
+```javascript
+afterEach(() => { /* implementation */ })
+```
+- executes after **each** test within its scope
+- scope: top level or describe block
+
+<br>
+<br>
+
+### **Duplicate Test Suites With Different Data**
+<br>
+
+```javascript
+describe.each(testdata[][])(testTitle, fn, ?timeout)
+```
+
+<br>
+
+Example:
+
+Lets assume we have the following test suite:
+
+```javascript
+describe('someFunction', () => {
+
+  describe('when input is a positive number', () => {
+    it('does A', () => { expect(someFunction(1)).toEqual('result') });
+    it('does B', () => { expect(someFunction(2)).toEqual('result') });
+    it('does C', () => { expect(someFunction(3)).toEqual('result') });
+  })
+
+  describe('when input is a negative number', () => {
+    it('does A', () => { expect(someFunction(4)).toEqual('result') });
+    it('does B', () => { expect(someFunction(5)).toEqual('result') });
+    it('does C', () => { expect(someFunction(6)).toEqual('result') });
+  })
+
+  describe('when input is zero', () => {
+    it('does A', () => { expect(someFunction(7)).toEqual('result') });
+    it('does B', () => { expect(someFunction(8)).toEqual('result') });
+    it('does C', () => { expect(someFunction(9)).toEqual('result') });
+  })
 })
-
-
-beforeEach(() => {
-  // code to execute before each test
-});
-
-
-afterEach(() => {
-  // code to execute after each test
-});
 ```
 
 <br>
 
-* `beforeEach` and `afterEach` can have two scopes:
-  * top level
-  * within `describe` blocks
+We can reduce the duplicate test implementations by using `describe.each()`:
 
 <br>
-<br>
-<br>
 
-## **Limit Execution To Single Test For Debugging Purposes**
-<br>
+```javascript
+describe('someFunction', () => {
 
-* add `.only` for test that should be executed as only test in suite
+  describe.each([
+    ['a positive number', 1, 2, 3, 'result'],
+    ['a negative number', 4, 5, 6, 'result'],
+    ['zero', 7, 8, 9, 'result'],
+  ])('when input is %i', (input1, input2, input3, expectedResult) => {
+    it('does A', () => { expect(someFunction(input1)).toEqual(expectedResult) });
+    it('does B', () => { expect(someFunction(input2)).toEqual(expectedResult) });
+    it('does C', () => { expect(someFunction(input3)).toEqual(expectedResult) });
+  })
 
-```typescript
-test.only('oly test that gets executed', () => { /* implementation */ });
-
-test('test that gets skipped', () => { /* implementation */ });
+})
 ```
+
+<br>
+<br>
+
+## **Manipulate Test / Block Execution For Debugging Purposes**
+<br>
+<br>
+
+### **.only**
+<br>
+
+```javascript
+describe.only('test block description', () => { /* implementaiton */ })
+```
+- executes only this block in entire file
+
+<br>
+
+```javascript
+it('test1 description', () => { /* test description */ });
+it.only('test2 description', () => { /* test description */ });
+```
+- executes only this test in entire file
+
+<br>
+<br>
+
+### **.skip**
+<br>
+
+```javascript
+describe.skip('test block description', () => { /* implementaiton */ })
+```
+- executes every block in entire file except this one
+
+<br>
+
+```javascript
+it('test1 description', () => { /* test description */ });
+it.skip('test2 description', () => { /* test description */ });
+```
+- executes every test in entire file except this one

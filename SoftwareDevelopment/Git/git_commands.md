@@ -31,6 +31,7 @@
     - [**Staging Area**](#staging-area)
       - [**Add Changes (_git add \<fileOrDirectory\>_)**](#add-changes-git-add-fileordirectory)
       - [**Remove Changes (_git restore \<file\>_)**](#remove-changes-git-restore-file)
+      - [**Remove File (_git rm \<file\>_)**](#remove-file-git-rm-file)
     - [**Commits**](#commits)
       - [**Commit Changes (_git commit_)**](#commit-changes-git-commit)
       - [**Move Back To Past Commit (_git checkout \<commitHash\>_)**](#move-back-to-past-commit-git-checkout-commithash)
@@ -441,6 +442,24 @@ git add -A
 git restore --staged ./path/file
 ```
 - remove changes of specified file from staging area
+
+<br>
+<br>
+
+#### **Remove File (_git rm \<file\>_)**
+<br>
+
+```bash
+git rm ./path/file
+```
+- deletes and untracks file
+
+<br>
+
+```bash
+git rm --cached ./path/file
+```
+- untracks file but does not remove it from hard drive
 
 <br>
 <br>

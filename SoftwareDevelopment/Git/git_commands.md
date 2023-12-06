@@ -15,6 +15,7 @@
     - [**Get Information**](#get-information)
       - [**Current Status (_git status_)**](#current-status-git-status)
       - [**Commit History (_git log_)**](#commit-history-git-log)
+      - [**Show File Changes (_git diff_)**](#show-file-changes-git-diff)
     - [**Branches**](#branches)
       - [**List Branches (_git branch_)**](#list-branches-git-branch)
       - [**Switch Branch (_git switch \<branchName\>_)**](#switch-branch-git-switch-branchname)
@@ -234,8 +235,25 @@ prints
 * commit 0bdb6a04886c72ca59c297502522e8b355eba7f8
   Author: John Doe <john.doe@example.com>
   Date:   Sun Dec 3 12:40:03 2023 +0100
-
 ```
+
+<br>
+<br>
+
+#### **Show File Changes (_git diff_)**
+<br>
+
+```bash
+git diff
+```
+- see changes of each file in the **working area** compared to current version in last commit
+
+<br>
+
+```bash
+git diff --staged
+```
+- see changes of each file in the **staging area** compared to current version in last commit
 
 <br>
 <br>

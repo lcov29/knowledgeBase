@@ -34,6 +34,7 @@
       - [**Remove File (_git rm \<file\>_)**](#remove-file-git-rm-file)
     - [**Commits**](#commits)
       - [**Commit Changes (_git commit_)**](#commit-changes-git-commit)
+      - [**Add Changes To Previous Commit (_git commit --amend_)**](#add-changes-to-previous-commit-git-commit---amend)
       - [**Move Back To Past Commit (_git checkout \<commitHash\>_)**](#move-back-to-past-commit-git-checkout-commithash)
     - [**Remote Repositories**](#remote-repositories)
       - [**Configurate Connections**](#configurate-connections)
@@ -500,6 +501,24 @@ git commit
 git commit -m 'message'
 ```
 - commit changes with defined message
+
+<br>
+<br>
+
+#### **Add Changes To Previous Commit (_git commit --amend_)**
+<br>
+
+```bash
+git commit --amend
+```
+- add all staged changes to previous commit
+
+<br>
+
+```bash
+git commit --amend -m 'message'
+```
+- add all staged changes to previous commit and replace its commit message
 
 <br>
 <br>

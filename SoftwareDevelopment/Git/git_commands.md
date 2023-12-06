@@ -241,6 +241,23 @@ prints
 <br>
 <br>
 
+```bash
+git log -p
+```
+- shows commit history with diffs per commit
+
+<br>
+<br>
+
+```bash
+git log --since=2.weeks
+git log --since="2023-11-01" --before="2023-12-30"
+```
+- limit commit history by time
+
+<br>
+<br>
+
 #### **Show File Changes (_git diff_)**
 <br>
 

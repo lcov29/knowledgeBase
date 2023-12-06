@@ -14,6 +14,7 @@
     - [**Implementation**](#implementation)
   - [**Basic Git Workflow**](#basic-git-workflow)
   - [**Branches**](#branches)
+  - [**Ignore Files**](#ignore-files)
 
 <br>
 <br>
@@ -174,3 +175,12 @@ gitGraph
     merge "branchA" id: "stateF"
     commit id: "stateG"
 ```
+
+<br>
+<br>
+<br>
+
+## **Ignore Files**
+<br>
+
+Files that git should ignore can be specified in the `.gitignore` file

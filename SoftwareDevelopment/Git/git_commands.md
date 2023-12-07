@@ -39,6 +39,7 @@
     - [**Remote Repositories**](#remote-repositories)
       - [**Configurate Connections**](#configurate-connections)
         - [**Show Connections (_git remote -v_)**](#show-connections-git-remote--v)
+        - [**Show Information About Connection (_git remote show \<branchName\>_)**](#show-information-about-connection-git-remote-show-branchname)
         - [**Add Connection (_git remote add \<name\> \<url\>_)**](#add-connection-git-remote-add-name-url)
         - [**Rename Connection (_git remote rename \<oldName\> \<newName\>_)**](#rename-connection-git-remote-rename-oldname-newname)
         - [**Remove Connection (_git remote rm \<name\>_)**](#remove-connection-git-remote-rm-name)
@@ -552,6 +553,31 @@ git remote -v
 <br>
 <br>
 
+##### **Show Information About Connection (_git remote show \<branchName\>_)**
+<br>
+
+```bash
+git remote show origin
+```
+
+prints
+
+```
+* remote origin
+  Fetch URL: https://github.com/someUser/someRepository.git
+  Push  URL: https://github.com/someUser/someRepository.git
+  HEAD branch: master
+  Remote branch:
+    master tracked
+  Local branch configured for 'git pull':
+    master merges with remote master
+  Local ref configured for 'git push':
+    master pushes to master (up to date)
+```
+
+<br>
+<br>
+
 ##### **Add Connection (_git remote add \<name\> \<url\>_)**
 <br>
 
@@ -624,31 +650,3 @@ git pull
 git pull origin
 ```
 - **fetch** and **merge** changes from remote repository `origin`
-
-<!-- 
-
-  === Ignoring Files ===
-  - .gitignore file
-    - #: comment
-    - glob pattern [abc]: match any character inside brackets
-    - negate pattern: !
-    - *: matches any number of characters including zero
-    - ?: matches single character
-
-
-  === git diff ===
-  - git diff:             see only unstaged changes
-  - git diff --staged:    see only staged changes
-
-
-  === Remove File ===
-  - git rm path/to/file             removes file from staging area
-
-  
-## **Branches**
-
-```bash
-git merge <branch_name>         # merge <branch_name> to the current branch
-```
-
--->

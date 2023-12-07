@@ -36,6 +36,13 @@
       - [**Commit Changes (_git commit_)**](#commit-changes-git-commit)
       - [**Add Changes To Previous Commit (_git commit --amend_)**](#add-changes-to-previous-commit-git-commit---amend)
       - [**Move Back To Past Commit (_git checkout \<commitHash\>_)**](#move-back-to-past-commit-git-checkout-commithash)
+    - [**Tags**](#tags)
+      - [**List Tags (_git tag_)**](#list-tags-git-tag)
+      - [**Show Tag Information (_git show \<tagName\>_)**](#show-tag-information-git-show-tagname)
+      - [**Add Tags**](#add-tags)
+        - [**Add Lightweight Tag (\_git tag \<tagName\> ?\<commitId\>)**](#add-lightweight-tag-_git-tag-tagname-commitid)
+        - [**Add Annotated Tag (_git tag -a \<tagName\> -m \<tagMessage\> ?\<commitId\>_)**](#add-annotated-tag-git-tag--a-tagname--m-tagmessage-commitid)
+      - [**Delete Tag (_git tag -d \<tagName\>_)**](#delete-tag-git-tag--d-tagname)
     - [**Remote Repositories**](#remote-repositories)
       - [**Configurate Connections**](#configurate-connections)
         - [**Show Connections (_git remote -v_)**](#show-connections-git-remote--v)
@@ -43,8 +50,12 @@
         - [**Add Connection (_git remote add \<name\> \<url\>_)**](#add-connection-git-remote-add-name-url)
         - [**Rename Connection (_git remote rename \<oldName\> \<newName\>_)**](#rename-connection-git-remote-rename-oldname-newname)
         - [**Remove Connection (_git remote rm \<name\>_)**](#remove-connection-git-remote-rm-name)
-      - [**Push To Remote Repository (_git push \<?connectionName\> \<?localBranch\>:\<?remoteBranch\>_)**](#push-to-remote-repository-git-push-connectionname-localbranchremotebranch)
-      - [**Pull From Remote Repository (_git pull \<?remote\> \<?branchName\>_)**](#pull-from-remote-repository-git-pull-remote-branchname)
+      - [**Changes**](#changes)
+        - [**Push To Remote Repository (_git push \<?connectionName\> \<?localBranch\>:\<?remoteBranch\>_)**](#push-to-remote-repository-git-push-connectionname-localbranchremotebranch)
+        - [**Pull From Remote Repository (_git pull \<?remote\> \<?branchName\>_)**](#pull-from-remote-repository-git-pull-remote-branchname)
+      - [**Tags**](#tags-1)
+        - [**Push Tags To Remote Repository (_git push \<connectionName\> \<tagName\>_)**](#push-tags-to-remote-repository-git-push-connectionname-tagname)
+        - [**Delete Tags From Remote Repository (_git push \<connectionName\> --delete \<tagName\>_)**](#delete-tags-from-remote-repository-git-push-connectionname---delete-tagname)
 
 <br>
 <br>
@@ -535,6 +546,78 @@ git checkout 09117c167cdcddd5acf90420382a3c3f820d35bb
 <br>
 <br>
 
+### **Tags**
+<br>
+
+Specific commits can be marked with a tag. There are two types of tags:
+
+<br>
+
+|Tag Type    |Description                |
+|:-----------|:--------------------------|
+|lightweight |pointer to specific commit |
+|annotated   |stored as git objects      |
+
+<br>
+<br>
+
+#### **List Tags (_git tag_)**
+<br>
+
+```bash
+git tag
+```
+
+<br>
+<br>
+
+#### **Show Tag Information (_git show \<tagName\>_)**
+<br>
+
+```bash
+git show v1.2
+```
+
+<br>
+<br>
+
+#### **Add Tags**
+<br>
+<br>
+
+##### **Add Lightweight Tag (_git tag \<tagName\> ?\<commitId\>)**
+<br>
+
+```bash
+git tag v1.2
+```
+- adds lightweight tag to current commit
+
+<br>
+<br>
+
+##### **Add Annotated Tag (_git tag -a \<tagName\> -m \<tagMessage\> ?\<commitId\>_)**
+<br>
+
+```bash
+git tag -a v1.2 -m 'version 1.2'
+```
+
+<br>
+<br>
+
+#### **Delete Tag (_git tag -d \<tagName\>_)**
+<br>
+
+```bash
+git tag -d v1.2
+```
+- delete local tag `v1.2`
+
+<br>
+<br>
+<br>
+
 ### **Remote Repositories**
 <br>
 <br>
@@ -611,7 +694,11 @@ git remote rm origin
 <br>
 <br>
 
-#### **Push To Remote Repository (_git push \<?connectionName\> \<?localBranch\>:\<?remoteBranch\>_)**
+#### **Changes**
+<br>
+<br>
+
+##### **Push To Remote Repository (_git push \<?connectionName\> \<?localBranch\>:\<?remoteBranch\>_)**
 <br>
 
 ```bash
@@ -636,7 +723,7 @@ git push origin feature123:master
 <br>
 <br>
 
-#### **Pull From Remote Repository (_git pull \<?remote\> \<?branchName\>_)**
+##### **Pull From Remote Repository (_git pull \<?remote\> \<?branchName\>_)**
 <br>
 
 ```bash
@@ -650,3 +737,35 @@ git pull
 git pull origin
 ```
 - **fetch** and **merge** changes from remote repository `origin`
+
+<br>
+<br>
+
+#### **Tags**
+<br>
+<br>
+
+##### **Push Tags To Remote Repository (_git push \<connectionName\> \<tagName\>_)**
+<br>
+
+```bash
+git push origin v1.2
+```
+- push tag `v1.2` to remote `origin`
+
+<br>
+
+```bash
+git push origin --tags
+```
+- push all tags to remote `origin`
+
+<br>
+<br>
+
+##### **Delete Tags From Remote Repository (_git push \<connectionName\> --delete \<tagName\>_)**
+<br>
+
+```bash
+git push origin --delete v1.2
+```

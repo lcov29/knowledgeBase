@@ -14,6 +14,10 @@
     - [**Implementation**](#implementation)
   - [**Basic Git Workflow**](#basic-git-workflow)
   - [**Branches**](#branches)
+    - [**Branching**](#branching)
+      - [**Fast-Forward-Merge**](#fast-forward-merge)
+      - [**Recursive Merge**](#recursive-merge)
+      - [**Merge With Conflicts**](#merge-with-conflicts)
   - [**Ignore Files**](#ignore-files)
 
 <br>
@@ -116,6 +120,21 @@ type references = map<string, string>   // maps alphanumerical name to hash id
 ```
 
 <br>
+
+```mermaid
+flowchart LR
+  commit1(Commit)
+  tree1(Tree)
+  blob1(Blob)
+  blob2(Blob)
+  blob3(Blob)
+  commit1 --> tree1
+  tree1 --> blob1
+  tree1 --> blob2
+  tree1 --> blob3
+```
+
+<br>
 <br>
 <br>
 
@@ -162,19 +181,125 @@ flowchart LR
 ## **Branches**
 <br>
 
+- Branches are **movable** pointers to a specific commit
+- A Branch contains the commit the pointer is referencing and all previous commits
+- The currently selected branch is marked by the `HEAD` reference
+
+<br>
+
 ```mermaid
+%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': false,'showCommitLabel': false}} }%%
 gitGraph
-    commit id: "stateA"
-    commit id: "stateB"
-    commit id: "stateC"
+    commit
+    commit
+    commit tag:"master"
     branch "branchA"
       checkout "branchA"
-      commit id: "stateD"
-      commit id: "stateE"
-      checkout main
-    merge "branchA" id: "stateF"
-    commit id: "stateG"
+      commit
+      commit tag:"feature"
+    checkout "main"
+    commit tag:"bugfix, HEAD"
 ```
+
+<br>
+<br>
+
+### **Branching**
+<br>
+<br>
+
+#### **Fast-Forward-Merge**
+<br>
+
+- Git merges two branches by simply moving the branch reference forward
+- only when the branch you merge into is the direct predecessor of the current branch and was not changed
+
+<br>
+
+Before:
+
+```mermaid
+%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': false,'showCommitLabel': false}} }%%
+gitGraph
+    commit
+    commit
+    commit tag:"master, HEAD"
+    branch "branchA"
+      checkout "branchA"
+      commit
+      commit tag:"feature"
+```
+
+<br>
+
+After:
+
+```mermaid
+%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': false,'showCommitLabel': false}} }%%
+gitGraph
+    commit
+    commit
+    commit
+    branch "branchA"
+      checkout "branchA"
+      commit
+      commit tag:"feature, master, HEAD"
+```
+
+<br>
+<br>
+
+#### **Recursive Merge**
+<br>
+
+- Git merges two branches that diverged at some point in time via three-way-merge
+
+<br>
+
+Before:
+
+```mermaid
+%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': false,'showCommitLabel': false}} }%%
+gitGraph
+    commit
+    commit
+    commit
+    branch "branchA"
+      checkout "branchA"
+      commit
+      commit tag:"feature"
+    checkout "main"
+    commit tag:"master, HEAD"
+```
+
+<br>
+
+After:
+
+```mermaid
+%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': false,'showCommitLabel': false}} }%%
+gitGraph
+    commit
+    commit
+    commit
+    branch "branchA"
+      checkout "branchA"
+      commit
+      commit
+    checkout "main"
+    merge branchA
+    commit tag:"master, feature, HEAD"
+```
+
+<br>
+<br>
+
+#### **Merge With Conflicts**
+<br>
+
+- Git merges two branches that diverged at some point in time
+- Merge conflicts must be **manually** resolved
+
 
 <br>
 <br>

@@ -20,6 +20,7 @@
       - [**List Branches (_git branch_)**](#list-branches-git-branch)
       - [**Switch Branch (_git switch \<branchName\>_)**](#switch-branch-git-switch-branchname)
       - [**Create New Branch (_git switch -c \<newBranchName\>_)**](#create-new-branch-git-switch--c-newbranchname)
+      - [**Rename Local Branch (_git branch --move \<oldName\> \<newName\>_)**](#rename-local-branch-git-branch---move-oldname-newname)
       - [**Delete Branch (_git branch -d \<branchName\>_)**](#delete-branch-git-branch--d-branchname)
     - [**Stash Changes**](#stash-changes)
       - [**List All Stashes (_git stash list_)**](#list-all-stashes-git-stash-list)
@@ -306,6 +307,43 @@ git branch
 <br>
 
 ```bash
+git branch -v
+```
+- list all existing local branches
+- shows last commit of each branch
+- highlight active branch in green and with asterisk
+
+<br>
+
+```bash
+git branch --merged
+```
+- list all branches that have been merged into the current branch
+
+<br>
+
+```bash
+git branch --merged master
+```
+- list all branches that have been merged into the specified branch `master`
+
+<br>
+
+```bash
+git branch --no-merged
+```
+- list all branches that have **not** been merged into the current branch
+
+<br>
+
+```bash
+git branch --no-merged master
+```
+- list all branches that have **not** been merged into the specified branch `master`
+
+<br>
+
+```bash
 git branch --all
 ```
 - list existing local **and** remote-tracking branches 
@@ -330,6 +368,17 @@ git switch feature/sorting
 ```bash
 git switch -c feature/sorting
 ```
+
+<br>
+<br>
+
+#### **Rename Local Branch (_git branch --move \<oldName\> \<newName\>_)**
+<br>
+
+```bash
+git branch --move featurePagnation featurePagination
+```
+- rename the branch `featurePagnation` to `featurePagination`
 
 <br>
 <br>

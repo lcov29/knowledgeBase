@@ -207,7 +207,14 @@ gitGraph
 ### **Merge**
 <br>
 
-We can incorporate commits of one branch into another branch by **merging**.  
+We can incorporate commits of one branch into another branch by **merging**.
+
+<br>
+
+> **WARNING**  
+> Do not try to merge when you still have uncommitted changes! They may be lost when a merge conflict occurs!
+
+<br>
 Depending on the situation Git executes one of the following merging strategies:
 
 <br>

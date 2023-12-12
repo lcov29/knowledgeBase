@@ -14,7 +14,7 @@
     - [**Implementation**](#implementation)
   - [**Basic Git Workflow**](#basic-git-workflow)
   - [**Branches**](#branches)
-    - [**Branching**](#branching)
+    - [**Merge**](#merge)
       - [**Fast-Forward-Merge**](#fast-forward-merge)
       - [**Recursive Merge**](#recursive-merge)
       - [**Merge With Conflicts**](#merge-with-conflicts)
@@ -204,7 +204,7 @@ gitGraph
 <br>
 <br>
 
-### **Branching**
+### **Merge**
 <br>
 <br>
 

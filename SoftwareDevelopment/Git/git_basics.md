@@ -18,6 +18,7 @@
       - [**Fast-Forward-Merge**](#fast-forward-merge)
       - [**Recursive Merge**](#recursive-merge)
       - [**Merge With Conflicts**](#merge-with-conflicts)
+    - [**Rebase**](#rebase)
   - [**Ignore Files**](#ignore-files)
 
 <br>
@@ -207,7 +208,7 @@ gitGraph
 ### **Merge**
 <br>
 
-We can incorporate commits of one branch into another branch by **merging**.
+We can incorporate changes of one branch into another branch by **merging**.
 
 <br>
 
@@ -312,6 +313,90 @@ gitGraph
 - Git merges two branches that diverged at some point in time via [recursive merge](#recursive-merge)
 - Merge conflicts must be **manually** resolved
 
+<br>
+<br>
+
+### **Rebase**
+<br>
+
+Rebasing is another way to incorporate changes of a branch into another branch. Instead of merging the branches, we take all changes and apply them to the current branch as **different** commits.
+
+<br>
+
+>**Warning**  
+>Never rebase commits outside of your repository that are the basis of the work of other contributors!
+
+<br>
+
+Basic Rebase:
+
+1. Go to the common ancestor of the current branch and the branch we are rebasing onto
+2. Save diff of each commit of current branch to temporary file
+3. Reset current branch to state of branch we are rebasing onto
+4. Apply temporary saved changes
+
+<br>
+
+```branch
+git switch feature
+git rebase master
+```
+
+<br>
+
+Before:
+
+```mermaid
+%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': false,'showCommitLabel': true}} }%%
+gitGraph
+    commit id: "C1"
+    commit id: "C2"
+    commit id: "C3"
+    branch "branchA"
+      checkout "branchA"
+      commit id: "C5" tag:"feature"
+    checkout "main"
+    commit id: "C4" tag:"master"
+```
+
+<br>
+
+After:
+
+```mermaid
+%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': false,'showCommitLabel': true}} }%%
+gitGraph
+    commit id: "C1"
+    commit id: "C2"
+    commit id: "C3"
+    branch "branchA"
+      checkout "branchA"
+      commit id: "C5"
+    checkout "main"
+    commit id: "C4" tag:"master"
+    commit id: "C5'" tag:"feature"
+```
+
+<br>
+
+Now we can do a simple fast-forward merge:
+
+```bash
+git switch master
+git merge feature
+```
+
+<br>
+
+```mermaid
+%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': false,'showCommitLabel': true}} }%%
+gitGraph
+    commit id: "C1"
+    commit id: "C2"
+    commit id: "C3"
+    commit id: "C4"
+    commit id: "C5'" tag:"master, feature"
+```
 
 <br>
 <br>

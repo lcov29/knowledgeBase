@@ -206,6 +206,11 @@ gitGraph
 
 ### **Merge**
 <br>
+
+We can incorporate commits of one branch into another branch by **merging**.  
+Depending on the situation Git executes one of the following merging strategies:
+
+<br>
 <br>
 
 #### **Fast-Forward-Merge**
@@ -297,7 +302,7 @@ gitGraph
 #### **Merge With Conflicts**
 <br>
 
-- Git merges two branches that diverged at some point in time
+- Git merges two branches that diverged at some point in time via [recursive merge](#recursive-merge)
 - Merge conflicts must be **manually** resolved
 
 

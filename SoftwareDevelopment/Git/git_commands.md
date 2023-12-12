@@ -49,6 +49,7 @@
           - [**Abort Merge (_git merge --abort_)**](#abort-merge-git-merge---abort)
           - [**Quit Merge (_git merge --quit_)**](#quit-merge-git-merge---quit)
           - [**Continue Merge After Manually Resolving Conflicts (_git merge --continue_)**](#continue-merge-after-manually-resolving-conflicts-git-merge---continue)
+      - [**Rebasing Branches (_git rebase \<branchName\>_)**](#rebasing-branches-git-rebase-branchname)
     - [**Remote Repositories**](#remote-repositories)
       - [**Configurate Connections**](#configurate-connections)
         - [**Show Connections (_git remote -v_)**](#show-connections-git-remote--v)
@@ -740,7 +741,30 @@ git merge --continue
 ```
 - only executable when merge conflict occured
 - continues merge after conflicts have been resolved
- 
+
+<br>
+<br>
+
+#### **Rebasing Branches (_git rebase \<branchName\>_)**
+<br>
+
+For a general overview about rebasing, see [Rebasing Branches](./git_basics.md#rebase)
+
+<br>
+
+```bash
+git rebase master
+```
+- automatically rebase the current branch to the branch `master`
+
+<br>
+
+```bash
+git rebase --interactive master
+```
+- interactively rebase the current branch to the branch `master`
+- opens editor that allows user to specify actions of rebase (recommended)
+
 <br>
 <br>
 <br>

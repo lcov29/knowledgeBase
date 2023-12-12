@@ -16,12 +16,6 @@
       - [**Current Status (_git status_)**](#current-status-git-status)
       - [**Commit History (_git log_)**](#commit-history-git-log)
       - [**Show File Changes (_git diff_)**](#show-file-changes-git-diff)
-    - [**Branches**](#branches)
-      - [**List Branches (_git branch_)**](#list-branches-git-branch)
-      - [**Switch Branch (_git switch \<branchName\>_)**](#switch-branch-git-switch-branchname)
-      - [**Create New Branch (_git switch -c \<newBranchName\>_)**](#create-new-branch-git-switch--c-newbranchname)
-      - [**Rename Local Branch (_git branch --move \<oldName\> \<newName\>_)**](#rename-local-branch-git-branch---move-oldname-newname)
-      - [**Delete Branch (_git branch -d \<branchName\>_)**](#delete-branch-git-branch--d-branchname)
     - [**Stash Changes**](#stash-changes)
       - [**List All Stashes (_git stash list_)**](#list-all-stashes-git-stash-list)
       - [**Inspect Specific Stash (_git stash show \<?stashId\>_)**](#inspect-specific-stash-git-stash-show-stashid)
@@ -44,6 +38,17 @@
         - [**Add Lightweight Tag (\_git tag \<tagName\> ?\<commitId\>)**](#add-lightweight-tag-_git-tag-tagname-commitid)
         - [**Add Annotated Tag (_git tag -a \<tagName\> -m \<tagMessage\> ?\<commitId\>_)**](#add-annotated-tag-git-tag--a-tagname--m-tagmessage-commitid)
       - [**Delete Tag (_git tag -d \<tagName\>_)**](#delete-tag-git-tag--d-tagname)
+    - [**Branches**](#branches)
+      - [**List Branches (_git branch_)**](#list-branches-git-branch)
+      - [**Switch Branch (_git switch \<branchName\>_)**](#switch-branch-git-switch-branchname)
+      - [**Create New Branch (_git switch -c \<newBranchName\>_)**](#create-new-branch-git-switch--c-newbranchname)
+      - [**Rename Local Branch (_git branch --move \<oldName\> \<newName\>_)**](#rename-local-branch-git-branch---move-oldname-newname)
+      - [**Delete Branch (_git branch -d \<branchName\>_)**](#delete-branch-git-branch--d-branchname)
+      - [**Merging Branches (_git merge \<branchName\>_)**](#merging-branches-git-merge-branchname)
+        - [**Handling Merge Conflicts**](#handling-merge-conflicts)
+          - [**Abort Merge (_git merge --abort_)**](#abort-merge-git-merge---abort)
+          - [**Quit Merge (_git merge --quit_)**](#quit-merge-git-merge---quit)
+          - [**Continue Merge After Manually Resolving Conflicts (_git merge --continue_)**](#continue-merge-after-manually-resolving-conflicts-git-merge---continue)
     - [**Remote Repositories**](#remote-repositories)
       - [**Configurate Connections**](#configurate-connections)
         - [**Show Connections (_git remote -v_)**](#show-connections-git-remote--v)
@@ -286,109 +291,6 @@ git diff
 git diff --staged
 ```
 - see changes of each file in the **staging area** compared to current version in last commit
-
-<br>
-<br>
-<br>
-
-### **Branches**
-<br>
-<br>
-
-#### **List Branches (_git branch_)**
-<br>
-
-```bash
-git branch
-```
-- list existing local branches
-- highlight active branch in green and with asterisk
-
-<br>
-
-```bash
-git branch -v
-```
-- list all existing local branches
-- shows last commit of each branch
-- highlight active branch in green and with asterisk
-
-<br>
-
-```bash
-git branch --merged
-```
-- list all branches that have been merged into the current branch
-
-<br>
-
-```bash
-git branch --merged master
-```
-- list all branches that have been merged into the specified branch `master`
-
-<br>
-
-```bash
-git branch --no-merged
-```
-- list all branches that have **not** been merged into the current branch
-
-<br>
-
-```bash
-git branch --no-merged master
-```
-- list all branches that have **not** been merged into the specified branch `master`
-
-<br>
-
-```bash
-git branch --all
-```
-- list existing local **and** remote-tracking branches 
-- highlight active branch in green and with asterisk
-
-<br>
-<br>
-
-#### **Switch Branch (_git switch \<branchName\>_)**
-<br>
-
-```bash
-git switch feature/sorting
-```
-
-<br>
-<br>
-
-#### **Create New Branch (_git switch -c \<newBranchName\>_)**
-<br>
-
-```bash
-git switch -c feature/sorting
-```
-
-<br>
-<br>
-
-#### **Rename Local Branch (_git branch --move \<oldName\> \<newName\>_)**
-<br>
-
-```bash
-git branch --move featurePagnation featurePagination
-```
-- rename the branch `featurePagnation` to `featurePagination`
-
-<br>
-<br>
-
-#### **Delete Branch (_git branch -d \<branchName\>_)**
-<br>
-
-```bash
-git branch -d feature/sorting
-```
 
 <br>
 <br>
@@ -663,6 +565,182 @@ git tag -d v1.2
 ```
 - delete local tag `v1.2`
 
+<br>
+<br>
+<br>
+
+### **Branches**
+<br>
+<br>
+
+#### **List Branches (_git branch_)**
+<br>
+
+```bash
+git branch
+```
+- list existing local branches
+- highlight active branch in green and with asterisk
+
+<br>
+
+```bash
+git branch -v
+```
+- list all existing local branches
+- shows last commit of each branch
+- highlight active branch in green and with asterisk
+
+<br>
+
+```bash
+git branch --merged
+```
+- list all branches that have been merged into the current branch
+
+<br>
+
+```bash
+git branch --merged master
+```
+- list all branches that have been merged into the specified branch `master`
+
+<br>
+
+```bash
+git branch --no-merged
+```
+- list all branches that have **not** been merged into the current branch
+
+<br>
+
+```bash
+git branch --no-merged master
+```
+- list all branches that have **not** been merged into the specified branch `master`
+
+<br>
+
+```bash
+git branch --all
+```
+- list existing local **and** remote-tracking branches 
+- highlight active branch in green and with asterisk
+
+<br>
+<br>
+
+#### **Switch Branch (_git switch \<branchName\>_)**
+<br>
+
+```bash
+git switch feature/sorting
+```
+
+<br>
+<br>
+
+#### **Create New Branch (_git switch -c \<newBranchName\>_)**
+<br>
+
+```bash
+git switch -c feature/sorting
+```
+
+<br>
+<br>
+
+#### **Rename Local Branch (_git branch --move \<oldName\> \<newName\>_)**
+<br>
+
+```bash
+git branch --move featurePagnation featurePagination
+```
+- rename the branch `featurePagnation` to `featurePagination`
+
+<br>
+<br>
+
+#### **Delete Branch (_git branch -d \<branchName\>_)**
+<br>
+
+```bash
+git branch -d feature/sorting
+```
+
+<br>
+<br>
+
+#### **Merging Branches (_git merge \<branchName\>_)**
+<br>
+
+For a general overview about merging, see [Merging Branches](./git_basics.md#merge)
+
+<br>
+
+```bash
+git merge feature1
+```
+- merge branch `feature1` into current branch
+
+<br>
+
+```bash
+git merge feature1 -m 'some commit message'
+```
+- merge branch `feature1` into current branch
+- when performing a [recursive merge](./git_basics.md#recursive-merge): use specified merge commit message
+
+<br>
+
+```bash
+git merge feature1 --squash
+```
+- merge branch `feature1` into current branch
+- squash all diverging changes of branch `feature1` into a single commit
+- you need to commit the squashed single commit with `git commit`
+
+<br>
+<br>
+
+##### **Handling Merge Conflicts**
+<br>
+<br>
+
+###### **Abort Merge (_git merge --abort_)**
+<br>
+
+```bash
+git merge --abort
+```
+- only executable when merge conflict occured
+- aborts merge
+- will try to reconstruct pre-merge state (Therefore do not merge with uncommitted changes)
+
+<br>
+<br>
+
+###### **Quit Merge (_git merge --quit_)**
+<br>
+
+```bash
+git merge --quit
+```
+- only executable when merge conflict occured
+- forget about merge
+
+<br>
+<br>
+
+###### **Continue Merge After Manually Resolving Conflicts (_git merge --continue_)**
+<br>
+
+```bash
+git merge --continue
+```
+- only executable when merge conflict occured
+- continues merge after conflicts have been resolved
+ 
 <br>
 <br>
 <br>

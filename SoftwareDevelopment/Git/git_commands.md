@@ -16,6 +16,7 @@
       - [**Current Status (_git status_)**](#current-status-git-status)
       - [**Commit History (_git log_)**](#commit-history-git-log)
       - [**Show File Changes (_git diff_)**](#show-file-changes-git-diff)
+      - [**Search Commit That Introduced A Bug (_git bisect_)**](#search-commit-that-introduced-a-bug-git-bisect)
     - [**Staging Area**](#staging-area)
       - [**Add Changes (_git add \<fileOrDirectory\>_)**](#add-changes-git-add-fileordirectory)
       - [**Remove Changes (_git restore \<file\>_)**](#remove-changes-git-restore-file)
@@ -292,6 +293,93 @@ git diff
 git diff --staged
 ```
 - see changes of each file in the **staging area** compared to current version in last commit
+
+<br>
+<br>
+
+#### **Search Commit That Introduced A Bug (_git bisect_)**
+<br>
+
+In order to use this command you need the following initial information:
+
+1. "Bad" Commit: Id of commit that contains the bug
+2. "Good" Commit: Id of commit before bug was introduced
+
+The command will then pick the commit in the middle of this commit range and ask the user whether it contains the bug.  
+It will iterate this process until it has found the commit that introduced the bug.
+
+<br>
+
+Example:
+
+Assume that the current state of the project contains a bug that did not exist in a previous commit `85c327f91afd78a54f2bbc89c650be75e8ac1b2e`. To find the commit that introduced the bug run:
+
+<br>
+
+```bash
+git bisect start
+```
+
+<br>
+
+```bash
+git bisect bad
+```
+- define latest commit where bug is present (default: current commit)
+
+<br>
+
+```bash
+git bisect good 85c327f91afd78a54f2bbc89c650be75e8ac1b2e
+```
+- define first ancestor commit where bug is not present
+
+<br>
+
+The command will pick a commit in the middle of this range and move to this point in time:
+
+```bash
+Bisecting: 2 revisions left to test after this (roughly 2 steps)
+[f995f27ca732de0ed64eb49c9d84f35f60ec1962] some commit message
+```
+
+<br>
+
+The user can now check if the bug exists in this version and respone with either
+
+```bash
+git bisect bad
+```
+
+or
+
+```bash
+git bisect good
+```
+
+The command will use the feedback on the selected commit to make the range to choose the next commit from smaller. Iterate until all commits have been examined.
+
+The command will now print the first commit that introduced the bug:
+
+```bash
+f995f27ca732de0ed64eb49c9d84f35f60ec1962 is the first bad commit
+commit f995f27ca732de0ed64eb49c9d84f35f60ec1962
+Author: John Doe <john.doe@example.com>
+Date:   Tue Dec 12 21:29:59 2023 +0100
+
+    add content
+
+ file4.md | 1 +
+ 1 file changed, 1 insertion(+)
+```
+
+<br>
+
+To clean up after the command run
+
+```bash
+git bisect reset
+```
 
 <br>
 <br>

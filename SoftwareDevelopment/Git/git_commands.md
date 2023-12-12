@@ -16,13 +16,6 @@
       - [**Current Status (_git status_)**](#current-status-git-status)
       - [**Commit History (_git log_)**](#commit-history-git-log)
       - [**Show File Changes (_git diff_)**](#show-file-changes-git-diff)
-    - [**Stash Changes**](#stash-changes)
-      - [**List All Stashes (_git stash list_)**](#list-all-stashes-git-stash-list)
-      - [**Inspect Specific Stash (_git stash show \<?stashId\>_)**](#inspect-specific-stash-git-stash-show-stashid)
-      - [**Save Changes To Stash (_git stash_ / _git stash push_)**](#save-changes-to-stash-git-stash--git-stash-push)
-      - [**Load Changes From Stash (_git stash pop \<?stashId\>_)**](#load-changes-from-stash-git-stash-pop-stashid)
-      - [**Delete Specific Stash (_git stash drop \<?stashId\>_)**](#delete-specific-stash-git-stash-drop-stashid)
-      - [**Delete All Stashes (_git stash clear_)**](#delete-all-stashes-git-stash-clear)
     - [**Staging Area**](#staging-area)
       - [**Add Changes (_git add \<fileOrDirectory\>_)**](#add-changes-git-add-fileordirectory)
       - [**Remove Changes (_git restore \<file\>_)**](#remove-changes-git-restore-file)
@@ -31,6 +24,13 @@
       - [**Commit Changes (_git commit_)**](#commit-changes-git-commit)
       - [**Add Changes To Previous Commit (_git commit --amend_)**](#add-changes-to-previous-commit-git-commit---amend)
       - [**Move Back To Past Commit (_git checkout \<commitHash\>_)**](#move-back-to-past-commit-git-checkout-commithash)
+    - [**Stash Changes**](#stash-changes)
+      - [**List All Stashes (_git stash list_)**](#list-all-stashes-git-stash-list)
+      - [**Inspect Specific Stash (_git stash show \<?stashId\>_)**](#inspect-specific-stash-git-stash-show-stashid)
+      - [**Save Changes To Stash (_git stash_ / _git stash push_)**](#save-changes-to-stash-git-stash--git-stash-push)
+      - [**Load Changes From Stash (_git stash pop \<?stashId\>_)**](#load-changes-from-stash-git-stash-pop-stashid)
+      - [**Delete Specific Stash (_git stash drop \<?stashId\>_)**](#delete-specific-stash-git-stash-drop-stashid)
+      - [**Delete All Stashes (_git stash clear_)**](#delete-all-stashes-git-stash-clear)
     - [**Tags**](#tags)
       - [**List Tags (_git tag_)**](#list-tags-git-tag)
       - [**Show Tag Information (_git show \<tagName\>_)**](#show-tag-information-git-show-tagname)
@@ -296,97 +296,6 @@ git diff --staged
 <br>
 <br>
 
-### **Stash Changes**
-<br>
-
-We can save uncommitted changes in the stash to continue working on them later.
-
-<br>
-<br>
-
-#### **List All Stashes (_git stash list_)**
-<br>
-
-```bash
-git stash list
-```
-
-prints
-
-```
-stash@{0}: WIP on master: 0924bdc fix typo
-``` 
-
-<br>
-<br>
-
-#### **Inspect Specific Stash (_git stash show <?stashId>_)**
-<br>
-
-```bash
-git stash show
-```
-- inspect latest stash
-
-<br>
-
-```bash
-git stash show stash@{5}
-```
-- inspect stash with id `stash@{5}`
-
-<br>
-<br>
-
-#### **Save Changes To Stash (_git stash_ / _git stash push_)**
-<br>
-
-```bash
-git stash
-```
-
-<br>
-<br>
-
-#### **Load Changes From Stash (_git stash pop <?stashId>_)**
-<br>
-
-```bash
-git stash pop
-```
-- **load** and **remove** latest stash
-
-<br>
-
-```bash
-git stash pop stash@{2}
-```
-- **load** and **remove** stash with id `stash@{2}`
-
-<br>
-<br>
-
-#### **Delete Specific Stash (_git stash drop \<?stashId\>_)**
-<br>
-
-```bash
-git stash drop stash@{2}
-```
-
-<br>
-<br>
-
-#### **Delete All Stashes (_git stash clear_)**
-<br>
-
-```bash
-git stash clear
-```
-
-<br>
-<br>
-<br>
-
 ### **Staging Area**
 <br>
 <br>
@@ -491,6 +400,97 @@ git commit --amend -m 'message'
 
 ```bash
 git checkout 09117c167cdcddd5acf90420382a3c3f820d35bb
+```
+
+<br>
+<br>
+<br>
+
+### **Stash Changes**
+<br>
+
+We can save uncommitted changes in the stash to continue working on them later.
+
+<br>
+<br>
+
+#### **List All Stashes (_git stash list_)**
+<br>
+
+```bash
+git stash list
+```
+
+prints
+
+```
+stash@{0}: WIP on master: 0924bdc fix typo
+``` 
+
+<br>
+<br>
+
+#### **Inspect Specific Stash (_git stash show <?stashId>_)**
+<br>
+
+```bash
+git stash show
+```
+- inspect latest stash
+
+<br>
+
+```bash
+git stash show stash@{5}
+```
+- inspect stash with id `stash@{5}`
+
+<br>
+<br>
+
+#### **Save Changes To Stash (_git stash_ / _git stash push_)**
+<br>
+
+```bash
+git stash
+```
+
+<br>
+<br>
+
+#### **Load Changes From Stash (_git stash pop <?stashId>_)**
+<br>
+
+```bash
+git stash pop
+```
+- **load** and **remove** latest stash
+
+<br>
+
+```bash
+git stash pop stash@{2}
+```
+- **load** and **remove** stash with id `stash@{2}`
+
+<br>
+<br>
+
+#### **Delete Specific Stash (_git stash drop \<?stashId\>_)**
+<br>
+
+```bash
+git stash drop stash@{2}
+```
+
+<br>
+<br>
+
+#### **Delete All Stashes (_git stash clear_)**
+<br>
+
+```bash
+git stash clear
 ```
 
 <br>

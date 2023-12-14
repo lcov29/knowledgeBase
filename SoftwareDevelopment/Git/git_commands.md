@@ -30,6 +30,7 @@
     - [**Commit Changes (_git commit_)**](#commit-changes-git-commit)
     - [**Add Changes To Previous Commit (_git commit --amend_)**](#add-changes-to-previous-commit-git-commit---amend)
     - [**Move Back To Past Commit (_git checkout \<commitHash\>_)**](#move-back-to-past-commit-git-checkout-commithash)
+    - [**Revert Commit (_git revert \<commitHash\>_)**](#revert-commit-git-revert-commithash)
   - [**Stash Changes**](#stash-changes)
     - [**List All Stashes (_git stash list_)**](#list-all-stashes-git-stash-list)
     - [**Inspect Specific Stash (_git stash show \<?stashId\>_)**](#inspect-specific-stash-git-stash-show-stashid)
@@ -601,6 +602,18 @@ git commit --amend -m 'message'
 ```bash
 git checkout 09117c167cdcddd5acf90420382a3c3f820d35bb
 ```
+
+<br>
+<br>
+
+### **Revert Commit (_git revert \<commitHash\>_)**
+<br>
+
+```bash
+git revert d58446c04cf1124702e650225d0293ab1638e53c
+```
+- add a new commit that reverts the changes made by the specified commit
+- does not remove or modify commit `d58446c04cf1124702e650225d0293ab1638e53c`
 
 <br>
 <br>

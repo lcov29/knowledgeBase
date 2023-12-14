@@ -17,6 +17,7 @@
       - [**Commit History (_git log_)**](#commit-history-git-log)
         - [**Visualize Commit Graph**](#visualize-commit-graph)
         - [**List All Commits In A Time Period**](#list-all-commits-in-a-time-period)
+        - [**List All Commits That Added Or Modified Specific Content**](#list-all-commits-that-added-or-modified-specific-content)
       - [**Show File Changes (_git diff_)**](#show-file-changes-git-diff)
       - [**Search Commit That Introduced A Bug (_git bisect_)**](#search-commit-that-introduced-a-bug-git-bisect)
     - [**Staging Area**](#staging-area)
@@ -284,6 +285,17 @@ git log --since=2.weeks
 git log --since="2023-11-01" --before="2023-12-30"
 ```
 - limit commit history by time
+
+<br>
+<br>
+
+##### **List All Commits That Added Or Modified Specific Content**
+<br>
+
+```bash
+git log -S "some content"
+```
+- list all commits that added or modified the content `some content`
 
 <br>
 <br>

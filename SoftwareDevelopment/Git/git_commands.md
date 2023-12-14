@@ -45,12 +45,13 @@
       - [**Create New Branch (_git switch -c \<newBranchName\>_)**](#create-new-branch-git-switch--c-newbranchname)
       - [**Rename Local Branch (_git branch --move \<oldName\> \<newName\>_)**](#rename-local-branch-git-branch---move-oldname-newname)
       - [**Delete Branch (_git branch -d \<branchName\>_)**](#delete-branch-git-branch--d-branchname)
-      - [**Merging Branches (_git merge \<branchName\>_)**](#merging-branches-git-merge-branchname)
-        - [**Handling Merge Conflicts**](#handling-merge-conflicts)
+      - [**Integrate Changes From Other Branches**](#integrate-changes-from-other-branches)
+        - [**Merging Branches (_git merge \<branchName\>_)**](#merging-branches-git-merge-branchname)
           - [**Abort Merge (_git merge --abort_)**](#abort-merge-git-merge---abort)
           - [**Quit Merge (_git merge --quit_)**](#quit-merge-git-merge---quit)
           - [**Continue Merge After Manually Resolving Conflicts (_git merge --continue_)**](#continue-merge-after-manually-resolving-conflicts-git-merge---continue)
-      - [**Rebasing Branches (_git rebase \<branchName\>_)**](#rebasing-branches-git-rebase-branchname)
+        - [**Rebasing Branches (_git rebase \<branchName\>_)**](#rebasing-branches-git-rebase-branchname)
+        - [**Integrate Specific Commits (_git cherry-pick \<commitId\>_)**](#integrate-specific-commits-git-cherry-pick-commitid)
     - [**Remote Repositories**](#remote-repositories)
       - [**Configurate Connections**](#configurate-connections)
         - [**Show Connections (_git remote -v_)**](#show-connections-git-remote--v)
@@ -760,7 +761,11 @@ git branch -d feature/sorting
 <br>
 <br>
 
-#### **Merging Branches (_git merge \<branchName\>_)**
+#### **Integrate Changes From Other Branches**
+<br>
+<br>
+
+##### **Merging Branches (_git merge \<branchName\>_)**
 <br>
 
 For a general overview about merging, see [Merging Branches](./git_basics.md#merge)
@@ -789,10 +794,6 @@ git merge feature1 --squash
 - squash all diverging changes of branch `feature1` into a single commit
 - you need to commit the squashed single commit with `git commit`
 
-<br>
-<br>
-
-##### **Handling Merge Conflicts**
 <br>
 <br>
 
@@ -833,7 +834,7 @@ git merge --continue
 <br>
 <br>
 
-#### **Rebasing Branches (_git rebase \<branchName\>_)**
+##### **Rebasing Branches (_git rebase \<branchName\>_)**
 <br>
 
 For a general overview about rebasing, see [Rebasing Branches](./git_basics.md#rebase)
@@ -852,6 +853,25 @@ git rebase --interactive master
 ```
 - interactively rebase the current branch to the branch `master`
 - opens editor that allows user to specify actions of rebase (recommended)
+
+<br>
+<br>
+
+##### **Integrate Specific Commits (_git cherry-pick \<commitId\>_)**
+<br>
+
+```bash
+git cherry-pick 81cb32348a77457c0d1a241880a229a1202c822e
+```
+- add commit with specified id as a new commit at the top of the current branch
+
+<br>
+
+```bash
+git cherry-pick 81cb32348a77457c0d1a241880a229a1202c822e -e
+```
+- add commit with specified id as a new commit at the top of the current branch
+- open editor to allow user to modify the commit message
 
 <br>
 <br>

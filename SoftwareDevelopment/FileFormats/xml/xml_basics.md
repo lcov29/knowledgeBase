@@ -22,7 +22,7 @@
 * E**x**tensible **M**arkup **L**anguage
 * used for loading structured data from the server
 * consists of user-defined elements and attributes
-* XML-Tree can be processed by the [DOM API](../../SoftwareDevelopment/WebDevelopment/WebAPI/document_object_model_api.md)
+* XML-Tree can be processed by the [DOM API](../../WebDevelopment/WebAPI/document_object_model_api.md)
 
 <br>
 

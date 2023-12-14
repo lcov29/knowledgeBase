@@ -826,7 +826,7 @@ See [JavaScript Functions](./javascript_function.md)
 ## **DOM Tree Manipulation**
 <br>
 
-See [Document Object Model](../WebAPI/document_object_model_api.md)
+See [Document Object Model](../../WebDevelopment/WebAPI/document_object_model_api.md)
 
 <br>
 <br>
@@ -836,7 +836,7 @@ See [Document Object Model](../WebAPI/document_object_model_api.md)
 ## **DOM Event Handling**
 <br>
 
-See [DOM Event Handling](../WebAPI/dom_event_api.md)
+See [DOM Event Handling](../../WebDevelopment/WebAPI/dom_event_api.md)
 
 <br>
 <br>

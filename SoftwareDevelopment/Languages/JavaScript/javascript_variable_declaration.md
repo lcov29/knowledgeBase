@@ -1,5 +1,4 @@
 # **JavaScript Variable Declaration**
-
 <br>
 
 ## **Table Of Contents**

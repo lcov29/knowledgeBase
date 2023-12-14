@@ -218,12 +218,12 @@ function sayHello() {
 <br>
 <br>
 
-## [**Charts And Diagrams With Mermaid (GitHub/GitLab Extension)**](./mermaid/mermaid.md)
+## [**Charts And Diagrams With Mermaid (GitHub/GitLab Extension)**](../mermaid/mermaid.md)
 <br>
 
 Both GitHub and GitLab support mermaid to embedd charts and diagrams directly into markdown.
 
-See [mermaid](./mermaid/mermaid.md)
+See [mermaid](../mermaid/mermaid.md)
 
 <br>
 

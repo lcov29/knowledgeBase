@@ -119,7 +119,7 @@ We can toggle various flags for strict type checking options in _tsconfig.json_.
 
 See [TypeScript Type System](./typescript_type_system.md).
 
-See also [Type System](../../../LanguageTheory/language_theory_type_systems.md).
+See also [Type System](../../../ComputerScience/LanguageTheory/language_theory_type_systems.md).
 
 <br>
 <br>

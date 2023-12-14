@@ -57,7 +57,7 @@
 
 <br>
 
-See also [Type System](../../../LanguageTheory/language_theory_type_systems.md).
+See also [Type System](../../../ComputerScience/LanguageTheory/language_theory_type_systems.md).
 
 <br>
 <br>

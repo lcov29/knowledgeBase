@@ -20,6 +20,8 @@
     - [**Show File Changes (_git diff_)**](#show-file-changes-git-diff)
     - [**Show Author Of Changes (_git blame \<file\>_)**](#show-author-of-changes-git-blame-file)
     - [**Search Commit That Introduced A Bug (_git bisect_)**](#search-commit-that-introduced-a-bug-git-bisect)
+  - [**Working Area**](#working-area)
+    - [**Delete Untracked Files (_git clean_)**](#delete-untracked-files-git-clean)
   - [**Staging Area**](#staging-area)
     - [**Add Changes (_git add \<fileOrDirectory\>_)**](#add-changes-git-add-fileordirectory)
     - [**Remove Changes (_git restore \<file\>_)**](#remove-changes-git-restore-file)
@@ -451,6 +453,44 @@ To clean up after the command run
 ```bash
 git bisect reset
 ```
+
+<br>
+<br>
+<br>
+
+## **Working Area**
+<br>
+<br>
+
+### **Delete Untracked Files (_git clean_)**
+<br>
+
+```bash
+git clean -n
+```
+- performs a dry-run of the command
+- prints which untracked files not mentioned in [`.gitignore`](./git_basics.md#ignore-files) would have been deleted
+
+<br>
+
+```bash
+git clean --force
+```
+- deletes all untracked **files** not mentioned in [`.gitignore`](./git_basics.md#ignore-files)
+
+<br>
+
+```bash
+git clean -d --force
+```
+- deletes all untracked **files and directories** not mentioned in [`.gitignore`](./git_basics.md#ignore-files)
+
+<br>
+
+```bash
+git clean -i
+```
+- interactively deletes all untracked **files** not mentioned in [`.gitignore`](./git_basics.md#ignore-files)
 
 <br>
 <br>

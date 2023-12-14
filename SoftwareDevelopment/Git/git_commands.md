@@ -19,6 +19,7 @@
         - [**List All Commits In A Time Period**](#list-all-commits-in-a-time-period)
         - [**List All Commits That Added Or Modified Specific Content**](#list-all-commits-that-added-or-modified-specific-content)
       - [**Show File Changes (_git diff_)**](#show-file-changes-git-diff)
+      - [**Show Author Of Changes (_git blame \<file\>_)**](#show-author-of-changes-git-blame-file)
       - [**Search Commit That Introduced A Bug (_git bisect_)**](#search-commit-that-introduced-a-bug-git-bisect)
     - [**Staging Area**](#staging-area)
       - [**Add Changes (_git add \<fileOrDirectory\>_)**](#add-changes-git-add-fileordirectory)
@@ -314,6 +315,61 @@ git diff
 git diff --staged
 ```
 - see changes of each file in the **staging area** compared to current version in last commit
+
+<br>
+<br>
+
+#### **Show Author Of Changes (_git blame \<file\>_)**
+<br>
+
+```bash
+git blame test.md
+```
+- show last editor of every line of file `test.md`
+
+<br>
+
+```bash
+git blame -e test.md
+```
+- show email of last editor of every line of file `test.md`
+
+<br>
+
+```bash
+git blame -w test.md
+```
+- show email of last editor of every line of file `test.md`
+- ignore changes to whitespace
+
+<br>
+
+```bash
+git blame -L 2 test.md
+```
+- show last editor of line 2 of file `test.md`
+
+<br>
+
+
+```bash
+git blame -L 2,5 test.md
+```
+- show last editor of all lines between (and including) 2 and 5 of file `test.md`
+
+<br>
+
+```bash
+git blame -M test.md
+```
+- show original author of lines that were **moved and copied** within the same file `test.md` 
+
+<br>
+
+```bash
+git blame -C test.md
+```
+- show original author of lines that were **moved and copied** from other files to `test.md` 
 
 <br>
 <br>

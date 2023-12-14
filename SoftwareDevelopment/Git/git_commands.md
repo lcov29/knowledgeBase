@@ -11,64 +11,63 @@
     - [**Create New Git Repository (_git init_)**](#create-new-git-repository-git-init)
     - [**Copy Existing Git Repository (_git clone_)**](#copy-existing-git-repository-git-clone)
     - [**Get Information About Git Command (_git help \<command\>_)**](#get-information-about-git-command-git-help-command)
-  - [**Git Workflow**](#git-workflow)
-    - [**Get Information**](#get-information)
-      - [**Current Status (_git status_)**](#current-status-git-status)
-      - [**Commit History (_git log_)**](#commit-history-git-log)
-        - [**Visualize Commit Graph**](#visualize-commit-graph)
-        - [**List All Commits In A Time Period**](#list-all-commits-in-a-time-period)
-        - [**List All Commits That Added Or Modified Specific Content**](#list-all-commits-that-added-or-modified-specific-content)
-      - [**Show File Changes (_git diff_)**](#show-file-changes-git-diff)
-      - [**Show Author Of Changes (_git blame \<file\>_)**](#show-author-of-changes-git-blame-file)
-      - [**Search Commit That Introduced A Bug (_git bisect_)**](#search-commit-that-introduced-a-bug-git-bisect)
-    - [**Staging Area**](#staging-area)
-      - [**Add Changes (_git add \<fileOrDirectory\>_)**](#add-changes-git-add-fileordirectory)
-      - [**Remove Changes (_git restore \<file\>_)**](#remove-changes-git-restore-file)
-      - [**Remove File (_git rm \<file\>_)**](#remove-file-git-rm-file)
-    - [**Commits**](#commits)
-      - [**Commit Changes (_git commit_)**](#commit-changes-git-commit)
-      - [**Add Changes To Previous Commit (_git commit --amend_)**](#add-changes-to-previous-commit-git-commit---amend)
-      - [**Move Back To Past Commit (_git checkout \<commitHash\>_)**](#move-back-to-past-commit-git-checkout-commithash)
-    - [**Stash Changes**](#stash-changes)
-      - [**List All Stashes (_git stash list_)**](#list-all-stashes-git-stash-list)
-      - [**Inspect Specific Stash (_git stash show \<?stashId\>_)**](#inspect-specific-stash-git-stash-show-stashid)
-      - [**Save Changes To Stash (_git stash_ / _git stash push_)**](#save-changes-to-stash-git-stash--git-stash-push)
-      - [**Load Changes From Stash (_git stash pop \<?stashId\>_)**](#load-changes-from-stash-git-stash-pop-stashid)
-      - [**Delete Specific Stash (_git stash drop \<?stashId\>_)**](#delete-specific-stash-git-stash-drop-stashid)
-      - [**Delete All Stashes (_git stash clear_)**](#delete-all-stashes-git-stash-clear)
-    - [**Tags**](#tags)
-      - [**List Tags (_git tag_)**](#list-tags-git-tag)
-      - [**Show Tag Information (_git show \<tagName\>_)**](#show-tag-information-git-show-tagname)
-      - [**Add Tags**](#add-tags)
-        - [**Add Lightweight Tag (\_git tag \<tagName\> ?\<commitId\>)**](#add-lightweight-tag-_git-tag-tagname-commitid)
-        - [**Add Annotated Tag (_git tag -a \<tagName\> -m \<tagMessage\> ?\<commitId\>_)**](#add-annotated-tag-git-tag--a-tagname--m-tagmessage-commitid)
-      - [**Delete Tag (_git tag -d \<tagName\>_)**](#delete-tag-git-tag--d-tagname)
-    - [**Branches**](#branches)
-      - [**List Branches (_git branch_)**](#list-branches-git-branch)
-      - [**Switch Branch (_git switch \<branchName\>_)**](#switch-branch-git-switch-branchname)
-      - [**Create New Branch (_git switch -c \<newBranchName\>_)**](#create-new-branch-git-switch--c-newbranchname)
-      - [**Rename Local Branch (_git branch --move \<oldName\> \<newName\>_)**](#rename-local-branch-git-branch---move-oldname-newname)
-      - [**Delete Branch (_git branch -d \<branchName\>_)**](#delete-branch-git-branch--d-branchname)
-      - [**Integrate Changes From Other Branches**](#integrate-changes-from-other-branches)
-        - [**Merging Branches (_git merge \<branchName\>_)**](#merging-branches-git-merge-branchname)
-          - [**Abort Merge (_git merge --abort_)**](#abort-merge-git-merge---abort)
-          - [**Quit Merge (_git merge --quit_)**](#quit-merge-git-merge---quit)
-          - [**Continue Merge After Manually Resolving Conflicts (_git merge --continue_)**](#continue-merge-after-manually-resolving-conflicts-git-merge---continue)
-        - [**Rebasing Branches (_git rebase \<branchName\>_)**](#rebasing-branches-git-rebase-branchname)
-        - [**Integrate Specific Commits (_git cherry-pick \<commitId\>_)**](#integrate-specific-commits-git-cherry-pick-commitid)
-    - [**Remote Repositories**](#remote-repositories)
-      - [**Configurate Connections**](#configurate-connections)
-        - [**Show Connections (_git remote -v_)**](#show-connections-git-remote--v)
-        - [**Show Information About Connection (_git remote show \<branchName\>_)**](#show-information-about-connection-git-remote-show-branchname)
-        - [**Add Connection (_git remote add \<name\> \<url\>_)**](#add-connection-git-remote-add-name-url)
-        - [**Rename Connection (_git remote rename \<oldName\> \<newName\>_)**](#rename-connection-git-remote-rename-oldname-newname)
-        - [**Remove Connection (_git remote rm \<name\>_)**](#remove-connection-git-remote-rm-name)
-      - [**Changes**](#changes)
-        - [**Push To Remote Repository (_git push \<?connectionName\> \<?localBranch\>:\<?remoteBranch\>_)**](#push-to-remote-repository-git-push-connectionname-localbranchremotebranch)
-        - [**Pull From Remote Repository (_git pull \<?remote\> \<?branchName\>_)**](#pull-from-remote-repository-git-pull-remote-branchname)
-      - [**Tags**](#tags-1)
-        - [**Push Tags To Remote Repository (_git push \<connectionName\> \<tagName\>_)**](#push-tags-to-remote-repository-git-push-connectionname-tagname)
-        - [**Delete Tags From Remote Repository (_git push \<connectionName\> --delete \<tagName\>_)**](#delete-tags-from-remote-repository-git-push-connectionname---delete-tagname)
+  - [**Get Information**](#get-information)
+    - [**Current Status (_git status_)**](#current-status-git-status)
+    - [**Commit History (_git log_)**](#commit-history-git-log)
+      - [**Visualize Commit Graph**](#visualize-commit-graph)
+      - [**List All Commits In A Time Period**](#list-all-commits-in-a-time-period)
+      - [**List All Commits That Added Or Modified Specific Content**](#list-all-commits-that-added-or-modified-specific-content)
+    - [**Show File Changes (_git diff_)**](#show-file-changes-git-diff)
+    - [**Show Author Of Changes (_git blame \<file\>_)**](#show-author-of-changes-git-blame-file)
+    - [**Search Commit That Introduced A Bug (_git bisect_)**](#search-commit-that-introduced-a-bug-git-bisect)
+  - [**Staging Area**](#staging-area)
+    - [**Add Changes (_git add \<fileOrDirectory\>_)**](#add-changes-git-add-fileordirectory)
+    - [**Remove Changes (_git restore \<file\>_)**](#remove-changes-git-restore-file)
+    - [**Remove File (_git rm \<file\>_)**](#remove-file-git-rm-file)
+  - [**Commits**](#commits)
+    - [**Commit Changes (_git commit_)**](#commit-changes-git-commit)
+    - [**Add Changes To Previous Commit (_git commit --amend_)**](#add-changes-to-previous-commit-git-commit---amend)
+    - [**Move Back To Past Commit (_git checkout \<commitHash\>_)**](#move-back-to-past-commit-git-checkout-commithash)
+  - [**Stash Changes**](#stash-changes)
+    - [**List All Stashes (_git stash list_)**](#list-all-stashes-git-stash-list)
+    - [**Inspect Specific Stash (_git stash show \<?stashId\>_)**](#inspect-specific-stash-git-stash-show-stashid)
+    - [**Save Changes To Stash (_git stash_ / _git stash push_)**](#save-changes-to-stash-git-stash--git-stash-push)
+    - [**Load Changes From Stash (_git stash pop \<?stashId\>_)**](#load-changes-from-stash-git-stash-pop-stashid)
+    - [**Delete Specific Stash (_git stash drop \<?stashId\>_)**](#delete-specific-stash-git-stash-drop-stashid)
+    - [**Delete All Stashes (_git stash clear_)**](#delete-all-stashes-git-stash-clear)
+  - [**Tags**](#tags)
+    - [**List Tags (_git tag_)**](#list-tags-git-tag)
+    - [**Show Tag Information (_git show \<tagName\>_)**](#show-tag-information-git-show-tagname)
+    - [**Add Tags**](#add-tags)
+      - [**Add Lightweight Tag (\_git tag \<tagName\> ?\<commitId\>)**](#add-lightweight-tag-_git-tag-tagname-commitid)
+      - [**Add Annotated Tag (_git tag -a \<tagName\> -m \<tagMessage\> ?\<commitId\>_)**](#add-annotated-tag-git-tag--a-tagname--m-tagmessage-commitid)
+    - [**Delete Tag (_git tag -d \<tagName\>_)**](#delete-tag-git-tag--d-tagname)
+  - [**Branches**](#branches)
+    - [**List Branches (_git branch_)**](#list-branches-git-branch)
+    - [**Switch Branch (_git switch \<branchName\>_)**](#switch-branch-git-switch-branchname)
+    - [**Create New Branch (_git switch -c \<newBranchName\>_)**](#create-new-branch-git-switch--c-newbranchname)
+    - [**Rename Local Branch (_git branch --move \<oldName\> \<newName\>_)**](#rename-local-branch-git-branch---move-oldname-newname)
+    - [**Delete Branch (_git branch -d \<branchName\>_)**](#delete-branch-git-branch--d-branchname)
+    - [**Integrate Changes From Other Branches**](#integrate-changes-from-other-branches)
+      - [**Merging Branches (_git merge \<branchName\>_)**](#merging-branches-git-merge-branchname)
+        - [**Abort Merge (_git merge --abort_)**](#abort-merge-git-merge---abort)
+        - [**Quit Merge (_git merge --quit_)**](#quit-merge-git-merge---quit)
+        - [**Continue Merge After Manually Resolving Conflicts (_git merge --continue_)**](#continue-merge-after-manually-resolving-conflicts-git-merge---continue)
+      - [**Rebasing Branches (_git rebase \<branchName\>_)**](#rebasing-branches-git-rebase-branchname)
+      - [**Integrate Specific Commits (_git cherry-pick \<commitId\>_)**](#integrate-specific-commits-git-cherry-pick-commitid)
+  - [**Remote Repositories**](#remote-repositories)
+    - [**Configurate Connections**](#configurate-connections)
+      - [**Show Connections (_git remote -v_)**](#show-connections-git-remote--v)
+      - [**Show Information About Connection (_git remote show \<branchName\>_)**](#show-information-about-connection-git-remote-show-branchname)
+      - [**Add Connection (_git remote add \<name\> \<url\>_)**](#add-connection-git-remote-add-name-url)
+      - [**Rename Connection (_git remote rename \<oldName\> \<newName\>_)**](#rename-connection-git-remote-rename-oldname-newname)
+      - [**Remove Connection (_git remote rm \<name\>_)**](#remove-connection-git-remote-rm-name)
+    - [**Changes**](#changes)
+      - [**Push To Remote Repository (_git push \<?connectionName\> \<?localBranch\>:\<?remoteBranch\>_)**](#push-to-remote-repository-git-push-connectionname-localbranchremotebranch)
+      - [**Pull From Remote Repository (_git pull \<?remote\> \<?branchName\>_)**](#pull-from-remote-repository-git-pull-remote-branchname)
+    - [**Tags**](#tags-1)
+      - [**Push Tags To Remote Repository (_git push \<connectionName\> \<tagName\>_)**](#push-tags-to-remote-repository-git-push-connectionname-tagname)
+      - [**Delete Tags From Remote Repository (_git push \<connectionName\> --delete \<tagName\>_)**](#delete-tags-from-remote-repository-git-push-connectionname---delete-tagname)
 
 <br>
 <br>
@@ -163,16 +162,11 @@ git help add
 <br>
 <br>
 
-## **Git Workflow**
-<br>
-<br>
-<br>
-
-### **Get Information**
+## **Get Information**
 <br>
 <br>
 
-#### **Current Status (_git status_)**
+### **Current Status (_git status_)**
 <br>
 
 Prints information about the current status to console:
@@ -207,7 +201,7 @@ Untracked files:
 <br>
 <br>
 
-#### **Commit History (_git log_)**
+### **Commit History (_git log_)**
 <br>
 
 ```bash
@@ -241,7 +235,7 @@ git log -p
 <br>
 <br>
 
-##### **Visualize Commit Graph**
+#### **Visualize Commit Graph**
 <br>
 
 ```bash
@@ -278,7 +272,7 @@ prints
 <br>
 <br>
 
-##### **List All Commits In A Time Period**
+#### **List All Commits In A Time Period**
 <br>
 
 ```bash
@@ -290,7 +284,7 @@ git log --since="2023-11-01" --before="2023-12-30"
 <br>
 <br>
 
-##### **List All Commits That Added Or Modified Specific Content**
+#### **List All Commits That Added Or Modified Specific Content**
 <br>
 
 ```bash
@@ -301,7 +295,7 @@ git log -S "some content"
 <br>
 <br>
 
-#### **Show File Changes (_git diff_)**
+### **Show File Changes (_git diff_)**
 <br>
 
 ```bash
@@ -319,7 +313,7 @@ git diff --staged
 <br>
 <br>
 
-#### **Show Author Of Changes (_git blame \<file\>_)**
+### **Show Author Of Changes (_git blame \<file\>_)**
 <br>
 
 ```bash
@@ -374,7 +368,7 @@ git blame -C test.md
 <br>
 <br>
 
-#### **Search Commit That Introduced A Bug (_git bisect_)**
+### **Search Commit That Introduced A Bug (_git bisect_)**
 <br>
 
 In order to use this command you need the following initial information:
@@ -462,11 +456,11 @@ git bisect reset
 <br>
 <br>
 
-### **Staging Area**
+## **Staging Area**
 <br>
 <br>
 
-#### **Add Changes (_git add \<fileOrDirectory\>_)**
+### **Add Changes (_git add \<fileOrDirectory\>_)**
 <br>
 
 ```bash
@@ -491,7 +485,7 @@ git add -A
 <br>
 <br>
 
-#### **Remove Changes (_git restore \<file\>_)**
+### **Remove Changes (_git restore \<file\>_)**
 <br>
 
 ```bash
@@ -502,7 +496,7 @@ git restore --staged ./path/file
 <br>
 <br>
 
-#### **Remove File (_git rm \<file\>_)**
+### **Remove File (_git rm \<file\>_)**
 <br>
 
 ```bash
@@ -521,11 +515,11 @@ git rm --cached ./path/file
 <br>
 <br>
 
-### **Commits**
+## **Commits**
 <br>
 <br>
 
-#### **Commit Changes (_git commit_)**
+### **Commit Changes (_git commit_)**
 <br>
 
 ```bash
@@ -543,7 +537,7 @@ git commit -m 'message'
 <br>
 <br>
 
-#### **Add Changes To Previous Commit (_git commit --amend_)**
+### **Add Changes To Previous Commit (_git commit --amend_)**
 <br>
 
 ```bash
@@ -561,7 +555,7 @@ git commit --amend -m 'message'
 <br>
 <br>
 
-#### **Move Back To Past Commit (_git checkout \<commitHash\>_)**
+### **Move Back To Past Commit (_git checkout \<commitHash\>_)**
 <br>
 
 ```bash
@@ -572,7 +566,7 @@ git checkout 09117c167cdcddd5acf90420382a3c3f820d35bb
 <br>
 <br>
 
-### **Stash Changes**
+## **Stash Changes**
 <br>
 
 We can save uncommitted changes in the stash to continue working on them later.
@@ -580,7 +574,7 @@ We can save uncommitted changes in the stash to continue working on them later.
 <br>
 <br>
 
-#### **List All Stashes (_git stash list_)**
+### **List All Stashes (_git stash list_)**
 <br>
 
 ```bash
@@ -596,7 +590,7 @@ stash@{0}: WIP on master: 0924bdc fix typo
 <br>
 <br>
 
-#### **Inspect Specific Stash (_git stash show <?stashId>_)**
+### **Inspect Specific Stash (_git stash show <?stashId>_)**
 <br>
 
 ```bash
@@ -614,7 +608,7 @@ git stash show stash@{5}
 <br>
 <br>
 
-#### **Save Changes To Stash (_git stash_ / _git stash push_)**
+### **Save Changes To Stash (_git stash_ / _git stash push_)**
 <br>
 
 ```bash
@@ -624,7 +618,7 @@ git stash
 <br>
 <br>
 
-#### **Load Changes From Stash (_git stash pop <?stashId>_)**
+### **Load Changes From Stash (_git stash pop <?stashId>_)**
 <br>
 
 ```bash
@@ -642,7 +636,7 @@ git stash pop stash@{2}
 <br>
 <br>
 
-#### **Delete Specific Stash (_git stash drop \<?stashId\>_)**
+### **Delete Specific Stash (_git stash drop \<?stashId\>_)**
 <br>
 
 ```bash
@@ -652,7 +646,7 @@ git stash drop stash@{2}
 <br>
 <br>
 
-#### **Delete All Stashes (_git stash clear_)**
+### **Delete All Stashes (_git stash clear_)**
 <br>
 
 ```bash
@@ -663,7 +657,7 @@ git stash clear
 <br>
 <br>
 
-### **Tags**
+## **Tags**
 <br>
 
 Specific commits can be marked with a tag. There are two types of tags:
@@ -678,7 +672,7 @@ Specific commits can be marked with a tag. There are two types of tags:
 <br>
 <br>
 
-#### **List Tags (_git tag_)**
+### **List Tags (_git tag_)**
 <br>
 
 ```bash
@@ -688,7 +682,7 @@ git tag
 <br>
 <br>
 
-#### **Show Tag Information (_git show \<tagName\>_)**
+### **Show Tag Information (_git show \<tagName\>_)**
 <br>
 
 ```bash
@@ -698,11 +692,11 @@ git show v1.2
 <br>
 <br>
 
-#### **Add Tags**
+### **Add Tags**
 <br>
 <br>
 
-##### **Add Lightweight Tag (_git tag \<tagName\> ?\<commitId\>)**
+#### **Add Lightweight Tag (_git tag \<tagName\> ?\<commitId\>)**
 <br>
 
 ```bash
@@ -713,7 +707,7 @@ git tag v1.2
 <br>
 <br>
 
-##### **Add Annotated Tag (_git tag -a \<tagName\> -m \<tagMessage\> ?\<commitId\>_)**
+#### **Add Annotated Tag (_git tag -a \<tagName\> -m \<tagMessage\> ?\<commitId\>_)**
 <br>
 
 ```bash
@@ -723,7 +717,7 @@ git tag -a v1.2 -m 'version 1.2'
 <br>
 <br>
 
-#### **Delete Tag (_git tag -d \<tagName\>_)**
+### **Delete Tag (_git tag -d \<tagName\>_)**
 <br>
 
 ```bash
@@ -735,11 +729,11 @@ git tag -d v1.2
 <br>
 <br>
 
-### **Branches**
+## **Branches**
 <br>
 <br>
 
-#### **List Branches (_git branch_)**
+### **List Branches (_git branch_)**
 <br>
 
 ```bash
@@ -796,7 +790,7 @@ git branch --all
 <br>
 <br>
 
-#### **Switch Branch (_git switch \<branchName\>_)**
+### **Switch Branch (_git switch \<branchName\>_)**
 <br>
 
 ```bash
@@ -806,7 +800,7 @@ git switch feature/sorting
 <br>
 <br>
 
-#### **Create New Branch (_git switch -c \<newBranchName\>_)**
+### **Create New Branch (_git switch -c \<newBranchName\>_)**
 <br>
 
 ```bash
@@ -816,7 +810,7 @@ git switch -c feature/sorting
 <br>
 <br>
 
-#### **Rename Local Branch (_git branch --move \<oldName\> \<newName\>_)**
+### **Rename Local Branch (_git branch --move \<oldName\> \<newName\>_)**
 <br>
 
 ```bash
@@ -827,7 +821,7 @@ git branch --move featurePagnation featurePagination
 <br>
 <br>
 
-#### **Delete Branch (_git branch -d \<branchName\>_)**
+### **Delete Branch (_git branch -d \<branchName\>_)**
 <br>
 
 ```bash
@@ -837,11 +831,11 @@ git branch -d feature/sorting
 <br>
 <br>
 
-#### **Integrate Changes From Other Branches**
+### **Integrate Changes From Other Branches**
 <br>
 <br>
 
-##### **Merging Branches (_git merge \<branchName\>_)**
+#### **Merging Branches (_git merge \<branchName\>_)**
 <br>
 
 For a general overview about merging, see [Merging Branches](./git_basics.md#merge)
@@ -873,7 +867,7 @@ git merge feature1 --squash
 <br>
 <br>
 
-###### **Abort Merge (_git merge --abort_)**
+##### **Abort Merge (_git merge --abort_)**
 <br>
 
 ```bash
@@ -886,7 +880,7 @@ git merge --abort
 <br>
 <br>
 
-###### **Quit Merge (_git merge --quit_)**
+##### **Quit Merge (_git merge --quit_)**
 <br>
 
 ```bash
@@ -898,7 +892,7 @@ git merge --quit
 <br>
 <br>
 
-###### **Continue Merge After Manually Resolving Conflicts (_git merge --continue_)**
+##### **Continue Merge After Manually Resolving Conflicts (_git merge --continue_)**
 <br>
 
 ```bash
@@ -910,7 +904,7 @@ git merge --continue
 <br>
 <br>
 
-##### **Rebasing Branches (_git rebase \<branchName\>_)**
+#### **Rebasing Branches (_git rebase \<branchName\>_)**
 <br>
 
 For a general overview about rebasing, see [Rebasing Branches](./git_basics.md#rebase)
@@ -933,7 +927,7 @@ git rebase --interactive master
 <br>
 <br>
 
-##### **Integrate Specific Commits (_git cherry-pick \<commitId\>_)**
+#### **Integrate Specific Commits (_git cherry-pick \<commitId\>_)**
 <br>
 
 ```bash
@@ -953,15 +947,15 @@ git cherry-pick 81cb32348a77457c0d1a241880a229a1202c822e -e
 <br>
 <br>
 
-### **Remote Repositories**
+## **Remote Repositories**
 <br>
 <br>
 
-#### **Configurate Connections**
+### **Configurate Connections**
 <br>
 <br>
 
-##### **Show Connections (_git remote -v_)**
+#### **Show Connections (_git remote -v_)**
 <br>
 
 ```bash
@@ -971,7 +965,7 @@ git remote -v
 <br>
 <br>
 
-##### **Show Information About Connection (_git remote show \<branchName\>_)**
+#### **Show Information About Connection (_git remote show \<branchName\>_)**
 <br>
 
 ```bash
@@ -996,7 +990,7 @@ prints
 <br>
 <br>
 
-##### **Add Connection (_git remote add \<name\> \<url\>_)**
+#### **Add Connection (_git remote add \<name\> \<url\>_)**
 <br>
 
 ```bash
@@ -1007,7 +1001,7 @@ git remote add origin https://github.com/someUser/someRepository.git
 <br>
 <br>
 
-##### **Rename Connection (_git remote rename \<oldName\> \<newName\>_)**
+#### **Rename Connection (_git remote rename \<oldName\> \<newName\>_)**
 <br>
 
 ```bash
@@ -1018,7 +1012,7 @@ git remote rename origin upstream
 <br>
 <br>
 
-##### **Remove Connection (_git remote rm \<name\>_)**
+#### **Remove Connection (_git remote rm \<name\>_)**
 <br>
 
 ```bash
@@ -1029,11 +1023,11 @@ git remote rm origin
 <br>
 <br>
 
-#### **Changes**
+### **Changes**
 <br>
 <br>
 
-##### **Push To Remote Repository (_git push \<?connectionName\> \<?localBranch\>:\<?remoteBranch\>_)**
+#### **Push To Remote Repository (_git push \<?connectionName\> \<?localBranch\>:\<?remoteBranch\>_)**
 <br>
 
 ```bash
@@ -1058,7 +1052,7 @@ git push origin feature123:master
 <br>
 <br>
 
-##### **Pull From Remote Repository (_git pull \<?remote\> \<?branchName\>_)**
+#### **Pull From Remote Repository (_git pull \<?remote\> \<?branchName\>_)**
 <br>
 
 ```bash
@@ -1076,11 +1070,11 @@ git pull origin
 <br>
 <br>
 
-#### **Tags**
+### **Tags**
 <br>
 <br>
 
-##### **Push Tags To Remote Repository (_git push \<connectionName\> \<tagName\>_)**
+#### **Push Tags To Remote Repository (_git push \<connectionName\> \<tagName\>_)**
 <br>
 
 ```bash
@@ -1098,7 +1092,7 @@ git push origin --tags
 <br>
 <br>
 
-##### **Delete Tags From Remote Repository (_git push \<connectionName\> --delete \<tagName\>_)**
+#### **Delete Tags From Remote Repository (_git push \<connectionName\> --delete \<tagName\>_)**
 <br>
 
 ```bash

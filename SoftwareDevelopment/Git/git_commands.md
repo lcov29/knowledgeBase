@@ -15,6 +15,8 @@
     - [**Get Information**](#get-information)
       - [**Current Status (_git status_)**](#current-status-git-status)
       - [**Commit History (_git log_)**](#commit-history-git-log)
+        - [**Visualize Commit Graph**](#visualize-commit-graph)
+        - [**List All Commits In A Time Period**](#list-all-commits-in-a-time-period)
       - [**Show File Changes (_git diff_)**](#show-file-changes-git-diff)
       - [**Search Commit That Introduced A Bug (_git bisect_)**](#search-commit-that-introduced-a-bug-git-bisect)
     - [**Staging Area**](#staging-area)
@@ -230,6 +232,17 @@ Date:   Sun Dec 3 12:40:03 2023 +0100
 <br>
 
 ```bash
+git log -p
+```
+- shows commit history with diffs per commit
+
+<br>
+<br>
+
+##### **Visualize Commit Graph**
+<br>
+
+```bash
 git log --all --graph --decorate
 ```
 
@@ -263,12 +276,7 @@ prints
 <br>
 <br>
 
-```bash
-git log -p
-```
-- shows commit history with diffs per commit
-
-<br>
+##### **List All Commits In A Time Period**
 <br>
 
 ```bash

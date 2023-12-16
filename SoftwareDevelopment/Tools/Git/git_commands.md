@@ -602,6 +602,9 @@ git commit --amend -m 'message'
 ```bash
 git checkout 09117c167cdcddd5acf90420382a3c3f820d35bb
 ```
+- puts `HEAD` in `detached Head` mode
+  - all changes committed in this mode are discarded after switching branch
+  - create a new branch to make permanent commits 
 
 <br>
 <br>

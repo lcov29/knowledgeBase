@@ -29,8 +29,8 @@
   - [**Commits**](#commits)
     - [**Commit Changes (_git commit_)**](#commit-changes-git-commit)
     - [**Add Changes To Previous Commit (_git commit --amend_)**](#add-changes-to-previous-commit-git-commit---amend)
-    - [**Move Back To Past Commit (_git checkout \<commitHash\>_)**](#move-back-to-past-commit-git-checkout-commithash)
     - [**Revert Commit (_git revert \<commitHash\>_)**](#revert-commit-git-revert-commithash)
+    - [**Move Temporarily Back To Past Commit (_git checkout \<commitHash\>_)**](#move-temporarily-back-to-past-commit-git-checkout-commithash)
   - [**Stash Changes**](#stash-changes)
     - [**List All Stashes (_git stash list_)**](#list-all-stashes-git-stash-list)
     - [**Inspect Specific Stash (_git stash show \<?stashId\>_)**](#inspect-specific-stash-git-stash-show-stashid)
@@ -596,19 +596,6 @@ git commit --amend -m 'message'
 <br>
 <br>
 
-### **Move Back To Past Commit (_git checkout \<commitHash\>_)**
-<br>
-
-```bash
-git checkout 09117c167cdcddd5acf90420382a3c3f820d35bb
-```
-- puts `HEAD` in `detached Head` mode
-  - all changes committed in this mode are discarded after switching branch
-  - create a new branch to make permanent commits 
-
-<br>
-<br>
-
 ### **Revert Commit (_git revert \<commitHash\>_)**
 <br>
 
@@ -617,6 +604,19 @@ git revert d58446c04cf1124702e650225d0293ab1638e53c
 ```
 - add a new commit that reverts the changes made by the specified commit
 - does not remove or modify commit `d58446c04cf1124702e650225d0293ab1638e53c`
+
+<br>
+<br>
+
+### **Move Temporarily Back To Past Commit (_git checkout \<commitHash\>_)**
+<br>
+
+```bash
+git checkout 09117c167cdcddd5acf90420382a3c3f820d35bb
+```
+- moves `HEAD` and puts it in `detached Head` mode
+  - all changes committed in this mode are discarded after switching branch
+  - create a new branch to make permanent commits 
 
 <br>
 <br>

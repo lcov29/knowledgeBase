@@ -19,6 +19,7 @@
       - [**List All Commits That Added Or Modified Specific Content**](#list-all-commits-that-added-or-modified-specific-content)
     - [**Show File Changes (_git diff_)**](#show-file-changes-git-diff)
     - [**Show Author Of Changes (_git blame \<file\>_)**](#show-author-of-changes-git-blame-file)
+    - [**Show Reference Change Log (_git reflog_)**](#show-reference-change-log-git-reflog)
     - [**Search Commit That Introduced A Bug (_git bisect_)**](#search-commit-that-introduced-a-bug-git-bisect)
   - [**Working Area**](#working-area)
     - [**Delete Untracked Files (_git clean_)**](#delete-untracked-files-git-clean)
@@ -368,6 +369,17 @@ git blame -M test.md
 git blame -C test.md
 ```
 - show original author of lines that were **moved and copied** from other files to `test.md` 
+
+<br>
+<br>
+
+### **Show Reference Change Log (_git reflog_)**
+<br>
+
+```bash
+git reflog
+```
+- show log of when branch tips and other references were modified in the local repository
 
 <br>
 <br>

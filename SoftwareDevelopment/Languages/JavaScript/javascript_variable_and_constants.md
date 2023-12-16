@@ -13,6 +13,8 @@
     - [**Overview**](#overview)
     - [**Var**](#var)
       - [**Function Scoped**](#function-scoped)
+      - [**Module Scoped**](#module-scoped)
+      - [**Global Scoped**](#global-scoped)
       - [**Declarable Without Assignment**](#declarable-without-assignment)
       - [**Reassignable**](#reassignable)
       - [**Redeclarable**](#redeclarable)
@@ -41,8 +43,8 @@
         - [**Division Assignment (/=)**](#division-assignment-)
         - [**Modulo Assignment (%=)**](#modulo-assignment-)
         - [**Power-Of Assignment (\*\*=)**](#power-of-assignment-)
-      - [**Logical**](#logical)
-      - [**Logical And Assignment (\&\&=)**](#logical-and-assignment-)
+      - [**Logic**](#logic)
+        - [**Logical And Assignment (\&\&=)**](#logical-and-assignment-)
         - [**Logical Or Assignment (||=)**](#logical-or-assignment-)
         - [**Logical Nullish Assignment (??=)**](#logical-nullish-assignment-)
 
@@ -101,7 +103,7 @@ Foo   // 'B'
 
 |                                  |**var**         |**let**|**const**
 |:---------------------------------|:---------------|:------|:----
-|**Scope**                         |[global/function](#function-scoped) |[block](#block-scoped)  |[block](#block-scoped-1)
+|**Scope**                         |[function](#function-scoped), [module](#module-scoped) or [global](#global-scoped)|[block](#block-scoped)  |[block](#block-scoped-1)
 |**Declarable Without Assignment** |[yes](#declarable-without-assignment)             |[yes](#declarable-without-assignment-1)    |[no](#not-declarable-without-assignment)
 |**Reassignable**                  |[yes](#reassignable)             |[yes](#reassignable-1)    |[no](#not-reassignable)
 |**Redeclarable**                  |[yes](#redeclarable)             |[no](#not-redeclarable)     |[no](#not-redeclarable-1)
@@ -123,7 +125,7 @@ var foo = 3;
 #### **Function Scoped**
 <br>
 
-Variables declared with `var` are function scoped:
+Variables declared with `var` inside a function are **function scoped**:
 
 ```javascript
 function foo(bool) {
@@ -140,6 +142,45 @@ foo(false);       // bar
 ```
 
 The scope of the variable `bar` is the function `foo`. Although `bar` is declared within an if-block inside of `foo`, the declaration is hoisted to the top level of the function. Therefore it can be accessed from everywhere inside of `foo`.
+
+<br>
+<br>
+
+#### **Module Scoped**
+<br>
+
+Variables declared with `var` inside a module are **module scoped**:
+
+<br>
+
+foo.module.mjs
+```javascript
+var foo = 'foo';
+
+export function bar() {
+  // can access foo
+}
+
+export function baz() {
+  // can access foo
+}
+```
+
+<br>
+<br>
+
+#### **Global Scoped**
+<br>
+
+Variables declared with `var` in a script are **global scoped**:
+
+<br>
+
+script.js
+```javascript
+var foo = 'foo';
+```
+- `foo` is added to the global object
 
 <br>
 <br>
@@ -199,6 +240,12 @@ var foo = 'foo';
 <br>
 
 ### **Let**
+<br>
+
+```javascript
+let foo = 3;
+```
+
 <br>
 <br>
 
@@ -277,6 +324,12 @@ let foo = 'foo';
 <br>
 
 ### **Const**
+<br>
+
+```javascript
+const foo = 3;
+```
+
 <br>
 <br>
 
@@ -463,11 +516,11 @@ foo **= 3;     // 8
 <br>
 <br>
 
-#### **Logical**
+#### **Logic**
 <br>
 <br>
 
-#### **Logical And Assignment (&&=)**
+##### **Logical And Assignment (&&=)**
 <br>
 
 ```javascript

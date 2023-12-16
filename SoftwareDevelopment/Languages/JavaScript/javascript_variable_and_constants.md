@@ -86,8 +86,8 @@ Names of variables and constants are **case sensitive**.
 const foo = 'A';
 const Foo = 'B';
 
-foo   // 'A'
-Foo   // 'B'
+foo   // A
+Foo   // B
 ```
 
 <br>
@@ -206,7 +206,7 @@ Variable can be assigned a new value:
 ```javascript
 var foo = 'foo';
 foo = 'bar'
-console.log(foo);    // 'bar'
+console.log(foo);    // bar
 ```
 
 <br>
@@ -220,7 +220,17 @@ Variable can be redeclared:
 ```javascript
 var foo = {};
 var foo = 'foo';
-console.log(foo);    // 'foo'
+console.log(foo);    // foo
+```
+
+<br>
+
+Redeclaring without reassigning does not change the value:
+
+```javascript
+var foo = 'foo';
+var foo;
+console.log(foo);   // foo
 ```
 
 <br>
@@ -232,7 +242,7 @@ console.log(foo);    // 'foo'
 Variable declaration is hoisted to the top of its scope:
 
 ```javascript
-console.log(foo);    // 'foo'
+console.log(foo);    // foo
 var foo = 'foo';
 ```
 
@@ -291,7 +301,7 @@ Variable can be assigned a new value:
 ```javascript
 let foo = 'foo';
 foo = 'bar';
-console.log(foo);    // 'bar'
+console.log(foo);    // bar
 ```
 
 <br>

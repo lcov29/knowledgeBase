@@ -31,6 +31,7 @@
     - [**Add Changes To Previous Commit (_git commit --amend_)**](#add-changes-to-previous-commit-git-commit---amend)
     - [**Revert Commit (_git revert \<commitHash\>_)**](#revert-commit-git-revert-commithash)
     - [**Move Temporarily Back To Past Commit (_git checkout \<commitHash\>_)**](#move-temporarily-back-to-past-commit-git-checkout-commithash)
+    - [**Move Permanently Back To Past Commit (_git reset ?\<commitHash\>_)**](#move-permanently-back-to-past-commit-git-reset-commithash)
   - [**Stash Changes**](#stash-changes)
     - [**List All Stashes (_git stash list_)**](#list-all-stashes-git-stash-list)
     - [**Inspect Specific Stash (_git stash show \<?stashId\>_)**](#inspect-specific-stash-git-stash-show-stashid)
@@ -617,6 +618,45 @@ git checkout 09117c167cdcddd5acf90420382a3c3f820d35bb
 - moves `HEAD` and puts it in `detached Head` mode
   - all changes committed in this mode are discarded after switching branch
   - create a new branch to make permanent commits 
+
+<br>
+<br>
+
+### **Move Permanently Back To Past Commit (_git reset ?\<commitHash\>_)**
+<br>
+
+`git reset` moves `HEAD` and current branch reference.
+
+>**WARNING**  
+>  
+>NEVER RESET **PUBLIC** HISTORY, USE [GIT REVERT](#revert-commit-git-revert-commithash) INSTEAD!
+>
+>`git reset` can cause commits after the specified commit to become orphans. This means that they will be **deleted** by the git garbage collection after some time.
+
+<br>
+
+```bash
+git reset --hard 0a2cfd2d693c7deedc8bb4a4db25b101f688e7b8
+```
+- move `HEAD` and current branch reference to specified commit
+- **DISCARD ALL CHANGES IN THE STAGING AND WORKING AREA!**
+
+<br>
+
+```bash
+git reset --mixed 0a2cfd2d693c7deedc8bb4a4db25b101f688e7b8
+```
+- default behaviour of `git reset`
+- move `HEAD` and current branch reference to specified commit
+- moves content of staging area back to working area
+
+<br>
+
+```bash
+git reset --soft 0a2cfd2d693c7deedc8bb4a4db25b101f688e7b8
+```
+- move `HEAD` and current branch reference to specified commit
+- does not move any content of staging or working area
 
 <br>
 <br>

@@ -10,7 +10,6 @@
   - [**General**](#general)
   - [**Strict Mode**](#strict-mode)
   - [**Basic Input And Output**](#basic-input-and-output)
-  - [**Variables and Constants**](#variables-and-constants)
   - [**Data Types**](#data-types)
     - [**Number**](#number)
     - [**String**](#string)
@@ -27,9 +26,6 @@
   - [**Operators**](#operators)
     - [**Comparison**](#comparison)
     - [**Logical Assignment Operators**](#logical-assignment-operators)
-      - [**Logical Or Assignment**](#logical-or-assignment)
-      - [**Logical And Assignment**](#logical-and-assignment)
-      - [**Logical Nullish Assignment**](#logical-nullish-assignment)
       - [**Ternary Operator**](#ternary-operator)
     - [**Type Determination**](#type-determination)
   - [**If-Statements**](#if-statements)
@@ -57,7 +53,7 @@
 ## **General**
 <br>
 
-JavaScript is an interpreted language.
+JavaScript is asserted to be an interpreted language, but is typically compiled on the fly ("Just-In-Time Compiler").
 
 MIME-Type (**M**ultipurpose **I**nternet **M**ail **E**xtension) for JavaScript: application/javascript
 
@@ -98,32 +94,6 @@ let bool = confirm('Proceed?');         // basic confirmation dialog (returns bo
 alert(message);                         // basic display dialog for message
 console.log(message);                   // print message to console
 ```
-
-<br>
-<br>
-<br>
-<br>
-
-## **Variables and Constants**
-<br>
-
-```javascript
-var myVariable1;                // declaration without assignment (default value: undefined)
-let myVariable2 = 'value';
-
-const MY_CONSTANT = 'value';  
-```
-Variables and Constants are case sensitive.
-
-<br>
-
-Rules for naming variables and constants:
-* start with character, underscore (_) or dollar sign ($)
-* rest can contain characters, numbers, underscores(_) and dollar signs ($)
-
-<br>
-
-See [Variable Declaration](./javascript_variable_declaration.md) for differences between var, let and const.
 
 <br>
 <br>
@@ -514,46 +484,6 @@ See [JavaScript Date](./javascript_date.md)
 <br>
 
 ### **Logical Assignment Operators**
-
-<br>
-
-#### **Logical Or Assignment**
-* if first operand is falsy, assign value of second operand
-```javascript
-let operand1 = 0;
-let operand2 = 'string';
-
-operand1 ||= operand2;      // operand1 -> 'string'
-operand2 ||= operand1;      // operand2 -> 'string'
-```
-
-<br>
-<br>
-
-#### **Logical And Assignment**
-* if first operand is truthy, assign value of second operand
-```javascript
-let operand1 = 1;
-let operand2 = 0;
-
-operand1 &&= operand2;      // operand1 -> 0
-operand2 &&= operand1;      // operand2 -> 0
-```
-
-<br>
-<br>
-
-#### **Logical Nullish Assignment**
-* if first operand is null or undefined, assign value of second operand
-```javascript
-let operand1 = null;
-let operand2 = 'string';
-
-operand1 ??= operand2;      // operand1 -> 'string'
-operand2 ??= operand1;      // operand2 -> 'string'
-```
-
-<br>
 <br>
 
 #### **Ternary Operator**
@@ -739,7 +669,7 @@ do {
 |Keyword               |Description                                        |
 |:---------------------|:--------------------------------------------------|
 |continue              |continue with next iteration                       |
-|continue \<labelname\>|continue execution ofcodeblock with label labelname|
+|continue \<labelname\>|continue execution of codeblock with label labelname|
 |break                 |abort loop                                         |
 |break \<labelname\>   |break execution of codeblock with label labelname  |
 

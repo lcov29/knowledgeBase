@@ -23,6 +23,7 @@
       - [**String Concatenation**](#string-concatenation)
         - [**+**](#-1)
         - [**concat()**](#concat)
+        - [**repeat()**](#repeat)
       - [**Searching**](#searching)
         - [**indexOf()**](#indexof)
         - [**lastIndexOf()**](#lastindexof)
@@ -46,6 +47,13 @@
       - [**Padding**](#padding)
         - [**padStart()**](#padstart)
         - [**padEnd()**](#padend)
+      - [**Transformation**](#transformation)
+        - [**toUpperCase()**](#touppercase)
+        - [**toLocaleUpperCase()**](#tolocaleuppercase)
+        - [**toLowerCase()**](#tolowercase)
+        - [**toLocaleLowerCase()**](#tolocalelowercase)
+      - [**Other**](#other)
+        - [**String.fromCharCode()**](#stringfromcharcode)
 
 <br>
 <br>
@@ -255,6 +263,24 @@ string1.concat(string2)
 
 ```javascript
 'foo'.concat('bar'); // foobar
+```
+
+<br>
+<br>
+
+##### **repeat()**
+<br>
+
+Returns concatenated string that contains the specified amount of a string.
+
+```
+string.repeat(count)
+```
+
+<br>
+
+```javascript
+'foo'.repeat(4);     // foofoofoofoo
 ```
 
 <br>
@@ -766,4 +792,116 @@ string.padEnd(targetLength, ?padString)
 
 ```javascript
 'foo-bar'.padEnd(10, 'AB');  // 'foo-barABA'
+```
+
+<br>
+<br>
+<br>
+
+#### **Transformation**
+<br>
+<br>
+
+##### **toUpperCase()**
+<br>
+
+Returns new string with all characters converted to upper case.
+
+```
+string.toUpperCase()
+```
+
+<br>
+
+```javascript
+'foo-bar'.toUpperCase();   // FOO-BAR
+```
+
+<br>
+<br>
+
+##### **toLocaleUpperCase()**
+<br>
+
+Returns new string with all characters converted to upper case with locale-specific case mapping.
+
+```
+string.toLocaleUpperCase(locales)
+```
+
+<br>
+
+```javascript
+'ice'.toLocaleUpperCase('en-US');   // ICE
+```
+
+<br>
+
+```javascript
+'ice'.toLocaleUpperCase('TR');      // İCE
+```
+
+<br>
+<br>
+
+##### **toLowerCase()**
+<br>
+
+Returns new string with all characters converted to lower case.
+
+```
+string.toLowerCase()
+```
+
+<br>
+
+```javascript
+'FOO-BAR'.toLowerCase();   // foo-bar
+```
+
+<br>
+<br>
+
+##### **toLocaleLowerCase()**
+<br>
+
+Returns new string with all characters converted to lower case with locale-specific case mapping.
+
+```
+string.toLocaleLowerCase(locales)
+```
+
+<br>
+
+```javascript
+'ICE'.toLocaleLowerCase('en-US');   // ice
+```
+
+<br>
+
+```javascript
+'İCE'.toLocaleLowerCase('TR');      // ice
+```
+
+<br>
+<br>
+<br>
+
+#### **Other**
+<br>
+<br>
+
+##### **String.fromCharCode()**
+<br>
+
+Returns string from sequence of utf-16 codes.
+
+```
+String.fromCharCode(code1, ... , codeN)
+```
+
+<br>
+
+```javascript
+String.fromCharCode(98, 97, 114);      // 'bar'
 ```

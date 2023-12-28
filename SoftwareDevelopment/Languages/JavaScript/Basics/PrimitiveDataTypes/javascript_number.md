@@ -18,18 +18,29 @@
     - [**Number.NEGATIVE\_INFINITY**](#numbernegative_infinity)
     - [**Number.POSITIVE\_INFINITY**](#numberpositive_infinity)
   - [**Operators**](#operators)
-    - [**Addition (+)**](#addition-)
-    - [**Subtraction (-)**](#subtraction--)
-    - [**Multiplication (\*)**](#multiplication-)
-    - [**Division (/)**](#division-)
-    - [**Modulo (%)**](#modulo-)
-    - [**Power Of (\*\*)**](#power-of-)
-    - [**Increment (++)**](#increment-)
-    - [**Decrement (--)**](#decrement---)
+    - [**Arithmetic**](#arithmetic)
+      - [**Addition (+)**](#addition-)
+      - [**Subtraction (-)**](#subtraction--)
+      - [**Multiplication (\*)**](#multiplication-)
+      - [**Division (/)**](#division-)
+      - [**Modulo (%)**](#modulo-)
+      - [**Exponential (\*\*)**](#exponential-)
+      - [**Increment (++)**](#increment-)
+      - [**Decrement (--)**](#decrement---)
+    - [**Comparison**](#comparison)
+      - [**Equal (==)**](#equal-)
+      - [**Strict Equal (===)**](#strict-equal-)
+      - [**Unequal (!=)**](#unequal-)
+      - [**Strict Unequal (!==)**](#strict-unequal-)
+      - [**Greater Than (\>)**](#greater-than-)
+      - [**Greater Than Or Equal (\>=)**](#greater-than-or-equal-)
+      - [**Less Than (\<)**](#less-than-)
+      - [**Less Than Or Equal (\<=)**](#less-than-or-equal-)
   - [**Inaccuracy**](#inaccuracy)
     - [**Integer**](#integer)
     - [**Floating Point Arithmetic**](#floating-point-arithmetic)
 
+<br>
 <br>
 <br>
 <br>
@@ -45,8 +56,10 @@
 <br>
 <br>
 <br>
+<br>
 
 ## **Number Systems**
+<br>
 <br>
 
 ### **Decimal**
@@ -118,6 +131,7 @@
 <br>
 <br>
 <br>
+<br>
 
 ## **Properties**
 <br>
@@ -163,12 +177,18 @@ Number.POSITIVE_INFINITY      // Infinity
 <br>
 <br>
 <br>
+<br>
 
 ## **Operators**
 <br>
 <br>
+<br>
 
-### **Addition (+)**
+### **Arithmetic**
+<br>
+<br>
+
+#### **Addition (+)**
 <br>
 
 ```javascript
@@ -178,7 +198,7 @@ Number.POSITIVE_INFINITY      // Infinity
 <br>
 <br>
 
-### **Subtraction (-)**
+#### **Subtraction (-)**
 <br>
 
 ```javascript
@@ -188,7 +208,7 @@ Number.POSITIVE_INFINITY      // Infinity
 <br>
 <br>
 
-### **Multiplication (*)**
+#### **Multiplication (*)**
 <br>
 
 ```javascript
@@ -198,7 +218,7 @@ Number.POSITIVE_INFINITY      // Infinity
 <br>
 <br>
 
-### **Division (\/)**
+#### **Division (\/)**
 <br>
 
 ```javascript
@@ -208,7 +228,7 @@ Number.POSITIVE_INFINITY      // Infinity
 <br>
 <br>
 
-### **Modulo (%)**
+#### **Modulo (%)**
 <br>
 
 ```javascript
@@ -218,7 +238,8 @@ Number.POSITIVE_INFINITY      // Infinity
 <br>
 <br>
 
-### **Power Of (\*\*)**
+#### **Exponential (\*\*)**
+<br>
 
 ```javascript
 2 ** 3 = 8
@@ -227,7 +248,7 @@ Number.POSITIVE_INFINITY      // Infinity
 <br>
 <br>
 
-### **Increment (++)**
+#### **Increment (++)**
 <br>
 
 ```javascript
@@ -247,7 +268,7 @@ x++;
 <br>
 <br>
 
-### **Decrement (--)**
+#### **Decrement (--)**
 <br>
 
 ```javascript
@@ -264,6 +285,128 @@ x--;
 - decrements x by 1
 - returns value of x **after** decrementation
 
+<br>
+<br>
+<br>
+
+### **Comparison**
+<br>
+<br>
+
+#### **Equal (==)**
+<br>
+
+Checks equality of two operands **without** checking for type equality.
+
+```javascript
+3 == 3    // true
+
+3 == '3'  // true
+```
+
+<br>
+<br>
+
+#### **Strict Equal (===)**
+<br>
+
+Checks equality of two operands by both value and type.
+
+```javascript
+3 === 3    // true
+
+3 === '3'  // false
+```
+
+<br>
+<br>
+
+#### **Unequal (!=)**
+<br>
+
+Checks inequality of two operands **without** checking for type equality.
+
+```javascript
+3 != 5    // true
+
+3 != '5'  // true
+```
+
+<br>
+<br>
+
+#### **Strict Unequal (!==)**
+<br>
+
+Checks inequality of two operands of the same type.
+
+```javascript
+3 !== 5    // true
+
+3 !== '5'  // false
+```
+
+<br>
+<br>
+
+#### **Greater Than (>)**
+<br>
+
+Checks if left operand is greater than right operand.
+
+```javascript
+3 > 5     // false
+
+5 > 3     // true
+```
+
+<br>
+<br>
+
+#### **Greater Than Or Equal (>=)**
+<br>
+
+Checks if left operand is greater than right operand or equal.
+
+```javascript
+3 >= 5     // false
+
+5 >= 3     // true
+
+4 >= 4     // true
+```
+
+<br>
+<br>
+
+#### **Less Than (<)**
+<br>
+
+Checks if left operand is less than right operand.
+
+```javascript
+3 < 5     // true
+
+5 < 3     // false
+```
+
+<br>
+<br>
+
+#### **Less Than Or Equal (<=)**
+<br>
+
+Checks if left operand is less than right operand or equal.
+
+```javascript
+3 <= 5     // true
+
+5 <= 3     // false
+
+4 <= 4     // true
+```
+
+<br>
 <br>
 <br>
 <br>
@@ -304,5 +447,3 @@ const x = 0.2 + 0.1;
 const x = (0.2*10 + 0.1*10) / 10;
 // 0.3
 ```
-
-

@@ -6,7 +6,7 @@
 
 - [**JavaScript Symbol**](#javascript-symbol)
   - [**Table Of Contents**](#table-of-contents)
-  - [**General**](#general)
+  - [**Basics**](#basics)
   - [**Constructor**](#constructor)
   - [**Static Methods**](#static-methods)
     - [**Symbol.for()**](#symbolfor)
@@ -17,10 +17,11 @@
 <br>
 <br>
 
-## **General**
+## **Basics**
 <br>
 
-A `Symbol` is a wrapper object that returns a guaranteed unique primitive symbol.
+A `Symbol` is a wrapper object that returns a guaranteed unique primitive symbol.  
+It is commonly used to add hidden unique properties to objects to enable a weak encapsulation.
 
 <br>
 <br>

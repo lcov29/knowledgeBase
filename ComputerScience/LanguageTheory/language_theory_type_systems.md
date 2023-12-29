@@ -37,10 +37,10 @@ The Type System is a part of a programming language that defines
 ## **Strong VS. Weak Type Systems**
 <br>
  
-|**Weak Type System**                              | **Strong Type System**                                   |
-|:-------------------------------------------------|:---------------------------------------------------------|
-|values are casted implicitly                      |values are casted explicitly                              |
-|assigned value type can differ from expected type |assigned value type can **not** differ from expected type |
+|                  | **Strong Type System**       |**Weak Type System**      |
+|:-----------------|:-----------------------------|:-------------------------|
+|**variable type** |can not change during runtime |can change during runtime |
+
 
 <br>
 <br>

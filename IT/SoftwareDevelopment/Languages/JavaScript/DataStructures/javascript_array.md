@@ -12,6 +12,8 @@
     - [**Array Literal**](#array-literal)
   - [**Destructuring**](#destructuring)
   - [**Spread Operator**](#spread-operator)
+  - [**Properties**](#properties)
+    - [**length**](#length)
   - [**Methods**](#methods)
     - [**Accessing Elements**](#accessing-elements)
       - [**Array\[\]**](#array)
@@ -244,8 +246,26 @@ let concatArray = [...array, ...array2];
 <br>
 <br>
 
-## **Methods**
+## **Properties**
+<br>
+<br>
 
+### **length**
+<br>
+
+Returns number of elements of array.
+
+```javascript
+const array = [1, 2, 3, 4, 5];
+
+array.length;   // 5
+```
+
+<br>
+<br>
+<br>
+
+## **Methods**
 <br>
 <br>
 

@@ -42,7 +42,7 @@
         - [**Multiplication Assignment (\*=)**](#multiplication-assignment-)
         - [**Division Assignment (/=)**](#division-assignment-)
         - [**Modulo Assignment (%=)**](#modulo-assignment-)
-        - [**Power-Of Assignment (\*\*=)**](#power-of-assignment-)
+        - [**Exponential Assignment (\*\*=)**](#exponential-assignment-)
       - [**Logic**](#logic)
         - [**Logical And Assignment (\&\&=)**](#logical-and-assignment-)
         - [**Logical Or Assignment (||=)**](#logical-or-assignment-)
@@ -514,7 +514,7 @@ foo %= 4;      // 3
 <br>
 <br>
 
-##### **Power-Of Assignment (\*\*=)**
+##### **Exponential Assignment (\*\*=)**
 <br>
 
 ```javascript

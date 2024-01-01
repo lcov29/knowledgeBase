@@ -7,8 +7,8 @@
 - [**Javascript Array**](#javascript-array)
   - [**Table Of Contents**](#table-of-contents)
   - [**Basics**](#basics)
-  - [**Ways To Create Arrays**](#ways-to-create-arrays)
-    - [**Constructor Function Array()**](#constructor-function-array)
+  - [**Create Arrays**](#create-arrays)
+    - [**Constructor Array()**](#constructor-array)
     - [**Array Literal**](#array-literal)
   - [**Destructuring**](#destructuring)
   - [**Spread Operator**](#spread-operator)
@@ -102,18 +102,31 @@ const array = [1, '2', false, { foo: 'bar' }, [1, 2, 3]];
 <br>
 <br>
 
-## **Ways To Create Arrays**
+## **Create Arrays**
+<br>
 <br>
 
-### **Constructor Function Array()**
+### **Constructor Array()**
 <br>
+
+```
+Array(?initialLength, ?element1, ... ?elementN)
+```
+
+<br>
+
+**Examples**
 
 ```javascript
-const array1 = new Array();                 // empty array
+const array = new Array();          // []
+```
 
-const array2 = new Array(5);                // optional: create an array with initial length of 5
+```javascript
+const array = new Array(3);         // [empty × 3]
+```
 
-const array3 = new Array(1, 3.14, 'foo');   // optional: create an array with values
+```javascript
+const array = new Array(1, 2, 3);   // [1, 2, 3]
 ```
 
 <br>
@@ -123,9 +136,11 @@ const array3 = new Array(1, 3.14, 'foo');   // optional: create an array with va
 <br>
 
 ```javascript
-const array1 = [];                          // empty array
+const array = [];         // []
+```
 
-const array2 = [1, 3.13, 'foo'];            // create an array with values
+```javascript
+const array = [1, 2, 3];  // [1, 2, 3]
 ```
 
 <br>

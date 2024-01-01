@@ -19,9 +19,6 @@
   - [**Function**](#function)
   - [**DOM Tree Manipulation**](#dom-tree-manipulation)
   - [**DOM Event Handling**](#dom-event-handling)
-  - [**Error Handling**](#error-handling)
-    - [**Catch Errors**](#catch-errors)
-    - [**Throw Errors**](#throw-errors)
   - [**Debugging**](#debugging)
 
 
@@ -260,82 +257,6 @@ See [Document Object Model](../../WebDevelopment/WebAPI/document_object_model_ap
 <br>
 
 See [DOM Event Handling](../../WebDevelopment/WebAPI/dom_event_api.md)
-
-<br>
-<br>
-<br>
-<br>
-
-## **Error Handling**
-<br>
-
-* throw errors with keyword throw
-* handle runtime error with try-catch-statement
-  * only one catch statement allowed
-  * exception parameter for catch statement is optional
-  * optional finally block
-
-<br>
-<br>
-
-### **Catch Errors**
-```javascript
-try {
-    // code
-} catch (error) {
-    // code to execute if an error is thrown in try block (with error object as parameter)
-}
-
-
-
-try {
-    // code
-} catch {
-    // code to execute if an error is thrown in try block
-}
-
-
-
-try {
-    // code
-} catch {
-    // code to execute if an error is thrown in try block
-} finally {
-    // code to execute regardless of whether an error is thrown or catched
-}
-```
-
-<br>
-<br>
-
-### **Throw Errors**
-
-<br>
-
-|Error Type    |Description                                    |
-|:-------------|:----------------------------------------------|
-|Error         |Base Error Type                                |
-|RangeError    |Value out of range                             |
-|ReferenceError|Called variable does not exist                 |
-|TypeError     |Call of variable or parameter with invalid type|
-|URIError      |Error with URL                                 |
-
-<br>
-
-**Properties of error object:**
-
-* name
-* message
-
-<br>
-
-```javascript
-throw new Error('message');
-throw new RangeError('message');
-throw new RangeError('message');
-throw new TypeError('message');
-throw new URIError('message');
-```
 
 <br>
 <br>

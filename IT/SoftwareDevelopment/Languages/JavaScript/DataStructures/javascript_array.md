@@ -6,7 +6,7 @@
 
 - [**Javascript Array**](#javascript-array)
   - [**Table Of Contents**](#table-of-contents)
-  - [**General**](#general)
+  - [**Basics**](#basics)
   - [**Ways To Create Arrays**](#ways-to-create-arrays)
     - [**Constructor Function Array()**](#constructor-function-array)
     - [**Array Literal**](#array-literal)
@@ -64,16 +64,38 @@
 <br>
 <br>
 
-## **General**
+## **Basics**
 <br>
 
-* Arrays are objects
-* Arrays are dynamic, so they can grow or shrink
-* Arrays are loosely typed, so they can contain elements of different types
+**1. Arrays are objects**
 
 ```javascript
-array.length;       // returns number of elements
-array[0];           // access element in array
+const array = [1, 2, 3];
+
+typeof array;   // 'object'
+```
+
+<br>
+
+**2. Arrays are resizable**
+
+```javascript
+const array = [1, 2, 3];
+
+array.push(4);
+array;            // [1, 2, 3, 4]
+
+array.pop();
+array.pop();
+array;            // [1, 2]
+```
+
+<br>
+
+**3. Arrays can contain elements of different types**
+
+```javascript
+const array = [1, '2', false, { foo: 'bar' }, [1, 2, 3]];
 ```
 
 <br>

@@ -99,6 +99,17 @@ const array = [1, '2', false, { foo: 'bar' }, [1, 2, 3]];
 ```
 
 <br>
+
+**4. Array index is zero-based**
+
+```javascript
+const array = [1, 2, 3];
+
+array[0];     // 1
+array[1];     // 2
+```
+
+<br>
 <br>
 <br>
 

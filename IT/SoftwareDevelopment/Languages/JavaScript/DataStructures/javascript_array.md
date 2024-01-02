@@ -27,8 +27,10 @@
     - [**Removing Elements**](#removing-elements)
       - [**pop()**](#pop)
       - [**shift()**](#shift)
-    - [**Iterating over elements**](#iterating-over-elements)
-      - [**For Loops**](#for-loops)
+    - [**Array Iteration**](#array-iteration)
+      - [**For Loop**](#for-loop)
+      - [**For-Of Loop**](#for-of-loop)
+      - [**For-In Loop**](#for-in-loop)
       - [**forEach()**](#foreach)
     - [**Sorting**](#sorting)
       - [**sort()**](#sort)
@@ -322,35 +324,43 @@ array.length;   // 5
 <br>
 
 #### **Array[]**
-<br>
 
-* returns element at specified index
-* index is zero-based
+Returns element at specified index.
 
 ```javascript
-const array = [1, 2, 3, 4, 5];
+array[index]
+```
 
-array.[0];                  // returns 1
-array.[2];                  // returns 3
+<br>
+
+```javascript
+const array = [1, 2, 3];
+
+array[0];     // 1
+array[2];     // 3
 ```
 
 <br>
 <br>
 
 #### **at()**
-<br>
 
-* returns element at specified index
-* positive index is zero-based
-* allows selection from end of array via negative index
+Returns element at specified index. Allows selection from end of array via negative index.
+
+```javascript
+array.at(index)
+```
+
+<br>
 
 ```javascript
 const array = [1, 2, 3, 4, 5];
 
-array.at(0);                // returns 1
-array.at(2);                // returns 3
-array.at(-1);               // returns 5
-array.at(-3);               // returns 3
+array.at(0);    // 1
+array.at(2);    // 3
+
+array.at(-1);   // 5
+array.at(-3);   // 3
 ```
 
 <br>
@@ -362,27 +372,39 @@ array.at(-3);               // returns 3
 
 #### **Array[]**
 
-* updates element at specified index
+Updates element at specified index.
+
+```javascript
+array[index] = newValue
+```
+
+<br>
 
 ```javascript
 const array = [1, 2, 3, 4];
-array[1] = 8;
 
-// array = [1, 8, 3, 4]
+array[1] = 8;   // [1, 8, 3, 4]
 ```
 
 <br>
 <br>
 
 #### **with()**
-<br>
 
-* returns a new array with updated element at specified index
+Returns a shallow array copy with updated element at specified index. Allows selection from end of array via negative index.
+
+```javascript
+array.with(index, newValue)
+```
+
+<br>
 
 ```javascript
 const array = [1, 2, 3, 4];
-array.with(2, 8);                 // returns new array [1, 2, 8, 4] 
-array.with(-1, 6);                // returns new array [1, 2, 3, 6]
+
+array.with(2, 8);       // returns new array [1, 2, 8, 4] 
+
+array.with(-1, 'foo');  // returns new array [1, 2, 3, 'foo']
 ```
 
 <br>
@@ -394,15 +416,30 @@ array.with(-1, 6);                // returns new array [1, 2, 3, 6]
 
 #### **push()**
 
-* adds one or more elements to the **end** of an array
-* returns new length
-```javascript
-let array = [1, 2, 3];
-array.push(4);
-let len = array.push(5, 6, 7);
+Adds one or more elements to the **end** of an array and returns the new array length.
 
-console.log(len);           // output: 7
-console.log(array);         // output: [1, 2, 3, 4, 5, 6, 7]
+```javascript
+array.push(element1, ?element2, ..., ?elementN)
+```
+
+<br>
+
+```javascript
+const array = [1, 2];
+
+array.push('foo'); 
+
+// returns 3
+// array [1, 2, 'foo']
+```
+
+```javascript
+const array = [1, 2];
+
+const newLength = array.push(3, 4, 5);
+
+// newLength: 5
+// array [1, 2, 3, 4, 5]
 ```
 
 <br>
@@ -410,15 +447,30 @@ console.log(array);         // output: [1, 2, 3, 4, 5, 6, 7]
 
 #### **unshift()**
 
-* adds one or more elements to the **start** of an array
-* returns new length
-```javascript
-let array = [1, 2, 3];
-array.unshift(4);
-let len = array.unshift(5, 6, 7);
+Adds one or more elements to the **start** of an array and returns the new array length.
 
-console.log(len);           // output: 7
-console.log(array);         // output: [5, 6, 7, 4, 1, 2, 3]
+```javascript
+array.unshift(element1, ?element2, ..., ?elementN)
+```
+
+<br>
+
+```javascript
+const array = [1, 2];
+
+array.unshift('foo');
+
+// returns 3
+// array ['foo', 1, 2]
+```
+
+```javascript
+const array = [1, 2];
+
+const newLength = array.unshift(3, 4, 5);
+
+// newLength: 5
+// array [3, 4, 5, 1, 2]
 ```
 
 <br>
@@ -430,12 +482,30 @@ console.log(array);         // output: [5, 6, 7, 4, 1, 2, 3]
 
 #### **pop()**
 
-* removes and returns **last** element
-* returns _undefined_ for empty array
+Removes and returns **last** array element. Returns `undefined` for empty arrays.
+
 ```javascript
-let array = [1, 2, 3];
-console.log(array.pop());   // output: 3
-console.log(array);         // output: [1, 2]
+array.pop()
+```
+
+<br>
+
+```javascript
+const array = [1, 2, 'foo'];
+
+array.pop();
+
+// returns 'foo'
+// array [1, 2]
+```
+
+```javascript
+const array = [];
+
+array.pop();
+
+// returns undefined
+// array []
 ```
 
 <br>
@@ -443,40 +513,89 @@ console.log(array);         // output: [1, 2]
 
 #### **shift()**
 
-* removes and returns **first** element
-* returns _undefined_ for empty array
+Removes and returns **first** array element. Returns `undefined` for empty arrays.
+
 ```javascript
-let array = [1, 2, 3];
-console.log(array.shift());   // output: 1
-console.log(array);           // output: [2, 3]
+array.shift()
+```
+
+<br>
+
+```javascript
+const array = ['foo', 1, 2];
+
+array.shift();
+
+// returns 'foo'
+// array [1, 2]
+```
+
+```javascript
+const array = [];
+
+array.shift();
+
+// returns undefined
+// array []
 ```
 
 <br>
 <br>
 <br>
 
-### **Iterating over elements**
+### **Array Iteration**
 <br>
 
-#### **For Loops**
+#### **For Loop**
 
 ```javascript
 const array = ['A', 'B', 'C'];
 
-// count loop over index
 for (let i = 0; i < array.length; i++) {
   console.log(array[i]);
 }
 
-// iterate over index
-for (let index in array) {
-  console.log(array[index]);
+// 'A'
+// 'B'
+// 'C'
+```
+
+<br>
+<br>
+
+#### **For-Of Loop**
+
+Loop over array elements.
+
+```javascript
+const array = ['A', 'B', 'C'];
+
+for (let element of array) {
+  console.log(element);
 }
 
-// iterate over values
-for (let value of array) {
-  console.log(value);
+// 'A'
+// 'B'
+// 'C'
+```
+
+<br>
+<br>
+
+#### **For-In Loop**
+
+Loop over array indexes.
+
+```javascript
+const array = ['A', 'B', 'C'];
+
+for (let index in array) {
+  console.log(index);
 }
+
+// 0
+// 1
+// 2
 ```
 
 <br>
@@ -484,31 +603,50 @@ for (let value of array) {
 
 #### **forEach()**
 
-* executes function once for every element
-
-<br>
-
-Parameters:
-* _customFunction_
-  * _element_
-  * _index_
-  * _array_
-* _thisArg_: optional reference to use as _this_ within the function
-
-<br>
+Executes specified function once for every array element.
 
 ```javascript
-forEach(customFunction, [thisArg])
+array.forEach((element, ?index, ?array) => { code }, ?thisArg)
 ```
 
+Function parameters:
+- `element`
+- `index`
+- `array`: reference to array the function was called upon
+
+Optional parameter:
+- `thisArg`: reference to use as `this` within the function
+
 <br>
 
 ```javascript
-let array = [1, 2, 3];
+const array = ['A', 'B', 'C'];
 
-array.forEach(element => console.log(element));
+array.forEach((element) => console.log(element));
 
-// Output: 1 2 3
+// 'A'
+// 'B'
+// 'C'
+```
+
+```javascript
+const array = ['A', 'B', 'C'];
+
+array.forEach((element, index) => console.log(`(${element}, ${index})`));
+
+// (A, 0)
+// (B, 1)
+// (C, 2)
+```
+
+```javascript
+const array = ['A', 'B', 'C'];
+
+array.forEach((element, index) => console.log(`(${element}, ${index}, ${array})`));
+
+// (A, 0, ['A', 'B', 'C'])
+// (B, 1, ['A', 'B', 'C'])
+// (C, 2, ['A', 'B', 'C'])
 ```
 
 <br>
@@ -520,34 +658,58 @@ array.forEach(element => console.log(element));
 
 #### **sort()**
 
-* sorts array elements in ascending order
-* optional custom compare function
+Sorts array elements in ascending order. An optional compare function can be specified to to implement a custom sorting order.
 
 ```javascript
-sort();
+array.sort(?(firstElement, secondElement) => { implementation })
+```
 
-sort(compareFunctionName);
+<br>
 
-sort((a,b) => { /* implementation of compare function (a: first element, b: last element) */ });
+| compareFunction(firstElement, secondElement) | Sorting Order                                             |
+| :------------------------------------------: | :-------------------------------------------------------- |
+|                     > 0                      | `secondElement`, `firstElement`                           |
+|                     <= 0                     | `firstElement`, `secondElement`                           |
+|                    === 0                     | keep original order of `firstElement` and `secondElement` |
 
-sort(function compareFunctionName(a, b) { /* implementation */ })
+<br>
 
-// compareFunction(a, b) > 0      ==>   sort b before a
-// compareFunction(a, b) < 0      ==>   sort a before b
-// compareFunction(a, b) === 0    ==>   keep original order of a and b
+```javascript
+const array = [3, 6, 3, 2, 10, 37];
+
+array.sort();
+
+// array = [10, 2, 3, 3, 37, 6]
 ```
 
 <br>
 
 ```javascript
-let array = [3, 6, 3, 2, 10, 37];
-array.sort();                                     // array = [10, 2, 3, 3, 37, 6]
+const array = ['x', 'hello', 'a', 't'];
 
-let array2 = ['x', 'hello', 'a', 't'];
-array2.sort();                                    // array2 = [a, hello, t, x]
+array.sort();
 
-let array3 = [3, 6, 3, 2, 10, 37];
-array3.sort((a,b) => a - b);                      // array3 = [2, 3, 3, 6, 10, 37]
+// array = [a, hello, t, x]
+```
+
+<br>
+
+```javascript
+const array = [3, 6, 3, 2, 10, 37];
+
+array.sort((a, b) => a - b);
+
+// array = [2, 3, 3, 6, 10, 37]
+```
+
+<br>
+
+```javascript
+const array = [3, 6, 3, 2, 10, 37];
+
+array.sort((a, b) => b - a);
+
+// array = [37, 10, 6, 3, 3, 2]
 ```
 
 <br>
@@ -555,34 +717,62 @@ array3.sort((a,b) => a - b);                      // array3 = [2, 3, 3, 6, 10, 3
 
 #### **toSorted()**
 
-* returns **copy** of array sorted in ascending order
-* optional custom compare function
+Returns shallow copy of array sorted in ascending order. An optional compare function can be specified to to implement a custom sorting order.
 
 ```javascript
-toSorted();
+array.toSorted(?(firstElement, secondElement) => { implementation })
+```
 
-toSorted(compareFunctionName);
+<br>
 
-toSorted((a,b) => { /* implementation of compare function (a: first element, b: last element) */ });
+| compareFunction(firstElement, secondElement) | Sorting Order                                             |
+| :------------------------------------------: | :-------------------------------------------------------- |
+|                     > 0                      | `secondElement`, `firstElement`                           |
+|                     <= 0                     | `firstElement`, `secondElement`                           |
+|                    === 0                     | keep original order of `firstElement` and `secondElement` |
 
-toSorted(function compareFunctionName(a, b) { /* implementation */ })
+<br>
 
-// compareFunction(a, b) > 0      ==>   sort b before a
-// compareFunction(a, b) < 0      ==>   sort a before b
-// compareFunction(a, b) === 0    ==>   keep original order of a and b
+```javascript
+const array = [3, 6, 3, 2, 10, 37];
+
+const sortedArray = array.toSorted();
+
+// array = [3, 6, 3, 2, 10, 37]
+// sortedArray = [10, 2, 3, 3, 37, 6]
+```
+
+<br>
+
+```javascript
+const array = ['x', 'hello', 'a', 't'];
+
+const sortedArray = array.toSorted();
+
+// array = ['x', 'hello', 'a', 't']
+// sortedArray = [a, hello, t, x]
 ```
 
 <br>
 
 ```javascript
 const array = [3, 6, 3, 2, 10, 37];
-array.toSorted();                               // returns [10, 2, 3, 3, 37, 6]
 
-const array2 = ['x', 'hello', 'a', 't'];
-array2.toSorted();                              // returns [a, hello, t, x]
+const sortedArray = array.toSorted((a, b) => a - b);
 
-const array3 = [3, 6, 3, 2, 10, 37];
-array3.toSorted((a,b) => a - b);                // returns [2, 3, 3, 6, 10, 37]
+// array = [3, 6, 3, 2, 10, 37]
+// sortedArray = [2, 3, 3, 6, 10, 37]
+```
+
+<br>
+
+```javascript
+const array = [3, 6, 3, 2, 10, 37];
+
+const sortedArray = array.toSorted((a, b) => b - a);
+
+// array = [3, 6, 3, 2, 10, 37]
+// sortedArray = [37, 10, 6, 3, 3, 2]
 ```
 
 <br>
@@ -590,11 +780,20 @@ array3.toSorted((a,b) => a - b);                // returns [2, 3, 3, 6, 10, 37]
 
 #### **reverse()**
 
-* reverses order of array elements
+Reverses the order of array elements.
+
+```javascript
+array.reverse();
+```
+
+<br>
 
 ```javascript
 const array = [4, 34, 2, 7];
-array.reverse();                            // array: [7, 2, 34, 4]
+
+array.reverse();
+
+// array = [7, 2, 34, 4]
 ```
 
 <br>
@@ -603,11 +802,21 @@ array.reverse();                            // array: [7, 2, 34, 4]
 #### **toReversed()**
 <br>
 
-* returns **copy** of array with reversed order or elements
+Returns shallow copy of array with reversed order of elements.
+
+```javascript
+array.toReversed();
+```
+
+<br>
 
 ```javascript
 const array = [4, 34, 2, 7];
-array.toReversed();                         // returns [7, 2, 34, 4]
+
+const reversedArray = array.toReversed();
+
+// array = [4, 34, 2, 7]
+// reversedArray = [7, 2, 34, 4]
 ```
 
 <br>
@@ -619,23 +828,24 @@ array.toReversed();                         // returns [7, 2, 34, 4]
 
 #### **indexOf()**
 
-* returns index of _first_ occurrence of element in array
-* returns -1 if element does not exist in array
-* optional fromIndex
+Returns the index of the **first** occurrence of the specified element in the array.  
+Returns `-1` if the specified element does not exist in the array.  
+Search range can be modified via optional `fromIndex`.
 
 ```javascript
-indexOf(element);
-indexOf(element, fromIndex);
+array.indexOf(element, ?fromIndex);
 ```
 
 <br>
 
 ```javascript
-let array = ['one', 'two', 'three', 'two', 'six'];
-console.log(array.indexOf('two'));                      // output:  1
-console.log(array.indexOf('two', 2));                   // output:  3
-console.log(array.indexOf('three'));                    // output:  2
-console.log(array.indexOf('ten'));                      // output: -1
+const array = ['A', 'B', 'C', 'D', 'B'];
+
+array.indexOf('B');     // 1
+
+array.indexOf('B', 2);  // 4
+
+array.indexOf('X');     // -1
 ```
 
 <br>
@@ -643,23 +853,24 @@ console.log(array.indexOf('ten'));                      // output: -1
 
 #### **lastIndexOf()**
 
-* returns index of _last_ occurrence of element in array
-* returns -1 if element does not exist in array
-* optional fromIndex (array is searched backwards)
+Returns the index of the **last** occurrence of the specified element in the array.  
+Returns `-1` if the specified element does not exist in the array.  
+Search range can be modified via optional `fromIndex` from which the array is searched **backwards**.
 
 ```javascript
-lastIndexOf(element);
-lastIndexOf(element, fromIndex);
+array.lastIndexOf(element, ?fromIndex);
 ```
 
 <br>
 
 ```javascript
-let array = ['one', 'two', 'three', 'two', 'six'];
-console.log(array.lastIndexOf('two'));                  // output:  3
-console.log(array.lastIndexOf('two', 2));               // output:  1
-console.log(array.lastIndexOf('three'));                // output:  2
-console.log(array.lastIndexOf('ten'));                  // output: -1
+const array = ['A', 'B', 'C', 'D', 'B'];
+
+array.lastIndexOf('B');     // 4
+
+array.lastIndexOf('B', 3);  // 1
+
+array.lastIndexOf('X');     // -1
 ```
 
 <br>
@@ -667,56 +878,31 @@ console.log(array.lastIndexOf('ten'));                  // output: -1
 
 #### **find()**
 
-* returns _first_ element that matches the custom findFunction
-* returns _undefined_ if no element matches the custom findFunction
-
-<br>
-
-Parameters:
-* _findFunction_
-  * _element_
-  * _index_
-  * _array_
-* _thisArg_: optional reference to use as _this_ within the findFunction
-
-<br>
+Returns **first** element that matches the specified findFunction.  
+Returns `undefined` when there are no matches.
 
 ```javascript
-// general
-find(findFunction, [thisArg])
-
-
-// arrow findFunction
-find((element) => { /* implementation */})
-find((element, index) => { /* implementation */})
-find((element, index, array) => { /* implementation */})
-
-
-// callback findFunction
-find(findFunction)
-find(findFunction, thisArg)
-
-
-// inline callback findFunction
-find(function(element) { /* implementation */ })
-find(function(element, index) { /* implementation */ })
-find(function(element, index, array) { /* implementation */ })
-find(function(element, index, array) { /* implementation */ }, thisArg)
+array.find((element, ?index, ?array) => { code }, ?thisArg)
 ```
 
+Function parameters:
+- `element`
+- `index`
+- `array`: reference to array the function was called upon
+
+Optional parameter:
+- `thisArg`: reference to use as `this` within the function
+
 <br>
 
 ```javascript
-let array = [10, 5, 4, 17, 3, 8];
+const array = [10, 5, 4, 17, 3, 8];
 
-let found = array.find(element => element < 5);
-console.log(found);                               // output: 4
+array.find((element) => element < 5);         // 4
 
-function isOddNumber(element, index, array) {
-  return element % 2 !== 0;
-}
-found = array.find(isOddNumber);
-console.log(found);                               // output: 5
+array.find((element) => element % 2 !== 0);   // 5
+
+array.find((element) => element < 3);         // undefined
 ```
 
 <br>
@@ -724,55 +910,31 @@ console.log(found);                               // output: 5
 
 #### **findLast()**
 
-* returns _last_ element that matches the custom findFunction
-* returns _undefined_ if no element matches the custom findFunction
-
-<br>
-
-Parameters:
-* _findFunction_
-  * _element_
-  * _index_
-  * _array_
-* _thisArg_: optional reference to use as _this_ within the findFunction
-
-<br>
+Returns **last** element that matches the specified findFunction.  
+Returns `undefined` when there are no matches.
 
 ```javascript
-// general
-findLast(findFunction, [thisArg])
-
-
-// arrow findFunction
-findLast((element) => { /* implementation */})
-findLast((element, index) => { /* implementation */})
-findLast((element, index, array) => { /* implementation */})
-
-
-// callback findFunction
-findLast(findFunction)
-findLast(findFunction, thisArg)
-
-
-// inline callback findFunction
-findLast(function(element) { /* implementation */ })
-findLast(function(element, index) { /* implementation */ })
-findLast(function(element, index, array) { /* implementation */ })
-findLast(function(element, index, array) { /* implementation */ }, thisArg)
+array.findLast((element, ?index, ?array) => { code }, ?thisArg)
 ```
 
+Function parameters:
+- `element`
+- `index`
+- `array`: reference to array the function was called upon
+
+Optional parameter:
+- `thisArg`: reference to use as `this` within the function
+
 <br>
 
 ```javascript
-let array = [10, 5, 4, 17, 3, 8];
+const array = [10, 5, 4, 17, 3, 8];
 
-array.findLast(element => element > 9);               // output: 17
+array.findLast((element) => element < 5);     // 3
 
-function isOddNumber(element, index, array) {
-  return element % 2 !== 0;
-}
+array.findLast((element) => element > 9);     // 17
 
-array.findLast(isOddNumber);                          // output: 3
+array.findLast((element) => element < 3);     // undefined
 ```
 
 <br>
@@ -780,55 +942,31 @@ array.findLast(isOddNumber);                          // output: 3
 
 #### **findIndex()**
 
-* returns index of _first_ element that matches the custom findFunction
-* returns -1 if no element matches the custom findFunction
-
-<br>
-
-Parameters:
-* _findFunction_
-  * _element_
-  * _index_
-  * _array_
-* _thisArg_: optional reference to use as _this_ within the findFunction
-
-<br>
+Returns index of the **first** element that matches the specified findFunction.  
+Returns `-1` when there are no matches.
 
 ```javascript
-// general
-findIndex(findFunction, [thisArg])
-
-
-// arrow findFunction
-findIndex((element) => { /* implementation */})
-findIndex((element, index) => { /* implementation */})
-findIndex((element, index, array) => { /* implementation */})
-
-
-// callback findFunction
-findIndex(findFunction)
-findIndex(findFunction, thisArg)
-
-
-// inline callback findFunction
-findIndex(function(element) { /* implementation */ })
-findIndex(function(element, index) { /* implementation */ })
-findIndex(function(element, index, array) { /* implementation */ })
-findIndex(function(element, index, array) { /* implementation */ }, thisArg)
+array.findIndex((element, ?index, ?array) => { code }, ?thisArg)
 ```
 
+Function parameters:
+- `element`
+- `index`
+- `array`: reference to array the function was called upon
+
+Optional parameter:
+- `thisArg`: reference to use as `this` within the function
+
 <br>
 
 ```javascript
-let array = [10, 5, 4, 17, 3, 8];
+const array = [10, 5, 4, 17, 3, 8];
 
-array.findIndex(element => element < 5);               // returns index 2
+array.findIndex((element) => element < 5);    // 2
 
-function isOddNumber(element, index, array) {
-  return element % 2 !== 0;
-}
+array.findIndex((element) => element > 9);    // 0
 
-array.findIndex(isOddNumber);                          // returns index 1
+array.findIndex((element) => element < 3);    // -1
 ```
 
 <br>
@@ -836,55 +974,31 @@ array.findIndex(isOddNumber);                          // returns index 1
 
 #### **findLastIndex()**
 
-* returns index of _last_ element that matches the custom findFunction
-* returns -1 if no element matches the custom findFunction
-
-<br>
-
-Parameters:
-* _findFunction_
-  * _element_
-  * _index_
-  * _array_
-* _thisArg_: optional reference to use as _this_ within the findFunction
-
-<br>
+Returns index of the **last** element that matches the specified findFunction.  
+Returns `-1` when there are no matches.
 
 ```javascript
-// general
-findLastIndex(findFunction, [thisArg])
-
-
-// arrow findFunction
-findLastIndex((element) => { /* implementation */})
-findLastIndex((element, index) => { /* implementation */})
-findLastIndex((element, index, array) => { /* implementation */})
-
-
-// callback findFunction
-findLastIndex(findFunction)
-findLastIndex(findFunction, thisArg)
-
-
-// inline callback findFunction
-findLastIndex(function(element) { /* implementation */ })
-findLastIndex(function(element, index) { /* implementation */ })
-findLastIndex(function(element, index, array) { /* implementation */ })
-findLastIndex(function(element, index, array) { /* implementation */ }, thisArg)
+array.findLastIndex((element, ?index, ?array) => { code }, ?thisArg)
 ```
 
+Function parameters:
+- `element`
+- `index`
+- `array`: reference to array the function was called upon
+
+Optional parameter:
+- `thisArg`: reference to use as `this` within the function
+
 <br>
 
 ```javascript
-let array = [10, 5, 4, 17, 3, 8];
+const array = [10, 5, 4, 17, 3, 8];
 
-array.findLastIndex(element => element > 9);            // returns index 3
+array.findLastIndex((element) => element < 5);    // 4
 
-function isOddNumber(element, index, array) {
-  return element % 2 !== 0;
-}
+array.findLastIndex((element) => element > 9);    // 3
 
-array.findLastIndex(isOddNumber);                       // returns index 4
+array.findLastIndex((element) => element < 3);    // -1
 ```
 
 <br>
@@ -896,20 +1010,25 @@ array.findLastIndex(isOddNumber);                       // returns index 4
 
 #### **includes()**
 
-* returns boolean indicating whether array includes element
+Returns boolean indicating whether array includes specified element.  
+Search range can be modified via optional `fromIndex`. Negative `fromIndex` is calculated from the end of the array.
 
 ```javascript
-includes(element);
-includes(element, fromIndex);
+array.includes(element, ?fromIndex);
 ```
 
 <br>
 
 ```javascript
-let array = [1, 9, 29, 3, 7, 12];
-console.log(array.includes(3));         // output: true
-console.log(array.includes(3, 4));      // output: false
-console.log(array.includes(4));         // output: false
+const array = [1, 9, 29, 3, 7, 12];
+
+array.includes(3);        // true
+
+array.includes(3, 4);     // false
+
+array.includes(29, -3);   // false
+
+array.includes(4);        // false
 ```
 
 <br>
@@ -917,22 +1036,29 @@ console.log(array.includes(4));         // output: false
 
 #### **every()**
 
-* returns boolean indicating whether _all_ elements match custom findFunction
+Returns boolean indicating whether **all** elements of the array match the specified findFunction.
 
 ```javascript
-every(findFunction, [thisArg])
+array.every((element, ?index, ?array) => { code }, ?thisArg)
 ```
+
+Function parameters:
+- `element`
+- `index`
+- `array`: reference to array the function was called upon
+
+Optional parameter:
+- `thisArg`: reference to use as `this` within the function
+
 
 <br>
 
 ```javascript
-let array = [1, 9, 29, 3, 7, 12];
+const array = [1, 9, 29, 3, 7, 12];
 
-let result = array.every(element => element < 30);
-console.log(result);                                  // output: true
+array.every(element => element < 30);   // true
 
-result = array.every(element => element > 3)      
-console.log(result);                                  // output: false
+array.every(element => element > 3);    // false
 ```
 
 <br>
@@ -940,22 +1066,28 @@ console.log(result);                                  // output: false
 
 #### **some()**
 
-* returns boolean indicating whether _at least one_ element matches custom findFunction
+Returns boolean indicating whether **at least one** element of the array matches the specified findFunction.
 
 ```javascript
-some(findFunction, [thisArg])
+array.some((element, ?index, ?array) => { code }, ?thisArg)
 ```
+
+Function parameters:
+- `element`
+- `index`
+- `array`: reference to array the function was called upon
+
+Optional parameter:
+- `thisArg`: reference to use as `this` within the function
 
 <br>
 
 ```javascript
-let array = [1, 9, 29, 3, 7, 12];
+const array = [1, 9, 29, 3, 7, 12];
 
-let result = array.some(element => element === 3);
-console.log(result);                                  // output: true
+array.some(element => element < 3);   // true
 
-result = array.some(element => element < 1);
-console.log(result);                                  // output: false
+array.some(element => element < 1);   // false
 ```
 
 <br>
@@ -967,39 +1099,29 @@ console.log(result);                                  // output: false
 
 #### **filter()**
 
-* returns new array containing all elements that match the custom findFunction
+Returns new array containing shallow copies of all elements that match the specified findFunction.
 
 ```javascript
-// general
-filter(findFunction, [thisArg])
-
-
-// arrow findFunction
-filter((element) => { /* implementation */})
-filter((element, index) => { /* implementation */})
-filter((element, index, array) => { /* implementation */})
-
-
-// callback findFunction
-filter(findFunction)
-filter(findFunction, thisArg)
-
-
-// inline callback findFunction
-filter(function(element) { /* implementation */ })
-filter(function(element, index) { /* implementation */ })
-filter(function(element, index, array) { /* implementation */ })
-filter(function(element, index, array) { /* implementation */ }, thisArg)
+array.filter((element, ?index, ?array) => { code }, ?thisArg)
 ```
+
+findFunction parameters:
+- `element`
+- `index`
+- `array`: reference to array the function was called upon
+
+Optional parameter:
+- `thisArg`: reference to use as `this` within the function
 
 <br>
 
 ```javascript
-let array = [10, 5, 4, 17, 3, 8];
+const array = [10, 5, 4, 17, 3, 8];
 
-let filteredArray1 = array.filter(element => element < 8);
-console.log(array);                                           // output [10, 5, 4, 17, 3, 8]
-console.log(filteredArray1);                                  // output [5, 4, 3]
+const filteredArray = array.filter(element => element < 8);
+
+// array = [10, 5, 4, 17, 3, 8]
+// filteredArray = [5, 4, 3]
 ```
 
 <br>
@@ -1007,21 +1129,29 @@ console.log(filteredArray1);                                  // output [5, 4, 3
 
 #### **map()**
 
-* returns new array containing the results of a customFunction envoked on every element of the original array
-* do not use map() when you are not using the returned array
+Returns new array containing the results of a customFunction envoked on every element of the orignal array.
 
 ```javascript
-map(customFunction, [thisArg])
+array.map((element, ?index, ?array) => { code }, [thisArg])
 ```
+
+customFunction parameters:
+- `element`
+- `index`
+- `array`: reference to array the function was called upon
+
+Optional parameter:
+- `thisArg`: reference to use as `this` within the function
 
 <br>
 
 ```javascript
-let array = [4, 3, 1, 25, 54, 93];
-let map = array.map(element => element + 10);
+const array = [4, 3, 1, 25, 54, 93];
 
-console.log(array);                             // output: [4, 3, 1, 25, 54, 93]
-console.log(map);                               // output: [14, 13, 11, 35, 64, 103]
+const mappedArray = array.map(element => element + 10);
+
+// array = [4, 3, 1, 25, 54, 93]
+// mappedArray = 14, 13, 11, 35, 64, 103]
 ```
 
 <br>
@@ -1029,67 +1159,46 @@ console.log(map);                               // output: [14, 13, 11, 35, 64, 
 
 #### **reduce()**
 
-* envokes customFunction to reduce all elements of an array to a single value and returns that value
+Envokes custom reducerFunction to reduce all elements of an array to a single value and return that value.
+
+```javascript
+array.reduce((previousValue, currentValue, ?currentIndex, ?array) => { code }, ?initialValue)
+```
 
 <br>
 
-Parameters:
-* _customFunction_
-  * _previousValue_ 
-      * value from previous call of customFunction (first call: _initialValue_ or array[0])
-  * _currentValue_
-      * value of current element (first call: array[0] if _initialValue_ exists, else array[1])
-  * _currentIndex_
-      * index position of currentValue (first call: 0 if _initialValue_ exists, else 1)
-  * _array_
-* _initialValue_
+Parameters reduceFunction:
+
+| Parameter       | Description                                                                                                  |
+| :-------------- | :----------------------------------------------------------------------------------------------------------- |
+| `previousValue` | value of previous call of reducer function: Initial value: `initialValue` if specified, otherwise `array[0]` |
+| `currentValue`  | value of current element. Initial value: `array[0]` if `initialValue` is specified, otherwise `array[1]`     |
+| `currentIndex`  | index of current element. Initial value: `0` if `initialValue` is specified, otherwise `0`                   |
+| `array`         |
+
+<br>
+
+Optional parameter:
+- `thisArg`: reference to use as `this` within the function
 
 <br>
 
 ```javascript
-// general
-reduce(customFunction, [initialValue])
+const array = [1, 2, 3, 4, 5];
 
 
-// arrow customFunction
-reduce((previousValue, currentValue) => { /* implementation */ })
-reduce((previousValue, currentValue, currentIndex) => { /* implementation */ })
-reduce((previousValue, currentValue, currentIndex, array) => { /* implementation */ })
-reduce((previousValue, currentValue, currentIndex, array) => { /* implementation */ }, initialValue)
+const total = array.reduce((sum, currentValue) => sum + currentValue);      // 15
 
 
-// callback customFunction
-reduce(customFunction);
-reduce(customFunction, initialValue);
-
-
-// inline callback customFunction
-reduce(function(previousValue, currentValue) { /* implementation */ })
-reduce(function(previousValue, currentValue, currentIndex) { /* implementation */ })
-reduce(function(previousValue, currentValue, currentIndex, array) { /* implementation */ })
-reduce(function(previousValue, currentValue, currentIndex, array) { /* implementation */ }, initialValue)
+const maximum = array.reduce((a, b) => Math.max(a, b));                     // 5
 ```
 
 <br>
 
 ```javascript
-let array = [1, 2, 3, 4, 5];
+const array = ['A', 'B', 'C', 'B', 'A', 'A']
 
-// sum of all elements
-let result = array.reduce((sum, currentValue) => sum + currentValue, 0);
-console.log(result);                                                          // output: 15
-console.log(array);                                                           // output: [1, 2, 3, 4, 5]
-
-
-// maximum element
-result = array.reduce((a, b) => Math.max(a, b));
-console.log(result);                                                          // output: 5
-
-
-// counting occurrences
-array = [1, 3, 4, 2, 1, 5, 4, 1, 7, 3];
-
-result = array.reduce(function(countObject, element) {
+const countObj = array.reduce((countObject, element) => {
   if (element in countObject) {
     countObject[element]++;
   } else {
@@ -1098,17 +1207,7 @@ result = array.reduce(function(countObject, element) {
   return countObject;
 }, {}); 
 
-console.log(result);
-
-/* output:
-{1: 3,
- 2: 1,
- 3: 2,
- 4: 2,
- 5: 1,
- 7: 1
-}
-*/
+// { A: 3, B: 2, C: 1 }
 ```
 
 <br>

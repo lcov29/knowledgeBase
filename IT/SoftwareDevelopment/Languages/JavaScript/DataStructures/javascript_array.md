@@ -54,6 +54,7 @@
       - [**reduce()**](#reduce)
     - [**Multifunctional Manipulation Methods**](#multifunctional-manipulation-methods)
       - [**splice()**](#splice)
+      - [**toSpliced()**](#tospliced)
       - [**copyWithin()**](#copywithin)
       - [**slice()**](#slice)
     - [**Other Methods**](#other-methods)
@@ -433,6 +434,8 @@ array.push('foo');
 // array [1, 2, 'foo']
 ```
 
+<br>
+
 ```javascript
 const array = [1, 2];
 
@@ -463,6 +466,8 @@ array.unshift('foo');
 // returns 3
 // array ['foo', 1, 2]
 ```
+
+<br>
 
 ```javascript
 const array = [1, 2];
@@ -499,6 +504,8 @@ array.pop();
 // array [1, 2]
 ```
 
+<br>
+
 ```javascript
 const array = [];
 
@@ -529,6 +536,8 @@ array.shift();
 // returns 'foo'
 // array [1, 2]
 ```
+
+<br>
 
 ```javascript
 const array = [];
@@ -629,6 +638,8 @@ array.forEach((element) => console.log(element));
 // 'C'
 ```
 
+<br>
+
 ```javascript
 const array = ['A', 'B', 'C'];
 
@@ -638,6 +649,8 @@ array.forEach((element, index) => console.log(`(${element}, ${index})`));
 // (B, 1)
 // (C, 2)
 ```
+
+<br>
 
 ```javascript
 const array = ['A', 'B', 'C'];
@@ -1219,33 +1232,136 @@ const countObj = array.reduce((countObject, element) => {
 
 #### **splice()**
 
-* removes or replaces existing elements 
-* adds new elements
-* returns array of deleted elements
+Change array content by **adding**, **removing** or **replacing** elements.  
+Returns an array containing all deleted elements.
 
 ```javascript
-array.splice(startIndexToInsertElements, numberOfElementsToRemoveFromStart, elementsToAdd)
+array.splice(startIndex, ?deleteCount, ?element1, ... ?elementN)
+```
+
+Parameters:
+- `startIndex`: Index at which modification should start. Negative index counts from end of the array.
+- `deleteCount`: Number of elements to deleted starting from `startIndex`. Default: `Infinity`.
+- `itemN`: Element to add to the array starting from `startIndex`.
+
+<br>
+
+**Add Elements**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+array.splice(1, 0, 'X', 'Y');
+
+// returns []
+// array = ['A', 'X', 'Y', 'B', 'C', 'D']
 ```
 
 <br>
 
+**Remove Elements**
+
 ```javascript
-let array = ['A', 'C', 'D', 'X'];
+const array = ['A', 'B', 'C', 'D'];
 
-array.splice(1, 0, 'B');
-console.log(array);                     // output: [A, B, C, D, X]
+array.splice(0, 2);
 
-console.log(array.splice(4, 1, 'E'));   // output: [X]
-console.log(array);                     // output: [A, B, C, D, E]
+// returns ['A', 'B']
+// array = ['C', 'D']
+```
 
-array.splice(5, 1, 'I');
-console.log(array);                     // output: [A, B, C, D, E, I]
+<br>
 
-array.splice(200, 1, 'J');
-console.log(array);                     // output: [A, B, C, D, E, I, J]
+**Replace Elements**
 
-array.splice(5, 0, 'F', 'G', 'H');
-console.log(array);                     // output: [A, B, C, D, E, F, G, H, I, J]
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+array.splice(2, 2, 'X', 'Y');
+
+// returns ['C', 'D']
+// array = ['A', 'B', 'X', 'Y']
+```
+
+<br>
+
+**Truncate Array And Add Elements**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+array.splice(0, Infinity, 'X', 'Y');
+
+// returns ['A', 'B', 'C', 'D']
+// array = ['X', 'Y']
+```
+
+<br>
+<br>
+
+#### **toSpliced()**
+
+Returns manipulated array copy with **added**, **remoded** or **replaced** elements.
+
+```javascript
+array.toSpliced(startIndex, ?deleteCount, ?element1, ... ?elementN)
+```
+
+Parameters:
+- `startIndex`: Index at which modification should start. Negative index counts from end of the array.
+- `deleteCount`: Number of elements to deleted starting from `startIndex`. Default: `Infinity`.
+- `itemN`: Element to add to the array starting from `startIndex`.
+
+<br>
+
+**Add Elements**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+const splicedArray = array.toSpliced(1, 0, 'X', 'Y');
+
+// array = ['A', 'B', 'C', 'D'];
+// splicedArray = ['A', 'X', 'Y', 'B', 'C', 'D']
+```
+
+<br>
+
+**Remove Elements**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+const splicedArray = array.toSpliced(0, 2);
+
+// array = ['A', 'B', 'C', 'D'];
+// splicedArray =  ['C', 'D']
+```
+
+<br>
+
+**Replace Elements**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+const splicedArray = array.toSpliced(2, 2, 'X', 'Y');
+
+// array = ['A', 'B', 'C', 'D'];
+// splicedArray = ['A', 'B', 'X', 'Y']
+```
+
+<br>
+
+**Truncate Array And Add Elements**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+const splicedArray = array.toSpliced(0, Infinity, 'X', 'Y');
+
+// array = ['A', 'B', 'C', 'D'];
+// splicedArray = ['X', 'Y']
 ```
 
 <br>
@@ -1253,34 +1369,45 @@ console.log(array);                     // output: [A, B, C, D, E, F, G, H, I, J
 
 #### **copyWithin()**
 
-* shallow copies parts of an array to another location in the same array
-* elements at targetIndex get replaces --> array length does not change
-
-<br>
-
-Parameters:
-* _targetIndex_
-* _startIndex_
-    * optional (0 if undefined)
-* _endIndex_
-    * optional (array.length if undefined)
-    * endIndex is not included in range
-
-<br>
+Shallow copies part `[start, end)` of an array to another location in the same array. The element at the target location are replaced, so that the length of the array does not change.
 
 ```javascript
-copyWithin(target, [start], [end])
+array.copyWithin(targetIndex, startIndex, ?endIndex);
 ```
 
+Parameters:
+- `targetIndex`: First index of the target area where the copied range from `startIndex` should be inserted. Negative index is counted from end of the array.
+- `startIndex`: Start of element range to copy from. Negative index is counted from end of the array.
+- `endIndex`: End of element range (exclusive) to copy from. Negative index is counted from end of the array.
+
+<br>
+
 ```javascript
-let array = ['A', 'B', 'C', 'D'];
-console.log(array.copyWithin(-1));          // output: ['A', 'B', 'C', 'A']
+const array = ['A', 'B', 'C', 'D']
 
-array = ['A', 'B', 'C', 'D']
-console.log(array.copyWithin(0, 2));        // output: ['C', 'D', 'C', 'D']
+array.copyWithin(0, 2);
 
-array = ['A', 'B', 'C', 'D']
-console.log(array.copyWithin(0, 2, 3));        // output: ['C', 'B', 'C', 'D']
+// array = ['C', 'D', 'C', 'D']
+```
+
+<br>
+
+```javascript
+const array = ['A', 'B', 'C', 'D']
+
+array.copyWithin(0, 2, 3);
+
+// array = ['C', 'B', 'C', 'D']
+```
+
+<br>
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+array.copyWithin(-1);
+
+// array = ['A', 'B', 'C', 'A']
 ```
 
 <br>
@@ -1288,41 +1415,46 @@ console.log(array.copyWithin(0, 2, 3));        // output: ['C', 'B', 'C', 'D']
 
 #### **slice()**
 
-* returns array with shallow copies of elements of an array
-* copies can be restricted to a range [start, end)
-
-<br>
-
-Parameters:
-* start
-    * optional zero-based start index of range to copy
-    * if undefined, range starts at index 0
-* end
-    * optional end index of range (first element to not include in copy)
-    * negative index represents offset from array.length
-    * if undefined, range ends at array.length
-
-<br>
+Returns a shallow copy of an array, optionally restricted to a range `[start, end)`.
 
 ```javascript
-slice([start], [end])
+array.slice(?startIndex, ?endIndex)
 ```
 
+Parameters:
+- `startIndex`: Default `0`.
+- `endIndex`: Index of first element not to include in range. Negative index is counted as offset from default `array.length`.
+
+<br>
+
 ```javascript
-let array = ['A', 'B', 'C', 'D', 'E', 'F'];
+const array = ['A', 'B', 'C', 'D', 'E', 'F'];
 
-let array2 = array.slice(2, 5); 
-console.log(array2);                              // [C, D, E]
-console.log(array);                               // [A, B, C, D, E, F]
+const slicedArray = array.slice(2, 5);
 
-array2 = array.slice();
-console.log(array2);                              // [A, B, C, D, E, F]
+// array = ['A', 'B', 'C', 'D', 'E', 'F'];
+// slicedArray = ['C', 'D', 'E']
+```
 
-array2 = array.slice(undefined, 2);
-console.log(array2);                              // [A, B]
+<br>
 
-array2 = array.slice(1, -3);
-console.log(array2);                              // [B, C]
+```javascript
+const array = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+const slicedArray = array.slice(1, -3);
+
+// array = ['A', 'B', 'C', 'D', 'E', 'F'];
+// slicedArray = ['B', 'C']
+```
+
+<br>
+
+```javascript
+const array = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+const slicedArray = array.slice();
+
+// array = slicedArray = ['A', 'B', 'C', 'D', 'E', 'F'];
 ```
 
 <br>
@@ -1334,33 +1466,51 @@ console.log(array2);                              // [B, C]
 
 #### **concat()**
 
-* returns array containing all elements of arrays and values given as parameters
-* returns shallow copy of calling array if no parameters exist
+Returns new array containing shallow copies of all given arrays and values.
 
 ```javascript
-concat();
-concat(param1);
-concat(param1, ..., paramN);
+array.concat(value1, ..., valueN)
 ```
 
+<br>
+
 ```javascript
-let array1 = ['A', 'B', 'C', 'D'];
-let array2 = ['foo', 'bar'];
-let array3 = [1, 2, 3];
+const array1 = ['A', 'B', 'C', 'D'];
+const array2 = ['foo', 'bar'];
 
-let array4 = array1.concat(array2);
-console.log(array4);                          // output: ['A', 'B', 'C', 'D', 'foo', 'bar']
-console.log(array1);                          // output: ['A', 'B', 'C', 'D']
-console.log(array2);                          // output: ['foo', 'bar']
+const concatArray = array1.concat(array2);
 
-array4 = array1.concat(array2, array3);       
-console.log(array4);                          // output: ['A', 'B', 'C', 'D', 'foo', 'bar', 1, 2, 3]
+// array1 = ['A', 'B', 'C', 'D']
+// array2 = ['foo', 'bar']
+// concatArray = ['A', 'B', 'C', 'D', 'foo', 'bar']
+```
 
-array4 = array3.concat([4, 5], 'foo');
-console.log(array4);                          // output: [1, 2, 3, 4, 5, 'foo']
+<br>
 
-array4 = array3.concat();
-console.log(array4);                          // output: [1, 2, 3]
+```javascript
+const array1 = ['A', 'B', 'C', 'D'];
+const array2 = ['foo', 'bar'];
+const array3 = [1, 2];
+
+const concatArray = array1.concat(array2, array3);
+
+// array1 = ['A', 'B', 'C', 'D']
+// array2 = ['foo', 'bar']
+// array3 = [1, 2]
+// concatArray = ['A', 'B', 'C', 'D', 'foo', 'bar', 1, 2]
+```
+
+<br>
+
+```javascript
+const array1 = ['A', 'B', 'C', 'D'];
+const array2 = ['foo', 'bar'];
+
+const concatArray = array1.concat(array2, 'X', 1, 'Z');
+
+// array1 = ['A', 'B', 'C', 'D']
+// array2 = ['foo', 'bar']
+// concatArray = ['A', 'B', 'C', 'D', 'foo', 'bar', 'X', 1, 'Z']
 ```
 
 <br>
@@ -1368,17 +1518,20 @@ console.log(array4);                          // output: [1, 2, 3]
 
 #### **join()**
 
-* returns string containing all elements separated by commas or a custom separator string
+Returns a string containing all elements of the array separated by the specified separator string (Default: `,`).
 
 ```javascript
-join()
-join([separator])
+array.join(?separator)
 ```
 
+<br>
+
 ```javascript
-let array = ['f', 'o', 'o'];
-console.log(array.join());                    // output: f,o,o
-console.log(array.join('---'));               // output: f---o---o
+const array = ['f', 'o', 'o'];
+
+array.join();         // f,o,o
+
+array.join('---');    // f---o---o
 ```
 
 <br>
@@ -1386,31 +1539,45 @@ console.log(array.join('---'));               // output: f---o---o
 
 #### **fill()**
 
-* set all elements in a specified range to a static value
-* modifies array
+Replaces all elements in a specified range `[start, end]` with a specified value.
 
-<br>
+```javascript
+array.fill(value, ?startIndex, ?endIndex)
+```
 
 Parameters:
-* value
-* start
-    * optional zero-based start index of range to copy
-    * if undefined, range starts at index 0
-* end
-    * optional end index of range (first element to not include in copy)
-    * if undefined, range ends at array.length
+- `value`: Value to replace the array elements with.
+- `startIndex`: Negative index counts from the end of the array. Default: `0`.
+- `endIndex`: Not included in range. Negative index counts from the end of the array. Default: `array.length`
 
 <br>
 
 ```javascript
-let array = [1, 2, 3, 4];
-array.fill(2);                        // array = [2, 2, 2, 2]
+const array = [1, 2, 3, 4];
 
-array = [1, 2, 3, 4];
-array.fill(8, 1);                     // array = [1, 8, 8, 8]
+array.fill('foo');
 
-array = [1, 2, 3, 4];
-array.fill(8, 1, 3);                  // array = [1, 8, 8, 4]
+// array = ['foo', 'foo', 'foo', 'foo']
+```
+
+<br>
+
+```javascript
+const array = [1, 2, 3, 4];
+
+array.fill('foo', 2);
+
+// array = [1, 2, 'foo', 'foo']
+```
+
+<br>
+
+```javascript
+const array = [1, 2, 3, 4];
+
+array.fill('foo', 0, 3);
+
+// array = ['foo', 'foo', 'foo', 4]
 ```
 
 <br>
@@ -1418,21 +1585,44 @@ array.fill(8, 1, 3);                  // array = [1, 8, 8, 4]
 
 #### **flat()**
 
-* returns new array with elements of sub arrays concatenated up to specified depth
+Returns new array with elements of sub-arrays concatenated up to the specified depth.
 
-<br>
+```javascript
+array.flat(?depth)
+```
 
-Parameters:
-* depth
+Parameter:
+- `depth`: Number of levels of the nested array that should be flattended. Default: `1`.
 
 <br>
 
 ```javascript
-const array1 = [1, 2, [3, 4], 5];
-array1.flat();                                      // return [1, 2, 3, 4, 5]
+const array = [1, 2, [3, 4], 5];
 
-const array2 = [1, [2, 3, [4, 5, [6, 7]]]];
-array2.flat(1);                                     // return [1, 2, 3, Array(3)]
-array2.flat(2);                                     // return [1, 2, 3, 4, 5, Array(2)]
-array2.flat(Infinity);                              // return [1, 2, 3, 4, 5, 6, 7]
+const flatArray = array.flat(); 
+
+// array = [1, 2, [3, 4], 5]
+// flatArray = [1, 2, 3, 4, 5]
+```
+
+<br>
+
+```javascript
+const array = [1, [2, 3, [4, 5, [6, 7]]]];
+
+const flatArray = array.flat(2); 
+
+// array = [1, [2, 3, [4, 5, [6, 7]]]]
+// flatArray = [1, 2, 3, 4, 5, [6, 7]]
+```
+
+<br>
+
+```javascript
+const array = [1, [2, 3, [4, 5, [6, 7]]]];
+
+const flatArray = array.flat(Infinity); 
+
+// array = [1, [2, 3, [4, 5, [6, 7]]]]
+// flatArray = [1, 2, 3, 4, 5, 6, 7]
 ```

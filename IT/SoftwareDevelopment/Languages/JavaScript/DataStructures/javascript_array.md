@@ -53,10 +53,10 @@
       - [**map()**](#map)
       - [**reduce()**](#reduce)
       - [**slice()**](#slice)
+      - [**copyWithin()**](#copywithin)
     - [**Multifunctional Manipulation Methods**](#multifunctional-manipulation-methods)
       - [**splice()**](#splice)
       - [**toSpliced()**](#tospliced)
-      - [**copyWithin()**](#copywithin)
     - [**Other Methods**](#other-methods)
       - [**concat()**](#concat)
       - [**join()**](#join)
@@ -1272,6 +1272,52 @@ const slicedArray = array.slice();
 
 <br>
 <br>
+
+#### **copyWithin()**
+
+Shallow copies part `[start, end)` of an array to another location in the same array. The element at the target location are replaced, so that the length of the array does not change.
+
+```javascript
+array.copyWithin(targetIndex, startIndex, ?endIndex);
+```
+
+Parameters:
+- `targetIndex`: First index of the target area where the copied range from `startIndex` should be inserted. Negative index is counted from end of the array.
+- `startIndex`: Start of element range to copy from. Negative index is counted from end of the array.
+- `endIndex`: End of element range (exclusive) to copy from. Negative index is counted from end of the array.
+
+<br>
+
+```javascript
+const array = ['A', 'B', 'C', 'D']
+
+array.copyWithin(0, 2);
+
+// array = ['C', 'D', 'C', 'D']
+```
+
+<br>
+
+```javascript
+const array = ['A', 'B', 'C', 'D']
+
+array.copyWithin(0, 2, 3);
+
+// array = ['C', 'B', 'C', 'D']
+```
+
+<br>
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+array.copyWithin(-1);
+
+// array = ['A', 'B', 'C', 'A']
+```
+
+<br>
+<br>
 <br>
 
 ### **Multifunctional Manipulation Methods**
@@ -1409,52 +1455,6 @@ const splicedArray = array.toSpliced(0, Infinity, 'X', 'Y');
 
 // array = ['A', 'B', 'C', 'D'];
 // splicedArray = ['X', 'Y']
-```
-
-<br>
-<br>
-
-#### **copyWithin()**
-
-Shallow copies part `[start, end)` of an array to another location in the same array. The element at the target location are replaced, so that the length of the array does not change.
-
-```javascript
-array.copyWithin(targetIndex, startIndex, ?endIndex);
-```
-
-Parameters:
-- `targetIndex`: First index of the target area where the copied range from `startIndex` should be inserted. Negative index is counted from end of the array.
-- `startIndex`: Start of element range to copy from. Negative index is counted from end of the array.
-- `endIndex`: End of element range (exclusive) to copy from. Negative index is counted from end of the array.
-
-<br>
-
-```javascript
-const array = ['A', 'B', 'C', 'D']
-
-array.copyWithin(0, 2);
-
-// array = ['C', 'D', 'C', 'D']
-```
-
-<br>
-
-```javascript
-const array = ['A', 'B', 'C', 'D']
-
-array.copyWithin(0, 2, 3);
-
-// array = ['C', 'B', 'C', 'D']
-```
-
-<br>
-
-```javascript
-const array = ['A', 'B', 'C', 'D'];
-
-array.copyWithin(-1);
-
-// array = ['A', 'B', 'C', 'A']
 ```
 
 <br>

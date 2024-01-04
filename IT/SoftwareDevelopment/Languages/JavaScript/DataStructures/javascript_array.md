@@ -22,12 +22,18 @@
       - [**Array\[\]**](#array-1)
       - [**with()**](#with)
       - [**fill()**](#fill)
+      - [**splice()**](#splice)
+      - [**toSpliced()**](#tospliced)
     - [**Add Elements**](#add-elements)
       - [**push()**](#push)
       - [**unshift()**](#unshift)
+      - [**splice()**](#splice-1)
+      - [**toSpliced()**](#tospliced-1)
     - [**Remove Elements**](#remove-elements)
       - [**pop()**](#pop)
       - [**shift()**](#shift)
+      - [**splice()**](#splice-2)
+      - [**toSpliced()**](#tospliced-2)
     - [**Iterate Over Elements**](#iterate-over-elements)
       - [**For Loop**](#for-loop)
       - [**For-Of Loop**](#for-of-loop)
@@ -55,9 +61,6 @@
       - [**reduce()**](#reduce)
       - [**slice()**](#slice)
       - [**copyWithin()**](#copywithin)
-    - [**Multifunctional Manipulation Methods**](#multifunctional-manipulation-methods)
-      - [**splice()**](#splice)
-      - [**toSpliced()**](#tospliced)
     - [**Other Methods**](#other-methods)
       - [**concat()**](#concat)
       - [**join()**](#join)
@@ -456,6 +459,118 @@ array.fill('foo', 0, 3);
 
 <br>
 <br>
+
+#### **splice()**
+
+Change array content by **adding**, **removing** or **replacing** elements.  
+Returns an array containing all deleted elements.
+
+```javascript
+array.splice(startIndex, ?deleteCount, ?element1, ... ?elementN)
+```
+
+Parameters:
+- `startIndex`: Index at which modification should start. Negative index counts from end of the array.
+- `deleteCount`: Number of elements to deleted starting from `startIndex`. Default: `Infinity`.
+- `itemN`: Element to add to the array starting from `startIndex`.
+
+<br>
+
+**Replace Element**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+array.splice(2, 1, 'X');
+
+// returns ['C']
+// array = ['A', 'B', 'X', 'D']
+```
+
+<br>
+
+**Replace Multiple Elements**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+array.splice(2, 2, 'X', 'Y');
+
+// returns ['C', 'D']
+// array = ['A', 'B', 'X', 'Y']
+```
+
+
+<br>
+
+**Replace All Elements**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+array.splice(0, Infinity, 'X', 'Y');
+
+// returns ['A', 'B', 'C', 'D']
+// array = ['X', 'Y']
+```
+
+<br>
+<br>
+
+#### **toSpliced()**
+
+Returns manipulated array copy with **added**, **remoded** or **replaced** elements.
+
+```javascript
+array.toSpliced(startIndex, ?deleteCount, ?element1, ... ?elementN)
+```
+
+Parameters:
+- `startIndex`: Index at which modification should start. Negative index counts from end of the array.
+- `deleteCount`: Number of elements to deleted starting from `startIndex`. Default: `Infinity`.
+- `itemN`: Element to add to the array starting from `startIndex`.
+
+<br>
+
+**Replace Element**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+const splicedArray = array.toSpliced(2, 1, 'X');
+
+// array = ['A', 'B', 'C', 'D']
+// splicedArray = ['A', 'B', 'X', 'D']
+```
+
+<br>
+
+**Replace Multiple Elements**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+const splicedArray = array.toSpliced(2, 2, 'X', 'Y');
+
+// array = ['A', 'B', 'C', 'D']
+// splicedArray = ['A', 'B', 'X', 'Y']
+```
+
+<br>
+
+**Replace All Elements**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+const splicedArray = array.toSpliced(0, Infinity, 'X', 'Y');
+
+// array = ['A', 'B', 'C', 'D']
+// splicedArray = ['X', 'Y']
+```
+
+<br>
+<br>
 <br>
 
 ### **Add Elements**
@@ -526,6 +641,91 @@ const newLength = array.unshift(3, 4, 5);
 
 <br>
 <br>
+
+#### **splice()**
+
+Change array content by **adding**, **removing** or **replacing** elements.  
+Returns an array containing all deleted elements.
+
+```javascript
+array.splice(startIndex, ?deleteCount, ?element1, ... ?elementN)
+```
+
+Parameters:
+- `startIndex`: Index at which modification should start. Negative index counts from end of the array.
+- `deleteCount`: Number of elements to deleted starting from `startIndex`. Default: `Infinity`.
+- `itemN`: Element to add to the array starting from `startIndex`.
+
+<br>
+
+**Add One Element:**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+array.splice(0, 0, 'X');
+
+// returns []
+// array = ['X', 'A', 'B', 'C', 'D']
+```
+
+<br>
+
+**Add Multiple Elements:**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+array.splice(0, 0, 'X', 'Y', 'Z');
+
+// returns []
+// array = ['X', 'Y', 'Z', 'A', 'B', 'C', 'D']
+```
+
+<br>
+<br>
+
+#### **toSpliced()**
+
+Returns manipulated array copy with **added**, **remoded** or **replaced** elements.
+
+```javascript
+array.toSpliced(startIndex, ?deleteCount, ?element1, ... ?elementN)
+```
+
+Parameters:
+- `startIndex`: Index at which modification should start. Negative index counts from end of the array.
+- `deleteCount`: Number of elements to deleted starting from `startIndex`. Default: `Infinity`.
+- `itemN`: Element to add to the array starting from `startIndex`.
+
+<br>
+
+**Add One Element:**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+const splicedArray = array.toSpliced(0, 0, 'X');
+
+// array = ['A', 'B', 'C', 'D'];
+// splicedArray = ['X', 'A', 'B', 'C', 'D']
+```
+
+<br>
+
+**Add Multiple Elements:**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+const splicedArray = array.toSpliced(0, 0, 'X', 'Y', 'Z');
+
+// array = ['A', 'B', 'C', 'D'];
+// splicedArray = ['X', 'Y', 'Z', 'A', 'B', 'C', 'D']
+```
+
+<br>
+<br>
 <br>
 
 ### **Remove Elements**
@@ -592,6 +792,117 @@ array.shift();
 
 // returns undefined
 // array []
+```
+
+<br>
+<br>
+
+#### **splice()**
+
+Change array content by **adding**, **removing** or **replacing** elements.  
+Returns an array containing all deleted elements.
+
+```javascript
+array.splice(startIndex, ?deleteCount, ?element1, ... ?elementN)
+```
+
+Parameters:
+- `startIndex`: Index at which modification should start. Negative index counts from end of the array.
+- `deleteCount`: Number of elements to deleted starting from `startIndex`. Default: `Infinity`.
+- `itemN`: Element to add to the array starting from `startIndex`.
+
+<br>
+
+**Remove Element**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+array.splice(1, 1);
+
+// returns ['B']
+// array = ['A', 'C', 'D']
+```
+
+<br>
+
+**Remove Elements**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+array.splice(0, 2);
+
+// returns ['A', 'B']
+// array = ['C', 'D']
+```
+
+<br>
+
+**Remove All Elements**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+array.splice(0);
+
+// returns ['A', 'B', 'C', 'D']
+// array = []
+```
+
+<br>
+<br>
+
+#### **toSpliced()**
+
+Returns manipulated array copy with **added**, **remoded** or **replaced** elements.
+
+```javascript
+array.toSpliced(startIndex, ?deleteCount, ?element1, ... ?elementN)
+```
+
+Parameters:
+- `startIndex`: Index at which modification should start. Negative index counts from end of the array.
+- `deleteCount`: Number of elements to deleted starting from `startIndex`. Default: `Infinity`.
+- `itemN`: Element to add to the array starting from `startIndex`.
+
+<br>
+
+**Remove Element**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+const splicedArray = array.toSpliced(1, 1);
+
+// array = ['A', 'B', 'C', 'D']
+// splicedArray = ['A', 'C', 'D']
+```
+
+<br>
+
+**Remove Elements**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+const splicedArray = array.toSpliced(0, 2);
+
+// array = ['A', 'B', 'C', 'D']
+// splicedArray = ['C', 'D']
+```
+
+<br>
+
+**Remove All Elements**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+const splicedArray = array.toSpliced(0);
+
+// array = ['A', 'B', 'C', 'D']
+// splicedArray = []
 ```
 
 <br>
@@ -1360,147 +1671,6 @@ const array = ['A', 'B', 'C', 'D'];
 array.copyWithin(-1);
 
 // array = ['A', 'B', 'C', 'A']
-```
-
-<br>
-<br>
-<br>
-
-### **Multifunctional Manipulation Methods**
-<br>
-
-#### **splice()**
-
-Change array content by **adding**, **removing** or **replacing** elements.  
-Returns an array containing all deleted elements.
-
-```javascript
-array.splice(startIndex, ?deleteCount, ?element1, ... ?elementN)
-```
-
-Parameters:
-- `startIndex`: Index at which modification should start. Negative index counts from end of the array.
-- `deleteCount`: Number of elements to deleted starting from `startIndex`. Default: `Infinity`.
-- `itemN`: Element to add to the array starting from `startIndex`.
-
-<br>
-
-**Add Elements**
-
-```javascript
-const array = ['A', 'B', 'C', 'D'];
-
-array.splice(1, 0, 'X', 'Y');
-
-// returns []
-// array = ['A', 'X', 'Y', 'B', 'C', 'D']
-```
-
-<br>
-
-**Remove Elements**
-
-```javascript
-const array = ['A', 'B', 'C', 'D'];
-
-array.splice(0, 2);
-
-// returns ['A', 'B']
-// array = ['C', 'D']
-```
-
-<br>
-
-**Replace Elements**
-
-```javascript
-const array = ['A', 'B', 'C', 'D'];
-
-array.splice(2, 2, 'X', 'Y');
-
-// returns ['C', 'D']
-// array = ['A', 'B', 'X', 'Y']
-```
-
-<br>
-
-**Truncate Array And Add Elements**
-
-```javascript
-const array = ['A', 'B', 'C', 'D'];
-
-array.splice(0, Infinity, 'X', 'Y');
-
-// returns ['A', 'B', 'C', 'D']
-// array = ['X', 'Y']
-```
-
-<br>
-<br>
-
-#### **toSpliced()**
-
-Returns manipulated array copy with **added**, **remoded** or **replaced** elements.
-
-```javascript
-array.toSpliced(startIndex, ?deleteCount, ?element1, ... ?elementN)
-```
-
-Parameters:
-- `startIndex`: Index at which modification should start. Negative index counts from end of the array.
-- `deleteCount`: Number of elements to deleted starting from `startIndex`. Default: `Infinity`.
-- `itemN`: Element to add to the array starting from `startIndex`.
-
-<br>
-
-**Add Elements**
-
-```javascript
-const array = ['A', 'B', 'C', 'D'];
-
-const splicedArray = array.toSpliced(1, 0, 'X', 'Y');
-
-// array = ['A', 'B', 'C', 'D'];
-// splicedArray = ['A', 'X', 'Y', 'B', 'C', 'D']
-```
-
-<br>
-
-**Remove Elements**
-
-```javascript
-const array = ['A', 'B', 'C', 'D'];
-
-const splicedArray = array.toSpliced(0, 2);
-
-// array = ['A', 'B', 'C', 'D'];
-// splicedArray =  ['C', 'D']
-```
-
-<br>
-
-**Replace Elements**
-
-```javascript
-const array = ['A', 'B', 'C', 'D'];
-
-const splicedArray = array.toSpliced(2, 2, 'X', 'Y');
-
-// array = ['A', 'B', 'C', 'D'];
-// splicedArray = ['A', 'B', 'X', 'Y']
-```
-
-<br>
-
-**Truncate Array And Add Elements**
-
-```javascript
-const array = ['A', 'B', 'C', 'D'];
-
-const splicedArray = array.toSpliced(0, Infinity, 'X', 'Y');
-
-// array = ['A', 'B', 'C', 'D'];
-// splicedArray = ['X', 'Y']
 ```
 
 <br>

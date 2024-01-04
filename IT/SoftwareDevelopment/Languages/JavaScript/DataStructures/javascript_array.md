@@ -15,41 +15,41 @@
   - [**Properties**](#properties)
     - [**length**](#length)
   - [**Methods**](#methods)
-    - [**Accessing Elements**](#accessing-elements)
+    - [**Access Elements**](#access-elements)
       - [**Array\[\]**](#array)
       - [**at()**](#at)
     - [**Update Elements**](#update-elements)
       - [**Array\[\]**](#array-1)
       - [**with()**](#with)
       - [**fill()**](#fill)
-    - [**Adding Elements**](#adding-elements)
+    - [**Add Elements**](#add-elements)
       - [**push()**](#push)
       - [**unshift()**](#unshift)
-    - [**Removing Elements**](#removing-elements)
+    - [**Remove Elements**](#remove-elements)
       - [**pop()**](#pop)
       - [**shift()**](#shift)
-    - [**Array Iteration**](#array-iteration)
+    - [**Iterate Over Elements**](#iterate-over-elements)
       - [**For Loop**](#for-loop)
       - [**For-Of Loop**](#for-of-loop)
       - [**For-In Loop**](#for-in-loop)
       - [**forEach()**](#foreach)
-    - [**Sorting**](#sorting)
+    - [**Sort Elements**](#sort-elements)
       - [**sort()**](#sort)
       - [**toSorted()**](#tosorted)
       - [**reverse()**](#reverse)
       - [**toReversed()**](#toreversed)
-    - [**Searching**](#searching)
+    - [**Search Elements**](#search-elements)
       - [**indexOf()**](#indexof)
       - [**lastIndexOf()**](#lastindexof)
       - [**find()**](#find)
       - [**findLast()**](#findlast)
       - [**findIndex()**](#findindex)
       - [**findLastIndex()**](#findlastindex)
-    - [**Checking Elements**](#checking-elements)
+    - [**Check Elements**](#check-elements)
       - [**includes()**](#includes)
       - [**every()**](#every)
       - [**some()**](#some)
-    - [**Get Modified Array Copy**](#get-modified-array-copy)
+    - [**Modify Array Copy**](#modify-array-copy)
       - [**filter()**](#filter)
       - [**map()**](#map)
       - [**reduce()**](#reduce)
@@ -320,7 +320,7 @@ array.length;   // 5
 <br>
 <br>
 
-### **Accessing Elements**
+### **Access Elements**
 <br>
 <br>
 
@@ -458,7 +458,7 @@ array.fill('foo', 0, 3);
 <br>
 <br>
 
-### **Adding Elements**
+### **Add Elements**
 <br>
 
 #### **push()**
@@ -528,7 +528,7 @@ const newLength = array.unshift(3, 4, 5);
 <br>
 <br>
 
-### **Removing Elements**
+### **Remove Elements**
 <br>
 
 #### **pop()**
@@ -598,7 +598,7 @@ array.shift();
 <br>
 <br>
 
-### **Array Iteration**
+### **Iterate Over Elements**
 <br>
 
 #### **For Loop**
@@ -712,7 +712,7 @@ array.forEach((element, index) => console.log(`(${element}, ${index}, ${array})`
 <br>
 <br>
 
-### **Sorting**
+### **Sort Elements**
 <br>
 
 #### **sort()**
@@ -882,7 +882,7 @@ const reversedArray = array.toReversed();
 <br>
 <br>
 
-### **Searching**
+### **Search Elements**
 <br>
 
 #### **indexOf()**
@@ -1064,7 +1064,7 @@ array.findLastIndex((element) => element < 3);    // -1
 <br>
 <br>
 
-### **Checking Elements**
+### **Check Elements**
 <br>
 
 #### **includes()**
@@ -1153,7 +1153,7 @@ array.some(element => element < 1);   // false
 <br>
 <br>
 
-### **Get Modified Array Copy**
+### **Modify Array Copy**
 <br>
 
 #### **filter()**

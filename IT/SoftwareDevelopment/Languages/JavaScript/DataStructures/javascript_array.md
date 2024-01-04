@@ -21,6 +21,7 @@
     - [**Update Elements**](#update-elements)
       - [**Array\[\]**](#array-1)
       - [**with()**](#with)
+      - [**fill()**](#fill)
     - [**Adding Elements**](#adding-elements)
       - [**push()**](#push)
       - [**unshift()**](#unshift)
@@ -60,7 +61,6 @@
     - [**Other Methods**](#other-methods)
       - [**concat()**](#concat)
       - [**join()**](#join)
-      - [**fill()**](#fill)
       - [**flat()**](#flat)
   
 <br>
@@ -406,6 +406,52 @@ const array = [1, 2, 3, 4];
 array.with(2, 8);       // returns new array [1, 2, 8, 4] 
 
 array.with(-1, 'foo');  // returns new array [1, 2, 3, 'foo']
+```
+
+<br>
+<br>
+
+#### **fill()**
+
+Replaces all elements in a specified range `[start, end]` with a specified value.
+
+```javascript
+array.fill(value, ?startIndex, ?endIndex)
+```
+
+Parameters:
+- `value`: Value to replace the array elements with.
+- `startIndex`: Negative index counts from the end of the array. Default: `0`.
+- `endIndex`: Not included in range. Negative index counts from the end of the array. Default: `array.length`
+
+<br>
+
+```javascript
+const array = [1, 2, 3, 4];
+
+array.fill('foo');
+
+// array = ['foo', 'foo', 'foo', 'foo']
+```
+
+<br>
+
+```javascript
+const array = [1, 2, 3, 4];
+
+array.fill('foo', 2);
+
+// array = [1, 2, 'foo', 'foo']
+```
+
+<br>
+
+```javascript
+const array = [1, 2, 3, 4];
+
+array.fill('foo', 0, 3);
+
+// array = ['foo', 'foo', 'foo', 4]
 ```
 
 <br>
@@ -1532,52 +1578,6 @@ const array = ['f', 'o', 'o'];
 array.join();         // f,o,o
 
 array.join('---');    // f---o---o
-```
-
-<br>
-<br>
-
-#### **fill()**
-
-Replaces all elements in a specified range `[start, end]` with a specified value.
-
-```javascript
-array.fill(value, ?startIndex, ?endIndex)
-```
-
-Parameters:
-- `value`: Value to replace the array elements with.
-- `startIndex`: Negative index counts from the end of the array. Default: `0`.
-- `endIndex`: Not included in range. Negative index counts from the end of the array. Default: `array.length`
-
-<br>
-
-```javascript
-const array = [1, 2, 3, 4];
-
-array.fill('foo');
-
-// array = ['foo', 'foo', 'foo', 'foo']
-```
-
-<br>
-
-```javascript
-const array = [1, 2, 3, 4];
-
-array.fill('foo', 2);
-
-// array = [1, 2, 'foo', 'foo']
-```
-
-<br>
-
-```javascript
-const array = [1, 2, 3, 4];
-
-array.fill('foo', 0, 3);
-
-// array = ['foo', 'foo', 'foo', 4]
 ```
 
 <br>

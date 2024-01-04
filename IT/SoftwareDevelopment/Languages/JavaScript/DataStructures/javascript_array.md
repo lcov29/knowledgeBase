@@ -52,11 +52,11 @@
       - [**filter()**](#filter)
       - [**map()**](#map)
       - [**reduce()**](#reduce)
+      - [**slice()**](#slice)
     - [**Multifunctional Manipulation Methods**](#multifunctional-manipulation-methods)
       - [**splice()**](#splice)
       - [**toSpliced()**](#tospliced)
       - [**copyWithin()**](#copywithin)
-      - [**slice()**](#slice)
     - [**Other Methods**](#other-methods)
       - [**concat()**](#concat)
       - [**join()**](#join)
@@ -1225,6 +1225,53 @@ const countObj = array.reduce((countObject, element) => {
 
 <br>
 <br>
+
+#### **slice()**
+
+Returns a shallow copy of an array, optionally restricted to a range `[start, end)`.
+
+```javascript
+array.slice(?startIndex, ?endIndex)
+```
+
+Parameters:
+- `startIndex`: Default `0`.
+- `endIndex`: Index of first element not to include in range. Negative index is counted as offset from default `array.length`.
+
+<br>
+
+```javascript
+const array = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+const slicedArray = array.slice(2, 5);
+
+// array = ['A', 'B', 'C', 'D', 'E', 'F'];
+// slicedArray = ['C', 'D', 'E']
+```
+
+<br>
+
+```javascript
+const array = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+const slicedArray = array.slice(1, -3);
+
+// array = ['A', 'B', 'C', 'D', 'E', 'F'];
+// slicedArray = ['B', 'C']
+```
+
+<br>
+
+```javascript
+const array = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+const slicedArray = array.slice();
+
+// array = slicedArray = ['A', 'B', 'C', 'D', 'E', 'F'];
+```
+
+<br>
+<br>
 <br>
 
 ### **Multifunctional Manipulation Methods**
@@ -1408,53 +1455,6 @@ const array = ['A', 'B', 'C', 'D'];
 array.copyWithin(-1);
 
 // array = ['A', 'B', 'C', 'A']
-```
-
-<br>
-<br>
-
-#### **slice()**
-
-Returns a shallow copy of an array, optionally restricted to a range `[start, end)`.
-
-```javascript
-array.slice(?startIndex, ?endIndex)
-```
-
-Parameters:
-- `startIndex`: Default `0`.
-- `endIndex`: Index of first element not to include in range. Negative index is counted as offset from default `array.length`.
-
-<br>
-
-```javascript
-const array = ['A', 'B', 'C', 'D', 'E', 'F'];
-
-const slicedArray = array.slice(2, 5);
-
-// array = ['A', 'B', 'C', 'D', 'E', 'F'];
-// slicedArray = ['C', 'D', 'E']
-```
-
-<br>
-
-```javascript
-const array = ['A', 'B', 'C', 'D', 'E', 'F'];
-
-const slicedArray = array.slice(1, -3);
-
-// array = ['A', 'B', 'C', 'D', 'E', 'F'];
-// slicedArray = ['B', 'C']
-```
-
-<br>
-
-```javascript
-const array = ['A', 'B', 'C', 'D', 'E', 'F'];
-
-const slicedArray = array.slice();
-
-// array = slicedArray = ['A', 'B', 'C', 'D', 'E', 'F'];
 ```
 
 <br>

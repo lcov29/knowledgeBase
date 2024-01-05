@@ -34,9 +34,12 @@
       - [**shift()**](#shift)
       - [**splice()**](#splice-2)
       - [**toSpliced()**](#tospliced-2)
-    - [**Iterate Over Elements**](#iterate-over-elements)
-      - [**For Loop**](#for-loop)
-      - [**For-Of Loop**](#for-of-loop)
+    - [**Iterate Over Arrays**](#iterate-over-arrays)
+        - [**For Loop**](#for-loop)
+        - [**For-Of Loop**](#for-of-loop)
+          - [**entries()**](#entries)
+          - [**values()**](#values)
+          - [**keys()**](#keys)
       - [**For-In Loop**](#for-in-loop)
       - [**forEach()**](#foreach)
     - [**Sort Elements**](#sort-elements)
@@ -916,10 +919,11 @@ const splicedArray = array.toSpliced(0);
 <br>
 <br>
 
-### **Iterate Over Elements**
+### **Iterate Over Arrays**
+<br>
 <br>
 
-#### **For Loop**
+##### **For Loop**
 
 ```javascript
 const array = ['A', 'B', 'C'];
@@ -936,20 +940,66 @@ for (let i = 0; i < array.length; i++) {
 <br>
 <br>
 
-#### **For-Of Loop**
-
-Loop over array elements.
+##### **For-Of Loop**
 
 ```javascript
 const array = ['A', 'B', 'C'];
 
-for (let element of array) {
+for (const element of array) {
   console.log(element);
 }
 
 // 'A'
 // 'B'
 // 'C'
+```
+
+<br>
+
+###### **entries()**
+
+```javascript
+const array = ['A', 'B', 'C'];
+
+for (const [index, element] of array.entries()) {
+  console.log(`${index}: ${element}`);
+}
+
+// '0: A'
+// '1: B'
+// '2: C'
+```
+
+<br>
+
+###### **values()**
+
+```javascript
+const array = ['A', 'B', 'C'];
+
+for (const value of array.values()) {
+  console.log(value);
+}
+
+// 'A'
+// 'B'
+// 'C'
+```
+
+<br>
+
+###### **keys()**
+
+```javascript
+const array = ['A', 'B', 'C'];
+
+for (const key of array.keys()) {
+  console.log(key);
+}
+
+// 0
+// 1
+// 2
 ```
 
 <br>

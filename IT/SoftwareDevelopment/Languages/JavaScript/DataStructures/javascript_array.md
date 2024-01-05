@@ -10,14 +10,14 @@
   - [**Create Arrays**](#create-arrays)
     - [**Constructor Array()**](#constructor-array)
     - [**Array Literal**](#array-literal)
-  - [**Destructuring**](#destructuring)
-  - [**Spread Operator**](#spread-operator)
   - [**Properties**](#properties)
     - [**length**](#length)
   - [**Methods**](#methods)
     - [**Access Elements**](#access-elements)
       - [**Array\[\]**](#array)
       - [**at()**](#at)
+      - [**Destructuring**](#destructuring)
+      - [**Spread Operator (...)**](#spread-operator-)
     - [**Add Elements**](#add-elements)
       - [**push()**](#push)
       - [**unshift()**](#unshift)
@@ -174,142 +174,6 @@ const array = [1, 2, 3];  // [1, 2, 3]
 <br>
 <br>
 
-## **Destructuring**
-<br>
-
-* assign element values of an array to variables
-* array is not changed
-* if more variables than array elements exist, the variables without assignment are _undefined_ or their custom default value
-
-```javascript
-[variable1, ... , variableN] = array;
-
-let [variable1, ... , variableN] = array;
-
-let [variable1 = default1, ... , variableN = defaultN] = array;
-
-let [variable1, ..., variableN, ...rest] = array;
-```
-
-```javascript
-let array = [1, 2, 3, 4, 5];
-
-
-// assign element values to new variables
-let  [a, b, c] = array;
-console.log(a);                                        // output: 1
-console.log(b);                                        // output: 2
-console.log(c);                                        // output: 3
-
-
-// assign element values to existing variables
-[b, c] = array;
-console.log(b);                                        // output: 1
-console.log(c);                                        // output: 2
-
-
-// default value
-let [a ='A', 
-     b = 'B', 
-     c = 'C', 
-     d = 'D', 
-     e = 'E', 
-     f = 'F'] = array;
-console.log(a);                                         // output: 1
-console.log(b);                                         // output: 2
-console.log(c);                                         // output: 3
-console.log(d);                                         // output: 4
-console.log(e);                                         // output: 5
-console.log(f);                                         // output: F
-
-
-// use rest
-let [a, ...rest] = array;                               
-console.log(a);                                         // output: 1
-console.log(rest);                                      // output: [2, 3, 4, 5]
-
-
-// extract specific elements
-let [a, , c] = array;
-console.log(a);                                         // output: 1
-console.log(c);                                         // output: 3
-
-
-// multidimensional array destructuring
-let multiArray = [['A', 'B'], ['C', 'D'], ['E']];
-let [
-  [a, b],
-  [c, d],
-  [e]
-] = multiArray;
-console.log(a);                                         // output: A
-console.log(b);                                         // output: B
-console.log(c);                                         // output: C
-console.log(d);                                         // output: D
-console.log(e);                                         // output: E
-
-
-// destructuring inside for of loop
-let array = [[1, 2, 3], [7, 8, 9], [5, 8, 13]];
-
-for (let [a, b, c] of array) {
-    console.log(`a: ${a}`);
-    console.log(`b: ${b}`);
-    console.log(`c: ${c}`);
-}
-
-/*
-output:
-  a: 1    b: 2    c: 3
-  a: 7    b: 8    c: 9
-  a: 5    b: 8    c: 13
-*/
-```
-
-<br>
-<br>
-<br>
-
-## **Spread Operator**
-<br>
-
-* expands array element to the outside scope
-
-<br>
-
-```javascript
-...array
-```
-
-<br>
-
-```javascript
-let array = ['a', 1, true];
-
-
-// spread array elements to function arguments
-function print(arg1, arg2, arg3) {
-  console.log(`${arg1} ${arg2} ${arg3}`);
-}
-print(...array);
-
-
-// shallow copy of an array
-let array2 = [...array];
-
-
-// add elements to array
-array = [...array, newElement1, newElement2];
-
-
-// concat arrays
-let concatArray = [...array, ...array2];
-```
-
-<br>
-<br>
-<br>
-
 ## **Properties**
 <br>
 <br>
@@ -375,6 +239,122 @@ array.at(2);    // 3
 
 array.at(-1);   // 5
 array.at(-3);   // 3
+```
+
+<br>
+<br>
+
+#### **Destructuring**
+
+Assign value of array elements to distinct variables.
+
+```javascript
+[a, b, c] = array
+```
+
+<br>
+
+**Basic Destructuring**
+
+```javascript
+const array = [1, 2, 3, 4, 5];
+
+const [a, b, c] = array;
+// a = 1
+// b = 2
+// c = 3
+```
+
+<br>
+
+**Destructuring With Default Values**
+
+```javascript
+const array = [1, 2];
+
+const [a, b, c = 'foo'] = array;
+
+// a = 1
+// b = 2
+// c = 'foo'
+```
+
+<br>
+
+**Destructuring With _rest_ Variable**
+
+```javascript
+const array = [1, 2, 3, 4, 5];
+
+const [a, b, ...rest] = array;
+
+// a = 1
+// b = 2
+// rest: [3, 4, 5]
+```
+
+<br>
+
+**Multidimensional Destructuring**
+
+```javascript
+const array = [[1, 2], [3, 4], [5]];
+const [[a, b], [c, d], [e]] = array;
+
+// a = 1
+// b = 2
+// c = 3
+// d = 4
+// e = 5
+```
+
+<br>
+<br>
+
+#### **Spread Operator (...)**
+
+Expands array elements to the outside. Used for function arguments or array literals.
+
+```javascript
+...array
+```
+
+<br>
+
+**Use Spread Operator To Populate Function Arguments**
+
+```javascript
+const array = ['a', 1, true];
+
+function print(arg1, arg2, arg3) {
+  console.log(`${arg1} ${arg2} ${arg3}`);
+}
+
+print(...array);
+// 'a 1 true'
+```
+
+<br>
+
+**Use Spread Operator To Shallow Copy An Array**
+
+```javascript
+const array = ['a', 1, true];
+
+const copy = [...array];
+```
+
+<br>
+
+**Use Spread Operator To Concat Arrays**
+
+```javascript
+const array1 = ['A', 'B'];
+const array2 = ['C', 'D'];
+
+const concatArray = [...array1, ...array2];
+
+// concatArray = ['A', 'B', 'C', 'D']
 ```
 
 <br>

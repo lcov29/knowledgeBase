@@ -62,8 +62,15 @@
       - [**reduce()**](#reduce)
       - [**slice()**](#slice)
       - [**copyWithin()**](#copywithin)
-    - [**Concat**](#concat)
-      - [**concat()**](#concat-1)
+      - [**with()**](#with-1)
+      - [**toSorted()**](#tosorted-1)
+      - [**toReversed()**](#toreversed-1)
+      - [**toSpliced()**](#tospliced-3)
+      - [**concat()**](#concat)
+      - [**flatMap()**](#flatmap)
+      - [**Array.from()**](#arrayfrom)
+    - [**Concat**](#concat-1)
+      - [**concat()**](#concat-2)
       - [**join()**](#join)
   
 <br>
@@ -521,7 +528,6 @@ const splicedArray = array.toSpliced(0, 0, 'X', 'Y', 'Z');
 // array = ['A', 'B', 'C', 'D'];
 // splicedArray = ['X', 'Y', 'Z', 'A', 'B', 'C', 'D']
 ```
-
 
 <br>
 <br>
@@ -1719,6 +1725,341 @@ const array = ['A', 'B', 'C', 'D'];
 array.copyWithin(-1);
 
 // array = ['A', 'B', 'C', 'A']
+```
+
+<br>
+<br>
+
+#### **with()**
+
+Returns a shallow array copy with updated element at specified index. Allows selection from end of array via negative index.
+
+```javascript
+array.with(index, newValue)
+```
+
+<br>
+
+```javascript
+const array = [1, 2, 3, 4];
+
+array.with(2, 8);       // returns new array [1, 2, 8, 4] 
+
+array.with(-1, 'foo');  // returns new array [1, 2, 3, 'foo']
+```
+
+<br>
+<br>
+
+#### **toSorted()**
+
+Returns shallow copy of array sorted in ascending order. An optional compare function can be specified to to implement a custom sorting order.
+
+```javascript
+array.toSorted(?(firstElement, secondElement) => { implementation })
+```
+
+<br>
+
+| compareFunction(firstElement, secondElement) | Sorting Order                                             |
+| :------------------------------------------: | :-------------------------------------------------------- |
+|                     > 0                      | `secondElement`, `firstElement`                           |
+|                     <= 0                     | `firstElement`, `secondElement`                           |
+|                    === 0                     | keep original order of `firstElement` and `secondElement` |
+
+<br>
+
+```javascript
+const array = [3, 6, 3, 2, 10, 37];
+
+const sortedArray = array.toSorted();
+
+// array = [3, 6, 3, 2, 10, 37]
+// sortedArray = [10, 2, 3, 3, 37, 6]
+```
+
+<br>
+
+```javascript
+const array = ['x', 'hello', 'a', 't'];
+
+const sortedArray = array.toSorted();
+
+// array = ['x', 'hello', 'a', 't']
+// sortedArray = [a, hello, t, x]
+```
+
+<br>
+
+```javascript
+const array = [3, 6, 3, 2, 10, 37];
+
+const sortedArray = array.toSorted((a, b) => a - b);
+
+// array = [3, 6, 3, 2, 10, 37]
+// sortedArray = [2, 3, 3, 6, 10, 37]
+```
+
+<br>
+
+```javascript
+const array = [3, 6, 3, 2, 10, 37];
+
+const sortedArray = array.toSorted((a, b) => b - a);
+
+// array = [3, 6, 3, 2, 10, 37]
+// sortedArray = [37, 10, 6, 3, 3, 2]
+```
+
+<br>
+<br>
+
+#### **toReversed()**
+<br>
+
+Returns shallow copy of array with reversed order of elements.
+
+```javascript
+array.toReversed();
+```
+
+<br>
+
+```javascript
+const array = [4, 34, 2, 7];
+
+const reversedArray = array.toReversed();
+
+// array = [4, 34, 2, 7]
+// reversedArray = [7, 2, 34, 4]
+
+```
+
+<br>
+<br>
+
+#### **toSpliced()**
+
+Returns manipulated array copy with **added**, **remoded** or **replaced** elements.
+
+```javascript
+array.toSpliced(startIndex, ?deleteCount, ?element1, ... ?elementN)
+```
+
+Parameters:
+- `startIndex`: Index at which modification should start. Negative index counts from end of the array.
+- `deleteCount`: Number of elements to deleted starting from `startIndex`. Default: `Infinity`.
+- `itemN`: Element to add to the array starting from `startIndex`.
+
+<br>
+
+**Add One Element:**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+const splicedArray = array.toSpliced(0, 0, 'X');
+
+// array = ['A', 'B', 'C', 'D'];
+// splicedArray = ['X', 'A', 'B', 'C', 'D']
+```
+
+<br>
+
+**Add Multiple Elements:**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+const splicedArray = array.toSpliced(0, 0, 'X', 'Y', 'Z');
+
+// array = ['A', 'B', 'C', 'D'];
+// splicedArray = ['X', 'Y', 'Z', 'A', 'B', 'C', 'D']
+```
+
+<br>
+
+**Replace Element**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+const splicedArray = array.toSpliced(2, 1, 'X');
+
+// array = ['A', 'B', 'C', 'D']
+// splicedArray = ['A', 'B', 'X', 'D']
+```
+
+<br>
+
+**Replace Multiple Elements**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+const splicedArray = array.toSpliced(2, 2, 'X', 'Y');
+
+// array = ['A', 'B', 'C', 'D']
+// splicedArray = ['A', 'B', 'X', 'Y']
+```
+
+<br>
+
+**Replace All Elements**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+const splicedArray = array.toSpliced(0, Infinity, 'X', 'Y');
+
+// array = ['A', 'B', 'C', 'D']
+// splicedArray = ['X', 'Y']
+```
+
+<br>
+
+**Remove Element**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+const splicedArray = array.toSpliced(1, 1);
+
+// array = ['A', 'B', 'C', 'D']
+// splicedArray = ['A', 'C', 'D']
+```
+
+<br>
+
+**Remove Elements**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+const splicedArray = array.toSpliced(0, 2);
+
+// array = ['A', 'B', 'C', 'D']
+// splicedArray = ['C', 'D']
+```
+
+<br>
+
+**Remove All Elements**
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+const splicedArray = array.toSpliced(0);
+
+// array = ['A', 'B', 'C', 'D']
+// splicedArray = []
+```
+
+<br>
+<br>
+
+#### **concat()**
+
+Returns new array containing shallow copies of all given arrays and values.
+
+```javascript
+array.concat(value1, ..., valueN)
+```
+
+<br>
+
+```javascript
+const array1 = ['A', 'B', 'C', 'D'];
+const array2 = ['foo', 'bar'];
+
+const concatArray = array1.concat(array2);
+
+// array1 = ['A', 'B', 'C', 'D']
+// array2 = ['foo', 'bar']
+// concatArray = ['A', 'B', 'C', 'D', 'foo', 'bar']
+```
+
+<br>
+
+```javascript
+const array1 = ['A', 'B', 'C', 'D'];
+const array2 = ['foo', 'bar'];
+const array3 = [1, 2];
+
+const concatArray = array1.concat(array2, array3);
+
+// array1 = ['A', 'B', 'C', 'D']
+// array2 = ['foo', 'bar']
+// array3 = [1, 2]
+// concatArray = ['A', 'B', 'C', 'D', 'foo', 'bar', 1, 2]
+```
+
+<br>
+
+```javascript
+const array1 = ['A', 'B', 'C', 'D'];
+const array2 = ['foo', 'bar'];
+
+const concatArray = array1.concat(array2, 'X', 1, 'Z');
+
+// array1 = ['A', 'B', 'C', 'D']
+// array2 = ['foo', 'bar']
+// concatArray = ['A', 'B', 'C', 'D', 'foo', 'bar', 'X', 1, 'Z']
+```
+
+<br>
+<br>
+
+#### **flatMap()**
+
+Returns new array by mapping the elements with a custom callback function and flatten the result in the first layer.
+
+```javascript
+array.flatMap((element, ?index, ?array) => { code }, ?thisArg)
+```
+
+<br>
+
+```javascript
+const array = [['A', 'B'], ['C', 'D']];
+
+const flatMapArray = array.flatMap((element) => element.join('-'));
+
+// array = [['A', 'B'], ['C', 'D']]
+// flatMapArray = ['A-B', 'C-D']
+```
+
+<br>
+
+```javascript
+const array = [['A', ['B', 'C']], ['D', ['E', 'F']]];
+
+const flatMapArray = array.flatMap((element) => element.join('-'));
+
+// array = [['A', ['B', 'C']], ['D', ['E', 'F']]];
+// flatMapArray = ['A-B,C', 'D-E,F']
+```
+
+<br>
+<br>
+
+#### **Array.from()**
+
+Returns shallow copy of an iterable or array-like object.
+
+```javascript
+Array.from(arrayLike, ?(element, ?index) => { code }, ?thisArg)
+```
+
+<br>
+
+```javascript
+const array = [1, 2, 3, 4];
+
+const copyArray = Array.from(array, (element) => element + 10);
+
+// array = [1, 2, 3, 4]
+// copyArray = [11, 12, 13, 14]
 ```
 
 <br>

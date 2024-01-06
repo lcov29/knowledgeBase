@@ -45,13 +45,13 @@
     - [**Constructor Array()**](#constructor-array)
     - [**Array Literal**](#array-literal)
   - [**Delete Elements**](#delete-elements)
-    - [**Delete Elements From End**](#delete-elements-from-end)
-      - [**pop()**](#pop)
+    - [**Delete Elements From Start**](#delete-elements-from-start)
+      - [**shift()**](#shift)
     - [**Delete Elements From Specified Index**](#delete-elements-from-specified-index)
       - [**splice()**](#splice-1)
       - [**toSpliced()**](#tospliced-1)
-    - [**Delete Elements From Start**](#delete-elements-from-start)
-      - [**shift()**](#shift)
+    - [**Delete Elements From End**](#delete-elements-from-end)
+      - [**pop()**](#pop)
   - [**Group Elements**](#group-elements)
     - [**Object.groupBy()**](#objectgroupby)
     - [**Map.groupBy()**](#mapgroupby)
@@ -816,23 +816,26 @@ const array = [1, 2, 3];  // [1, 2, 3]
 ## **Delete Elements**
 <br>
 
-### **Delete Elements From End**
+<br>
 <br>
 
-#### **pop()**
+### **Delete Elements From Start**
+<br>
 
-Removes and returns **last** element. Returns `undefined` for empty arrays.
+#### **shift()**
+
+Removes and returns **first** element. Returns `undefined` for empty arrays.
 
 ```javascript
-array.pop()
+array.shift()
 ```
 
 <br>
 
 ```javascript
-const array = [1, 2, 'foo'];
+const array = ['foo', 1, 2];
 
-array.pop();
+array.shift();
 
 // returns 'foo'
 // array [1, 2]
@@ -843,7 +846,7 @@ array.pop();
 ```javascript
 const array = [];
 
-array.pop();
+array.shift();
 
 // returns undefined
 // array []
@@ -966,23 +969,23 @@ const splicedArray = array.toSpliced(0);
 <br>
 <br>
 
-### **Delete Elements From Start**
+### **Delete Elements From End**
 <br>
 
-#### **shift()**
+#### **pop()**
 
-Removes and returns **first** element. Returns `undefined` for empty arrays.
+Removes and returns **last** element. Returns `undefined` for empty arrays.
 
 ```javascript
-array.shift()
+array.pop()
 ```
 
 <br>
 
 ```javascript
-const array = ['foo', 1, 2];
+const array = [1, 2, 'foo'];
 
-array.shift();
+array.pop();
 
 // returns 'foo'
 // array [1, 2]
@@ -993,7 +996,7 @@ array.shift();
 ```javascript
 const array = [];
 
-array.shift();
+array.pop();
 
 // returns undefined
 // array []

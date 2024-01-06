@@ -7,6 +7,11 @@
 - [**Javascript Array**](#javascript-array)
   - [**Table Of Contents**](#table-of-contents)
   - [**Basics**](#basics)
+    - [**Arrays Are Objects**](#arrays-are-objects)
+    - [**Arrays Are Resizable**](#arrays-are-resizable)
+    - [**Arrays Can Contain Elements Of Different Types**](#arrays-can-contain-elements-of-different-types)
+    - [**Array Index Is Zero-based**](#array-index-is-zero-based)
+    - [**Arrays Can Contain Empty Elements**](#arrays-can-contain-empty-elements)
   - [**Create Arrays**](#create-arrays)
     - [**Constructor Array()**](#constructor-array)
     - [**Array Literal**](#array-literal)
@@ -22,6 +27,7 @@
       - [**Add Elements To End**](#add-elements-to-end)
         - [**push()**](#push)
       - [**Add Elements At Specified Index**](#add-elements-at-specified-index)
+        - [**Array\[\]**](#array-1)
         - [**splice()**](#splice)
         - [**toSpliced()**](#tospliced)
       - [**Add Elements To Start**](#add-elements-to-start)
@@ -61,6 +67,7 @@
       - [**flatMap()**](#flatmap)
       - [**map()**](#map)
       - [**reduce()**](#reduce)
+      - [**reduceRight()**](#reduceright)
       - [**slice()**](#slice)
       - [**toReversed()**](#toreversed)
       - [**toSorted()**](#tosorted)
@@ -82,7 +89,7 @@
       - [**toSorted()**](#tosorted-1)
     - [**Update Elements**](#update-elements)
       - [**Update Single Element**](#update-single-element)
-        - [**Array\[\]**](#array-1)
+        - [**Array\[\]**](#array-2)
         - [**with()**](#with-1)
       - [**Update Multiple Elements**](#update-multiple-elements)
         - [**fill()**](#fill)
@@ -96,7 +103,7 @@
 ## **Basics**
 <br>
 
-**1. Arrays are objects**
+### **Arrays Are Objects**
 
 ```javascript
 const array = [1, 2, 3];
@@ -106,7 +113,7 @@ typeof array;   // 'object'
 
 <br>
 
-**2. Arrays are resizable**
+### **Arrays Are Resizable**
 
 ```javascript
 const array = [1, 2, 3];
@@ -121,7 +128,7 @@ array;            // [1, 2]
 
 <br>
 
-**3. Arrays can contain elements of different types**
+### **Arrays Can Contain Elements Of Different Types**
 
 ```javascript
 const array = [1, '2', false, { foo: 'bar' }, [1, 2, 3]];
@@ -129,13 +136,27 @@ const array = [1, '2', false, { foo: 'bar' }, [1, 2, 3]];
 
 <br>
 
-**4. Array index is zero-based**
+### **Array Index Is Zero-based**
 
 ```javascript
 const array = [1, 2, 3];
 
 array[0];     // 1
 array[1];     // 2
+```
+
+<br>
+
+### **Arrays Can Contain Empty Elements**
+
+> **Sparse Array**: Array that contains empty elements
+
+<br>
+
+```javascript
+const array = [1, 2, , , 4];
+
+// array = [1, 2, empty × 2, 4]
 ```
 
 <br>
@@ -259,7 +280,7 @@ array.at(-3);   // 3
 
 #### **Destructuring []**
 
-Assign value of array elements to distinct variables.
+Assign array elements to distinct variables.
 
 ```javascript
 const [a, b, c] = array
@@ -416,6 +437,38 @@ const newLength = array.push(3, 4, 5);
 #### **Add Elements At Specified Index**
 <br>
 
+##### **Array[]**
+
+Adds element at specified index. If specified index is greater than the next free index, all positions in between are marked as `empty`. 
+
+
+```javascript
+array[index] = value
+```
+
+<br>
+
+```javascript
+const array = [1, 2, 3];
+
+array[3] = 4;
+
+// array = [1, 2, 3, 4]
+```
+
+<br>
+
+```javascript
+const array = [1, 2, 3];
+
+array[7] = 3;
+
+// array = [1, 2, 3, empty × 4, 3]
+```
+
+<br>
+<br>
+
 ##### **splice()**
 
 Change array content by **adding**, **removing** or **replacing** elements.  
@@ -432,7 +485,7 @@ Parameters:
 
 <br>
 
-**Add One Element:**
+**Add One Element**
 
 ```javascript
 const array = ['A', 'B', 'C', 'D'];
@@ -445,7 +498,7 @@ array.splice(0, 0, 'X');
 
 <br>
 
-**Add Multiple Elements:**
+**Add Multiple Elements**
 
 ```javascript
 const array = ['A', 'B', 'C', 'D'];
@@ -474,7 +527,7 @@ Parameters:
 
 <br>
 
-**Add One Element:**
+**Add One Element**
 
 ```javascript
 const array = ['A', 'B', 'C', 'D'];
@@ -487,7 +540,7 @@ const splicedArray = array.toSpliced(0, 0, 'X');
 
 <br>
 
-**Add Multiple Elements:**
+**Add Multiple Elements**
 
 ```javascript
 const array = ['A', 'B', 'C', 'D'];
@@ -546,8 +599,9 @@ const newLength = array.unshift(3, 4, 5);
 
 #### **includes()**
 
-Returns boolean indicating whether array includes specified element.  
-Search range can be modified via optional `fromIndex`. Negative `fromIndex` is calculated from the end of the array.
+Returns boolean indicating whether array includes the specified element.  
+Search range can be modified via optional `fromIndex`.  
+Negative `fromIndex` is calculated from the end of the array.
 
 ```javascript
 array.includes(element, ?fromIndex);
@@ -575,7 +629,7 @@ array.includes(4);        // false
 
 ##### **every()**
 
-Returns boolean indicating whether **all** elements of the array match the specified findFunction.
+Returns boolean indicating whether **all** elements match the specified matcher function.
 
 ```javascript
 array.every((element, ?index, ?array) => { code }, ?thisArg)
@@ -604,7 +658,7 @@ array.every(element => element > 3);    // false
 
 ##### **some()**
 
-Returns boolean indicating whether **at least one** element of the array matches the specified findFunction.
+Returns boolean indicating whether **at least one** element matches the specified matcher function.
 
 ```javascript
 array.some((element, ?index, ?array) => { code }, ?thisArg)
@@ -640,7 +694,7 @@ array.some(element => element < 1);   // false
 
 ##### **concat()**
 
-Returns new array containing shallow copies of all given arrays and values.
+Returns a new array containing shallow copies of all given arrays and values.
 
 ```javascript
 array.concat(value1, ..., valueN)
@@ -723,7 +777,7 @@ array.join('---');    // f---o---o
 
 ##### **pop()**
 
-Removes and returns **last** array element. Returns `undefined` for empty arrays.
+Removes and returns **last** element. Returns `undefined` for empty arrays.
 
 ```javascript
 array.pop()
@@ -773,7 +827,7 @@ Parameters:
 
 <br>
 
-**Remove Element**
+**Remove Single Element**
 
 ```javascript
 const array = ['A', 'B', 'C', 'D'];
@@ -786,7 +840,7 @@ array.splice(1, 1);
 
 <br>
 
-**Remove Elements**
+**Remove Multiple Elements**
 
 ```javascript
 const array = ['A', 'B', 'C', 'D'];
@@ -815,7 +869,7 @@ array.splice(0);
 
 ##### **toSpliced()**
 
-Returns manipulated array copy with **added**, **remoded** or **replaced** elements.
+Returns shallow copy of array with **added**, **remoded** or **replaced** elements.
 
 ```javascript
 array.toSpliced(startIndex, ?deleteCount, ?element1, ... ?elementN)
@@ -828,7 +882,7 @@ Parameters:
 
 <br>
 
-**Remove Element**
+**Remove Single Element**
 
 ```javascript
 const array = ['A', 'B', 'C', 'D'];
@@ -841,7 +895,7 @@ const splicedArray = array.toSpliced(1, 1);
 
 <br>
 
-**Remove Elements**
+**Remove Multiple Elements**
 
 ```javascript
 const array = ['A', 'B', 'C', 'D'];
@@ -873,7 +927,7 @@ const splicedArray = array.toSpliced(0);
 
 ##### **shift()**
 
-Removes and returns **first** array element. Returns `undefined` for empty arrays.
+Removes and returns **first** element. Returns `undefined` for empty arrays.
 
 ```javascript
 array.shift()
@@ -993,12 +1047,12 @@ for (const value of array.values()) {
 
 #### **For-In Loop**
 
-Loop over array indexes.
+Loop over array indices.
 
 ```javascript
 const array = ['A', 'B', 'C'];
 
-for (let index in array) {
+for (const index in array) {
   console.log(index);
 }
 
@@ -1012,7 +1066,7 @@ for (let index in array) {
 
 #### **forEach()**
 
-Executes specified function once for every array element.
+Executes specified function once for every array element. Does not alter the array.
 
 ```javascript
 array.forEach((element, ?index, ?array) => { code }, ?thisArg)
@@ -1145,7 +1199,7 @@ const concatArray = array1.concat(array2, 'X', 1, 'Z');
 
 #### **copyWithin()**
 
-Shallow copies part `[start, end)` of an array to another location in the same array. The element at the target location are replaced, so that the length of the array does not change.
+Shallow copies array range `[start, end)` to another location in the same array. The element at the target location are replaced, so that the length of the array does not change.
 
 ```javascript
 array.copyWithin(targetIndex, startIndex, ?endIndex);
@@ -1191,7 +1245,7 @@ array.copyWithin(-1);
 
 #### **filter()**
 
-Returns new array containing shallow copies of all elements that match the specified findFunction.
+Returns new array containing shallow copies of all elements that match the specified match function.
 
 ```javascript
 array.filter((element, ?index, ?array) => { code }, ?thisArg)
@@ -1221,7 +1275,7 @@ const filteredArray = array.filter(element => element < 8);
 
 #### **flat()**
 
-Returns new array with elements of sub-arrays concatenated up to the specified depth.
+Returns shallow copy of array with elements of sub-arrays concatenated up to the specified depth.
 
 ```javascript
 array.flat(?depth)
@@ -1334,7 +1388,7 @@ const mappedArray = array.map(element => element + 10);
 Envokes custom reducerFunction to reduce all elements of an array to a single value and return that value.
 
 ```javascript
-array.reduce((previousValue, currentValue, ?currentIndex, ?array) => { code }, ?initialValue)
+array.reduce((accumulator, currentValue, ?currentIndex, ?array) => { code }, ?initialValue)
 ```
 
 <br>
@@ -1343,10 +1397,10 @@ Parameters reduceFunction:
 
 | Parameter       | Description                                                                                                  |
 | :-------------- | :----------------------------------------------------------------------------------------------------------- |
-| `previousValue` | value of previous call of reducer function: Initial value: `initialValue` if specified, otherwise `array[0]` |
-| `currentValue`  | value of current element. Initial value: `array[0]` if `initialValue` is specified, otherwise `array[1]`     |
-| `currentIndex`  | index of current element. Initial value: `0` if `initialValue` is specified, otherwise `0`                   |
-| `array`         |
+| `accumulator` |Value of previous call of reducer function: Initial value: `initialValue` if specified, otherwise `array[0]` |
+| `currentValue`  |Value of current element. Initial value: `array[0]` if `initialValue` is specified, otherwise `array[1]`     |
+| `currentIndex`  |Index of current element. Initial value: `0` if `initialValue` is specified, otherwise `0`                   |
+| `array`         |Reference to array
 
 <br>
 
@@ -1355,17 +1409,27 @@ Optional parameter:
 
 <br>
 
+**Calculate Sum Of All Element Values**
+
 ```javascript
 const array = [1, 2, 3, 4, 5];
 
-
 const total = array.reduce((sum, currentValue) => sum + currentValue);      // 15
+```
 
+<br>
+
+**Find Maximum Element Value**
+
+```javascript
+const array = [1, 2, 3, 4, 5];
 
 const maximum = array.reduce((a, b) => Math.max(a, b));                     // 5
 ```
 
 <br>
+
+**Count The Number Of Occurrences Of Each Element**
 
 ```javascript
 const array = ['A', 'B', 'C', 'B', 'A', 'A']
@@ -1381,6 +1445,15 @@ const countObj = array.reduce((countObject, element) => {
 
 // { A: 3, B: 2, C: 1 }
 ```
+
+<br>
+<br>
+
+#### **reduceRight()**
+
+Envokes custom reducerFunction to reduce all elements of an array to a single value and return that value.
+
+Same as [array.reduce()](#reduce), but processes values from right to left.
 
 <br>
 <br>
@@ -1433,7 +1506,6 @@ const slicedArray = array.slice();
 <br>
 
 #### **toReversed()**
-<br>
 
 Returns shallow copy of array with reversed order of elements.
 
@@ -1458,11 +1530,15 @@ const reversedArray = array.toReversed();
 
 #### **toSorted()**
 
-Returns shallow copy of array sorted in ascending order. An optional compare function can be specified to to implement a custom sorting order.
+Returns shallow copy with elements sorted in ascending order. An optional compare function can be specified to implement a custom sorting order.
 
 ```javascript
 array.toSorted(?(firstElement, secondElement) => { implementation })
 ```
+
+<br>
+
+> **Attention**: This method temporarily casts all elements to strings for calculating the order!
 
 <br>
 
@@ -1473,6 +1549,8 @@ array.toSorted(?(firstElement, secondElement) => { implementation })
 |                    === 0                     | keep original order of `firstElement` and `secondElement` |
 
 <br>
+
+**Temporary String Cast To Calculate Order For Integer Elements**
 
 ```javascript
 const array = [3, 6, 3, 2, 10, 37];
@@ -1485,6 +1563,8 @@ const sortedArray = array.toSorted();
 
 <br>
 
+**Sort String Elements**
+
 ```javascript
 const array = ['x', 'hello', 'a', 't'];
 
@@ -1496,6 +1576,8 @@ const sortedArray = array.toSorted();
 
 <br>
 
+**Sort Integer Elements In Ascending Order**
+
 ```javascript
 const array = [3, 6, 3, 2, 10, 37];
 
@@ -1506,6 +1588,8 @@ const sortedArray = array.toSorted((a, b) => a - b);
 ```
 
 <br>
+
+**Sort Integer Elements In Descending Order**
 
 ```javascript
 const array = [3, 6, 3, 2, 10, 37];
@@ -1534,7 +1618,7 @@ Parameters:
 
 <br>
 
-**Add One Element:**
+**Add One Element**
 
 ```javascript
 const array = ['A', 'B', 'C', 'D'];
@@ -1547,7 +1631,7 @@ const splicedArray = array.toSpliced(0, 0, 'X');
 
 <br>
 
-**Add Multiple Elements:**
+**Add Multiple Elements**
 
 ```javascript
 const array = ['A', 'B', 'C', 'D'];
@@ -1560,7 +1644,7 @@ const splicedArray = array.toSpliced(0, 0, 'X', 'Y', 'Z');
 
 <br>
 
-**Replace Element**
+**Replace Single Element**
 
 ```javascript
 const array = ['A', 'B', 'C', 'D'];
@@ -1599,7 +1683,7 @@ const splicedArray = array.toSpliced(0, Infinity, 'X', 'Y');
 
 <br>
 
-**Remove Element**
+**Remove Single Element**
 
 ```javascript
 const array = ['A', 'B', 'C', 'D'];
@@ -1612,7 +1696,7 @@ const splicedArray = array.toSpliced(1, 1);
 
 <br>
 
-**Remove Elements**
+**Remove Multiple Elements**
 
 ```javascript
 const array = ['A', 'B', 'C', 'D'];
@@ -1641,7 +1725,7 @@ const splicedArray = array.toSpliced(0);
 
 #### **with()**
 
-Returns a shallow array copy with updated element at specified index. Allows selection from end of array via negative index.
+Returns a shallow copy with updated element at specified index. Allows selection from end of array via negative index.
 
 ```javascript
 array.with(index, newValue)
@@ -1670,8 +1754,8 @@ array.with(-1, 'foo');  // returns new array [1, 2, 3, 'foo']
 
 ##### **indexOf()**
 
-Returns the index of the **first** occurrence of the specified element in the array.  
-Returns `-1` if the specified element does not exist in the array.  
+Returns the index of the **first** occurrence of the specified element.  
+Returns `-1` if the specified element does not exist.  
 Search range can be modified via optional `fromIndex`.
 
 ```javascript
@@ -1695,8 +1779,8 @@ array.indexOf('X');     // -1
 
 ##### **lastIndexOf()**
 
-Returns the index of the **last** occurrence of the specified element in the array.  
-Returns `-1` if the specified element does not exist in the array.  
+Returns the index of the **last** occurrence of the specified element.  
+Returns `-1` if the specified element does not exist.  
 Search range can be modified via optional `fromIndex` from which the array is searched **backwards**.
 
 ```javascript
@@ -1723,7 +1807,7 @@ array.lastIndexOf('X');     // -1
 
 ##### **find()**
 
-Returns **first** element that matches the specified findFunction.  
+Returns **first** element that matches the specified matcher function.  
 Returns `undefined` when there are no matches.
 
 ```javascript
@@ -1755,7 +1839,7 @@ array.find((element) => element < 3);         // undefined
 
 ##### **findIndex()**
 
-Returns index of the **first** element that matches the specified findFunction.  
+Returns index of the **first** element that matches the specified matcher function.  
 Returns `-1` when there are no matches.
 
 ```javascript
@@ -1787,7 +1871,7 @@ array.findIndex((element) => element < 3);    // -1
 
 ##### **findLast()**
 
-Returns **last** element that matches the specified findFunction.  
+Returns **last** element that matches the specified matcher function.  
 Returns `undefined` when there are no matches.
 
 ```javascript
@@ -1819,7 +1903,7 @@ array.findLast((element) => element < 3);     // undefined
 
 ##### **findLastIndex()**
 
-Returns index of the **last** element that matches the specified findFunction.  
+Returns index of the **last** element that matches the specified matcher function.  
 Returns `-1` when there are no matches.
 
 ```javascript
@@ -1884,6 +1968,10 @@ array.sort(?(firstElement, secondElement) => { implementation })
 
 <br>
 
+> **Attention**: This method temporarily casts all elements to strings for calculating the order!
+
+<br>
+
 | compareFunction(firstElement, secondElement) | Sorting Order                                             |
 | :------------------------------------------: | :-------------------------------------------------------- |
 |                     > 0                      | `secondElement`, `firstElement`                           |
@@ -1891,6 +1979,8 @@ array.sort(?(firstElement, secondElement) => { implementation })
 |                    === 0                     | keep original order of `firstElement` and `secondElement` |
 
 <br>
+
+**Temporary String Cast To Calculate Order For Integer Elements**
 
 ```javascript
 const array = [3, 6, 3, 2, 10, 37];
@@ -1902,6 +1992,8 @@ array.sort();
 
 <br>
 
+**Sort String Elements**
+
 ```javascript
 const array = ['x', 'hello', 'a', 't'];
 
@@ -1912,6 +2004,8 @@ array.sort();
 
 <br>
 
+**Sort Integer Elements In Ascending Order**
+
 ```javascript
 const array = [3, 6, 3, 2, 10, 37];
 
@@ -1921,6 +2015,8 @@ array.sort((a, b) => a - b);
 ```
 
 <br>
+
+**Sort Integer Elements In Descending Order**
 
 ```javascript
 const array = [3, 6, 3, 2, 10, 37];
@@ -1966,6 +2062,10 @@ array.toSorted(?(firstElement, secondElement) => { implementation })
 
 <br>
 
+> **Attention**: This method temporarily casts all elements to strings for calculating the order!
+
+<br>
+
 | compareFunction(firstElement, secondElement) | Sorting Order                                             |
 | :------------------------------------------: | :-------------------------------------------------------- |
 |                     > 0                      | `secondElement`, `firstElement`                           |
@@ -1973,6 +2073,8 @@ array.toSorted(?(firstElement, secondElement) => { implementation })
 |                    === 0                     | keep original order of `firstElement` and `secondElement` |
 
 <br>
+
+**Temporary String Cast To Calculate Order For Integer Elements**
 
 ```javascript
 const array = [3, 6, 3, 2, 10, 37];
@@ -1985,6 +2087,8 @@ const sortedArray = array.toSorted();
 
 <br>
 
+**Sort String Elements**
+
 ```javascript
 const array = ['x', 'hello', 'a', 't'];
 
@@ -1996,6 +2100,8 @@ const sortedArray = array.toSorted();
 
 <br>
 
+**Sort Integer Elements In Ascending Order**
+
 ```javascript
 const array = [3, 6, 3, 2, 10, 37];
 
@@ -2006,6 +2112,8 @@ const sortedArray = array.toSorted((a, b) => a - b);
 ```
 
 <br>
+
+**Sort Integer Elements In Descending Order**
 
 ```javascript
 const array = [3, 6, 3, 2, 10, 37];
@@ -2028,7 +2136,7 @@ const sortedArray = array.toSorted((a, b) => b - a);
 
 ##### **Array[]**
 
-Updates element at specified index.
+Updates element at specified index. Adds element when specified index does not exist.
 
 ```javascript
 array[index] = newValue
@@ -2039,7 +2147,9 @@ array[index] = newValue
 ```javascript
 const array = [1, 2, 3, 4];
 
-array[1] = 8;   // [1, 8, 3, 4]
+array[1] = 8;   
+
+// array = [1, 8, 3, 4]
 ```
 
 <br>
@@ -2047,7 +2157,7 @@ array[1] = 8;   // [1, 8, 3, 4]
 
 ##### **with()**
 
-Returns a shallow array copy with updated element at specified index. Allows selection from end of array via negative index.
+Returns a shallow copy with updated element at specified index. Allows selection from end of array via negative index.
 
 ```javascript
 array.with(index, newValue)
@@ -2187,7 +2297,7 @@ Parameters:
 
 <br>
 
-**Replace Element**
+**Replace Single Element**
 
 ```javascript
 const array = ['A', 'B', 'C', 'D'];

@@ -12,90 +12,94 @@
     - [**Arrays Can Contain Elements Of Different Types**](#arrays-can-contain-elements-of-different-types)
     - [**Array Index Is Zero-based**](#array-index-is-zero-based)
     - [**Arrays Can Contain Empty Elements**](#arrays-can-contain-empty-elements)
+  - [**Properties**](#properties)
+    - [**length**](#length)
+  - [**Access Elements**](#access-elements)
+    - [**Array\[\]**](#array)
+    - [**at()**](#at)
+    - [**Destructuring \[\]**](#destructuring-)
+    - [**Spread Operator ...**](#spread-operator-)
+  - [**Add Elements**](#add-elements)
+    - [**Add Elements To Start**](#add-elements-to-start)
+      - [**unshift()**](#unshift)
+    - [**Add Elements At Specified Index**](#add-elements-at-specified-index)
+      - [**splice()**](#splice)
+      - [**toSpliced()**](#tospliced)
+    - [**Add Elements To End**](#add-elements-to-end)
+      - [**push()**](#push)
+      - [**Array\[\]**](#array-1)
+  - [**Check Elements**](#check-elements)
+    - [**includes()**](#includes)
+    - [**Check With Custom Matcher Function**](#check-with-custom-matcher-function)
+      - [**every()**](#every)
+      - [**some()**](#some)
+  - [**Check If Value Is Array**](#check-if-value-is-array)
+    - [**Array.isArray()**](#arrayisarray)
+  - [**Concat**](#concat)
+    - [**Concat Arrays**](#concat-arrays)
+      - [**concat()**](#concat-1)
+      - [**Spread Operator ...**](#spread-operator--1)
+    - [**Concat Elements**](#concat-elements)
+      - [**join()**](#join)
   - [**Create Arrays**](#create-arrays)
     - [**Constructor Array()**](#constructor-array)
     - [**Array Literal**](#array-literal)
-  - [**Properties**](#properties)
-    - [**length**](#length)
-  - [**Methods**](#methods)
-    - [**Access Elements**](#access-elements)
-      - [**Array\[\]**](#array)
-      - [**at()**](#at)
-      - [**Destructuring \[\]**](#destructuring-)
-      - [**Spread Operator ...**](#spread-operator-)
-    - [**Add Elements**](#add-elements)
-      - [**Add Elements To End**](#add-elements-to-end)
-        - [**push()**](#push)
-        - [**Array\[\]**](#array-1)
-      - [**Add Elements At Specified Index**](#add-elements-at-specified-index)
-        - [**splice()**](#splice)
-        - [**toSpliced()**](#tospliced)
-      - [**Add Elements To Start**](#add-elements-to-start)
-        - [**unshift()**](#unshift)
-    - [**Check Elements**](#check-elements)
-      - [**includes()**](#includes)
-      - [**Check With Custom Matcher Function**](#check-with-custom-matcher-function)
-        - [**every()**](#every)
-        - [**some()**](#some)
-    - [**Concat**](#concat)
-      - [**Concat Arrays**](#concat-arrays)
-        - [**concat()**](#concat-1)
-        - [**Spread Operator ...**](#spread-operator--1)
-      - [**Concat Elements**](#concat-elements)
-        - [**join()**](#join)
-    - [**Delete Elements**](#delete-elements)
-      - [**Delete Elements From End**](#delete-elements-from-end)
-        - [**pop()**](#pop)
-      - [**Delete Elements From Specified Index**](#delete-elements-from-specified-index)
-        - [**splice()**](#splice-1)
-        - [**toSpliced()**](#tospliced-1)
-      - [**Delete Elements From Start**](#delete-elements-from-start)
-        - [**shift()**](#shift)
-    - [**Iterate Over Arrays**](#iterate-over-arrays)
-        - [**For Loop**](#for-loop)
-        - [**For-Of Loop**](#for-of-loop)
-          - [**entries()**](#entries)
-          - [**keys()**](#keys)
-          - [**values()**](#values)
-      - [**For-In Loop**](#for-in-loop)
-      - [**forEach()**](#foreach)
-    - [**Modify Array Copy**](#modify-array-copy)
-      - [**Array.from()**](#arrayfrom)
-      - [**concat()**](#concat-2)
-      - [**copyWithin()**](#copywithin)
-      - [**filter()**](#filter)
-      - [**flat()**](#flat)
-      - [**flatMap()**](#flatmap)
-      - [**map()**](#map)
-      - [**reduce()**](#reduce)
-      - [**reduceRight()**](#reduceright)
-      - [**slice()**](#slice)
-      - [**toReversed()**](#toreversed)
-      - [**toSorted()**](#tosorted)
-      - [**toSpliced()**](#tospliced-2)
-      - [**with()**](#with)
-    - [**Search Elements**](#search-elements)
-      - [**Search With Element**](#search-with-element)
-        - [**indexOf()**](#indexof)
-        - [**lastIndexOf()**](#lastindexof)
-      - [**Search With Custom Matcher Function**](#search-with-custom-matcher-function)
-        - [**find()**](#find)
-        - [**findIndex()**](#findindex)
-        - [**findLast()**](#findlast)
-        - [**findLastIndex()**](#findlastindex)
-    - [**Sort Elements**](#sort-elements)
-      - [**reverse()**](#reverse)
-      - [**sort()**](#sort)
-      - [**toReversed()**](#toreversed-1)
-      - [**toSorted()**](#tosorted-1)
-    - [**Update Elements**](#update-elements)
-      - [**Update Single Element**](#update-single-element)
-        - [**Array\[\]**](#array-2)
-        - [**with()**](#with-1)
-      - [**Update Multiple Elements**](#update-multiple-elements)
-        - [**fill()**](#fill)
-        - [**splice()**](#splice-2)
-        - [**toSpliced()**](#tospliced-3)
+  - [**Delete Elements**](#delete-elements)
+    - [**Delete Elements From End**](#delete-elements-from-end)
+      - [**pop()**](#pop)
+    - [**Delete Elements From Specified Index**](#delete-elements-from-specified-index)
+      - [**splice()**](#splice-1)
+      - [**toSpliced()**](#tospliced-1)
+    - [**Delete Elements From Start**](#delete-elements-from-start)
+      - [**shift()**](#shift)
+  - [**Group Elements**](#group-elements)
+    - [**Object.groupBy()**](#objectgroupby)
+    - [**Map.groupBy()**](#mapgroupby)
+  - [**Iterate Over Arrays**](#iterate-over-arrays)
+    - [**For Loop**](#for-loop)
+    - [**For-Of Loop**](#for-of-loop)
+      - [**entries()**](#entries)
+      - [**keys()**](#keys)
+      - [**values()**](#values)
+    - [**For-In Loop**](#for-in-loop)
+    - [**forEach()**](#foreach)
+  - [**Modify Array Copy**](#modify-array-copy)
+    - [**Array.from()**](#arrayfrom)
+    - [**concat()**](#concat-2)
+    - [**copyWithin()**](#copywithin)
+    - [**filter()**](#filter)
+    - [**flat()**](#flat)
+    - [**flatMap()**](#flatmap)
+    - [**map()**](#map)
+    - [**reduce()**](#reduce)
+    - [**reduceRight()**](#reduceright)
+    - [**slice()**](#slice)
+    - [**toReversed()**](#toreversed)
+    - [**toSorted()**](#tosorted)
+    - [**toSpliced()**](#tospliced-2)
+    - [**with()**](#with)
+  - [**Search Elements**](#search-elements)
+    - [**Search With Element**](#search-with-element)
+      - [**indexOf()**](#indexof)
+      - [**lastIndexOf()**](#lastindexof)
+    - [**Search With Custom Matcher Function**](#search-with-custom-matcher-function)
+      - [**find()**](#find)
+      - [**findIndex()**](#findindex)
+      - [**findLast()**](#findlast)
+      - [**findLastIndex()**](#findlastindex)
+  - [**Sort Elements**](#sort-elements)
+    - [**reverse()**](#reverse)
+    - [**sort()**](#sort)
+    - [**toReversed()**](#toreversed-1)
+    - [**toSorted()**](#tosorted-1)
+  - [**Update Elements**](#update-elements)
+    - [**Update Single Element**](#update-single-element)
+      - [**Array\[\]**](#array-2)
+      - [**with()**](#with-1)
+    - [**Update Multiple Elements**](#update-multiple-elements)
+      - [**fill()**](#fill)
+      - [**splice()**](#splice-2)
+      - [**toSpliced()**](#tospliced-3)
   
 <br>
 <br>
@@ -164,51 +168,6 @@ const array = [1, 2, , , 4];
 <br>
 <br>
 
-## **Create Arrays**
-<br>
-<br>
-
-### **Constructor Array()**
-<br>
-
-```
-Array(?initialLength, ?element1, ... ?elementN)
-```
-
-<br>
-
-**Examples**
-
-```javascript
-const array = new Array();          // []
-```
-
-```javascript
-const array = new Array(3);         // [empty × 3]
-```
-
-```javascript
-const array = new Array(1, 2, 3);   // [1, 2, 3]
-```
-
-<br>
-<br>
-
-### **Array Literal**
-<br>
-
-```javascript
-const array = [];         // []
-```
-
-```javascript
-const array = [1, 2, 3];  // [1, 2, 3]
-```
-
-<br>
-<br>
-<br>
-
 ## **Properties**
 <br>
 <br>
@@ -226,17 +185,12 @@ array.length;   // 5
 
 <br>
 <br>
-<br>
 
-## **Methods**
-<br>
-<br>
-
-### **Access Elements**
+## **Access Elements**
 <br>
 <br>
 
-#### **Array[]**
+### **Array[]**
 
 Returns element at specified index.
 
@@ -256,7 +210,7 @@ array[2];     // 3
 <br>
 <br>
 
-#### **at()**
+### **at()**
 
 Returns element at specified index. Allows selection from end of array via negative index.
 
@@ -279,7 +233,7 @@ array.at(-3);   // 3
 <br>
 <br>
 
-#### **Destructuring []**
+### **Destructuring []**
 
 Assign array elements to distinct variables.
 
@@ -346,7 +300,7 @@ const [[a, b], [c, d], [e]] = array;
 <br>
 <br>
 
-#### **Spread Operator ...**
+### **Spread Operator ...**
 
 Expands array elements to the outside. Used for function arguments or array literals.
 
@@ -396,18 +350,18 @@ const concatArray = [...array1, ...array2];
 <br>
 <br>
 
-### **Add Elements**
+## **Add Elements**
 <br>
 
-#### **Add Elements To End**
+### **Add Elements To Start**
 <br>
 
-##### **push()**
+#### **unshift()**
 
-Adds one or more elements to the **end** of an array and returns the new array length.
+Adds one or more elements to the **start** of an array and returns the new array length.
 
 ```javascript
-array.push(element1, ?element2, ..., ?elementN)
+array.unshift(element1, ?element2, ..., ?elementN)
 ```
 
 <br>
@@ -415,10 +369,10 @@ array.push(element1, ?element2, ..., ?elementN)
 ```javascript
 const array = [1, 2];
 
-array.push('foo'); 
+array.unshift('foo');
 
 // returns 3
-// array [1, 2, 'foo']
+// array ['foo', 1, 2]
 ```
 
 <br>
@@ -426,51 +380,19 @@ array.push('foo');
 ```javascript
 const array = [1, 2];
 
-const newLength = array.push(3, 4, 5);
+const newLength = array.unshift(3, 4, 5);
 
 // newLength: 5
-// array [1, 2, 3, 4, 5]
+// array [3, 4, 5, 1, 2]
 ```
 
 <br>
 <br>
 
-##### **Array[]**
-
-Adds element at specified index greater or equal to `array.length'.  
-If specified index is greater than `array.length` all new elements between current last element and the inserted element will be filled with `empty`.
-
-```javascript
-array[index] = value
-```
-
+### **Add Elements At Specified Index**
 <br>
 
-```javascript
-const array = [1, 2, 3];
-
-array[3] = 4;
-
-// array = [1, 2, 3, 4]
-```
-
-<br>
-
-```javascript
-const array = [1, 2, 3];
-
-array[7] = 3;
-
-// array = [1, 2, 3, empty × 4, 3]
-```
-
-<br>
-<br>
-
-#### **Add Elements At Specified Index**
-<br>
-
-##### **splice()**
+#### **splice()**
 
 Change array content by **adding**, **removing** or **replacing** elements.  
 Returns an array containing all deleted elements.
@@ -513,7 +435,7 @@ array.splice(0, 0, 'X', 'Y', 'Z');
 <br>
 <br>
 
-##### **toSpliced()**
+#### **toSpliced()**
 
 Returns manipulated array copy with **added**, **remoded** or **replaced** elements.
 
@@ -555,15 +477,15 @@ const splicedArray = array.toSpliced(0, 0, 'X', 'Y', 'Z');
 <br>
 <br>
 
-#### **Add Elements To Start**
+### **Add Elements To End**
 <br>
 
-##### **unshift()**
+#### **push()**
 
-Adds one or more elements to the **start** of an array and returns the new array length.
+Adds one or more elements to the **end** of an array and returns the new array length.
 
 ```javascript
-array.unshift(element1, ?element2, ..., ?elementN)
+array.push(element1, ?element2, ..., ?elementN)
 ```
 
 <br>
@@ -571,10 +493,10 @@ array.unshift(element1, ?element2, ..., ?elementN)
 ```javascript
 const array = [1, 2];
 
-array.unshift('foo');
+array.push('foo'); 
 
 // returns 3
-// array ['foo', 1, 2]
+// array [1, 2, 'foo']
 ```
 
 <br>
@@ -582,23 +504,52 @@ array.unshift('foo');
 ```javascript
 const array = [1, 2];
 
-const newLength = array.unshift(3, 4, 5);
+const newLength = array.push(3, 4, 5);
 
 // newLength: 5
-// array [3, 4, 5, 1, 2]
+// array [1, 2, 3, 4, 5]
+```
+
+<br>
+<br>
+
+#### **Array[]**
+
+Adds element at specified index greater or equal to `array.length'.  
+If specified index is greater than `array.length` all new elements between current last element and the inserted element will be filled with `empty`.
+
+```javascript
+array[index] = value
+```
+
+<br>
+
+```javascript
+const array = [1, 2, 3];
+
+array[3] = 4;
+
+// array = [1, 2, 3, 4]
+```
+
+<br>
+
+```javascript
+const array = [1, 2, 3];
+
+array[7] = 3;
+
+// array = [1, 2, 3, empty × 4, 3]
 ```
 
 <br>
 <br>
 <br>
 
-### **Check Elements**
+## **Check Elements**
 <br>
 
-<br>
-<br>
-
-#### **includes()**
+### **includes()**
 
 Returns boolean indicating whether array includes the specified element.  
 Search range can be modified via optional `fromIndex`.  
@@ -625,10 +576,10 @@ array.includes(4);        // false
 <br>
 <br>
 
-#### **Check With Custom Matcher Function**
+### **Check With Custom Matcher Function**
 <br>
 
-##### **every()**
+#### **every()**
 
 Returns boolean indicating whether **all** elements match the specified matcher function.
 
@@ -657,7 +608,7 @@ array.every(element => element > 3);    // false
 <br>
 <br>
 
-##### **some()**
+#### **some()**
 
 Returns boolean indicating whether **at least one** element matches the specified matcher function.
 
@@ -687,13 +638,36 @@ array.some(element => element < 1);   // false
 <br>
 <br>
 
-### **Concat**
+## **Check If Value Is Array**
 <br>
 
-#### **Concat Arrays**
+### **Array.isArray()**
+
+Returns boolean indicating whether specified value is an array.
+
+```javascript
+Array.isArray(value)
+```
+
 <br>
 
-##### **concat()**
+```javascript
+Array.isArray([]);      // true
+
+Array.isArray('foo');   // false
+```
+
+<br>
+<br>
+<br>
+
+## **Concat**
+<br>
+
+### **Concat Arrays**
+<br>
+
+#### **concat()**
 
 Returns a new array containing shallow copies of all given arrays and values.
 
@@ -745,7 +719,7 @@ const concatArray = array1.concat(array2, 'X', 1, 'Z');
 <br>
 <br>
 
-##### **Spread Operator ...**
+#### **Spread Operator ...**
 
 Concatenate arrays by spreading their element into a [literal Array](#array-literal).
 
@@ -769,10 +743,10 @@ const concatArray = [...array1, ...array2];
 <br>
 <br>
 
-#### **Concat Elements**
+### **Concat Elements**
 <br>
 
-##### **join()**
+#### **join()**
 
 Returns a string containing all elements of the array separated by the specified separator string (Default: `,`).
 
@@ -794,13 +768,58 @@ array.join('---');    // f---o---o
 <br>
 <br>
 
-### **Delete Elements**
+## **Create Arrays**
+<br>
 <br>
 
-#### **Delete Elements From End**
+### **Constructor Array()**
 <br>
 
-##### **pop()**
+```
+Array(?initialLength, ?element1, ... ?elementN)
+```
+
+<br>
+
+**Examples**
+
+```javascript
+const array = new Array();          // []
+```
+
+```javascript
+const array = new Array(3);         // [empty × 3]
+```
+
+```javascript
+const array = new Array(1, 2, 3);   // [1, 2, 3]
+```
+
+<br>
+<br>
+
+### **Array Literal**
+<br>
+
+```javascript
+const array = [];         // []
+```
+
+```javascript
+const array = [1, 2, 3];  // [1, 2, 3]
+```
+
+<br>
+<br>
+<br>
+
+## **Delete Elements**
+<br>
+
+### **Delete Elements From End**
+<br>
+
+#### **pop()**
 
 Removes and returns **last** element. Returns `undefined` for empty arrays.
 
@@ -833,10 +852,10 @@ array.pop();
 <br>
 <br>
 
-#### **Delete Elements From Specified Index**
+### **Delete Elements From Specified Index**
 <br>
 
-##### **splice()**
+#### **splice()**
 
 Change array content by **adding**, **removing** or **replacing** elements.  
 Returns an array containing all deleted elements.
@@ -892,7 +911,7 @@ array.splice(0);
 <br>
 <br>
 
-##### **toSpliced()**
+#### **toSpliced()**
 
 Returns shallow copy of array with **added**, **remoded** or **replaced** elements.
 
@@ -947,10 +966,10 @@ const splicedArray = array.toSpliced(0);
 <br>
 <br>
 
-#### **Delete Elements From Start**
+### **Delete Elements From Start**
 <br>
 
-##### **shift()**
+#### **shift()**
 
 Removes and returns **first** element. Returns `undefined` for empty arrays.
 
@@ -984,11 +1003,122 @@ array.shift();
 <br>
 <br>
 
-### **Iterate Over Arrays**
+## **Group Elements**
+<br>
+
+### **Object.groupBy()**
+
+Partitions array with specified group function that returns the group value as a string. Returns object that contains all partitions with groups name as properties.
+
+```javascript
+Object.groupBy(array, (element, ?index) => groupString)
+```
+
+<br>
+
+**Group By Element Value**
+
+```javascript
+const array = ['foo', 'bar', 'foo', 'bar', 'baz'];
+
+const groupedObject = Object.groupBy(array, (element) => element);
+
+// groupedObject = {
+//   bar: ['bar', 'bar'],
+//   baz: ['baz'],
+//   foo: ['foo', 'foo']
+// }
+```
+
+<br>
+
+**Group By Element Property**
+
+```javascript
+const array = [
+  { firstName: 'John', lastName: 'Doe' },
+  { firstName: 'Jane', lastName: 'Smith' },
+  { firstName: 'Alice', lastName: 'Doe' },
+  { firstName: 'Bob', lastName: 'Smith' }
+];
+
+const groupedObject = Object.groupBy(array, ({ lastName }) => lastName);
+
+// groupedObject = {
+//   Doe: [
+//     { firstName: 'John', lastName: 'Doe' },
+//     { firstName: 'Alice', lastName: 'Doe' }
+//   ]
+//   Smith: [
+//     { firstName: 'Jane', lastName: 'Smith' },
+//     { firstName: 'Bob', lastName: 'Smith' }
+//   ]
+// } 
+```
+
 <br>
 <br>
 
-##### **For Loop**
+### **Map.groupBy()**
+
+Partitions array with specified group function that returns the group value as a string. Returns map object with the group name as key and the group as value.
+
+
+```javascript
+Map.groupBy(array, (element, ?index) => groupString)
+```
+
+<br>
+
+**Group By Element Value**
+
+```javascript
+const array = ['foo', 'bar', 'foo', 'bar', 'baz'];
+
+const groupMap = Map.groupBy(array, (element) => element);
+
+// groupMap = {
+//   bar => ['bar', 'bar'],
+//   baz => ['baz'],
+//   foo => ['foo', 'foo']
+// }
+```
+
+<br>
+
+**Group By Element Property**
+
+```javascript
+const array = [
+  { firstName: 'John', lastName: 'Doe' },
+  { firstName: 'Jane', lastName: 'Smith' },
+  { firstName: 'Alice', lastName: 'Doe' },
+  { firstName: 'Bob', lastName: 'Smith' }
+];
+
+const groupMap = Map.groupBy(array, ({ lastName }) => lastName);
+
+// groupMap = {
+//   Doe => [
+//     { firstName: 'John', lastName: 'Doe' },
+//     { firstName: 'Alice', lastName: 'Doe' }
+//   ]
+//   Smith => [
+//     { firstName: 'Jane', lastName: 'Smith' },
+//     { firstName: 'Bob', lastName: 'Smith' }
+//   ]
+// } 
+```
+
+<br>
+<br>
+<br>
+
+## **Iterate Over Arrays**
+<br>
+<br>
+
+### **For Loop**
 
 ```javascript
 const array = ['A', 'B', 'C'];
@@ -1005,7 +1135,7 @@ for (let i = 0; i < array.length; i++) {
 <br>
 <br>
 
-##### **For-Of Loop**
+### **For-Of Loop**
 
 ```javascript
 const array = ['A', 'B', 'C'];
@@ -1021,7 +1151,7 @@ for (const element of array) {
 
 <br>
 
-###### **entries()**
+#### **entries()**
 
 ```javascript
 const array = ['A', 'B', 'C'];
@@ -1037,7 +1167,7 @@ for (const [index, element] of array.entries()) {
 
 <br>
 
-###### **keys()**
+#### **keys()**
 
 ```javascript
 const array = ['A', 'B', 'C'];
@@ -1053,7 +1183,7 @@ for (const key of array.keys()) {
 
 <br>
 
-###### **values()**
+#### **values()**
 
 ```javascript
 const array = ['A', 'B', 'C'];
@@ -1070,7 +1200,7 @@ for (const value of array.values()) {
 <br>
 <br>
 
-#### **For-In Loop**
+### **For-In Loop**
 
 Loop over array indices.
 
@@ -1089,7 +1219,7 @@ for (const index in array) {
 <br>
 <br>
 
-#### **forEach()**
+### **forEach()**
 
 Executes specified function once for every array element. Does not alter the array.
 
@@ -1145,10 +1275,10 @@ array.forEach((element, index) => console.log(`(${element}, ${index}, ${array})`
 <br>
 <br>
 
-### **Modify Array Copy**
+## **Modify Array Copy**
 <br>
 
-#### **Array.from()**
+### **Array.from()**
 
 Returns shallow copy of an iterable or array-like object.
 
@@ -1170,7 +1300,7 @@ const copyArray = Array.from(array, (element) => element + 10);
 <br>
 <br>
 
-#### **concat()**
+### **concat()**
 
 Returns new array containing shallow copies of all given arrays and values.
 
@@ -1222,7 +1352,7 @@ const concatArray = array1.concat(array2, 'X', 1, 'Z');
 <br>
 <br>
 
-#### **copyWithin()**
+### **copyWithin()**
 
 Shallow copies array range `[start, end)` to another location in the same array. The element at the target location are replaced, so that the length of the array does not change.
 
@@ -1268,7 +1398,7 @@ array.copyWithin(-1);
 <br>
 <br>
 
-#### **filter()**
+### **filter()**
 
 Returns new array containing shallow copies of all elements that match the specified match function.
 
@@ -1298,7 +1428,7 @@ const filteredArray = array.filter(element => element < 8);
 <br>
 <br>
 
-#### **flat()**
+### **flat()**
 
 Returns shallow copy of array with elements of sub-arrays concatenated up to the specified depth.
 
@@ -1345,7 +1475,7 @@ const flatArray = array.flat(Infinity);
 <br>
 <br>
 
-#### **flatMap()**
+### **flatMap()**
 
 Returns new array by mapping the elements with a custom callback function and flatten the result in the first layer.
 
@@ -1378,7 +1508,7 @@ const flatMapArray = array.flatMap((element) => element.join('-'));
 <br>
 <br>
 
-#### **map()**
+### **map()**
 
 Returns new array containing the results of a customFunction envoked on every element of the orignal array.
 
@@ -1408,7 +1538,7 @@ const mappedArray = array.map(element => element + 10);
 <br>
 <br>
 
-#### **reduce()**
+### **reduce()**
 
 Envokes custom reducerFunction to reduce all elements of an array to a single value and return that value.
 
@@ -1474,7 +1604,7 @@ const countObj = array.reduce((countObject, element) => {
 <br>
 <br>
 
-#### **reduceRight()**
+### **reduceRight()**
 
 Envokes custom reducerFunction to reduce all elements of an array to a single value and return that value.
 
@@ -1483,7 +1613,7 @@ Same as [array.reduce()](#reduce), but processes values from right to left.
 <br>
 <br>
 
-#### **slice()**
+### **slice()**
 
 Returns a shallow copy of an array, optionally restricted to a range `[start, end)`.
 
@@ -1530,7 +1660,7 @@ const slicedArray = array.slice();
 <br>
 <br>
 
-#### **toReversed()**
+### **toReversed()**
 
 Returns shallow copy of array with reversed order of elements.
 
@@ -1553,7 +1683,7 @@ const reversedArray = array.toReversed();
 <br>
 <br>
 
-#### **toSorted()**
+### **toSorted()**
 
 Returns shallow copy with elements sorted in ascending order. An optional compare function can be specified to implement a custom sorting order.
 
@@ -1628,7 +1758,7 @@ const sortedArray = array.toSorted((a, b) => b - a);
 <br>
 <br>
 
-#### **toSpliced()**
+### **toSpliced()**
 
 Returns manipulated array copy with **added**, **remoded** or **replaced** elements.
 
@@ -1748,7 +1878,7 @@ const splicedArray = array.toSpliced(0);
 <br>
 <br>
 
-#### **with()**
+### **with()**
 
 Returns a shallow copy with updated element at specified index. Allows selection from end of array via negative index.
 
@@ -1770,14 +1900,14 @@ array.with(-1, 'foo');  // returns new array [1, 2, 3, 'foo']
 <br>
 <br>
 
-### **Search Elements**
+## **Search Elements**
 <br>
 <br>
 
-#### **Search With Element**
+### **Search With Element**
 <br>
 
-##### **indexOf()**
+#### **indexOf()**
 
 Returns the index of the **first** occurrence of the specified element.  
 Returns `-1` if the specified element does not exist.  
@@ -1802,7 +1932,7 @@ array.indexOf('X');     // -1
 <br>
 <br>
 
-##### **lastIndexOf()**
+#### **lastIndexOf()**
 
 Returns the index of the **last** occurrence of the specified element.  
 Returns `-1` if the specified element does not exist.  
@@ -1827,10 +1957,10 @@ array.lastIndexOf('X');     // -1
 <br>
 <br>
 
-#### **Search With Custom Matcher Function**
+### **Search With Custom Matcher Function**
 <br>
 
-##### **find()**
+#### **find()**
 
 Returns **first** element that matches the specified matcher function.  
 Returns `undefined` when there are no matches.
@@ -1862,7 +1992,7 @@ array.find((element) => element < 3);         // undefined
 <br>
 <br>
 
-##### **findIndex()**
+#### **findIndex()**
 
 Returns index of the **first** element that matches the specified matcher function.  
 Returns `-1` when there are no matches.
@@ -1894,7 +2024,7 @@ array.findIndex((element) => element < 3);    // -1
 <br>
 <br>
 
-##### **findLast()**
+#### **findLast()**
 
 Returns **last** element that matches the specified matcher function.  
 Returns `undefined` when there are no matches.
@@ -1926,7 +2056,7 @@ array.findLast((element) => element < 3);     // undefined
 <br>
 <br>
 
-##### **findLastIndex()**
+#### **findLastIndex()**
 
 Returns index of the **last** element that matches the specified matcher function.  
 Returns `-1` when there are no matches.
@@ -1959,10 +2089,10 @@ array.findLastIndex((element) => element < 3);    // -1
 <br>
 <br>
 
-### **Sort Elements**
+## **Sort Elements**
 <br>
 
-#### **reverse()**
+### **reverse()**
 
 Reverses the order of array elements.
 
@@ -1983,7 +2113,7 @@ array.reverse();
 <br>
 <br>
 
-#### **sort()**
+### **sort()**
 
 Sorts array elements in ascending order. An optional compare function can be specified to to implement a custom sorting order.
 
@@ -2054,7 +2184,7 @@ array.sort((a, b) => b - a);
 <br>
 <br>
 
-#### **toReversed()**
+### **toReversed()**
 <br>
 
 Returns shallow copy of array with reversed order of elements.
@@ -2077,7 +2207,7 @@ const reversedArray = array.toReversed();
 <br>
 <br>
 
-#### **toSorted()**
+### **toSorted()**
 
 Returns shallow copy of array sorted in ascending order. An optional compare function can be specified to to implement a custom sorting order.
 
@@ -2153,13 +2283,13 @@ const sortedArray = array.toSorted((a, b) => b - a);
 <br>
 <br>
 
-### **Update Elements**
+## **Update Elements**
 <br>
 
-#### **Update Single Element**
+### **Update Single Element**
 <br>
 
-##### **Array[]**
+#### **Array[]**
 
 Updates element at specified index. Adds element when specified index does not exist.
 
@@ -2180,7 +2310,7 @@ array[1] = 8;
 <br>
 <br>
 
-##### **with()**
+#### **with()**
 
 Returns a shallow copy with updated element at specified index. Allows selection from end of array via negative index.
 
@@ -2201,10 +2331,10 @@ array.with(-1, 'foo');  // returns new array [1, 2, 3, 'foo']
 <br>
 <br>
 
-#### **Update Multiple Elements**
+### **Update Multiple Elements**
 <br>
 
-##### **fill()**
+#### **fill()**
 
 Replaces all elements in a specified range `[start, end]` with a specified value.
 
@@ -2250,7 +2380,7 @@ array.fill('foo', 0, 3);
 <br>
 <br>
 
-##### **splice()**
+#### **splice()**
 
 Change array content by **adding**, **removing** or **replacing** elements.  
 Returns an array containing all deleted elements.
@@ -2307,7 +2437,7 @@ array.splice(0, Infinity, 'X', 'Y');
 <br>
 <br>
 
-##### **toSpliced()**
+#### **toSpliced()**
 
 Returns manipulated array copy with **added**, **remoded** or **replaced** elements.
 

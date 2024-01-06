@@ -26,8 +26,8 @@
     - [**Add Elements**](#add-elements)
       - [**Add Elements To End**](#add-elements-to-end)
         - [**push()**](#push)
-      - [**Add Elements At Specified Index**](#add-elements-at-specified-index)
         - [**Array\[\]**](#array-1)
+      - [**Add Elements At Specified Index**](#add-elements-at-specified-index)
         - [**splice()**](#splice)
         - [**toSpliced()**](#tospliced)
       - [**Add Elements To Start**](#add-elements-to-start)
@@ -40,6 +40,7 @@
     - [**Concat**](#concat)
       - [**Concat Arrays**](#concat-arrays)
         - [**concat()**](#concat-1)
+        - [**Spread Operator ...**](#spread-operator--1)
       - [**Concat Elements**](#concat-elements)
         - [**join()**](#join)
     - [**Delete Elements**](#delete-elements)
@@ -434,13 +435,10 @@ const newLength = array.push(3, 4, 5);
 <br>
 <br>
 
-#### **Add Elements At Specified Index**
-<br>
-
 ##### **Array[]**
 
-Adds element at specified index. If specified index is greater than the next free index, all positions in between are marked as `empty`. 
-
+Adds element at specified index greater or equal to `array.length'.  
+If specified index is greater than `array.length` all new elements between current last element and the inserted element will be filled with `empty`.
 
 ```javascript
 array[index] = value
@@ -467,6 +465,9 @@ array[7] = 3;
 ```
 
 <br>
+<br>
+
+#### **Add Elements At Specified Index**
 <br>
 
 ##### **splice()**
@@ -739,6 +740,30 @@ const concatArray = array1.concat(array2, 'X', 1, 'Z');
 // array1 = ['A', 'B', 'C', 'D']
 // array2 = ['foo', 'bar']
 // concatArray = ['A', 'B', 'C', 'D', 'foo', 'bar', 'X', 1, 'Z']
+```
+
+<br>
+<br>
+
+##### **Spread Operator ...**
+
+Concatenate arrays by spreading their element into a [literal Array](#array-literal).
+
+```javascript
+[...array1, ...array2]
+```
+
+<br>
+
+```javascript
+const array1 = [1, 2, 3];
+const array2 = [3, 4, 5];
+
+const concatArray = [...array1, ...array2];
+
+// array1 = [1, 2, 3];
+// array2 = [3, 4, 5];
+// concatArray = [1, 2, 3, 3, 4, 5]
 ```
 
 <br>

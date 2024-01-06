@@ -19,22 +19,31 @@
       - [**Destructuring \[\]**](#destructuring-)
       - [**Spread Operator ...**](#spread-operator-)
     - [**Add Elements**](#add-elements)
-      - [**push()**](#push)
-      - [**splice()**](#splice)
-      - [**toSpliced()**](#tospliced)
-      - [**unshift()**](#unshift)
+      - [**Add Elements To End**](#add-elements-to-end)
+        - [**push()**](#push)
+      - [**Add Elements At Specified Index**](#add-elements-at-specified-index)
+        - [**splice()**](#splice)
+        - [**toSpliced()**](#tospliced)
+      - [**Add Elements To Start**](#add-elements-to-start)
+        - [**unshift()**](#unshift)
     - [**Check Elements**](#check-elements)
-      - [**every()**](#every)
       - [**includes()**](#includes)
-      - [**some()**](#some)
+      - [**Check With Custom Matcher Function**](#check-with-custom-matcher-function)
+        - [**every()**](#every)
+        - [**some()**](#some)
     - [**Concat**](#concat)
-      - [**concat()**](#concat-1)
-      - [**join()**](#join)
+      - [**Concat Arrays**](#concat-arrays)
+        - [**concat()**](#concat-1)
+      - [**Concat Elements**](#concat-elements)
+        - [**join()**](#join)
     - [**Delete Elements**](#delete-elements)
-      - [**pop()**](#pop)
-      - [**shift()**](#shift)
-      - [**splice()**](#splice-1)
-      - [**toSpliced()**](#tospliced-1)
+      - [**Delete Elements From End**](#delete-elements-from-end)
+        - [**pop()**](#pop)
+      - [**Delete Elements From Specified Index**](#delete-elements-from-specified-index)
+        - [**splice()**](#splice-1)
+        - [**toSpliced()**](#tospliced-1)
+      - [**Delete Elements From Start**](#delete-elements-from-start)
+        - [**shift()**](#shift)
     - [**Iterate Over Arrays**](#iterate-over-arrays)
         - [**For Loop**](#for-loop)
         - [**For-Of Loop**](#for-of-loop)
@@ -44,19 +53,19 @@
       - [**For-In Loop**](#for-in-loop)
       - [**forEach()**](#foreach)
     - [**Modify Array Copy**](#modify-array-copy)
-      - [**flat()**](#flat)
+      - [**Array.from()**](#arrayfrom)
+      - [**concat()**](#concat-2)
+      - [**copyWithin()**](#copywithin)
       - [**filter()**](#filter)
+      - [**flat()**](#flat)
+      - [**flatMap()**](#flatmap)
       - [**map()**](#map)
       - [**reduce()**](#reduce)
       - [**slice()**](#slice)
-      - [**copyWithin()**](#copywithin)
-      - [**with()**](#with)
-      - [**toSorted()**](#tosorted)
       - [**toReversed()**](#toreversed)
+      - [**toSorted()**](#tosorted)
       - [**toSpliced()**](#tospliced-2)
-      - [**concat()**](#concat-2)
-      - [**flatMap()**](#flatmap)
-      - [**Array.from()**](#arrayfrom)
+      - [**with()**](#with)
     - [**Search Elements**](#search-elements)
       - [**Search With Element**](#search-with-element)
         - [**indexOf()**](#indexof)
@@ -72,11 +81,13 @@
       - [**toReversed()**](#toreversed-1)
       - [**toSorted()**](#tosorted-1)
     - [**Update Elements**](#update-elements)
-      - [**Array\[\]**](#array-1)
-      - [**fill()**](#fill)
-      - [**splice()**](#splice-2)
-      - [**toSpliced()**](#tospliced-3)
-      - [**with()**](#with-1)
+      - [**Update Single Element**](#update-single-element)
+        - [**Array\[\]**](#array-1)
+        - [**with()**](#with-1)
+      - [**Update Multiple Elements**](#update-multiple-elements)
+        - [**fill()**](#fill)
+        - [**splice()**](#splice-2)
+        - [**toSpliced()**](#tospliced-3)
   
 <br>
 <br>
@@ -366,7 +377,10 @@ const concatArray = [...array1, ...array2];
 ### **Add Elements**
 <br>
 
-#### **push()**
+#### **Add Elements To End**
+<br>
+
+##### **push()**
 
 Adds one or more elements to the **end** of an array and returns the new array length.
 
@@ -399,7 +413,10 @@ const newLength = array.push(3, 4, 5);
 <br>
 <br>
 
-#### **splice()**
+#### **Add Elements At Specified Index**
+<br>
+
+##### **splice()**
 
 Change array content by **adding**, **removing** or **replacing** elements.  
 Returns an array containing all deleted elements.
@@ -442,7 +459,7 @@ array.splice(0, 0, 'X', 'Y', 'Z');
 <br>
 <br>
 
-#### **toSpliced()**
+##### **toSpliced()**
 
 Returns manipulated array copy with **added**, **remoded** or **replaced** elements.
 
@@ -484,7 +501,10 @@ const splicedArray = array.toSpliced(0, 0, 'X', 'Y', 'Z');
 <br>
 <br>
 
-#### **unshift()**
+#### **Add Elements To Start**
+<br>
+
+##### **unshift()**
 
 Adds one or more elements to the **start** of an array and returns the new array length.
 
@@ -521,32 +541,6 @@ const newLength = array.unshift(3, 4, 5);
 ### **Check Elements**
 <br>
 
-#### **every()**
-
-Returns boolean indicating whether **all** elements of the array match the specified findFunction.
-
-```javascript
-array.every((element, ?index, ?array) => { code }, ?thisArg)
-```
-
-Function parameters:
-- `element`
-- `index`
-- `array`: reference to array the function was called upon
-
-Optional parameter:
-- `thisArg`: reference to use as `this` within the function
-
-<br>
-
-```javascript
-const array = [1, 9, 29, 3, 7, 12];
-
-array.every(element => element < 30);   // true
-
-array.every(element => element > 3);    // false
-```
-
 <br>
 <br>
 
@@ -576,7 +570,39 @@ array.includes(4);        // false
 <br>
 <br>
 
-#### **some()**
+#### **Check With Custom Matcher Function**
+<br>
+
+##### **every()**
+
+Returns boolean indicating whether **all** elements of the array match the specified findFunction.
+
+```javascript
+array.every((element, ?index, ?array) => { code }, ?thisArg)
+```
+
+Function parameters:
+- `element`
+- `index`
+- `array`: reference to array the function was called upon
+
+Optional parameter:
+- `thisArg`: reference to use as `this` within the function
+
+<br>
+
+```javascript
+const array = [1, 9, 29, 3, 7, 12];
+
+array.every(element => element < 30);   // true
+
+array.every(element => element > 3);    // false
+```
+
+<br>
+<br>
+
+##### **some()**
 
 Returns boolean indicating whether **at least one** element of the array matches the specified findFunction.
 
@@ -609,7 +635,10 @@ array.some(element => element < 1);   // false
 ### **Concat**
 <br>
 
-#### **concat()**
+#### **Concat Arrays**
+<br>
+
+##### **concat()**
 
 Returns new array containing shallow copies of all given arrays and values.
 
@@ -661,7 +690,10 @@ const concatArray = array1.concat(array2, 'X', 1, 'Z');
 <br>
 <br>
 
-#### **join()**
+#### **Concat Elements**
+<br>
+
+##### **join()**
 
 Returns a string containing all elements of the array separated by the specified separator string (Default: `,`).
 
@@ -686,7 +718,10 @@ array.join('---');    // f---o---o
 ### **Delete Elements**
 <br>
 
-#### **pop()**
+#### **Delete Elements From End**
+<br>
+
+##### **pop()**
 
 Removes and returns **last** array element. Returns `undefined` for empty arrays.
 
@@ -719,40 +754,10 @@ array.pop();
 <br>
 <br>
 
-#### **shift()**
-
-Removes and returns **first** array element. Returns `undefined` for empty arrays.
-
-```javascript
-array.shift()
-```
-
+#### **Delete Elements From Specified Index**
 <br>
 
-```javascript
-const array = ['foo', 1, 2];
-
-array.shift();
-
-// returns 'foo'
-// array [1, 2]
-```
-
-<br>
-
-```javascript
-const array = [];
-
-array.shift();
-
-// returns undefined
-// array []
-```
-
-<br>
-<br>
-
-#### **splice()**
+##### **splice()**
 
 Change array content by **adding**, **removing** or **replacing** elements.  
 Returns an array containing all deleted elements.
@@ -808,7 +813,7 @@ array.splice(0);
 <br>
 <br>
 
-#### **toSpliced()**
+##### **toSpliced()**
 
 Returns manipulated array copy with **added**, **remoded** or **replaced** elements.
 
@@ -858,6 +863,42 @@ const splicedArray = array.toSpliced(0);
 
 // array = ['A', 'B', 'C', 'D']
 // splicedArray = []
+```
+
+<br>
+<br>
+
+#### **Delete Elements From Start**
+<br>
+
+##### **shift()**
+
+Removes and returns **first** array element. Returns `undefined` for empty arrays.
+
+```javascript
+array.shift()
+```
+
+<br>
+
+```javascript
+const array = ['foo', 1, 2];
+
+array.shift();
+
+// returns 'foo'
+// array [1, 2]
+```
+
+<br>
+
+```javascript
+const array = [];
+
+array.shift();
+
+// returns undefined
+// array []
 ```
 
 <br>
@@ -1028,6 +1069,156 @@ array.forEach((element, index) => console.log(`(${element}, ${index}, ${array})`
 ### **Modify Array Copy**
 <br>
 
+#### **Array.from()**
+
+Returns shallow copy of an iterable or array-like object.
+
+```javascript
+Array.from(arrayLike, ?(element, ?index) => { code }, ?thisArg)
+```
+
+<br>
+
+```javascript
+const array = [1, 2, 3, 4];
+
+const copyArray = Array.from(array, (element) => element + 10);
+
+// array = [1, 2, 3, 4]
+// copyArray = [11, 12, 13, 14]
+```
+
+<br>
+<br>
+
+#### **concat()**
+
+Returns new array containing shallow copies of all given arrays and values.
+
+```javascript
+array.concat(value1, ..., valueN)
+```
+
+<br>
+
+```javascript
+const array1 = ['A', 'B', 'C', 'D'];
+const array2 = ['foo', 'bar'];
+
+const concatArray = array1.concat(array2);
+
+// array1 = ['A', 'B', 'C', 'D']
+// array2 = ['foo', 'bar']
+// concatArray = ['A', 'B', 'C', 'D', 'foo', 'bar']
+```
+
+<br>
+
+```javascript
+const array1 = ['A', 'B', 'C', 'D'];
+const array2 = ['foo', 'bar'];
+const array3 = [1, 2];
+
+const concatArray = array1.concat(array2, array3);
+
+// array1 = ['A', 'B', 'C', 'D']
+// array2 = ['foo', 'bar']
+// array3 = [1, 2]
+// concatArray = ['A', 'B', 'C', 'D', 'foo', 'bar', 1, 2]
+```
+
+<br>
+
+```javascript
+const array1 = ['A', 'B', 'C', 'D'];
+const array2 = ['foo', 'bar'];
+
+const concatArray = array1.concat(array2, 'X', 1, 'Z');
+
+// array1 = ['A', 'B', 'C', 'D']
+// array2 = ['foo', 'bar']
+// concatArray = ['A', 'B', 'C', 'D', 'foo', 'bar', 'X', 1, 'Z']
+```
+
+<br>
+<br>
+
+#### **copyWithin()**
+
+Shallow copies part `[start, end)` of an array to another location in the same array. The element at the target location are replaced, so that the length of the array does not change.
+
+```javascript
+array.copyWithin(targetIndex, startIndex, ?endIndex);
+```
+
+Parameters:
+- `targetIndex`: First index of the target area where the copied range from `startIndex` should be inserted. Negative index is counted from end of the array.
+- `startIndex`: Start of element range to copy from. Negative index is counted from end of the array.
+- `endIndex`: End of element range (exclusive) to copy from. Negative index is counted from end of the array.
+
+<br>
+
+```javascript
+const array = ['A', 'B', 'C', 'D']
+
+array.copyWithin(0, 2);
+
+// array = ['C', 'D', 'C', 'D']
+```
+
+<br>
+
+```javascript
+const array = ['A', 'B', 'C', 'D']
+
+array.copyWithin(0, 2, 3);
+
+// array = ['C', 'B', 'C', 'D']
+```
+
+<br>
+
+```javascript
+const array = ['A', 'B', 'C', 'D'];
+
+array.copyWithin(-1);
+
+// array = ['A', 'B', 'C', 'A']
+```
+
+<br>
+<br>
+
+#### **filter()**
+
+Returns new array containing shallow copies of all elements that match the specified findFunction.
+
+```javascript
+array.filter((element, ?index, ?array) => { code }, ?thisArg)
+```
+
+findFunction parameters:
+- `element`
+- `index`
+- `array`: reference to array the function was called upon
+
+Optional parameter:
+- `thisArg`: reference to use as `this` within the function
+
+<br>
+
+```javascript
+const array = [10, 5, 4, 17, 3, 8];
+
+const filteredArray = array.filter(element => element < 8);
+
+// array = [10, 5, 4, 17, 3, 8]
+// filteredArray = [5, 4, 3]
+```
+
+<br>
+<br>
+
 #### **flat()**
 
 Returns new array with elements of sub-arrays concatenated up to the specified depth.
@@ -1075,31 +1266,34 @@ const flatArray = array.flat(Infinity);
 <br>
 <br>
 
-#### **filter()**
+#### **flatMap()**
 
-Returns new array containing shallow copies of all elements that match the specified findFunction.
+Returns new array by mapping the elements with a custom callback function and flatten the result in the first layer.
 
 ```javascript
-array.filter((element, ?index, ?array) => { code }, ?thisArg)
+array.flatMap((element, ?index, ?array) => { code }, ?thisArg)
 ```
-
-findFunction parameters:
-- `element`
-- `index`
-- `array`: reference to array the function was called upon
-
-Optional parameter:
-- `thisArg`: reference to use as `this` within the function
 
 <br>
 
 ```javascript
-const array = [10, 5, 4, 17, 3, 8];
+const array = [['A', 'B'], ['C', 'D']];
 
-const filteredArray = array.filter(element => element < 8);
+const flatMapArray = array.flatMap((element) => element.join('-'));
 
-// array = [10, 5, 4, 17, 3, 8]
-// filteredArray = [5, 4, 3]
+// array = [['A', 'B'], ['C', 'D']]
+// flatMapArray = ['A-B', 'C-D']
+```
+
+<br>
+
+```javascript
+const array = [['A', ['B', 'C']], ['D', ['E', 'F']]];
+
+const flatMapArray = array.flatMap((element) => element.join('-'));
+
+// array = [['A', ['B', 'C']], ['D', ['E', 'F']]];
+// flatMapArray = ['A-B,C', 'D-E,F']
 ```
 
 <br>
@@ -1238,68 +1432,25 @@ const slicedArray = array.slice();
 <br>
 <br>
 
-#### **copyWithin()**
-
-Shallow copies part `[start, end)` of an array to another location in the same array. The element at the target location are replaced, so that the length of the array does not change.
-
-```javascript
-array.copyWithin(targetIndex, startIndex, ?endIndex);
-```
-
-Parameters:
-- `targetIndex`: First index of the target area where the copied range from `startIndex` should be inserted. Negative index is counted from end of the array.
-- `startIndex`: Start of element range to copy from. Negative index is counted from end of the array.
-- `endIndex`: End of element range (exclusive) to copy from. Negative index is counted from end of the array.
-
+#### **toReversed()**
 <br>
 
+Returns shallow copy of array with reversed order of elements.
+
 ```javascript
-const array = ['A', 'B', 'C', 'D']
-
-array.copyWithin(0, 2);
-
-// array = ['C', 'D', 'C', 'D']
+array.toReversed();
 ```
 
 <br>
 
 ```javascript
-const array = ['A', 'B', 'C', 'D']
+const array = [4, 34, 2, 7];
 
-array.copyWithin(0, 2, 3);
+const reversedArray = array.toReversed();
 
-// array = ['C', 'B', 'C', 'D']
-```
+// array = [4, 34, 2, 7]
+// reversedArray = [7, 2, 34, 4]
 
-<br>
-
-```javascript
-const array = ['A', 'B', 'C', 'D'];
-
-array.copyWithin(-1);
-
-// array = ['A', 'B', 'C', 'A']
-```
-
-<br>
-<br>
-
-#### **with()**
-
-Returns a shallow array copy with updated element at specified index. Allows selection from end of array via negative index.
-
-```javascript
-array.with(index, newValue)
-```
-
-<br>
-
-```javascript
-const array = [1, 2, 3, 4];
-
-array.with(2, 8);       // returns new array [1, 2, 8, 4] 
-
-array.with(-1, 'foo');  // returns new array [1, 2, 3, 'foo']
 ```
 
 <br>
@@ -1363,30 +1514,6 @@ const sortedArray = array.toSorted((a, b) => b - a);
 
 // array = [3, 6, 3, 2, 10, 37]
 // sortedArray = [37, 10, 6, 3, 3, 2]
-```
-
-<br>
-<br>
-
-#### **toReversed()**
-<br>
-
-Returns shallow copy of array with reversed order of elements.
-
-```javascript
-array.toReversed();
-```
-
-<br>
-
-```javascript
-const array = [4, 34, 2, 7];
-
-const reversedArray = array.toReversed();
-
-// array = [4, 34, 2, 7]
-// reversedArray = [7, 2, 34, 4]
-
 ```
 
 <br>
@@ -1512,97 +1639,12 @@ const splicedArray = array.toSpliced(0);
 <br>
 <br>
 
-#### **concat()**
+#### **with()**
 
-Returns new array containing shallow copies of all given arrays and values.
-
-```javascript
-array.concat(value1, ..., valueN)
-```
-
-<br>
+Returns a shallow array copy with updated element at specified index. Allows selection from end of array via negative index.
 
 ```javascript
-const array1 = ['A', 'B', 'C', 'D'];
-const array2 = ['foo', 'bar'];
-
-const concatArray = array1.concat(array2);
-
-// array1 = ['A', 'B', 'C', 'D']
-// array2 = ['foo', 'bar']
-// concatArray = ['A', 'B', 'C', 'D', 'foo', 'bar']
-```
-
-<br>
-
-```javascript
-const array1 = ['A', 'B', 'C', 'D'];
-const array2 = ['foo', 'bar'];
-const array3 = [1, 2];
-
-const concatArray = array1.concat(array2, array3);
-
-// array1 = ['A', 'B', 'C', 'D']
-// array2 = ['foo', 'bar']
-// array3 = [1, 2]
-// concatArray = ['A', 'B', 'C', 'D', 'foo', 'bar', 1, 2]
-```
-
-<br>
-
-```javascript
-const array1 = ['A', 'B', 'C', 'D'];
-const array2 = ['foo', 'bar'];
-
-const concatArray = array1.concat(array2, 'X', 1, 'Z');
-
-// array1 = ['A', 'B', 'C', 'D']
-// array2 = ['foo', 'bar']
-// concatArray = ['A', 'B', 'C', 'D', 'foo', 'bar', 'X', 1, 'Z']
-```
-
-<br>
-<br>
-
-#### **flatMap()**
-
-Returns new array by mapping the elements with a custom callback function and flatten the result in the first layer.
-
-```javascript
-array.flatMap((element, ?index, ?array) => { code }, ?thisArg)
-```
-
-<br>
-
-```javascript
-const array = [['A', 'B'], ['C', 'D']];
-
-const flatMapArray = array.flatMap((element) => element.join('-'));
-
-// array = [['A', 'B'], ['C', 'D']]
-// flatMapArray = ['A-B', 'C-D']
-```
-
-<br>
-
-```javascript
-const array = [['A', ['B', 'C']], ['D', ['E', 'F']]];
-
-const flatMapArray = array.flatMap((element) => element.join('-'));
-
-// array = [['A', ['B', 'C']], ['D', ['E', 'F']]];
-// flatMapArray = ['A-B,C', 'D-E,F']
-```
-
-<br>
-<br>
-
-#### **Array.from()**
-
-Returns shallow copy of an iterable or array-like object.
-
-```javascript
-Array.from(arrayLike, ?(element, ?index) => { code }, ?thisArg)
+array.with(index, newValue)
 ```
 
 <br>
@@ -1610,10 +1652,9 @@ Array.from(arrayLike, ?(element, ?index) => { code }, ?thisArg)
 ```javascript
 const array = [1, 2, 3, 4];
 
-const copyArray = Array.from(array, (element) => element + 10);
+array.with(2, 8);       // returns new array [1, 2, 8, 4] 
 
-// array = [1, 2, 3, 4]
-// copyArray = [11, 12, 13, 14]
+array.with(-1, 'foo');  // returns new array [1, 2, 3, 'foo']
 ```
 
 <br>
@@ -1982,7 +2023,10 @@ const sortedArray = array.toSorted((a, b) => b - a);
 ### **Update Elements**
 <br>
 
-#### **Array[]**
+#### **Update Single Element**
+<br>
+
+##### **Array[]**
 
 Updates element at specified index.
 
@@ -2001,7 +2045,31 @@ array[1] = 8;   // [1, 8, 3, 4]
 <br>
 <br>
 
-#### **fill()**
+##### **with()**
+
+Returns a shallow array copy with updated element at specified index. Allows selection from end of array via negative index.
+
+```javascript
+array.with(index, newValue)
+```
+
+<br>
+
+```javascript
+const array = [1, 2, 3, 4];
+
+array.with(2, 8);       // returns new array [1, 2, 8, 4] 
+
+array.with(-1, 'foo');  // returns new array [1, 2, 3, 'foo']
+```
+
+<br>
+<br>
+
+#### **Update Multiple Elements**
+<br>
+
+##### **fill()**
 
 Replaces all elements in a specified range `[start, end]` with a specified value.
 
@@ -2047,7 +2115,7 @@ array.fill('foo', 0, 3);
 <br>
 <br>
 
-#### **splice()**
+##### **splice()**
 
 Change array content by **adding**, **removing** or **replacing** elements.  
 Returns an array containing all deleted elements.
@@ -2104,7 +2172,7 @@ array.splice(0, Infinity, 'X', 'Y');
 <br>
 <br>
 
-#### **toSpliced()**
+##### **toSpliced()**
 
 Returns manipulated array copy with **added**, **remoded** or **replaced** elements.
 
@@ -2154,25 +2222,4 @@ const splicedArray = array.toSpliced(0, Infinity, 'X', 'Y');
 
 // array = ['A', 'B', 'C', 'D']
 // splicedArray = ['X', 'Y']
-```
-
-<br>
-<br>
-
-#### **with()**
-
-Returns a shallow array copy with updated element at specified index. Allows selection from end of array via negative index.
-
-```javascript
-array.with(index, newValue)
-```
-
-<br>
-
-```javascript
-const array = [1, 2, 3, 4];
-
-array.with(2, 8);       // returns new array [1, 2, 8, 4] 
-
-array.with(-1, 'foo');  // returns new array [1, 2, 3, 'foo']
 ```

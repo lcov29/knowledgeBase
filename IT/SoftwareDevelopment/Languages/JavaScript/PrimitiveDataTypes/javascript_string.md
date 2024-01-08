@@ -11,6 +11,9 @@
     - [**Single Quote String**](#single-quote-string)
     - [**Double Quote String**](#double-quote-string)
     - [**Template String**](#template-string)
+  - [**Iterate Over Characters**](#iterate-over-characters)
+    - [**For Loop**](#for-loop)
+    - [**For-Of Loop**](#for-of-loop)
   - [**Wrapper Object**](#wrapper-object)
     - [**Properties**](#properties)
       - [**length**](#length)
@@ -30,9 +33,10 @@
         - [**includes()**](#includes)
         - [**startsWith()**](#startswith)
         - [**endsWith()**](#endswith)
-        - [**search()**](#search)
-        - [**match()**](#match)
-        - [**matchAll()**](#matchall)
+        - [**Regular Expressions**](#regular-expressions)
+          - [**search()**](#search)
+          - [**match()**](#match)
+          - [**matchAll()**](#matchall)
       - [**Replacing**](#replacing)
         - [**replace()**](#replace)
         - [**replaceAll**](#replaceall)
@@ -114,6 +118,48 @@ const foo = `bar
 baz`;                // bar\nbaz
 ```
 - allows multi-line strings
+
+<br>
+<br>
+<br>
+<br>
+
+## **Iterate Over Characters**
+<br>
+<br>
+
+### **For Loop**
+<br>
+
+```javascript
+const string = 'foo';
+
+for (let i = 0; i < string.length; i++) {
+  console.log(string[i]);
+}
+
+// f
+// o
+// o
+```
+
+<br>
+<br>
+
+### **For-Of Loop**
+<br>
+
+```javascript
+const string = 'foo';
+
+for (const character of string) {
+  console.log(character);
+}
+
+// f
+// o
+// o
+```
 
 <br>
 <br>
@@ -423,7 +469,10 @@ string.endsWith(searchString, ?substringEndIndex)
 <br>
 <br>
 
-##### **search()**
+##### **Regular Expressions**
+<br>
+
+###### **search()**
 <br>
 
 Returns the index of the first match of a [regular expression](./javascript_regex.md) or `-1` if there is no match.
@@ -454,7 +503,7 @@ search(regexp)
 <br>
 <br>
 
-##### **match()**
+###### **match()**
 <br>
 
 Returns an array containing the matches of a [regular expression](./javascript_regex.md) or `null` if there are no matches.
@@ -483,7 +532,7 @@ string.match(regex)
 <br>
 <br>
 
-##### **matchAll()**
+###### **matchAll()**
 <br>
 
 Returns iterator object of all matches of a **global** regular expression.

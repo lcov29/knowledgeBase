@@ -12,11 +12,27 @@
     - [**Binary**](#binary)
     - [**Octal**](#octal)
     - [**Hexadecimal**](#hexadecimal)
+  - [**Inaccuracy**](#inaccuracy)
+    - [**Integer**](#integer)
+    - [**Floating Point Arithmetic**](#floating-point-arithmetic)
+  - [**Parsing Strings**](#parsing-strings)
+    - [**Number()**](#number)
+    - [**Number.parseFloat()**](#numberparsefloat)
+    - [**Number.parseInt()**](#numberparseint)
   - [**Properties**](#properties)
     - [**Number.MIN\_VALUE**](#numbermin_value)
     - [**Number.MAX\_VALUE**](#numbermax_value)
     - [**Number.NEGATIVE\_INFINITY**](#numbernegative_infinity)
     - [**Number.POSITIVE\_INFINITY**](#numberpositive_infinity)
+  - [**Methods**](#methods)
+    - [**isFinite()**](#isfinite)
+    - [**Number.isInteger()**](#numberisinteger)
+    - [**Number.isNaN()**](#numberisnan)
+    - [**Number.parseFloat()**](#numberparsefloat-1)
+    - [**toExponential()**](#toexponential)
+    - [**toFixed()**](#tofixed)
+    - [**toPrecision()**](#toprecision)
+    - [**toString()**](#tostring)
   - [**Operators**](#operators)
     - [**Arithmetic**](#arithmetic)
       - [**Addition (+)**](#addition-)
@@ -36,9 +52,6 @@
       - [**Greater Than Or Equal (\>=)**](#greater-than-or-equal-)
       - [**Less Than (\<)**](#less-than-)
       - [**Less Than Or Equal (\<=)**](#less-than-or-equal-)
-  - [**Inaccuracy**](#inaccuracy)
-    - [**Integer**](#integer)
-    - [**Floating Point Arithmetic**](#floating-point-arithmetic)
 
 <br>
 <br>
@@ -133,6 +146,123 @@
 <br>
 <br>
 
+## **Inaccuracy**
+<br>
+<br>
+
+### **Integer**
+
+```javascript
+const x = 999999999999999;    
+// 999999999999999 (15 digits)
+```
+
+<br>
+
+```javascript
+const x = 9999999999999999;
+// 10000000000000000 (16 digits)
+```
+
+<br>
+<br>
+
+### **Floating Point Arithmetic**
+<br>
+
+```javascript
+const x = 0.2 + 0.1;
+// 0.30000000000000004
+```
+
+<br>
+
+```javascript
+const x = (0.2*10 + 0.1*10) / 10;
+// 0.3
+```
+
+<br>
+<br>
+<br>
+<br>
+
+## **Parsing Strings**
+<br>
+
+### **Number()**
+
+Parses a string to a number.
+
+```javascript
+Number(string)
+```
+
+<br>
+
+```javascript
+const number = Number('253');     // 253
+```
+
+```javascript
+const number = Number('3.1415');  // 3.1415
+```
+
+<br>
+<br>
+
+### **Number.parseFloat()**
+
+Parses a string to floating point number. Returns `NaN` if value can not be parsed.
+
+```javascript
+Number.parseFloat(string)
+```
+
+<br>
+
+```javascript
+const number = Number.parseFloat('3.1415');   // 3.1415
+```
+
+<br>
+<br>
+
+### **Number.parseInt()**
+
+Parses a string representing a number with a specified base (Default: 10) to an integer with base 10. Returns `NaN` if value can not be parsed.
+
+```javascript
+Number.parseInt(string, ?basis)
+```
+
+<br>
+
+```javascript
+const number = Number.parseInt('543');        // 543
+```
+
+```javascript
+const number = Number.parseInt('543', 8);     // 355
+```
+
+```javascript
+const number = Number.parseInt('328.35');     // 328
+```
+
+```javascript
+const number = Number.parseInt(Infinity, 8);  // NaN
+```
+
+```javascript
+const number = Number.parseInt('foo', 8);     // NaN
+```
+
+<br>
+<br>
+<br>
+<br>
+
 ## **Properties**
 <br>
 <br>
@@ -179,6 +309,188 @@ Number.POSITIVE_INFINITY      // Infinity
 <br>
 <br>
 
+## **Methods**
+<br>
+
+### **isFinite()**
+
+Returns a boolean indicating whether a value is a number that does not equal `Infinity` or `-Infinity`.
+
+```javascript
+Number.isFinite(value)
+```
+
+<br>
+
+```javascript
+Number.isFinite(3.1415);    // true
+
+Number.isFinite(NaN);       // false
+
+Number.isFinite(Infinity);  // false
+```
+
+<br>
+<br>
+
+### **Number.isInteger()**
+
+Returns boolean indicating whether a value is an integer.
+
+```javascript
+Number.isInteger(value)
+```
+
+<br>
+
+```javascript
+Number.isInteger(5);          // true
+
+Number.isInteger(3.1415);     // false
+
+Number.isInteger(NaN);        // false
+
+Number.isInteger(Infinity);   // false
+```
+
+<br>
+<br>
+
+### **Number.isNaN()**
+
+Returns boolean indicating whether a value is `NaN`.
+
+```javascript
+Number.isNaN(value)
+```
+
+<br>
+
+```javascript
+Number.isNaN(NaN);        // true
+
+Number.isNaN(3.1415);     // false
+
+Number.isNaN(Infinity);   // false
+```
+
+<br>
+<br>
+
+### **Number.parseFloat()**
+
+Parses a string to floating point number. Returns `NaN` if value can not be parsed.
+
+```javascript
+Number.parseFloat(string)
+```
+
+<br>
+
+```javascript
+const number = Number.parseFloat('3.1415');   // 3.1415
+```
+
+```javascript
+const number = Number.parseFloat(Infinity);   // Infinity
+```
+
+```javascript
+const number = Number.parseFloat('foo');      // NaN
+```
+
+<br>
+<br>
+
+### **toExponential()**
+
+Returns a string representing the number in exponential notation.
+
+```javascript
+number.toExponential(?fractionDigits)
+```
+
+<br>
+
+```javascript
+const number = 17;
+const expo = number.toExponential();    // '1.7e+1'
+```
+
+```javascript
+const number = 3.1415;
+const expo = number.toExponential(4);   // '3.1415e+0'
+```
+
+<br>
+<br>
+
+### **toFixed()**
+
+Formats number using rounding fixed-point notation.
+
+```javascript
+number.toFixed(?digits = 0)
+```
+
+<br>
+
+```javascript
+const number = 3.1415;
+const fixedNumber = number.toFixed();     // 3.1415
+```
+
+```javascript
+const number = 3.1415;
+const fixedNumber = number.toFixed(2);    // 3.14
+```
+
+<br>
+<br>
+
+### **toPrecision()**
+
+Returns a string representing the number to a specified number of digits.
+
+```javascript
+number.toPrecision(?precision)
+```
+
+<br>
+
+```javascript
+const number = 3.1415;
+const string = number.toPrecision(2);   // '3.1'
+```
+
+<br>
+<br>
+
+### **toString()**
+
+Returns a string representing the specified number with a specified basis (Default: 10).
+
+```javascript
+number.toString(?basis)
+```
+
+<br>
+
+```javascript
+const number = 565;
+const string = number.toString();       // 565
+```
+
+```javascript
+const number = 565;
+const string = number.toString(8);      // 1065
+```
+
+<br>
+<br>
+<br>
+<br>
+
 ## **Operators**
 <br>
 <br>
@@ -189,7 +501,6 @@ Number.POSITIVE_INFINITY      // Infinity
 <br>
 
 #### **Addition (+)**
-<br>
 
 ```javascript
 2 + 5 = 7
@@ -199,7 +510,6 @@ Number.POSITIVE_INFINITY      // Infinity
 <br>
 
 #### **Subtraction (-)**
-<br>
 
 ```javascript
 2 - 5 = -3
@@ -209,7 +519,6 @@ Number.POSITIVE_INFINITY      // Infinity
 <br>
 
 #### **Multiplication (*)**
-<br>
 
 ```javascript
 3 * 5 = 15
@@ -219,7 +528,6 @@ Number.POSITIVE_INFINITY      // Infinity
 <br>
 
 #### **Division (\/)**
-<br>
 
 ```javascript
 5 / 3 = 1.6666666666666667
@@ -229,7 +537,6 @@ Number.POSITIVE_INFINITY      // Infinity
 <br>
 
 #### **Modulo (%)**
-<br>
 
 ```javascript
 5 % 3 = 2
@@ -239,7 +546,6 @@ Number.POSITIVE_INFINITY      // Infinity
 <br>
 
 #### **Exponential (\*\*)**
-<br>
 
 ```javascript
 2 ** 3 = 8
@@ -249,7 +555,6 @@ Number.POSITIVE_INFINITY      // Infinity
 <br>
 
 #### **Increment (++)**
-<br>
 
 ```javascript
 x++;
@@ -269,7 +574,6 @@ x++;
 <br>
 
 #### **Decrement (--)**
-<br>
 
 ```javascript
 x--;
@@ -294,7 +598,6 @@ x--;
 <br>
 
 #### **Equal (==)**
-<br>
 
 Checks equality of two operands **without** checking for type equality.
 
@@ -308,7 +611,6 @@ Checks equality of two operands **without** checking for type equality.
 <br>
 
 #### **Strict Equal (===)**
-<br>
 
 Checks equality of two operands by both value and type.
 
@@ -322,7 +624,6 @@ Checks equality of two operands by both value and type.
 <br>
 
 #### **Unequal (!=)**
-<br>
 
 Checks inequality of two operands **without** checking for type equality.
 
@@ -336,7 +637,6 @@ Checks inequality of two operands **without** checking for type equality.
 <br>
 
 #### **Strict Unequal (!==)**
-<br>
 
 Checks inequality of two operands of the same type.
 
@@ -350,7 +650,6 @@ Checks inequality of two operands of the same type.
 <br>
 
 #### **Greater Than (>)**
-<br>
 
 Checks if left operand is greater than right operand.
 
@@ -364,7 +663,6 @@ Checks if left operand is greater than right operand.
 <br>
 
 #### **Greater Than Or Equal (>=)**
-<br>
 
 Checks if left operand is greater than right operand or equal.
 
@@ -380,7 +678,6 @@ Checks if left operand is greater than right operand or equal.
 <br>
 
 #### **Less Than (<)**
-<br>
 
 Checks if left operand is less than right operand.
 
@@ -394,7 +691,6 @@ Checks if left operand is less than right operand.
 <br>
 
 #### **Less Than Or Equal (<=)**
-<br>
 
 Checks if left operand is less than right operand or equal.
 
@@ -404,46 +700,4 @@ Checks if left operand is less than right operand or equal.
 5 <= 3     // false
 
 4 <= 4     // true
-```
-
-<br>
-<br>
-<br>
-<br>
-
-## **Inaccuracy**
-<br>
-<br>
-
-### **Integer**
-<br>
-
-```javascript
-const x = 999999999999999;    
-// 999999999999999 (15 digits)
-```
-
-<br>
-
-```javascript
-const x = 9999999999999999;
-// 10000000000000000 (16 digits)
-```
-
-<br>
-<br>
-
-### **Floating Point Arithmetic**
-<br>
-
-```javascript
-const x = 0.2 + 0.1;
-// 0.30000000000000004
-```
-
-<br>
-
-```javascript
-const x = (0.2*10 + 0.1*10) / 10;
-// 0.3
 ```

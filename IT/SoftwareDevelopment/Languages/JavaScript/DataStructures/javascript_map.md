@@ -8,7 +8,7 @@
 - [**JavaScript Map**](#javascript-map)
   - [**Table Of Contents**](#table-of-contents)
   - [**Basics**](#basics)
-  - [**Initialization**](#initialization)
+  - [**Constructor**](#constructor)
   - [**Properties**](#properties)
     - [**size**](#size)
   - [**Methods**](#methods)
@@ -25,7 +25,6 @@
 <br>
 <br>
 <br>
-<br>
 
 ## **Basics**
 <br>
@@ -38,24 +37,22 @@
 <br>
 <br>
 <br>
-<br>
 
-## **Initialization**
+## **Constructor**
 <br>
 
 ```javascript
-new Map([iterable])
+new Map(?array)
+```
+
+<br>
+
+```javascript
+const map = new Map();
 ```
 
 ```javascript
-// initialize map with set method
-let map1 = new Map();
-map1.set('key1', 'value1');
-map1.set('key2', 'value2').set('keyN', 'valueN');
-
-
-// initialize map with array
-let map2 = new Map(
+const map = new Map(
     [
         ['key1', 'value1'],
         ...               ,
@@ -67,133 +64,122 @@ let map2 = new Map(
 <br>
 <br>
 <br>
-<br>
 
 ## **Properties**
-
 <br>
 
 ### **size**
-<br>
 
-* returns number of key-value pairs in map
+Returns the number of key-value pairs.
 
 ```javascript
-let map = new Map([[1, 'value1'], ['key', 'value2'], [6, 'value3']]);
-map.size;                                                               // returns 3
+const map = new Map([[1, 'value1'], ['key', 'value2'], [6, 'value3']]);
+
+map.size;         // 3
 ```
 
-<br>
 <br>
 <br>
 <br>
 
 ## **Methods**
-
 <br>
 
 ### **set()**
-<br>
 
-* adds or update element with key argument
-* returns map object to enable chaining
+Adds or updates element for specified `key` argument. Returns `Map` to enable chaining.
 
 ```javascript
 set(key, value)
 ```
 
+<br>
+
 ```javascript
-let map = new Map();
+const map = new Map();
 
-// add new key-value pair
-map.set('key', 'value');
-map.get('key');                                 // returns 'value'
-
-
-// update existing key-value pair
-map.set('key', 'modifiedValue');
-map.get('key');                                 // returns 'modifiedValue'
+map.set('foo', 'bar');
 ```
 
-<br>
 <br>
 <br>
 
 ### **get()**
 <br>
 
-* returns value for the key argument
-* returns undefined if key is not included in map
+Returns the value of the specified `key` argument or `undefined` when key is not included in the map.
 
 ```javascript
-get(key)
+map.get(key)
 ```
 
 ```javascript
-let map = new Map([['foo', 'bar']]);
-map.get('foo');                                 // returns 'bar'
-map.get('fo');                                  // returns undefined
+const map = new Map([['foo', 'bar']]);
+
+map.get('foo');       // 'bar'
 ```
 
-<br>
 <br>
 <br>
 
 ### **has()**
 <br>
 
-* returns boolean indicating whether map includes key
+Returns boolean indicating whether map includes `key`.
 
 ```javascript
-has(key)
-```
-
-```javascript
-let map = new Map([['foo', 'bar']]);
-map.has('foo');                                 // returns true
-map.has('fo');                                  // returns false
+map.has(key)
 ```
 
 <br>
+
+```javascript
+const map = new Map([['foo', 'bar']]);
+
+map.has('foo');       // true
+map.has('fo');        // false
+```
+
 <br>
 <br>
 
 ### **delete()**
 <br>
 
-* removes element with key
-* returns true if element existed before
+Removes element for specified `key` and returns boolean indicating whether `key` existed. 
 
 ```javascript
-delete(key)
-```
-
-```javascript
-let map = new Map([['foo', 'bar']]);
-
-map.has('foo');                                 // returns true
-map.delete('foo');                              // returns true
-map.has('foo');                                 // returns false
+map.delete(key)
 ```
 
 <br>
+
+```javascript
+const map = new Map([['foo', 'bar']]);
+
+map.delete('foo');    // true
+map.delete('key');    // false
+```
+
 <br>
 <br>
 
 ### **clear()**
 <br>
 
-* removes all elements from map
+Removes all elements from map.
 
 ```javascript
-clear()
+map.clear()
 ```
 
+<br>
+
 ```javascript
-let map = new Map([['foo', 'bar'], ['bar', 'foo']]);
-map.size;                                                   // returns 2
+const map = new Map([['foo', 'bar'], ['bar', 'foo']]);
+
 map.clear();
-map.size;                                                   // returns 0
+map.size;       // 0
 ```
 
 <br>

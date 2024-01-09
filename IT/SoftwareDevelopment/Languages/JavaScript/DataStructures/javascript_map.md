@@ -7,7 +7,7 @@
 
 - [**JavaScript Map**](#javascript-map)
   - [**Table Of Contents**](#table-of-contents)
-  - [**General**](#general)
+  - [**Basics**](#basics)
   - [**Initialization**](#initialization)
   - [**Properties**](#properties)
     - [**size**](#size)
@@ -27,14 +27,13 @@
 <br>
 <br>
 
-## **General**
+## **Basics**
 <br>
 
-* collection of key-value pairs
-* keys have to be unique
-* key type can be anything (primitive values, functions, objects)
-* insertion order is remembered 
-* better performance at frequent additions and removals compared to objects
+> A Map is a collection of key-value pairs. Keys have to be unique and can be of any type.
+
+- The insertion order of elements is remembered
+- The map offers better performance at frequent additions and removals compared to objects
 
 <br>
 <br>

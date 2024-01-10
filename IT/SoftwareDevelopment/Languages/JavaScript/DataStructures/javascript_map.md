@@ -72,7 +72,6 @@ const map = new Map(
 
 ### **For-Of Loop**
 <br>
-<br>
 
 #### **map.values()**
 

@@ -8,54 +8,47 @@
 - [**JavaScript Set**](#javascript-set)
   - [**Table Of Contents**](#table-of-contents)
   - [**General**](#general)
-  - [**Initialization**](#initialization)
+  - [**Constructor**](#constructor)
   - [**Properties**](#properties)
     - [**size**](#size)
+  - [**Iteration**](#iteration)
+    - [**For-Of Loop**](#for-of-loop)
+      - [**set.values() / set.keys()**](#setvalues--setkeys)
+    - [**forEach()**](#foreach)
   - [**Methods**](#methods)
     - [**add()**](#add)
-    - [**has()**](#has)
-    - [**delete()**](#delete)
     - [**clear()**](#clear)
-    - [**values()**](#values)
-    - [**entries()**](#entries)
-    - [**forEach()**](#foreach)
+    - [**delete()**](#delete)
+    - [**has()**](#has)
 
-<br>
 <br>
 <br>
 <br>
 
 ## **General**
-<br>
 
-* collection of unique values
-* attempts to add duplicates are ignored
-* value can be anything (primitive values, functions, objects)
+> A **Set** is a collection of unique values. Any attempt to add duplicates are ignored.
 
 <br>
 <br>
 <br>
-<br>
 
-## **Initialization**
-<br>
+## **Constructor**
 
 ```javascript
-new Set([iterable])
-```
-
-```javascript
-// initialize map with add method
-let set1 = new Set();
-set1.add('value1');
-set1.add(2).add(false);
-
-
-// initialize map with array
-let set2 = new Set(['value1', 2, false]);
+new Set(?array)
 ```
 
 <br>
+
+```javascript
+const set = new Set();
+```
+
+```javascript
+const set = new Set(['value1', 1, false]);
+```
+
 <br>
 <br>
 <br>
@@ -65,212 +58,161 @@ let set2 = new Set(['value1', 2, false]);
 <br>
 
 ### **size**
-<br>
 
-* returns number of elements in set
+Returns the number of elements in the set.
 
 ```javascript
-let set = new Set(['value1', 'value2', 'value3']);
-set.size;                                                               // returns 3
+const set = new Set(['value1', 'value2', 'value3']);
+
+set.size;     // 3
 ```
 
 <br>
+<br>
+<br>
+
+## **Iteration**
+<br>
+
+### **For-Of Loop**
+<br>
+
+#### **set.values() / set.keys()**
+
+Iterates over all elements in the set.
+
+```javascript
+const set = new Set(['value1', 'value2']);
+
+for (const value of set.values()) {
+  console.log(value);
+}
+
+// 'value1'
+// 'value2'
+```
+
+```javascript
+const set = new Set(['value1', 'value2']);
+
+for (const key of set.keys()) {
+  console.log(key);
+}
+
+// 'value1'
+// 'value2'
+```
+
+<br>
+<br>
+
+### **forEach()**
+
+Executes the specified function for each element of the set in insertion order.
+
+```javascript
+set.forEach((value, ?key, ?set) => { code }, ?thisArg)
+```
+
+<br>
+
+```javascript
+const set = new Set(['value1', 'value2']);
+
+set.forEach((value, key) => {
+  console.log(`(Key: ${key}, Value: ${value})`);
+});
+
+// '(Key: value1, Value: value1)'
+// '(Key: value2, Value: value2)'
+```
+
 <br>
 <br>
 <br>
 
 ## **Methods**
-
 <br>
 
 ### **add()**
-<br>
 
-* adds new element to set
-* attempts to add duplicates are ignored
-* returns set object to enable chaining
+Adds specified element to set if it is not included in the set. Returns the set object to enable chaining.
   
 ```javascript
-add(value)
+set.add(value)
 ```
+
+<br>
 
 ```javascript
-let set= new Set();
-set.add('value1');
-set.add('value2').add('value3');
-set.size;                                // returns 3
+const set= new Set();
 
-set.add('value1');
-set.size;                                // returns 3
+set
+  .add('value1')
+  .add('value2')
+  .add('value3');
+
+set.size;     // 3
 ```
 
-<br>
-<br>
-<br>
-
-
-### **has()**
-<br>
-
-* returns boolean indicating whether element exist in set
-
-```javascript
-has(value)
-```
-
-```javascript
-let set = new Set(['foo', 'bar']);
-set.has('foo');                                 // returns true
-set.has('fo');                                  // returns false
-```
-
-<br>
-<br>
-<br>
-
-### **delete()**
-<br>
-
-* removes element from set
-* returns true if element existed before
-
-```javascript
-delete(value)
-```
-
-```javascript
-let set = new Set(['foo', 'bar']);
-
-set.has('foo');                                 // returns true
-set.delete('foo');                              // returns true
-set.has('foo');                                 // returns false
-```
-
-<br>
 <br>
 <br>
 
 ### **clear()**
-<br>
 
-* removes all elements from set
+Remove all elements from set.
 
 ```javascript
-clear()
+map.clear()
 ```
 
+<br>
+
 ```javascript
-let set = new Set(['foo', 'bar']);
-set.size;                                                   // returns 2
+const set = new Set(['foo', 'bar']);
+
+set.size;       // 2
 set.clear();
-set.size;                                                   // returns 0
+set.size;       // 0
 ```
 
 <br>
 <br>
-<br>
 
-### **values()**
-<br>
+### **delete()**
 
-* returns iterator object containing all values of set object
-* iterator can be iterated via for-of-loop
+Removes specified element from set and returns boolean indicating whether element existed in set.
 
 ```javascript
-values()
+set.delete(value)
 ```
 
+<br>
+
 ```javascript
-let set = new Set(['value1', 'value2']);
-let setIterator = set.values();
+const set = new Set(['foo', 'bar']);
 
-setIterator.next().value;                               // returns 'values1'
-setIterator.next().value;                               // returns 'values2'
-
-setIterator = set.values();
-for (let element of setIterator) {
-    console.log(element);
-}
+set.size;             // 2
+set.delete('foo');    // true
+set.size;             // 1
 ```
 
 <br>
 <br>
-<br>
 
-### **entries()**
-<br>
+### **has()**
 
-* returns iterator object containing an array of [value, value] for each element in set in insertion order
-* iterator can be iterated via for-of-loop
+Returns boolean indicating whether element exists in the set.
 
 ```javascript
-entries()
-```
-
-```javascript
-let set = new Set(['value1', 'value2']);
-let setIterator = set.entries();
-
-setIterator.next().value;                               // returns ['value1', 'value1']
-setIterator.next().value;                               // returns ['value2', 'value2']
-
-setIterator = set.entries();
-for (let item of setIterator) {
-    console.log(item);
-}
+set.has(value)
 ```
 
 <br>
-<br>
-<br>
-
-### **forEach()**
-<br>
-
-* executes function for each element in insertion order
-
-<br>
-
-Parameters:
-* _customFunction_
-    * _value_
-      * value of current element
-    * _key_
-      * value of current element as there are no keys in sets
-    * _set_
-* _thisArg_
-
-<br>
 
 ```javascript
-// general
-forEach(customFunction, [thisArg]
+const set = new Set(['foo', 'bar']);
 
-)
-// arrow customFunction
-forEach(() => { /* implementation */ } )
-forEach((value) => { /* implementation */ } )
-forEach((value, key) => { /* implementation */ } )
-forEach((value, key, set) => { /* implementation */ } )
-
-
-// callback customFunction
-forEach(customFunction)
-forEach(customFunction, thisArg)
-
-
-// inline callback customFunction
-forEach(function() { /* implementation */ })
-forEach(function(value) { /* implementation */ })
-forEach(function(value, key) { /* implementation */ })
-forEach(function(value, key, set) { /* implementation */ })
-forEach(function(value, key, set) { /* implementation */ }, thisArg)
-```
-
-```javascript
-let set = new Set(['value1', 'value2']);
-
-set.forEach(function(value, key, set){
-    console.log(`value is ${value}`);
-});
+set.has('foo');     // true
+set.has('fo');      // false
 ```

@@ -9,25 +9,27 @@
   - [**Table Of Contents**](#table-of-contents)
   - [**Basics**](#basics)
   - [**Constructor**](#constructor)
+  - [**Iteration**](#iteration)
+    - [**For-Of Loop**](#for-of-loop)
+      - [**map.values()**](#mapvalues)
+      - [**map.keys()**](#mapkeys)
+      - [**map.entries()**](#mapentries)
+    - [**map.forEach()**](#mapforeach)
   - [**Properties**](#properties)
     - [**size**](#size)
   - [**Methods**](#methods)
-    - [**set()**](#set)
+    - [**clear()**](#clear)
+    - [**delete()**](#delete)
     - [**get()**](#get)
     - [**has()**](#has)
-    - [**delete()**](#delete)
-    - [**clear()**](#clear)
-    - [**keys()**](#keys)
-    - [**values()**](#values)
-    - [**entries()**](#entries)
-    - [**forEach()**](#foreach)
+    - [**Map.groupBy()**](#mapgroupby)
+    - [**set()**](#set)
 
 <br>
 <br>
 <br>
 
 ## **Basics**
-<br>
 
 > A Map is a collection of key-value pairs. Keys have to be unique and can be of any type.
 
@@ -39,7 +41,6 @@
 <br>
 
 ## **Constructor**
-<br>
 
 ```javascript
 new Map(?array)
@@ -59,6 +60,96 @@ const map = new Map(
         ['keyN', 'valueN']
     ]
 );
+```
+
+<br>
+<br>
+<br>
+
+## **Iteration**
+<br>
+<br>
+
+### **For-Of Loop**
+<br>
+<br>
+
+#### **map.values()**
+
+Iterates over all values in the map.
+
+```javascript
+const map = new Map([['A', 'foo'], ['B', 'bar'], ['C', 'baz']]);
+
+for (const value of map.values()) {
+  console.log(value);
+}
+
+// 'foo'
+// 'bar'
+// 'baz'
+```
+
+<br>
+<br>
+
+#### **map.keys()**
+
+Iterates over all keys in the map.
+
+```javascript
+const map = new Map([['A', 'foo'], ['B', 'bar'], ['C', 'baz']]);
+
+for (const key of map.keys()) {
+  console.log(key);
+}
+
+// 'A'
+// 'B'
+// 'C'
+```
+
+<br>
+<br>
+
+#### **map.entries()**
+
+Iterates over all key-value pairs in the map.
+
+```javascript
+const map = new Map([['A', 'foo'], ['B', 'bar'], ['C', 'baz']]);
+
+for (const entry of map.entries()) {
+  console.log(entry);
+}
+
+// ['A', 'foo']
+// ['B', 'bar']
+// ['C', 'baz']
+```
+
+<br>
+<br>
+
+### **map.forEach()**
+
+Executes the specified function for each key-value pair in insertion order.
+
+```javascript
+map.forEach((value, ?key, ?map) => { code }, ?thisArg)
+```
+
+<br>
+
+```javascript
+const map = new Map([['key1', 'value1'], ['key2', 'value2']]);
+
+map.forEach((value, key, map) => {
+  console.log(`Key "${key}" has value "${value}"`);
+})
+
+// Key "key1" has value "value1"
+// Key "key2" has value "value2"
 ```
 
 <br>
@@ -85,66 +176,27 @@ map.size;         // 3
 ## **Methods**
 <br>
 
-### **set()**
+### **clear()**
 
-Adds or updates element for specified `key` argument. Returns `Map` to enable chaining.
+Removes all elements from map.
 
 ```javascript
-set(key, value)
+map.clear()
 ```
 
 <br>
 
 ```javascript
-const map = new Map();
+const map = new Map([['foo', 'bar'], ['bar', 'foo']]);
 
-map.set('foo', 'bar');
-```
-
-<br>
-<br>
-
-### **get()**
-<br>
-
-Returns the value of the specified `key` argument or `undefined` when key is not included in the map.
-
-```javascript
-map.get(key)
-```
-
-```javascript
-const map = new Map([['foo', 'bar']]);
-
-map.get('foo');       // 'bar'
-```
-
-<br>
-<br>
-
-### **has()**
-<br>
-
-Returns boolean indicating whether map includes `key`.
-
-```javascript
-map.has(key)
-```
-
-<br>
-
-```javascript
-const map = new Map([['foo', 'bar']]);
-
-map.has('foo');       // true
-map.has('fo');        // false
+map.clear();
+map.size;       // 0
 ```
 
 <br>
 <br>
 
 ### **delete()**
-<br>
 
 Removes element for specified `key` and returns boolean indicating whether `key` existed. 
 
@@ -164,156 +216,109 @@ map.delete('key');    // false
 <br>
 <br>
 
-### **clear()**
-<br>
+### **get()**
 
-Removes all elements from map.
+Returns the value of the specified `key` argument or `undefined` when key is not included in the map.
 
 ```javascript
-map.clear()
+map.get(key)
+```
+
+```javascript
+const map = new Map([['foo', 'bar']]);
+
+map.get('foo');       // 'bar'
+```
+
+<br>
+<br>
+
+### **has()**
+
+Returns boolean indicating whether map includes `key`.
+
+```javascript
+map.has(key)
 ```
 
 <br>
 
 ```javascript
-const map = new Map([['foo', 'bar'], ['bar', 'foo']]);
+const map = new Map([['foo', 'bar']]);
 
-map.clear();
-map.size;       // 0
+map.has('foo');       // true
+map.has('fo');        // false
 ```
 
 <br>
 <br>
-<br>
 
-### **keys()**
-<br>
+### **Map.groupBy()**
 
-* returns iterator object containing all keys of map object
-* iterator can be iterated via for-of-loop
+Partitions array with specified group function that returns the group value as a string. Returns map object with the group name as key and the group as value.
+
 
 ```javascript
-keys()
-```
-
-```javascript
-let map = new Map([['key1', 'value1'], [1, 'value2']]);
-let mapIterator = map.keys();
-
-mapIterator.next().value;                               // returns 'key1'
-mapIterator.next().value;                               // returns 1
-
-mapIterator = map.keys();
-for (let item of mapIterator) {
-    console.log(item);
-}
+Map.groupBy(array, (element, ?index) => groupString)
 ```
 
 <br>
-<br>
-<br>
 
-### **values()**
-<br>
-
-* returns iterator object containing all values of map object
-* iterator can be iterated via for-of-loop
+**Group By Element Value**
 
 ```javascript
-values()
-```
+const array = ['foo', 'bar', 'foo', 'bar', 'baz'];
 
-```javascript
-let map = new Map([['key1', 'value1'], [1, 'value2']]);
-let mapIterator = map.values();
+const groupMap = Map.groupBy(array, (element) => element);
 
-mapIterator.next().value;                               // returns 'values1'
-mapIterator.next().value;                               // returns 'values2'
-
-mapIterator = map.values();
-for (let item of mapIterator) {
-    console.log(item);
-}
+// groupMap = {
+//   bar => ['bar', 'bar'],
+//   baz => ['baz'],
+//   foo => ['foo', 'foo']
+// }
 ```
 
 <br>
-<br>
-<br>
 
-### **entries()**
-<br>
-
-* returns iterator object containing all key-value pairs as an array
-* iterator can be iterated via for-of-loop
+**Group By Element Property**
 
 ```javascript
-entries()
-```
+const array = [
+  { firstName: 'John', lastName: 'Doe' },
+  { firstName: 'Jane', lastName: 'Smith' },
+  { firstName: 'Alice', lastName: 'Doe' },
+  { firstName: 'Bob', lastName: 'Smith' }
+];
 
-```javascript
-let map = new Map([['key1', 'value1'], [1, 'value2']]);
-let mapIterator = map.entries();
+const groupMap = Map.groupBy(array, ({ lastName }) => lastName);
 
-mapIterator.next().value;                               // returns ['key1', 'values1']
-mapIterator.next().value;                               // returns [1, 'values2']
-
-mapIterator = map.entries();
-for (let item of mapIterator) {
-    console.log(item);
-}
+// groupMap = {
+//   Doe => [
+//     { firstName: 'John', lastName: 'Doe' },
+//     { firstName: 'Alice', lastName: 'Doe' }
+//   ]
+//   Smith => [
+//     { firstName: 'Jane', lastName: 'Smith' },
+//     { firstName: 'Bob', lastName: 'Smith' }
+//   ]
+// } 
 ```
 
 <br>
 <br>
-<br>
 
-### **forEach()**
-<br>
+### **set()**
 
-* executes function for each key-value pair in insertion order
-
-<br>
-
-Parameters:
-* _customFunction_
-    * _value_
-      * value of current iteration
-    * _key_
-      * key of current iteration
-    * _map_
-* _thisArg_
-
-<br>
+Adds or updates element for specified `key` argument. Returns `Map` to enable chaining.
 
 ```javascript
-// general
-forEach(customFunction, [thisArg]
-
-)
-// arrow customFunction
-forEach(() => { /* implementation */ } )
-forEach((value) => { /* implementation */ } )
-forEach((value, key) => { /* implementation */ } )
-forEach((value, key, map) => { /* implementation */ } )
-
-
-// callback customFunction
-forEach(customFunction)
-forEach(customFunction, thisArg)
-
-
-// inline callback customFunction
-forEach(function() { /* implementation */ })
-forEach(function(value) { /* implementation */ })
-forEach(function(value, key) { /* implementation */ })
-forEach(function(value, key, map) { /* implementation */ })
-forEach(function(value, key, map) { /* implementation */ }, thisArg)
+set(key, value)
 ```
 
-```javascript
-let map = new Map([['key1', 'value1'], [1, 'value2']]);
+<br>
 
-map.forEach(function(value, key, map){
-    console.log(`key ${key} has value ${value}`);
-});
+```javascript
+const map = new Map();
+
+map.set('foo', 'bar');
 ```

@@ -1,98 +1,167 @@
-# **Visual Studio Code Shortcuts**
+# **Visual Studio Code**
 <br>
 
 ## **Table Of Contents**
 <br>
 
-- [**Visual Studio Code Shortcuts**](#visual-studio-code-shortcuts)
+- [**Visual Studio Code**](#visual-studio-code)
   - [**Table Of Contents**](#table-of-contents)
-  - [**General**](#general)
-  - [**Search And Navigate**](#search-and-navigate)
-  - [**Editing**](#editing)
-    - [**Multi Cursor Editing**](#multi-cursor-editing)
-    - [**Line Editing**](#line-editing)
-    - [**Rename Editing**](#rename-editing)
-  - [**Visual**](#visual)
-    - [**Code Folding**](#code-folding)
+  - [**Recommended Settings**](#recommended-settings)
+  - [**Shortcuts**](#shortcuts)
+    - [**Basic Window Shortcuts**](#basic-window-shortcuts)
+    - [**Files**](#files)
+      - [**Basic Operations**](#basic-operations)
+      - [**Navigation**](#navigation)
+      - [**Line Manipulation**](#line-manipulation)
+      - [**Text**](#text)
+      - [**Multiline Cursor**](#multiline-cursor)
+      - [**Refactoring**](#refactoring)
+      - [**Markdown**](#markdown)
+  - [**HTML Editing With Emmet**](#html-editing-with-emmet)
 
 <br>
 <br>
 <br>
 
-## **General**
-<br>
+## **Recommended Settings**
 
-|Shortcut           |Description          |
-|:------------------|:--------------------|
-|`Ctrl + Shift + P` |open command palette |
-|`Ctrl + Space`     |open IntelliSense    |
-
-<br>
-<br>
-<br>
-
-## **Search And Navigate**
-<br>
-
-|Shortcut  |Description                   |
-|:---------|:-----------------------------|
-|`F8`      |move to next error or warning |
+| Setting                                     | Description                                        |
+| :------------------------------------------ | :------------------------------------------------- |
+| `workbench.settings.editor: 'json'`         | shows settings as json file                        |
+| `workbench.sidebar.location: 'right'`       | positions the sidebar to the right                 |
+| `editor.minimap.enabled: false`             | hides code minimap                                 |
+| `js/ts.implicitProjectConfig.checkJS: true` | enables TypeScript type check for JavaScript files |
 
 <br>
 <br>
 <br>
 
-## **Editing**
+## **Shortcuts**
 <br>
 <br>
 
-### **Multi Cursor Editing**
-<br>
+### **Basic Window Shortcuts**
 
-1. Select Text
-2. Add cursor
-   1. `Shift + Alt + UpArrow` to add cursor above selection
-   2. `Shift + Alt + DownArrow` to add cursor below selection
-3. Edit
-   1. Typing adds text to all cursor occurrences **or**
-   2. `Ctrl + Shift + L` replaces all instances by typing
-
-<br>
-<br>
-
-### **Line Editing**
-<br>
-
-|Shortcut           |Description                                  |
-|:------------------|:--------------------------------------------|
-|`Ctrl + C`         |copy current line if **no text is selected** |
-|`Alt + UpArrow`    |move line up                                 |
-|`Alt + DownArrow`  |move line down                               |
-|`Ctrl + Shift + K` |delete line                                  |
+| Shortcut Linux            | Shortcut Mac              | Description          |
+| :------------------------ | :------------------------ | :------------------- |
+| `Ctrl + P`                | `Cmd + P`                 | open file switcher   |
+| `Ctrl + Shift + P`        | `Cmd + Shift + P`         | open command palette |
+| `Ctrl + B`                | `Cmd + B`                 | toggle sidebar       |
+| `Ctrl + ,`                | `Cmd + ,`                 | open settings        |
+| `Ctrl + Shift + Backtick` | `Ctrl + Shift + Backtick` | toggle terminal      |
 
 <br>
 <br>
 
-### **Rename Editing**
+### **Files**
 <br>
 
-1. select name
-2. `F2` to rename all instances
-3. `Shift + Enter` to preview changes
+#### **Basic Operations**
+
+| Shortcut Linux | Shortcut Mac | Description                  |
+| :------------- | :----------- | :--------------------------- |
+| `Ctrl + N`     | `Cmd + N`    | create new file              |
+| `Ctrl + S`     | `Cmd + S`    | save changes of current file |
+| `Ctrl + W`     | `Cmd + W`    | close current file           |
+
+<br>
+<br>
+
+#### **Navigation**
+
+| Shortcut Linux | Shortcut Mac  | Description                                              |
+| :------------- | :------------ | :------------------------------------------------------- |
+| `Ctrl + P`     | `Cmd + P`     | open file switcher (`@:` shows elements of current file) |
+| `Ctrl + P + P` | `Cmd + P + P` | open the previous file                                   |
+| `Ctrl + 0`     | `Cmd + 0`     | move to sidebar to select file                           |
+| `Ctrl + Enter` | `Cmd + Down`  | open selected file from sidebar                          |
+| `Ctrl + 1`     | `Cmd + 1`     | move back to editor                                      |
+| `Ctrl + g`     | `Cmd + g`     | move to specied line number                              |
+| `Ctrl + u`     | `Cmd + u`     | move to previous cursor position                         |
+
+<br>
+<br>
+
+#### **Line Manipulation**
+
+|Shortcut Linux       | Shortcut Mac      | Description                                 |
+|:------------------- | :---------------- | :------------------------------------------ |
+|`Ctrl + X`           | `Cmd + X`         | cut current line that the **cursor** is at  |
+|`Ctrl + C`           | `Cmd + C`         | copy current line that the **cursor** is at |
+|`Alt + Shift + Plus` | `Alt + Shift + C` | copy current line beneath it                |
+|`Ctrl + V`           | `Cmd + V`         | paste copied line                           |
+|`Ctrl + Shift + K`   | `Cmd + Shift + K` | delete current line                         |
+|`Alt + Up`           | `Alt + Up`        | move current line upward                    |
+|`Alt + Down`         | `Alt + Down`      | move current line downward                  |
+|`Ctrl + K Ctrl + C`  | `Cmd + K Cmd + C` | comment out current line                    |
+|`Ctrl + K Ctrl + U`  | `Cmd + K Cmd + U` | remove comment from current line            |
+|`Ctrl + L`           |`Cmd + L`          | select current line
+
+<br>
+<br>
+
+#### **Text**
+
+| Shortcut Linux         | Shortcut Mac          | Description          |
+| :--------------------- | :-------------------- | :------------------- |
+| `Ctrl + Backspace`     | `Cmd + Backspace`     | delete previous word |
+| `Ctrl + Shift + Left`  | `Cmd + Shift + Left`  | select previous word |
+| `Ctrl + Shift + Right` | `Cmd + Shift + Right` | select next word     |
+
+<br>
+<br>
+
+#### **Multiline Cursor**
+
+| Shortcut Linux       | Shortcut Mac         | Description                                      |
+| :------------------- | :------------------- | :----------------------------------------------- |
+| `Ctrl + Shift + L`   | `Cmd + Shift + L`    | add cursor for all instances of selected element |
+| `Ctrl + D`           | `Cmd + D`            | add cursor th the next match of selected element |
+| `Ctrl + D + K`       | `Cmd + D + K`        | skip next match of selected element              |
+| `Alt + Shift + Up`   | `Alt + Shift + Up`   | add cursor to line above                         |
+| `Alt + Shift + Down` | `Alt + Shift + Down` | add cursor to line beneath                       |
+| `Alt + Enter`        | `Alt + Enter`        | add cursor for all matches of a search           |
+
+<br>
+<br>
+
+#### **Refactoring**
+
+| Shortcut Linux | Shortcut Mac  | Description                             |
+| :------------- | :------------ | :-------------------------------------- |
+| `F2`           | `F2`          | rename selected element                 |
+| `Ctrl + .`     | `Cmd + .`     | open refactor menu for selected element |
+| `Ctrl + Space` | `Cmd + Space` | open IntelliSense                       |
+
+<br>
+<br>
+
+#### **Markdown**
+
+|Shortcut Linux     |Shortcut Mac       |Description                            |
+|:------------------|:------------------|:--------------------------------------|
+|`Ctrl + Shift + V` |`Ctrl + Shift + V` |Open preview for current markdown file |
+
 
 <br>
 <br>
 <br>
 
-## **Visual**
-<br>
+## **HTML Editing With Emmet**
+
+| Input      | Rendered Element           |
+| :--------- | :------------------------- |
+| `div`      | `<div></div>`              |
+| `div#test` | `<div id="test"></div>`    |
+| `div.test` | `<div class="test"></div>` |
+| `div*2`    | `<div></div><div></div>`   |
+| `div>h2`   | `<div><h2></h2></div>`     |
+
 <br>
 
-### **Code Folding**
-<br>
-
-|Shortcut                      |Description                        |
-|:-----------------------------|:----------------------------------|
-|`Ctrl + K    Ctrl + <number>` |fold specified indentation section |
-|`Ctrl + K    Ctrl + J`        |unfold all                         |
-
+| Command                         |    Manual Shortcut    | Description                            |
+| :------------------------------ | :-------------------: | :------------------------------------- |
+| `Emmet: Balance Outward`        |  `Ctrl + Shift + Up`  | expand current selection to whole tag  |
+| `Emmet: Wrap With Abbreviation` | `Ctrl + Shift + Left` | wrap current element in new tag        |
+| `Emmet: Update Tag Name`        |           -           | rename tag name                        |
+| `Emmet: Update Image Size`      |           -           | add image size properties to image tag |

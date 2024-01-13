@@ -80,3 +80,140 @@ mindmap
                (HTTP-Server)
 
 ```
+
+<br>
+<br>
+<br>
+
+## **Topics To Learn**
+<br>
+
+### **Languages**
+
+- [ ] JavaScript Indepth
+- [ ] TypeScript Indepth
+- [ ] Backend (Java, C# or Go)
+- [ ] C
+- [ ] Rust
+
+<br>
+
+### **Web Development Topics**
+
+- [ ] Progressive Web Apps
+- [ ] Shadow DOM
+- [ ] Web Security
+- [ ] CSS Indepth
+- [ ] SASS
+- [ ] Web Components
+- [ ] Accessibility
+- [ ] Authentification
+- [ ] Next.js
+
+<br>
+
+### **Web APIs**
+
+- [ ] Console API
+- [ ] URL API
+- [ ] Pointer Event API
+- [ ] `Intl` object
+
+<br>
+
+### **Frontend Frameworks**
+
+- [ ] React Indepth
+- [ ] Angular
+- [ ] Vue
+- [ ] Svelte
+
+<br>
+
+### **Testing**
+
+- [ ] React Component Testing
+- [ ] Testing Library
+- [ ] Cypress
+- [ ] Mocha
+
+<br>
+
+### **Databases**
+
+- [ ] Document SQL Basics
+- [ ] Document MySQL and MariaDB
+- [ ] Indexes
+- [ ] Administration
+- [ ] SQLite
+
+<br>
+
+### **API**
+
+- [ ] API Design
+- [ ] Rest APIs
+- [ ] GraphQL APIs
+- [ ] SOAP APIs
+- [ ] Postman
+
+<br>
+
+### **Software Engineering**
+
+- [ ] Engineering Process
+- [ ] Agile Development
+- [ ] Software Architecture
+- [ ] Design Patterns
+
+<br>
+
+### **Tools**
+<br>
+
+#### **Build Tools**
+
+- [ ] Document Webpack
+- [ ] Vite
+
+#### **QA**
+
+- [ ] ESLint
+- [ ] Prettier
+- [ ] JSDOC
+- [ ] Swagger
+
+#### **Other**
+
+- [ ] CI/CD Pipeline
+- [ ] Docker
+- [ ] Electron
+- [ ] Figma
+- [ ] Git Indepth
+- [ ] Wireshark
+- [ ] Fiddler
+- [ ] Ghidra
+
+<br>
+
+### **Operating System**
+
+- [ ] Theory And Fundamentals
+- [ ] Linux Indepth
+- [ ] Linux commands
+  - [ ] nmap
+  - [ ] dig
+  - [ ] grep
+  - [ ] ldd
+  - [ ] find
+  - [ ] nc 
+
+<br>
+
+### **Miscellaneous**
+
+- [ ] Networking
+- [ ] Cloud Computing (AWS, Azure, ...)
+- [ ] Machine Learning Basics
+- [ ] Compiler Construction
+- [ ] Electrical Engineering Basics

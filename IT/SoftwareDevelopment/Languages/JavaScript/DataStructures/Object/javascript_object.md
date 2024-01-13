@@ -1,5 +1,4 @@
 # **JavaScript Object**
-
 <br>
 
 ## **Table Of Contents**
@@ -7,92 +6,225 @@
 
 - [**JavaScript Object**](#javascript-object)
   - [**Table Of Contents**](#table-of-contents)
-  - [**Ways To Create Objects**](#ways-to-create-objects)
+  - [**Basics**](#basics)
+    - [**Objects Are One Of JavaScript´s Data Types**](#objects-are-one-of-javascripts-data-types)
+    - [**Objects Are A Collection Of Properties**](#objects-are-a-collection-of-properties)
+    - [**Object Properties Can Be Of Any Type Including Other Objects**](#object-properties-can-be-of-any-type-including-other-objects)
+    - [**Objects Can Inherit Properties Of Other Objects Via The Prototype Chain**](#objects-can-inherit-properties-of-other-objects-via-the-prototype-chain)
+  - [**Create Objects**](#create-objects)
     - [**Object Literal**](#object-literal)
-    - [**Object Method fromEntries()**](#object-method-fromentries)
-    - [**Constructor Function**](#constructor-function)
-    - [**Class**](#class)
-    - [**Function Object.create()**](#function-objectcreate)
-    - [**Recommended Method**](#recommended-method)
-  - [**Access Attributes And Methods**](#access-attributes-and-methods)
-    - [**Basic Access**](#basic-access)
-    - [**Getter And Setter**](#getter-and-setter)
-  - [**Destructuring**](#destructuring)
-  - [**Add, Overwrite And Delete Attributes Or Methods**](#add-overwrite-and-delete-attributes-or-methods)
-  - [**Copy Attributes Of An Object Into Another Object**](#copy-attributes-of-an-object-into-another-object)
-  - [**Iterate Over Attributes And Methods**](#iterate-over-attributes-and-methods)
-  - [**Use Of Symbols For Unique Attributes**](#use-of-symbols-for-unique-attributes)
-  - [**Prevent Object Modification**](#prevent-object-modification)
-    - [**Object.preventExtensions()**](#objectpreventextensions)
-    - [**Object.seal()**](#objectseal)
-    - [**Object.freeze()**](#objectfreeze)
+    - [**Create From Array (Object.fromEntries())**](#create-from-array-objectfromentries)
+    - [**Create From Prototype Object (Object.create())**](#create-from-prototype-object-objectcreate)
+    - [**Create From Constructor Function**](#create-from-constructor-function)
+    - [**Create From Class**](#create-from-class)
+  - [**Properties**](#properties)
+    - [**Property Descriptor Attributes**](#property-descriptor-attributes)
+      - [**Data Descriptor Attributes**](#data-descriptor-attributes)
+        - [**Value**](#value)
+        - [**Writable**](#writable)
+        - [**Configurable**](#configurable)
+        - [**Enumerable**](#enumerable)
+      - [**Accessor Descriptor Attributes**](#accessor-descriptor-attributes)
+        - [**Get**](#get)
+        - [**Set**](#set)
+        - [**Configurable**](#configurable-1)
+        - [**Enumerable**](#enumerable-1)
+    - [**Add Or Modify Property**](#add-or-modify-property)
+      - [**By Key**](#by-key)
+      - [**By String**](#by-string)
+      - [**Single Property With Attributes (Object.defineProperty())**](#single-property-with-attributes-objectdefineproperty)
+      - [**Multiple Properties With Attributes (Object.defineProperties())**](#multiple-properties-with-attributes-objectdefineproperties)
+    - [**Read Property Value**](#read-property-value)
+      - [**By Key**](#by-key-1)
+      - [**By String**](#by-string-1)
+      - [**Destructuring**](#destructuring)
+    - [**Delete Property (delete)**](#delete-property-delete)
+    - [**Check If Property Exists**](#check-if-property-exists)
+      - [**On Object Or In Prototype Chain (in)**](#on-object-or-in-prototype-chain-in)
+      - [**Only On Object (Object.hasOwn())**](#only-on-object-objecthasown)
+    - [**Check Property Attributes**](#check-property-attributes)
+      - [**Single Property (Object.getOwnPropertyDescriptor())**](#single-property-objectgetownpropertydescriptor)
+      - [**All Properties (Object.getOwnPropertyDescriptors())**](#all-properties-objectgetownpropertydescriptors)
 
 <br>
 <br>
 <br>
 
-## **Ways To Create Objects**
+## **Basics**
 <br>
+
+### **Objects Are One Of JavaScript´s Data Types**
+
+```javascript
+typeof {};     // object
+```
+
+<br>
+
+### **Objects Are A Collection Of Properties**
+
+```javascript
+const person = {
+   firstName: 'John',
+   lastName: 'Doe'
+};
+```
+
+<br>
+
+### **Object Properties Can Be Of Any Type Including Other Objects**
+
+```javascript
+const obj = {
+   value1: 'Some String',
+   value2: 42,
+   value3: false,
+   value4: null,
+   value5: undefined,
+   value6: () => { console.log('some function'); },
+   value7: { firstName: 'John', lastName: 'Doe' }
+}
+```
+
+<br>
+
+### **Objects Can Inherit Properties Of Other Objects Via The Prototype Chain**
+
+Assume we define the following object: 
+
+```javascript
+const person = {
+   firstName: 'John',
+   lastName: 'Doe'
+};
+```
+
+<br>
+
+Although our object does not specify it, we can access a property `toString`:
+
+```javascript
+person.toString();         // '[object Object]'
+```
+
+<br>
+
+We can access this property, because `person` has a reference to its prototype object `Object` which defines the property:
+
+```javascript
+const prototype = Object.getPrototypeOf(person);
+
+/*
+prototype = {
+   ...
+   ƒ toString()
+   ...
+}
+*/
+```
+
+<br>
+<br>
+<br>
+
+## **Create Objects**
 <br>
 
 ### **Object Literal**
-<br>
 
 ```javascript
-let obj = { 
-    key1: 'value';
-    key2: 42.12;
-    foo: function() {
-        console.log(this.key1);
-    }
+const obj = { 
+   key1: 'value1',
+   key2: 'value2'
 }
 ```
 <br>
 <br>
-<br>
 
-### **Object Method fromEntries()**
-<br>
-  
-* create object from two-dimensional array
-* array contains arrays \[key, value\]
+### **Create From Array (Object.fromEntries())**
 
-```javascript
-let array = [['key1', 'value'], ['key2', 42.12], ['foo', function() {console.log(this.key1);}]];
-let obj = Object.fromEntries(array);
+Creates an object based on a two-dimensional iterable (Array or Map) of key-value pairs.
+
 ```
-<br>
+Object.fromEntries(?iterable)
+```
+
+```javascript
+const array = [['key1', 'value1'], ['key2', 'value2']];
+
+const obj = Object.fromEntries(array);
+```
+
 <br>
 <br>
 
-### **Constructor Function**
+### **Create From Prototype Object (Object.create())**
+
+Creates an object based on a `prototypeObject`.  
+Additional properties can be added via the optional `additionalProps` argument.
+
+```javascript
+Object.create(prototypeObject, ?additionalProps)
+```
+
+```javascript
+additonalProps = {
+   value,
+   ?writeable = false,
+   ?enumerable = false,
+   ?configurable = false,
+   ?set,
+   ?get
+}
+```
+
 <br>
 
 ```javascript
-function Obj(value1, value2) {
-    this.key1 = value1;
-    this.key2 = value2;
-    this.foo = function() { console.log(this.key1); }
+const person = {
+   firstName: 'John',
+   lastName: 'Doe'
+};
+
+const programmer = Object.create(
+   person, 
+   { languages: { value: ['JavaScript', 'C#'] } }
+);
+
+programmer.firstName;      // 'John'
+programmer.lastName;       // 'Doe'
+programmer.languages;      // ['JavaScript', 'C#']
+```
+
+<br>
+<br>
+
+### **Create From Constructor Function**
+
+```javascript
+function Obj(value1, ...) {
+   this.key1 = value1;
+   ...
+}
+```
+
+<br>
+
+```javascript
+function Person(firstName, lastName) {
+   this.firstName = firstName;
+   this.lastName = lastName;
 }
 
-let obj1 = new Obj('value', 42.12);
-let obj2 = new Obj(42.12, 'value');
+const johnDoe = new Person('John', 'Doe');
 ```
-<br>
-
-* every constructor function has an internal **prototype** object that is the base for newly created objects
-* every object saves its constructor function in the attribute _constructor_
-  
-<br>
-
-![Diagram](./pictures/diagramPrototype.png)
 
 <br>
 <br>
-<br>
 
-### **Class**
-<br>
+### **Create From Class**
+
+A class is a syntactic alternative to constructor function.
 
 ```javascript
 class ClassName {
@@ -102,489 +234,579 @@ class ClassName {
         this.attribute2 = arg2;
     }
 
-    methodName1() {...}
-
-    methodName2() {...}
+    methodName() {...}
 }
-
-
-let obj = new ClassName('foo', 123.34);
 ```
 
-* method _constructor_  is called implicitly on object creation
-* classes are a syntactical alternative to constructor functions
-
 <br>
-<br>
-<br>
-
-### **Function Object.create()**
 <br>
 
 ```javascript
-let obj = Object.create(prototype, configurationObject);
+class Person {
+   firstName;
+   lastName;
 
-// configuration object
-{ 
-attributeName1: {attributeProperty1: value1},
-
-attributeName2: {attributeProperty1: value1}
-                 attributeProptery2: value2,
-                 attributeProperty3: value3}, 
-                 
-methodName: {value: function() { console.log('method implementation'); }}
-}
-```
-<br>
-
-|Attribute property |Description                                                                                          |
-|:------------------|:----------------------------------------------------------------------------------------------------|
-|value              |-                                                                                                    |
-|writeable          |boolean indicating whether attribute can be overwritten (default: false)                             |
-|enumerable         |boolean indicating whether attibute is returned on iteration over object attributes (default: false) |
-|configurable       |boolean indicating whether attribute property is editable (default: false)                           |
-|set                |defines function that is envoked upon writing to attribute                                           |
-|get                |defines function that is envoked upon reading attribute                                              |
-
-<br>
-<br>
-
-Access attribute properties
-```javascript
-Object.getOwnPropertyDescriptor(objectReference, attributeName);
-// returns object containing all properties for attributeName of objectReference
-```
-<br>
-<br>
-
-Example:
-```javascript
-let person = Object.create(Object.prototype, {
-                firstName: {
-                    value: 'John',
-                    writable: false,
-                    configurable: true,
-                    enumerable : true
-                },
-                lastName: {
-                    value: 'Doe',
-                    writable: true,
-                    configurable: true,
-                    enumerable: true
-                },
-                age: {
-                    value: 34,
-                    writable: false,
-                    configurable: true,
-                    enumerable : false
-                },
-                introduce: {
-                    value: function() {
-                        console.log(`Hello, my name is ${this.firstName} ${this.lastName}. I am currently ${this.age} years old.`);
-                    }
-                }
-});
-
-
-for (let property in person) {
-    console.log(property);                      // output: 'firstName', 'lastName' (age is not printed to console, because age.enumerable is false
+   constructor(firstName, lastName) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+   }
 }
 
-person.firstName = 'Jane';
-console.log(person.firstName);                  // output: 'John' (because firstName.writable is false)
-
-person.lastName = 'Dee';
-console.log(person.lastName);                   // output: 'Dee' (because firstName.writable is true)
-
-let propertyDescriptor = Object.getOwnPropertyDescriptor(person, 'firstName');
-console.log(propertyDescriptor.value);          // output: 'John'
-console.log(propertyDescriptor.writable);       // output: 'false'
-console.log(propertyDescriptor.configurable);   // output: 'true'
-console.log(propertyDescriptor.enumerable);     // output: 'true'
+const johnDoe = new Person('John', 'Doe');
 ```
 
 <br>
 <br>
 <br>
 
-### **Recommended Method**
-<br>
-
-* Use object literal for simple objects with only one instance
-* Use classes for objects with multiple instances
-* Use Object.create() if you need attribute properties
-
-<br>
-<br>
+## **Properties**
 <br>
 <br>
 
-## **Access Attributes And Methods**
+### **Property Descriptor Attributes**
+
+A property of an object is described with different attributes. There are two types of property descriptions:
+
+<br>
+
+#### **Data Descriptor Attributes**
+<br>
+
+##### **Value**
+
+Value of the property.
+
+<br>
+
+##### **Writable**
+
+Specifies whether property can be assigned a new `value`.  
+
+Default: **false**
+
+<br>
+
+##### **Configurable**
+
+Specifies whether property can be deleted.  
+Specifies whether property attributes (except `value`) can be changed.  
+
+Default: **false**
+
+<br>
+
+##### **Enumerable**
+
+Specifies whether property will show up during enumeration (for-in loop, object.keys()) of the object properties.  
+
+Default: **false**
+
+<br>
+
+#### **Accessor Descriptor Attributes**
+<br>
+
+##### **Get**
+
+Getter function for the property attribute `value`.  
+Get current value via `this.value`. 
+
+Default: `undefined`
+
+<br>
+
+##### **Set**
+
+Setter function for the property attribute `value`.  
+Gets passed an input argument and can update `this.value`.  
+
+Default: `undefined`
+
+<br>
+
+##### **Configurable**
+
+Specifies whether property can be deleted.  
+Specifies whether property attributes (except `value`) can be changed.  
+
+Default: **false**
+
+<br>
+
+##### **Enumerable**
+
+Specifies whether property will show up during enumeration (for-in loop, object.keys()) of the object properties.  
+
+Default: **false**
+
 <br>
 <br>
 
-### **Basic Access**
+### **Add Or Modify Property**
 <br>
+<br>
+
+#### **By Key**
+
+Adds a new property with specified name and value to the object if it does not already exist.  
+Otherwise updates the value of the existing property. 
 
 ```javascript
-// Ways to access attribute 
-obj.attributeName;
-obj['attributeName'];
+obj.propertyName = 'value';
+```
 
-// Ways to envoke method
-obj.methodName();
-obj['methodName']();
+A new property added in this way has the following attributes:
+
+```javascript
+{
+   value: 'value',
+   writeable: true,
+   configurable: true,
+   enumerable: true,
+}
 ```
 
 <br>
 <br>
 
-### **Getter And Setter**
-<br>
+#### **By String**
 
-* define attribute as _attributeName
-* add prefixes _set_ or _get_ to setter or getter functions for attribute
-* call setter or getter via object.attributName
+Adds a new property with specified string and value to the object if it does not already exist.  
+Otherwise updates the value of the existing property.
 
-<br>
-
-Example:
 ```javascript
-// Object Literal
-let obj = {
-    _bar: 'foo',
-    set bar(param) { /* implementation */ },
-    get bar() { return this._bar; }
+object['attributeName'] = 'value';
+```
+
+A new property added in this way has the following attributes:
+
+```javascript
+{
+   value: 'value',
+   writeable: true,
+   configurable: true,
+   enumerable: true,
 }
-
-
-// Constructor Function
-function Obj(param) {
-    this._bar = param;
-}
-
-Obj.prototype = {
-    set bar(param) { /* implementation */ }
-    get bar() { return this._bar; }
-}
-
-
-// Class
-class Obj {
-    constructor(param) {
-        this._bar = param;
-    }
-    set bar(param) { /* implementation */ }
-    get bar() { return this._bar; }
-}
-
-
-// Function Object.create()
-obj = Object.create(Object.prototype, {
-                bar: {
-                    set: function(param) { /* implementation */ },
-                    get: function() { return this._bar; }
-                }
-});
 ```
 
 <br>
 <br>
-<br>
-<br>
 
-## **Destructuring**
-<br>
-<br>
+#### **Single Property With Attributes (Object.defineProperty())**
 
-* assign object property values to variables
+Adds a new property with specified name, value and attributes to the object if it does not already exist.  
+Otherwise updates the existing property.
 
 ```javascript
-let { propertyName1: variableName1, propertyName2: variableName2 } = obj;
-
-let { attributeName1, attributeName2 } = obj;
-
-let { attributeName1, attributeName2, ...properties } = obj;
-
-let { propertyName1: variableName1, 
-      nestedObjectProperty: {
-          nestedObjectPropertyName1: variableName2
-          nestedObjectPropertyName2: variableName3 
-      }
-} = obj;
+Object.defineProperty(object, propertyName, descriptor)
 ```
 
 ```javascript
-let obj = {
-    propertyName1: 'value1',
-    propertyName2: 'value2',
-    propertyName3: 'value3'
+accessorDescriptor = {
+   get,
+   set,
+   ?configurable,
+   ?enumerable
 };
 
-
-// custom variable names
-let {
-    propertyName1: variableName1,
-    propertyName2: variableName2,
-    propertyName3: variableName3
-} = obj;
-
-console.log(variableName1);                              // output: value1
-console.log(variableName2);                              // output: value2
-console.log(variableName3);                              // output: value3
-
-
-// same variable names
-let { propertyName1, propertyName2, propertyName3 } = obj;
-console.log(propertyName1);                              // output: value1
-console.log(propertyName2);                              // output: value2
-console.log(propertyName3);                              // output: value3
-
-
-// rest-properties
-let { propertyName1, ...properties} = obj;
-console.log(propertyName1);                              // output: value1
-console.log(properties);                                 // output: { propertyName2: value2, propertyName3: value3 }
-
-
-// nested object
-let obj = {
-    propertyName1: 'value1',
-    propertyName2: 'value2',
-    propertyName3: {
-        nestedPropertyName1: 'value3',
-        nestedPropertyName2: 'value4'
-    }
-};
-
-let {propertyName1 : variableName1,
-     propertyName2 : variableName2,
-     propertyName3 : {
-         nestedPropertyName1 : variableName3,
-         nestedPropertyName2 : variableName4
-     }
-} = obj;
-
-console.log(variableName1);                              // output: value1
-console.log(variableName2);                              // output: value2
-console.log(variableName3);                              // output: value3
-console.log(variableName4);                              // output: value4                                                 
-```
-
-<br>
-<br>
-<br>
-<br>
-
-## **Add, Overwrite And Delete Attributes Or Methods**
-<br>
-
-Attributes and Methods can be dynamically added, overwritten and deleted at runtime.
-
-```javascript
-// Ways to add or overwrite attributes
-obj.attributeName = 'new value';
-
-obj['attributeName'] = 'new value';
-
-Object.defineProperty(obj, 'attributeName', { value: 'new value'});
-
-Object.defineProperties(obj, {attributeName1: {value: 'new value'},
-                              attributeName2: {value: 'new value'}
-                             });
-
-
-// Ways to add or overwrite methods
-obj.methodName = function() { /* implementation */ }
-
-obj['methodName'] = function() { /* implementation */ }
-
-Object.defineProperty(obj, 'methodName', {value: function() { /* implementation */ }});
-
-Object.defineProperty(obj, {methodName1: {value: function() { /* implementation */ }},
-                            methodName2: {value: function() { /* implementation */ }}
-                           });
-
-
-// Delete attribute or method
-delete obj.attributeName;
-delete obj.methodName;
-
-
-// Check if attribute or method exist
-console.log('attributeName' in obj);
-console.log('methodName' in obj);
-```
-
-<br>
-<br>
-<br>
-<br>
-
-## **Copy Attributes Of An Object Into Another Object**
-<br>
-
-```javascript
-// copy attributes of obj1 into obj2
-const obj1 = {
-    attribute1: 'value1',
-    attribute2: 'value2'
-};
-
-const obj2 = {
-    ...obj1,
-    attribute3: 'value3',
-    attribute4: 'value4'
-}
-
-console.log(obj1);                              // output: { attribute1: 'value1', attribute2: 'value2' }
-console.log(obj2);                              // output: { attribute1: value1, 
-                                                //           attribute2: value2,
-                                                //           attribute3: value3,
-                                                //           attribute4: value4 }
-```
-
-<br>
-<br>
-<br>
-<br>
-
-## **Iterate Over Attributes And Methods**
-<br>
-
-```javascript
-// iterate over all enumerable elements of an object and its prototype via for-in loop
-for (let element in obj) {
-    console.log(`element name: ${element}`);
-    console.log(`element value: ${obj[element]}`);
-}
-
-
-// iterate over array of element names
-let elementNames = Object.keys(obj);
-for (let i = 0; i < elementNames.length; i++) {
-    console.log(`element name: ${elementNames[i]}`);
-    console.log(`element value: ${obj[elementNames[i]]}`);
-}
-
-
-// iterate over array of element values
-let elementValues = Object.values(obj);
-for (let i = 0; i < elementValues.length; i++) {
-    console.log(`element value: ${elementValues[i]}`);
-}
-
-
-// iterate over array of key-value pairs of elements
-let elementKeyValuePairs = Object.entries(obj);
-for (let i = 0; i < elementKeyValuePairs.length; i++) {
-    console.log(`element name: ${elementKeyValuePairs[i][0]}`);
-    console.log(`element value: ${elementKeyValuePairs[i][1]}`);
+dataDescriptor = {
+   value,
+   ?writeable,
+   ?configurable,
+   ?enumerable
 }
 ```
 
 <br>
-<br>
-<br>
-<br>
 
-## **Use Of Symbols For Unique Attributes**
-<br>
-
-Using symbols for defining unique attributes prevents any call of this attribute other than by the symbol.
+**Add Accessor Property**
 
 ```javascript
-const attribute1 = Symbol('attribute1');
 const obj = {};
-obj[attribute1] = 'value';
 
-console.log(obj[attribute1]);       // output: value
-console.log(obj[0]);                // output: undefined
-console.log(obj.attribute1);        // output: undefined
-console.log(obj['attribute1']);     // output: undefined   
+Object.defineProperty(obj, 'foo', {
+   get: () => `Getter: "${this.value}"`,
+   set: (value) => this.value = `Setter: ${value}`
+});
+
+obj.foo;             // 'Getter: "undefined"'
+obj.foo = 'value';
+obj.foo;             // 'Getter: "Setter: value"'
 ```
 
 <br>
-<br>
-<br>
-<br>
 
-## **Prevent Object Modification**
-<br>
-
-### **Object.preventExtensions()**
-<br>
-
-:x: add new attributes and methods to an object  
-:heavy_check_mark: alter values of existing attributes and methods  
-:heavy_check_mark: alter attribute properties (e.g. enumerable)
+**Add Non-Writable Data Property**
 
 ```javascript
-let obj = {
-    attribute1: 'value'
-}
+const obj = {};
 
-Object.preventExtensions(obj);
-console.log(Object.isExtensible(obj));      // output: false
+Object.defineProperty(obj, 'foo', {
+   value: 'foo'
+});
 
-obj.attribute1 = 'newValue';
-console.log(obj.attribute1);                // output: newValue
-
-obj.newAttribute = 'value';                 // TypeError: Can't add property newAttribute, object is not extensible
-
-console.log(Object.getOwnPropertyDescriptor(obj, 'attribute1').enumerable);     // output: true
-Object.defineProperty(obj, 'attribute1', { enumerable: false });
-console.log(Object.getOwnPropertyDescriptor(obj, 'attribute1').enumerable);     // output: false
+obj.foo;                 // 'foo'
+obj.foo = 'newValue';    // ignored, because writable = false
+obj.foo;                 // 'foo'
 ```
 
 <br>
-<br>
 
-### **Object.seal()**
-<br>
-
-:x: add new attributes and methods to an object  
-:heavy_check_mark: alter values of existing attributes and methods  
-:x: alter attribute properties (e.g. enumerable)
+**Add Writable Data Property**
 
 ```javascript
-let obj = {
-    attribute1: 'value'
-}
+const obj = {};
 
-Object.seal(obj);
-console.log(Object.isSealed(obj));          // output: true
+Object.defineProperty(obj, 'foo', {
+   value: 'foo',
+   writable: true
+});
 
-obj.attribute1 = 'newValue';                
-console.log(obj.attribute1);                // output: newValue
-
-obj.newAttribute = 'value';                 // TypeError: Can't add property newAttribute, object is not extensible
-
-Object.defineProperty(obj, 'attribute1', { enumerable: false });     // Uncaught TypeError: Cannot redefine property: attribute1
+obj.foo;                 // 'foo'
+obj.foo = 'newValue';    
+obj.foo;                 // 'newValue'
 ```
 
 <br>
 <br>
 
-### **Object.freeze()**
-<br>
+#### **Multiple Properties With Attributes (Object.defineProperties())**
 
-:x: add new attributes and methods to an object  
-:x: alter values of existing attributes and methods  
-:x: alter attribute properties (e.g. enumerable)
+Alternative to [Object.defineProperty()](#single-property-with-attributes-objectdefineproperty) to add multiple properties at once.
 
 ```javascript
-let obj = {
-    attribute1: 'value'
+Object.defineProperties(object, {
+   propertyName1: descriptor,
+   propertyName1: descriptor,
+   ...
+})
+```
+
+```javascript
+accessorDescriptor = {
+   get,
+   set,
+   ?configurable,
+   ?enumerable
+};
+
+dataDescriptor = {
+   value,
+   ?writeable,
+   ?configurable,
+   ?enumerable
+}
+```
+
+<br>
+<br>
+
+### **Read Property Value**
+<br>
+<br>
+
+#### **By Key**
+
+Returns value of property with specified `propertyName`.
+
+```javascript
+object.propertyName;
+
+object.methodName();
+```
+
+<br>
+
+```javascript
+const object = {
+   foo: 'value1',
+   bar: () => { console.log('value2')}
 }
 
-Object.freeze(obj);
-console.log(Object.isFrozen(obj));          // output: true
+object.foo;       // 'value1'
+object.bar();     // value2
+```
 
-obj.attribute1 = 'newValue';                
-console.log(obj.attribute1);                // output: value
+<br>
+<br>
 
-obj.newAttribute = 'value';                 // TypeError: Can't add property newAttribute, object is not extensible
+#### **By String**
 
-Object.defineProperty(obj, 'attribute1', { enumerable: false });     // Uncaught TypeError: Cannot redefine property: attribute1
+Returns value of property whose key matches the specified string.
+
+```javascript
+object['propertyName'];
+
+object['methodName']();
+```
+
+<br>
+
+```javascript
+const object = {
+   foo: 'value1',
+   bar: () => { console.log('value2')}
+}
+
+object['foo'];       // 'value1'
+object['bar']();     // value2
+```
+
+<br>
+<br>
+
+#### **Destructuring**
+
+Assign property values to variables.
+
+```javascript
+const { propertyName1: ?optionalAlias, ...} = obj;
+```
+
+<br>
+
+**Read Properties**
+
+```javascript
+const obj = {
+   foo: 'fooValue',
+   bar: 'barValue',
+   baz: 'bazValue'
+};
+
+const { foo, bar } = obj;
+
+// foo = 'fooValue'
+// bar = 'barValue'
+```
+
+<br>
+
+**Read Properties Using Alias**
+
+
+```javascript
+const obj = {
+   foo: 'fooValue',
+   bar: 'barValue',
+   baz: 'bazValue'
+};
+
+const { foo: firstProp, bar: secondProp } = obj;
+
+// firstProp = 'fooValue'
+// secondProp = 'barValue'
+```
+
+<br>
+
+**Read Properties Using Rest Variable**
+
+```javascript
+const obj = {
+   foo: 'fooValue',
+   bar: 'barValue',
+   baz: 'bazValue'
+};
+
+const { foo, ...props } = obj;
+
+// foo = 'fooValue'
+// props = { bar: 'barValue', baz: 'bazValue'}
+```
+
+<br>
+
+**Read Properties Of Nested Object**
+
+```javascript
+const nestedObj = {
+   foo: 'fooValue',
+   bar: {
+      baz: 'bazValue',
+      caz: 'cazValue'
+   }
+};
+
+const {foo, bar: { baz, caz }} = nestedObj;
+
+// foo = 'fooValue'
+// baz = 'bazValue'
+// caz = 'cazValue'
+```
+
+<br>
+<br>
+
+### **Delete Property (delete)**
+
+Removes specified property from object.  
+Returns `false` if property could not be removed because it was marked as [non-configurable](#configurable).
+
+```javascript
+delete object.propertyName
+
+delete object['propertyName']
+```
+
+<br>
+
+**Successful Deletion**
+
+```javascript
+const obj = { foo: 'fooValue', bar: 'barValue' };
+
+delete obj.foo;      // true
+
+// obj = { bar: 'barValue' }
+```
+
+<br>
+
+**Failed Deletion**
+
+```javascript
+const obj = { bar: 'barValue' };
+
+Object.defineProperty(obj, 'foo', {
+   value: 'fooValue',
+   configurable: false
+});
+
+delete obj.foo;      // false
+
+// obj = { foo: 'fooValue', bar: 'barValue }
+```
+
+<br>
+<br>
+
+### **Check If Property Exists**
+<br>
+
+#### **On Object Or In Prototype Chain (in)**
+
+Returns boolean indicating whether specified property exists on the specified object or in its prototype chain.
+
+```javascript
+'propertyName' in object
+
+'#privateMethod' in object
+```
+
+<br>
+
+```javascript
+const obj = { foo: 'fooValue', bar: undefined };
+
+'foo' in obj;        // true
+'bar' in obj;        // true
+'toString' in obj;   // true, because in prototype chain
+'baz' in obj;        // false
+```
+
+<br>
+<br>
+
+#### **Only On Object (Object.hasOwn())**
+
+Returns boolean indicating whether the specified property is defined (**not inherited**) on the specified object.
+
+```javascript
+Object.hasOwn(object, propertyName)
+```
+
+<br>
+
+```javascript
+const obj = { foo: 'fooValue', bar: undefined };
+
+Object.hasOwn(obj, 'foo');       // true
+Object.hasOwn(obj, 'bar');       // true
+Object.hasOwn(obj, 'toString');  // false, because in prototype chain
+Object.hasOwn(obj, 'baz');       // false
+```
+
+<br>
+<br>
+
+### **Check Property Attributes**
+<br>
+
+#### **Single Property (Object.getOwnPropertyDescriptor())**
+
+Returns copy object of the configuration of the specified property on the specified object.
+
+```javascript
+Object.getOwnPropertyDescriptor(object, propertyName)
+```
+
+<br>
+
+```javascript
+const obj = {};
+
+Object.defineProperty(obj, 'foo', {
+   value: 'foo',
+   writable: true,
+   enumerable: true,
+   configurable: false
+});
+
+const config = Object.getOwnPropertyDescriptor(obj, 'foo');
+
+// config = {
+//    value: 'foo',
+//    writable: true,
+//    enumerable: true,
+//    configurable: false
+// }
+```
+
+<br>
+<br>
+
+#### **All Properties (Object.getOwnPropertyDescriptors())**
+
+Returns copy object of the configurations of all **own** properties of the specified object.
+
+```javascript
+Object.getOwnPropertyDescriptors(object);
+```
+
+<br>
+
+```javascript
+const obj = {};
+
+Object.defineProperty(obj, 'foo', {
+   value: 'foo',
+   writable: true,
+   enumerable: true,
+   configurable: false
+});
+
+Object.defineProperty(obj, 'bar', {
+   value: 'bar',
+   writable: false,
+   enumerable: false,
+   configurable: true
+});
+
+const config = Object.getOwnPropertyDescriptors(obj);
+
+// config = {
+//    foo: {
+//       value: 'foo',
+//       writable: true,
+//       enumerable: true,
+//       configurable: false
+//    },
+//    bar: {
+//       value: 'bar',
+//       writable: false,
+//       enumerable: false,
+//       configurable: true
+//    }
+// }
 ```

@@ -107,6 +107,7 @@
 | `Ctrl + Backspace`     | `Cmd + Backspace`     | delete previous word |
 | `Ctrl + Shift + Left`  | `Cmd + Shift + Left`  | select previous word |
 | `Ctrl + Shift + Right` | `Cmd + Shift + Right` | select next word     |
+| `Ctrl + Shift + 7`     | `Cmd + Shift + 7`     | toggle selected lines as comments
 
 <br>
 <br>

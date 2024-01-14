@@ -45,6 +45,14 @@
     - [**Check Property Attributes**](#check-property-attributes)
       - [**Single Property (Object.getOwnPropertyDescriptor())**](#single-property-objectgetownpropertydescriptor)
       - [**All Properties (Object.getOwnPropertyDescriptors())**](#all-properties-objectgetownpropertydescriptors)
+  - [**Iteration**](#iteration)
+    - [**For-In Loop**](#for-in-loop)
+    - [**For-Of Loop**](#for-of-loop)
+      - [**Iterate Over Own Enumerable Property Keys (Object.keys())**](#iterate-over-own-enumerable-property-keys-objectkeys)
+      - [**Iterate Over Own Enumerable Property Value (Object.values())**](#iterate-over-own-enumerable-property-value-objectvalues)
+      - [**Iterate Over Own Enumerable Key-Value Pairs (Object.entries())**](#iterate-over-own-enumerable-key-value-pairs-objectentries)
+      - [**Iterate Over All Own String Keys (Object.getOwnPropertyNames())**](#iterate-over-all-own-string-keys-objectgetownpropertynames)
+      - [**Iterate Over All Own Symbol Keys (Object.getOwnPropertySymbols())**](#iterate-over-all-own-symbol-keys-objectgetownpropertysymbols)
 
 <br>
 <br>
@@ -138,6 +146,19 @@ const obj = {
    key2: 'value2'
 }
 ```
+
+<br>
+
+Object literal with `getter` and `setter` methods:
+
+```javascript
+const obj = {
+    _bar: 'foo',
+    set bar(value) { this._bar = `Setter: ${value}` },
+    get bar() { return `Getter: ${this._bar}` }
+}
+```
+
 <br>
 <br>
 
@@ -210,6 +231,8 @@ function Obj(value1, ...) {
 
 <br>
 
+Simple constructor function:
+
 ```javascript
 function Person(firstName, lastName) {
    this.firstName = firstName;
@@ -217,6 +240,27 @@ function Person(firstName, lastName) {
 }
 
 const johnDoe = new Person('John', 'Doe');
+```
+
+<br>
+
+Constructor function with `getter` and `setter` methods:
+
+```javascript
+function Person(name) {
+   this._name = name;
+
+   Object.defineProperty(this, 'name', {
+      set: (name) => { this._name = `Setter: ${name}` },
+      get: () => { return `Getter: ${this._name}` }
+   });
+}
+
+const johnDoe = new Person('John Doe');
+
+johnDoe.name;                 // 'Getter: John Doe'
+johnDoe.name = 'Jane Doe';
+johnDoe.name;                 // 'Getter: Setter: JohnDoe'
 ```
 
 <br>
@@ -239,7 +283,21 @@ class ClassName {
 ```
 
 <br>
+
+```javascript
+class ClassName {
+   constructor(param) {
+      this._bar = param;
+   }
+
+   set bar(param) { /* implementation */ }
+   get bar() { return this._bar; }
+}
+```
+
 <br>
+
+Simple Class:
 
 ```javascript
 class Person {
@@ -253,6 +311,35 @@ class Person {
 }
 
 const johnDoe = new Person('John', 'Doe');
+```
+
+<br>
+
+Class with `getter` and `setter` methods:
+
+
+```javascript
+class Person {
+   #name;
+
+   constructor(name) {
+      this.#name = name;
+   }
+
+   set name(name) {
+      this.#name = `Setter: ${name}`;
+   }
+
+   get name() {
+      return `Getter: ${this.#name}`;
+   }
+}
+
+const johnDoe = new Person('John Doe');
+
+johnDoe.name;                 // 'Getter: John Doe'
+johnDoe.name = 'Jane Doe';
+johnDoe.name;                 // 'Getter: Setter: JohnDoe'
 ```
 
 <br>
@@ -809,4 +896,173 @@ const config = Object.getOwnPropertyDescriptors(obj);
 //       configurable: true
 //    }
 // }
+```
+
+<br>
+<br>
+<br>
+
+## **Iteration**
+<br>
+
+### **For-In Loop**
+
+Iterates over all properties of the current object and in the prototype chain that are [**enumerable**](#enumerable) and whose keys are not [**Symbols**](../../PrimitiveDataTypes/javascript_symbol.md).
+
+```javascript
+const prototype = { foo: 'fooValue' };
+
+const obj = Object.create(prototype, { 
+   bar: { value: 'barValue', enumerable: true },
+   caz: { value: 'cazValue', enumerable: false }
+});
+
+for (const key in obj) {
+   console.log(key);
+}
+
+// foo
+// bar
+```
+
+<br>
+<br>
+
+### **For-Of Loop**
+<br>
+
+#### **Iterate Over Own Enumerable Property Keys (Object.keys())**
+
+Returns an array of all **own** [**enumerable**](#enumerable) property keys that are not [**Symbols**](../../PrimitiveDataTypes/javascript_symbol.md).  
+Does not include any property keys inherited from the prototype chain.
+
+```javascript
+Object.keys(object)
+```
+
+```javascript
+const prototype = { foo: 'fooValue' };
+
+const obj = Object.create(prototype, { 
+   bar: { value: 'barValue', enumerable: true },
+   caz: { value: 'cazValue', enumerable: false }
+});
+
+for (const key of Object.keys(obj)) {
+   console.log(key);
+}
+
+// bar
+```
+
+<br>
+<br>
+
+#### **Iterate Over Own Enumerable Property Value (Object.values())**
+
+Returns an array of all own [**enumerable**](#enumerable) property values.  
+
+```javascript
+Object.values(object)
+```
+
+Iterates over all **own** properties of the current object that are [**enumerable**](#enumerable) and whose keys are not [**Symbols**](../../PrimitiveDataTypes/javascript_symbol.md). Does not iterate over any property in the prototype chain.
+
+```javascript
+const prototype = { foo: 'fooValue' };
+
+const obj = Object.create(prototype, { 
+   bar: { value: 'barValue', enumerable: true },
+   caz: { value: 'cazValue', enumerable: false }
+});
+
+for (const value of Object.values(obj)) {
+   console.log(value);
+}
+
+// barValue
+```
+
+<br>
+<br>
+
+#### **Iterate Over Own Enumerable Key-Value Pairs (Object.entries())**
+
+Returns an array of all own [**enumerable**](#enumerable) property key-value pairs.
+
+```javascript
+Object.entries(object)
+```
+
+Iterates over all **own** properties of the current object that are [**enumerable**](#enumerable) and whose keys are not [**Symbols**](../../PrimitiveDataTypes/javascript_symbol.md). Does not iterate over any property in the prototype chain.
+
+```javascript
+const prototype = { foo: 'fooValue' };
+
+const obj = Object.create(prototype, { 
+   bar: { value: 'barValue', enumerable: true },
+   caz: { value: 'cazValue', enumerable: false }
+});
+
+for (const [key, value] of Object.entries(obj)) {
+   console.log(`${key}: ${value}`);
+}
+
+// bar: barValue
+```
+
+<br>
+<br>
+
+#### **Iterate Over All Own String Keys (Object.getOwnPropertyNames())**
+
+Returns an array of all own property keys including non-enumerables. Does not include [**Symbols**](../../PrimitiveDataTypes/javascript_symbol.md).  
+Does not include any property keys inherited from the prototype chain.
+
+```javascript
+Object.getOwnPropertyNames(object)
+```
+
+```javascript
+const prototype = { foo: 'fooValue' };
+
+const obj = Object.create(prototype, { 
+   bar: { value: 'barValue', enumerable: true },
+   caz: { value: 'cazValue', enumerable: false }
+});
+
+for (const key of Object.getOwnPropertyNames(obj)) {
+   console.log(key);
+}
+
+// bar
+// caz
+```
+
+<br>
+<br>
+
+#### **Iterate Over All Own Symbol Keys (Object.getOwnPropertySymbols())**
+
+Returns an array of all own property keys including non-enumerables. Does not include [**Symbols**](../../PrimitiveDataTypes/javascript_symbol.md).  
+Does not include any property keys inherited from the prototype chain.
+
+```javascript
+Object.getOwnPropertySymbols(object)
+```
+
+```javascript
+const prototype = { foo: 'fooValue' };
+
+const obj = Object.create(prototype);
+obj.bar = 'barValue';
+obj[Symbol('caz')] = 'cazValue';
+
+for (const key of Object.getOwnPropertySymbols(obj)) {
+   console.log(key);
+   console.log(obj[key]);
+}
+
+// Symbol(caz)
+// cazValue
 ```

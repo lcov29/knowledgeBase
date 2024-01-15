@@ -17,6 +17,18 @@
     - [**Create From Prototype Object (Object.create())**](#create-from-prototype-object-objectcreate)
     - [**Create From Constructor Function**](#create-from-constructor-function)
     - [**Create From Class**](#create-from-class)
+  - [**Copy Own Enumerable Properties From Other Object**](#copy-own-enumerable-properties-from-other-object)
+    - [**Object.assign()**](#objectassign)
+    - [**Spread Operator (...)**](#spread-operator-)
+  - [**Restrict Object Modification**](#restrict-object-modification)
+    - [**Create Restriction**](#create-restriction)
+      - [**Object.preventExtensions()**](#objectpreventextensions)
+      - [**Object.seal()**](#objectseal)
+      - [**Object.freeze()**](#objectfreeze)
+    - [**Check Restriction Status**](#check-restriction-status)
+      - [**Object.isExtensible()**](#objectisextensible)
+      - [**Object.isSealed()**](#objectissealed)
+      - [**Object.isFrozen()**](#objectisfrozen)
   - [**Properties**](#properties)
     - [**Property Descriptor Attributes**](#property-descriptor-attributes)
       - [**Data Descriptor Attributes**](#data-descriptor-attributes)
@@ -32,6 +44,7 @@
     - [**Add Or Modify Property**](#add-or-modify-property)
       - [**By Key**](#by-key)
       - [**By String**](#by-string)
+      - [**By Symbol**](#by-symbol)
       - [**Single Property With Attributes (Object.defineProperty())**](#single-property-with-attributes-objectdefineproperty)
       - [**Multiple Properties With Attributes (Object.defineProperties())**](#multiple-properties-with-attributes-objectdefineproperties)
     - [**Read Property Value**](#read-property-value)
@@ -346,6 +359,334 @@ johnDoe.name;                 // 'Getter: Setter: JohnDoe'
 <br>
 <br>
 
+## **Copy Own Enumerable Properties From Other Object**
+<br>
+
+### **Object.assign()**
+
+Copy all own enumerable properties including Symbols of one or multiple source objects to a target object. Existing target properties with the same key as a source property are overridden.
+
+```javascript
+Object.assign(targetObj, sourceObj1, ..., sourceObjN)
+```
+
+<br>
+
+```javascript
+const target = { foo: 'fooValue' };
+
+const source1 = { bar: 'barValue' };
+const source2 = { caz: 'cazValue' };
+
+Object.assign(target, source1, source2);
+
+// target = { foo: 'fooValue', bar: 'barValue', caz: 'cazValue' }
+```
+
+<br>
+
+Target properties will be overridden when a source object has a property with the identical key:
+
+```javascript
+const target = { foo: 'fooValue', bar: 'barValue' };
+const source = { bar: 'modifiedValue' };
+
+Object.assign(target, source);
+
+// target = { foo: 'fooValue', bar: 'modifiedValue' }
+```
+
+<br>
+
+Copies only own enumerable properties:
+
+```javascript
+const prototype = { foo: 'fooValue' };
+
+const source = Object.create(prototype, {
+   bar: { value: 'barValue', enumerable: true },
+   caz: { value: 'cazValue', enumerable: false }
+});
+
+const result = Object.assign({}, source);
+
+// result = { bar: 'barValue' }
+```
+
+<br>
+
+Copies properties with [Symbol](../../PrimitiveDataTypes/javascript_symbol.md) keys:
+
+```javascript
+const source = {};
+source[Symbol('foo')] = 'fooValue';
+
+const target = Object.assign({}, source);
+
+// target = { Symbol(foo): 'fooValue' }
+```
+
+<br>
+<br>
+
+### **Spread Operator (...)**
+
+Copy all own enumerable properties including Symbols of a source object to a target object. Existing target properties with the same key as a source property are overridden.
+
+```javascript
+...object
+```
+
+<br>
+
+```javascript
+const source = { bar: 'barValue' };
+
+const obj = { foo: 'fooValue', ...source };
+
+// obj = { foo: 'fooValue', bar: 'barValue' }
+```
+
+<br>
+
+Target properties will be overridden when a source object has a property with the identical key:
+
+```javascript
+const source = { foo: 'notFooValue', bar: 'barValue' };
+
+const obj = { foo: 'fooValue', ...source };
+
+// obj = { foo: 'notFooValue', bar: 'barValue' }
+```
+
+<br>
+
+Copies only own enumerable properties:
+
+```javascript
+const prototype = { foo: 'fooValue' };
+
+const source = Object.create(prototype, {
+   bar: { value: 'barValue', enumerable: true },
+   caz: { value: 'cazValue', enumerable: false }
+});
+
+const obj = {...source};
+
+// obj = { bar: 'barValue' }
+```
+
+<br>
+
+Copies properties with [Symbol](../../PrimitiveDataTypes/javascript_symbol.md) keys:
+
+```javascript
+const source = {};
+source[Symbol('foo')] = 'fooValue';
+
+const obj = {...source};
+
+// obj = { Symbol(foo): 'fooValue' }
+```
+
+<br>
+<br>
+<br>
+
+## **Restrict Object Modification**
+<br>
+<br>
+
+### **Create Restriction**
+<br>
+
+|                                |[preventExtensions()](#objectpreventextensions) |[seal()](#objectseal) |[freeze()](#objectfreeze) |
+|:-------------------------------|:-----------------:|:-----------------:|:------------:|
+|**Reassign Object´s Prototype** |:x:                |:x:                |:x:           |
+|**Add Property**                |:x:                |:x:                |:x:           |
+|**Delete Property**             |:heavy_check_mark: |:x:                |:x:           |
+|**Update Property Value**       |:heavy_check_mark: |:heavy_check_mark: |:x:           |
+|**Update Property Attributes**  |:heavy_check_mark: |:x:                |:x:           |
+
+<br>
+<br>
+
+#### **Object.preventExtensions()**
+
+Prevents the future **addition** of properties to an object and the the reassignment of the object´s prototype. Returns the object.
+
+In `strict mode` the attempt to add a property will throw a `TypeError`. Otherwise the attempt will simply be ignored.
+
+```javascript
+Object.preventExtensions(object)
+```
+
+<br>
+
+```javascript
+const obj = {};
+
+obj.foo = 'fooValue';
+
+Object.preventExtensions(obj);
+
+obj.bar = 'barValue';
+
+// TypeError: Can't add property bar, object is not extensible
+// obj = { foo: 'fooValue' }
+```
+
+<br>
+<br>
+
+#### **Object.seal()**
+
+Prevents the future **addition** and **deletion** of object properties.  
+Prevents future changes of the property attributes [enumerable](#enumerable), [writeable](#writable) and [configurable](#configurable).  
+Prevents the future reassignment of the object´s prototype.  
+Returns the object.
+
+```javascript
+Object.seal(obj)
+```
+
+<br>
+
+```javascript
+const obj = {};
+
+obj.foo = 'fooValue';
+
+Object.seal(obj);
+
+obj.bar = 'barValue';
+// ignored or TypeError
+
+delete obj.foo;
+// ignored
+
+Object.defineProperty(obj, 'foo', {
+   value: 'modifiedFooValue',
+   writeable: false
+});
+// changing value is allowed, modification of property attribute writeable is ignored
+```
+
+<br>
+<br>
+
+#### **Object.freeze()**
+
+Prevents the future **addition** and **deletion** of object properties.  
+Prevents future changes to the value of object properties.  
+Prevents future changes of the property attributes [enumerable](#enumerable), [writeable](#writable) and [configurable](#configurable).  
+Prevents the future reassignment of the object´s prototype.  
+Returns the object.
+
+```javascript
+Object.freeze(object)
+```
+
+<br>
+
+```javascript
+const obj = {};
+
+obj.foo = 'fooValue';
+
+Object.freeze(obj);
+
+obj.bar = 'barValue';
+// ignored or TypeError
+
+delete obj.foo;
+// ignored
+
+Object.defineProperty(obj, 'foo', {
+   value: 'modifiedFooValue',
+   writeable: true,
+   enumerable: true,
+   configurable: true
+});
+// TypeError: Cannot redefine property: foo
+```
+
+<br>
+<br>
+
+### **Check Restriction Status**
+<br>
+
+#### **Object.isExtensible()**
+
+Returns a boolean indicating whether the object can be [extended](#objectpreventextensions).
+
+```javascript
+Object.isExtensible(object)
+```
+
+<br>
+
+```javascript
+const obj = { foo: 'fooValue' };
+
+Object.isExtensible(obj);        // true
+
+Object.preventExtensions(obj);
+
+Object.isExtensible(obj);        // false
+```
+
+<br>
+<br>
+
+#### **Object.isSealed()**
+
+Returns a boolean indicating whether the object is [sealed](#objectseal).
+
+```javascript
+Object.isSealed(object)
+```
+
+<br>
+
+```javascript
+const obj = { foo: 'fooValue' };
+
+Object.isSealed(obj);        // false
+
+Object.seal(obj);
+
+Object.isSealed(obj);        // true
+```
+
+<br>
+<br>
+
+#### **Object.isFrozen()**
+
+Returns a boolean indicating whether the object is [frozen](#objectfreeze).
+
+```javascript
+Object.isFrozen(object)
+```
+
+<br>
+
+```javascript
+const obj = { foo: 'fooValue' };
+
+Object.isFrozen(obj);        // false
+
+Object.freeze(obj);
+
+Object.isFrozen(obj);        // true
+```
+
+<br>
+<br>
+<br>
+
 ## **Properties**
 <br>
 <br>
@@ -462,7 +803,7 @@ Adds a new property with specified string and value to the object if it does not
 Otherwise updates the value of the existing property.
 
 ```javascript
-object['attributeName'] = 'value';
+object['propertyName'] = 'value';
 ```
 
 A new property added in this way has the following attributes:
@@ -474,6 +815,18 @@ A new property added in this way has the following attributes:
    configurable: true,
    enumerable: true,
 }
+```
+
+<br>
+<br>
+
+#### **By Symbol**
+
+Adds a new property with specified [symbol](../../PrimitiveDataTypes/javascript_symbol.md) and value  to the object if it does not already exist.  
+The added property is not enumerable.
+
+```javascript
+object[Symbol('propertyName')] = 'value';
 ```
 
 <br>

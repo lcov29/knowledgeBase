@@ -60,6 +60,7 @@
 
 | Shortcut Linux | Shortcut Mac | Description                  |
 | :------------- | :----------- | :--------------------------- |
+| `Ctrl + O`     | `Cmd + O`    | open file                    |
 | `Ctrl + N`     | `Cmd + N`    | create new file              |
 | `Ctrl + S`     | `Cmd + S`    | save changes of current file |
 | `Ctrl + W`     | `Cmd + W`    | close current file           |
@@ -73,11 +74,13 @@
 | :------------- | :------------ | :------------------------------------------------------- |
 | `Ctrl + P`     | `Cmd + P`     | open file switcher (`@:` shows elements of current file) |
 | `Ctrl + P + P` | `Cmd + P + P` | open the previous file                                   |
-| `Ctrl + 0`     | `Cmd + 0`     | move to sidebar to select file                           |
-| `Ctrl + Enter` | `Cmd + Down`  | open selected file from sidebar                          |
-| `Ctrl + 1`     | `Cmd + 1`     | move back to editor                                      |
-| `Ctrl + g`     | `Cmd + g`     | move to specied line number                              |
-| `Ctrl + u`     | `Cmd + u`     | move to previous cursor position                         |
+| `Ctrl + 0`     | `Cmd + 0`     | move to the sidebar                                      |
+| `Ctrl + Enter` | `Cmd + Down`  | open the selected file from the sidebar                  |
+| `Ctrl + 1`     | `Cmd + 1`     | move to the editor                                       |
+| `Ctrl + g`     | `Cmd + g`     | move to the specified line number                        |
+| `Ctrl + u`     | `Cmd + u`     | move to the previous cursor position                     |
+| `Ctrl + Up`    | `Cmd + Up`    | move to the beginning of the file                        |
+| `Ctrl + Down`  | `Cmd + Down`  | move to the end of the file                              |
 
 <br>
 <br>

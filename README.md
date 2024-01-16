@@ -193,6 +193,7 @@ mindmap
 - [ ] Wireshark
 - [ ] Fiddler
 - [ ] Ghidra
+- [ ] MathJax
 
 <br>
 

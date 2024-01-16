@@ -13,15 +13,15 @@
     - [**Objects Can Inherit Properties Of Other Objects Via The Prototype Chain**](#objects-can-inherit-properties-of-other-objects-via-the-prototype-chain)
   - [**Create Objects**](#create-objects)
     - [**Object Literal**](#object-literal)
-    - [**Create From Array (Object.fromEntries())**](#create-from-array-objectfromentries)
-    - [**Create From Prototype Object (Object.create())**](#create-from-prototype-object-objectcreate)
+    - [**Create From Array (_Object.fromEntries()_)**](#create-from-array-objectfromentries)
+    - [**Create From Prototype Object (_Object.create()_)**](#create-from-prototype-object-objectcreate)
     - [**Create From Constructor Function**](#create-from-constructor-function)
     - [**Create From Class**](#create-from-class)
   - [**Prototype Chain**](#prototype-chain)
-    - [**Create New Object From Prototype (Object.create())**](#create-new-object-from-prototype-objectcreate)
-    - [**Read Prototype (Object.getPrototypeOf())**](#read-prototype-objectgetprototypeof)
-    - [**Set Prototype (Object.setPrototypeOf())**](#set-prototype-objectsetprototypeof)
-    - [**Check If Object is Prototype Of Another Object (object.isPrototypeOf())**](#check-if-object-is-prototype-of-another-object-objectisprototypeof)
+    - [**Create New Object From Prototype (_Object.create()_)**](#create-new-object-from-prototype-objectcreate)
+    - [**Read Prototype (_Object.getPrototypeOf()_)**](#read-prototype-objectgetprototypeof)
+    - [**Set Prototype (_Object.setPrototypeOf()_)**](#set-prototype-objectsetprototypeof)
+    - [**Check If Object is Prototype Of Another Object (_object.isPrototypeOf()_)**](#check-if-object-is-prototype-of-another-object-objectisprototypeof)
   - [**Copy Own Enumerable Properties From Other Object**](#copy-own-enumerable-properties-from-other-object)
     - [**Object.assign()**](#objectassign)
     - [**Spread Operator (...)**](#spread-operator-)
@@ -29,7 +29,7 @@
     - [**Shallow Clone Own Enumerable Properties**](#shallow-clone-own-enumerable-properties)
       - [**Object.assign()**](#objectassign-1)
       - [**Spread Operator (...)**](#spread-operator--1)
-    - [**Deep Clone (structuredClone())**](#deep-clone-structuredclone)
+    - [**Deep Clone (_structuredClone()_)**](#deep-clone-structuredclone)
   - [**Restrict Object Modification**](#restrict-object-modification)
     - [**Create Restriction**](#create-restriction)
       - [**Object.preventExtensions()**](#objectpreventextensions)
@@ -56,33 +56,36 @@
       - [**By Key**](#by-key)
       - [**By String**](#by-string)
       - [**By Symbol**](#by-symbol)
-      - [**Single Property With Attributes (Object.defineProperty())**](#single-property-with-attributes-objectdefineproperty)
-      - [**Multiple Properties With Attributes (Object.defineProperties())**](#multiple-properties-with-attributes-objectdefineproperties)
+      - [**Single Property With Attributes (_Object.defineProperty()_)**](#single-property-with-attributes-objectdefineproperty)
+      - [**Multiple Properties With Attributes (_Object.defineProperties()_)**](#multiple-properties-with-attributes-objectdefineproperties)
     - [**Read Property Value**](#read-property-value)
       - [**By Key**](#by-key-1)
       - [**By String**](#by-string-1)
       - [**Destructuring**](#destructuring)
-    - [**Delete Property (delete)**](#delete-property-delete)
+    - [**Delete Property (_delete_)**](#delete-property-delete)
     - [**Check If Property Exists**](#check-if-property-exists)
-      - [**On Object Or In Prototype Chain (in)**](#on-object-or-in-prototype-chain-in)
-      - [**Only On Object (Object.hasOwn())**](#only-on-object-objecthasown)
+      - [**On Object Or In Prototype Chain (_in_)**](#on-object-or-in-prototype-chain-in)
+      - [**Only On Object (_Object.hasOwn()_)**](#only-on-object-objecthasown)
     - [**Check Property Attributes**](#check-property-attributes)
-      - [**Single Property (Object.getOwnPropertyDescriptor())**](#single-property-objectgetownpropertydescriptor)
-      - [**All Properties (Object.getOwnPropertyDescriptors())**](#all-properties-objectgetownpropertydescriptors)
+      - [**Single Property (_Object.getOwnPropertyDescriptor()_)**](#single-property-objectgetownpropertydescriptor)
+      - [**All Properties (_Object.getOwnPropertyDescriptors()_)**](#all-properties-objectgetownpropertydescriptors)
   - [**Iteration**](#iteration)
     - [**For-In Loop**](#for-in-loop)
     - [**For-Of Loop**](#for-of-loop)
-      - [**Iterate Over Own Enumerable Property Keys (Object.keys())**](#iterate-over-own-enumerable-property-keys-objectkeys)
-      - [**Iterate Over Own Enumerable Property Value (Object.values())**](#iterate-over-own-enumerable-property-value-objectvalues)
-      - [**Iterate Over Own Enumerable Key-Value Pairs (Object.entries())**](#iterate-over-own-enumerable-key-value-pairs-objectentries)
-      - [**Iterate Over All Own String Keys (Object.getOwnPropertyNames())**](#iterate-over-all-own-string-keys-objectgetownpropertynames)
-      - [**Iterate Over All Own Symbol Keys (Object.getOwnPropertySymbols())**](#iterate-over-all-own-symbol-keys-objectgetownpropertysymbols)
+      - [**Iterate Over Own Enumerable Property Keys (_Object.keys()_)**](#iterate-over-own-enumerable-property-keys-objectkeys)
+      - [**Iterate Over Own Enumerable Property Value (_Object.values()_)**](#iterate-over-own-enumerable-property-value-objectvalues)
+      - [**Iterate Over Own Enumerable Key-Value Pairs (_Object.entries()_)**](#iterate-over-own-enumerable-key-value-pairs-objectentries)
+      - [**Iterate Over All Own String Keys (_Object.getOwnPropertyNames()_)**](#iterate-over-all-own-string-keys-objectgetownpropertynames)
+      - [**Iterate Over All Own Symbol Keys (_Object.getOwnPropertySymbols()_)**](#iterate-over-all-own-symbol-keys-objectgetownpropertysymbols)
 
+<br>
 <br>
 <br>
 <br>
 
 ## **Basics**
+<br>
+<br>
 <br>
 
 ### **Objects Are One Of JavaScript´s Data Types**
@@ -91,6 +94,7 @@
 typeof {};     // object
 ```
 
+<br>
 <br>
 
 ### **Objects Are A Collection Of Properties**
@@ -102,6 +106,7 @@ const person = {
 };
 ```
 
+<br>
 <br>
 
 ### **Object Properties Can Be Of Any Type Including Other Objects**
@@ -118,6 +123,7 @@ const obj = {
 }
 ```
 
+<br>
 <br>
 
 ### **Objects Can Inherit Properties Of Other Objects Via The Prototype Chain**
@@ -158,8 +164,10 @@ prototype = {
 <br>
 <br>
 <br>
+<br>
 
 ## **Create Objects**
+<br>
 <br>
 
 ### **Object Literal**
@@ -185,8 +193,9 @@ const obj = {
 
 <br>
 <br>
+<br>
 
-### **Create From Array (Object.fromEntries())**
+### **Create From Array (_Object.fromEntries()_)**
 
 Creates an object based on a two-dimensional iterable (Array or Map) of key-value pairs.
 
@@ -202,8 +211,9 @@ const obj = Object.fromEntries(array);
 
 <br>
 <br>
+<br>
 
-### **Create From Prototype Object (Object.create())**
+### **Create From Prototype Object (_Object.create()_)**
 
 Creates an object based on a `prototypeObject`.  
 Additional properties can be added via the optional `additionalProps` argument.
@@ -241,6 +251,7 @@ programmer.lastName;       // 'Doe'
 programmer.languages;      // ['JavaScript', 'C#']
 ```
 
+<br>
 <br>
 <br>
 
@@ -287,6 +298,7 @@ johnDoe.name = 'Jane Doe';
 johnDoe.name;                 // 'Getter: Setter: JohnDoe'
 ```
 
+<br>
 <br>
 <br>
 
@@ -369,6 +381,7 @@ johnDoe.name;                 // 'Getter: Setter: JohnDoe'
 <br>
 <br>
 <br>
+<br>
 
 ## **Prototype Chain**
 
@@ -395,8 +408,9 @@ When a property is called on an object and it does not exist on that object, the
 
 <br>
 <br>
+<br>
 
-### **Create New Object From Prototype (Object.create())**
+### **Create New Object From Prototype (_Object.create()_)**
 
 Creates an object based on a `prototype`.  
 Additional properties can be added via the optional `additionalProps` argument.
@@ -436,8 +450,9 @@ programmer.languages;      // ['JavaScript', 'C#']
 
 <br>
 <br>
+<br>
 
-### **Read Prototype (Object.getPrototypeOf())**
+### **Read Prototype (_Object.getPrototypeOf()_)**
 
 Returns prototype of a specified object
 
@@ -458,8 +473,9 @@ Object.getPrototypeOf(obj);
 
 <br>
 <br>
+<br>
 
-### **Set Prototype (Object.setPrototypeOf())**
+### **Set Prototype (_Object.setPrototypeOf()_)**
 
 Sets prototype of a specified object to specified prototype object.
 
@@ -482,8 +498,9 @@ Object.getPrototypeOf(obj);
 
 <br>
 <br>
+<br>
 
-### **Check If Object is Prototype Of Another Object (object.isPrototypeOf())**
+### **Check If Object is Prototype Of Another Object (_object.isPrototypeOf()_)**
 
 Returns boolean indicating whether object is the prototype of the specified object.
 
@@ -506,8 +523,10 @@ notPrototype.isPrototypeOf(obj);    // false
 <br>
 <br>
 <br>
+<br>
 
 ## **Copy Own Enumerable Properties From Other Object**
+<br>
 <br>
 
 ### **Object.assign()**
@@ -577,6 +596,7 @@ const target = Object.assign({}, source);
 
 <br>
 <br>
+<br>
 
 ### **Spread Operator (...)**
 
@@ -641,12 +661,15 @@ const obj = {...source};
 <br>
 <br>
 <br>
+<br>
 
 ## **Clone Object**
 <br>
 <br>
+<br>
 
 ### **Shallow Clone Own Enumerable Properties**
+<br>
 <br>
 
 #### **[Object.assign()](#objectassign)**
@@ -670,8 +693,9 @@ const clone = { ...obj };
 
 <br>
 <br>
+<br>
 
-### **Deep Clone (structuredClone())**
+### **Deep Clone (_structuredClone()_)**
 
 Returns a deep clone of an object.  
 Can transfer object properties of transferable objects.
@@ -698,6 +722,7 @@ clone.bar.caz = 'modifiedCazValue';
 // clone.bar.caz: modifiedCazValue
 ```
 
+<br>
 <br>
 <br>
 <br>
@@ -822,8 +847,10 @@ Object.defineProperty(obj, 'foo', {
 
 <br>
 <br>
+<br>
 
 ### **Check Restriction Status**
+<br>
 <br>
 
 #### **Object.isExtensible()**
@@ -895,6 +922,7 @@ Object.isFrozen(obj);        // true
 <br>
 <br>
 <br>
+<br>
 
 ## **Object.groupBy()**
 
@@ -949,6 +977,7 @@ const groupedObject = Object.groupBy(array, ({ lastName }) => lastName);
 <br>
 <br>
 <br>
+<br>
 
 ## **Properties**
 <br>
@@ -959,14 +988,17 @@ const groupedObject = Object.groupBy(array, ({ lastName }) => lastName);
 A property of an object is described with different attributes. There are two types of property descriptions:
 
 <br>
+<br>
 
 #### **Data Descriptor Attributes**
+<br>
 <br>
 
 ##### **Value**
 
 Value of the property.
 
+<br>
 <br>
 
 ##### **Writable**
@@ -975,6 +1007,7 @@ Specifies whether property can be assigned a new `value`.
 
 Default: **false**
 
+<br>
 <br>
 
 ##### **Configurable**
@@ -985,6 +1018,7 @@ Specifies whether property attributes (except `value`) can be changed.
 Default: **false**
 
 <br>
+<br>
 
 ##### **Enumerable**
 
@@ -993,8 +1027,10 @@ Specifies whether property will show up during enumeration (for-in loop, object.
 Default: **false**
 
 <br>
+<br>
 
 #### **Accessor Descriptor Attributes**
+<br>
 <br>
 
 ##### **Get**
@@ -1005,6 +1041,7 @@ Get current value via `this.value`.
 Default: `undefined`
 
 <br>
+<br>
 
 ##### **Set**
 
@@ -1013,6 +1050,7 @@ Gets passed an input argument and can update `this.value`.
 
 Default: `undefined`
 
+<br>
 <br>
 
 ##### **Configurable**
@@ -1023,6 +1061,7 @@ Specifies whether property attributes (except `value`) can be changed.
 Default: **false**
 
 <br>
+<br>
 
 ##### **Enumerable**
 
@@ -1030,6 +1069,7 @@ Specifies whether property will show up during enumeration (for-in loop, object.
 
 Default: **false**
 
+<br>
 <br>
 <br>
 
@@ -1095,7 +1135,7 @@ object[Symbol('propertyName')] = 'value';
 <br>
 <br>
 
-#### **Single Property With Attributes (Object.defineProperty())**
+#### **Single Property With Attributes (_Object.defineProperty()_)**
 
 Adds a new property with specified name, value and attributes to the object if it does not already exist.  
 Otherwise updates the existing property.
@@ -1173,7 +1213,7 @@ obj.foo;                 // 'newValue'
 <br>
 <br>
 
-#### **Multiple Properties With Attributes (Object.defineProperties())**
+#### **Multiple Properties With Attributes (_Object.defineProperties()_)**
 
 Alternative to [Object.defineProperty()](#single-property-with-attributes-objectdefineproperty) to add multiple properties at once.
 
@@ -1201,6 +1241,7 @@ dataDescriptor = {
 }
 ```
 
+<br>
 <br>
 <br>
 
@@ -1287,7 +1328,6 @@ const { foo, bar } = obj;
 
 **Read Properties Using Alias**
 
-
 ```javascript
 const obj = {
    foo: 'fooValue',
@@ -1340,8 +1380,9 @@ const {foo, bar: { baz, caz }} = nestedObj;
 
 <br>
 <br>
+<br>
 
-### **Delete Property (delete)**
+### **Delete Property (_delete_)**
 
 Removes specified property from object.  
 Returns `false` if property could not be removed because it was marked as [non-configurable](#configurable).
@@ -1383,11 +1424,13 @@ delete obj.foo;      // false
 
 <br>
 <br>
+<br>
 
 ### **Check If Property Exists**
 <br>
+<br>
 
-#### **On Object Or In Prototype Chain (in)**
+#### **On Object Or In Prototype Chain (_in_)**
 
 Returns boolean indicating whether specified property exists on the specified object or in its prototype chain.
 
@@ -1411,7 +1454,7 @@ const obj = { foo: 'fooValue', bar: undefined };
 <br>
 <br>
 
-#### **Only On Object (Object.hasOwn())**
+#### **Only On Object (_Object.hasOwn()_)**
 
 Returns boolean indicating whether the specified property is defined (**not inherited**) on the specified object.
 
@@ -1432,11 +1475,13 @@ Object.hasOwn(obj, 'baz');       // false
 
 <br>
 <br>
+<br>
 
 ### **Check Property Attributes**
 <br>
+<br>
 
-#### **Single Property (Object.getOwnPropertyDescriptor())**
+#### **Single Property (_Object.getOwnPropertyDescriptor()_)**
 
 Returns copy object of the configuration of the specified property on the specified object.
 
@@ -1469,7 +1514,7 @@ const config = Object.getOwnPropertyDescriptor(obj, 'foo');
 <br>
 <br>
 
-#### **All Properties (Object.getOwnPropertyDescriptors())**
+#### **All Properties (_Object.getOwnPropertyDescriptors()_)**
 
 Returns copy object of the configurations of all **own** properties of the specified object.
 
@@ -1517,8 +1562,11 @@ const config = Object.getOwnPropertyDescriptors(obj);
 <br>
 <br>
 <br>
+<br>
 
 ## **Iteration**
+<br>
+<br>
 <br>
 
 ### **For-In Loop**
@@ -1543,11 +1591,13 @@ for (const key in obj) {
 
 <br>
 <br>
+<br>
 
 ### **For-Of Loop**
 <br>
+<br>
 
-#### **Iterate Over Own Enumerable Property Keys (Object.keys())**
+#### **Iterate Over Own Enumerable Property Keys (_Object.keys()_)**
 
 Returns an array of all **own** [**enumerable**](#enumerable) property keys that are not [**Symbols**](../../PrimitiveDataTypes/javascript_symbol.md).  
 Does not include any property keys inherited from the prototype chain.
@@ -1574,7 +1624,7 @@ for (const key of Object.keys(obj)) {
 <br>
 <br>
 
-#### **Iterate Over Own Enumerable Property Value (Object.values())**
+#### **Iterate Over Own Enumerable Property Value (_Object.values()_)**
 
 Returns an array of all own [**enumerable**](#enumerable) property values.  
 
@@ -1602,7 +1652,7 @@ for (const value of Object.values(obj)) {
 <br>
 <br>
 
-#### **Iterate Over Own Enumerable Key-Value Pairs (Object.entries())**
+#### **Iterate Over Own Enumerable Key-Value Pairs (_Object.entries()_)**
 
 Returns an array of all own [**enumerable**](#enumerable) property key-value pairs.
 
@@ -1630,7 +1680,7 @@ for (const [key, value] of Object.entries(obj)) {
 <br>
 <br>
 
-#### **Iterate Over All Own String Keys (Object.getOwnPropertyNames())**
+#### **Iterate Over All Own String Keys (_Object.getOwnPropertyNames()_)**
 
 Returns an array of all own property keys including non-enumerables. Does not include [**Symbols**](../../PrimitiveDataTypes/javascript_symbol.md).  
 Does not include any property keys inherited from the prototype chain.
@@ -1658,7 +1708,7 @@ for (const key of Object.getOwnPropertyNames(obj)) {
 <br>
 <br>
 
-#### **Iterate Over All Own Symbol Keys (Object.getOwnPropertySymbols())**
+#### **Iterate Over All Own Symbol Keys (_Object.getOwnPropertySymbols()_)**
 
 Returns an array of all own property keys including non-enumerables. Does not include [**Symbols**](../../PrimitiveDataTypes/javascript_symbol.md).  
 Does not include any property keys inherited from the prototype chain.

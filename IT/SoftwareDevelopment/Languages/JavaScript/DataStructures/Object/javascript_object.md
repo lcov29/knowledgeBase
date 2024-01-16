@@ -34,6 +34,7 @@
       - [**Object.isExtensible()**](#objectisextensible)
       - [**Object.isSealed()**](#objectissealed)
       - [**Object.isFrozen()**](#objectisfrozen)
+  - [**Object.groupBy()**](#objectgroupby)
   - [**Properties**](#properties)
     - [**Property Descriptor Attributes**](#property-descriptor-attributes)
       - [**Data Descriptor Attributes**](#data-descriptor-attributes)
@@ -747,6 +748,60 @@ Object.isFrozen(obj);        // false
 Object.freeze(obj);
 
 Object.isFrozen(obj);        // true
+```
+
+<br>
+<br>
+<br>
+
+## **Object.groupBy()**
+
+Partitions array with specified group function that returns the group value as a string. Returns object that contains all partitions with groups name as properties.
+
+```javascript
+Object.groupBy(array, (element, ?index) => groupString)
+```
+
+<br>
+
+**Group By Element Value**
+
+```javascript
+const array = ['foo', 'bar', 'foo', 'bar', 'baz'];
+
+const groupedObject = Object.groupBy(array, (element) => element);
+
+// groupedObject = {
+//   bar: ['bar', 'bar'],
+//   baz: ['baz'],
+//   foo: ['foo', 'foo']
+// }
+```
+
+<br>
+
+**Group By Element Property**
+
+```javascript
+const array = [
+  { firstName: 'John', lastName: 'Doe' },
+  { firstName: 'Jane', lastName: 'Smith' },
+  { firstName: 'Alice', lastName: 'Doe' },
+  { firstName: 'Bob', lastName: 'Smith' }
+];
+
+const groupedObject = Object.groupBy(array, ({ lastName }) => lastName);
+
+// groupedObject = {
+//   Doe: [
+//     { firstName: 'John', lastName: 'Doe' },
+//     { firstName: 'Alice', lastName: 'Doe' }
+//   ]
+//   Smith: [
+//     { firstName: 'Jane', lastName: 'Smith' },
+//     { firstName: 'Bob', lastName: 'Smith' }
+//   ]
+// } 
 ```
 
 <br>

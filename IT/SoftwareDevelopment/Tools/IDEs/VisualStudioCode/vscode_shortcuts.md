@@ -81,6 +81,7 @@
 | `Ctrl + u`     | `Cmd + u`     | move to the previous cursor position                     |
 | `Ctrl + Up`    | `Cmd + Up`    | move to the beginning of the file                        |
 | `Ctrl + Down`  | `Cmd + Down`  | move to the end of the file                              |
+| `F12`          | `F12`         | move to definition of selected element                   |
 
 <br>
 <br>

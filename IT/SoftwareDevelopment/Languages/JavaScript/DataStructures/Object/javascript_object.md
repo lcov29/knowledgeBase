@@ -17,6 +17,11 @@
     - [**Create From Prototype Object (Object.create())**](#create-from-prototype-object-objectcreate)
     - [**Create From Constructor Function**](#create-from-constructor-function)
     - [**Create From Class**](#create-from-class)
+  - [**Prototype Chain**](#prototype-chain)
+    - [**Create New Object From Prototype (Object.create())**](#create-new-object-from-prototype-objectcreate)
+    - [**Read Prototype (Object.getPrototypeOf())**](#read-prototype-objectgetprototypeof)
+    - [**Set Prototype (Object.setPrototypeOf())**](#set-prototype-objectsetprototypeof)
+    - [**Check If Object is Prototype Of Another Object (object.isPrototypeOf())**](#check-if-object-is-prototype-of-another-object-objectisprototypeof)
   - [**Copy Own Enumerable Properties From Other Object**](#copy-own-enumerable-properties-from-other-object)
     - [**Object.assign()**](#objectassign)
     - [**Spread Operator (...)**](#spread-operator-)
@@ -359,6 +364,143 @@ const johnDoe = new Person('John Doe');
 johnDoe.name;                 // 'Getter: John Doe'
 johnDoe.name = 'Jane Doe';
 johnDoe.name;                 // 'Getter: Setter: JohnDoe'
+```
+
+<br>
+<br>
+<br>
+
+## **Prototype Chain**
+
+Every object (except the root object) is based on a prototype object that it inherits properties from.  
+Every object holds a reference `prototype` to its prototype object.  
+
+```mermaid
+classDiagram
+   direction LR
+   class Object1 {
+      prototype
+   }
+   class Object2 {
+      prototype
+   }
+   class RootObject {
+      prototype: null
+   }
+   Object1 --> Object2
+   Object2 --> RootObject
+```
+
+When a property is called on an object and it does not exist on that object, the prototype chain is searched from bottom to top for the called property.
+
+<br>
+<br>
+
+### **Create New Object From Prototype (Object.create())**
+
+Creates an object based on a `prototype`.  
+Additional properties can be added via the optional `additionalProps` argument.
+
+```javascript
+Object.create(prototype, ?additionalProps)
+```
+
+```javascript
+additonalProps = {
+   value,
+   ?writeable = false,
+   ?enumerable = false,
+   ?configurable = false,
+   ?set,
+   ?get
+}
+```
+
+<br>
+
+```javascript
+const person = {
+   firstName: 'John',
+   lastName: 'Doe'
+};
+
+const programmer = Object.create(
+   person, 
+   { languages: { value: ['JavaScript', 'C#'] } }
+);
+
+programmer.firstName;      // 'John'
+programmer.lastName;       // 'Doe'
+programmer.languages;      // ['JavaScript', 'C#']
+```
+
+<br>
+<br>
+
+### **Read Prototype (Object.getPrototypeOf())**
+
+Returns prototype of a specified object
+
+```javascript
+Object.getPrototypeOf(object)
+```
+
+<br>
+
+```javascript
+const prototype = { foo: 'fooValue' };
+
+const obj = Object.create(prototype);
+
+Object.getPrototypeOf(obj);
+// { foo: 'fooValue' }
+```
+
+<br>
+<br>
+
+### **Set Prototype (Object.setPrototypeOf())**
+
+Sets prototype of a specified object to specified prototype object.
+
+```javascript
+Object.setPrototypeOf(object, prototype)
+```
+
+<br>
+
+```javascript
+const obj = {};
+
+const prototype = { foo: 'fooValue' };
+
+Object.setPrototypeOf(obj, prototype);
+
+Object.getPrototypeOf(obj);
+// { foo: 'fooValue' }
+```
+
+<br>
+<br>
+
+### **Check If Object is Prototype Of Another Object (object.isPrototypeOf())**
+
+Returns boolean indicating whether object is the prototype of the specified object.
+
+```javascript
+object.isPrototypeOf(object)
+```
+
+<br>
+
+```javascript
+const prototype = { foo: 'fooValue' };
+const notPrototype = { bar: 'barValue' };
+
+const obj = Object.create(prototype);
+
+prototype.isPrototypeOf(obj);       // true
+notPrototype.isPrototypeOf(obj);    // false
 ```
 
 <br>

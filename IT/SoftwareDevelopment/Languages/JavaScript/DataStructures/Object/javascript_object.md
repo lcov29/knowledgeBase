@@ -11,6 +11,7 @@
     - [**Objects Are A Collection Of Properties**](#objects-are-a-collection-of-properties)
     - [**Object Properties Can Be Of Any Type Including Other Objects**](#object-properties-can-be-of-any-type-including-other-objects)
     - [**Objects Can Inherit Properties Of Other Objects Via The Prototype Chain**](#objects-can-inherit-properties-of-other-objects-via-the-prototype-chain)
+    - [**Properties Can Usually Be Dynamically Added Or Deleted**](#properties-can-usually-be-dynamically-added-or-deleted)
   - [**Create Objects**](#create-objects)
     - [**Object Literal**](#object-literal)
     - [**Create From Array (_Object.fromEntries()_)**](#create-from-array-objectfromentries)
@@ -39,6 +40,7 @@
       - [**Object.isExtensible()**](#objectisextensible)
       - [**Object.isSealed()**](#objectissealed)
       - [**Object.isFrozen()**](#objectisfrozen)
+  - [**Check Object Equality (_Object.is()_)**](#check-object-equality-objectis)
   - [**Object.groupBy()**](#objectgroupby)
   - [**Properties**](#properties)
     - [**Property Descriptor Attributes**](#property-descriptor-attributes)
@@ -96,6 +98,7 @@ typeof {};     // object
 
 <br>
 <br>
+<br>
 
 ### **Objects Are A Collection Of Properties**
 
@@ -106,6 +109,7 @@ const person = {
 };
 ```
 
+<br>
 <br>
 <br>
 
@@ -123,6 +127,7 @@ const obj = {
 }
 ```
 
+<br>
 <br>
 <br>
 
@@ -159,6 +164,22 @@ prototype = {
    ...
 }
 */
+```
+
+<br>
+<br>
+<br>
+
+### **Properties Can Usually Be Dynamically Added Or Deleted**
+
+```javascript
+const obj = { foo: 'fooValue' };
+
+obj.bar = 'barValue';
+// obj: { foo: 'fooValue', bar: 'barValue' }
+
+delete obj.foo;
+// obj: { bar: 'barValue' }
 ```
 
 <br>
@@ -917,6 +938,30 @@ Object.isFrozen(obj);        // false
 Object.freeze(obj);
 
 Object.isFrozen(obj);        // true
+```
+
+<br>
+<br>
+<br>
+<br>
+
+## **Check Object Equality (_Object.is()_)**
+
+Returns a boolean indicating whether the two specified objects are strictly equal.
+
+```javascript
+Object.is(object1, object2)
+```
+
+<br>
+
+```javascript
+const obj1 = { foo: 'fooValue' };
+const obj2 = { foo: 'fooValue' };
+
+Object.is(obj1, obj1);     // true
+
+Object.is(obj1, obj2);     // false
 ```
 
 <br>

@@ -20,6 +20,11 @@
   - [**Copy Own Enumerable Properties From Other Object**](#copy-own-enumerable-properties-from-other-object)
     - [**Object.assign()**](#objectassign)
     - [**Spread Operator (...)**](#spread-operator-)
+  - [**Clone Object**](#clone-object)
+    - [**Shallow Clone Own Enumerable Properties**](#shallow-clone-own-enumerable-properties)
+      - [**Object.assign()**](#objectassign-1)
+      - [**Spread Operator (...)**](#spread-operator--1)
+    - [**Deep Clone (structuredClone())**](#deep-clone-structuredclone)
   - [**Restrict Object Modification**](#restrict-object-modification)
     - [**Create Restriction**](#create-restriction)
       - [**Object.preventExtensions()**](#objectpreventextensions)
@@ -419,6 +424,7 @@ Copies properties with [Symbol](../../PrimitiveDataTypes/javascript_symbol.md) k
 
 ```javascript
 const source = {};
+
 source[Symbol('foo')] = 'fooValue';
 
 const target = Object.assign({}, source);
@@ -487,6 +493,66 @@ source[Symbol('foo')] = 'fooValue';
 const obj = {...source};
 
 // obj = { Symbol(foo): 'fooValue' }
+```
+
+<br>
+<br>
+<br>
+
+## **Clone Object**
+<br>
+<br>
+
+### **Shallow Clone Own Enumerable Properties**
+<br>
+
+#### **[Object.assign()](#objectassign)**
+
+```javascript
+const obj = { foo: 'fooValue', bar: 'barValue' };
+
+const clone = Object.assign({}, obj);
+```
+
+<br>
+<br>
+
+#### **Spread Operator (...)**
+
+```javascript
+const obj = { foo: 'fooValue', bar: 'barValue' };
+
+const clone = { ...obj };
+```
+
+<br>
+<br>
+
+### **Deep Clone (structuredClone())**
+
+Returns a deep clone of an object.  
+Can transfer object properties of transferable objects.
+
+```javascript
+structuredClone(obj, ?{ transfer: [object1, object2, ...]})
+```
+
+<br>
+
+Simple clone:
+
+```javascript
+const obj = {
+   foo: 'fooValue',
+   bar: { caz: 'cazValue'}
+};
+
+const clone = structuredClone(obj);
+
+clone.bar.caz = 'modifiedCazValue';
+
+// obj.bar.caz:   cazValue
+// clone.bar.caz: modifiedCazValue
 ```
 
 <br>

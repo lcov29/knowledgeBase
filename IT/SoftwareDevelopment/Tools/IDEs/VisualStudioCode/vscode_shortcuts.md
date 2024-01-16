@@ -88,30 +88,30 @@
 
 #### **Line Manipulation**
 
-|Shortcut Linux       | Shortcut Mac      | Description                                 |
-|:------------------- | :---------------- | :------------------------------------------ |
-|`Ctrl + X`           | `Cmd + X`         | cut current line that the **cursor** is at  |
-|`Ctrl + C`           | `Cmd + C`         | copy current line that the **cursor** is at |
-|`Alt + Shift + Plus` | `Alt + Shift + C` | copy current line beneath it                |
-|`Ctrl + V`           | `Cmd + V`         | paste copied line                           |
-|`Ctrl + Shift + K`   | `Cmd + Shift + K` | delete current line                         |
-|`Alt + Up`           | `Alt + Up`        | move current line upward                    |
-|`Alt + Down`         | `Alt + Down`      | move current line downward                  |
-|`Ctrl + K Ctrl + C`  | `Cmd + K Cmd + C` | comment out current line                    |
-|`Ctrl + K Ctrl + U`  | `Cmd + K Cmd + U` | remove comment from current line            |
-|`Ctrl + L`           |`Cmd + L`          | select current line
+| Shortcut Linux       | Shortcut Mac      | Description                                 |
+| :------------------- | :---------------- | :------------------------------------------ |
+| `Ctrl + X`           | `Cmd + X`         | cut current line that the **cursor** is at  |
+| `Ctrl + C`           | `Cmd + C`         | copy current line that the **cursor** is at |
+| `Alt + Shift + Plus` | `Alt + Shift + C` | copy current line beneath it                |
+| `Ctrl + V`           | `Cmd + V`         | paste copied line                           |
+| `Ctrl + Shift + K`   | `Cmd + Shift + K` | delete current line                         |
+| `Alt + Up`           | `Alt + Up`        | move current line upward                    |
+| `Alt + Down`         | `Alt + Down`      | move current line downward                  |
+| `Ctrl + K Ctrl + C`  | `Cmd + K Cmd + C` | comment out current line                    |
+| `Ctrl + K Ctrl + U`  | `Cmd + K Cmd + U` | remove comment from current line            |
+| `Ctrl + L`           | `Cmd + L`         | select current line                         |
 
 <br>
 <br>
 
 #### **Text**
 
-| Shortcut Linux         | Shortcut Mac          | Description          |
-| :--------------------- | :-------------------- | :------------------- |
-| `Ctrl + Backspace`     | `Cmd + Backspace`     | delete previous word |
-| `Ctrl + Shift + Left`  | `Cmd + Shift + Left`  | select previous word |
-| `Ctrl + Shift + Right` | `Cmd + Shift + Right` | select next word     |
-| `Ctrl + Shift + 7`     | `Cmd + Shift + 7`     | toggle selected lines as comments
+| Shortcut Linux         | Shortcut Mac          | Description                       |
+| :--------------------- | :-------------------- | :-------------------------------- |
+| `Ctrl + Backspace`     | `Cmd + Backspace`     | delete previous word              |
+| `Ctrl + Shift + Left`  | `Cmd + Shift + Left`  | select previous word              |
+| `Ctrl + Shift + Right` | `Cmd + Shift + Right` | select next word                  |
+| `Ctrl + Shift + 7`     | `Cmd + Shift + 7`     | toggle selected lines as comments |
 
 <br>
 <br>
@@ -143,9 +143,9 @@
 
 #### **Markdown**
 
-|Shortcut Linux     |Shortcut Mac       |Description                            |
-|:------------------|:------------------|:--------------------------------------|
-|`Ctrl + Shift + V` |`Ctrl + Shift + V` |Open preview for current markdown file |
+| Shortcut Linux     | Shortcut Mac       | Description                            |
+| :----------------- | :----------------- | :------------------------------------- |
+| `Ctrl + Shift + V` | `Ctrl + Shift + V` | Open preview for current markdown file |
 
 
 <br>

@@ -17,6 +17,7 @@
     - [**Create From Array (_Object.fromEntries()_)**](#create-from-array-objectfromentries)
     - [**Create From Prototype Object (_Object.create()_)**](#create-from-prototype-object-objectcreate)
     - [**Create From Constructor Function**](#create-from-constructor-function)
+      - [**Get Constructor Function That Created A Object**](#get-constructor-function-that-created-a-object)
     - [**Create From Class**](#create-from-class)
   - [**Prototype Chain**](#prototype-chain)
     - [**Create New Object From Prototype (_Object.create()_)**](#create-new-object-from-prototype-objectcreate)
@@ -317,6 +318,31 @@ const johnDoe = new Person('John Doe');
 johnDoe.name;                 // 'Getter: John Doe'
 johnDoe.name = 'Jane Doe';
 johnDoe.name;                 // 'Getter: Setter: JohnDoe'
+```
+
+<br>
+<br>
+
+#### **Get Constructor Function That Created A Object**
+
+Returns constructor function that created the specified object.
+
+```javascript
+object.constructor();
+```
+
+<br>
+
+```javascript
+function Person(firstName, lastName) {
+   this.firstName = firstName;
+   this.lastName = lastName;
+}
+
+const johnDoe = new Person('John', 'Doe');
+
+const constructor = johnDoe.constructor;
+constructor === Person;                   // true
 ```
 
 <br>

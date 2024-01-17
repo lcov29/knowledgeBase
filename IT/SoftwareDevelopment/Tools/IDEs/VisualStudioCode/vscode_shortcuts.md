@@ -49,6 +49,7 @@
 | `Ctrl + B`                | `Cmd + B`                 | toggle sidebar       |
 | `Ctrl + ,`                | `Cmd + ,`                 | open settings        |
 | `Ctrl + Shift + Backtick` | `Ctrl + Shift + Backtick` | toggle terminal      |
+| `Ctrl + Q`                | `Cmd + Q`                 | exit VsCode          |
 
 <br>
 <br>
@@ -81,6 +82,8 @@
 | `Ctrl + u`     | `Cmd + u`     | move to the previous cursor position                     |
 | `Ctrl + Up`    | `Cmd + Up`    | move to the beginning of the file                        |
 | `Ctrl + Down`  | `Cmd + Down`  | move to the end of the file                              |
+| `Ctrl + Left`  | `Alt + Left`  | move after previous word                                 |
+| `Ctrl + Right` | `Alt + Right` | move after current word                                  |
 | `F12`          | `F12`         | move to definition of selected element                   |
 
 <br>

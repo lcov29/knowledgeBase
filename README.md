@@ -109,6 +109,9 @@ mindmap
 - [ ] Accessibility
 - [ ] Authentification
 - [ ] Next.js
+- [ ] Constructable Style Sheets
+  - [ ] CSS Modules
+  - [ ] CSS Module Scripts
 
 <br>
 
@@ -127,6 +130,7 @@ mindmap
 - [ ] Angular
 - [ ] Vue
 - [ ] Svelte
+- [ ] Lit
 
 <br>
 

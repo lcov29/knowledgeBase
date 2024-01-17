@@ -23,7 +23,9 @@
     - [**Create New Object From Prototype (_Object.create()_)**](#create-new-object-from-prototype-objectcreate)
     - [**Read Prototype (_Object.getPrototypeOf()_)**](#read-prototype-objectgetprototypeof)
     - [**Set Prototype (_Object.setPrototypeOf()_)**](#set-prototype-objectsetprototypeof)
-    - [**Check If Object is Prototype Of Another Object (_object.isPrototypeOf()_)**](#check-if-object-is-prototype-of-another-object-objectisprototypeof)
+    - [**Check If Object**](#check-if-object)
+      - [**Is Prototype Of Another Object (_object.isPrototypeOf()_)**](#is-prototype-of-another-object-objectisprototypeof)
+      - [**Was Derived From A Specified Constructor Function (_instanceof_)**](#was-derived-from-a-specified-constructor-function-instanceof)
   - [**Copy Own Enumerable Properties From Other Object**](#copy-own-enumerable-properties-from-other-object)
     - [**Object.assign()**](#objectassign)
     - [**Spread Operator (...)**](#spread-operator-)
@@ -547,7 +549,11 @@ Object.getPrototypeOf(obj);
 <br>
 <br>
 
-### **Check If Object is Prototype Of Another Object (_object.isPrototypeOf()_)**
+### **Check If Object**
+<br>
+<br>
+
+#### **Is Prototype Of Another Object (_object.isPrototypeOf()_)**
 
 Returns boolean indicating whether object is the prototype of the specified object.
 
@@ -565,6 +571,32 @@ const obj = Object.create(prototype);
 
 prototype.isPrototypeOf(obj);       // true
 notPrototype.isPrototypeOf(obj);    // false
+```
+
+<br>
+<br>
+
+#### **Was Derived From A Specified Constructor Function (_instanceof_)**
+
+Returns a boolean indicating whether the prototype of a specified constructor function appears anywhere in the prototype chain of a specified object.
+
+```javascript
+object instanceof constructorFunction
+```
+
+<br>
+
+```javascript
+function Person(firstName, lastName) {
+   this.firstName = firstName;
+   this.lastName = lastName;
+}
+
+const johnDoe = new Person('John', 'Doe');
+const janeDoe = { firstName: 'Jane', lastName: 'Doe' };
+
+johnDoe instanceof Person;    // true
+janeDoe instanceof Person;    // false
 ```
 
 <br>

@@ -33,7 +33,7 @@
 
 <br>
 
-![object diagram](./pictures/uml_object_diagram.svg)
+![object diagram](./pictures/object-diagram//uml_object_diagram.svg)
 
 **Note**: Operations are not displayed in the object diagram.
 
@@ -113,21 +113,21 @@ An association connects two objects. It can have an optional name and roles.
 
 ### **Undirected Association**
 
-![undirectedAssociation](./pictures/uml_object_diagram_undirected_association.svg)
+![undirectedAssociation](./pictures/object-diagram/uml_object_diagram_undirected_association.svg)
 
 <br>
 <br>
 
 ### **Unidirectional Association**
 
-![unidirectionalAssociation](./pictures/uml_object_diagram_unidirectional_association.svg)
+![unidirectionalAssociation](./pictures/object-diagram/uml_object_diagram_unidirectional_association.svg)
 
 <br>
 <br>
 
 ### **Bidirectional Association**
 
-![bidirectionalAssociation](./pictures/uml_object_diagram_bidirectional_association.svg)
+![bidirectionalAssociation](./pictures/object-diagram/uml_object_diagram_bidirectional_association.svg)
 
 <br>
 <br>
@@ -136,4 +136,4 @@ An association connects two objects. It can have an optional name and roles.
 
 ## **Example**
 
-![example](./pictures/uml_object_diagram_example.svg)
+![example](./pictures/object-diagram/uml_object_diagram_example.svg)

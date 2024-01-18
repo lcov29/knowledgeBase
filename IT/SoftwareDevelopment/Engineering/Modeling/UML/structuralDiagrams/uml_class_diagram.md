@@ -6,13 +6,13 @@
 
 - [**UML Class Diagram**](#uml-class-diagram)
   - [**Table Of Contents**](#table-of-contents)
-  - [**Classes**](#classes)
-    - [**Attributes**](#attributes)
-      - [**Instance Attributes**](#instance-attributes)
-        - [**Visibility Flags**](#visibility-flags)
-        - [**Modification Flags**](#modification-flags)
-      - [**Derived Attributes**](#derived-attributes)
-      - [**Class Attribute**](#class-attribute)
+  - [**Class**](#class)
+    - [**Class Components**](#class-components)
+      - [**Name**](#name)
+      - [**Attributes**](#attributes)
+        - [**Instance Attributes**](#instance-attributes)
+        - [**Class Attribute / Static Attribute**](#class-attribute--static-attribute)
+        - [**Derived Attribute**](#derived-attribute)
     - [**Methods**](#methods)
       - [**Instance Methods**](#instance-methods)
         - [**Parameter Modes**](#parameter-modes)
@@ -33,74 +33,150 @@
 <br>
 <br>
 <br>
+<br>
 
-## **Classes**
+## **Class**
+
+> A **class** is an abstract data type that describes the attributes and methods of a set of objects without taking into account their state, identity or existence.
+
+<br>
 <br>
 <br>
 
-### **Attributes**
+### **Class Components**
 <br>
 <br>
 
-#### **Instance Attributes**
-<br>
+#### **Name**
 
-```
-[visibilityFlag] <attributeName>: <type> [= <defaultValue>] [{modificationFlag}]
-```
-
-<br>
-
-Example:
+A class is identified by their name which is written in **CamelCase**.
 
 ```mermaid
 classDiagram
-    class Person {
-        -firstName: String = 'John'
-        -lastName: String = 'Doe'
+    direction TB
+    class ServiceWorker {
+        
     }
 ```
 
 <br>
 <br>
 
-##### **Visibility Flags**
-<br>
-
-|Flag |Description
-|:---:|:------------
-|+    |public
-|-    |private
-|#    |protected
-|~    |package visibility
-
+#### **Attributes**
 <br>
 <br>
 
-##### **Modification Flags**
-<br>
+##### **Instance Attributes**
 
-|Flag       |Description
-|:----------|:-----------
-|changeable |attribute can be modified
-|frozen     |attribute is readonly
+> An **instance attribute** is an attribute whose value is stored separately for every instance of the class.
 
-<br>
-<br>
-
-#### **Derived Attributes**
-<br>
-
-* attribute that is calculated from other attributes
-* does not determine whether attribute is physically stored
-
-```
-/ <attributeName>: <type>
+```mermaid
+classDiagram
+    direction TB
+    class `Instance A` {
+        firstName: "John"
+    }
+    class `Instance B` {
+        firstName: "Jane"
+    }
 ```
 
 <br>
+<br>
 
-Example:
+**Notation**
+
+```javascript
+?visibilityFlag attributeName: type ?= defaultValue ?{modificationFlag}
+```
+
+<br>
+<br>
+
+|**Visibility Flag** |Meaning   |Accessible From           |
+|:------------------:|:---------|:-------------------------|
+|**+**               |public    |everywhere                |
+|**-**               |private   |within the same instance  |
+|**#**               |protected |subclasses                |
+|**~**               |package   |same package as the class |
+
+<br>
+<br>
+
+|**Type**    |Description                |
+|:-----------|:--------------------------|
+|primitive   |int, boolean, ...          |
+|enumeration |predefined set of literals |
+|class       |                           |
+|interface   |                           |
+
+<br>
+<br>
+
+|**Modification Flags** |attribute       |
+|:----------------------|:---------------|
+|changeable             |can be modified |
+|frozen                 |is readonly     |
+
+<br>
+<br>
+
+**Example**
+
+```mermaid
+classDiagram
+    class Person {
+        -firstName: String = 'John'
+        -lastName: String = 'Doe'
+        #age: Integer = 0
+    }
+```
+
+<br>
+<br>
+
+##### **Class Attribute / Static Attribute**
+
+> A **class attribute** is an attribute whose value is stored once for all instances of the class.
+
+<br>
+<br>
+
+**Notation**
+
+<u>attributeName: type</u>
+
+<br>
+<br>
+
+**Example**
+
+```mermaid
+classDiagram
+    class Person {
+        numberOfInstances: int$
+    }
+
+```
+
+<br>
+<br>
+
+##### **Derived Attribute**
+
+> A **derived attribute** is calculated from other attributes.
+
+<br>
+<br>
+
+```javascript
+/attributeName: type
+```
+
+<br>
+<br>
+
+**Example**
 
 ```mermaid
 classDiagram
@@ -108,30 +184,6 @@ classDiagram
         -start: datetime
         -end: datetime
         /duration
-    }
-```
-
-<br>
-<br>
-
-#### **Class Attribute**
-<br>
-
-```
-<attributeName>: <type>
------------------------
-```
-
-<br>
-
-Example:
-
-```mermaid
-classDiagram
-    class Person {
-        numberOfPersons int$
-        -firstName: String = 'John'
-        -lastName: String = 'Doe'
     }
 ```
 

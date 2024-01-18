@@ -44,6 +44,7 @@
 
 | Shortcut Linux            | Shortcut Mac              | Description          |
 | :------------------------ | :------------------------ | :------------------- |
+| `Ctrl + E`                | `Cmd + E`                 | open file explorer   |
 | `Ctrl + P`                | `Cmd + P`                 | open file switcher   |
 | `Ctrl + Shift + P`        | `Cmd + Shift + P`         | open command palette |
 | `Ctrl + B`                | `Cmd + B`                 | toggle sidebar       |

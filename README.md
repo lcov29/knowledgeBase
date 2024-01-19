@@ -4,7 +4,7 @@
 
 ```mermaid
 mindmap
-   ("**KnowledgeBase**")
+   (KnowledgeBase)
       (Computer Science)
          (Language Theory)
          (Notes)

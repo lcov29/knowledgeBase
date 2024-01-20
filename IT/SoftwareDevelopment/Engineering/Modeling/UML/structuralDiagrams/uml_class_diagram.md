@@ -274,7 +274,9 @@ An abstract method is noted with a _cursive_ name.
 
 #### **Association**
 
-> An **association** is a relationship between instances of either different classes or the same class (reflexive association).
+> An **association** is a relationship between instances of either different classes or the same class (reflexive association).  
+> An association is conceptulized as a set of tuples.  
+> Therefore two instances can have only **one** association of the specified type.
 
 <br>
 
@@ -286,6 +288,11 @@ An abstract method is noted with a _cursive_ name.
 ##### **Notation**
 
 ![Association Notation](./pictures/class-diagram/uml_class_diagram_association_basic_notation.svg)
+
+<br>
+
+![N-Ary Association Notation](./pictures/class-diagram/uml_class_diagram_association_n_ary.svg)  
+N-ary association
 
 <br>
 <br>
@@ -347,42 +354,30 @@ An abstract method is noted with a _cursive_ name.
 ##### **Multiplicity**
 <br>
 
-Multiplicity defines upper and lower boundaries for connected instances:
+The mulitplicity describes how many instances can be connected within a single association.
 
 |Multiplicity |Shorthand |Description                                |
 |:-----------:|:--------:|-------------------------------------------|
 |1..1         |1         |exactly one connected instance             |
 |0..1         |          |no or exactly one connected instance       |
-|1..*         |          |many connected instances, but at lease one |
-|0..*         |*         |no or many connected instances             |
+|1..*         |          |many connected instances, but at least one |
+|0..*         |*         |zero or many connected instances           |
 |_number_     |          |exactly _number_ of connected instances    |
 |[2, 3]       |          |range for number of connected instances    |
 
 <br>
 
-Examples:
+![Association Multiplicity Example 1](./pictures/class-diagram/uml_class_diagram_association_multiplicity_example1.svg)
 
-```mermaid
-classDiagram
-    direction LR
-    class A { }
-    class B { }
-    A "1" -- "1" B
-```
-* every instance of A is connected to exactly one instance of B
-* every instance of B is connected to exactly one instance of A
+- every instance of A is connected to exactly one instance of B
+- every instance of B is connected to exactly one instance of A
 
 <br>
 
-```mermaid
-classDiagram
-    direction LR
-    class A { }
-    class B { }
-    A "0..1" -- "1..n" B
-```
-* every instance of A is connected to one or multiple instances of B
-* every instance of B is connected to either none or exactly one instance of A
+![Association Multiplicity Example 2](./pictures/class-diagram/uml_class_diagram_association_multiplicity_example2.svg)
+
+- every instance of A is connected to one or multiple instances of B
+- every instance of B is connected to either none or exactly one instance of A
 
 <br>
 <br>

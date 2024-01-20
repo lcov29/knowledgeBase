@@ -7,18 +7,18 @@
 - [**UML Class Diagram**](#uml-class-diagram)
   - [**Table Of Contents**](#table-of-contents)
   - [**Class**](#class)
-    - [**Class Components**](#class-components)
-      - [**Name**](#name)
-      - [**Attributes**](#attributes)
-        - [**Instance Attributes**](#instance-attributes)
-        - [**Class Attribute / Static Attribute**](#class-attribute--static-attribute)
-        - [**Derived Attribute**](#derived-attribute)
+    - [**Name**](#name)
+    - [**Attributes**](#attributes)
+      - [**Notation**](#notation)
+      - [**Instance Attributes**](#instance-attributes)
+      - [**Class Attribute / Static Attribute**](#class-attribute--static-attribute)
+      - [**Derived Attribute**](#derived-attribute)
     - [**Methods**](#methods)
+      - [**Notation**](#notation-1)
       - [**Instance Methods**](#instance-methods)
-        - [**Parameter Modes**](#parameter-modes)
-        - [**Standard Methods**](#standard-methods)
-      - [**Abstract Methods**](#abstract-methods)
+        - [**Standard Instance Methods**](#standard-instance-methods)
       - [**Class Methods**](#class-methods)
+      - [**Abstract Methods**](#abstract-methods)
     - [**Associations**](#associations)
       - [**Association**](#association)
         - [**Direction**](#direction)
@@ -40,67 +40,145 @@
 > A **class** is an abstract data type that describes the attributes and methods of a set of objects without taking into account their state, identity or existence.
 
 <br>
+
+Basic Notation:
+
+![Class Components](./pictures/class-diagram/uml_class_diagram_class_components.svg)
+
+<br>
 <br>
 <br>
 
-### **Class Components**
-<br>
-<br>
-
-#### **Name**
+### **Name**
 
 A class is identified by their name which is written in **CamelCase**.
 
-```mermaid
-classDiagram
-    direction TB
-    class ServiceWorker {
-        
-    }
-```
+![Basic Class Diagram](./pictures/class-diagram/uml_class_diagram.svg)
 
 <br>
 <br>
-
-#### **Attributes**
-<br>
 <br>
 
-##### **Instance Attributes**
-
-> An **instance attribute** is an attribute whose value is stored separately for every instance of the class.
-
-```mermaid
-classDiagram
-    direction TB
-    class `Instance A` {
-        firstName: "John"
-    }
-    class `Instance B` {
-        firstName: "Jane"
-    }
-```
-
-<br>
+### **Attributes**
 <br>
 
-**Notation**
+#### **Notation**
 
 ```javascript
-?visibilityFlag attributeName: type ?= defaultValue ?{modificationFlag}
+?visibilityFlag attributeName: ?type ?[multiplicity] ?= defaultValue ?{modificationFlag}
 ```
 
-<br>
 <br>
 
 |**Visibility Flag** |Meaning   |Accessible From           |
 |:------------------:|:---------|:-------------------------|
-|**+**               |public    |everywhere                |
-|**-**               |private   |within the same instance  |
-|**#**               |protected |subclasses                |
-|**~**               |package   |same package as the class |
+|`+`                 |public    |everywhere                |
+|`-`                 |private   |within the same instance  |
+|`#`                 |protected |subclasses                |
+|`~`                 |package   |same package as the class |
 
 <br>
+
+|**Type**    |Description                |
+|:-----------|:--------------------------|
+|primitive   |int, boolean, ...          |
+|enumeration |predefined set of literals |
+|class       |                           |
+|interface   |                           |
+
+<br>
+
+|**Multiplicity** |Description                              |
+|:----------------|:----------------------------------------|
+|`n`              |exactly n instances                      |
+|`n..m*`          |at least n but not more than m instances |
+|`n..*`           |at least n instances                     |
+|`*`              |zero or more instances                   |
+
+<br>
+
+|**Modification Flags** |attribute                                           |
+|:----------------------|:---------------------------------------------------|
+|`changeable`           |value can be changed                                |
+|`readOnly`             |value can not be changed                            |
+|`id`                   |property is part of the identifier of the class     |
+|`unique`               |multi valued property can not have duplicate values |
+
+<br>
+<br>
+
+#### **Instance Attributes**
+
+> An **instance attribute** is an attribute whose value is stored separately for every instance of the class.
+
+![Instance Attributes](./pictures/class-diagram/uml_class_diagram_instance_attributes.svg)
+
+<br>
+
+**Example**
+
+![Instance Attributes Example](./pictures/class-diagram/uml_class_diagram_attributes_example.svg)
+
+<br>
+<br>
+
+#### **Class Attribute / Static Attribute**
+
+> A **class attribute** is an attribute whose value is stored once for all instances of the class.
+
+<br>
+
+![Class Attribute](./pictures/class-diagram/uml_class_diagram_class_attributes.svg)
+
+<br>
+<br>
+
+#### **Derived Attribute**
+
+> A **derived attribute** is calculated from other attributes.
+
+<br>
+
+![Derived Attribute](./pictures/class-diagram/uml_class_diagram_derived_attribute.svg)
+
+Here the attribute `duration` is calculated.
+
+<br>
+<br>
+<br>
+
+### **Methods**
+
+> A **method** can access attributes and alter the state of an instance by modifying its attributes.  
+> It can also take inputs and interact with other instances.  
+> A method is identified by its **signature** which consists of the method´s name, parameter list and its return type.
+
+<br>
+<br>
+
+#### **Notation**
+
+```javascript
+?visibility methodName(?parameterMode parameterName: ?parameterType, ...): returnType
+```
+
+<br>
+
+|**Visibility Flag** |Meaning   |Accessible From           |
+|:------------------:|:---------|:-------------------------|
+|`+`                 |public    |everywhere                |
+|`-`                 |private   |within the same instance  |
+|`#`                 |protected |subclasses                |
+|`~`                 |package   |same package as the class |
+
+<br>
+
+|**Parameter Mode** |Description                                 |
+|:------------------|:-------------------------------------------|
+|`in`               |pass argument by value                      |
+|`inout`            |pass argument by reference                  |
+|`out`              |pass result to reference parameter argument |
+
 <br>
 
 |**Type**    |Description                |
@@ -113,158 +191,41 @@ classDiagram
 <br>
 <br>
 
-|**Modification Flags** |attribute       |
-|:----------------------|:---------------|
-|changeable             |can be modified |
-|frozen                 |is readonly     |
-
-<br>
-<br>
-
-**Example**
-
-```mermaid
-classDiagram
-    class Person {
-        -firstName: String = 'John'
-        -lastName: String = 'Doe'
-        #age: Integer = 0
-    }
-```
-
-<br>
-<br>
-
-##### **Class Attribute / Static Attribute**
-
-> A **class attribute** is an attribute whose value is stored once for all instances of the class.
-
-<br>
-<br>
-
-**Notation**
-
-<u>attributeName: type</u>
-
-<br>
-<br>
-
-**Example**
-
-```mermaid
-classDiagram
-    class Person {
-        numberOfInstances: int$
-    }
-
-```
-
-<br>
-<br>
-
-##### **Derived Attribute**
-
-> A **derived attribute** is calculated from other attributes.
-
-<br>
-<br>
-
-```javascript
-/attributeName: type
-```
-
-<br>
-<br>
-
-**Example**
-
-```mermaid
-classDiagram
-    class Timer {
-        -start: datetime
-        -end: datetime
-        /duration
-    }
-```
-
-<br>
-<br>
-
-### **Methods**
-<br>
-<br>
-
 #### **Instance Methods**
 <br>
 
-```
-[visibilityFlag] <methodName>([parameterMode] <parameterName>: <parameterType>): <resultType> [{isQuery}]
-```
+> An **instance method** can be invoked on every instance of the class.
 
 <br>
 
-Example:
-
-```mermaid
-classDiagram
-    class Person {
-        -firstName: string = 'John'
-        -lastName: string = 'Doe'
-
-        +introduce(in greeting: string) string
-        +changeName(in firstName: string, in lastName: string) boolean
-    }
-```
+![Instance Method](./pictures/class-diagram/uml_class_diagram_instance_method.svg)
 
 <br>
 <br>
 
-##### **Parameter Modes**
-<br>
+##### **Standard Instance Methods**
 
-|Mode  |Description
-|:-----|:------------------------------
-|in    |use parameter argument by value (= can not be modified for outer scope)
-|inout |use parameter argument by reference (= can be modified for outer scope)
-|out   |reference parameter that is used to return method results to outer scope
+The following instance methods are always assumed to be part of a class without being explicitly specified in the diagram:
 
-<br>
-<br>
-
-##### **Standard Methods**
-<br>
-
-The following methods are part of every class without being explicitly listed:
-
-* setter methods for attributes
-* getter methods for attributes
-* setter methods for associations
-* delete methods for associations
-
-<br>
-<br>
-
-#### **Abstract Methods**
-<br>
-
-* method signature that has no implementation
-* implementation is handled by subclasses
-* abstract methods are written in cursive
-
-```mermaid
-classDiagram
-    class ClassName {
-        abstractMethod(in parameter: string)* boolean
-    }
-```
+|Standard Method                        |Description                                               |
+|:--------------------------------------|:---------------------------------------------------------|
+|`setAttribute(): type`                 |Setter method for attributes                              |
+|`getAttribute(in value: type)`         |Getter method for attributes                              |
+|`getAssociation(): type`               |Getter method for association                             |
+|`createAssociation(in instance: type)` |Create association between current and parameter instance |
+|`deleteAssociation(in instance: type)` |Delete association between current and parameter instance |
 
 <br>
 <br>
 
 #### **Class Methods**
-<br>
 
-```mermaid
+> A **class method** is a method that is implemented on the class level.  
+> It can therefore only be called on the class and can not use instance attributes or methods.
+
+![Class Method](./pictures/class-diagram/uml_class_diagram_class_method.svg)
+
+<!-- ```mermaid
 classDiagram
     class Person {
         -firstName: string = 'John'
@@ -274,7 +235,21 @@ classDiagram
         +introduce(in greeting: string) string
         +changeName(in firstName: string, in lastName: string) boolean
     }
-```
+``` -->
+
+<br>
+<br>
+
+#### **Abstract Methods**
+
+> An **abstract method** is a method signature without implementation.  
+> The implementation has to be handled by the subclasses.
+
+<br>
+
+An abstract method is noted with a _cursive_ name.
+
+![Abstract Method](./pictures/class-diagram/uml_class_diagram_abstract_method.svg)
 
 <br>
 <br>

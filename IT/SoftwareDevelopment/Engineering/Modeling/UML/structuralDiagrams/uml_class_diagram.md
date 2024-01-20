@@ -18,10 +18,16 @@
       - [**Instance Methods**](#instance-methods)
         - [**Standard Instance Methods**](#standard-instance-methods)
       - [**Class Methods**](#class-methods)
+        - [**Standard Class Methods**](#standard-class-methods)
       - [**Abstract Methods**](#abstract-methods)
-    - [**Associations**](#associations)
+    - [**Relationships Between Classes**](#relationships-between-classes)
       - [**Association**](#association)
-        - [**Direction**](#direction)
+        - [**Notation**](#notation-2)
+        - [**Navigability**](#navigability)
+          - [**Unspecified**](#unspecified)
+          - [**Unnavigable**](#unnavigable)
+          - [**Unidirectional**](#unidirectional)
+          - [**Bidirectional**](#bidirectional)
         - [**Multiplicity**](#multiplicity)
         - [**Association Class**](#association-class)
       - [**Inheritance**](#inheritance)
@@ -159,7 +165,7 @@ Here the attribute `duration` is calculated.
 #### **Notation**
 
 ```javascript
-?visibility methodName(?parameterMode parameterName: ?parameterType, ...): returnType
+?visibility methodName(?parameterMode parameterName: ?parameterType, ...): returnType ?{modificationFlags}
 ```
 
 <br>
@@ -189,10 +195,17 @@ Here the attribute `duration` is calculated.
 |interface   |                           |
 
 <br>
+
+|**ModificationFlags** |Description                                    |
+|:---------------------|:----------------------------------------------|
+|`isQuery`             |method access attributes without modifying any |
+|`isModifier`          |method modifies attributes                     |
+|`unique`              |return value has no duplicates                 |
+
+<br>
 <br>
 
 #### **Instance Methods**
-<br>
 
 > An **instance method** can be invoked on every instance of the class.
 
@@ -214,6 +227,7 @@ The following instance methods are always assumed to be part of a class without 
 |`getAssociation(): type`               |Getter method for association                             |
 |`createAssociation(in instance: type)` |Create association between current and parameter instance |
 |`deleteAssociation(in instance: type)` |Delete association between current and parameter instance |
+|`delete()`                             |Delete current instance                                   |
 
 <br>
 <br>
@@ -225,17 +239,16 @@ The following instance methods are always assumed to be part of a class without 
 
 ![Class Method](./pictures/class-diagram/uml_class_diagram_class_method.svg)
 
-<!-- ```mermaid
-classDiagram
-    class Person {
-        -firstName: string = 'John'
-        -lastName: string = 'Doe'
+<br>
+<br>
 
-        printText(in text: string)$ void
-        +introduce(in greeting: string) string
-        +changeName(in firstName: string, in lastName: string) boolean
-    }
-``` -->
+##### **Standard Class Methods**
+
+The following class method is always assumed to be part of a class without being explicitly specified in the diagram:
+
+|Standard Method           |Description                     |
+|:-------------------------|:-------------------------------|
+|`create(): classInstance` |creates a new instance of class |
 
 <br>
 <br>
@@ -253,58 +266,80 @@ An abstract method is noted with a _cursive_ name.
 
 <br>
 <br>
+<br>
 
-### **Associations**
+### **Relationships Between Classes**
 <br>
 <br>
 
 #### **Association**
+
+> An **association** is a relationship between instances of either different classes or the same class (reflexive association).
+
 <br>
 
-```mermaid
-classDiagram
-    direction LR
-    class A { }
-    class B { }
-    A --> B
-```
+![Association Example](./pictures/class-diagram/uml_class_diagram_association_basic_notation_example.svg)
 
 <br>
 <br>
 
-##### **Direction**
-<br>
+##### **Notation**
 
-```mermaid
-classDiagram
-    direction LR
-    class A { }
-    class B { }
-    A <--> B : bidirectional
-```
-* All connected instances know about the connection
+![Association Notation](./pictures/class-diagram/uml_class_diagram_association_basic_notation.svg)
 
 <br>
+<br>
 
-```mermaid
-classDiagram
-    direction LR
-    class A { }
-    class B { }
-    A --> B : unidirectional
-```
-* only instances of A know about their connection to instances of B
+##### **Navigability**
+<br>
+
+###### **Unspecified**
+
+![Unspecified Association](./pictures/class-diagram/uml_class_diagram_association_unspecified_association.svg)
+
+- Navigability from A to B is unspecified
+- Navigability from B to A is unspecified
 
 <br>
 
-```mermaid
-classDiagram
-    direction LR
-    class A { }
-    class B { }
-    A -- B : not navigable
-```
-* connected instances do not know about the connection
+![Unspecified Association](./pictures/class-diagram/uml_class_diagram_association_unspecified_association_2.svg)
+
+- Navigability from A to B is unspecified
+- B can not navigate to A
+
+<br>
+
+###### **Unnavigable**
+
+![Unnavigable Association](./pictures/class-diagram/uml_class_diagram_association_unnavigable_association.svg)
+
+- A can not navigate to B
+- B can not navigate to A
+
+<br>
+
+###### **Unidirectional**
+
+![Unidirectional Association](./pictures/class-diagram/uml_class_diagram_association_unidirectional_association.svg)
+
+- A can navigate to B
+- Navigability from B to A is unspecified
+
+<br>
+
+![Unidirectional Association](./pictures/class-diagram/uml_class_diagram_association_unidirectional_association_2.svg)
+
+- A can navigate to B
+- B can not navigate to B
+
+<br>
+
+###### **Bidirectional**
+
+![Bidirectional Association](./pictures/class-diagram/uml_class_diagram_association_bidirectional_association.svg)
+
+- A can navigate to B
+- B can navigate to A
 
 <br>
 <br>

@@ -30,7 +30,7 @@
           - [**Bidirectional**](#bidirectional)
         - [**Multiplicity**](#multiplicity)
         - [**Association Class**](#association-class)
-      - [**Inheritance**](#inheritance)
+      - [**Generalization**](#generalization)
       - [**Aggregation**](#aggregation)
       - [**Composition**](#composition)
       - [**Dependency**](#dependency)
@@ -358,12 +358,20 @@ The mulitplicity describes how many instances can be connected within a single a
 
 |Multiplicity |Shorthand |Description                                |
 |:-----------:|:--------:|-------------------------------------------|
-|1..1         |1         |exactly one connected instance             |
-|0..1         |          |no or exactly one connected instance       |
-|1..*         |          |many connected instances, but at least one |
-|0..*         |*         |zero or many connected instances           |
-|_number_     |          |exactly _number_ of connected instances    |
-|[2, 3]       |          |range for number of connected instances    |
+|`1..1`       |1         |exactly one connected instance             |
+|`0..1`       |          |no or exactly one connected instance       |
+|`1..*`       |          |many connected instances, but at least one |
+|`0..*`       |*         |zero or many connected instances           |
+|`_number_`   |          |exactly _number_ of connected instances    |
+|`[2, 3]`     |          |range for number of connected instances    |
+
+<br>
+
+|Shorthand |first end          |second end         |
+|:--------:|:------------------|-------------------|
+|`1:1`     |`1` or `0..1`      |`1` or `0..1`      |
+|`1:n`     |`1` or `0..1`      |`0..n`, `n` or `*` |
+|`n:m`     |`0..n`, `n` or `*` |`0..n`, `n` or `*` |
 
 <br>
 
@@ -383,94 +391,76 @@ The mulitplicity describes how many instances can be connected within a single a
 <br>
 
 ##### **Association Class**
+
+> An **association class** is used to model attributes or methods of a specific association when these attributes or methods are not a logical part of the classes of the connected instances.
+
 <br>
 
-* class assigned to a specific association between classes
-* used to model additional attributes or methods of an association
-* association class represents exactly one association!
+![Association Class](./pictures/class-diagram/uml_class_diagram_association_class.svg)
 
-```mermaid
-classDiagram
-    direction LR
-    class A { }
-    class B { }
-    class AssociationClass { }
-    A "0..1" -- "1..n" AssociationClass
-    AssociationClass "1..n" -- "0..1" B
-```
+<br>
+
+Example
+
+![Association Class Example](./pictures/class-diagram/uml_class_diagram_association_class_example.svg)
 
 <br>
 <br>
 
-#### **Inheritance**
+#### **Generalization**
+
+> A **generalization** is a relationship between two classes where one class (**sub class**) inherits all attributes and methods of the other class (**super class**).  
+> Instances of the sub class can be used in place of instances of the super class (substitution principle).
+
 <br>
 
-```mermaid
-classDiagram
-    direction LR
-    class SuperClass { }
-    class SubClass { }
-    SubClass --|> SuperClass
-```
+![Generalization](./pictures/class-diagram/uml_class_diagram_association_generalization.svg)
 
 <br>
 <br>
 
 #### **Aggregation**
+
+> An **aggregation** is a relationship between a whole and its parts. The whole has the responsibility to deal with its parts.  
+> The parts can exist outside of the whole.
+
 <br>
 
-```mermaid
-classDiagram
-    direction LR
-    class Workplace { }
-    class Desk { }
-    class Chair { }
-    class Computer { }
-    Workplace o-- Desk
-    Workplace o-- Chair
-    Workplace o-- Computer
-```
-
-* defines a relationship between a whole and its parts
-* whole has the reponsibility to deal with its parts
-* parts can exist without their whole
+![Aggregation](./pictures/class-diagram/uml_class_diagram_association_aggregation_example.svg)
 
 <br>
 <br>
 
 #### **Composition**
+
+> A **composition** is a relationship between a whole and its parts. The whole has the responsibility to deal with its parts.  
+> The parts can only be part of a single whole and can not exist outside of it.
+
 <br>
 
-```mermaid
-classDiagram
-    direction LR
-    class Human { }
-    class Heart { }
-    class Brain { }
-    class Liver { }
-    Human *-- Heart
-    Human *-- Brain
-    Human *-- Liver
-```
-
-* defines a relationship between a whole and its parts
-* parts can not exist without their whole
-* parts can only be part of a single whole
+![Composition](./pictures/class-diagram/uml_class_diagram_association_composition_example.svg)
 
 <br>
 <br>
 
 #### **Dependency**
+
+> A **dependency** is a relationship between an element that requires, needs or depends on another element for its specification or implementation. Also called **supplier-client relationship**.
+
 <br>
 
-```mermaid
-classDiagram
-    direction LR
-    class A { }
-    class B { }
-    A ..> B
-```
+![Dependency](./pictures/class-diagram/uml_class_diagram_association_dependency.svg)
 
+<br>
+
+|Dependency Type |Description              |
+|:---------------|:------------------------|
+|`<<use>>`       |A uses B in some way     |
+|`<<create>>`    |A creates instances of B |
+|`<<call>>`      |A calls some method of B |
+|`<<realizes>>`  |A realizes interface     |
+
+<br>
 <br>
 <br>
 <br>

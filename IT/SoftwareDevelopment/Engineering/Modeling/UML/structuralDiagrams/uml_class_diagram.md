@@ -35,6 +35,9 @@
       - [**Composition**](#composition)
       - [**Dependency**](#dependency)
   - [**Interfaces**](#interfaces)
+    - [**Detailed Notation**](#detailed-notation)
+    - [**Lollipop Notation**](#lollipop-notation)
+  - [**Abstract Class**](#abstract-class)
 
 <br>
 <br>
@@ -466,24 +469,46 @@ Example
 <br>
 
 ## **Interfaces**
+
+> An **interface** is a set of public method signatures.  
+> Classes that realize one or multiple interfaces have to implement the specified methods as a part of their public interface.
+
 <br>
 
-* lists only method signatures
-* can not be instantiated
+> **Concept**: An interface is a contract between classes about which methods can be used in their communication.
 
-```mermaid
-classDiagram
-    direction LR
-    class Sortable {
-        <<interface>>
-        isGreaterThan()* boolean
-        isLesserThan()* boolean
-    }
-    class Number {
-        - value: int
-        
-        isGreaterThan(): boolean
-        isLesserThan(): boolean
-    }
-    Number --|> Sortable: realize
-```
+<br>
+<br>
+
+### **Detailed Notation**
+
+![Interface](./pictures/class-diagram/uml_class_diagram_interface.svg)
+
+<br>
+<br>
+
+### **Lollipop Notation**
+
+![Interface Lollipop Notation](./pictures/class-diagram/uml_class_diagram_interface_lollipop.svg)
+
+<br>
+<br>
+<br>
+<br>
+
+## **Abstract Class**
+
+> An **abstract class** is a class that has at least one [abstract method](#abstract-methods) and can not be instantiated.  
+> It can also contain attributes and implement methods.
+
+<br>
+
+![Abstract Class With Italic ClassName](./pictures/class-diagram/uml_class_diagram_abstract_class_example1.svg)
+
+Abstract class with italic class name.
+
+<br>
+
+![Abstract Class With Prefix](./pictures/class-diagram/uml_class_diagram_abstract_class_example2.svg)
+
+Abstract class with prefix.

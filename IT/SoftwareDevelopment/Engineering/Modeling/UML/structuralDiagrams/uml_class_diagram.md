@@ -20,20 +20,26 @@
       - [**Class Methods**](#class-methods)
         - [**Standard Class Methods**](#standard-class-methods)
       - [**Abstract Methods**](#abstract-methods)
-    - [**Relationships Between Classes**](#relationships-between-classes)
-      - [**Association**](#association)
-        - [**Notation**](#notation-2)
-        - [**Navigability**](#navigability)
-          - [**Unspecified**](#unspecified)
-          - [**Unnavigable**](#unnavigable)
-          - [**Unidirectional**](#unidirectional)
-          - [**Bidirectional**](#bidirectional)
-        - [**Multiplicity**](#multiplicity)
-        - [**Association Class**](#association-class)
-      - [**Generalization**](#generalization)
-      - [**Aggregation**](#aggregation)
-      - [**Composition**](#composition)
-      - [**Dependency**](#dependency)
+    - [**Class Stereotypes**](#class-stereotypes)
+      - [**Entity Class**](#entity-class)
+      - [**Control Class**](#control-class)
+      - [**Boundary Class**](#boundary-class)
+    - [**Constraints**](#constraints)
+  - [**Relationships**](#relationships)
+    - [**Association**](#association)
+      - [**Notation**](#notation-2)
+      - [**Navigability**](#navigability)
+        - [**Unspecified**](#unspecified)
+        - [**Unnavigable**](#unnavigable)
+        - [**Unidirectional**](#unidirectional)
+        - [**Bidirectional**](#bidirectional)
+      - [**Multiplicity**](#multiplicity)
+      - [**Association Class**](#association-class)
+      - [**Constraints**](#constraints-1)
+    - [**Generalization**](#generalization)
+    - [**Aggregation**](#aggregation)
+    - [**Composition**](#composition)
+    - [**Dependency**](#dependency)
   - [**Interfaces**](#interfaces)
     - [**Detailed Notation**](#detailed-notation)
     - [**Lollipop Notation**](#lollipop-notation)
@@ -271,11 +277,65 @@ An abstract method is noted with a _cursive_ name.
 <br>
 <br>
 
-### **Relationships Between Classes**
+### **Class Stereotypes**
 <br>
 <br>
 
-#### **Association**
+#### **Entity Class**
+
+> An **entity class** describes a specific entity of the domain.  
+> Instances are typically long-lived and hold a large chunk of information.
+
+<br>
+
+![Entity Class](./pictures/class-diagram/uml_class_diagram_class_stereotype_entity.svg)
+
+<br>
+<br>
+
+#### **Control Class**
+
+> A **control class** manages the flow of interactions between the entity classes within a specific scenario.  
+
+<br>
+
+![Control Class](./pictures/class-diagram/uml_class_diagram_class_stereotype_control.svg)
+
+<br>
+<br>
+
+#### **Boundary Class**
+
+> A **boundary class** encapsulates the interactions between a specific actor and the system.  
+> It is typically located on the periphery of the system or a subsystem.
+
+<br>
+
+![Boundary Class](./pictures/class-diagram/uml_class_diagram_class_stereotype_boundary.svg)
+
+<br>
+<br>
+<br>
+
+### **Constraints**
+
+> A **class constraint** is a condition, restriction or assertion for one or multiple attributes or methods.
+
+<br>
+
+![Class Constraint](./pictures/class-diagram/uml_class_diagram_class_constraints.svg)
+
+<br>
+<br>
+<br>
+<br>
+
+## **Relationships**
+<br>
+<br>
+<br>
+
+### **Association**
 
 > An **association** is a relationship between instances of either different classes or the same class (reflexive association).  
 > An association is conceptulized as a set of tuples.  
@@ -288,7 +348,7 @@ An abstract method is noted with a _cursive_ name.
 <br>
 <br>
 
-##### **Notation**
+#### **Notation**
 
 ![Association Notation](./pictures/class-diagram/uml_class_diagram_association_basic_notation.svg)
 
@@ -300,10 +360,11 @@ N-ary association
 <br>
 <br>
 
-##### **Navigability**
+#### **Navigability**
+<br>
 <br>
 
-###### **Unspecified**
+##### **Unspecified**
 
 ![Unspecified Association](./pictures/class-diagram/uml_class_diagram_association_unspecified_association.svg)
 
@@ -319,7 +380,7 @@ N-ary association
 
 <br>
 
-###### **Unnavigable**
+##### **Unnavigable**
 
 ![Unnavigable Association](./pictures/class-diagram/uml_class_diagram_association_unnavigable_association.svg)
 
@@ -328,7 +389,7 @@ N-ary association
 
 <br>
 
-###### **Unidirectional**
+##### **Unidirectional**
 
 ![Unidirectional Association](./pictures/class-diagram/uml_class_diagram_association_unidirectional_association.svg)
 
@@ -344,7 +405,7 @@ N-ary association
 
 <br>
 
-###### **Bidirectional**
+##### **Bidirectional**
 
 ![Bidirectional Association](./pictures/class-diagram/uml_class_diagram_association_bidirectional_association.svg)
 
@@ -354,7 +415,7 @@ N-ary association
 <br>
 <br>
 
-##### **Multiplicity**
+#### **Multiplicity**
 <br>
 
 The mulitplicity describes how many instances can be connected within a single association.
@@ -393,7 +454,7 @@ The mulitplicity describes how many instances can be connected within a single a
 <br>
 <br>
 
-##### **Association Class**
+#### **Association Class**
 
 > An **association class** is used to model attributes or methods of a specific association when these attributes or methods are not a logical part of the classes of the connected instances.
 
@@ -410,7 +471,23 @@ Example
 <br>
 <br>
 
-#### **Generalization**
+#### **Constraints**
+
+> A **class constraint** is a condition, restriction or assertion for one or multiple relationships.
+
+<br>
+
+![Association Constraint](./pictures/class-diagram/uml_class_diagram_class_relationship_constraints_example1.svg)
+
+<br>
+
+![Association Constraint](./pictures/class-diagram/uml_class_diagram_class_relationship_constraints_example2.svg)
+
+<br>
+<br>
+<br>
+
+### **Generalization**
 
 > A **generalization** is a relationship between two classes where one class (**sub class**) inherits all attributes and methods of the other class (**super class**).  
 > Instances of the sub class can be used in place of instances of the super class (substitution principle).
@@ -421,8 +498,9 @@ Example
 
 <br>
 <br>
+<br>
 
-#### **Aggregation**
+### **Aggregation**
 
 > An **aggregation** is a relationship between a whole and its parts. The whole has the responsibility to deal with its parts.  
 > The parts can exist outside of the whole.
@@ -433,8 +511,9 @@ Example
 
 <br>
 <br>
+<br>
 
-#### **Composition**
+### **Composition**
 
 > A **composition** is a relationship between a whole and its parts. The whole has the responsibility to deal with its parts.  
 > The parts can only be part of a single whole and can not exist outside of it.
@@ -445,8 +524,9 @@ Example
 
 <br>
 <br>
+<br>
 
-#### **Dependency**
+### **Dependency**
 
 > A **dependency** is a relationship between an element that requires, needs or depends on another element for its specification or implementation. Also called **supplier-client relationship**.
 

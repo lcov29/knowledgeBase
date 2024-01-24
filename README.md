@@ -169,6 +169,7 @@ mindmap
 - [ ] Agile Development
 - [ ] Software Architecture
 - [ ] Design Patterns
+- [ ] Domain-Driven Design
 
 <br>
 

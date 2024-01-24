@@ -44,6 +44,11 @@
     - [**Detailed Notation**](#detailed-notation)
     - [**Lollipop Notation**](#lollipop-notation)
   - [**Abstract Class**](#abstract-class)
+  - [**Package**](#package)
+    - [**Visibility**](#visibility)
+    - [**Relationship**](#relationship)
+      - [**Import**](#import)
+      - [**Access**](#access)
 
 <br>
 <br>
@@ -592,3 +597,61 @@ Abstract class with italic class name.
 ![Abstract Class With Prefix](./pictures/class-diagram/uml_class_diagram_abstract_class_example2.svg)
 
 Abstract class with prefix.
+
+<br>
+<br>
+<br>
+<br>
+
+## **Package**
+
+> A **package** is a namespace that groups semantically related elements.  
+> Every element within the system can only be part of one package.
+
+<br>
+
+![Package](./pictures/class-diagram/uml_class_diagram_class_package_example1.svg)
+
+<br>
+
+![Nested Packages](./pictures/class-diagram/uml_class_diagram_class_package_example2.svg)
+
+<br>
+<br>
+
+### **Visibility**
+
+|**Visibility Flag** |Meaning   |Accessible From                              |
+|:------------------:|:---------|:--------------------------------------------|
+|`+`                 |public    |inside and outside of the package            |
+|`-`                 |private   |inside of the package                        |
+|`~`                 |package   |inside of the package and in all subpackages |
+
+<br>
+
+> **Attention:** Elements of subpackages are not automatically visible to superpackages! Use `import` dependency.
+
+<br>
+<br>
+
+### **Relationship**
+<br>
+
+#### **Import**
+
+> The **import** relationship imports a specific or all elements of a package into a namespace and **makes them visible to the outside**.
+
+<br>
+
+![import relationship](./pictures/class-diagram/uml_class_diagram_class_package_import.svg)
+
+<br>
+<br>
+
+#### **Access**
+
+> The **access** relationship imports a specific or all elements of a package into a namespace and **does not make them visible to the outside**.
+
+<br>
+
+![access relationship](./pictures/class-diagram/uml_class_diagram_class_package_access.svg)

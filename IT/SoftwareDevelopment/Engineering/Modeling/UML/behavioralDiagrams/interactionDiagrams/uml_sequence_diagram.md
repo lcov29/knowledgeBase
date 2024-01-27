@@ -7,13 +7,20 @@
   - [**Table Of Contents**](#table-of-contents)
   - [**Basics**](#basics)
   - [**Object**](#object)
-  - [**Messages**](#messages)
-    - [**Synchronous Message**](#synchronous-message)
-    - [**Asynchronous Message**](#asynchronous-message)
-    - [**Return Message**](#return-message)
   - [**Activity Elements**](#activity-elements)
     - [**Activity Bar**](#activity-bar)
     - [**Active Objects**](#active-objects)
+  - [**Control Flow**](#control-flow)
+    - [**Messages**](#messages)
+      - [**Synchronous Message**](#synchronous-message)
+      - [**Asynchronous Message**](#asynchronous-message)
+      - [**Return Message**](#return-message)
+    - [**Conditional**](#conditional)
+      - [**Guard Syntax**](#guard-syntax)
+      - [**If-Else Syntax**](#if-else-syntax)
+    - [**Iteration**](#iteration)
+      - [**Single Method**](#single-method)
+      - [**Method Block**](#method-block)
 
 <br>
 <br>
@@ -48,45 +55,6 @@
 <br>
 <br>
 
-## **Messages**
-<br>
-<br>
-
-### **Synchronous Message**
-
-> The sender of a **synchronous message** waits idle until the receiver has processed it.
-
-<br>
-
-![Synchronous Message](./pictures/sequenceDiagram/uml_sequence_diagram_synchronous_message.svg)
-
-<br>
-<br>
-
-### **Asynchronous Message**
-
-> The sender of an **asynchronous message** can concurrently continue its execution without having to wait until the receiver processed the message.
-
-<br>
-
-![Asynchronous Message](./pictures/sequenceDiagram/uml_sequence_diagram_asynchronous_message.svg)
-
-<br>
-<br>
-
-### **Return Message**
-
-> The optional `return message` indicates that the receiver has processed the message of the sender.
-
-<br>
-
-![Return Message](./pictures/sequenceDiagram/uml_sequence_diagram_return_message.svg)
-
-<br>
-<br>
-<br>
-<br>
-
 ## **Activity Elements**
 <br>
 <br>
@@ -115,3 +83,105 @@
 <br>
 
 ![Active Objects](./pictures/sequenceDiagram/uml_sequence_diagram_activity_object.svg)
+
+<br>
+<br>
+<br>
+<br>
+
+## **Control Flow**
+<br>
+<br>
+
+### **Messages**
+<br>
+
+#### **Synchronous Message**
+
+> The sender of a **synchronous message** waits idle until the receiver has processed it.
+
+<br>
+
+![Synchronous Message](./pictures/sequenceDiagram/uml_sequence_diagram_synchronous_message.svg)
+
+<br>
+<br>
+
+#### **Asynchronous Message**
+
+> The sender of an **asynchronous message** can concurrently continue its execution without having to wait until the receiver processed the message.
+
+<br>
+
+![Asynchronous Message](./pictures/sequenceDiagram/uml_sequence_diagram_asynchronous_message.svg)
+
+<br>
+<br>
+
+#### **Return Message**
+
+> The optional `return message` indicates that the receiver has processed the message of the sender.
+
+<br>
+
+![Return Message](./pictures/sequenceDiagram/uml_sequence_diagram_return_message.svg)
+
+<br>
+<br>
+<br>
+
+### **Conditional**
+
+> A **conditional** method is only executed if the condition is fulfilled.
+
+<br>
+<br>
+
+#### **Guard Syntax**
+
+![Simple Conditional Syntax](./pictures/sequenceDiagram/uml_sequence_diagram_conditional_syntax1.svg)
+
+<br>
+<br>
+
+#### **If-Else Syntax**
+
+![Complex Conditional Syntax](./pictures/sequenceDiagram/uml_sequence_diagram_conditional_syntax2.svg)
+
+<br>
+<br>
+<br>
+
+### **Iteration**
+
+> An **iteration** executes a single method or a block of methods multiple times.
+
+<br>
+
+|Iteration Condition |Example                   |
+|:-------------------|:-------------------------|
+|Number              |`[5]`                     |
+|Range               |`[2..7]`                  |
+|Boolean             |`[list.items > ]5`        |
+|Text                |`[for all items in list]` |
+
+<br>
+<br>
+
+#### **Single Method**
+
+![Single Method Iteration](./pictures/sequenceDiagram/uml_sequence_diagram_iteration_single_method.svg)
+
+<br>
+<br>
+
+#### **Method Block**
+
+![Block Iteration Version 1](./pictures/sequenceDiagram/uml_sequence_diagram_iteration_block_example1.svg)
+
+<br>
+
+Alternative notation:
+
+![Block Iteration Version 2](./pictures/sequenceDiagram/uml_sequence_diagram_iteration_block_example2.svg)
+

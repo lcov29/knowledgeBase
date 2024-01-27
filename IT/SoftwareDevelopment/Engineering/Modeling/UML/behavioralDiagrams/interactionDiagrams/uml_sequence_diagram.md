@@ -11,6 +11,8 @@
     - [**Synchronous Message**](#synchronous-message)
     - [**Asynchronous Message**](#asynchronous-message)
     - [**Return Message**](#return-message)
+  - [**Activity Elements**](#activity-elements)
+    - [**Activity Bar**](#activity-bar)
 
 <br>
 <br>
@@ -78,3 +80,20 @@
 <br>
 
 ![Return Message](./pictures/sequenceDiagram/uml_sequence_diagram_return_message.svg)
+
+<br>
+<br>
+<br>
+<br>
+
+## **Activity Elements**
+<br>
+<br>
+
+### **Activity Bar**
+
+> An **activity bar** on a lifeline of an object represents the time period between receiving a message and sending an answer.
+
+<br>
+
+![Activity Bar](./pictures/sequenceDiagram/uml_sequence_diagram_activity_bar.svg)

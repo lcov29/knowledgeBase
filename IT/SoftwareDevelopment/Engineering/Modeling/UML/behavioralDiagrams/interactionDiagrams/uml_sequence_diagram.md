@@ -13,6 +13,7 @@
     - [**Return Message**](#return-message)
   - [**Activity Elements**](#activity-elements)
     - [**Activity Bar**](#activity-bar)
+    - [**Active Objects**](#active-objects)
 
 <br>
 <br>
@@ -97,3 +98,20 @@
 <br>
 
 ![Activity Bar](./pictures/sequenceDiagram/uml_sequence_diagram_activity_bar.svg)
+
+<br>
+
+![Activity Bar Example](./pictures/sequenceDiagram/uml_sequence_diagram_activity_bar_example.svg)
+
+<br>
+<br>
+<br>
+
+### **Active Objects**
+
+> **Active objects** are all objects that execute methods concurrently to one another due to one or multiple [asynchronous messages](#asynchronous-message).  
+> We mark active objects with a bold frame.
+
+<br>
+
+![Active Objects](./pictures/sequenceDiagram/uml_sequence_diagram_activity_object.svg)

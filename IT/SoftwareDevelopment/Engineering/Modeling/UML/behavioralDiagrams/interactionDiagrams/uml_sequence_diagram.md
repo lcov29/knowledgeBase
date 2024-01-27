@@ -51,12 +51,30 @@
 
 ### **Synchronous Message**
 
+> The sender of a **synchronous message** waits idle until the receiver has processed it.
+
+<br>
+
+![Synchronous Message](./pictures/sequenceDiagram/uml_sequence_diagram_synchronous_message.svg)
+
 <br>
 <br>
 
 ### **Asynchronous Message**
 
+> The sender of an **asynchronous message** can concurrently continue its execution without having to wait until the receiver processed the message.
+
+<br>
+
+![Asynchronous Message](./pictures/sequenceDiagram/uml_sequence_diagram_asynchronous_message.svg)
+
 <br>
 <br>
 
 ### **Return Message**
+
+> The optional `return message` indicates that the receiver has processed the message of the sender.
+
+<br>
+
+![Return Message](./pictures/sequenceDiagram/uml_sequence_diagram_return_message.svg)

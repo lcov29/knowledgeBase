@@ -21,6 +21,7 @@
     - [**Iteration**](#iteration)
       - [**Single Method**](#single-method)
       - [**Method Block**](#method-block)
+  - [**Comment**](#comment)
 
 <br>
 <br>
@@ -185,3 +186,15 @@ Alternative notation:
 
 ![Block Iteration Version 2](./pictures/sequenceDiagram/uml_sequence_diagram_iteration_block_example2.svg)
 
+<br>
+<br>
+<br>
+<br>
+
+## **Comment**
+
+Comments can be added left from the sequence diagram.
+
+<br>
+
+![Comments](./pictures/sequenceDiagram/uml_sequence_diagram_comment.svg)

@@ -13,7 +13,8 @@
       - [**Initial State**](#initial-state)
       - [**Final State**](#final-state)
   - [**Transition**](#transition)
-    - [**Events**](#events)
+    - [**Event**](#event)
+    - [**Guard**](#guard)
 
 <br>
 <br>
@@ -88,7 +89,8 @@ By definition multiple state symbols with the same name represent the **same** s
 
 ## **Transition**
 
-> A **transition** changes the current state to another (or the same) state.
+> A **transition** changes the current state to another (or the same) state.  
+> Transitions without an [event](#event) or [guard](#guard) are executed immediately on entering a state.
 
 <br>
 
@@ -98,11 +100,31 @@ By definition multiple state symbols with the same name represent the **same** s
 <br>
 <br>
 
-### **Events**
+### **Event**
 
 > An **event** is a trigger for a transition.
 
 <br>
 
-|Event Type |Description |
-|:----------|:-----------|
+|Event Type   |Description                                          |
+|:------------|:----------------------------------------------------|
+|call event   |an operation of the object has been called           |
+|change event |instantiation or deletion of object or relationships |
+|time event   |point of time reached or time interval passed        |
+|signal event |outside signal                                       |
+
+<br>
+
+![Event](./pictures/state-diagram/uml_state_diagram_event.svg)
+
+<br>
+<br>
+<br>
+
+### **Guard**
+
+> A **guard** is a condition for a transition to take place. It can take parameters and use object attributes or relationships.
+
+<br>
+
+![Guard](./pictures/state-diagram/uml_state_diagram_guard.svg)

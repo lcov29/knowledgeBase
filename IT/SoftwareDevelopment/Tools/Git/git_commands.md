@@ -33,7 +33,7 @@
     - [**Revert Commit (_git revert \<commitHash\>_)**](#revert-commit-git-revert-commithash)
     - [**Move Temporarily Back To Past Commit (_git checkout \<commitHash\>_)**](#move-temporarily-back-to-past-commit-git-checkout-commithash)
     - [**Move Permanently Back To Past Commit (_git reset ?\<commitHash\>_)**](#move-permanently-back-to-past-commit-git-reset-commithash)
-    - [**Show Changed Files In Commiz (_git show --name-only ?\<commitHash\>_)**](#show-changed-files-in-commiz-git-show---name-only-commithash)
+    - [**Show Changed Files In Commit (_git show --name-only ?\<commitHash\>_)**](#show-changed-files-in-commit-git-show---name-only-commithash)
   - [**Stash Changes**](#stash-changes)
     - [**List All Stashes (_git stash list_)**](#list-all-stashes-git-stash-list)
     - [**Inspect Specific Stash (_git stash show \<?stashId\>_)**](#inspect-specific-stash-git-stash-show-stashid)
@@ -674,7 +674,7 @@ git reset --soft 0a2cfd2d693c7deedc8bb4a4db25b101f688e7b8
 <br>
 <br>
 
-### **Show Changed Files In Commiz (_git show --name-only ?\<commitHash\>_)**
+### **Show Changed Files In Commit (_git show --name-only ?\<commitHash\>_)**
 <br>
 
 ```bash

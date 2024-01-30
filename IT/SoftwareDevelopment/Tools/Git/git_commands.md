@@ -32,6 +32,7 @@
     - [**Commit Changes (_git commit_)**](#commit-changes-git-commit)
     - [**Add Changes To Previous Commit (_git commit --amend_)**](#add-changes-to-previous-commit-git-commit---amend)
     - [**Revert Commit (_git revert \<commitHash\>_)**](#revert-commit-git-revert-commithash)
+    - [**Remove File Change From Previous Commit (_git checkout \<hash\> -- \<file\>_)**](#remove-file-change-from-previous-commit-git-checkout-hash----file)
     - [**Move Temporarily Back To Past Commit (_git checkout \<commitHash\>_)**](#move-temporarily-back-to-past-commit-git-checkout-commithash)
     - [**Move Permanently Back To Past Commit (_git reset ?\<commitHash\>_)**](#move-permanently-back-to-past-commit-git-reset-commithash)
     - [**Show Changed Files In Commit (_git show --name-only ?\<commitHash\>_)**](#show-changed-files-in-commit-git-show---name-only-commithash)
@@ -630,6 +631,17 @@ git revert d58446c04cf1124702e650225d0293ab1638e53c
 ```
 - add a new commit that reverts the changes made by the specified commit
 - does not remove or modify commit `d58446c04cf1124702e650225d0293ab1638e53c`
+
+<br>
+<br>
+
+### **Remove File Change From Previous Commit (_git checkout \<hash\> -- \<file\>_)**
+<br>
+
+```bash
+git checkout 09117c167cdcddd5acf90420382a3c3f820d35bb ./test.md
+```
+- moves changes to file `test.md` from commit `09117c167cdcddd5acf90420382a3c3f820d35bb` back to staging area
 
 <br>
 <br>

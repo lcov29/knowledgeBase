@@ -18,6 +18,7 @@
       - [**List All Commits In A Time Period**](#list-all-commits-in-a-time-period)
       - [**List All Commits That Added Or Modified Specific Content**](#list-all-commits-that-added-or-modified-specific-content)
     - [**Show File Changes (_git diff_)**](#show-file-changes-git-diff)
+    - [**Show Commit History Of File (_git log \<fileName\>_)**](#show-commit-history-of-file-git-log-filename)
     - [**Show Author Of Changes (_git blame \<file\>_)**](#show-author-of-changes-git-blame-file)
     - [**Show Reference Change Log (_git reflog_)**](#show-reference-change-log-git-reflog)
     - [**Search Commit That Introduced A Bug (_git bisect_)**](#search-commit-that-introduced-a-bug-git-bisect)
@@ -315,6 +316,17 @@ git diff
 git diff --staged
 ```
 - see changes of each file in the **staging area** compared to current version in last commit
+
+<br>
+<br>
+
+### **Show Commit History Of File (_git log \<fileName\>_)**
+<br>
+
+```bash
+git log test.md
+```
+- show list of all commits that have modified the file
 
 <br>
 <br>

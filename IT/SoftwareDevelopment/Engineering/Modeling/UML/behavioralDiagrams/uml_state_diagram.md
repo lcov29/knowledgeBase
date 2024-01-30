@@ -15,6 +15,11 @@
   - [**Transition**](#transition)
     - [**Event**](#event)
     - [**Guard**](#guard)
+  - [**Actions**](#actions)
+    - [**Entry Action**](#entry-action)
+    - [**Exit Action**](#exit-action)
+    - [**Do Action**](#do-action)
+    - [**Transition Action**](#transition-action)
 
 <br>
 <br>
@@ -128,3 +133,57 @@ By definition multiple state symbols with the same name represent the **same** s
 <br>
 
 ![Guard](./pictures/state-diagram/uml_state_diagram_guard.svg)
+
+<br>
+<br>
+<br>
+<br>
+
+## **Actions**
+<br>
+<br>
+<br>
+
+### **Entry Action**
+
+> An **entry action** is an action that gets executed on every transition to the state.
+
+<br>
+
+![Entry Action](./pictures/state-diagram/uml_state_diagram_entry_action.svg)
+
+<br>
+<br>
+<br>
+
+### **Exit Action**
+
+> An **exit action** is an action that gets executed on every transition to another state.
+
+<br>
+
+![Exit Action](./pictures/state-diagram/uml_state_diagram_exit_action.svg)
+
+<br>
+<br>
+<br>
+
+### **Do Action**
+
+> A **do action** is an action that is executed while the state is active and the condition for the action is fulfilled.
+
+<br>
+
+![Do Action](./pictures/state-diagram/uml_state_diagram_do_action.svg)
+
+<br>
+<br>
+<br>
+
+### **Transition Action**
+
+> A **transition action** is an action that is executed during a transition between states.
+
+<br>
+
+![Transition Action](./pictures/state-diagram/uml_state_diagram_transition_action.svg)

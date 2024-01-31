@@ -12,6 +12,7 @@
     - [**Pseudo States**](#pseudo-states)
       - [**Initial State**](#initial-state)
       - [**Final State**](#final-state)
+    - [**Composite State**](#composite-state)
   - [**Transition**](#transition)
     - [**Event**](#event)
     - [**Guard**](#guard)
@@ -86,6 +87,24 @@ By definition multiple state symbols with the same name represent the **same** s
 <br>
 
 ![Final Pseudo State](./pictures/state-diagram/uml_state_diagram_final_pseudo_state.svg)
+
+<br>
+<br>
+<br>
+
+### **Composite State**
+
+> A **composite state** is a state that consists of one or more substates.
+
+<br>
+
+![Composite State](./pictures/state-diagram/uml_state_diagram_composite_state.svg)
+
+<br>
+
+Transitions to the composite state lead to the entry state (here **SubstateA**):
+
+![Composite State Incoming Event](./pictures/state-diagram/uml_state_diagram_composite_state_incoming_event.svg)
 
 <br>
 <br>

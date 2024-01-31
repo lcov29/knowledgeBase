@@ -102,9 +102,30 @@ By definition multiple state symbols with the same name represent the **same** s
 
 <br>
 
+![Compact Composite State](./pictures/state-diagram/uml_state_diagram_composite_state_compact.svg)
+
+Compact Notation without displaying the substates
+
+<br>
+<br>
+
 Transitions to the composite state lead to the entry state (here **SubstateA**):
 
 ![Composite State Incoming Event](./pictures/state-diagram/uml_state_diagram_composite_state_incoming_event.svg)
+
+<br>
+<br>
+
+Transitions from the composite state enable every substate to transition to the specified state (here **StateA**):
+
+![Composite State Outgoing Event](./pictures/state-diagram/uml_state_diagram_composite_state_outgoing_event.svg)
+
+<br>
+<br>
+
+Transitions from the border of the composite state to a substate enable **all** substates to transition to this substate (here all substates can transition to **SubstateA**):
+
+![Composite State Internal Transition](./pictures/state-diagram/uml_state_diagram_composite_state_internal_event.svg)
 
 <br>
 <br>

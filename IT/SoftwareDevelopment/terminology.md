@@ -6,16 +6,17 @@
 
 - [**Software Development Terminology**](#software-development-terminology)
   - [**Table Of Contents**](#table-of-contents)
-  - [**Data Structures**](#data-structures)
-    - [**Serialization**](#serialization)
+  - [**Heuristic**](#heuristic)
+  - [**Serialization**](#serialization)
 
 <br>
 <br>
+
+## **Heuristic**
+> Method to solve a problem with limited knowledge in a sufficient but not necessary optimal way.
+
+<br>
 <br>
 
-## **Data Structures**
-<br>
-<br>
-
-### **Serialization**
+## **Serialization**
 > Translation of a data structure into a format suitable for storage or transmission.

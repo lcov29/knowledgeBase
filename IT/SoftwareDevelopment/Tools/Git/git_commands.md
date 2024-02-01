@@ -35,6 +35,7 @@
     - [**Remove File Change From Previous Commit (_git checkout \<hash\> -- \<file\>_)**](#remove-file-change-from-previous-commit-git-checkout-hash----file)
     - [**Move Temporarily Back To Past Commit (_git checkout \<commitHash\>_)**](#move-temporarily-back-to-past-commit-git-checkout-commithash)
     - [**Move Permanently Back To Past Commit (_git reset ?\<commitHash\>_)**](#move-permanently-back-to-past-commit-git-reset-commithash)
+    - [**Move Changes Of Last Commit Back To The Working Area (_git reset HEAD^_)**](#move-changes-of-last-commit-back-to-the-working-area-git-reset-head)
     - [**Show Changed Files In Commit (_git show --name-only ?\<commitHash\>_)**](#show-changed-files-in-commit-git-show---name-only-commithash)
   - [**Stash Changes**](#stash-changes)
     - [**List All Stashes (_git stash list_)**](#list-all-stashes-git-stash-list)
@@ -694,6 +695,16 @@ git reset --soft 0a2cfd2d693c7deedc8bb4a4db25b101f688e7b8
 ```
 - move `HEAD` and current branch reference to specified commit
 - does not move any content of staging or working area
+
+<br>
+<br>
+
+### **Move Changes Of Last Commit Back To The Working Area (_git reset HEAD^_)**
+<br>
+
+```bash
+git reset HEAD^
+```
 
 <br>
 <br>

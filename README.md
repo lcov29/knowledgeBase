@@ -140,6 +140,7 @@ mindmap
 - [ ] Testing Library
 - [ ] Cypress
 - [ ] Mocha
+- [ ] Playwright
 
 <br>
 

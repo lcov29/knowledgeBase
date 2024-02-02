@@ -1,13 +1,20 @@
-# **Software Development Terminology**
+# **Software Development Glossary**
 <br>
 
 ## **Table Of Contents**
 <br>
 
-- [**Software Development Terminology**](#software-development-terminology)
+- [**Software Development Glossary**](#software-development-glossary)
   - [**Table Of Contents**](#table-of-contents)
+  - [**Glossary**](#glossary)
   - [**Heuristic**](#heuristic)
   - [**Serialization**](#serialization)
+
+<br>
+<br>
+
+## **Glossary**
+> List of terms in a particular domain with their definition.
 
 <br>
 <br>

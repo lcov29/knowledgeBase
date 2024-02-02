@@ -9,12 +9,10 @@
   - [**Overview**](#overview)
   - [**Domain Focus**](#domain-focus)
   - [**Tasks**](#tasks)
-    - [**1. Get an overview of the domain**](#1-get-an-overview-of-the-domain)
-    - [**2. Understand the domain**](#2-understand-the-domain)
-    - [**3. Extract the requirements**](#3-extract-the-requirements)
-    - [**4. Negotiate the prioritization and scope of the extracted requirements**](#4-negotiate-the-prioritization-and-scope-of-the-extracted-requirements)
-    - [**5. Specify the extracted requirements to act as a basis for the development and acceptance test**](#5-specify-the-extracted-requirements-to-act-as-a-basis-for-the-development-and-acceptance-test)
-    - [**6. Validate the generated specification to be complete and correct**](#6-validate-the-generated-specification-to-be-complete-and-correct)
+    - [**1. Extract the requirements**](#1-extract-the-requirements)
+    - [**2. Negotiate the requirements**](#2-negotiate-the-requirements)
+    - [**3. Specify the requirements**](#3-specify-the-requirements)
+    - [**4. Validate the specification**](#4-validate-the-specification)
   - [**Goal: Requirement Specification**](#goal-requirement-specification)
 
 <br>
@@ -88,27 +86,34 @@ There are no specifications for any part of the implementation.
 ## **Tasks**
 <br>
 
-### **1. Get an overview of the domain**
+### **1. Extract the requirements**
+
+By reading the customer specification and by talking to domain experts, users and other stakeholders we:
+
+- get an overview and understanding of the domain
+- collect interaction scenarios between the users and the system
+- extract use cases from these interactions
+- reconcile extracted use cases with users and domain experts
+
+<br>
+<br>
+
+### **2. Negotiate the requirements**
+
+We negotiate the prioritization and scope of the extracted requirements with the stakeholders.
+
+<br>
+<br>
+
+### **3. Specify the requirements**
+
+We specify the extracted and negotiated requirements in the required documents. These documents will later act as the basis for the development and the acceptance tests.
 
 <br>
 
-### **2. Understand the domain**
+### **4. Validate the specification**
 
-<br>
-
-### **3. Extract the requirements**
-
-<br>
-
-### **4. Negotiate the prioritization and scope of the extracted requirements**
-
-<br>
-
-### **5. Specify the extracted requirements to act as a basis for the development and acceptance test**
-
-<br>
-
-### **6. Validate the generated specification to be complete and correct**
+We make sure that the requirement specification is complete and correct.
 
 <br>
 <br>
@@ -118,3 +123,19 @@ There are no specifications for any part of the implementation.
 ## **Goal: Requirement Specification**
 <br>
 
+The requirement specification bundles all requirements and should answer the following questions:
+
+1. What problem should the system solve?
+2. What functions should the system offer?
+
+<br>
+
+The requirement specification should contain the following documents:
+
+|Document             |Mandatory          |
+|:--------------------|:-----------------:|
+|Use Case Diagram     |:heavy_check_mark: |
+|Domain Class Model   |:heavy_check_mark: |
+|GUI Draft            |:x:                |
+|Interaction Diagrams |:x:                |
+|Domain Glossary      |:x:                |

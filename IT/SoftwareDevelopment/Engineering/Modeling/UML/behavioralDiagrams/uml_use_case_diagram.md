@@ -13,7 +13,7 @@
       - [**Association**](#association)
       - [**Include**](#include)
       - [**Extend**](#extend)
-      - [**Generalisation**](#generalisation)
+      - [**Generalization**](#generalization-1)
   - [**Subject Boundary**](#subject-boundary)
   - [**Textual Specification**](#textual-specification)
 
@@ -102,7 +102,7 @@ Actors can be in a generalization relationship with each other. The sub actors i
 <br>
 <br>
 
-#### **Generalisation**
+#### **Generalization**
 
 > A **generalization** relationship is the realization of an incomplete abstract use case (super case) by a complete concrete use case (sub case).
 

@@ -14,6 +14,11 @@
     - [**3. Specify the requirements**](#3-specify-the-requirements)
     - [**4. Validate the specification**](#4-validate-the-specification)
   - [**Goal: Requirement Specification**](#goal-requirement-specification)
+  - [**Create A Use Case Diagram**](#create-a-use-case-diagram)
+    - [**1. Collect And Describe Scenarios**](#1-collect-and-describe-scenarios)
+    - [**2. Model Actors**](#2-model-actors)
+    - [**3. Model Use Cases And Connect Them With Actors**](#3-model-use-cases-and-connect-them-with-actors)
+    - [**4. Model Dependencies Between Use Cases**](#4-model-dependencies-between-use-cases)
 
 <br>
 <br>
@@ -132,10 +137,113 @@ The requirement specification bundles all requirements and should answer the fol
 
 The requirement specification should contain the following documents:
 
-|Document             |Mandatory          |
-|:--------------------|:-----------------:|
-|Use Case Diagram     |:heavy_check_mark: |
-|Domain Class Model   |:heavy_check_mark: |
-|GUI Draft            |:x:                |
-|Interaction Diagrams |:x:                |
-|Domain Glossary      |:x:                |
+|Document                                       |Mandatory          |
+|:----------------------------------------------|:-----------------:|
+|[Use Case Diagram](#create-a-use-case-diagram) |:heavy_check_mark: |
+|Domain Class Model                             |:heavy_check_mark: |
+|GUI Draft                                      |:x:                |
+|Interaction Diagrams                           |:x:                |
+|Domain Glossary                                |:x:                |
+
+<br>
+<br>
+<br>
+<br>
+
+## **Create A Use Case Diagram**
+<br>
+<br>
+
+### **1. Collect And Describe Scenarios**
+
+We start by collecting and describing interaction scenarios between concrete users and the system.  
+
+The description of a scenario has to contain the following information:  
+
+1. scenario name
+2. short summary
+3. involved persons
+4. action flow 
+
+<br>
+
+**Example:**
+
+**Scenario** Order - All products in stock  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The employee takes the order via telephone.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;He checks the address, banking information and credit rating of the customer.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Then he inserts the order details (ordered products and quantity) into the system.
+**end** Order - All products in stock
+
+<br>
+<br>
+<br>
+
+### **2. Model Actors**
+
+We group all users from the scenarios and model them with actors.  
+Other systems that our system may interact with are also modeled with an actor.
+
+<br>
+
+> **Attention:** Every modeled actor requires at least one corresponding entity in the real world.
+
+<br>
+
+![Actor Model](./pictures/requirements_engineering/requirements_engineering_actor_model.svg)
+
+<br>
+<br>
+<br>
+
+### **3. Model Use Cases And Connect Them With Actors**
+
+We extract general use cases from the scenarios and collect them in a [use case diagram](../Modeling/UML/behavioralDiagrams/uml_use_case_diagram.md) and/or in a [textual specification](../Modeling/UML/behavioralDiagrams/uml_use_case_diagram.md#textual-specification) with pre- and postconditions.  
+
+<br>
+
+> Every modeled use case has to describe a well defined task that the system executes for a specified actor.
+
+<br>
+
+> **Attention:** Describe the use cases with domain terms, **not** with technical terms.
+
+<br>
+
+> **Attention:** A use case describes the usage of a system, **not** its implementation! 
+
+<br>
+
+> **Attention:** Be critical of use cases without any related actor!
+
+<br>
+
+> **Attention:** A complex use case can be split into multiple sub use cases!
+
+<br>
+
+![Use Case Model](./pictures/requirements_engineering/requirements_engineering_use_case_model.svg)
+
+<br>
+<br>
+<br>
+
+### **4. Model Dependencies Between Use Cases**
+
+We search for dependencies like [include](../Modeling/UML/behavioralDiagrams/uml_use_case_diagram.md#include), [extend](../Modeling/UML/behavioralDiagrams/uml_use_case_diagram.md#extend) or [generalization](../Modeling/UML/behavioralDiagrams/uml_use_case_diagram.md#generalization-1) between the use cases and add them to our model. We can also group use cases into packages.
+
+<br>
+
+> **Attention:** Relationships between use cases should be modeled late in the process and should not be overused!
+
+<br>
+
+> **Attention:** Relationships represent a static split of functionality, **not** some kind of flow!
+
+<br>
+
+> **Attention:** Relationships between packages should be kept to a minimum!
+
+<br>
+
+![Use Case Model With Relationships](./pictures/requirements_engineering/requirements_engineering_use_case_relationship_model.svg)

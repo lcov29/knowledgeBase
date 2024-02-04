@@ -19,6 +19,13 @@
     - [**2. Model Actors**](#2-model-actors)
     - [**3. Model Use Cases And Connect Them With Actors**](#3-model-use-cases-and-connect-them-with-actors)
     - [**4. Model Dependencies Between Use Cases**](#4-model-dependencies-between-use-cases)
+  - [**Create A Domain Class Diagram**](#create-a-domain-class-diagram)
+    - [**1. Identify Objects And Classes**](#1-identify-objects-and-classes)
+    - [**2. Model Public Attributes And Relationships**](#2-model-public-attributes-and-relationships)
+    - [**3. Check Model For Redundant Elements**](#3-check-model-for-redundant-elements)
+    - [**4. Model Generalizations**](#4-model-generalizations)
+    - [**5. Model Packages**](#5-model-packages)
+    - [**6. Create Textual Specification**](#6-create-textual-specification)
 
 <br>
 <br>
@@ -140,7 +147,7 @@ The requirement specification should contain the following documents:
 |Document                                       |Mandatory          |
 |:----------------------------------------------|:-----------------:|
 |[Use Case Diagram](#create-a-use-case-diagram) |:heavy_check_mark: |
-|Domain Class Model                             |:heavy_check_mark: |
+|[Domain Class Model](#create-a-domain-class-diagram)                             |:heavy_check_mark: |
 |GUI Draft                                      |:x:                |
 |Interaction Diagrams                           |:x:                |
 |Domain Glossary                                |:x:                |
@@ -172,7 +179,7 @@ The description of a scenario has to contain the following information:
 **Scenario** Order - All products in stock  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The employee takes the order via telephone.  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;He checks the address, banking information and credit rating of the customer.  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Then he inserts the order details (ordered products and quantity) into the system.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Then he inserts the order details (ordered products and quantity) into the system.  
 **end** Order - All products in stock
 
 <br>
@@ -247,3 +254,86 @@ We search for dependencies like [include](../Modeling/UML/behavioralDiagrams/uml
 <br>
 
 ![Use Case Model With Relationships](./pictures/requirements_engineering/requirements_engineering_use_case_relationship_model.svg)
+
+<br>
+<br>
+<br>
+<br>
+
+## **Create A Domain Class Diagram**
+<br>
+<br>
+
+### **1. Identify Objects And Classes**
+
+We identify relevant domain objects and classes.
+
+<br>
+
+> **Attention:** Every domain object or class requires at least one corresponding entity in the real world!
+
+<br>
+
+> **Attention:** Domain classes should have multiple instances in the real world!
+
+<br>
+
+> **Attention:** Every modeled domain class needs to be referenced in at least one use case or scenario!
+
+<br>
+<br>
+<br>
+
+### **2. Model Public Attributes And Relationships**
+
+We add public attributes to the identified domain classes and model the relationships between these classes.
+
+<br>
+
+> **Attention:** We only model public attributes, **no** internal private attributes and **no** operations!
+
+<br>
+
+> **Attention:** Domain classes should have more than one attribute!
+
+<br>
+
+> **Attention:** Make sure to mark derived attributes and relationships as derived!
+
+<br>
+<br>
+<br>
+
+### **3. Check Model For Redundant Elements**
+
+We check the model for redundant or incomplete elements.
+
+<br>
+<br>
+<br>
+
+### **4. Model Generalizations**
+
+We check the classes for similarities of attributes and relationships and generalize similar classes by moving the similar attributes or relationships higher up the generalization hierarchy.
+
+<br>
+
+> **Attention:** The correct and simple representation of the real world domain is more important than sophisticated generalization hierarchies!
+
+<br>
+<br>
+<br>
+
+### **5. Model Packages**
+
+We can group the domain classes into packages to enhance the cohesion.
+
+<br>
+<br>
+<br>
+
+### **6. Create Textual Specification**
+
+Based on the domain class diagram we create a brief [textual specification](../Modeling/UML/structuralDiagrams/uml_class_diagram.md#textual-specification) of the classes in the language of the domain.  
+We describe attributes and associations between classes in more detail.
+

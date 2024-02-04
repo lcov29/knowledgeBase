@@ -12,20 +12,21 @@
     - [**1. Extract the requirements**](#1-extract-the-requirements)
     - [**2. Negotiate the requirements**](#2-negotiate-the-requirements)
     - [**3. Specify the requirements**](#3-specify-the-requirements)
-    - [**4. Validate the specification**](#4-validate-the-specification)
+    - [**4. Validate and verify the specification**](#4-validate-and-verify-the-specification)
   - [**Goal: Requirement Specification**](#goal-requirement-specification)
   - [**Create A Use Case Diagram**](#create-a-use-case-diagram)
-    - [**1. Collect And Describe Scenarios**](#1-collect-and-describe-scenarios)
-    - [**2. Model Actors**](#2-model-actors)
-    - [**3. Model Use Cases And Connect Them With Actors**](#3-model-use-cases-and-connect-them-with-actors)
-    - [**4. Model Dependencies Between Use Cases**](#4-model-dependencies-between-use-cases)
+    - [**1. Collect and describe scenarios**](#1-collect-and-describe-scenarios)
+    - [**2. Model actors**](#2-model-actors)
+    - [**3. Model use cases and connect them with actors**](#3-model-use-cases-and-connect-them-with-actors)
+    - [**4. Model dependencies between use cases**](#4-model-dependencies-between-use-cases)
   - [**Create A Domain Class Diagram**](#create-a-domain-class-diagram)
-    - [**1. Identify Objects And Classes**](#1-identify-objects-and-classes)
-    - [**2. Model Public Attributes And Relationships**](#2-model-public-attributes-and-relationships)
-    - [**3. Check Model For Redundant Elements**](#3-check-model-for-redundant-elements)
-    - [**4. Model Generalizations**](#4-model-generalizations)
-    - [**5. Model Packages**](#5-model-packages)
-    - [**6. Create Textual Specification**](#6-create-textual-specification)
+    - [**1. Identify objects and classes**](#1-identify-objects-and-classes)
+    - [**2. Model public attributes and relationships**](#2-model-public-attributes-and-relationships)
+    - [**3. Check model for redundant elements**](#3-check-model-for-redundant-elements)
+    - [**4. Model generalizations**](#4-model-generalizations)
+    - [**5. Model packages**](#5-model-packages)
+    - [**6. Create textual specification**](#6-create-textual-specification)
+  - [**Create A GUI Draft**](#create-a-gui-draft)
 
 <br>
 <br>
@@ -123,9 +124,18 @@ We specify the extracted and negotiated requirements in the required documents. 
 
 <br>
 
-### **4. Validate the specification**
+### **4. Validate and verify the specification**
 
-We make sure that the requirement specification is complete and correct.
+We focus on the use case diagram and try to answer the following questions in reviews and walk-throughs with the user:
+
+> **Validation**  
+> Are we building the right product for the customer?
+
+<br>
+
+> **Verification**  
+> Are we building the product right?  
+> Are the requirements complete and consistent?
 
 <br>
 <br>
@@ -148,7 +158,7 @@ The requirement specification should contain the following documents:
 |:----------------------------------------------|:-----------------:|
 |[Use Case Diagram](#create-a-use-case-diagram) |:heavy_check_mark: |
 |[Domain Class Model](#create-a-domain-class-diagram)                             |:heavy_check_mark: |
-|GUI Draft                                      |:x:                |
+|[GUI Draft](#create-a-gui-draft)                                      |:x:                |
 |Interaction Diagrams                           |:x:                |
 |Domain Glossary                                |:x:                |
 
@@ -161,7 +171,7 @@ The requirement specification should contain the following documents:
 <br>
 <br>
 
-### **1. Collect And Describe Scenarios**
+### **1. Collect and describe scenarios**
 
 We start by collecting and describing interaction scenarios between concrete users and the system.  
 
@@ -186,7 +196,7 @@ The description of a scenario has to contain the following information:
 <br>
 <br>
 
-### **2. Model Actors**
+### **2. Model actors**
 
 We group all users from the scenarios and model them with actors.  
 Other systems that our system may interact with are also modeled with an actor.
@@ -203,7 +213,7 @@ Other systems that our system may interact with are also modeled with an actor.
 <br>
 <br>
 
-### **3. Model Use Cases And Connect Them With Actors**
+### **3. Model use cases and connect them with actors**
 
 We extract general use cases from the scenarios and collect them in a [use case diagram](../Modeling/UML/behavioralDiagrams/uml_use_case_diagram.md) and/or in a [textual specification](../Modeling/UML/behavioralDiagrams/uml_use_case_diagram.md#textual-specification) with pre- and postconditions.  
 
@@ -235,7 +245,7 @@ We extract general use cases from the scenarios and collect them in a [use case 
 <br>
 <br>
 
-### **4. Model Dependencies Between Use Cases**
+### **4. Model dependencies between use cases**
 
 We search for dependencies like [include](../Modeling/UML/behavioralDiagrams/uml_use_case_diagram.md#include), [extend](../Modeling/UML/behavioralDiagrams/uml_use_case_diagram.md#extend) or [generalization](../Modeling/UML/behavioralDiagrams/uml_use_case_diagram.md#generalization-1) between the use cases and add them to our model. We can also group use cases into packages.
 
@@ -264,9 +274,13 @@ We search for dependencies like [include](../Modeling/UML/behavioralDiagrams/uml
 <br>
 <br>
 
-### **1. Identify Objects And Classes**
+### **1. Identify objects and classes**
 
 We identify relevant domain objects and classes.
+
+<br>
+
+![Identify Classes](./pictures/requirements_engineering/requirements_engineering_identify_classes.svg)
 
 <br>
 
@@ -284,9 +298,13 @@ We identify relevant domain objects and classes.
 <br>
 <br>
 
-### **2. Model Public Attributes And Relationships**
+### **2. Model public attributes and relationships**
 
 We add public attributes to the identified domain classes and model the relationships between these classes.
+
+<br>
+
+![Model attributes and relationships](./pictures/requirements_engineering/requirements_engineering_model_attributes.svg)
 
 <br>
 
@@ -304,17 +322,25 @@ We add public attributes to the identified domain classes and model the relation
 <br>
 <br>
 
-### **3. Check Model For Redundant Elements**
+### **3. Check model for redundant elements**
 
 We check the model for redundant or incomplete elements.
 
 <br>
+
+![Check for redundant elements](./pictures/requirements_engineering/requirements_engineering_check_redundant_elements.svg)
+
+<br>
 <br>
 <br>
 
-### **4. Model Generalizations**
+### **4. Model generalizations**
 
 We check the classes for similarities of attributes and relationships and generalize similar classes by moving the similar attributes or relationships higher up the generalization hierarchy.
+
+<br>
+
+![Model generalization](./pictures/requirements_engineering/requirements_engineering_model_generalization.svg)
 
 <br>
 
@@ -324,16 +350,37 @@ We check the classes for similarities of attributes and relationships and genera
 <br>
 <br>
 
-### **5. Model Packages**
+### **5. Model packages**
 
 We can group the domain classes into packages to enhance the cohesion.
 
 <br>
+
+![Model packages](./pictures/requirements_engineering/requirements_engineering_model_packages.svg)
+
+<br>
 <br>
 <br>
 
-### **6. Create Textual Specification**
+### **6. Create textual specification**
 
 Based on the domain class diagram we create a brief [textual specification](../Modeling/UML/structuralDiagrams/uml_class_diagram.md#textual-specification) of the classes in the language of the domain.  
 We describe attributes and associations between classes in more detail.
 
+<br>
+<br>
+<br>
+<br>
+
+## **Create A GUI Draft**
+
+We create a rough GUI draft that specifies the fundamental interactions between the users and the system. This includes:
+
+- Basic windows
+- Basic layout
+- Basic interaction 
+- Navigation between the windows
+
+<br>
+
+It is recommended to create a rudimentary mockup.

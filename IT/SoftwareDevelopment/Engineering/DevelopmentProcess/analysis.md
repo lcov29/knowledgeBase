@@ -14,11 +14,11 @@
       - [**Entity Classes**](#entity-classes)
       - [**Control Classes**](#control-classes)
       - [**Boundary Class**](#boundary-class)
-        - [**Actor-UseCase Boundary Class**](#actor-usecase-boundary-class)
-        - [**Actor-All-UseCase Boundary Class**](#actor-all-usecase-boundary-class)
+        - [**Actor-Usecase Boundary Class**](#actor-usecase-boundary-class)
+        - [**Actor-All-Usecases Boundary Class**](#actor-all-usecases-boundary-class)
     - [**Create Analysis Class Diagram**](#create-analysis-class-diagram)
       - [**1. Unite domain class diagram with use case diagram**](#1-unite-domain-class-diagram-with-use-case-diagram)
-      - [**2. Add operations to the analysis class diagram**](#2-add-operations-to-the-analysis-class-diagram)
+      - [**2. Add methods to the analysis class diagram**](#2-add-methods-to-the-analysis-class-diagram)
       - [**3. Rework and clean analysis classes with heuristics**](#3-rework-and-clean-analysis-classes-with-heuristics)
         - [**1-1 relationship between two classes**](#1-1-relationship-between-two-classes)
         - [**Generalization**](#generalization)
@@ -124,7 +124,7 @@ Instances are typically long-lived and hold a large chunk of information.
 
 #### **Control Classes**
 
-> A control class manages the flow of interactions between the entity classes and boundary classes within a specific scenario.
+> A control class manages the interaction flow between the entity classes and boundary classes within a specific scenario.
 
 <br>
 
@@ -145,22 +145,22 @@ Instances are typically long-lived and hold a large chunk of information.
 <br>
 <br>
 
-##### **Actor-UseCase Boundary Class**
+##### **Actor-Usecase Boundary Class**
 
 An actor-usecase boundary class models the interaction between a specific actor and a specific use case.
 
-> **Attention:**  Actor-UseCase boundary classes are suffixed with **AAS**!
+> **Attention:**  Actor-Usecase boundary classes are suffixed with **AAS**!
 
 <br>
 <br>
 
-##### **Actor-All-UseCase Boundary Class**
+##### **Actor-All-Usecases Boundary Class**
 
 An actor-all-usecases boundary class models the interaction of a specific actor with **all** of his use cases. 
 
 <br>
 
-> **Attention:** Actor-All-UseCases boundary classes are suffixed with **AS**!
+> **Attention:** Actor-All-Usecases boundary classes are suffixed with **AS**!
 
 <br>
 <br>
@@ -175,11 +175,26 @@ An actor-all-usecases boundary class models the interaction of a specific actor 
 We create the first version of the analysis class diagram by uniting the [domain class diagram](./requirements_engineering.md#create-a-domain-class-diagram) and the [use case diagram](./requirements_engineering.md#create-a-use-case-diagram). We can also add additional classes.
 
 <br>
+
+```mermaid
+flowchart LR
+  A[Use Case Diagram]
+  B[Domain Class Diagram]
+  C[Additional Classes]
+  D[Analysis Class Diagram]
+  A & B & C --> D
+```
+
+<br>
 <br>
 
-#### **2. Add operations to the analysis class diagram**
+#### **2. Add methods to the analysis class diagram**
 
-We add operations to the analysis class diagram.
+We add methods to the analysis class diagram.
+
+<br>
+
+![Analysis class diagram with methods](./pictures/analysis/analysis_class_diagram_add_methods.svg)
 
 <br>
 
@@ -199,10 +214,21 @@ We add operations to the analysis class diagram.
 > **Heuristic**  
 > We model a 1-1 relationship between two classes if at least one relationship direction is optional (entity 0..1).
 
+![Heuristic1](./pictures/analysis/analysis_class_diagram_one_to_one_relationship_heuristic_1.svg)
+
 <br>
 
 > **Heuristic**  
-> We should model a 1-1 relationship between two classes if one of those classes can have a relationship to another class that the other class does not have.
+> We model a 1-1 relationship between two classes if one of those classes can have a relationship to another class that the other class does not have.
+
+![Heuristic2](./pictures/analysis/analysis_class_diagram_one_to_one_relationship_heuristic_2.svg)
+
+<br>
+
+> **Heuristic**  
+> In all other cases we replace the two classes with a single union class that contains all attributes and methods of both classes.
+
+![Heuristic3](./pictures/analysis/analysis_class_diagram_one_to_one_relationship_heuristic_3.svg)
 
 <br>
 <br>
@@ -211,10 +237,23 @@ We add operations to the analysis class diagram.
 <br>
 
 > **Heuristic**  
-> We use generalization if instances have different attributes and behavior.  
-> We also use generalization if instances have  
-> - the same attributes but different behavior
-> - the same behavior but different attributes
+> We use generalization if instances have different attributes and methods.
+
+![Heuristic1](./pictures/analysis/analysis_class_diagram_generalization_heuristic_1.svg)
+
+<br>
+
+> **Heuristic**
+> We use generalization if instances have the same attributes but different methods.
+
+![Heuristic2](./pictures/analysis/analysis_class_diagram_generalization_heuristic_2.svg)
+
+<br>
+
+> **Heuristic**  
+> We use generalization if instances have the same methods but different attributes.
+
+![Heuristic3](./pictures/analysis/analysis_class_diagram_generalization_heuristic_3.svg)
 
 <br>
 
@@ -222,6 +261,8 @@ We add operations to the analysis class diagram.
 > If instances with the same attributes and behavior can logically be split in disjunct classes we represent them by a single class and differentiate between them by adding an additional attribute that represents the difference.  
 >
 > This is especially useful when the attribute that represents the difference can change dynamically.
+
+![Heuristic4](./pictures/analysis/analysis_class_diagram_generalization_heuristic_4.svg)
 
 <br>
 <br>

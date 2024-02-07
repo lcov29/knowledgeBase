@@ -16,13 +16,26 @@
       - [**Boundary Class**](#boundary-class)
         - [**Actor-Usecase Boundary Class**](#actor-usecase-boundary-class)
         - [**Actor-All-Usecases Boundary Class**](#actor-all-usecases-boundary-class)
-    - [**Create Analysis Class Diagram**](#create-analysis-class-diagram)
+    - [**Tasks**](#tasks)
       - [**1. Unite domain class diagram with use case diagram**](#1-unite-domain-class-diagram-with-use-case-diagram)
       - [**2. Add methods to the analysis class diagram**](#2-add-methods-to-the-analysis-class-diagram)
       - [**3. Rework and clean analysis classes with heuristics**](#3-rework-and-clean-analysis-classes-with-heuristics)
         - [**1-1 relationship between two classes**](#1-1-relationship-between-two-classes)
         - [**Generalization**](#generalization)
       - [**4. Divide analysis classes into packages**](#4-divide-analysis-classes-into-packages)
+  - [**Interaction Diagrams**](#interaction-diagrams)
+    - [**Tasks**](#tasks-1)
+      - [**1. Model Usecases As Mechanisms Of Analysis Classes**](#1-model-usecases-as-mechanisms-of-analysis-classes)
+      - [**2. Create Communication Diagrams**](#2-create-communication-diagrams)
+  - [**Verify The Analysis Specification**](#verify-the-analysis-specification)
+    - [**Intra-Model Verification**](#intra-model-verification)
+      - [**Use Case Diagram**](#use-case-diagram)
+      - [**Class Diagram**](#class-diagram)
+      - [**Interaction Diagram**](#interaction-diagram)
+    - [**Inter-Model Verification**](#inter-model-verification)
+      - [**Analysis Class Model vs. Use Case Model**](#analysis-class-model-vs-use-case-model)
+      - [**Analysis Class Model vs. State Diagram**](#analysis-class-model-vs-state-diagram)
+      - [**Interaction Diagram vs. State Diagram**](#interaction-diagram-vs-state-diagram)
 
 <br>
 <br>
@@ -166,7 +179,7 @@ An actor-all-usecases boundary class models the interaction of a specific actor 
 <br>
 <br>
 
-### **Create Analysis Class Diagram**
+### **Tasks**
 <br>
 <br>
 
@@ -278,3 +291,148 @@ We divide the analysis classes into packages based on the involved actors and as
 <br>
 
 > **Attention:** In UML the package names are prefixed with the letter **P**!
+
+<br>
+<br>
+<br>
+<br>
+
+## **Interaction Diagrams**
+
+If the [requirement specification](./requirements_engineering.md#goal-requirement-specification) (result of the previous [requirements engineering](./requirements_engineering.md)) contains interaction diagrams, we use them as the basis for the analysis interaction diagram.  
+In this step we refine the interaction diagrams.
+
+
+<br>
+<br>
+<br>
+
+### **Tasks**
+<br>
+<br>
+
+#### **1. Model Usecases As Mechanisms Of Analysis Classes**
+
+![Interaction Diagram](./pictures/analysis/analysis_interaction_diagram_mechansim.svg)
+
+**Example:** Usecase "ProcessCustomer" modeled as a mechanism of analysis classes.
+
+<br>
+<br>
+
+#### **2. Create Communication Diagrams**
+
+We create a communication diagrams with the analysis classes for specific scenarios of each usecase that we modeled as a mechanism in the [previous step](#1-model-usecases-as-mechanisms-of-analysis-classes).
+
+<br>
+
+1. Add all entities that exist at the start of the scenario (most likely entity and boundary classes)
+2. Add entities and relationships that are created, modified or destroyed during the scenarion (Entity and control classes)
+
+<br>
+
+![Communication Diagram](./pictures/analysis/analysis_interaction_diagram_communication_diagram.svg)
+
+<br>
+<br>
+<br>
+<br>
+
+## **Verify The Analysis Specification**
+<br>
+
+During the verification we check whether the models are...
+
+1. Complete
+2. Clear / Unambiguous
+3. Consistent
+
+<br>
+<br>
+<br>
+
+### **Intra-Model Verification**
+
+In the intra-model verification we check each model independently.
+
+<br>
+<br>
+
+#### **Use Case Diagram**
+
+> Do the use cases and extension points of the `includes` and `extends` relationships exist?
+
+<br>
+<br>
+
+#### **Class Diagram**
+
+> Do all associations have a specified multiplicity?
+
+<br>
+
+> Are all derivable properties marked as derived?
+
+<br>
+
+> Do no subclasses implement redundant features?
+
+<br>
+<br>
+
+#### **Interaction Diagram**
+
+> Does every relationship have an operation name?
+
+<br>
+
+> Are all objects that are not part of the start state explicitly created?
+
+<br>
+<br>
+<br>
+
+### **Inter-Model Verification**
+
+In the inter-model verification we check different models against each other.
+
+<br>
+<br>
+
+#### **Analysis Class Model vs. Use Case Model**
+
+> Are the scenarios of the use cases entirely based on the methods of the analysis classes?
+
+<br>
+
+> Is every method of the analysis classes used in at least one scenario of a use case?
+
+<br>
+<br>
+
+#### **Analysis Class Model vs. State Diagram**
+
+> Does every operation specified by a state transfer exist in the analysis class model?
+
+<br>
+
+> Does the precondition of a state transfer fulfill the precondition of the analysis class method associated with the transfer?
+
+<br>
+
+> Does the postcondition of the analysis class method match the state after the associated state transfer?
+
+<br>
+<br>
+
+#### **Interaction Diagram vs. State Diagram**
+
+> Is the message flow of the interaction diagram consistent with the state diagram?
+
+<br>
+
+> Does the action sequence of the state diagram match the sequence of received messages in the interaction diagram?
+
+<br>
+
+> Does the send action sequence of the state diagram match the sequence of sent messages in the interaction diagram?

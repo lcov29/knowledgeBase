@@ -17,6 +17,8 @@
       - [**Heuristics**](#heuristics)
     - [**Coupling**](#coupling)
       - [**Heuristics**](#heuristics-1)
+    - [**Cohesion**](#cohesion)
+      - [**Heuristics**](#heuristics-2)
 
 <br>
 <br>
@@ -194,3 +196,27 @@ Examples
 > 2. Classes that are parameters of `o`
 > 3. Classes that are associated with `A`
 > 4. Classes that are instantiated within `o`
+
+<br>
+<br>
+<br>
+
+### **Cohesion**
+
+> Cohesion describes the **logical** connection of the tasks a class realizes.
+
+<br>
+<br>
+
+#### **Heuristics**
+
+> The goal of the design is to maximize the cohesion of the elements (**strong cohesion**).  
+> This is typically archieved by splitting the classes into smaller classes, but this can also strengthen the coupling. 
+
+<br>
+
+> We should split a class into subclasses if we can split the properties and methods into disjunct subsets so that all methods in a subset work exclusively on the properties in the subset.
+
+<br>
+
+> If a method implements multiple tasks of a functionality we should split the method into smaller pieces that each implement only a single task.

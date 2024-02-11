@@ -19,6 +19,10 @@
       - [**Heuristics**](#heuristics-1)
     - [**Cohesion**](#cohesion)
       - [**Heuristics**](#heuristics-2)
+    - [**Compliance**](#compliance)
+      - [**Generalization**](#generalization)
+        - [**Heuristics**](#heuristics-3)
+      - [**Inheritance**](#inheritance)
 
 <br>
 <br>
@@ -220,3 +224,50 @@ Examples
 <br>
 
 > If a method implements multiple tasks of a functionality we should split the method into smaller pieces that each implement only a single task.
+
+<br>
+<br>
+<br>
+
+### **Compliance**
+
+> Let `A` be the superclass of a subclass `B`.  
+> Let `A.o` be an operation of class `A` that is overwritten by operation `B.o` of class `B`.  
+>
+> We call the operation `B.o` as compliant to `A.o` if  
+> 1. signature(`A.o`) = signature(`B.o`)
+> 2. precondition(`A.o`) => precondition(`B.o`)
+> 3. postcondition(`B.o`) => postcondition(`A.o`)
+>
+> We call class `B` as compliant to class `A` if all its operation are compliant to their counterpart in `A`.
+
+<br>
+<br>
+
+#### **Generalization**
+
+> If a subclass `B` is compliant to a superclass `A` we call the relationship between these classes a generalization.
+
+<br>
+
+> The advantage of a generalization is a reduced test effort.
+
+<br>
+<br>
+
+##### **Heuristics**
+
+> If a superclass has properties that are not relevant for the subclass, then we should create a new superclass that contains all shared properties between these classes and create a generalization relationship between them.
+
+<br>
+
+> **Open-Closed-Principle**  
+> We define classes so that they are open for subclass extension, but closed for modification.
+> Operations of the superclasses that should be used by the subclasses are marked as protected.
+
+<br>
+<br>
+
+#### **Inheritance**
+
+> If a subclass `B` is **not** compliant to a superclass `A` we call the relationship between these classes an inheritance.

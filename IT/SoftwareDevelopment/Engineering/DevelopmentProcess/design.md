@@ -23,6 +23,7 @@
       - [**Generalization**](#generalization)
         - [**Heuristics**](#heuristics-3)
       - [**Inheritance**](#inheritance)
+    - [**Design By Contract**](#design-by-contract)
 
 <br>
 <br>
@@ -271,3 +272,32 @@ Examples
 #### **Inheritance**
 
 > If a subclass `B` is **not** compliant to a superclass `A` we call the relationship between these classes an inheritance.
+
+<br>
+<br>
+<br>
+
+### **Design By Contract**
+<br>
+
+> An **interface** is a set of public operations of a class that represents a contract between a service user and provider about how to communicate with each other.
+
+<br>
+
+The contract contains the interface with specified pre- and postconditions as well as invariants.  
+
+If the service user fulfills the precondition, it can expect the service provider to fulfill the postcondition.
+
+Both user and provider have to fulfill the invariants of the contract before and after each operation.
+
+Due to this contract we can easily locate errors: 
+- if the precondition is not fulfilled, the user made a mistake
+- if the postcondition is not fulfilled, the provider made a mistake
+
+<br>
+
+|                  |**Service User**        |**Service Provider**    |
+|:-----------------|:-----------------------|:-----------------------|
+|**Precondition**  |must fulfill            |expects to be fulfilled |
+|**Postcondition** |expects to be fulfilled |must fulfill            |
+|**Invariant**     |must fulfill            |must fulfill            |

@@ -24,6 +24,7 @@
         - [**Heuristics**](#heuristics-3)
       - [**Inheritance**](#inheritance)
     - [**Design By Contract**](#design-by-contract)
+  - [**External Interface**](#external-interface)
 
 <br>
 <br>
@@ -301,3 +302,16 @@ Due to this contract we can easily locate errors:
 |**Precondition**  |must fulfill            |expects to be fulfilled |
 |**Postcondition** |expects to be fulfilled |must fulfill            |
 |**Invariant**     |must fulfill            |must fulfill            |
+
+<br>
+<br>
+<br>
+<br>
+
+## **External Interface**
+<br>
+
+The external interface has two main tasks:
+
+1. Translate actor interactions into internal system events
+2. Display system data in readable form for actors

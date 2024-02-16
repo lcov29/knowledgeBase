@@ -211,11 +211,11 @@ Here the attribute `duration` is calculated.
 
 <br>
 
-|**ModificationFlags** |Description                                    |
-|:---------------------|:----------------------------------------------|
-|`isQuery`             |method access attributes without modifying any |
-|`isModifier`          |method modifies attributes                     |
-|`unique`              |return value has no duplicates                 |
+|**ModificationFlags** |Description                                   |
+|:---------------------|:---------------------------------------------|
+|`isQuery`             |method access attributes without modification |
+|`isModifier`          |method modifies attributes                    |
+|`unique`              |return value has no duplicates                |
 
 <br>
 <br>
@@ -249,8 +249,9 @@ The following instance methods are always assumed to be part of a class without 
 
 #### **Class Methods**
 
-> A **class method** is a method that is implemented on the class level.  
-> It can therefore only be called on the class and can not use instance attributes or methods.
+> A **class method** is implemented on the class level.  
+> Therefore it can only use class- but not instance attributes or methods.  
+> It can only be called on the class, not on instances of that class.
 
 ![Class Method](./pictures/class-diagram/uml_class_diagram_class_method.svg)
 
@@ -289,7 +290,7 @@ An abstract method is noted with a _cursive_ name.
 
 #### **Entity Class**
 
-> An **entity class** describes a specific entity of the domain.  
+> An **entity class** describes a specific domain entity.  
 > Instances are typically long-lived and hold a large chunk of information.
 
 <br>
@@ -313,7 +314,7 @@ An abstract method is noted with a _cursive_ name.
 #### **Boundary Class**
 
 > A **boundary class** encapsulates the interactions between a specific actor and the system.  
-> It is typically located on the periphery of the system or a subsystem.
+> It is typically located on the periphery of the system or subsystem.
 
 <br>
 
@@ -343,8 +344,8 @@ An abstract method is noted with a _cursive_ name.
 
 ### **Association**
 
-> An **association** is a relationship between instances of either different classes or the same class (reflexive association).  
-> An association is conceptulized as a set of tuples.  
+> An **association** is a relationship between instances of either different classes or the same class (_reflexive association_).  
+> An association can be thought of as a set of tuples.  
 > Therefore two instances can have only **one** association of the specified type.
 
 <br>
@@ -479,7 +480,7 @@ Example
 
 #### **Constraints**
 
-> A **class constraint** is a condition, restriction or assertion for one or multiple relationships.
+> A **class constraint** is a condition, restriction or assertion for one or multiple associations.
 
 <br>
 
@@ -534,7 +535,8 @@ Example
 
 ### **Dependency**
 
-> A **dependency** is a relationship between an element that requires, needs or depends on another element for its specification or implementation. Also called **supplier-client relationship**.
+> A **dependency** is a relationship between a client and a supplier element.  
+> The client element requires or depends on the supplier element for its specification or implementation.  
 
 <br>
 
@@ -542,12 +544,12 @@ Example
 
 <br>
 
-|Dependency Type |Description              |
-|:---------------|:------------------------|
-|`<<use>>`       |A uses B in some way     |
-|`<<create>>`    |A creates instances of B |
-|`<<call>>`      |A calls some method of B |
-|`<<realizes>>`  |A realizes interface     |
+|Dependency Type |Description                  |
+|:---------------|:----------------------------|
+|`<<use>>`       |`A` uses `B` in some way     |
+|`<<create>>`    |`A` creates instances of `B` |
+|`<<call>>`      |`A` calls some method of `B` |
+|`<<realizes>>`  |`A` realizes interface       |
 
 <br>
 <br>
@@ -584,8 +586,8 @@ Example
 
 ## **Abstract Class**
 
-> An **abstract class** is a class that has at least one [abstract method](#abstract-methods) and can not be instantiated.  
-> It can also contain attributes and implement methods.
+> An **abstract class** is a class that has at least one [abstract method](#abstract-methods).  
+> It can also contain attributes and implement methods, but it can not be instantiated.
 
 <br>
 

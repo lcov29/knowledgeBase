@@ -43,7 +43,7 @@
 
 ### **Basic State**
 
-> A **state** is an abstraction of the concrete property values and relationships of an entity.
+> A **state** is a named abstraction of the concrete property values and relationships of an entity.
 
 <br>
 

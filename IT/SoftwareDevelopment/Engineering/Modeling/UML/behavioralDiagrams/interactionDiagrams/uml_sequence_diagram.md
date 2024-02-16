@@ -121,7 +121,7 @@
 
 #### **Return Message**
 
-> The optional `return message` indicates that the receiver has processed the message of the sender.
+> The optional **return message** indicates that the receiver has processed the message of the sender.
 
 <br>
 

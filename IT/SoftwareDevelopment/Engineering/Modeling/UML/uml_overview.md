@@ -25,15 +25,15 @@ flowchart LR
    C --> I & J & K & L
    L --> M & N
 
-   click D "./structuralDiagrams/uml_element_diagram.md" _blank
-   click E "./structuralDiagrams/uml_class_diagram.md" _blank
-   click F "./structuralDiagrams/uml_package_diagram.md" _blank
-   click G "./structuralDiagrams/uml_component_diagram.md" _blank
-   click H "./structuralDiagrams/uml_deployment_diagram.md" _blank
-   click I "./behavioralDiagrams/uml_state_diagram.md" _blank
-   click J "./behavioralDiagrams/uml_use_case_diagram.md" _blank
-   click K "./behavioralDiagrams/uml_activity_diagram.md" _blank
-   click M "./behavioralDiagrams/interactionDiagrams/uml_sequence_diagram.md" _blank
-   click N "./behavioralDiagrams/interactionDiagrams/uml_communication_diagram.md" _blank
+   click D "https://github.com/lcov29/knowledgeBase/tree/master/IT/SoftwareDevelopment/Engineering/Modeling/UML/structuralDiagrams/uml_element_diagram.md" _blank
+   click E "https://github.com/lcov29/knowledgeBase/tree/master/IT/SoftwareDevelopment/Engineering/Modeling/UML/structuralDiagrams/uml_class_diagram.md" _blank
+   click F "https://github.com/lcov29/knowledgeBase/tree/master/IT/SoftwareDevelopment/Engineering/Modeling/UML/structuralDiagrams/uml_package_diagram.md" _blank
+   click G "https://github.com/lcov29/knowledgeBase/tree/master/IT/SoftwareDevelopment/Engineering/Modeling/UML/structuralDiagrams/uml_component_diagram.md" _blank
+   click H "https://github.com/lcov29/knowledgeBase/tree/master/IT/SoftwareDevelopment/Engineering/Modeling/UML/structuralDiagrams/uml_deployment_diagram.md" _blank
+   click I "https://github.com/lcov29/knowledgeBase/tree/master/IT/SoftwareDevelopment/Engineering/Modeling/UML/behavioralDiagrams/uml_state_diagram.md" _blank
+   click J "https://github.com/lcov29/knowledgeBase/tree/master/IT/SoftwareDevelopment/Engineering/Modeling/UML/behavioralDiagrams/uml_use_case_diagram.md" _blank
+   click K "https://github.com/lcov29/knowledgeBase/tree/master/IT/SoftwareDevelopment/Engineering/Modeling/UML/behavioralDiagrams/uml_activity_diagram.md" _blank
+   click M "https://github.com/lcov29/knowledgeBase/tree/master/IT/SoftwareDevelopment/Engineering/Modeling/UML/behavioralDiagrams/interactionDiagrams/uml_sequence_diagram.md" _blank
+   click N "https://github.com/lcov29/knowledgeBase/tree/master/IT/SoftwareDevelopment/Engineering/Modeling/UML/behavioralDiagrams/interactionDiagrams/uml_communication_diagram.md" _blank
 
 ```

@@ -509,8 +509,8 @@ Example
 
 ### **Aggregation**
 
-> An **aggregation** is a relationship between a whole and its parts. The whole has the responsibility to deal with its parts.  
-> The parts can exist outside of the whole.
+> An **aggregation** is a relationship between a whole and its parts.  
+> The parts can be included in multiple wholes or can exist without a whole.
 
 <br>
 

@@ -34,6 +34,7 @@
         - [**Unidirectional**](#unidirectional)
         - [**Bidirectional**](#bidirectional)
       - [**Multiplicity**](#multiplicity)
+      - [**Qualifier**](#qualifier)
       - [**Association Class**](#association-class)
       - [**Constraints**](#constraints-1)
     - [**Generalization**](#generalization)
@@ -452,6 +453,23 @@ The mulitplicity describes how many instances can be connected within a single a
 
 - every instance of A is connected to one or multiple instances of B
 - every instance of B is connected to either none or exactly one instance of A
+
+<br>
+<br>
+
+#### **Qualifier**
+
+> A **qualifier** partitions the associated instances at the qualified end.
+
+<br>
+
+![Association Qualifier](./pictures/class-diagram/uml_class_diagram_association_qualifier.svg)
+
+<br>
+
+Example:
+
+![Association Qualifier Example](./pictures/class-diagram/uml_class_diagram_association_qualifier_example.svg)
 
 <br>
 <br>

@@ -6,12 +6,15 @@
 
 - [**Requirements Engineering**](#requirements-engineering)
   - [**Table Of Contents**](#table-of-contents)
+  - [**Requirement**](#requirement)
   - [**Overview**](#overview)
+    - [**Requirements Engineering Process**](#requirements-engineering-process)
+    - [**Artefacts**](#artefacts)
   - [**Domain Focus**](#domain-focus)
   - [**Tasks**](#tasks)
     - [**1. Extract the requirements**](#1-extract-the-requirements)
     - [**2. Negotiate the requirements**](#2-negotiate-the-requirements)
-    - [**3. Specify the requirements**](#3-specify-the-requirements)
+    - [**3. Analyze and document the requirements**](#3-analyze-and-document-the-requirements)
     - [**4. Validate and verify the specification**](#4-validate-and-verify-the-specification)
   - [**Goal: Requirement Specification**](#goal-requirement-specification)
   - [**Create A Use Case Diagram**](#create-a-use-case-diagram)
@@ -33,7 +36,38 @@
 <br>
 <br>
 
+## **Requirement**
+<br>
+
+> A **requirement** is a quantitative or qualitative trait of the system or product from the point of view of the user.
+
+<br>
+<br>
+<br>
+<br>
+
 ## **Overview**
+<br>
+<br>
+
+### **Requirements Engineering Process**
+
+```mermaid
+flowchart LR
+  A[Input]
+  B[Extract]
+  C[Negotiate]
+  D[Analyze And Document]
+  E[Validate And Verify]
+  F[Output]
+  A --> B --> C --> D --> E --> F
+```
+
+<br>
+<br>
+<br>
+
+### **Artefacts**
 
 ```mermaid
 stateDiagram-v2
@@ -118,7 +152,7 @@ We negotiate the prioritization and scope of the extracted requirements with the
 <br>
 <br>
 
-### **3. Specify the requirements**
+### **3. Analyze and document the requirements**
 
 We specify the extracted and negotiated requirements in the required documents. These documents will later act as the basis for the development and the acceptance tests.
 

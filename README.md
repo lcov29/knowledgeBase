@@ -161,6 +161,7 @@ mindmap
 - [ ] GraphQL APIs
 - [ ] SOAP APIs
 - [ ] Postman
+- [ ] WSDL (Web Services Description Language)
 
 <br>
 

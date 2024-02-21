@@ -19,4 +19,5 @@
 |Name                                                         |Description |
 |:------------------------------------------------------------|:-----------|
 |[Abstract Factory](./CreationalPatterns/abstract_factory.md) |Creation of related objects without specifying their concrete classes |
+|[Builder](./CreationalPatterns/builder.md)                   |Step by step creation of complex objects |
 

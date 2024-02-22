@@ -20,4 +20,5 @@
 |:------------------------------------------------------------|:-----------|
 |[Abstract Factory](./CreationalPatterns/abstract_factory.md) |Creation of related objects without specifying their concrete classes |
 |[Builder](./CreationalPatterns/builder.md)                   |Step by step creation of complex objects |
+|[Factory Method](./CreationalPatterns/factory_method.md)     |Delegate object creation to subclasses |
 

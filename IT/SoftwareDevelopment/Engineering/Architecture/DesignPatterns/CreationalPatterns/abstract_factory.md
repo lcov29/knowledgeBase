@@ -80,7 +80,7 @@ Creation of concrete factories that allows creating semantically related objects
 
 ## **Related Patterns**
 
-- Factory Method
+- [Factory Method](./factory_method.md)
 - Prototype
 - Singleton
 

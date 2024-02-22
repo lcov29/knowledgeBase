@@ -50,6 +50,7 @@ Define a method for object creation in a superclass and delegate creation of a c
 <br>
 
 ## **Consequences**
+<br>
 
 |**Advantages**                         |**Disadvantages** |
 |:--------------------------------------|:-----------------|

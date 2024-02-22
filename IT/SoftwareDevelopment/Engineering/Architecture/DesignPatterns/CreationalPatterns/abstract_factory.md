@@ -9,7 +9,7 @@
   - [**Intent**](#intent)
   - [**Structure**](#structure)
   - [**Use Cases**](#use-cases)
-  - [**Advantages**](#advantages)
+  - [**Consequences**](#consequences)
   - [**Implementation Tips**](#implementation-tips)
   - [**Related Patterns**](#related-patterns)
   - [**Example**](#example)
@@ -56,11 +56,14 @@ Creation of concrete factories that allows creating semantically related objects
 <br>
 <br>
 
-## **Advantages**
+## **Consequences**
+<br>
 
-1. Isolates the concrete product classes from the client
-2. Product families are easily replacable by using a different concrete factory
-3. Ensures collective usage of product families
+|**Advantages** |**Disadvantages** |
+|:--------------|:-----------------|
+|Isolates the concrete product classes from the client | Addition of new products and factories require multiple additional classes |
+|Product families are easily replacable by using a different concrete factory | |
+|Ensures collective usage of product families | |
 
 <br>
 <br>

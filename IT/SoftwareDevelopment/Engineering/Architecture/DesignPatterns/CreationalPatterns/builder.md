@@ -10,7 +10,7 @@
   - [**Core Idea**](#core-idea)
   - [**Structure**](#structure)
   - [**Use Cases**](#use-cases)
-  - [**Advantages**](#advantages)
+  - [**Consequences**](#consequences)
   - [**Implementation Tips**](#implementation-tips)
   - [**Related Patterns**](#related-patterns)
   - [**Example**](#example)
@@ -64,12 +64,15 @@ Step by step process to construct different types and representations of **compl
 <br>
 <br>
 
-## **Advantages**
+## **Consequences**
+<br>
 
-- Encapsulation and isolation of the creation and representation of complex objects from other code
-- Builder has full control over build process
-- Objects can be created step by step
-  
+|**Advantages** |**Disadvantages** |
+|:--------------|:-----------------|
+|Creation and representation of complex objects is isolated from the client |Each builder variation requires a new class |
+|Builder has full control over build process | |
+|Objects can be created step by step | |
+
 <br>
 <br>
 <br>

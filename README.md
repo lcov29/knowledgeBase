@@ -172,6 +172,7 @@ mindmap
 - [ ] Software Architecture
 - [ ] Design Patterns
 - [ ] Domain-Driven Design
+- [ ] Refactoring
 
 <br>
 

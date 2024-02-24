@@ -22,4 +22,5 @@
 |[Builder](./CreationalPatterns/builder.md)                   |Step by step creation of complex objects |
 |[Factory Method](./CreationalPatterns/factory_method.md)     |Delegate object creation to subclasses |
 |[Prototype](./CreationalPatterns/prototype.md)               |Create new objects by copying a prototype object |
+|[Singleton](./CreationalPatterns/singleton.md) |Ensure that there is only a single instance of a class with global access
 

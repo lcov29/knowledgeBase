@@ -36,3 +36,4 @@
 |Name                                        |Description |
 |:-------------------------------------------|:-----------|
 |[Adapter](./StructuralPatterns/adapter.md)  | Allow collaboration between classes or objects with incompatible interfaces |
+|[Bridge](./StructuralPatterns/bridge.md) |Split single or multiple classes into two independent hierarchies |

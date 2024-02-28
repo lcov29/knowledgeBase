@@ -38,3 +38,4 @@
 |[Adapter](./StructuralPatterns/adapter.md)  | Allow collaboration between classes or objects with incompatible interfaces |
 |[Bridge](./StructuralPatterns/bridge.md) |Split single or multiple classes into two independent hierarchies |
 |[Composite](./StructuralPatterns/composite.md) |Compose objects into tree structures with a shared interface |
+|[Decorator](./StructuralPatterns/decorator.md) | Dynamic extension of the behavior of a target object by a wrapper object |

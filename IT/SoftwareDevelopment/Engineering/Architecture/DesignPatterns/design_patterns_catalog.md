@@ -41,3 +41,4 @@
 |[Decorator](./StructuralPatterns/decorator.md) | Dynamic extension of the behavior of a target object by a wrapper object |
 |[Facade](./StructuralPatterns/facade.md) | Central high-level interface to use a complex subsystem |
 |[Flyweight](./StructuralPatterns/flyweight.md) |Share common parts of state between multiple objects |
+|[Proxy](./StructuralPatterns/proxy.md) |Placeholder for another object |

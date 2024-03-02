@@ -55,4 +55,5 @@
 |Pattern                                                                    |Description |
 |:--------------------------------------------------------------------------|:-----------|
 |[Chain of Responsibility](./BehavioralPatterns/chain_of_responsibility.md) |Pass a request along a chain of handlers |
-|[Command](./BehavioralPatterns/command.md) | Model a request as a separate command object |
+|[Command](./BehavioralPatterns/command.md) |Model a request as a separate command object |
+|[Iterator](./BehavioralPatterns/iterator.md) |Traverse data collection without exposing the underlying data structure |

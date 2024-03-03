@@ -62,3 +62,4 @@
 |[Observer](./BehavioralPatterns/observer.md) |Notify subscriber objects about events happening to an observed object |
 |[State](./BehavioralPatterns/state.md) |Alter the behavior of an object based on its state |
 |[Strategy](./BehavioralPatterns/strategy.md) |Family of interchangeable algorithms that all solve the same problem in a different way |
+|[Template Method](./BehavioralPatterns/template_method.md) |Base algorithm in superclass and implement or overwrite parts of the algorithm in subclass |

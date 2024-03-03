@@ -61,3 +61,4 @@
 |[Memento](./BehavioralPatterns/memento.md) |Save a snapshot of the state of an object without revealing the object´s implementation |
 |[Observer](./BehavioralPatterns/observer.md) |Notify subscriber objects about events happening to an observed object |
 |[State](./BehavioralPatterns/state.md) |Alter the behavior of an object based on its state |
+|[Strategy](./BehavioralPatterns/strategy.md) |Family of interchangeable algorithms that all solve the same problem in a different way |

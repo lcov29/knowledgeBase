@@ -59,3 +59,4 @@
 |[Iterator](./BehavioralPatterns/iterator.md) |Traverse data collection without exposing the underlying data structure |
 |[Mediator](./BehavioralPatterns/mediator.md) |Encapsulate the interaction between various objects |
 |[Memento](./BehavioralPatterns/memento.md) |Save a snapshot of the state of an object without revealing the object´s implementation |
+|[Observer](./BehavioralPatterns/observer.md) |Notify subscriber objects about events happening to an observed object |

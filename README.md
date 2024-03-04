@@ -85,6 +85,69 @@ mindmap
 <br>
 <br>
 
+
+```mermaid
+timeline
+   title Learning Roadmap
+   section Theory
+      Short Term: Domain-Driven Design 
+                : (63812) Software Engineering
+                : (63013) Computer Systems
+                : (63812) Internet Security
+      Medium Term: Refactoring
+                 : Software Architecture
+                 : Refresh Mathematic
+                 : (61411) Algorithmic Mathematic
+      Long Term: (63113) Data Structures And Algorithms
+               : Agile Development
+               : Networking
+               : Cloud
+               : DevOps
+               : Compiler
+               : Language Theory
+               : Programming Paradigms
+               : Machine Learning Basics
+               : Electrical Engineering
+               : Operating Systems
+   section Skills (Strategic Context)
+      Short Term: Latex
+                : JavaScript (2. Iteration)
+                : TypeScript (2. Iteration)
+      Medium Term: CSS (2. Iteration)
+                 : HTML (2. Iteration)
+                 : Angular
+                 : SQL Databases (1. Iteration)
+                 : Docker
+                 : Linux
+      Long Term: Backend Language
+               : C / Rust
+               : Progressive Web Apps
+               : Web Components
+               : Authentification
+               : Web Accessibility
+               : Vue.js
+               : Next.js
+               : API Design
+               : Cloud
+               : Kubernetes
+               : Git Details
+   section Skills (Job Context)
+      Short Term: High Level Overview + Architecture
+                : Review
+      Medium Term: E2E Testing Framework
+                 : Docker
+                 : React Testing Library
+      Long Term: Webpack
+               : CI/CD Pipelines
+               : Prettier
+               : ESLint
+               : Electron
+```
+
+<br>
+<br>
+<br>
+
 ## **Topics To Learn**
 <br>
 
@@ -170,7 +233,6 @@ mindmap
 - [ ] Engineering Process
 - [ ] Agile Development
 - [ ] Software Architecture
-- [ ] Design Patterns
 - [ ] Domain-Driven Design
 - [ ] Refactoring
 
@@ -201,7 +263,6 @@ mindmap
 - [ ] Wireshark
 - [ ] Fiddler
 - [ ] Ghidra
-- [ ] MathJax
 
 <br>
 

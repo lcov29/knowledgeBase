@@ -1,7 +1,6 @@
 # **KnowlegeBase**
 <br>
 
-
 ```mermaid
 mindmap
    (KnowledgeBase)
@@ -15,7 +14,8 @@ mindmap
                (Shell Programming)
                (VIM)
             (Administration)
-
+      (Mathematics)
+         (LaTeX)
       (Software Development)
          (File Formats)
             (JSON)
@@ -29,12 +29,16 @@ mindmap
                (Prettier)
             (Bundlers)
                (Webpack)
-         (Best Practices)
+         (Engineering)
+            (UML)
+            (Design Patterns)
+            (Best Practices)
+            (Development Process)
             (Naming Conventions)
          (Documentation)
             (Markdown)
             (Mermaid)
-            (UML)
+            (MathJax)
          (Testing)
             (TDD)
             (Unit Tests)
@@ -78,13 +82,11 @@ mindmap
             (Web Server)
                (Tomcat)
                (HTTP-Server)
-
 ```
 
 <br>
 <br>
 <br>
-
 
 ```mermaid
 timeline
@@ -110,8 +112,7 @@ timeline
                : Electrical Engineering
                : Operating Systems
    section Skills (Strategic Context)
-      Short Term: Latex
-                : JavaScript (2. Iteration)
+      Short Term: JavaScript (2. Iteration)
                 : TypeScript (2. Iteration)
       Medium Term: CSS (2. Iteration)
                  : HTML (2. Iteration)

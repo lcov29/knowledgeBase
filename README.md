@@ -98,6 +98,7 @@ timeline
                 : (63812) Internet Security
       Medium Term: Refactoring
                  : Software Architecture
+                 : Behavior Driven Development
                  : Refresh Mathematic
                  : (61411) Algorithmic Mathematic
       Long Term: (63113) Data Structures And Algorithms
@@ -116,8 +117,10 @@ timeline
                 : TypeScript (2. Iteration)
       Medium Term: CSS (2. Iteration)
                  : HTML (2. Iteration)
+                 : React (2. Iteration)
                  : Angular
                  : SQL Databases (1. Iteration)
+                 : Mermaid (2. Iteration)
                  : Docker
                  : Linux
       Long Term: Backend Language

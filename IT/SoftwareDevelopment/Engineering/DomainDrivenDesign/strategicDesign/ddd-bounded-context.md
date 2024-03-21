@@ -152,6 +152,10 @@ The usage of a shared kernel is a tradeoff between the *cost of code duplication
 > A **context maps** shows all communication between the bounded context and the selected patterns.
 
 <br>
+
+![Context Map](./pictures/context-map.drawio.svg)
+
+<br>
 <br>
 <br>
 <br>

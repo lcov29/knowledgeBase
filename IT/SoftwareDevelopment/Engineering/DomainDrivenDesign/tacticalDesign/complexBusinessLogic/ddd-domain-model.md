@@ -6,14 +6,18 @@
 - [**DDD - Domain Model**](#ddd---domain-model)
   - [**Table Of Contents**](#table-of-contents)
   - [**Definition**](#definition)
-  - [**Components**](#components)
-    - [**Value Object**](#value-object)
-      - [**Definition**](#definition-1)
-      - [**Advantages**](#advantages)
-      - [**Heuristics**](#heuristics)
-    - [**Entity**](#entity)
-    - [**Aggregate**](#aggregate)
-      - [**Commands**](#commands)
+  - [**Value Object**](#value-object)
+    - [**Definition**](#definition-1)
+    - [**Advantages**](#advantages)
+    - [**Heuristics**](#heuristics)
+  - [**Entity**](#entity)
+  - [**Aggregate**](#aggregate)
+    - [**Transactional Boundary**](#transactional-boundary)
+    - [**Scope**](#scope)
+    - [**Aggregate Root**](#aggregate-root)
+    - [**Commands**](#commands)
+  - [**Domain Events**](#domain-events)
+  - [**Domain Service**](#domain-service)
 
 <br>
 <br>
@@ -32,16 +36,12 @@
 <br>
 <br>
 
-## **Components**
+## **Value Object**
 <br>
 <br>
 <br>
 
-### **Value Object**
-<br>
-<br>
-
-#### **Definition**
+### **Definition**
 
 > A **value object** is an immutable object that can be identified by the combination of its values.
 
@@ -61,18 +61,19 @@ class Color {
 
 <br>
 <br>
+<br>
 
-#### **Advantages**
+### **Advantages**
 
 - value objects encapsulate related business logic like validation
 - value objects do not have any side effects
 - code becomes more descriptive
 
-
 <br>
 <br>
+<br>
 
-#### **Heuristics**
+### **Heuristics**
 
 > Use value objects whenever it is possible.
 
@@ -83,9 +84,9 @@ class Color {
 <br>
 <br>
 <br>
-
-### **Entity**
 <br>
+
+## **Entity**
 
 > An **entity** is an object that can only be identified by a separate id property.
 
@@ -105,17 +106,59 @@ class Person {
 <br>
 <br>
 <br>
-
-### **Aggregate**
 <br>
 
-> An **aggregate** is an entity that references other entities and ensures the consistency of the data according to the business rules.
+## **Aggregate**
+
+> An **aggregate** is an entity that references other entities and ensures the consistency of the data according to the business rules.  
+> It implements the business logic, invariants and input validation.
+
+```mermaid
+stateDiagram-v2
+  direction LR
+  state Aggregate {
+    RootEntity --> EntityA
+    RootEntity --> EntityB
+    EntityA --> ValueObjectA
+    EntityA --> ValueObjectB
+    EntityB --> ValueObjectC
+  }
+  ApplicationLayer --> RootEntity
+```
 
 <br>
 <br>
-
-#### **Commands**
 <br>
+
+### **Transactional Boundary**
+
+> An aggregate represents a transactional boundary:  
+> - all changes to the state have to be committed in a single transaction
+> - changes are limited to this aggregate
+
+<br>
+<br>
+<br>
+
+### **Scope**
+
+An aggregate contains only those entities and value objects that have to be strictly consistent at all times.
+
+Data of other aggregates should be only referenced by their id.
+
+<br>
+<br>
+<br>
+
+### **Aggregate Root**
+
+> The **aggregate root** is the only enitity that implements the entire public interface of the aggregate.
+
+<br>
+<br>
+<br>
+
+### **Commands**
 
 > **Commands** are all methods of the aggregate´s public interface that modify the aggregate data.
 
@@ -146,3 +189,23 @@ execute(command: ChangeUserName) {
   // implementation
 }
 ```
+
+<br>
+<br>
+<br>
+<br>
+
+## **Domain Events**
+
+> **Domain events** are part of the public interface of an aggregate and describe relevant event that occurred within it.  
+> Aggregates can emit domain events and listen to domain events of other aggregates.
+
+<br>
+<br>
+<br>
+<br>
+
+## **Domain Service**
+
+> A **domain service** is a stateless object that implements business logic that either belong to no aggregate or value object or affects multiple aggregates.  
+> They are especially useful for calculations that uses data from multiple sources. 

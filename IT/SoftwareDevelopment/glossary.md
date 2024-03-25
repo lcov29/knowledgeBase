@@ -6,12 +6,20 @@
 
 - [**Software Development Glossary**](#software-development-glossary)
   - [**Table Of Contents**](#table-of-contents)
+  - [**CLI**](#cli)
   - [**CRUD Operation**](#crud-operation)
   - [**ETL Operation**](#etl-operation)
   - [**Glossary**](#glossary)
+  - [**GUI**](#gui)
   - [**Heuristic**](#heuristic)
   - [**Idempotent Operation**](#idempotent-operation)
   - [**Serialization**](#serialization)
+
+<br>
+<br>
+
+## **CLI**
+> **C**ommand **L**ine **I**nterface
 
 <br>
 <br>
@@ -30,6 +38,12 @@
 
 ## **Glossary**
 > List of terms in a particular domain with their definition.
+
+<br>
+<br>
+
+## **GUI**
+> **G**raphical **U**ser **I**nterface
 
 <br>
 <br>

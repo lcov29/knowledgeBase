@@ -14,6 +14,8 @@
   - [**Heuristic**](#heuristic)
   - [**Idempotent Operation**](#idempotent-operation)
   - [**Serialization**](#serialization)
+  - [**Service**](#service)
+  - [**System**](#system)
 
 <br>
 <br>
@@ -62,3 +64,15 @@
 
 ## **Serialization**
 > Translation of a data structure into a format suitable for storage or transmission.
+
+<br>
+<br>
+
+## **Service**
+> Mechanism that provides access to one or multiple functionalities via a defined public interface.
+
+<br>
+<br>
+
+## **System**
+> Set of connected components that interact with each other to archieve one or multiple goals.

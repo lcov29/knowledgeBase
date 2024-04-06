@@ -31,7 +31,7 @@ The local complexity is visualized by the height of a component.
 
 Example:
 
-![Local Complexity Example](./pictures/local-complexity.drawio.svg)
+![Local Complexity Example](./pictures/complexity/local-complexity.drawio.svg)
 
 Here the left component has a lower local complexity than the right component. 
 
@@ -54,7 +54,7 @@ The size of an interface is visualized by the width of a component.
 
 Example:
 
-![Global Complexity Example](./pictures/global-complexity.drawio.svg)
+![Global Complexity Example](./pictures/complexity/global-complexity.drawio.svg)
 
 Here the interface of the left component is smaller than the interface of the right component.
 
@@ -75,4 +75,4 @@ Here the interface of the left component is smaller than the interface of the ri
 
 <br>
 
-![Heuristic](./pictures/heuristic-complexity.drawio.svg)
+![Heuristic](./pictures/complexity/heuristic-complexity.drawio.svg)

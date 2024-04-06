@@ -8,6 +8,7 @@
   - [**Table Of Contents**](#table-of-contents)
   - [**CLI**](#cli)
   - [**CRUD Operation**](#crud-operation)
+  - [**ECTS**](#ects)
   - [**ETL Operation**](#etl-operation)
   - [**Glossary**](#glossary)
   - [**GUI**](#gui)
@@ -28,6 +29,12 @@
 
 ## **CRUD Operation**
 > **C**reate, **R**ead, **U**pdate and **D**elete
+
+<br>
+<br>
+
+## **ECTS**
+> [**E**vent-**C**arried **S**tate **T**ransfer](./Engineering/Architecture/ArchitectureTypes/event-driven-architecture.md#event-carried-state-transfer-ecst)
 
 <br>
 <br>

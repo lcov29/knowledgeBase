@@ -20,6 +20,7 @@
 ## **Ubiquitous Language**
 
 > The **ubiquitous language** is the precise and consistent language of the domain experts.  
+> 
 > It is used to describe the domain models that the implementation is based upon.
 
 <br>
@@ -30,9 +31,7 @@
 ## **Usage**
 
 The ubiquitous language should be used
-- by the domain experts
-- by the developers
-- by all stakeholders 
+- by all stakeholders (domain experts, developers, ...)
 - in all steps of the development process
 - instead of a technical translation of the domain knowledge
 - within its [bounded context](#bounded-context)
@@ -57,7 +56,7 @@ The ubiquitous language should be constantly checked and evolved during the proj
 
 ### **Consistency**
 
-> Eliminate all assumptions from the ubiquitous language.
+> Eliminate all **assumptions** from the ubiquitous language.
 
 <br>
 

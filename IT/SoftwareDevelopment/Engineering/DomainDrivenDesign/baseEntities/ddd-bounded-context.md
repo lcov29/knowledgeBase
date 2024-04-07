@@ -7,19 +7,23 @@
   - [**Table Of Contents**](#table-of-contents)
   - [**Bounded Context**](#bounded-context)
   - [**Link To Subdomains**](#link-to-subdomains)
-  - [**Communication Patterns**](#communication-patterns)
-    - [**Cooperation**](#cooperation)
-      - [**Partnership**](#partnership)
-      - [**Shared Kernel**](#shared-kernel)
-    - [**Customer Supplier**](#customer-supplier)
-      - [**Conformist**](#conformist)
-      - [**Anticorruption Layer**](#anticorruption-layer)
-      - [**Open-Host Service**](#open-host-service)
-    - [**Separate Ways**](#separate-ways)
+  - [**Communication Between Bounded Contexts**](#communication-between-bounded-contexts)
+    - [**Model Translation**](#model-translation)
+      - [**Stateless Model Translation**](#stateless-model-translation)
+      - [**Stateful Model Translation**](#stateful-model-translation)
+    - [**Communication Patterns**](#communication-patterns)
+      - [**Cooperation**](#cooperation)
+        - [**Partnership**](#partnership)
+        - [**Shared Kernel**](#shared-kernel)
+      - [**Customer Supplier**](#customer-supplier)
+        - [**Conformist**](#conformist)
+        - [**Anticorruption Layer**](#anticorruption-layer)
+        - [**Open-Host Service**](#open-host-service)
+      - [**Separate Ways**](#separate-ways)
   - [**Context Map**](#context-map)
   - [**Heuristics**](#heuristics)
     - [**Implementation**](#implementation)
-    - [**Size**](#size)
+    - [**Scope**](#scope)
     - [**Cohesion**](#cohesion)
 
 <br>
@@ -29,7 +33,7 @@
 
 ## **Bounded Context**
 
-> A **bounded context** defines an area in which an [ubiquitous language](./ddd-ubiquitous-language.md) and the models described with it can be applied consistently.
+> A **bounded context** is a defined area in which an [ubiquitous language](./ddd-ubiquitous-language.md) and the models described with it can be applied consistently.  
 
 <br>
 <br>
@@ -55,7 +59,62 @@ flowchart LR
 <br>
 <br>
 
-## **Communication Patterns**
+## **Communication Between Bounded Contexts**
+<br>
+<br>
+<br>
+
+### **Model Translation**
+
+When two bounded contexts communicate with each other the models used by the first context have to be translated by a proxy to the models used by the second context.
+
+<br>
+<br>
+
+#### **Stateless Model Translation**
+
+In a stateless model translation the proxy does not cache any received or sent models.
+
+<br>
+
+```mermaid
+flowchart LR
+  A(Bounded Context A)
+  B(Proxy)
+  C(Bounded Context B)
+  A -- Model A --> B -- Model B --> C
+```
+
+<br>
+<br>
+
+#### **Stateful Model Translation**
+
+In a stateful model translation the proxy caches data in order to aggregate the data. 
+
+<br>
+
+```mermaid
+stateDiagram-v2
+  direction LR
+  A: Bounded Context A
+  B: Aggregator
+  C: Bounded Context B
+  D: Storage
+
+  state Proxy {
+    B D
+  }
+
+  A --> B: Request
+  B --> C: Batched Request
+```
+
+<br>
+<br>
+<br>
+
+### **Communication Patterns**
 
 Bounded contexts communicate with each other via *contracts*, because their language and models can differ.
 
@@ -63,13 +122,13 @@ Bounded contexts communicate with each other via *contracts*, because their lang
 <br>
 <br>
 
-### **Cooperation**
+#### **Cooperation**
 <br>
 <br>
 
-#### **Partnership**
+##### **Partnership**
 
-> The teams of two bounded context coordinate the communication between the contexts with each other, resolve conflicts and no team dominates the other.
+> The teams of two bounded contexts coordinate the communication between the contexts with each other, resolve conflicts and no team dominates the other.
 
 <br>
 
@@ -78,7 +137,7 @@ Bounded contexts communicate with each other via *contracts*, because their lang
 <br>
 <br>
 
-#### **Shared Kernel**
+##### **Shared Kernel**
 
 > A **shared kernel** contains models of a subdomain that are implemented in multiple bounded contexts.
 
@@ -101,11 +160,11 @@ The usage of a shared kernel is a tradeoff between the *cost of code duplication
 <br>
 <br>
 
-### **Customer Supplier**
+#### **Customer Supplier**
 <br>
 <br>
 
-#### **Conformist**
+##### **Conformist**
 
 > The supplier (*upstream*) dictates the communication contract and the customer (*downstream*) adapts its implementation to that.
 
@@ -116,7 +175,7 @@ The usage of a shared kernel is a tradeoff between the *cost of code duplication
 <br>
 <br>
 
-#### **Anticorruption Layer**
+##### **Anticorruption Layer**
 
 > The supplier (*upstream*) dictates the communication contract but the customer (*downstream*)  translates the answer of the supplier to its language and models.
 
@@ -127,7 +186,7 @@ The usage of a shared kernel is a tradeoff between the *cost of code duplication
 <br>
 <br>
 
-#### **Open-Host Service**
+##### **Open-Host Service**
 
 > The supplier (*upstream*) offers a public interface (*Published Language*) that is independent of its implementation model to his customers (*downstream*) in order to protect them from changes.
 
@@ -138,7 +197,7 @@ The usage of a shared kernel is a tradeoff between the *cost of code duplication
 <br>
 <br>
 
-### **Separate Ways**
+#### **Separate Ways**
 
 > The teams duplicate functionalities in their bounded contexts in order to avoid communication and cooperation.
 
@@ -173,13 +232,17 @@ The usage of a shared kernel is a tradeoff between the *cost of code duplication
 <br>
 <br>
 
-### **Size**
+### **Scope**
 
 > Smaller bounded contexts can scale independently of one another and they can be handled by separate development teams. The downside is the integration overhead.
 
 <br>
 
 > Bigger bounded contexts reduce the integration overhead but make it harder to be consistent.
+
+<br>
+
+> It is recommended to start with bigger bounded contexts and split them up in smaller bounded contexts when necessary.
 
 <br>
 <br>

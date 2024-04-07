@@ -10,6 +10,7 @@
   - [**When To Use**](#when-to-use)
   - [**What To Avoid**](#what-to-avoid)
   - [**Advantages And Disadvantages**](#advantages-and-disadvantages)
+  - [**Optional Extension: Active Record**](#optional-extension-active-record)
 
 <br>
 <br>
@@ -62,3 +63,12 @@ Avoid using **multiple storage mechanisms** (like database and message bus) with
 |minimal abstraction |Not suitable for complex business logic |
 |easy to understand  |                                        |
 |execution speed     |                                        |
+
+<br>
+<br>
+<br>
+<br>
+
+## **Optional Extension: Active Record**
+
+> An **active record** is an object that encapsulates complex stored data and implements [CRUD-Operations](../../../glossary.md#crud-operation) to reduce the complexity of mapping the data to application representations.

@@ -92,8 +92,7 @@ mindmap
 timeline
    title Learning Roadmap
    section Theory
-      Short Term: Domain-Driven Design 
-                : (63812) Software Engineering
+      Short Term: (63812) Software Engineering
                 : (63013) Computer Systems
                 : (63812) Internet Security
       Medium Term: Refactoring

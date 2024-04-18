@@ -400,9 +400,9 @@ $$
 
 |Symbol                                                 |Description |LaTeX Notation |
 |:-----------------------------------------------------:|:-----------|:--------------|
-|$\begin{pmatrix}v_1, \dotsc, v_n \end{pmatrix}$        |Vector      |`\begin{pmatrix}v_1, \dotsc, v_n \end{pmatrix}` |
-|$\begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}$            |Vector      |`\begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}` |
-|$\begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{pmatrix}$ |Matrix      |`\begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{pmatrix}` |
+|$$\begin{pmatrix}v_1, \dotsc, v_n \end{pmatrix}$$        |Vector      |`\begin{pmatrix}v_1, \dotsc, v_n \end{pmatrix}` |
+|$$\begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}$$            |Vector      |`\begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}` |
+|$$\begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{pmatrix}$$ |Matrix      |`\begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{pmatrix}` |
 
 <br>
 <br>

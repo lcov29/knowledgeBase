@@ -55,7 +55,7 @@ The boolean algebra is defined over the set $B = \\\{0, 1\\\}$.
 |Name            |Shorthand|Definition                                                          |
 |:---------------|:-------:|:-------------------------------------------------------------------|
 |Commutativity   |$C\land$ |$\forall a, b \in B: a \land b = b \land a$                         |
-|Associativity   |A$\land$ |$\forall a, b, c \in B: (a \land b) \land c = a \land (b \land c)$  |
+|Associativity   |$A\land$ |$\forall a, b, c \in B: (a \land b) \land c = a \land (b \land c)$  |
 |Neutral Element (1) |$N\land$ |$\forall a \in B: a \land 1 = a$ |
 |Complementation Element |$C\land$ |$\forall a \in B: a \land \lnot a = 0$ |
 
@@ -80,7 +80,7 @@ The boolean algebra is defined over the set $B = \\\{0, 1\\\}$.
 |Name            |Shorthand|Definition                                                          |
 |:---------------|:-------:|:-------------------------------------------------------------------|
 |Commutativity   |$C\lor$ |$\forall a, b \in B: a \lor b = b \lor a$                         |
-|Associativity   |A$\lor$ |$\forall a, b, c \in B: (a \lor b) \lor c = a \lor (b \lor c)$  |
+|Associativity   |$A\lor$ |$\forall a, b, c \in B: (a \lor b) \lor c = a \lor (b \lor c)$  |
 |Neutral Element (0) |$N\lor$ |$\forall a \in B: a \lor 0 = a$ |
 |Complementary Element |$C\lor$ |$\forall a \in B: a \lor  \lnot a = 1$ |
 

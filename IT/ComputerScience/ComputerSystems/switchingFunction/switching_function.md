@@ -18,9 +18,10 @@
       - [Antivalence (XOR)](#antivalence-xor)
       - [Equivalence](#equivalence)
   - [Normal Forms](#normal-forms)
-  - [Conjunctive (Normal) Form (CNF / CF)](#conjunctive-normal-form-cnf--cf)
-  - [Disjunctive (Normal) Form (DNF / DF)](#disjunctive-normal-form-dnf--df)
-  - [Example](#example)
+    - [Conjunctive (Normal) Form (CNF / CF)](#conjunctive-normal-form-cnf--cf)
+    - [Disjunctive (Normal) Form (DNF / DF)](#disjunctive-normal-form-dnf--df)
+    - [Example](#example)
+  - [Minimization](#minimization)
 
 <br>
 <br>
@@ -225,7 +226,7 @@ $$
 <br>
 <br>
 
-## Conjunctive (Normal) Form (CNF / CF)
+### Conjunctive (Normal) Form (CNF / CF)
 
 > A **max clause** is a disjunction of every (possibly negated) input variable that only returns `0` for exactly one combination of input variables.  
 > 
@@ -243,7 +244,7 @@ $$
 <br>
 <br>
 
-## Disjunctive (Normal) Form (DNF / DF)
+### Disjunctive (Normal) Form (DNF / DF)
 
 > A **min clause** is a conjunction of every (possibly negated) input variable that only returns `1` for exactly one combination of input variables.
 >
@@ -261,7 +262,7 @@ $$
 <br>
 <br>
 
-## Example
+### Example
 
 |$x_1$ |$x_2$ |$x_3$ |$f(x_1, x_2, x_3)$ |Min Clause                                                 |Max Clause                                               |
 |:----:|:----:|:----:|:-----------------:|:----------------------------------------------------------|:--------------------------------------------------------|
@@ -283,3 +284,12 @@ $f(x_1, x_2, x_3) = (\overline{x}_1 \land \overline{x}_2 \land \overline{x}_3) \
 
 CNF:  
 $f(x_1, x_2, x_3) = (x_1 \lor \overline{x}_2 \lor x_3) \land (x_1 \lor \overline{x}_2 \lor \overline{x}_3) \land (\overline{x}_1 \lor x_2 \lor x_3) \land (\overline{x}_1 \lor \overline{x}_2 \lor \overline{x}_3)$
+
+<br>
+<br>
+<br>
+<br>
+
+## Minimization
+
+- [Minimization With KV-Diagrams](./minimization/switching_function_minimization_kv_diagram.md)

@@ -6,6 +6,7 @@
 - [Switching Function Minimization: KV-Diagram](#switching-function-minimization-kv-diagram)
   - [Table Of Contents](#table-of-contents)
   - [KV-Diagram](#kv-diagram)
+  - [When To Use](#when-to-use)
   - [Minimize Conjunctive Normal Form (CNF)](#minimize-conjunctive-normal-form-cnf)
     - [Create KV-Diagram](#create-kv-diagram)
     - [Minimization](#minimization)
@@ -25,6 +26,15 @@
 > A diagram for a switching function with $n$ input variables has $2^n$ fields.
 >
 > The fields are positioned in a way that switching to an adjacent field only changes the value of exactly one input variable.
+
+<br>
+<br>
+<br>
+<br>
+
+## When To Use
+
+When we have to minimize a switching function with up to six input variables.
 
 <br>
 <br>

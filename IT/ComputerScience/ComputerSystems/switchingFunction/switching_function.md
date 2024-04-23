@@ -22,6 +22,7 @@
     - [Disjunctive (Normal) Form (DNF / DF)](#disjunctive-normal-form-dnf--df)
     - [Example](#example)
   - [Minimization](#minimization)
+  - [Vector Function](#vector-function)
 
 <br>
 <br>
@@ -293,3 +294,20 @@ $f(x_1, x_2, x_3) = (x_1 \lor \overline{x}_2 \lor x_3) \land (x_1 \lor \overline
 ## Minimization
 
 - [Minimization With KV-Diagrams](./minimization/switching_function_minimization_kv_diagram.md)
+- [Quine-McCluskey Algorithm](./minimization/switching_function_minimization_quine_mccluskey.md)
+
+<br>
+<br>
+<br>
+<br>
+
+## Vector Function
+
+> A **vector** of a switching function is defined as $X = (x_1, x_2, ..., x_n)$.
+
+<br>
+
+> A **vector function** is defined as  
+> $Y = F(X)$ with  
+> $Y = (y_1, y_2, ... ,y_n)$ and  
+> $F = (f_1, f_2, ... ,f_n)$.

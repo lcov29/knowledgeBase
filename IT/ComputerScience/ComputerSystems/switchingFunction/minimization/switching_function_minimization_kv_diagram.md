@@ -106,7 +106,7 @@ $$x_1 \lor x_2 \lor \overline{x}_3 \lor x_4$$
 
 $$
 \begin{align*}
-  (\underbrace{(\overline{x}_1 \lor \overline{x}_2) \land (\overline{x}_1 \lor x_2)}_{\text{law of distribution}}) \lor x_3 \lor x_4 &= (\overline{x}_1 \lor \underbrace{(\overline{x}_2 \land x_2)}_{0}) \lor x_3 \lor x_4 \\
+  (\underbrace{(\overline{x}_1 \lor \overline{x}) \land (\overline{x}_1 \lor x_2)}\_{\text{law of distribution}}) \lor x_3 \lor x_4 &= (\overline{x}_1 \lor (\underbrace{\overline{x}_2 \land x_2}\_{0})) \lor x_3 \lor x_4 \\
   &= \overline{x}_1 \lor x_3 \lor x_4
 \end{align*}
 $$
@@ -117,7 +117,7 @@ $$
 
 $$
 \begin{align*}
-  \overline{x}_1 \lor \overline{x}_2 \lor (\underbrace{(x_3 \lor \overline{x}_4) \land (\overline{x}_3 \lor \overline{x}_4)}_{\text{law of distribution}}) &= \overline{x}_1 \lor \overline{x}_2 \lor (\overline{x}_4 \lor \underbrace{(x_3 \land \overline{x}_3)}_{0}) \\
+  \overline{x}_1 \lor \overline{x}_2 \lor (\underbrace{(x_3 \lor \overline{x}_4) \land (\overline{x}_3 \lor \overline{x}_4)}\_{\text{law of distribution}}) &= \overline{x}_1 \lor \overline{x}_2 \lor (\overline{x}_4 \lor \underbrace{(x_3 \land \overline{x}_3)}\_{0}) \\
   &= \overline{x}_1 \lor \overline{x}_2 \lor \overline{x}_4
 \end{align*}
 $$
@@ -128,8 +128,8 @@ $$
 
 $$
 \begin{align*}
-  (\underbrace{(x_1 \lor \overline{x}_2) \land (\overline{x}_1 \lor \overline{x}_2)}_{\text{Law of distribution}}) \lor (\underbrace{(x_3 \lor x_4) \land (x_3 \lor \overline{x}_4)}_{\text{Law of distribution}}) &= 
-  \overline{x}_2 \lor \underbrace{(x_1 \land \overline{x}_1)}_{0} \lor x_3 \lor \underbrace{(x_4 \land \overline{x}_4)}_{0} \\
+  (\underbrace{(x_1 \lor \overline{x}_2) \land (\overline{x}_1 \lor \overline{x}_2)}\_{\text{law of distribution}}) \lor (\underbrace{(x_3 \lor x_4) \land (x_3 \lor \overline{x}_4)}\_{\text{law of distribution}}) &= 
+  \overline{x}_2 \lor \underbrace{(x_1 \land \overline{x}_1)}\_{0} \lor x_3 \lor \underbrace{(x_4 \land \overline{x}_4)}\_{0} \\
   &= \overline{x}_2 \lor x_3
 \end{align*}
 $$
@@ -204,8 +204,8 @@ $f(x_1, x_2, x_3) = (\overline{x}_1 \land \overline{x}_2 \land \overline{x}_3) \
 
 $$
 \begin{align*}
-  x_2 \land x_1 \land (\underbrace{(\overline{x}_4 \land \overline{x}_3) \lor (\overline{x}_4 \land x_3)}_{\text{law of distribution}} \lor \underbrace{(x_4 \land x_3) \lor (x_4 \land \overline{x}_3)}_{\text{law of distribution}}) &= x_2 \land x_1 \land (\overline{x}_4 \land \underbrace{(\overline{x}_3 \lor x_3)}_{1} \lor x_4 \land \underbrace{(\overline{x}_3 \lor x_3)}_{1}) \\
-  &= x_2 \land x_1 \land \underbrace{(\overline{x}_4 \lor x_4)}_{1} \\
+  x_2 \land x_1 \land (\underbrace{(\overline{x}_4 \land \overline{x}_3) \lor (\overline{x}_4 \land x_3)}\_{\text{law of distribution}} \lor \underbrace{(x_4 \land x_3) \lor (x_4 \land \overline{x}_3)}\_{\text{law of distribution}}) &= x_2 \land x_1 \land (\overline{x}_4 \land \underbrace{(\overline{x}_3 \lor x_3)}\_{1} \lor x_4 \land \underbrace{(\overline{x}_3 \lor x_3)}\_{1}) \\
+  &= x_2 \land x_1 \land \underbrace{(\overline{x}_4 \lor x_4)}\_{1} \\
   &= x_2 \land x_1
 \end{align*}
 $$
@@ -216,18 +216,18 @@ $$
 
 $$
 \begin{align*}
-  \underbrace{(\overline{x}_2 \land x_1 \lor x_2 \land x_1)}_{\text{law of distribution}} \land \overline{x}_4 \land x_3 &= (x_1 \land \underbrace{(\overline{x}_2 \lor x_2)}_{1}) \land \overline{x}_4 \land x_3 \\
+  \underbrace{(\overline{x}_2 \land x_1 \lor x_2 \land x_1)}\_{\text{law of distribution}} \land \overline{x}_4 \land x_3 &= (x_1 \land \underbrace{(\overline{x}_2 \lor x_2)}\_{1}) \land \overline{x}_4 \land x_3 \\
   &= \overline{x}_4 \land x_3 \land x_1
 \end{align*}
 $$
 
 <br>
 
-<span style="color: blue; font-weight: bold;">Clause 2</span>
+<span style="color: blue; font-weight: bold;">Clause 3</span>
 
 $$
 \begin{align*}
-  \underbrace{(\overline{x}_2 \land \overline{x}_1 \lor x_2 \land \overline{x}_1)}_{\text{law of distribution}} \land \underbrace{(\overline{x}_4 \land \overline{x}_3 \lor x_4 \land \overline{x}_3)}_{\text{law of distribution}} &= (\overline{x}_1 \land (\underbrace{\overline{x}_2 \lor x_2}_{1})) \land (\overline{x}_3 \land (\underbrace{\overline{x}_4 \lor x_4}_{1})) \\
+  \underbrace{(\overline{x}_2 \land \overline{x}_1 \lor x_2 \land \overline{x}_1)}\_{\text{law of distribution}} \land \underbrace{(\overline{x}_4 \land \overline{x}_3 \lor x_4 \land \overline{x}_3)}\_{\text{law of distribution}} &= (\overline{x}_1 \land (\underbrace{\overline{x}_2 \lor x_2}\_{1})) \land (\overline{x}_3 \land (\underbrace{\overline{x}_4 \lor x_4}\_{1})) \\
   &= \overline{x}_1 \land \overline{x}_3
 \end{align*}
 $$

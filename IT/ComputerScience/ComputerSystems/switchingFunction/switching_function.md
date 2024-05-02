@@ -178,6 +178,7 @@ $f(x_1, x_2) = \overline{x_1 \lor x_2}$
 $$
 \begin{align*}
    f(x_1, x_2) &= x_1 \not\equiv x_2 \\
+               &= x_1 \oplus x_2 \\
                &= (x_1 \land \overline{x_2}) \lor (\overline{x_1} \land x_2)
 \end{align*}
 $$
@@ -232,10 +233,17 @@ $$
 > A **max clause** is a disjunction of every (possibly negated) input variable that only returns `0` for exactly one combination of input variables.  
 > 
 > For a switching function with $n$ input variables there are $2^n$ different max clauses.
+>
+> **Example**  
+> $x_1 \lor x_2 \lor x_3$
 
 <br>
+<br>
 
-> A **conjunctive normal form (CNF)** of a switching function is a conjunction of those *max clauses* that return `0`.
+> A **conjunctive normal form (CNF)** of a switching function is a conjunction of those *max clauses* that return `0`.  
+>
+> **Example**  
+> $(x_1 \lor \overline{x_2} \lor x_3) \land (\overline{x_1} \lor x_2 \lor x_3)$
 
 <br>
 
@@ -250,11 +258,17 @@ $$
 > A **min clause** is a conjunction of every (possibly negated) input variable that only returns `1` for exactly one combination of input variables.
 >
 > For a switching function with $n$ input variables there are $2^n$ different min clauses.
+>
+> **Example**  
+> $x_1 \land x_2 \land x_3$
 
 <br>
 
 > A **disjunctive normal form** of a switching function is a disjunction of those *min clauses* that return `1`.
-
+>
+> **Example**  
+> $(x_1 \land \overline{x_2} \land x_3) \lor (\overline{x_1} \land x_2 \land x_3)$
+> 
 <br>
 
 > A **disjunction form (DF)** of a switching function is a disjunction of *conjunctive clauses* that do not contain all input variables.
@@ -292,6 +306,10 @@ $f(x_1, x_2, x_3) = (x_1 \lor \overline{x}_2 \lor x_3) \land (x_1 \lor \overline
 <br>
 
 ## Minimization
+
+> **Minimization** of a switching function means removing redundant terms.
+
+<br>
 
 - [Minimization With KV-Diagrams](./minimization/switching_function_minimization_kv_diagram.md)
 - [Quine-McCluskey Algorithm](./minimization/switching_function_minimization_quine_mccluskey.md)

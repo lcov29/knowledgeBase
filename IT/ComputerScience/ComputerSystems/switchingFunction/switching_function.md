@@ -22,6 +22,7 @@
     - [Disjunctive (Normal) Form (DNF / DF)](#disjunctive-normal-form-dnf--df)
     - [Example](#example)
   - [Minimization](#minimization)
+  - [Analysis](#analysis)
   - [Vector Function](#vector-function)
 
 <br>
@@ -313,6 +314,15 @@ $f(x_1, x_2, x_3) = (x_1 \lor \overline{x}_2 \lor x_3) \land (x_1 \lor \overline
 
 - [Minimization With KV-Diagrams](./minimization/switching_function_minimization_kv_diagram.md)
 - [Quine-McCluskey Algorithm](./minimization/switching_function_minimization_quine_mccluskey.md)
+
+<br>
+<br>
+<br>
+<br>
+
+## [Analysis](./other/switching_function_analysis.md)
+
+> The goal of the analysis of a switching function diagram is to derive the function definition and/or its value table.
 
 <br>
 <br>

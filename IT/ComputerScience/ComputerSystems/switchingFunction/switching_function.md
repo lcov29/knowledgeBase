@@ -23,6 +23,7 @@
     - [Example](#example)
   - [Minimization](#minimization)
   - [Analysis](#analysis)
+  - [Synthesis](#synthesis)
   - [Vector Function](#vector-function)
 
 <br>
@@ -323,6 +324,15 @@ $f(x_1, x_2, x_3) = (x_1 \lor \overline{x}_2 \lor x_3) \land (x_1 \lor \overline
 ## [Analysis](./other/switching_function_analysis.md)
 
 > The goal of the analysis of a switching function diagram is to derive the function definition and/or its value table.
+
+<br>
+<br>
+<br>
+<br>
+
+## [Synthesis](./other/switching_function_synthesis.md)
+
+> The goal of the synthesis is to derive a switching function diagram from either a switching function or value table.
 
 <br>
 <br>
